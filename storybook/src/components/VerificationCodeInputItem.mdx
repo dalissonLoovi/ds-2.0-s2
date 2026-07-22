@@ -1,8 +1,8 @@
 import { Meta } from '@storybook/blocks';
 
-<Meta title="Components/VerificationCodeInputBlock" />
+<Meta title="Components/VerificationCodeInputItem" />
 
-# VerificationCodeInputBlock
+# VerificationCodeInputItem
 
 > **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
 
@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: VerificationCodeInputBlock is the Design System 2.0 single-digit cell used inside VerificationCodeInput for OTP, 2FA, and PIN entry. It is not a free-text Input — compose only as a digit slot in the verification code field. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Anatomy: fixed 56×48 frame with centered digit TEXT. Props: digit (TEXT) — displayed character (typically 0–9; canvas default "1"). Visual rules: fill color/background-surface/0; default and disabled borders color/border/1; hover border color/border-feedback/primary; focus border interactive/focus plus DROP_SHADOW ring (color color/elevation/Focus, spread spacing/050, radius/offset spacing/0); error border color/border-feedback/danger; digit text/primary (disabled text/placeholder). Geometry tokens: border/radius/300, padding spacing/050 vertical and spacing/100 horizontal, stroke border/width/012. Typography: body/large/regular on digit. The parent VerificationCodeInput selects the block state per slot. Accessibility: each block maps to a single-character input or spinbutton segment; announce errors on the group; disabled slots use aria-disabled. React mapping: VerificationCodeInputBlock(state, digit). Code Connect is not configured.
+AI-READY COMPONENT: VerificationCodeInputItem is the Design System 2.0 single-digit cell used inside VerificationCodeInput for OTP, 2FA, and PIN entry. It is not a free-text Input — compose only as a digit slot in the verification code field. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Anatomy: fixed 56×48 frame with centered digit TEXT. Props: digit (TEXT) — displayed character (typically 0–9; canvas default "1"). Visual rules: fill color/background-surface/0; default and disabled borders color/border/1; hover border color/border-feedback/primary; focus border interactive/focus plus DROP_SHADOW ring (color color/elevation/Focus, spread spacing/050, radius/offset spacing/0); error border color/border-feedback/danger; digit text/primary (disabled text/placeholder). Geometry tokens: border/radius/300, padding spacing/050 vertical and spacing/100 horizontal, stroke border/width/012. Typography: body/large/regular on digit. The parent VerificationCodeInput selects the block state per slot. Accessibility: each block maps to a single-character input or spinbutton segment; announce errors on the group; disabled slots use aria-disabled. React mapping: VerificationCodeInputItem(state, digit). Code Connect is not configured.
 
 ## Variants
 

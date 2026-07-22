@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: VerificationCodeInput is the Design System 2.0 verification-code field for OTP, 2FA, and PIN entry (SMS, email, authenticator). Do not use as Input, InputPassword, InputNumber, or InputSelect. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Fixed length: 5 digit slots. Anatomy: labelRow (label TEXT) + codeRow with five exposed VerificationCodeInputBlock instances (codeCell1…codeCell5) + supportingRow (supportingText) on state=error only. State propagation: hover/error/disabled apply the matching block state to all cells; focus keeps codeCell1–4 at default and sets codeCell5 to focus (active slot demo). Props: label (TEXT), showLabel (BOOLEAN), supportingText (TEXT), showSupportingText (BOOLEAN — targets supportingRow on error). Digit values are edited via exposed nested codeCell1…codeCell5 digit props (React: digit1…digit5). Token rule: root gap spacing/100; codeRow gap spacing/150; label body/medium/regular with text/secondary (disabled text/placeholder); supporting caption/large/regular with feedback/danger; cells inherit VerificationCodeInputBlock tokens including focus ring color/elevation/Focus. Accessibility: group of single-character inputs; label associates to the group; aria-invalid + aria-describedby on error; aria-disabled when disabled; manage focus advance per slot in product code. React mapping: VerificationCodeInput(state, label, showLabel, supportingText, showSupportingText, digit1…digit5). Code Connect is not configured.
+AI-READY COMPONENT: VerificationCodeInput is the Design System 2.0 verification-code field for OTP, 2FA, and PIN entry (SMS, email, authenticator). Do not use as Input, InputPassword, InputNumber, or InputSelect. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Fixed length: 5 digit slots. Anatomy: labelRow (label TEXT) + codeRow with five exposed VerificationCodeInputItem instances (codeCell1…codeCell5) + supportingRow (supportingText) on state=error only. State propagation: hover/error/disabled apply the matching block state to all cells; focus keeps codeCell1–4 at default and sets codeCell5 to focus (active slot demo). Props: label (TEXT), showLabel (BOOLEAN), supportingText (TEXT), showSupportingText (BOOLEAN — targets supportingRow on error). Digit values are edited via exposed nested codeCell1…codeCell5 digit props (React: digit1…digit5). Token rule: root gap spacing/100; codeRow gap spacing/150; label body/medium/regular with text/secondary (disabled text/placeholder); supporting caption/large/regular with feedback/danger; cells inherit VerificationCodeInputItem tokens including focus ring color/elevation/Focus. Accessibility: group of single-character inputs; label associates to the group; aria-invalid + aria-describedby on error; aria-disabled when disabled; manage focus advance per slot in product code. React mapping: VerificationCodeInput(state, label, showLabel, supportingText, showSupportingText, digit1…digit5). Code Connect is not configured.
 
 ## Variants
 
@@ -43,7 +43,7 @@ AI-READY COMPONENT: VerificationCodeInput is the Design System 2.0 verification-
 - codeRow itemSpacing spacing/150
 - label: body/medium/regular; text/secondary (disabled text/placeholder)
 - supporting: caption/large/regular; feedback/danger
-- inherits VerificationCodeInputBlock tokens (incl. color/elevation/Focus ring)
+- inherits VerificationCodeInputItem tokens (incl. color/elevation/Focus ring)
 
 ## Accessibility
 
@@ -51,6 +51,6 @@ Group of single-character inputs; label associates to the group; aria-invalid + 
 
 ## Composition
 
-- VerificationCodeInputBlock (codeCell1…codeCell5, exposed)
+- VerificationCodeInputItem (codeCell1…codeCell5, exposed)
 - labelRow / codeRow / supportingRow (error)
 

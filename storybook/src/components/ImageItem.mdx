@@ -1,8 +1,8 @@
 import { Meta } from '@storybook/blocks';
 
-<Meta title="Components/ImageBlock" />
+<Meta title="Components/ImageItem" />
 
-# ImageBlock
+# ImageItem
 
 > **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
 
@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: ImageBlock is a DS image container used to reserve a fixed aspect-ratio surface and optionally show an orientation overlay. Use imageSurface as the only layer for applying or replacing image fills — keep it absolute/floating, clipped, tokenized, and scaleMode FILL (crop) so the image is not distorted. Use showOrientationBlock to toggle orientationOverlay (ImageOrientationBlock), which must stay absolute/floating, rotation 0°, and centered — including when verticalResize=true. aspectRatio controls 1-1 | 4-3 | 3-2 | 16-9 | 2-1. orientation controls portrait | landscape. verticalResize=false locks width and hugs height via aspect-ratio keepers; verticalResize=true locks height and hugs width (same keeper technique, rotated). Do not use ImageBlock as a radio, checkbox, button, tab, avatar, or gallery tile. Token rule: use existing DS kebab-case variables only — color/background-surface/1 for root and imageSurface placeholder, plus nested ImageOrientationBlock tokens. Accessibility: treat as an image or figure; provide accessible name/alt from product content when a real image is applied; orientationOverlay is decorative/informational and must not steal focus. React mapping: ImageBlock(aspectRatio, orientation, verticalResize, showOrientationBlock, src, alt).
+AI-READY COMPONENT: ImageItem is a DS image container used to reserve a fixed aspect-ratio surface and optionally show an orientation overlay. Use imageSurface as the only layer for applying or replacing image fills — keep it absolute/floating, clipped, tokenized, and scaleMode FILL (crop) so the image is not distorted. Use showOrientationBlock to toggle orientationOverlay (ImageOrientationBlock), which must stay absolute/floating, rotation 0°, and centered — including when verticalResize=true. aspectRatio controls 1-1 | 4-3 | 3-2 | 16-9 | 2-1. orientation controls portrait | landscape. verticalResize=false locks width and hugs height via aspect-ratio keepers; verticalResize=true locks height and hugs width (same keeper technique, rotated). Do not use ImageItem as a radio, checkbox, button, tab, avatar, or gallery tile. Token rule: use existing DS kebab-case variables only — color/background-surface/1 for root and imageSurface placeholder, plus nested ImageOrientationBlock tokens. Accessibility: treat as an image or figure; provide accessible name/alt from product content when a real image is applied; orientationOverlay is decorative/informational and must not steal focus. React mapping: ImageItem(aspectRatio, orientation, verticalResize, showOrientationBlock, src, alt).
 
 ## Variants
 

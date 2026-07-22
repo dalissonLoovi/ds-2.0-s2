@@ -3,8 +3,8 @@
 > **Arquivo Figma:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940)  
 > **File key:** `mHm12Zu9tgNmaSYnooihE5`  
 > **Schema:** ds-storybook-metadata/v2  
-> **Atualizado em:** 2026-07-22T15:40:00-03:00  
-> **Revision:** 2026-07-22-slider-left-rail-recreate
+> **Atualizado em:** 2026-07-22T17:20:00-03:00  
+> **Revision:** 2026-07-22-block-to-item-rename
 
 Component documentation, controls, variant options and AI-Ready rules for Storybook docs. Token values remain under tokens.
 
@@ -876,11 +876,11 @@ title maps to page h1 when identifying the artifact; project is a link only with
 
 ---
 
-## CommentBlock
+## CommentItem
 
 **Node ID:** `3653:340`
 
-AI-READY COMPONENT: CommentBlock is an internal Figma-only annotation used to add contextual comments, notes, questions, alignment points, usability-test notes, developer specs, checks and design decisions inside the design system file. Do not use CommentBlock as product UI, app chrome, Toast, Banner, Tooltip, Card or any user-facing component. Do not map to React, Code Connect or production code. Variants: placement=right|left|top|bottom controls callout arrow side; category selects the annotation type. Intentional composition split: category=generic uses header (leadingIcon + title) plus description — title, showIcon and leadingIcon props apply only here; all other categories use categoryTag (local DS categoryIcon + categoryLabel) plus description, without title. Props: description (all categories); title, showIcon, leadingIcon (generic only). Category icons must remain local DS outline icons (eye, test-pipe, code, heart-handshake, adjustments, help-circle, bulb, circle-check, message-circle). Token rule: use existing local DS kebab-case variables only — color/background-surface/0|2|3, color/border/1, text/primary|secondary, spacing/0|050|100|150, border/radius/100, border/width/012, color/elevation/pressed (effect). Accessibility: Figma-only organizer with no runtime a11y role; product headings/notes must be implemented separately in product UI. React mapping: none — Figma organizer only.
+AI-READY COMPONENT: CommentItem is an internal Figma-only annotation used to add contextual comments, notes, questions, alignment points, usability-test notes, developer specs, checks and design decisions inside the design system file. Do not use CommentItem as product UI, app chrome, Toast, Banner, Tooltip, Card or any user-facing component. Do not map to React, Code Connect or production code. Variants: placement=right|left|top|bottom controls callout arrow side; category selects the annotation type. Intentional composition split: category=generic uses header (leadingIcon + title) plus description — title, showIcon and leadingIcon props apply only here; all other categories use categoryTag (local DS categoryIcon + categoryLabel) plus description, without title. Props: description (all categories); title, showIcon, leadingIcon (generic only). Category icons must remain local DS outline icons (eye, test-pipe, code, heart-handshake, adjustments, help-circle, bulb, circle-check, message-circle). Token rule: use existing local DS kebab-case variables only — color/background-surface/0|2|3, color/border/1, text/primary|secondary, spacing/0|050|100|150, border/radius/100, border/width/012, color/elevation/pressed (effect). Accessibility: Figma-only organizer with no runtime a11y role; product headings/notes must be implemented separately in product UI. React mapping: none — Figma organizer only.
 
 ### Variants
 
@@ -1003,7 +1003,7 @@ If purely visual, hide with aria-hidden=true. If it separates meaningful regions
 
 **Node ID:** `3581:4454`
 
-AI-READY COMPONENT: FileUploader is the full file-upload field composition used to label a file input, show helper guidance, trigger selection, optionally present a drag-and-drop surface, and list selected files. Use variant=default for a Button-triggered picker and variant=drag-and-drop when the FileUploaderBlock dropzone is the primary capture surface. Use size=lg|md|sm to control nested FileUploaderItem density and the nested Button size (solid primary maps 1:1). Use state=default for the interactive field, state=disabled to block selection/drop/remove, and state=skeleton as a non-interactive loading placeholder made of bones only (labelSkeleton, descriptionSkeleton, actionSkeleton) — no nested Button, FileUploaderBlock, or FileUploaderList instances inside skeleton. Props: label and description control the field header texts; showFiles toggles the FileUploaderList — intentional: showFiles is only wired on state=default; disabled and skeleton hard-hide or omit the file list. Composition (non-skeleton): header (label + description) + local Button uploadAction + local FileUploaderBlock uploadDropzone + local FileUploaderList fileList. Do not use FileUploader as FileUploaderBlock alone, FileUploaderItem, FileUploaderList, UploadPhotos, Button, Card, TextInput or ProgressBar. Status of individual files belongs to FileUploaderItem. Accessibility: implement with a native input type=file; uploadAction / dropzone must open the picker; Enter/Space activate; associate label and description with the input; disabled prevents selecting, dropping and removing; skeleton is non-interactive. Token rule: use existing DS kebab-case variables — spacing/100|200, border/radius/200, border/width/012, interactive/disabled-surface (skeleton root), color/background-surface/2 (skeleton bones), text/primary|secondary on header, plus nested Button/FileUploaderBlock/FileUploaderList/FileUploaderItem tokens. React mapping: FileUploader(variant, size, state, label, description, showFiles, files, onSelectFiles).
+AI-READY COMPONENT: FileUploader is the full file-upload field composition used to label a file input, show helper guidance, trigger selection, optionally present a drag-and-drop surface, and list selected files. Use variant=default for a Button-triggered picker and variant=drag-and-drop when the FileUploaderDropzoneItem dropzone is the primary capture surface. Use size=lg|md|sm to control nested FileUploaderItem density and the nested Button size (solid primary maps 1:1). Use state=default for the interactive field, state=disabled to block selection/drop/remove, and state=skeleton as a non-interactive loading placeholder made of bones only (labelSkeleton, descriptionSkeleton, actionSkeleton) — no nested Button, FileUploaderDropzoneItem, or FileUploaderList instances inside skeleton. Props: label and description control the field header texts; showFiles toggles the FileUploaderList — intentional: showFiles is only wired on state=default; disabled and skeleton hard-hide or omit the file list. Composition (non-skeleton): header (label + description) + local Button uploadAction + local FileUploaderDropzoneItem uploadDropzone + local FileUploaderList fileList. Do not use FileUploader as FileUploaderDropzoneItem alone, FileUploaderItem, FileUploaderList, UploadPhotos, Button, Card, TextInput or ProgressBar. Status of individual files belongs to FileUploaderItem. Accessibility: implement with a native input type=file; uploadAction / dropzone must open the picker; Enter/Space activate; associate label and description with the input; disabled prevents selecting, dropping and removing; skeleton is non-interactive. Token rule: use existing DS kebab-case variables — spacing/100|200, border/radius/200, border/width/012, interactive/disabled-surface (skeleton root), color/background-surface/2 (skeleton bones), text/primary|secondary on header, plus nested Button/FileUploaderDropzoneItem/FileUploaderList/FileUploaderItem tokens. React mapping: FileUploader(variant, size, state, label, description, showFiles, files, onSelectFiles).
 
 ### Variants
 
@@ -1025,7 +1025,7 @@ AI-READY COMPONENT: FileUploader is the full file-upload field composition used 
 ### Rules
 
 - **composition:** non-skeleton: header + uploadAction + uploadDropzone + fileList; skeleton: bones only
-- **vsBlock:** Do not use as dropzone alone — use FileUploaderBlock
+- **vsBlock:** Do not use as dropzone alone — use FileUploaderDropzoneItem
 - **vsItem:** Do not use as a single file row — use FileUploaderItem
 - **vsList:** Do not use as file list stack alone — use FileUploaderList
 - **vsUploadPhotos:** Do not use for photo lifecycle task items — use UploadPhotos
@@ -1050,7 +1050,7 @@ AI-READY COMPONENT: FileUploader is the full file-upload field composition used 
 - `interactive/disabled-surface` (skeleton root)
 - `color/background-surface/2` (skeleton bones)
 - `text/primary | secondary` (header)
-- nested Button, FileUploaderBlock, FileUploaderList, FileUploaderItem own their tokens
+- nested Button, FileUploaderDropzoneItem, FileUploaderList, FileUploaderItem own their tokens
 
 ### Accessibility
 
@@ -1058,11 +1058,11 @@ native input type=file; uploadAction/dropzone open picker; Enter/Space; associat
 
 ---
 
-## FileUploaderBlock
+## FileUploaderDropzoneItem
 
 **Node ID:** `3581:5628`
 
-AI-READY COMPONENT: FileUploaderBlock is a drag-and-drop file upload dropzone block for selecting one or more files. Use it when users can drag files onto a surface or activate the surface to open the native file picker. Do not use it as a Button, Card, TextInput, ProgressBar, uploaded-file row/list item, or the full File uploader composition (label + description + file items). Variants: state=default|drag-hover|focus|disabled. disabled is a state value — there is no separate disabled boolean prop. Props: helperText (TEXT) controls the visible instruction. Composition: dropzone frame with helperText. No nested Button or file-item instances; pair with file-item components outside this block when listing uploaded files. Accessibility: map the enabled dropzone to a button-like or label/input pattern with keyboard activation via Enter/Space, visible focus, accessible name/description, and a hidden file input. During drag-over use state=drag-hover. state=disabled must not be focusable or interactive and should expose aria-disabled=true when rendered as a button-like control. Associate helperText with the upload input/dropzone. Token rule: use existing DS kebab-case variables only — color/background-surface/0, interactive/hover|focus|disabled-surface, color/border/1|2, color/border-feedback/primary, text/secondary|placeholder, spacing/0|200|300|800, border/radius/200, border/width/012|025. Dashed outline uses hardcoded dashPattern [4,3] on default|disabled (no local dash token). React mapping: FileUploaderBlock(state, helperText, onFilesSelected).
+AI-READY COMPONENT: FileUploaderDropzoneItem is a drag-and-drop file upload dropzone block for selecting one or more files. Use it when users can drag files onto a surface or activate the surface to open the native file picker. Do not use it as a Button, Card, TextInput, ProgressBar, uploaded-file row/list item, or the full File uploader composition (label + description + file items). Variants: state=default|drag-hover|focus|disabled. disabled is a state value — there is no separate disabled boolean prop. Props: helperText (TEXT) controls the visible instruction. Composition: dropzone frame with helperText. No nested Button or file-item instances; pair with file-item components outside this block when listing uploaded files. Accessibility: map the enabled dropzone to a button-like or label/input pattern with keyboard activation via Enter/Space, visible focus, accessible name/description, and a hidden file input. During drag-over use state=drag-hover. state=disabled must not be focusable or interactive and should expose aria-disabled=true when rendered as a button-like control. Associate helperText with the upload input/dropzone. Token rule: use existing DS kebab-case variables only — color/background-surface/0, interactive/hover|focus|disabled-surface, color/border/1|2, color/border-feedback/primary, text/secondary|placeholder, spacing/0|200|300|800, border/radius/200, border/width/012|025. Dashed outline uses hardcoded dashPattern [4,3] on default|disabled (no local dash token). React mapping: FileUploaderDropzoneItem(state, helperText, onFilesSelected).
 
 ### Variants
 
@@ -1108,7 +1108,7 @@ button-like or label/input with Enter/Space; visible focus; hidden file input; d
 
 **Node ID:** `3581:5641`
 
-AI-READY COMPONENT: FileUploaderItem is the file row used inside a file uploader to represent an uploaded file, a loading file, a successful upload, focus state, and validation error states. Use when showing one file inside an upload list or upload confirmation area. Do not use as the drag-and-drop dropzone — use FileUploaderBlock for that. Variants: size=sm|md|lg controls vertical density and row height. state=uploaded|loading|success|focus|danger-short|danger-long. Use danger-short for one-line validation feedback and danger-long when a secondary explanation is needed. Props: fileName (visible file name), shortDescription (short validation message on danger states), longDescription (optional secondary validation detail on danger-long). Composition: uses local LoadingSpinner for loading; local DS icons for removeAction (x-outline), statusIcon on success (circle-check-filled) and danger (alert-circle-filled). Do not use imported icons or external library components. removeAction is a DS icon hit-target, not a Button instance. Accessibility: the file name must be announced by screen readers. loading should expose progress/status text in implementation (preferably aria-live=polite). success may announce completion with aria-live=polite. danger-short and danger-long should expose validation feedback with role=alert or aria-live when the error appears. removeAction must have an accessible label such as Remove file {fileName}. Decorative status icons should be aria-hidden=true when text already communicates the state. focus represents visible keyboard focus on the trailingAction/remove control. Token rule: use existing DS kebab-case variables (color/background-surface/0|1, color/border-feedback/danger, color/border/2, interactive/focus, feedback/danger|success, text/primary|secondary, spacing/*, border/radius/*, border/width/*). On danger states, errorMessage uses feedback/danger; on danger-long, errorDescription uses text/secondary. React mapping: FileUploaderItem(size, state, fileName, shortDescription, longDescription, onRemove).
+AI-READY COMPONENT: FileUploaderItem is the file row used inside a file uploader to represent an uploaded file, a loading file, a successful upload, focus state, and validation error states. Use when showing one file inside an upload list or upload confirmation area. Do not use as the drag-and-drop dropzone — use FileUploaderDropzoneItem for that. Variants: size=sm|md|lg controls vertical density and row height. state=uploaded|loading|success|focus|danger-short|danger-long. Use danger-short for one-line validation feedback and danger-long when a secondary explanation is needed. Props: fileName (visible file name), shortDescription (short validation message on danger states), longDescription (optional secondary validation detail on danger-long). Composition: uses local LoadingSpinner for loading; local DS icons for removeAction (x-outline), statusIcon on success (circle-check-filled) and danger (alert-circle-filled). Do not use imported icons or external library components. removeAction is a DS icon hit-target, not a Button instance. Accessibility: the file name must be announced by screen readers. loading should expose progress/status text in implementation (preferably aria-live=polite). success may announce completion with aria-live=polite. danger-short and danger-long should expose validation feedback with role=alert or aria-live when the error appears. removeAction must have an accessible label such as Remove file {fileName}. Decorative status icons should be aria-hidden=true when text already communicates the state. focus represents visible keyboard focus on the trailingAction/remove control. Token rule: use existing DS kebab-case variables (color/background-surface/0|1, color/border-feedback/danger, color/border/2, interactive/focus, feedback/danger|success, text/primary|secondary, spacing/*, border/radius/*, border/width/*). On danger states, errorMessage uses feedback/danger; on danger-long, errorDescription uses text/secondary. React mapping: FileUploaderItem(size, state, fileName, shortDescription, longDescription, onRemove).
 
 ### Variants
 
@@ -1128,7 +1128,7 @@ AI-READY COMPONENT: FileUploaderItem is the file row used inside a file uploader
 ### Rules
 
 - **composition:** local loadingSpinner, statusIcon, removeAction (x-outline icon hit-target)
-- **vsBlock:** Do not use as dropzone — use FileUploaderBlock
+- **vsBlock:** Do not use as dropzone — use FileUploaderDropzoneItem
 - **dangerText:** errorMessage = feedback/danger; danger-long errorDescription = text/secondary
 - **focusTarget:** focus stroke on trailingAction/remove control
 - **usage:** One file row in an upload list — not a Button, Card, or ProgressBar
@@ -1149,7 +1149,7 @@ announce fileName; loading/success aria-live=polite; danger role=alert or aria-l
 
 **Node ID:** `3581:3887`
 
-AI-READY COMPONENT: FileUploaderList is a vertical stack of FileUploaderItem rows used to preview or compose a list of uploaded files. Use it as a demo/composition wrapper for one or more FileUploaderItem instances. Do not use it as FileUploaderBlock (dropzone), a single FileUploaderItem, Button, Card, or ProgressBar. Composition: fileItem01–fileItem07 are local FileUploaderItem instances. fileItem01 is always present; showFileItem02–showFileItem07 toggle additional rows (defaults: 02–03 true, 04–07 false). In product code, prefer mapping an array of files to N× FileUploaderItem rather than hard-coding seven slots. This component documents spacing and stacking for the upload list pattern. Accessibility: expose the list as a list or group with an accessible name; each FileUploaderItem remains responsible for file name, status, and remove action semantics. Token rule: use existing DS kebab-case variables (spacing/100 for item gap). Nested FileUploaderItem uses its own DS tokens. React mapping: FileUploaderList(children as FileUploaderItem[]) or FileUploaderList(files.map(...)). Figma props: showFileItem02–showFileItem07.
+AI-READY COMPONENT: FileUploaderList is a vertical stack of FileUploaderItem rows used to preview or compose a list of uploaded files. Use it as a demo/composition wrapper for one or more FileUploaderItem instances. Do not use it as FileUploaderDropzoneItem (dropzone), a single FileUploaderItem, Button, Card, or ProgressBar. Composition: fileItem01–fileItem07 are local FileUploaderItem instances. fileItem01 is always present; showFileItem02–showFileItem07 toggle additional rows (defaults: 02–03 true, 04–07 false). In product code, prefer mapping an array of files to N× FileUploaderItem rather than hard-coding seven slots. This component documents spacing and stacking for the upload list pattern. Accessibility: expose the list as a list or group with an accessible name; each FileUploaderItem remains responsible for file name, status, and remove action semantics. Token rule: use existing DS kebab-case variables (spacing/100 for item gap). Nested FileUploaderItem uses its own DS tokens. React mapping: FileUploaderList(children as FileUploaderItem[]) or FileUploaderList(files.map(...)). Figma props: showFileItem02–showFileItem07.
 
 ### Props
 
@@ -1165,7 +1165,7 @@ AI-READY COMPONENT: FileUploaderList is a vertical stack of FileUploaderItem row
 ### Rules
 
 - **composition:** fileItem01–fileItem07 = local FileUploaderItem; fileItem01 always on
-- **vsBlock:** Do not use as dropzone — use FileUploaderBlock
+- **vsBlock:** Do not use as dropzone — use FileUploaderDropzoneItem
 - **vsItem:** Do not use as a single file row — use FileUploaderItem
 - **productMapping:** Prefer N× FileUploaderItem from data; this set documents list stacking
 - **deprecatedLegacy:** `_DEPRECATED FileUploaderItem legacy` (`3581:3748`) must not be used
@@ -1185,7 +1185,7 @@ list/group with accessible name; each FileUploaderItem owns file name, status, a
 
 **Node ID:** `3581:7597`
 
-AI-READY COMPONENT: UploadPhotos is a single photo or visual-document upload task item used to communicate a required capture and its lifecycle status. Use status=pending when no photo has been submitted, status=in-review after submission while validation is pending, status=approved after validation succeeds, and status=rejected when the photo must be replaced. status is a business lifecycle axis, not an interaction-state axis; hover, focus, pressed and disabled behavior belong to the nested Button action. Compose local DS camera icon, Button and ChipTag only. Do not use UploadPhotos as FileUploaderBlock/dropzone, FileUploaderItem, FileUploaderList, generic Card, gallery tile, image preview, Banner, Toast or the full uploader composition. Props: label controls the required photo name; description and showDescription control optional supporting guidance. Status controls the trailing affordance structurally: pending uses Button text/sm/primary with visible label and trailing chevron; in-review uses ChipTag system (no leading icon); approved uses ChipTag success; rejected uses ChipTag danger plus Button text/sm/primary with visible label and trailing chevron. Surface tokens are intentional: pending and rejected use color/background-surface/2; in-review and approved use color/background-surface/1. Token rule: use existing DS kebab-case variables — color/background-surface/1|2, text/primary|secondary, spacing/0|050|100|150|200|800, border/radius/300, font-family/base, font-weight/medium|regular, body/medium|small and caption/medium typography tokens, plus nested Button/ChipTag tokens. Accessibility: expose label and status to assistive technologies; pending and rejected actions use visible labels (Adicionar foto / Refazer foto) and must remain keyboard-accessible; in-review and approved are informational and must not receive focus unless a real action is added. React mapping: UploadPhotos(status, label, description, showDescription, onSelectPhoto, onRetakePhoto).
+AI-READY COMPONENT: UploadPhotos is a single photo or visual-document upload task item used to communicate a required capture and its lifecycle status. Use status=pending when no photo has been submitted, status=in-review after submission while validation is pending, status=approved after validation succeeds, and status=rejected when the photo must be replaced. status is a business lifecycle axis, not an interaction-state axis; hover, focus, pressed and disabled behavior belong to the nested Button action. Compose local DS camera icon, Button and ChipTag only. Do not use UploadPhotos as FileUploaderDropzoneItem/dropzone, FileUploaderItem, FileUploaderList, generic Card, gallery tile, image preview, Banner, Toast or the full uploader composition. Props: label controls the required photo name; description and showDescription control optional supporting guidance. Status controls the trailing affordance structurally: pending uses Button text/sm/primary with visible label and trailing chevron; in-review uses ChipTag system (no leading icon); approved uses ChipTag success; rejected uses ChipTag danger plus Button text/sm/primary with visible label and trailing chevron. Surface tokens are intentional: pending and rejected use color/background-surface/2; in-review and approved use color/background-surface/1. Token rule: use existing DS kebab-case variables — color/background-surface/1|2, text/primary|secondary, spacing/0|050|100|150|200|800, border/radius/300, font-family/base, font-weight/medium|regular, body/medium|small and caption/medium typography tokens, plus nested Button/ChipTag tokens. Accessibility: expose label and status to assistive technologies; pending and rejected actions use visible labels (Adicionar foto / Refazer foto) and must remain keyboard-accessible; in-review and approved are informational and must not receive focus unless a real action is added. React mapping: UploadPhotos(status, label, description, showDescription, onSelectPhoto, onRetakePhoto).
 
 ### Variants
 
@@ -1204,7 +1204,7 @@ AI-READY COMPONENT: UploadPhotos is a single photo or visual-document upload tas
 
 - **composition:** local camera-outline + Button + ChipTag only
 - **statusIsLifecycle:** status is business lifecycle, not hover/focus/pressed/disabled
-- **vsBlock:** Do not use as dropzone — use FileUploaderBlock
+- **vsBlock:** Do not use as dropzone — use FileUploaderDropzoneItem
 - **vsItem:** Do not use as uploaded-file row — use FileUploaderItem
 - **vsList:** Do not use as file list stack — use FileUploaderList
 - **surfaceIntentional:** pending|rejected → surface/2; in-review|approved → surface/1
@@ -1230,11 +1230,11 @@ expose label and status; pending/rejected actions use visible labels and stay ke
 
 ---
 
-## ImageBlock
+## ImageItem
 
 **Node ID:** `3671:2329`
 
-AI-READY COMPONENT: ImageBlock is a DS image container used to reserve a fixed aspect-ratio surface and optionally show an orientation overlay. Use imageSurface as the only layer for applying or replacing image fills — keep it absolute/floating, clipped, tokenized, and scaleMode FILL (crop) so the image is not distorted. Use showOrientationBlock to toggle orientationOverlay (ImageOrientationBlock), which must stay absolute/floating, rotation 0°, and centered — including when verticalResize=true. aspectRatio controls 1-1 | 4-3 | 3-2 | 16-9 | 2-1. orientation controls portrait | landscape. verticalResize=false locks width and hugs height via aspect-ratio keepers; verticalResize=true locks height and hugs width (same keeper technique, rotated). Do not use ImageBlock as a radio, checkbox, button, tab, avatar, or gallery tile. Token rule: use existing DS kebab-case variables only — color/background-surface/1 for root and imageSurface placeholder, plus nested ImageOrientationBlock tokens. Accessibility: treat as an image or figure; provide accessible name/alt from product content when a real image is applied; orientationOverlay is decorative/informational and must not steal focus. React mapping: ImageBlock(aspectRatio, orientation, verticalResize, showOrientationBlock, src, alt).
+AI-READY COMPONENT: ImageItem is a DS image container used to reserve a fixed aspect-ratio surface and optionally show an orientation overlay. Use imageSurface as the only layer for applying or replacing image fills — keep it absolute/floating, clipped, tokenized, and scaleMode FILL (crop) so the image is not distorted. Use showOrientationBlock to toggle orientationOverlay (ImageOrientationBlock), which must stay absolute/floating, rotation 0°, and centered — including when verticalResize=true. aspectRatio controls 1-1 | 4-3 | 3-2 | 16-9 | 2-1. orientation controls portrait | landscape. verticalResize=false locks width and hugs height via aspect-ratio keepers; verticalResize=true locks height and hugs width (same keeper technique, rotated). Do not use ImageItem as a radio, checkbox, button, tab, avatar, or gallery tile. Token rule: use existing DS kebab-case variables only — color/background-surface/1 for root and imageSurface placeholder, plus nested ImageOrientationBlock tokens. Accessibility: treat as an image or figure; provide accessible name/alt from product content when a real image is applied; orientationOverlay is decorative/informational and must not steal focus. React mapping: ImageItem(aspectRatio, orientation, verticalResize, showOrientationBlock, src, alt).
 
 ### Variants
 
@@ -1518,7 +1518,7 @@ Password field; show/hide button named Mostrar senha / Ocultar senha; aria-inval
 
 **Node ID:** `4029:835`
 
-AI-READY COMPONENT: VerificationCodeInput is the Design System 2.0 verification-code field for OTP, 2FA, and PIN entry (SMS, email, authenticator). Do not use as Input, InputPassword, InputNumber, or InputSelect. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Fixed length: 5 digit slots. Anatomy: `labelRow` (label TEXT) + `codeRow` with five exposed VerificationCodeInputBlock instances (`codeCell1`…`codeCell5`) + `supportingRow` (supportingText) on state=error only. State propagation: hover/error/disabled apply the matching block state to all cells; focus keeps codeCell1–4 at default and sets codeCell5 to focus (active slot demo). Props: `label` (TEXT), `showLabel` (BOOLEAN), `supportingText` (TEXT), `showSupportingText` (BOOLEAN — targets supportingRow on error). Digit values are edited via exposed nested `codeCell1`…`codeCell5` `digit` props (React: `digit1`…`digit5`). Token rule: root gap `spacing/100`; codeRow gap `spacing/150`; label `body/medium/regular` with `text/secondary` (disabled `text/placeholder`); supporting `caption/large/regular` with `feedback/danger`; cells inherit VerificationCodeInputBlock tokens including focus ring `color/elevation/Focus`. Accessibility: group of single-character inputs; label associates to the group; aria-invalid + aria-describedby on error; aria-disabled when disabled; manage focus advance per slot in product code. React mapping: VerificationCodeInput(state, label, showLabel, supportingText, showSupportingText, digit1…digit5). Code Connect is not configured.
+AI-READY COMPONENT: VerificationCodeInput is the Design System 2.0 verification-code field for OTP, 2FA, and PIN entry (SMS, email, authenticator). Do not use as Input, InputPassword, InputNumber, or InputSelect. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Fixed length: 5 digit slots. Anatomy: `labelRow` (label TEXT) + `codeRow` with five exposed VerificationCodeInputItem instances (`codeCell1`…`codeCell5`) + `supportingRow` (supportingText) on state=error only. State propagation: hover/error/disabled apply the matching block state to all cells; focus keeps codeCell1–4 at default and sets codeCell5 to focus (active slot demo). Props: `label` (TEXT), `showLabel` (BOOLEAN), `supportingText` (TEXT), `showSupportingText` (BOOLEAN — targets supportingRow on error). Digit values are edited via exposed nested `codeCell1`…`codeCell5` `digit` props (React: `digit1`…`digit5`). Token rule: root gap `spacing/100`; codeRow gap `spacing/150`; label `body/medium/regular` with `text/secondary` (disabled `text/placeholder`); supporting `caption/large/regular` with `feedback/danger`; cells inherit VerificationCodeInputItem tokens including focus ring `color/elevation/Focus`. Accessibility: group of single-character inputs; label associates to the group; aria-invalid + aria-describedby on error; aria-disabled when disabled; manage focus advance per slot in product code. React mapping: VerificationCodeInput(state, label, showLabel, supportingText, showSupportingText, digit1…digit5). Code Connect is not configured.
 
 ### Variants
 
@@ -1551,7 +1551,7 @@ AI-READY COMPONENT: VerificationCodeInput is the Design System 2.0 verification-
 - `codeRow` `itemSpacing` `spacing/150`
 - label: `body/medium/regular`; `text/secondary` (disabled `text/placeholder`)
 - supporting: `caption/large/regular`; `feedback/danger`
-- inherits VerificationCodeInputBlock tokens (incl. `color/elevation/Focus` ring)
+- inherits VerificationCodeInputItem tokens (incl. `color/elevation/Focus` ring)
 
 ### Accessibility
 
@@ -1559,16 +1559,16 @@ Group of single-character inputs; label associates to the group; aria-invalid + 
 
 ### Composition
 
-- VerificationCodeInputBlock (`codeCell1`…`codeCell5`, exposed)
+- VerificationCodeInputItem (`codeCell1`…`codeCell5`, exposed)
 - `labelRow` / `codeRow` / `supportingRow` (error)
 
 ---
 
-## VerificationCodeInputBlock
+## VerificationCodeInputItem
 
 **Node ID:** `4028:773`
 
-AI-READY COMPONENT: VerificationCodeInputBlock is the Design System 2.0 single-digit cell used inside VerificationCodeInput for OTP, 2FA, and PIN entry. It is not a free-text Input — compose only as a digit slot in the verification code field. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Anatomy: fixed 56×48 frame with centered `digit` TEXT. Props: `digit` (TEXT) — displayed character (typically 0–9; canvas default "1"). Visual rules: fill `color/background-surface/0`; default and disabled borders `color/border/1`; hover border `color/border-feedback/primary`; focus border `interactive/focus` plus DROP_SHADOW ring (`color/elevation/Focus`, spread `spacing/050`); error border `color/border-feedback/danger`; digit `text/primary` (disabled `text/placeholder`). Geometry tokens: `border/radius/300`, padding `spacing/050` vertical and `spacing/100` horizontal, stroke `border/width/012`. Typography: `body/large/regular` on digit. The parent VerificationCodeInput selects the block state per slot. Accessibility: each block maps to a single-character input or spinbutton segment; announce errors on the group; disabled slots use aria-disabled. React mapping: VerificationCodeInputBlock(state, digit). Code Connect is not configured.
+AI-READY COMPONENT: VerificationCodeInputItem is the Design System 2.0 single-digit cell used inside VerificationCodeInput for OTP, 2FA, and PIN entry. It is not a free-text Input — compose only as a digit slot in the verification code field. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Anatomy: fixed 56×48 frame with centered `digit` TEXT. Props: `digit` (TEXT) — displayed character (typically 0–9; canvas default "1"). Visual rules: fill `color/background-surface/0`; default and disabled borders `color/border/1`; hover border `color/border-feedback/primary`; focus border `interactive/focus` plus DROP_SHADOW ring (`color/elevation/Focus`, spread `spacing/050`); error border `color/border-feedback/danger`; digit `text/primary` (disabled `text/placeholder`). Geometry tokens: `border/radius/300`, padding `spacing/050` vertical and `spacing/100` horizontal, stroke `border/width/012`. Typography: `body/large/regular` on digit. The parent VerificationCodeInput selects the block state per slot. Accessibility: each block maps to a single-character input or spinbutton segment; announce errors on the group; disabled slots use aria-disabled. React mapping: VerificationCodeInputItem(state, digit). Code Connect is not configured.
 
 ### Variants
 
@@ -1818,11 +1818,11 @@ toolbar/group; icon-only buttons need accessible names; periodAction maps to but
 
 ---
 
-## DatePickerSelectBlock
+## DatePickerSelectItem
 
 **Node ID:** `3982:5083`
 
-AI-READY COMPONENT: DatePickerSelectBlock is the Design System 2.0 compact select trigger used as a building block inside DatePicker surfaces to pick a date unit — day, month or year. It is the trigger only; the options menu/list is never nested — compose ListActionDropdown (or equivalent) externally when expanded=true. Variants: unit × state × expanded (21). unit: day | month | year. state: default | hover | focus | disabled. expanded: false | true. Intentional sparse: state=disabled only publishes expanded=false. Anatomy: value (TEXT) + trailingIcon. expanded=false → chevron-down-outline; expanded=true → chevron-up-outline + interactive/focus stroke. hover → interactive/hover fill. focus (closed) → interactive/focus stroke. disabled → text/placeholder on value and icon, no focus stroke. Props: value (TEXT) — shared across all variants in the set (canvas default "21"); override per instance for unit demos (day "21", month "Abril", year "2025"). Min widths differ by unit (day compact, month wider). Compose three blocks in a row for day+month+year pickers. Do not use as InputDatePicker field, InputSelect, SelectCountry, CalendarDay or CalendarPeriodNav. Accessibility: combobox/button trigger; aria-expanded mirrors expanded; accessible name should include unit (day/month/year) plus value; disabled via aria-disabled. Token rule: local S2 kebab-case semantic only. React mapping: DatePickerSelectBlock(unit, state, expanded, value). Code Connect is not configured.
+AI-READY COMPONENT: DatePickerSelectItem is the Design System 2.0 compact select trigger used as a building block inside DatePicker surfaces to pick a date unit — day, month or year. It is the trigger only; the options menu/list is never nested — compose ListActionDropdown (or equivalent) externally when expanded=true. Variants: unit × state × expanded (21). unit: day | month | year. state: default | hover | focus | disabled. expanded: false | true. Intentional sparse: state=disabled only publishes expanded=false. Anatomy: value (TEXT) + trailingIcon. expanded=false → chevron-down-outline; expanded=true → chevron-up-outline + interactive/focus stroke. hover → interactive/hover fill. focus (closed) → interactive/focus stroke. disabled → text/placeholder on value and icon, no focus stroke. Props: value (TEXT) — shared across all variants in the set (canvas default "21"); override per instance for unit demos (day "21", month "Abril", year "2025"). Min widths differ by unit (day compact, month wider). Compose three blocks in a row for day+month+year pickers. Do not use as InputDatePicker field, InputSelect, SelectCountry, CalendarDay or CalendarPeriodNav. Accessibility: combobox/button trigger; aria-expanded mirrors expanded; accessible name should include unit (day/month/year) plus value; disabled via aria-disabled. Token rule: local S2 kebab-case semantic only. React mapping: DatePickerSelectItem(unit, state, expanded, value). Code Connect is not configured.
 
 ### Variants
 
@@ -1870,7 +1870,7 @@ combobox/button trigger; aria-expanded mirrors expanded; accessible name should 
 
 **Node ID:** `4004:2227`
 
-AI-READY COMPONENT: DatePickerSelect is the Design System 2.0 composed date-unit selector. It arranges one or more DatePickerSelectBlock triggers to choose day, month and/or year. It is not the full calendar panel and not InputDatePicker — use it as the compact unit strip inside DatePicker / mobile period flows. Variants: format × state (16). format: day-month-year | day-month | month-year | year. state: default | hover | focus | disabled — applied to all nested DatePickerSelectBlock instances (expanded stays false on the composed strip; open a single block externally when needed). Anatomy: horizontal auto-layout of nested DatePickerSelectBlock (named day / month / year). Gap spacing/100 (8). Nested day/month/year instances are exposed so each block value (TEXT) is editable from the parent properties panel. Demo defaults: day "21", month "Abril", year "2025". Options menus are never nested here — compose ListActionDropdown (or equivalent) per block when that unit is expanded. Do not use as InputDatePicker, Calendar, CalendarDay, CalendarPeriodNav or InputSelect. Accessibility: group/toolbar of unit comboboxes; each nested block keeps its own accessible name (unit + value); disabled propagates to all units. Token rule: inherits DatePickerSelectBlock semantic tokens. Figma props: format, state, plus exposed nested DatePickerSelectBlock value (and other nested props — keep nested unit/state/expanded aligned with the parent variant in product). React mapping: DatePickerSelect(format, state, dayValue?, monthValue?, yearValue?) where *Value maps to the exposed nested block value. Code Connect is not configured.
+AI-READY COMPONENT: DatePickerSelect is the Design System 2.0 composed date-unit selector. It arranges one or more DatePickerSelectItem triggers to choose day, month and/or year. It is not the full calendar panel and not InputDatePicker — use it as the compact unit strip inside DatePicker / mobile period flows. Variants: format × state (16). format: day-month-year | day-month | month-year | year. state: default | hover | focus | disabled — applied to all nested DatePickerSelectItem instances (expanded stays false on the composed strip; open a single block externally when needed). Anatomy: horizontal auto-layout of nested DatePickerSelectItem (named day / month / year). Gap spacing/100 (8). Nested day/month/year instances are exposed so each block value (TEXT) is editable from the parent properties panel. Demo defaults: day "21", month "Abril", year "2025". Options menus are never nested here — compose ListActionDropdown (or equivalent) per block when that unit is expanded. Do not use as InputDatePicker, Calendar, CalendarDay, CalendarPeriodNav or InputSelect. Accessibility: group/toolbar of unit comboboxes; each nested block keeps its own accessible name (unit + value); disabled propagates to all units. Token rule: inherits DatePickerSelectItem semantic tokens. Figma props: format, state, plus exposed nested DatePickerSelectItem value (and other nested props — keep nested unit/state/expanded aligned with the parent variant in product). React mapping: DatePickerSelect(format, state, dayValue?, monthValue?, yearValue?) where *Value maps to the exposed nested block value. Code Connect is not configured.
 
 ### Variants
 
@@ -1883,13 +1883,13 @@ AI-READY COMPONENT: DatePickerSelect is the Design System 2.0 composed date-unit
 |---|---|
 | `format` | day-month-year \| day-month \| month-year \| year — which unit blocks are composed |
 | `state` | default \| hover \| focus \| disabled — applied to all nested blocks |
-| `dayValue` | React/product — maps to exposed nested `day` DatePickerSelectBlock `value` (demo `21`) |
-| `monthValue` | React/product — maps to exposed nested `month` DatePickerSelectBlock `value` (demo `Abril`) |
-| `yearValue` | React/product — maps to exposed nested `year` DatePickerSelectBlock `value` (demo `2025`) |
+| `dayValue` | React/product — maps to exposed nested `day` DatePickerSelectItem `value` (demo `21`) |
+| `monthValue` | React/product — maps to exposed nested `month` DatePickerSelectItem `value` (demo `Abril`) |
+| `yearValue` | React/product — maps to exposed nested `year` DatePickerSelectItem `value` (demo `2025`) |
 
 ### Rules
 
-- **composedStrip:** Composed DatePickerSelectBlock strip — not InputDatePicker field, Calendar panel, or InputSelect
+- **composedStrip:** Composed DatePickerSelectItem strip — not InputDatePicker field, Calendar panel, or InputSelect
 - **nestedExposed:** `day`/`month`/`year` instances exposed; edit `value` from parent panel; keep nested `unit`/`state`/`expanded` aligned with parent variant
 - **noNestedMenu:** Options menus never nested — compose ListActionDropdown externally per expanded unit
 - **expandedFalseOnStrip:** Strip demos keep nested `expanded=false`; open a single block externally when needed
@@ -1897,7 +1897,7 @@ AI-READY COMPONENT: DatePickerSelect is the Design System 2.0 composed date-unit
 
 ### Token rules
 
-- inherits DatePickerSelectBlock semantic tokens
+- inherits DatePickerSelectItem semantic tokens
 - root gap: `spacing/100`
 - local S2 kebab-case only
 
@@ -1907,7 +1907,7 @@ group/toolbar of unit comboboxes; each nested block keeps its own accessible nam
 
 ### Composition
 
-- DatePickerSelectBlock (day / month / year)
+- DatePickerSelectItem (day / month / year)
 - ListActionDropdown (external menu per unit)
 - DatePicker / mobile period surfaces (parent)
 
@@ -2415,13 +2415,13 @@ no runtime role; parent ListItem owns focus, keyboard and semantics.
 
 **Node ID:** `3694:16209`
 
-AI-READY COMPONENT: ListItemImageThumbnail is a compact image thumbnail block for ListItem leading media. Use imageSurface as the only layer for image fill replacement (SOLID placeholder + IMAGE scaleMode FILL). Do not use as ImageBlock, gallery tile, avatar, button or selectable media option. Token rule: use existing DS kebab-case variables only — color/background-surface/2, border/radius/100. Accessibility: image alt text should be provided by the parent ListItem when informative; decorative thumbnails may be hidden from assistive technology. React mapping: internal only — ListItemImageThumbnail(src, alt).
+AI-READY COMPONENT: ListItemImageThumbnail is a compact image thumbnail block for ListItem leading media. Use imageSurface as the only layer for image fill replacement (SOLID placeholder + IMAGE scaleMode FILL). Do not use as ImageItem, gallery tile, avatar, button or selectable media option. Token rule: use existing DS kebab-case variables only — color/background-surface/2, border/radius/100. Accessibility: image alt text should be provided by the parent ListItem when informative; decorative thumbnails may be hidden from assistive technology. React mapping: internal only — ListItemImageThumbnail(src, alt).
 
 ### Rules
 
 - **imageSurface:** only layer for image fill; SOLID + IMAGE FILL
 - **internalOnly:** Use inside ListItem leading media
-- **vsMedia:** Do not use as ImageBlock, gallery tile, avatar or button
+- **vsMedia:** Do not use as ImageItem, gallery tile, avatar or button
 
 ### Token rules
 
@@ -2437,14 +2437,14 @@ alt from parent ListItem when informative; decorative may be hidden from AT.
 
 **Node ID:** `3694:16211`
 
-AI-READY COMPONENT: ListItemVideoThumbnail is a compact video thumbnail block for ListItem leading media. Use imageSurface as the only layer for poster/image fill replacement (SOLID placeholder + IMAGE scaleMode FILL). playIcon is a local player-play-outline affordance (20px, proportional stroke) centered on the media and indicates playback. Do not use as ImageBlock, gallery tile, video player, button or selectable media option. Token rule: use existing DS kebab-case variables only — color/background-surface/2, border/radius/100, text/on-color for playIcon, plus icon scale rule for 20px. Accessibility: parent ListItem should expose that the media is video when meaningful; playIcon is decorative if the parent label already conveys playback. React mapping: internal only — ListItemVideoThumbnail(src, alt, onPlay).
+AI-READY COMPONENT: ListItemVideoThumbnail is a compact video thumbnail block for ListItem leading media. Use imageSurface as the only layer for poster/image fill replacement (SOLID placeholder + IMAGE scaleMode FILL). playIcon is a local player-play-outline affordance (20px, proportional stroke) centered on the media and indicates playback. Do not use as ImageItem, gallery tile, video player, button or selectable media option. Token rule: use existing DS kebab-case variables only — color/background-surface/2, border/radius/100, text/on-color for playIcon, plus icon scale rule for 20px. Accessibility: parent ListItem should expose that the media is video when meaningful; playIcon is decorative if the parent label already conveys playback. React mapping: internal only — ListItemVideoThumbnail(src, alt, onPlay).
 
 ### Rules
 
 - **imageSurface:** only layer for poster fill; SOLID + IMAGE FILL
 - **playIcon:** local player-play-outline 20px centered; proportional stroke; text/on-color
 - **internalOnly:** Use inside ListItem leading media
-- **vsMedia:** Do not use as ImageBlock, gallery, video player or button
+- **vsMedia:** Do not use as ImageItem, gallery, video player or button
 
 ### Token rules
 
@@ -4316,16 +4316,16 @@ Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); trac
 - **list-action-dropdown-docs:** ListActionDropdown: remapped Spacing/* to local spacing; wired showDivider/showScroll; added local scroll affordance; slot preferredValues; canonical AI-Ready and storybook docs added.
 - **list-action-dropdown-item-no-country-docs:** ListActionDropdownItem: removed showCountry prop and countryFlag layer; docs updated.
 - **list-action-dropdown-item-docs:** ListActionDropdownItem: fixed focusRing STRETCH; added state=focus; local icon preferredValues; canonical AI-Ready and storybook docs added.
-- **image-block-docs:** ImageBlock: restored verticalResize keepers from Aspect ratio base; local color/background-surface/1; kept imageSurface; canonical AI-Ready and storybook docs added.
+- **image-block-docs:** ImageItem: restored verticalResize keepers from Aspect ratio base; local color/background-surface/1; kept imageSurface; canonical AI-Ready and storybook docs added.
 - **chip-group-docs:** ChipGroup: recomposed nested chips on ChipClickable intent=outline size=sm; reset broken overrides; filter uses selected; AI-Ready and storybook docs added.
-- **comment-block-docs:** CommentBlock: remapped elevation/spacing tokens; local category icons; unified leadingIcon/showIcon; intentional generic vs categoryTag composition; AI-Ready and storybook docs added.
+- **comment-block-docs:** CommentItem: remapped elevation/spacing tokens; local category icons; unified leadingIcon/showIcon; intentional generic vs categoryTag composition; AI-Ready and storybook docs added.
 - **organization-header-docs:** OrganizationHeader: descriptionSlot FILL wrap; local ChipTag circle-check-outline; cleaned AI-Ready React mapping; storybook docs added.
 - **file-uploader-skeleton-bones-docs:** FileUploader: restored uploadAction/uploadDropzone/fileList names and showFiles bind; skeleton bones-only (no nested components); docs updated.
 - **file-uploader-docs:** FileUploader: Button size/icon/label aligned to matrix; skeleton cleaned; showFiles intentional on default-only; AI-Ready and storybook docs added.
 - **upload-photos-docs:** UploadPhotos: local text styles; local chevron + visible Button labels; renamed camera path; intentional surface/1|2 by status; AI-Ready and storybook docs added.
 - **file-uploader-list-docs:** FileUploaderList: recomposed on FileUploaderItem; showFileItem02–07; deprecated legacy file item set; AI-Ready and storybook docs added.
 - **file-uploader-item-docs:** FileUploaderItem: removed orphan longFileName/showLongFileName; renamed layers; aligned danger-long text tokens; AI-Ready and storybook docs added.
-- **file-uploader-block-docs:** FileUploaderBlock: unified focus padding; cleaned dropzone dash/root fills; documented stroke width tokens and dashPattern leftover; AI-Ready and storybook docs added.
+- **file-uploader-block-docs:** FileUploaderDropzoneItem: unified focus padding; cleaned dropzone dash/root fills; documented stroke width tokens and dashPattern leftover; AI-Ready and storybook docs added.
 - **tooltip-docs:** Tooltip: remapped Title Case elevation/spacing tokens; fixed bottom-center arrow constraint; AI-Ready (EN) and storybook docs added.
 - **tooltip-rich-docs:** TooltipRich: remapped Title Case tokens; documented intentional secondaryAction text/on-color; unified layer order; AI-Ready and storybook docs added.
 - **toast-docs:** Toast: published showAction and dismissible; split action/dismiss Buttons; unified statusIcon fills; AI-Ready and storybook docs added.
@@ -4372,12 +4372,13 @@ Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); trac
 
 ## Changelog (meta)
 
+- **2026-07-22** [storybook-block-to-item-rename]: Renamed subcomponent suffix Block→Item: VerificationCodeInputItem, DatePickerSelectItem, CommentItem, ImageItem; FileUploaderBlock→FileUploaderDropzoneItem (collision with FileUploaderItem). Figma + docs synced.
 - **2026-07-22** [storybook-slider-left-rail-recreate]: SliderLeftRail recreate `4073:2214`: AI-READY EN; spacing/250|025 binds; wired into `_Slider rail` + Slider overrides; storybook nodeId sync.
 - **2026-07-22** [storybook-slider-left-rail]: SliderLeftRail: both active fills color/actions/primary (size-only diff); AI-READY EN; spacing/250 gap + spacing/025 height binds; page Slider trim; storybook entry active×2.
 - **2026-07-21** [storybook-app-header]: AppHeader: swapped remote App bar text→local Text header; showProfileMenu; first/second trailing=search/bell; showAction wired; Painel Home search+greeting title; storybook sync.
 - **2026-07-21** [storybook-system-header]: SystemHeader: wired showPrimaryAction; exposed datePickerSelect; slot description; AI-READY + storybook sync (simple sparse trailing).
-- **2026-07-21** [storybook-date-picker-select]: DatePickerSelect: exposed nested day/month/year DatePickerSelectBlock instances; AI-READY desc (value via nested); storybook entry format×state 16.
-- **2026-07-21** [storybook-date-picker-select-block]: DatePickerSelectBlock: wired value TEXT on all 21 variants; renamed chevron-up-outline Vector→*-path; storybook entry (unit×state×expanded).
+- **2026-07-21** [storybook-date-picker-select]: DatePickerSelect: exposed nested day/month/year DatePickerSelectItem instances; AI-READY desc (value via nested); storybook entry format×state 16.
+- **2026-07-21** [storybook-date-picker-select-block]: DatePickerSelectItem: wired value TEXT on all 21 variants; renamed chevron-up-outline Vector→*-path; storybook entry (unit×state×expanded).
 - **2026-07-20** [storybook-input-focus-caret-error-icon]: Input: added focus caret (Material pattern) and always-on trailingIconError (alert-circle) for error a11y; docs updated.
 - **2026-07-20** [storybook-input]: Added Input (outlined floating-label, h=56, radius/200) from Material Text field matrix + target visual identity; S2 tokens; AI-Ready and storybook docs.
 - **2026-07-20** [storybook-input-removed]: Removed Input component from Figma and cleared Input storybook/AI-Ready docs to restart from scratch.
@@ -4403,16 +4404,16 @@ Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); trac
 - **2026-07-17** [storybook-list-action-dropdown]: Added ListActionDropdown; remapped Spacing/* to local spacing; wired showDivider/showScroll; added local scroll affordance; slot preferredValues; canonical AI-Ready and storybook docs added.
 - **2026-07-17** [storybook-list-action-dropdown-item-no-country]: ListActionDropdownItem: removed showCountry prop and countryFlag layer; docs updated.
 - **2026-07-17** [storybook-list-action-dropdown-item]: Added ListActionDropdownItem; fixed focusRing STRETCH; added state=focus; local icon preferredValues; canonical AI-Ready and storybook docs added.
-- **2026-07-17** [storybook-image-block]: Added ImageBlock; restored verticalResize keepers (FIXED×HUG / HUG×FIXED) from Aspect ratio base; local color/background-surface/1; kept imageSurface; canonical AI-Ready and storybook docs added.
+- **2026-07-17** [storybook-image-block]: Added ImageItem; restored verticalResize keepers (FIXED×HUG / HUG×FIXED) from Aspect ratio base; local color/background-surface/1; kept imageSurface; canonical AI-Ready and storybook docs added.
 - **2026-07-16** [storybook-chip-group]: Added ChipGroup; recomposed all nested chips on ChipClickable intent=outline size=sm; reset broken overrides; filter uses selected; AI-Ready and storybook docs added.
-- **2026-07-16** [storybook-comment-block]: Added CommentBlock (Figma-only annotation); remapped elevation/spacing tokens; local category icons; unified leadingIcon/showIcon; intentional generic vs categoryTag composition documented.
+- **2026-07-16** [storybook-comment-block]: Added CommentItem (Figma-only annotation); remapped elevation/spacing tokens; local category icons; unified leadingIcon/showIcon; intentional generic vs categoryTag composition documented.
 - **2026-07-16** [storybook-organization-header]: Added OrganizationHeader (Figma docs header); descriptionSlot FILL wrap; local ChipTag icon; cleaned AI-Ready React mapping; storybook docs added.
 - **2026-07-16** [storybook-file-uploader-skeleton-bones]: FileUploader: restored semantic layer names and showFiles bind; skeleton bones-only (no nested components); docs updated.
 - **2026-07-16** [storybook-file-uploader]: Added FileUploader; Button size/icon/label aligned to matrix; skeleton cleaned (bones, DnD dropzone); AI-Ready and storybook docs added; showFiles intentional on default-only.
 - **2026-07-16** [storybook-upload-photos]: Added UploadPhotos metadata; applied local text styles; local chevron + visible Button labels; renamed camera path; AI-Ready and storybook docs added.
 - **2026-07-16** [storybook-file-uploader-list]: Added FileUploaderList; recomposed on FileUploaderItem; showFileItem02–07 props; deprecated legacy _File uploader file item; AI-Ready and storybook docs added.
 - **2026-07-16** [storybook-file-uploader-item]: Added FileUploaderItem metadata; removed orphan longFileName/showLongFileName; renamed layers; aligned danger-long text tokens; AI-Ready and storybook docs added.
-- **2026-07-16** [storybook-file-uploader-block]: Added FileUploaderBlock metadata; unified focus padding; cleaned dropzone dash/root fills; documented stroke width tokens and dashPattern leftover; AI-Ready and storybook docs added.
+- **2026-07-16** [storybook-file-uploader-block]: Added FileUploaderDropzoneItem metadata; unified focus padding; cleaned dropzone dash/root fills; documented stroke width tokens and dashPattern leftover; AI-Ready and storybook docs added.
 - **2026-07-16** [storybook-tooltip]: Added Tooltip metadata; remapped Title Case elevation/spacing tokens; fixed bottom-center arrow constraint; AI-Ready (EN) and storybook docs added.
 - **2026-07-16** [storybook-tooltip-rich]: Added TooltipRich metadata; remapped Title Case tokens to kebab; documented intentional secondaryAction text/on-color; unified layer order; AI-Ready and storybook docs added.
 - **2026-07-15** [storybook-toast]: Added Toast metadata; published showAction and dismissible; split action/dismiss Buttons; unified statusIcon fills; AI-Ready and storybook docs added.

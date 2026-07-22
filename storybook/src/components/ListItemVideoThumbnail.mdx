@@ -10,14 +10,14 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: ListItemVideoThumbnail is a compact video thumbnail block for ListItem leading media. Use imageSurface as the only layer for poster/image fill replacement (SOLID placeholder + IMAGE scaleMode FILL). playIcon is a local player-play-outline affordance (20px, proportional stroke) centered on the media and indicates playback. Do not use as ImageBlock, gallery tile, video player, button or selectable media option. Token rule: use existing DS kebab-case variables only — color/background-surface/2, border/radius/100, text/on-color for playIcon, plus icon scale rule for 20px. Accessibility: parent ListItem should expose that the media is video when meaningful; playIcon is decorative if the parent label already conveys playback. React mapping: internal only — ListItemVideoThumbnail(src, alt, onPlay).
+AI-READY COMPONENT: ListItemVideoThumbnail is a compact video thumbnail block for ListItem leading media. Use imageSurface as the only layer for poster/image fill replacement (SOLID placeholder + IMAGE scaleMode FILL). playIcon is a local player-play-outline affordance (20px, proportional stroke) centered on the media and indicates playback. Do not use as ImageItem, gallery tile, video player, button or selectable media option. Token rule: use existing DS kebab-case variables only — color/background-surface/2, border/radius/100, text/on-color for playIcon, plus icon scale rule for 20px. Accessibility: parent ListItem should expose that the media is video when meaningful; playIcon is decorative if the parent label already conveys playback. React mapping: internal only — ListItemVideoThumbnail(src, alt, onPlay).
 
 ## Rules
 
 - **imageSurface:** only layer for poster fill; SOLID + IMAGE FILL
 - **playIcon:** local player-play-outline 20px centered; proportional stroke; text/on-color
 - **internalOnly:** Use inside ListItem leading media
-- **vsMedia:** Do not use as ImageBlock, gallery, video player or button
+- **vsMedia:** Do not use as ImageItem, gallery, video player or button
 
 ## Token rules
 

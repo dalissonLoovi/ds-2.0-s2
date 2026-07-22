@@ -1,8 +1,8 @@
 import { Meta } from '@storybook/blocks';
 
-<Meta title="Components/DatePickerSelectBlock" />
+<Meta title="Components/DatePickerSelectItem" />
 
-# DatePickerSelectBlock
+# DatePickerSelectItem
 
 > **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
 
@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: DatePickerSelectBlock is the Design System 2.0 compact select trigger used as a building block inside DatePicker surfaces to pick a date unit — day, month or year. It is the trigger only; the options menu/list is never nested — compose ListActionDropdown (or equivalent) externally when expanded=true. Variants: unit × state × expanded (21). unit: day | month | year. state: default | hover | focus | disabled. expanded: false | true. Intentional sparse: state=disabled only publishes expanded=false. Anatomy: value (TEXT) + trailingIcon. expanded=false → chevron-down-outline; expanded=true → chevron-up-outline + interactive/focus stroke. hover → interactive/hover fill. focus (closed) → interactive/focus stroke. disabled → text/placeholder on value and icon, no focus stroke. Props: value (TEXT) — shared across all variants in the set (canvas default "21"); override per instance for unit demos (day "21", month "Abril", year "2025"). Min widths differ by unit (day compact, month wider). Compose three blocks in a row for day+month+year pickers. Do not use as InputDatePicker field, InputSelect, SelectCountry, CalendarDay or CalendarPeriodNav. Accessibility: combobox/button trigger; aria-expanded mirrors expanded; accessible name should include unit (day/month/year) plus value; disabled via aria-disabled. Token rule: local S2 kebab-case semantic only. React mapping: DatePickerSelectBlock(unit, state, expanded, value). Code Connect is not configured.
+AI-READY COMPONENT: DatePickerSelectItem is the Design System 2.0 compact select trigger used as a building block inside DatePicker surfaces to pick a date unit — day, month or year. It is the trigger only; the options menu/list is never nested — compose ListActionDropdown (or equivalent) externally when expanded=true. Variants: unit × state × expanded (21). unit: day | month | year. state: default | hover | focus | disabled. expanded: false | true. Intentional sparse: state=disabled only publishes expanded=false. Anatomy: value (TEXT) + trailingIcon. expanded=false → chevron-down-outline; expanded=true → chevron-up-outline + interactive/focus stroke. hover → interactive/hover fill. focus (closed) → interactive/focus stroke. disabled → text/placeholder on value and icon, no focus stroke. Props: value (TEXT) — shared across all variants in the set (canvas default "21"); override per instance for unit demos (day "21", month "Abril", year "2025"). Min widths differ by unit (day compact, month wider). Compose three blocks in a row for day+month+year pickers. Do not use as InputDatePicker field, InputSelect, SelectCountry, CalendarDay or CalendarPeriodNav. Accessibility: combobox/button trigger; aria-expanded mirrors expanded; accessible name should include unit (day/month/year) plus value; disabled via aria-disabled. Token rule: local S2 kebab-case semantic only. React mapping: DatePickerSelectItem(unit, state, expanded, value). Code Connect is not configured.
 
 ## Variants
 

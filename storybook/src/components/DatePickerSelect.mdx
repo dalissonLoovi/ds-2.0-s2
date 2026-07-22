@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: DatePickerSelect is the Design System 2.0 composed date-unit selector. It arranges one or more DatePickerSelectBlock triggers to choose day, month and/or year. It is not the full calendar panel and not InputDatePicker — use it as the compact unit strip inside DatePicker / mobile period flows. Variants: format × state (16). format: day-month-year | day-month | month-year | year. state: default | hover | focus | disabled — applied to all nested DatePickerSelectBlock instances (expanded stays false on the composed strip; open a single block externally when needed). Anatomy: horizontal auto-layout of nested DatePickerSelectBlock (named day / month / year). Gap spacing/100 (8). Nested day/month/year instances are exposed so each block value (TEXT) is editable from the parent properties panel. Demo defaults: day "21", month "Abril", year "2025". Options menus are never nested here — compose ListActionDropdown (or equivalent) per block when that unit is expanded. Do not use as InputDatePicker, Calendar, CalendarDay, CalendarPeriodNav or InputSelect. Accessibility: group/toolbar of unit comboboxes; each nested block keeps its own accessible name (unit + value); disabled propagates to all units. Token rule: inherits DatePickerSelectBlock semantic tokens. Figma props: format, state, plus exposed nested DatePickerSelectBlock value (and other nested props — keep nested unit/state/expanded aligned with the parent variant in product). React mapping: DatePickerSelect(format, state, dayValue?, monthValue?, yearValue?) where *Value maps to the exposed nested block value. Code Connect is not configured.
+AI-READY COMPONENT: DatePickerSelect is the Design System 2.0 composed date-unit selector. It arranges one or more DatePickerSelectItem triggers to choose day, month and/or year. It is not the full calendar panel and not InputDatePicker — use it as the compact unit strip inside DatePicker / mobile period flows. Variants: format × state (16). format: day-month-year | day-month | month-year | year. state: default | hover | focus | disabled — applied to all nested DatePickerSelectItem instances (expanded stays false on the composed strip; open a single block externally when needed). Anatomy: horizontal auto-layout of nested DatePickerSelectItem (named day / month / year). Gap spacing/100 (8). Nested day/month/year instances are exposed so each block value (TEXT) is editable from the parent properties panel. Demo defaults: day "21", month "Abril", year "2025". Options menus are never nested here — compose ListActionDropdown (or equivalent) per block when that unit is expanded. Do not use as InputDatePicker, Calendar, CalendarDay, CalendarPeriodNav or InputSelect. Accessibility: group/toolbar of unit comboboxes; each nested block keeps its own accessible name (unit + value); disabled propagates to all units. Token rule: inherits DatePickerSelectItem semantic tokens. Figma props: format, state, plus exposed nested DatePickerSelectItem value (and other nested props — keep nested unit/state/expanded aligned with the parent variant in product). React mapping: DatePickerSelect(format, state, dayValue?, monthValue?, yearValue?) where *Value maps to the exposed nested block value. Code Connect is not configured.
 
 ## Variants
 
@@ -23,13 +23,13 @@ AI-READY COMPONENT: DatePickerSelect is the Design System 2.0 composed date-unit
 | --- | --- |
 | `format` | day-month-year \| day-month \| month-year \| year — which unit blocks are composed |
 | `state` | default \| hover \| focus \| disabled — applied to all nested blocks |
-| `dayValue` | React/product — maps to exposed nested day DatePickerSelectBlock value (demo 21) |
-| `monthValue` | React/product — maps to exposed nested month DatePickerSelectBlock value (demo Abril) |
-| `yearValue` | React/product — maps to exposed nested year DatePickerSelectBlock value (demo 2025) |
+| `dayValue` | React/product — maps to exposed nested day DatePickerSelectItem value (demo 21) |
+| `monthValue` | React/product — maps to exposed nested month DatePickerSelectItem value (demo Abril) |
+| `yearValue` | React/product — maps to exposed nested year DatePickerSelectItem value (demo 2025) |
 
 ## Rules
 
-- **composedStrip:** Composed DatePickerSelectBlock strip — not InputDatePicker field, Calendar panel, or InputSelect
+- **composedStrip:** Composed DatePickerSelectItem strip — not InputDatePicker field, Calendar panel, or InputSelect
 - **nestedExposed:** day/month/year instances exposed; edit value from parent panel; keep nested unit/state/expanded aligned with parent variant
 - **noNestedMenu:** Options menus never nested — compose ListActionDropdown externally per expanded unit
 - **expandedFalseOnStrip:** Strip demos keep nested expanded=false; open a single block externally when needed
@@ -37,7 +37,7 @@ AI-READY COMPONENT: DatePickerSelect is the Design System 2.0 composed date-unit
 
 ## Token rules
 
-- inherits DatePickerSelectBlock semantic tokens
+- inherits DatePickerSelectItem semantic tokens
 - root gap: spacing/100
 - local S2 kebab-case only
 
@@ -47,7 +47,7 @@ group/toolbar of unit comboboxes; each nested block keeps its own accessible nam
 
 ## Composition
 
-- DatePickerSelectBlock (day / month / year)
+- DatePickerSelectItem (day / month / year)
 - ListActionDropdown (external menu per unit)
 - DatePicker / mobile period surfaces (parent)
 

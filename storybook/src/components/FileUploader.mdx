@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: FileUploader is the full file-upload field composition used to label a file input, show helper guidance, trigger selection, optionally present a drag-and-drop surface, and list selected files. Use variant=default for a Button-triggered picker and variant=drag-and-drop when the FileUploaderBlock dropzone is the primary capture surface. Use size=lg|md|sm to control nested FileUploaderItem density and the nested Button size (solid primary maps 1:1). Use state=default for the interactive field, state=disabled to block selection/drop/remove, and state=skeleton as a non-interactive loading placeholder made of bones only (labelSkeleton, descriptionSkeleton, actionSkeleton) — no nested Button, FileUploaderBlock, or FileUploaderList instances inside skeleton. Props: label and description control the field header texts; showFiles toggles the FileUploaderList — intentional: showFiles is only wired on state=default; disabled and skeleton hard-hide or omit the file list. Composition (non-skeleton): header (label + description) + local Button uploadAction + local FileUploaderBlock uploadDropzone + local FileUploaderList fileList. Do not use FileUploader as FileUploaderBlock alone, FileUploaderItem, FileUploaderList, UploadPhotos, Button, Card, TextInput or ProgressBar. Status of individual files belongs to FileUploaderItem. Accessibility: implement with a native input type=file; uploadAction / dropzone must open the picker; Enter/Space activate; associate label and description with the input; disabled prevents selecting, dropping and removing; skeleton is non-interactive. Token rule: use existing DS kebab-case variables — spacing/100|200, border/radius/200, border/width/012, interactive/disabled-surface (skeleton root), color/background-surface/2 (skeleton bones), text/primary|secondary on header, plus nested Button/FileUploaderBlock/FileUploaderList/FileUploaderItem tokens. React mapping: FileUploader(variant, size, state, label, description, showFiles, files, onSelectFiles).
+AI-READY COMPONENT: FileUploader is the full file-upload field composition used to label a file input, show helper guidance, trigger selection, optionally present a drag-and-drop surface, and list selected files. Use variant=default for a Button-triggered picker and variant=drag-and-drop when the FileUploaderDropzoneItem dropzone is the primary capture surface. Use size=lg|md|sm to control nested FileUploaderItem density and the nested Button size (solid primary maps 1:1). Use state=default for the interactive field, state=disabled to block selection/drop/remove, and state=skeleton as a non-interactive loading placeholder made of bones only (labelSkeleton, descriptionSkeleton, actionSkeleton) — no nested Button, FileUploaderDropzoneItem, or FileUploaderList instances inside skeleton. Props: label and description control the field header texts; showFiles toggles the FileUploaderList — intentional: showFiles is only wired on state=default; disabled and skeleton hard-hide or omit the file list. Composition (non-skeleton): header (label + description) + local Button uploadAction + local FileUploaderDropzoneItem uploadDropzone + local FileUploaderList fileList. Do not use FileUploader as FileUploaderDropzoneItem alone, FileUploaderItem, FileUploaderList, UploadPhotos, Button, Card, TextInput or ProgressBar. Status of individual files belongs to FileUploaderItem. Accessibility: implement with a native input type=file; uploadAction / dropzone must open the picker; Enter/Space activate; associate label and description with the input; disabled prevents selecting, dropping and removing; skeleton is non-interactive. Token rule: use existing DS kebab-case variables — spacing/100|200, border/radius/200, border/width/012, interactive/disabled-surface (skeleton root), color/background-surface/2 (skeleton bones), text/primary|secondary on header, plus nested Button/FileUploaderDropzoneItem/FileUploaderList/FileUploaderItem tokens. React mapping: FileUploader(variant, size, state, label, description, showFiles, files, onSelectFiles).
 
 ## Variants
 
@@ -32,7 +32,7 @@ AI-READY COMPONENT: FileUploader is the full file-upload field composition used 
 ## Rules
 
 - **composition:** non-skeleton: header + uploadAction + uploadDropzone + fileList; skeleton: bones only
-- **vsBlock:** Do not use as dropzone alone — use FileUploaderBlock
+- **vsBlock:** Do not use as dropzone alone — use FileUploaderDropzoneItem
 - **vsItem:** Do not use as a single file row — use FileUploaderItem
 - **vsList:** Do not use as file list stack alone — use FileUploaderList
 - **vsUploadPhotos:** Do not use for photo lifecycle task items — use UploadPhotos
@@ -46,7 +46,7 @@ AI-READY COMPONENT: FileUploader is the full file-upload field composition used 
 - interactive/disabled-surface (skeleton root)
 - color/background-surface/2 (skeleton bones)
 - text/primary | secondary (header)
-- nested Button, FileUploaderBlock, FileUploaderList, FileUploaderItem own their tokens
+- nested Button, FileUploaderDropzoneItem, FileUploaderList, FileUploaderItem own their tokens
 
 ## Accessibility
 

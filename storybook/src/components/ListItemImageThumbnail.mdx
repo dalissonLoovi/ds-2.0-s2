@@ -10,13 +10,13 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: ListItemImageThumbnail is a compact image thumbnail block for ListItem leading media. Use imageSurface as the only layer for image fill replacement (SOLID placeholder + IMAGE scaleMode FILL). Do not use as ImageBlock, gallery tile, avatar, button or selectable media option. Token rule: use existing DS kebab-case variables only — color/background-surface/2, border/radius/100. Accessibility: image alt text should be provided by the parent ListItem when informative; decorative thumbnails may be hidden from assistive technology. React mapping: internal only — ListItemImageThumbnail(src, alt).
+AI-READY COMPONENT: ListItemImageThumbnail is a compact image thumbnail block for ListItem leading media. Use imageSurface as the only layer for image fill replacement (SOLID placeholder + IMAGE scaleMode FILL). Do not use as ImageItem, gallery tile, avatar, button or selectable media option. Token rule: use existing DS kebab-case variables only — color/background-surface/2, border/radius/100. Accessibility: image alt text should be provided by the parent ListItem when informative; decorative thumbnails may be hidden from assistive technology. React mapping: internal only — ListItemImageThumbnail(src, alt).
 
 ## Rules
 
 - **imageSurface:** only layer for image fill; SOLID + IMAGE FILL
 - **internalOnly:** Use inside ListItem leading media
-- **vsMedia:** Do not use as ImageBlock, gallery tile, avatar or button
+- **vsMedia:** Do not use as ImageItem, gallery tile, avatar or button
 
 ## Token rules
 

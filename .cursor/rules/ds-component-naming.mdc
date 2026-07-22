@@ -1,0 +1,17 @@
+---
+description: DS 2.0 — subcomponentes usam sufixo Item (não Block)
+alwaysApply: true
+---
+
+# Nomenclatura de subcomponentes
+
+Quando um componente existir **só para compor outro** (célula, row, slot, segmento da anatomia do pai):
+
+- Sufixo obrigatório: **`Item`**
+- Padrão: `{Parent}Item` (ex.: `ListItem`, `VerificationCodeInputItem`)
+- **Não** usar `Block` como sinônimo desse papel
+- **Não** criar novos `*Block` para subcomponentes
+- Se `{Parent}Item` já existir com outro papel, usar qualificador + `Item` (ex.: dropzone → `FileUploaderDropzoneItem`, não colidir com `FileUploaderItem`)
+- Em auditoria: reportar `*Block` legado nesse papel como P2 (rename → `*Item`); **não aplicar** rename sem confirmação do usuário
+
+Standalone / pai / superfície de página **não** ganham `Item` só por estarem no DS.

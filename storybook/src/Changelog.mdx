@@ -8,19 +8,20 @@ Documentation revisions for the Design System 2.0 Storybook seed.
 
 ## Recent updates
 
+- **block-to-item-rename:** Subcomponents: Block→Item naming; FileUploaderDropzoneItem for dropzone; Figma + storybook seed synced.
 - **slider-left-rail-recreate:** SliderLeftRail recreate 4073:2214: AI-READY + tokens; wired _Slider rail/Slider; storybook nodeId sync.
 - **slider-left-rail-docs:** SliderLeftRail: primary fill both actives (size-only); gap/height tokens; AI-READY EN + storybook active×2; page Slider trim.
 - **input-text-area-focus-stroke:** InputTextArea: focus stroke 2px via border/width/025 (manual + docs).
 - **input-text-area-docs:** InputTextArea: token binds + text styles; supporting wired on error; minHeight exposed; AI-READY + storybook sparse 42.
 - **verification-code-input-docs:** VerificationCodeInput: exposed codeCell1–5; gaps + text styles; AI-READY EN; storybook state×5.
-- **verification-code-input-block-focus-ring:** VerificationCodeInputBlock: focus ring effect uses color/elevation/Focus (docs synced).
-- **verification-code-input-block-docs:** VerificationCodeInputBlock: token binds + body/large/regular; AI-READY EN; storybook state×5.
+- **verification-code-input-block-focus-ring:** VerificationCodeInputItem: focus ring effect uses color/elevation/Focus (docs synced).
+- **verification-code-input-block-docs:** VerificationCodeInputItem: token binds + body/large/regular; AI-READY EN; storybook state×5.
 - **calendar-audit-fixes:** Calendar audit fixes: actions unexposed/renamed; monthTitle; weekday naming; CalendarDay demos; layer renames; AI-READY sync.
 - **calendar-docs:** Calendar: kebab tokens + local dividers; exposed periodNav/datePickerSelect; showSelectItems wired; AI-READY + storybook sparse 8.
 - **app-header-docs:** AppHeader: local Text header; showProfileMenu; search/bell trailing binds; Painel Home; storybook sync.
 - **system-header-docs:** SystemHeader: showPrimaryAction wired; datePickerSelect exposed; slot desc; storybook full AI-READY sync.
 - **date-picker-select-docs:** DatePickerSelect: nested day/month/year exposed; AI-READY + storybook format×state 16.
-- **date-picker-select-block-docs:** DatePickerSelectBlock: value TEXT wired 21/21; chevron-up path rename; storybook entry unit×state×expanded.
+- **date-picker-select-block-docs:** DatePickerSelectItem: value TEXT wired 21/21; chevron-up path rename; storybook entry unit×state×expanded.
 - **calendar-period-nav-docs:** CalendarPeriodNav: periodAction FRAME docs; chevron icon path rename; storybook entry 8 variants + inverse.
 - **calendar-day-docs:** CalendarDay: spacing kebab-case remap; storybook entry for kind×state 30 day cell.
 - **input-date-picker-docs:** InputDatePicker: 60 variants + appearance inverse; disabled default transparent + border/1; storybook entry added.
@@ -69,16 +70,16 @@ Documentation revisions for the Design System 2.0 Storybook seed.
 - **list-action-dropdown-docs:** ListActionDropdown: remapped Spacing/* to local spacing; wired showDivider/showScroll; added local scroll affordance; slot preferredValues; canonical AI-Ready and storybook docs added.
 - **list-action-dropdown-item-no-country-docs:** ListActionDropdownItem: removed showCountry prop and countryFlag layer; docs updated.
 - **list-action-dropdown-item-docs:** ListActionDropdownItem: fixed focusRing STRETCH; added state=focus; local icon preferredValues; canonical AI-Ready and storybook docs added.
-- **image-block-docs:** ImageBlock: restored verticalResize keepers from Aspect ratio base; local color/background-surface/1; kept imageSurface; canonical AI-Ready and storybook docs added.
+- **image-block-docs:** ImageItem: restored verticalResize keepers from Aspect ratio base; local color/background-surface/1; kept imageSurface; canonical AI-Ready and storybook docs added.
 - **chip-group-docs:** ChipGroup: recomposed nested chips on ChipClickable intent=outline size=sm; reset broken overrides; filter uses selected; AI-Ready and storybook docs added.
-- **comment-block-docs:** CommentBlock: remapped elevation/spacing tokens; local category icons; unified leadingIcon/showIcon; intentional generic vs categoryTag composition; AI-Ready and storybook docs added.
+- **comment-block-docs:** CommentItem: remapped elevation/spacing tokens; local category icons; unified leadingIcon/showIcon; intentional generic vs categoryTag composition; AI-Ready and storybook docs added.
 - **organization-header-docs:** OrganizationHeader: descriptionSlot FILL wrap; local ChipTag circle-check-outline; cleaned AI-Ready React mapping; storybook docs added.
 - **file-uploader-skeleton-bones-docs:** FileUploader: restored uploadAction/uploadDropzone/fileList names and showFiles bind; skeleton bones-only (no nested components); docs updated.
 - **file-uploader-docs:** FileUploader: Button size/icon/label aligned to matrix; skeleton cleaned; showFiles intentional on default-only; AI-Ready and storybook docs added.
 - **upload-photos-docs:** UploadPhotos: local text styles; local chevron + visible Button labels; renamed camera path; intentional surface/1|2 by status; AI-Ready and storybook docs added.
 - **file-uploader-list-docs:** FileUploaderList: recomposed on FileUploaderItem; showFileItem02–07; deprecated legacy file item set; AI-Ready and storybook docs added.
 - **file-uploader-item-docs:** FileUploaderItem: removed orphan longFileName/showLongFileName; renamed layers; aligned danger-long text tokens; AI-Ready and storybook docs added.
-- **file-uploader-block-docs:** FileUploaderBlock: unified focus padding; cleaned dropzone dash/root fills; documented stroke width tokens and dashPattern leftover; AI-Ready and storybook docs added.
+- **file-uploader-block-docs:** FileUploaderDropzoneItem: unified focus padding; cleaned dropzone dash/root fills; documented stroke width tokens and dashPattern leftover; AI-Ready and storybook docs added.
 - **tooltip-docs:** Tooltip: remapped Title Case elevation/spacing tokens; fixed bottom-center arrow constraint; AI-Ready (EN) and storybook docs added.
 - **tooltip-rich-docs:** TooltipRich: remapped Title Case tokens; documented intentional secondaryAction text/on-color; unified layer order; AI-Ready and storybook docs added.
 - **toast-docs:** Toast: published showAction and dismissible; split action/dismiss Buttons; unified statusIcon fills; AI-Ready and storybook docs added.
@@ -126,19 +127,20 @@ Documentation revisions for the Design System 2.0 Storybook seed.
 
 ## Meta changelog
 
+- **2026-07-22** [storybook-block-to-item-rename]: Renamed subcomponent suffix Block→Item: VerificationCodeInputItem, DatePickerSelectItem, CommentItem, ImageItem; FileUploaderBlock→FileUploaderDropzoneItem (collision with FileUploaderItem). Figma + docs synced.
 - **2026-07-22** [storybook-slider-left-rail-recreate]: SliderLeftRail recreate 4073:2214: AI-READY EN; spacing/250|025 binds; wired into _Slider rail + Slider overrides; storybook nodeId sync.
 - **2026-07-22** [storybook-slider-left-rail]: SliderLeftRail: both active fills color/actions/primary (size-only diff); AI-READY EN; spacing/250 gap + spacing/025 height binds; page Slider trim; storybook entry active×2.
 - **2026-07-22** [storybook-input-text-area-focus-stroke]: InputTextArea: state=focus stroke 2px (border/width/025) aligned with manual edit; docs synced for focus+error.
 - **2026-07-22** [storybook-input-text-area]: InputTextArea: AI-READY EN; geometry/stroke binds; text styles; showSupportingText on error; exposed minHeight; storybook sparse 42; countRow/minHeight ABSOLUTE documented.
 - **2026-07-22** [storybook-verification-code-input]: VerificationCodeInput: exposed codeCell1–5; removed orphan digit1–5; spacing/100|150 gaps; label/supporting text styles; AI-READY EN + storybook entry.
-- **2026-07-22** [storybook-verification-code-input-block-focus-ring]: VerificationCodeInputBlock: focus ring effect color documented as color/elevation/Focus (manual Figma bind).
-- **2026-07-22** [storybook-verification-code-input-block]: VerificationCodeInputBlock: geometry/focus ring token binds; digit body/large/regular; AI-READY EN; storybook entry state×5; page Input Password trim.
+- **2026-07-22** [storybook-verification-code-input-block-focus-ring]: VerificationCodeInputItem: focus ring effect color documented as color/elevation/Focus (manual Figma bind).
+- **2026-07-22** [storybook-verification-code-input-block]: VerificationCodeInputItem: geometry/focus ring token binds; digit body/large/regular; AI-READY EN; storybook entry state×5; page Input Password trim.
 - **2026-07-21** [storybook-calendar-audit-fixes]: Calendar audit fixes: unexpose/rename actions; enable Limpar/Ok; monthTitle TEXT+body/medium/medium; weekday naming; demo CalendarDay states; rename presets/feedback layers; complete/mobile padding; AI-READY+storybook sync.
 - **2026-07-21** [storybook-calendar]: Calendar: local dividers; remapped legacy Title Case + remote Font/effect tokens to kebab; exposed periodNav + datePickerSelect; wired showSelectItems (complete/web); AI-READY EN + storybook entry (sparse 8).
 - **2026-07-21** [storybook-app-header]: AppHeader: swapped remote App bar text→local Text header; showProfileMenu; first/second trailing=search/bell; showAction wired; Painel Home search+greeting title; storybook sync.
 - **2026-07-21** [storybook-system-header]: SystemHeader: wired showPrimaryAction; exposed datePickerSelect; slot description; AI-READY + storybook sync (simple sparse trailing).
-- **2026-07-21** [storybook-date-picker-select]: DatePickerSelect: exposed nested day/month/year DatePickerSelectBlock instances; AI-READY desc (value via nested); storybook entry format×state 16.
-- **2026-07-21** [storybook-date-picker-select-block]: DatePickerSelectBlock: wired value TEXT on all 21 variants; renamed chevron-up-outline Vector→*-path; storybook entry (unit×state×expanded).
+- **2026-07-21** [storybook-date-picker-select]: DatePickerSelect: exposed nested day/month/year DatePickerSelectItem instances; AI-READY desc (value via nested); storybook entry format×state 16.
+- **2026-07-21** [storybook-date-picker-select-block]: DatePickerSelectItem: wired value TEXT on all 21 variants; renamed chevron-up-outline Vector→*-path; storybook entry (unit×state×expanded).
 - **2026-07-21** [storybook-calendar-period-nav]: CalendarPeriodNav: description aligned to periodAction FRAME; renamed chevron-left/down/right-outline Vector→*-path; storybook entry (8 variants + inverse).
 - **2026-07-21** [storybook-calendar-day]: CalendarDay: remapped Spacing/0|050 → spacing/0|050 (150 bindings); added storybook entry (kind×state 30); prop day documented in storybook.
 - **2026-07-21** [storybook-input-date-picker]: InputDatePicker: added component docs (60 variants + appearance inverse); disabled default no fill + border/1 aligned; storybook entry created.
@@ -187,16 +189,16 @@ Documentation revisions for the Design System 2.0 Storybook seed.
 - **2026-07-17** [storybook-list-action-dropdown]: Added ListActionDropdown; remapped Spacing/* to local spacing; wired showDivider/showScroll; added local scroll affordance; slot preferredValues; canonical AI-Ready and storybook docs added.
 - **2026-07-17** [storybook-list-action-dropdown-item-no-country]: ListActionDropdownItem: removed showCountry prop and countryFlag layer; docs updated.
 - **2026-07-17** [storybook-list-action-dropdown-item]: Added ListActionDropdownItem; fixed focusRing STRETCH; added state=focus; local icon preferredValues; canonical AI-Ready and storybook docs added.
-- **2026-07-17** [storybook-image-block]: Added ImageBlock; restored verticalResize keepers (FIXED×HUG / HUG×FIXED) from Aspect ratio base; local color/background-surface/1; kept imageSurface; canonical AI-Ready and storybook docs added.
+- **2026-07-17** [storybook-image-block]: Added ImageItem; restored verticalResize keepers (FIXED×HUG / HUG×FIXED) from Aspect ratio base; local color/background-surface/1; kept imageSurface; canonical AI-Ready and storybook docs added.
 - **2026-07-16** [storybook-chip-group]: Added ChipGroup; recomposed all nested chips on ChipClickable intent=outline size=sm; reset broken overrides; filter uses selected; AI-Ready and storybook docs added.
-- **2026-07-16** [storybook-comment-block]: Added CommentBlock (Figma-only annotation); remapped elevation/spacing tokens; local category icons; unified leadingIcon/showIcon; intentional generic vs categoryTag composition documented.
+- **2026-07-16** [storybook-comment-block]: Added CommentItem (Figma-only annotation); remapped elevation/spacing tokens; local category icons; unified leadingIcon/showIcon; intentional generic vs categoryTag composition documented.
 - **2026-07-16** [storybook-organization-header]: Added OrganizationHeader (Figma docs header); descriptionSlot FILL wrap; local ChipTag icon; cleaned AI-Ready React mapping; storybook docs added.
 - **2026-07-16** [storybook-file-uploader-skeleton-bones]: FileUploader: restored semantic layer names and showFiles bind; skeleton bones-only (no nested components); docs updated.
 - **2026-07-16** [storybook-file-uploader]: Added FileUploader; Button size/icon/label aligned to matrix; skeleton cleaned (bones, DnD dropzone); AI-Ready and storybook docs added; showFiles intentional on default-only.
 - **2026-07-16** [storybook-upload-photos]: Added UploadPhotos metadata; applied local text styles; local chevron + visible Button labels; renamed camera path; AI-Ready and storybook docs added.
 - **2026-07-16** [storybook-file-uploader-list]: Added FileUploaderList; recomposed on FileUploaderItem; showFileItem02–07 props; deprecated legacy _File uploader file item; AI-Ready and storybook docs added.
 - **2026-07-16** [storybook-file-uploader-item]: Added FileUploaderItem metadata; removed orphan longFileName/showLongFileName; renamed layers; aligned danger-long text tokens; AI-Ready and storybook docs added.
-- **2026-07-16** [storybook-file-uploader-block]: Added FileUploaderBlock metadata; unified focus padding; cleaned dropzone dash/root fills; documented stroke width tokens and dashPattern leftover; AI-Ready and storybook docs added.
+- **2026-07-16** [storybook-file-uploader-block]: Added FileUploaderDropzoneItem metadata; unified focus padding; cleaned dropzone dash/root fills; documented stroke width tokens and dashPattern leftover; AI-Ready and storybook docs added.
 - **2026-07-16** [storybook-tooltip]: Added Tooltip metadata; remapped Title Case elevation/spacing tokens; fixed bottom-center arrow constraint; AI-Ready (EN) and storybook docs added.
 - **2026-07-16** [storybook-tooltip-rich]: Added TooltipRich metadata; remapped Title Case tokens to kebab; documented intentional secondaryAction text/on-color; unified layer order; AI-Ready and storybook docs added.
 - **2026-07-15** [storybook-toast]: Added Toast metadata; published showAction and dismissible; split action/dismiss Buttons; unified statusIcon fills; AI-Ready and storybook docs added.
