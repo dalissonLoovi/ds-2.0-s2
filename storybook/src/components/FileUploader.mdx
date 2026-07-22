@@ -32,13 +32,13 @@ AI-READY COMPONENT: FileUploader is the full file-upload field composition used 
 ## Rules
 
 - **composition:** non-skeleton: header + uploadAction + uploadDropzone + fileList; skeleton: bones only
-- **vsBlock:** Do not use as dropzone alone — use FileUploaderDropzoneItem
+- **vsDropzone:** Do not use as dropzone alone — use FileUploaderDropzoneItem
 - **vsItem:** Do not use as a single file row — use FileUploaderItem
 - **vsList:** Do not use as file list stack alone — use FileUploaderList
 - **vsUploadPhotos:** Do not use for photo lifecycle task items — use UploadPhotos
 - **showFilesIntentional:** showFiles wired only on state=default; disabled hard-hides fileList; skeleton omits components
 - **buttonMatrix:** uploadAction = solid/primary; size maps 1:1; showIcon=true with upload-outline
-- **skeletonBonesOnly:** no nested Button/Block/List instances in state=skeleton
+- **skeletonBonesOnly:** no nested Button/FileUploaderDropzoneItem/FileUploaderList instances in state=skeleton
 
 ## Token rules
 

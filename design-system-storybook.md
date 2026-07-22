@@ -3,8 +3,8 @@
 > **Arquivo Figma:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940)  
 > **File key:** `mHm12Zu9tgNmaSYnooihE5`  
 > **Schema:** ds-storybook-metadata/v2  
-> **Atualizado em:** 2026-07-22T17:20:00-03:00  
-> **Revision:** 2026-07-22-block-to-item-rename
+> **Atualizado em:** 2026-07-22T17:35:00-03:00  
+> **Revision:** 2026-07-22-image-orientation-item-rename
 
 Component documentation, controls, variant options and AI-Ready rules for Storybook docs. Token values remain under tokens.
 
@@ -1025,13 +1025,13 @@ AI-READY COMPONENT: FileUploader is the full file-upload field composition used 
 ### Rules
 
 - **composition:** non-skeleton: header + uploadAction + uploadDropzone + fileList; skeleton: bones only
-- **vsBlock:** Do not use as dropzone alone — use FileUploaderDropzoneItem
+- **vsDropzone:** Do not use as dropzone alone — use FileUploaderDropzoneItem
 - **vsItem:** Do not use as a single file row — use FileUploaderItem
 - **vsList:** Do not use as file list stack alone — use FileUploaderList
 - **vsUploadPhotos:** Do not use for photo lifecycle task items — use UploadPhotos
 - **showFilesIntentional:** showFiles wired only on state=default; disabled hard-hides fileList; skeleton omits components
 - **buttonMatrix:** uploadAction = solid/primary; size maps 1:1; showIcon=true with upload-outline
-- **skeletonBonesOnly:** no nested Button/Block/List instances in state=skeleton
+- **skeletonBonesOnly:** no nested Button/FileUploaderDropzoneItem/FileUploaderList instances in state=skeleton
 
 ### Variant map
 
@@ -1041,7 +1041,7 @@ AI-READY COMPONENT: FileUploader is the full file-upload field composition used 
 ### State map
 
 - **default:** interactive; showFiles controls fileList
-- **disabled:** Button/Block disabled; fileList hard-hidden (intentional)
+- **disabled:** Button/FileUploaderDropzoneItem disabled; fileList hard-hidden (intentional)
 - **skeleton:** non-interactive bones only — labelSkeleton + descriptionSkeleton + actionSkeleton; no nested components
 
 ### Token rules
@@ -1128,7 +1128,7 @@ AI-READY COMPONENT: FileUploaderItem is the file row used inside a file uploader
 ### Rules
 
 - **composition:** local loadingSpinner, statusIcon, removeAction (x-outline icon hit-target)
-- **vsBlock:** Do not use as dropzone — use FileUploaderDropzoneItem
+- **vsDropzone:** Do not use as dropzone — use FileUploaderDropzoneItem
 - **dangerText:** errorMessage = feedback/danger; danger-long errorDescription = text/secondary
 - **focusTarget:** focus stroke on trailingAction/remove control
 - **usage:** One file row in an upload list — not a Button, Card, or ProgressBar
@@ -1165,7 +1165,7 @@ AI-READY COMPONENT: FileUploaderList is a vertical stack of FileUploaderItem row
 ### Rules
 
 - **composition:** fileItem01–fileItem07 = local FileUploaderItem; fileItem01 always on
-- **vsBlock:** Do not use as dropzone — use FileUploaderDropzoneItem
+- **vsDropzone:** Do not use as dropzone — use FileUploaderDropzoneItem
 - **vsItem:** Do not use as a single file row — use FileUploaderItem
 - **productMapping:** Prefer N× FileUploaderItem from data; this set documents list stacking
 - **deprecatedLegacy:** `_DEPRECATED FileUploaderItem legacy` (`3581:3748`) must not be used
@@ -1204,7 +1204,7 @@ AI-READY COMPONENT: UploadPhotos is a single photo or visual-document upload tas
 
 - **composition:** local camera-outline + Button + ChipTag only
 - **statusIsLifecycle:** status is business lifecycle, not hover/focus/pressed/disabled
-- **vsBlock:** Do not use as dropzone — use FileUploaderDropzoneItem
+- **vsDropzone:** Do not use as dropzone — use FileUploaderDropzoneItem
 - **vsItem:** Do not use as uploaded-file row — use FileUploaderItem
 - **vsList:** Do not use as file list stack — use FileUploaderList
 - **surfaceIntentional:** pending|rejected → surface/2; in-review|approved → surface/1
@@ -1234,7 +1234,7 @@ expose label and status; pending/rejected actions use visible labels and stay ke
 
 **Node ID:** `3671:2329`
 
-AI-READY COMPONENT: ImageItem is a DS image container used to reserve a fixed aspect-ratio surface and optionally show an orientation overlay. Use imageSurface as the only layer for applying or replacing image fills — keep it absolute/floating, clipped, tokenized, and scaleMode FILL (crop) so the image is not distorted. Use showOrientationBlock to toggle orientationOverlay (ImageOrientationBlock), which must stay absolute/floating, rotation 0°, and centered — including when verticalResize=true. aspectRatio controls 1-1 | 4-3 | 3-2 | 16-9 | 2-1. orientation controls portrait | landscape. verticalResize=false locks width and hugs height via aspect-ratio keepers; verticalResize=true locks height and hugs width (same keeper technique, rotated). Do not use ImageItem as a radio, checkbox, button, tab, avatar, or gallery tile. Token rule: use existing DS kebab-case variables only — color/background-surface/1 for root and imageSurface placeholder, plus nested ImageOrientationBlock tokens. Accessibility: treat as an image or figure; provide accessible name/alt from product content when a real image is applied; orientationOverlay is decorative/informational and must not steal focus. React mapping: ImageItem(aspectRatio, orientation, verticalResize, showOrientationBlock, src, alt).
+AI-READY COMPONENT: ImageItem is a DS image container used to reserve a fixed aspect-ratio surface and optionally show an orientation overlay. Use imageSurface as the only layer for applying or replacing image fills — keep it absolute/floating, clipped, tokenized, and scaleMode FILL (crop) so the image is not distorted. Use showOrientationItem to toggle orientationOverlay (ImageOrientationItem), which must stay absolute/floating, rotation 0°, and centered — including when verticalResize=true. aspectRatio controls 1-1 | 4-3 | 3-2 | 16-9 | 2-1. orientation controls portrait | landscape. verticalResize=false locks width and hugs height via aspect-ratio keepers; verticalResize=true locks height and hugs width (same keeper technique, rotated). Do not use ImageItem as a radio, checkbox, button, tab, avatar, or gallery tile. Token rule: use existing DS kebab-case variables only — color/background-surface/1 for root and imageSurface placeholder, plus nested ImageOrientationItem tokens. Accessibility: treat as an image or figure; provide accessible name/alt from product content when a real image is applied; orientationOverlay is decorative/informational and must not steal focus. React mapping: ImageItem(aspectRatio, orientation, verticalResize, showOrientationBlock, src, alt).
 
 ### Variants
 
@@ -1249,12 +1249,12 @@ AI-READY COMPONENT: ImageItem is a DS image container used to reserve a fixed as
 | `aspectRatio` | 1-1 \| 4-3 \| 3-2 \| 16-9 \| 2-1 |
 | `orientation` | portrait \| landscape |
 | `verticalResize` | false \| true — false locks width/hugs height; true locks height/hugs width |
-| `showOrientationBlock` | boolean — toggles orientationOverlay |
+| `showOrientationItem` | boolean — toggles orientationOverlay |
 
 ### Rules
 
 - **imageSurface:** only layer for image fill replacement; absolute, clipped, STRETCH, scaleMode FILL
-- **orientationOverlay:** ImageOrientationBlock; absolute; rotation 0°; centered even when verticalResize=true
+- **orientationOverlay:** ImageOrientationItem; absolute; rotation 0°; centered even when verticalResize=true
 - **verticalResizeParity:** restored Aspect ratio keeper behavior: false=FIXED×HUG; true=HUG×FIXED
 - **vsControls:** Do not use as radio, checkbox, button, tab, avatar, or gallery tile
 - **composition:** aspectRatioKeeper tree + imageSurface + orientationOverlay
@@ -1262,7 +1262,7 @@ AI-READY COMPONENT: ImageItem is a DS image container used to reserve a fixed as
 ### Token rules
 
 - `color/background-surface/1` for root and imageSurface placeholder
-- nested ImageOrientationBlock owns its own DS tokens
+- nested ImageOrientationItem owns its own DS tokens
 
 ### Accessibility
 
@@ -4372,6 +4372,7 @@ Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); trac
 
 ## Changelog (meta)
 
+- **2026-07-22** [storybook-image-orientation-item-rename]: ImageOrientationBlock→ImageOrientationItem (`3671:2318`) + prop showOrientationBlock→showOrientationItem; FileUploader rule keys vsBlock→vsDropzone and Button/Block prose → FileUploaderDropzoneItem. Completes Block→Item naming pass. Figma + docs synced.
 - **2026-07-22** [storybook-block-to-item-rename]: Renamed subcomponent suffix Block→Item: VerificationCodeInputItem, DatePickerSelectItem, CommentItem, ImageItem; FileUploaderBlock→FileUploaderDropzoneItem (collision with FileUploaderItem). Figma + docs synced.
 - **2026-07-22** [storybook-slider-left-rail-recreate]: SliderLeftRail recreate `4073:2214`: AI-READY EN; spacing/250|025 binds; wired into `_Slider rail` + Slider overrides; storybook nodeId sync.
 - **2026-07-22** [storybook-slider-left-rail]: SliderLeftRail: both active fills color/actions/primary (size-only diff); AI-READY EN; spacing/250 gap + spacing/025 height binds; page Slider trim; storybook entry active×2.
