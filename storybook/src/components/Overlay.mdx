@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Overlay" />
+
+# Overlay
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3768-3886) · node `3768:3886`
+
+## AI-READY
+
+AI-READY COMPONENT: Overlay is a full-viewport scrim composition used to present a blocking Modal or a mobile BottomSheet on top of page content in prototypes and product layouts. Use type=modal when the slotted content is a centered dialog and type=bottom-sheet when the slotted content is a bottom-anchored sheet. Use platform=mobile for compact device frames and platform=web for desktop/web frames. Intentional sparse matrix: type=bottom-sheet is published only with platform=mobile — do not expect bottom-sheet+web. Props: slot hosts the surface content. Default composition nests local Modal (platform matched) for type=modal and local BottomSheet (header=none) for type=bottom-sheet. Prefer swapping slot content only with local Modal or BottomSheet via preferredValues — do not place Toast, Tooltip, Banner, Card or page chrome in the slot. Do not use Overlay as a standalone Modal, BottomSheet, drawer, toast or opaque page background. Token rule: use existing DS kebab-case variables only — color/overlay/overlay for the scrim, spacing/100 for item gap, spacing/250 for horizontal padding, spacing/400 for modal vertical padding, spacing/700 and spacing/0 for bottom-sheet vertical padding. Accessibility: Overlay provides the dimmed backdrop; the nested Modal/BottomSheet owns dialog semantics (role=dialog or alertdialog when appropriate), focus trap, Escape to dismiss when allowed, and restoring focus to the trigger. The scrim itself is not focusable. React mapping: Overlay(type, platform, children) where children map to slot and should be Modal or BottomSheet. Code Connect is not configured.
+
+## Variants
+
+- **type:** modal | bottom-sheet
+- **platform:** mobile | web
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `type` | modal \| bottom-sheet |
+| `platform` | mobile \| web (bottom-sheet published only with mobile) |
+| `slot` | SLOT — default Modal or BottomSheet; preferredValues Modal + BottomSheet |
+
+## Rules
+
+- **composeModalBottomSheet:** type=modal nests local Modal (platform matched); type=bottom-sheet nests local BottomSheet header=none
+- **sparseBottomSheet:** bottom-sheet + web is intentionally unpublished
+- **slotPreferred:** Swap slot only with local Modal or BottomSheet
+- **vsStandalone:** Do not use Overlay as standalone Modal, BottomSheet, drawer, toast or page background
+
+## Token rules
+
+- color/overlay/overlay for scrim
+- spacing/100 for item gap
+- spacing/250 for horizontal padding
+- spacing/400 for modal vertical padding
+- spacing/700 + spacing/0 for bottom-sheet vertical padding
+
+## Accessibility
+
+Scrim is non-focusable; nested Modal/BottomSheet owns dialog semantics, focus trap, Escape and focus restore.
+
+## Composition
+
+- Modal
+- BottomSheet
+

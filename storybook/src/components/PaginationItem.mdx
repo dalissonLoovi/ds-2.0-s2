@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/PaginationItem" />
+
+# PaginationItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3382-9339) · node `3382:9339`
+
+## AI-READY
+
+AI-READY COMPONENT: PaginationItem is an interactive pagination control item used to represent a page number or overflow indicator inside Pagination. Use content=number for visible page numbers and content=overflow for collapsed page ranges (dots-outline). Use selected=true only for the current active page. Use state=default, hover, focus or disabled to represent interaction state — there is no pressed state. selected=true is intentional-sparse with focus and disabled: those combinations are not published; keyboard focus on the current page uses selected=true with default/hover visuals, and the current page is never disabled. Do not use PaginationItem as a Button, NavigationItem, Chip, Badge, Tab, MenuItem or standalone icon action. Accessibility: number items should expose the page number as the accessible name, selected items should map to aria-current=page, overflow items should be hidden from assistive technology when decorative or given a clear label when interactive, and all interactive items must preserve keyboard focus. Token rule: use existing DS variables only (color/actions/primary for selected, interactive/hover|focus|disabled-surface, text/primary|on-color|placeholder, spacing/050|500, border/radius/full). React mapping: PaginationItem(label, icon, content, state, selected).
+
+## Variants
+
+- **content:** number | overflow
+- **state:** default | hover | focus | disabled
+- **selected:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `label` | page number text (content=number) |
+| `icon` | local DS icon swap (content=overflow, typically dots-outline) |
+| `content` | number \| overflow |
+| `state` | default \| hover \| focus \| disabled |
+| `selected` | false \| true |
+
+## Rules
+
+- **icons:** overflow icon must use local DS outline icons only (dots-outline)
+- **noPressed:** No pressed interaction state — use default|hover|focus|disabled only
+- **sparseSelected:** selected=true × focus and selected=true × disabled are intentionally omitted
+- **usage:** Use inside Pagination; not as Button, NavigationItem, Chip, Badge, Tab or MenuItem
+
+## Token rules
+
+- color/actions/primary for selected fill
+- interactive/hover | focus | disabled-surface for interaction states
+- text/primary | text/on-color | text/placeholder for labels/icons
+- spacing/0 | 050 | 500 and border/radius/full
+
+## Accessibility
+
+Number items expose page number as accessible name; selected maps to aria-current=page; overflow decorative or clearly labeled; preserve keyboard focus.
+

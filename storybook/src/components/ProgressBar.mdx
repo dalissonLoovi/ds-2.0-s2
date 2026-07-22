@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ProgressBar" />
+
+# ProgressBar
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3407-3492) · node `3407:3492`
+
+## AI-READY
+
+AI-READY COMPONENT: ProgressBar is a linear progress indicator used to communicate completion percentage for determinate processes. Use value to display the current progress percentage label and showValue to show or hide that visible label. Use size=md for default layouts and size=sm for compact layouts. The track represents the total amount and the indicator represents the completed amount — in Figma the indicator width is layout-controlled for design mocks; value is the visible label only and does not drive fill mathematically. Do not use ProgressBar as a loading spinner, slider, stepper, chart, timeline, badge or decorative divider. Accessibility: expose progress with role=progressbar, aria-valuemin=0, aria-valuemax=100 and aria-valuenow matching the current numeric value. If the visible value is hidden, provide an accessible label. Token rule: use existing DS variables only (color/actions/primary for indicator, color/background-surface/2 for track, text/primary for value, spacing/100|200|250, border/radius/150). React mapping: ProgressBar(value, showValue, size, progress?).
+
+## Variants
+
+- **size:** md | sm
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `value` | visible progress percentage label (e.g. 100%) |
+| `showValue` | boolean — toggles value label visibility |
+| `size` | md \| sm |
+
+## Rules
+
+- **valueVsFill:** value is the visible label only; indicator fill width is layout-controlled in Figma mocks
+- **usage:** Do not use as loading spinner, slider, stepper, chart, timeline, badge or decorative divider
+
+## Token rules
+
+- color/actions/primary for indicator fill
+- color/background-surface/2 for track fill
+- text/primary for value label
+- spacing/100 | 200 | 250 and border/radius/150
+
+## Accessibility
+
+role=progressbar with aria-valuemin=0, aria-valuemax=100, aria-valuenow; if showValue=false provide an accessible label.
+

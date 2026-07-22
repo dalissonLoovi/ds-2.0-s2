@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/TooltipRich" />
+
+# TooltipRich
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3566-10477) · node `3566:10477`
+
+## AI-READY
+
+AI-READY COMPONENT: TooltipRich is a rich contextual tooltip/popover surface with optional title, description, and primary/secondary actions. Use it when contextual guidance needs more than a short passive tooltip. Do not use it as a Modal, Toast, Dropdown, Select, Menu, or persistent help panel. Variants: placement=top-center|top-left|top-right|bottom-center|bottom-left|bottom-right. Props: title, showTitle, description, showDescription, showActions, showPrimaryAction, showSecondaryAction. Action labels live on nested Button label (React: primaryActionLabel / secondaryActionLabel). Composition: must use local Button for actions — primaryAction maps to Button variant=solid size=sm intent=primary; secondaryAction maps to Button variant=text size=sm intent=primary. Intentional token override: on the inverse tooltip surface, secondaryAction label uses text/on-color (not the default Button text/primary) so the text remains readable on color/background-surface/inverse-3. The arrow is decorative and must be aria-hidden=true. Accessibility: when content is purely informative, associate it to the trigger with aria-describedby. When it includes actionable buttons, treat the behavior as a lightweight popover/dialog: allow focus to enter the surface, preserve logical focus order, close on Escape, and return focus to the trigger. Buttons must have clear accessible labels. Do not auto-focus content on hover-only reveal. Token rule: use existing DS kebab-case variables (color/background-surface/inverse-3, text/on-color, color/elevation/6, spacing/0|100|150|200, border/radius/300). React mapping: TooltipRich(placement, title, showTitle, description, showDescription, showActions, showPrimaryAction, showSecondaryAction, primaryActionLabel, secondaryActionLabel, onPrimaryAction, onSecondaryAction).
+
+## Variants
+
+- **placement:** top-center | top-left | top-right | bottom-center | bottom-left | bottom-right
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `placement` | top-center \| top-left \| top-right \| bottom-center \| bottom-left \| bottom-right |
+| `title` | optional heading text |
+| `showTitle` | boolean |
+| `description` | optional body text |
+| `showDescription` | boolean |
+| `showActions` | boolean — toggles actions container |
+| `showPrimaryAction` | boolean — toggles primaryAction Button |
+| `showSecondaryAction` | boolean — toggles secondaryAction Button |
+| `primaryActionLabel` | React mapping for nested primary Button label |
+| `secondaryActionLabel` | React mapping for nested secondary Button label |
+
+## Rules
+
+- **composition:** primaryAction = Button solid/sm/primary; secondaryAction = Button text/sm/primary; local DS icons only
+- **intentionalSecondaryOnColor:** secondaryAction label uses text/on-color on inverse surface — intentional override, do not remap to text/primary
+- **layerOrder:** content → arrow → actions on all placements
+- **usage:** Do not use as Modal, Toast, Dropdown, Select, Menu, or persistent help panel
+
+## Token rules
+
+- color/background-surface/inverse-3, text/on-color, color/elevation/6
+- spacing/0 | 100 | 150 | 200, border/radius/300
+- secondaryAction label: text/on-color (intentional)
+
+## Accessibility
+
+aria-describedby when informative; popover/dialog focus pattern when actionable; Escape closes and returns focus to trigger; arrow aria-hidden; no auto-focus on hover-only reveal.
+

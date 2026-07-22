@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/CalendarPeriodNav" />
+
+# CalendarPeriodNav
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3995-5664) · node `3995:5664`
+
+## AI-READY
+
+AI-READY COMPONENT: CalendarPeriodNav is the Design System 2.0 mobile period navigator for Calendar / date-picker surfaces. It changes the visible period in the viewer (month/year step and optional month-year picker entry). Prefer on Display=Mobile calendar headers and date bottom sheets — not for list/table Pagination. Variants: appearance × previousDisabled × nextDisabled (8). appearance: default | inverse. previousDisabled/nextDisabled: false | true (boundary of navigable range). Anatomy: previousAction (Button text/sm icon-only chevron-left-outline) + periodAction (FRAME with periodLabel TEXT + expandIcon chevron-down-outline) + nextAction (Button text/sm icon-only chevron-right-outline). periodAction opens month/year selection when the product supports Calendar Select=Month|Year — implement as a button in product code (aria-haspopup) even though the Figma layer is a FRAME, not a nested Button instance. previous/next step the visible period. appearance=default: transparent root; actions/label text/primary; disabled chevrons text/placeholder. appearance=inverse: root fill color/background-surface/inverse-3; actions/label text/on-color; disabled chevrons text/on-color-disabled. Props: periodLabel (TEXT) — visible period, e.g. "Abril 2025". Nested Button labels carry accessible names (Período anterior / Próximo período). Do not use as Pagination, PaginationItem, PaginationSelectInput, or InputDatePicker field. Compose with Calendar + CalendarDay grid. Accessibility: toolbar/group; icon-only buttons need accessible names; periodAction maps to a button that may set aria-haspopup; announce period changes with aria-live when stepped. Token rule: local S2 kebab-case only. React mapping: CalendarPeriodNav(appearance, previousDisabled, nextDisabled, periodLabel). Code Connect is not configured.
+
+## Variants
+
+- **appearance:** default | inverse
+- **previousDisabled:** false | true
+- **nextDisabled:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `appearance` | default \| inverse — inverse for dark/on-color calendar surfaces |
+| `previousDisabled` | false \| true — boundary of navigable range (VARIANT axis) |
+| `nextDisabled` | false \| true — boundary of navigable range (VARIANT axis) |
+| `periodLabel` | TEXT — visible period string (e.g. Abril 2025) |
+
+## Rules
+
+- **mobilePeriodNav:** Prefer Display=Mobile calendar headers and date bottom sheets — not list/table Pagination
+- **periodActionFrame:** periodAction is a FRAME (periodLabel + expandIcon), not a nested Button — map to button in product with aria-haspopup
+- **prevNextButtons:** previousAction/nextAction are local Button text/sm icon-only with accessible labels
+- **appearanceInverse:** appearance=inverse: root color/background-surface/inverse-3; on-color texts; disabled text/on-color-disabled
+- **vsPagination:** Do not use as Pagination, PaginationItem, PaginationSelectInput, or InputDatePicker field
+
+## Token rules
+
+- default: transparent root; text/primary; disabled text/placeholder
+- inverse: color/background-surface/inverse-3; text/on-color; disabled text/on-color-disabled
+- spacing/100|200|250|500; nested Button component tokens
+- body/medium/* periodLabel; Button body/small/*
+
+## Accessibility
+
+toolbar/group; icon-only buttons need accessible names; periodAction maps to button with optional aria-haspopup; announce period changes with aria-live when stepped.
+
+## Composition
+
+- Button (previousAction / nextAction)
+- chevron-left-outline / chevron-down-outline / chevron-right-outline
+- Calendar + CalendarDay (parent surface)
+

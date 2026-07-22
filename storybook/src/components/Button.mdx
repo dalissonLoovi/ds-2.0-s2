@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Button" />
+
+# Button
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-3723) · node `3104:3723`
+
+## AI-READY
+
+AI-READY COMPONENT: Button triggers an explicit user action. Use variant=solid for the strongest action, variant=outline for secondary emphasis and variant=text for low-emphasis actions. Use intent=primary, success or danger to communicate action meaning. On variant=text with intent=primary and disabled=false, showIcon (leadingIcon) uses text/primary across states so the icon matches the label. Loading variants are spinner-only and must hide label and icons.
+
+## Variants
+
+- **variant:** solid | outline | text
+- **size:** sm | md | lg
+- **state:** default | hover | focus | pressed | selected | loading
+- **intent:** primary | success | danger
+- **disabled:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `showIcon` | boolean — toggles leadingIcon visibility |
+| `label` | visible button label |
+| `showTrailingIcon` | boolean |
+| `showLabel` | boolean |
+| `Icon` | local DS icon instance swap for leadingIcon |
+| `loading` | boolean |
+| `disabled` | boolean |
+
+## Rules
+
+- **leadingIconSizing:**
+  - **lg:** 24px icon with 2px stroke
+  - **md:** 20px icon with 1.67px stroke
+  - **sm:** 16px icon with 1.33px stroke
+- **textPrimaryIcon:** variant=text + intent=primary + disabled=false: leadingIcon (showIcon) uses text/primary across default|hover|focus|pressed|selected|loading
+- **loading:** spinner-only, no label, no leading icon, no trailing icon, centered spinner
+
+## Token rules
+
+- component/button/container/background
+- component/button/container/radius/lg
+- component/button/container/radius/sm
+- component/button/icon/color for solid/outline icon colors where bound
+- text/primary for variant=text + intent=primary leadingIcon (enabled)
+- component/button/label/color
+- component/button/label/font-weight
+
+## Accessibility
+
+Buttons must support keyboard activation, visible focus and disabled semantics. Loading actions should prevent duplicate activation and expose busy state in implementation.
+

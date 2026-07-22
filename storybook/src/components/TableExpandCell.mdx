@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/TableExpandCell" />
+
+# TableExpandCell
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3459-8530) · node `3459:8530`
+
+## AI-READY
+
+AI-READY COMPONENT: TableExpandCell is an interactive expansion control cell used inside TableRow to expand or collapse row details. Use type=body for regular table rows and type=header for header-level expand controls when the product supports expand-all behavior. Use state=default, hover, pressed, selected, focus or disabled to represent interaction state. Density is fixed (no size axis). state=selected represents the expanded visual: chevron-up-outline with text/primary. Collapsed interactive states use chevron-down-outline with text/secondary (text/placeholder when disabled). The icon INSTANCE_SWAP applies to non-selected states; on state=selected the chevron-up icon is structural and not swap-driven. showChevron is a header-oriented variant axis (true|false). Use showChevron=true for interactive header expand controls. Use type=header + state=default + showChevron=false as an intentional-sparse spacer: no chevron is rendered, but the cell keeps the same 56×40 footprint so body expand columns stay aligned. showChevron=false is not published for type=body. Do not use TableExpandCell as a full TableCell, Button, PaginationItem, NavigationItem or generic icon button outside table rows. Accessibility: expose as a button when interactive (showChevron=true), provide an accessible label such as Expand row or Collapse row, use aria-expanded reflecting expanded/collapsed, and preserve visible focus. For showChevron=false spacer headers, omit the control from the accessibility tree (aria-hidden or presentational) because there is no interactive expand affordance. Token rule: use existing DS variables only (color/background-surface/0|2, interactive/hover|pressed|focus, text/secondary|primary|placeholder, spacing/0|200|800, border/radius/0|100, border/width/0|025). React mapping: TableExpandCell(type, state, showChevron, icon).
+
+## Variants
+
+- **type:** body | header
+- **state:** default | hover | pressed | selected | focus | disabled
+- **showChevron:** true | false
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `icon` | INSTANCE_SWAP — local DS outline icon; applies to non-selected states |
+| `type` | body \| header |
+| `state` | default \| hover \| pressed \| selected \| focus \| disabled |
+| `showChevron` | true \| false — header spacer when false (intentional-sparse with state=default only) |
+
+## Rules
+
+- **density:** Fixed density — no size axis
+- **selectedExpanded:** state=selected = expanded visual (chevron-up-outline, text/primary)
+- **iconStructuralSelected:** On state=selected, chevron-up is structural and not icon INSTANCE_SWAP-driven
+- **headerSpacer:** type=header + state=default + showChevron=false keeps 56×40 with no chevron; not published for type=body
+- **icons:** Collapsed states: chevron-down-outline; local DS icons only
+- **usage:** Do not use as TableCell, Button, PaginationItem, NavigationItem or generic icon button outside table rows
+
+## Token rules
+
+- color/background-surface/0 for body; color/background-surface/2 for header
+- interactive/hover | pressed on icon frame; interactive/focus for focus affordance
+- text/secondary | text/primary | text/placeholder for icon stroke by state
+- spacing/0 | 200 | 800 and border/radius/0 | 100, border/width/0 | 025
+
+## Accessibility
+
+Button when interactive (showChevron=true); Expand/Collapse label; aria-expanded maps selected→true; spacer header (showChevron=false) should be presentational/aria-hidden.
+

@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/FileUploaderList" />
+
+# FileUploaderList
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3581-3887) · node `3581:3887`
+
+## AI-READY
+
+AI-READY COMPONENT: FileUploaderList is a vertical stack of FileUploaderItem rows used to preview or compose a list of uploaded files. Use it as a demo/composition wrapper for one or more FileUploaderItem instances. Do not use it as FileUploaderBlock (dropzone), a single FileUploaderItem, Button, Card, or ProgressBar. Composition: fileItem01–fileItem07 are local FileUploaderItem instances. fileItem01 is always present; showFileItem02–showFileItem07 toggle additional rows (defaults: 02–03 true, 04–07 false). In product code, prefer mapping an array of files to N× FileUploaderItem rather than hard-coding seven slots. This component documents spacing and stacking for the upload list pattern. Accessibility: expose the list as a list or group with an accessible name; each FileUploaderItem remains responsible for file name, status, and remove action semantics. Token rule: use existing DS kebab-case variables (spacing/100 for item gap). Nested FileUploaderItem uses its own DS tokens. React mapping: FileUploaderList(children as FileUploaderItem[]) or FileUploaderList(files.map(...)). Figma props: showFileItem02–showFileItem07.
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `showFileItem02` | boolean — default true |
+| `showFileItem03` | boolean — default true |
+| `showFileItem04` | boolean — default false |
+| `showFileItem05` | boolean — default false |
+| `showFileItem06` | boolean — default false |
+| `showFileItem07` | boolean — default false |
+
+## Rules
+
+- **composition:** fileItem01–fileItem07 = local FileUploaderItem; fileItem01 always on
+- **vsBlock:** Do not use as dropzone — use FileUploaderBlock
+- **vsItem:** Do not use as a single file row — use FileUploaderItem
+- **productMapping:** Prefer N× FileUploaderItem from data; this set documents list stacking
+- **deprecatedLegacy:** _DEPRECATED FileUploaderItem legacy (3581:3748) must not be used
+
+## Token rules
+
+- spacing/100 for list item gap
+- nested FileUploaderItem owns its own DS tokens
+
+## Accessibility
+
+list/group with accessible name; each FileUploaderItem owns file name, status, and remove semantics.
+

@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/VerticalStepperItem" />
+
+# VerticalStepperItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3437-531) · node `3437:531`
+
+## AI-READY
+
+AI-READY COMPONENT: VerticalStepperItem is a vertical step row that pairs a structural status indicator with a nested ListItem for content and optional row behaviors. Use it inside VerticalStepper or another ordered multi-step composition when each step needs contextual text and may reuse ListItem density, trailing actions or interaction states. Use status=completed for finished steps, status=current for the active step, status=pending for upcoming steps and status=error only when the step has a real blocking error with explanatory copy. Props: showConnector hides the vertical connector for the final item; status selects the structural icon and connector color. Nested ListItem props are exposed on the set: headline, supportingText, overline, trailingSupportingText, condition, showSupportingText, showOverline, showTrailingSupportingText, showDivider, leading, trailing and stateLayer. Defaults: leading=none (status lives in indicatorColumn — avoid duplicate leading status icons), trailing=none, showDivider=false, condition=2-line, showSupportingText=true, showOverline=false, stateLayer default. Interaction rule: default non-interactive with stateLayer=default; enable ListItem hover/pressed/focus/disabled or trailing/leading controls only when the step is intentionally actionable and progress is safely persisted. Icons are structural and fixed by status: circle-check-filled for completed, circle-dot-filled for current, circle-outline for pending and circle-x-filled for error. Do not expose arbitrary status icon swaps. Connector rule: completed uses color/actions/primary; current, pending and error use color/border/2. Do not color future connectors danger. Layout: horizontal Auto Layout with indicatorColumn and ListItem; root uses a 327px demonstration width and should use Fill container in compositions; indicatorColumn uses a 24px statusIcon and a 2px connector that stretches with content height. Do not use VerticalStepperItem as StepperPrimary, StepProgressIndicator, ProgressBar, TimelineItem, Button or standalone navigation. Prefer StepperPrimary for compact horizontal labeled steps and StepProgressIndicator for unlabeled segmented progress. Accessibility: the parent VerticalStepper should render an ordered list. Mark the active item with aria-current=step and expose completed, current, pending or error in accessible text. statusIcon and connector are decorative and should be aria-hidden. Color must not be the only status cue. When the nested ListItem is non-interactive, the row receives no focus; when actionable, follow ListItem focus and control semantics. Token rule: local S2 kebab-case variables and local text styles only — color/actions/primary, color/border/2, text/primary, text/secondary, text/placeholder, feedback/danger, spacing/0|050|100, border/width/025, border/radius/0, plus ListItem token rules for content. Future React mapping: VerticalStepperItem(status, showConnector, headline, supportingText, condition, leading, trailing, showSupportingText, showOverline, showDivider, stateLayer, ...). Code Connect is not configured.
+
+## Variants
+
+- **status:** completed | current | pending | error
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `status` | completed \| current \| pending \| error |
+| `showConnector` | boolean — hides vertical connector for final item |
+| `headline` | TEXT — ListItem primary label (exposed) |
+| `supportingText` | TEXT — ListItem supporting copy (exposed) |
+| `overline` | TEXT — optional ListItem overline (exposed) |
+| `trailingSupportingText` | TEXT — optional trailing meta (exposed) |
+| `condition` | 1-line \| 2-line \| 3-line — ListItem density (exposed) |
+| `showSupportingText` | true \| false — ListItem (exposed) |
+| `showOverline` | true \| false — ListItem (exposed) |
+| `showTrailingSupportingText` | boolean — ListItem (exposed) |
+| `showDivider` | boolean — ListItem; default false (exposed) |
+| `leading` | none \| monogram \| icon \| image \| video \| checkbox \| radio \| switch — default none (exposed) |
+| `trailing` | none \| icon \| checkbox \| radio \| switch — default none (exposed) |
+| `stateLayer` | INSTANCE_SWAP — ListItemStateLayer; default non-interactive (exposed) |
+
+## Rules
+
+- **composition:** indicatorColumn (statusIcon + connector) + nested ListItem; ListItem props exposed on the set
+- **leadingDefault:** leading=none by default — status lives in indicatorColumn; avoid duplicate leading status icons
+- **interaction:** default non-interactive (stateLayer=default); enable ListItem states/controls only when step is intentionally actionable
+- **icons:** structural by status: circle-check-filled | circle-dot-filled | circle-outline | circle-x-filled; local DS icons only
+- **connector:** completed uses color/actions/primary; current|pending|error use color/border/2
+- **vsStepperPrimary:** Use StepperPrimary for compact horizontal labeled steps
+- **vsStepProgressIndicator:** Use StepProgressIndicator for unlabeled segmented progress
+- **usage:** Do not use as StepperPrimary, StepProgressIndicator, ProgressBar, TimelineItem, Button or standalone navigation
+
+## Token rules
+
+- color/actions/primary for completed/current icons and completed connector
+- color/border/2 for current|pending|error connectors
+- text/placeholder for pending icon stroke; feedback/danger for error icon
+- spacing/0 | 050 | 100, border/width/025, border/radius/0 on indicator/root
+- ListItem owns content spacing/text tokens
+
+## Accessibility
+
+Parent ordered list; aria-current=step on active item; status in accessible text; statusIcon/connector aria-hidden; color not sole cue; non-interactive rows receive no focus; actionable rows follow ListItem semantics.
+

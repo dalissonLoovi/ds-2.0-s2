@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/StepProgressIndicator" />
+
+# StepProgressIndicator
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3809-765) · node `3809:765`
+
+## AI-READY
+
+AI-READY COMPONENT: StepProgressIndicator is a compact, non-interactive, segmented indicator for linear multi-step flows with a known and stable total. Use it for mobile screens, compact modals, onboarding, checkout, registration and document-upload flows when the user needs to understand the current step without the full labeled StepperPrimary. Do not use it for one or two steps, non-linear flows, conditionally changing totals, task loading, percentage progress, navigation tabs, pagination, sliders or decorative dividers. Use ProgressBar for continuous quantitative progress and StepperPrimary for labeled or structurally detailed steps. Variants: stepCount=3|4|5|6|7|8 and currentStep=1..stepCount. The published matrix is intentionally sparse: combinations where currentStep exceeds stepCount must not exist. Props: showCounter controls the visible localized counter derived from stepCount and currentStep; hasError replaces the current visual segment with feedback/danger and must only be enabled when the current step has a real validation error accompanied by an explanatory message. Structure: counter and segments; each segment uses the internal StepProgressSegment component; completed steps precede current, pending steps follow current, and currentSegmentSlot overlays errorSegment when hasError=true. Layout: horizontal segments only, no wrap and no horizontal scroll. Root uses vertical Auto Layout with HUG height so showCounter can expand the component; segment track height uses spacing/050. The master uses a 350px demonstration width; instances should use Fill container. Each segment distributes equally with spacing/100, 4px height and border/radius/full. Step-count policy: do not show for 1-2 steps; use 3-5 directly; for 6-8 enable showCounter; above 8 group screens into high-level chapters or use ProgressBar plus textual position. Accessibility: the visual segments are decorative and should be aria-hidden. Provide equivalent visible or accessible text such as Etapa 2 de 5: Dados do veiculo. When exposing a full navigable step list, use an ordered list and aria-current=step on the active step. Do not use role=progressbar for this component because it represents position in a flow rather than quantitative task completion. The component receives no focus and does not replace Back/Continue controls. Token rule: use existing DS kebab-case variables only - color/actions/primary, interactive/selected, color/background-surface/2, feedback/danger, text/secondary, spacing/050|100, border/radius/full - never Spacing/* Title Case. React mapping: StepProgressIndicator(stepCount, currentStep, showCounter, hasError); the localized counter text must be computed from stepCount and currentStep. Code Connect is not configured.
+
+## Variants
+
+- **stepCount:** 3 | 4 | 5 | 6 | 7 | 8
+- **currentStep:** 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `stepCount` | 3 \| 4 \| 5 \| 6 \| 7 \| 8 |
+| `currentStep` | 1..stepCount (sparse: never exceeds stepCount) |
+| `showCounter` | boolean — toggles localized Etapa X de Y counter |
+| `hasError` | boolean — overlays current segment with status=error |
+
+## Rules
+
+- **composeSegment:** Nest local StepProgressSegment only — completed before current, pending after
+- **sparseMatrix:** No variants where currentStep &gt; stepCount
+- **vsProgressBar:** Use ProgressBar for quantitative % progress
+- **vsStepperPrimary:** Use StepperPrimary for labeled/detailed steps
+- **hugRoot:** Root vertical HUG so showCounter can expand; track height spacing/050
+
+## Token rules
+
+- color/actions/primary (current)
+- interactive/selected (completed)
+- color/background-surface/2 (pending)
+- feedback/danger (error)
+- text/secondary (counter)
+- spacing/050|100, border/radius/full
+
+## Accessibility
+
+Segments aria-hidden; expose Etapa X de Y (or equivalent); aria-current=step on navigable lists; do not use role=progressbar; no focus.
+
+## Composition
+
+- StepProgressSegment
+

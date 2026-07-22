@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/InputNumber" />
+
+# InputNumber
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3935-684) · node `3935:684`
+
+## AI-READY
+
+AI-READY COMPONENT: InputNumber is the Design System 2.0 single-line outlined numeric/phone text field — same visual pattern as Input (height 56, border/radius/200, floating label for content=value|placeholder, resting label for content=label), with an optional in-field SelectCountry trigger for phone/DDI entry. Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; trailingIcon=true|false; appearance=default|inverse (120 variants). showSelectCountry (BOOLEAN, default false) toggles selectCountryBlock after leadingIcon: SelectCountry size=sm + DividerVertical. Nested SelectCountry stays expanded=false; uses state=disabled only when InputNumber is disabled; otherwise SelectCountry state=default (field owns hover/focus/error strokes). On appearance=inverse, SelectCountry expandIcon uses text/on-color (focus text/brand, disabled text/on-color-disabled) and DividerVertical uses color/border/2. appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error feedback/danger). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3; default/disabled border color/border/2; label text/on-color (focus text/brand); value text/on-color; placeholder and non-error supporting text/on-color-disabled; on state=disabled all field texts use text/placeholder-inverse; leadingIcon and trailingIcon strokes text/on-color (focus text/brand, disabled text/on-color-disabled, error feedback/danger). Feedback borders unchanged — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Country menu is never nested — compose externally. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing, showSelectCountry. Do not use as generic Input, InputPassword, InputSelect, Autocomplete, SelectCountry standalone, stepper, or SearchBar. Accessibility: labeled input; aria-invalid on error; aria-disabled when disabled; when showSelectCountry=true country trigger is a separate named control. Token rule: local S2 kebab-case only. React mapping: InputNumber(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?, showSelectCountry, countryFlag?). Code Connect is not configured.
+
+## Variants
+
+- **state:** default | hover | focus | error | disabled
+- **content:** value | placeholder | label
+- **leadingIcon:** true | false
+- **trailingIcon:** true | false
+- **appearance:** default | inverse
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| focus \| error \| disabled |
+| `content` | value \| placeholder \| label |
+| `leadingIcon` | true \| false (variant axis) |
+| `trailingIcon` | true \| false (variant axis) |
+| `appearance` | default \| inverse — inverse for dark/on-color surfaces |
+| `label` | TEXT — floating or resting field label (phone demo: Número de telefone) |
+| `value` | TEXT — input text (phone demo: + 55) |
+| `placeholder` | TEXT — placeholder text |
+| `supportingText` | TEXT — helper or error message |
+| `showSupportingText` | boolean |
+| `leading` | INSTANCE_SWAP — local DS outline icon |
+| `trailing` | INSTANCE_SWAP — local DS outline icon |
+| `showSelectCountry` | boolean — toggles SelectCountry sm + DividerVertical in field (default false) |
+
+## Rules
+
+- **inputMatrix:** state × content × leadingIcon × trailingIcon × appearance = 120 variants; showSelectCountry is BOOLEAN not an axis
+- **appearanceInverse:** appearance=inverse: transparent field; floatingLabel cutout inverse-3 on all inverse states including focus; border/2; on-color texts; disabled texts text/placeholder-inverse; icon disabled on-color-disabled; focus label text/brand; SelectCountry expandIcon on-color + DividerVertical border/2
+- **selectCountryBlock:** selectCountryBlock = SelectCountry size=sm + DividerVertical after leadingIcon
+- **floatingLabelAlign:** floatingLabel is absolute on field (left-aligned with selectCountryBlock / content start), not on value text — stays with country when showSelectCountry=true
+- **nestedSelectState:** Nested SelectCountry expanded=false; disabled only when InputNumber disabled; else default
+- **externalCountryMenu:** Country list floats externally — never nested in InputNumber
+- **vsInputSelectPhone:** Do not use as Input, InputSelect, InputPassword, Autocomplete, SelectCountry standalone, stepper, or SearchBar
+
+## Token rules
+
+- default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand
+- inverse: transparent field; color/border/2; cutout color/background-surface/inverse-3; text/on-color|on-color-disabled; disabled texts text/placeholder-inverse
+- shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger
+- SelectCountry + DividerVertical nested DS tokens
+- no field fill on disabled
+
+## Accessibility
+
+Labeled input; aria-invalid on error; aria-disabled when disabled; country trigger separately named when showSelectCountry=true.
+
+## Composition
+
+- SelectCountry
+- DividerVertical
+- local DS outline icons
+

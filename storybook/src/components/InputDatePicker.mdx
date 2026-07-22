@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/InputDatePicker" />
+
+# InputDatePicker
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3985-1386) · node `3985:1386`
+
+## AI-READY
+
+AI-READY COMPONENT: InputDatePicker is the Design System 2.0 outlined date-field trigger — same visual identity as Input (height 56, border/radius/200, floating label for content=value|placeholder, resting label for content=label). Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; appearance=default|inverse (60 variants). Trailing calendar-outline is always present; on state=error also shows trailingIconError (alert-circle-outline). Calendar panel (month grid) is NOT nested — compose the Calendar component externally below/anchored to the field when open. appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error alert feedback/danger with calendar text/primary). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3 (all inverse states including focus); default/disabled border color/border/2; label text/on-color (focus text/brand); placeholder and non-error supporting text/on-color-disabled; value text/on-color; on state=disabled all field texts use text/placeholder-inverse; icons text/on-color (focus text/brand, disabled text/on-color-disabled, error alert feedback/danger with calendar text/on-color). Disabled (appearance=default): no field fill; stroke color/border/1. Feedback borders unchanged — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing (INSTANCE_SWAP, default calendar-outline). Do not use as generic Input, InputSelect, Autocomplete, or standalone Calendar panel. Accessibility: associate label; aria-invalid on error; aria-haspopup=dialog when calendar opens; aria-disabled when disabled; visible focus via interactive/focus. Token rule: local S2 kebab-case only. React mapping: InputDatePicker(state, content, leadingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?). Code Connect is not configured.
+
+## Variants
+
+- **state:** default | hover | focus | error | disabled
+- **content:** value | placeholder | label
+- **leadingIcon:** true | false
+- **appearance:** default | inverse
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| focus \| error \| disabled |
+| `content` | value \| placeholder \| label |
+| `leadingIcon` | true \| false (variant axis) |
+| `appearance` | default \| inverse — inverse for dark/on-color surfaces |
+| `label` | TEXT — floating or resting field label (demo: Data) |
+| `value` | TEXT — selected date (content=value) |
+| `placeholder` | TEXT — placeholder text (content=placeholder) |
+| `supportingText` | TEXT — helper or error message |
+| `showSupportingText` | boolean |
+| `leading` | INSTANCE_SWAP — local DS outline leading icon |
+| `trailing` | INSTANCE_SWAP — always-visible calendar (default calendar-outline); alert-circle on error demos |
+
+## Rules
+
+- **dateTriggerOnly:** Date-field trigger only — calendar panel is composed externally, never nested
+- **appearanceInverse:** appearance=inverse: transparent field; floatingLabel cutout inverse-3 including focus; border/2; on-color texts; disabled texts text/placeholder-inverse; icon disabled on-color-disabled; focus label text/brand
+- **calendarTrailingAlways:** No trailingIcon variant axis — calendar-outline always present
+- **errorTrailingA11y:** state=error always shows trailingIconError (alert-circle-outline) beside the calendar icon
+- **disabledNoFill:** appearance=default disabled: no field fill; stroke color/border/1
+- **hoverBorder:** state=hover field stroke uses color/border-feedback/primary
+- **vsInputCalendar:** Do not use as generic Input, InputSelect, Autocomplete, or standalone Calendar panel
+
+## Token rules
+
+- default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand
+- inverse: transparent field; cutout color/background-surface/inverse-3; color/border/2; text/on-color|on-color-disabled; disabled texts text/placeholder-inverse
+- shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger
+- no field fill on disabled (appearance=default)
+- spacing/050|100|200|300|700; border/radius/200; border/width/012|025
+- body/large/regular value/placeholder/resting; body/small/regular floating label/supporting
+
+## Accessibility
+
+Associate label; aria-invalid on error; aria-haspopup=dialog when calendar opens; aria-disabled when disabled; focus via interactive/focus.
+
+## Composition
+
+- Calendar (external panel)
+- calendar-outline / alert-circle-outline
+- local DS outline icons
+

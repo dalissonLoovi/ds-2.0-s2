@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ChipTag" />
+
+# ChipTag
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3291-690) · node `3291:690`
+
+## AI-READY
+
+AI-READY COMPONENT: ChipTag is a compact non-interactive label used to display category, status, metadata or contextual classification. Use intent=info, system, success, warning or danger for semantic status tags, and intent=outline for neutral outlined tags. Do not use ChipTag as a button, selectable filter, removable chip, navigation tab, checkbox, badge, alert or CTA. For interactive chips, use ChipClickable.
+
+## Variants
+
+- **size:** sm | md
+- **intent:** info | system | success | warning | danger | outline
+- **width:** hug | fill
+- **state:** default | disabled
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `showAvatar` | boolean |
+| `leadingIcon` | local DS icon swap |
+| `showLeadingIcon` | boolean |
+| `label` | visible chip label |
+| `size` | sm \| md |
+| `intent` | info \| system \| success \| warning \| danger \| outline |
+| `width` | hug \| fill |
+| `state` | default \| disabled |
+
+## Rules
+
+- **disabled:** disabled is state=disabled only; never intent=disabled. Disabled exemplars exist for intent=system (matches ChipClickable pattern).
+- **nonInteractive:** ChipTag must not receive focus or onClick; use ChipClickable for interaction.
+
+## Token rules
+
+- color/background-feedback-primary/\{intent\} for info, system, success, warning, danger fills
+- color/border/2 for outline stroke and disabled fill
+- text/primary for label on saturated fills
+- text/secondary for muted icon/label on outline and disabled
+- border/radius/full
+- spacing/*
+- border/width/012
+- border/radius/0
+
+## Accessibility
+
+ChipTag is not interactive by default, should not receive focus and should not use onClick. If decorative, it may be aria-hidden. If it communicates important status or metadata, ensure the label is exposed to assistive technologies.
+

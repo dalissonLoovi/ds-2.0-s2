@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Table" />
+
+# Table
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3480-6228) · node `3480:6228`
+
+## AI-READY
+
+AI-READY COMPONENT: Table is the desktop/web composite table used to assemble a full data table from TableRow instances. Use columns=3–9 to set nested TableRow cellCount for headerRow and rows-slot body rows. Use showHeader=true to show headerRow and showHeader=false to hide it. Use the rows SLOT to control body row count and content — default variants ship with eight bodyRow01–bodyRow08 TableRow instances (type=body); designers may add, remove or replace rows (preferred: TableRow). headerRow must be TableRow type=header with matching cellCount; body rows must be TableRow type=body with matching cellCount. showExpandCell stays available on nested TableRow when needed. Do not use Table as a mobile-only table shell, a single TableRow/TableCell, TableSkeleton, Card, List or decorative layout frame. Accessibility: compose into a semantic table (table/thead/tbody/tr/th/td); headerRow maps to column headers; body rows in the rows slot map to data rows; preserve visible focus, selection and expand semantics from nested TableRow/TableCell/TableExpandCell. Token rule: rely on nested TableRow/TableCell/TableExpandCell DS tokens; do not invent tokens on the Table shell. React mapping: Table(columns, showHeader, rows).
+
+## Variants
+
+- **columns:** 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `columns` | 3 \| 4 \| 5 \| 6 \| 7 \| 8 \| 9 — variant axis; sets nested TableRow cellCount |
+| `showHeader` | boolean — toggles headerRow visibility |
+| `rows` | SLOT — body TableRow instances; defaults include bodyRow01–08; add/remove/replace as needed (preferred TableRow) |
+
+## Rules
+
+- **name:** Published Figma name is Table (platform suffix deferred)
+- **modernProps:** Props use camelCase: columns, showHeader, rows
+- **rowsSlot:** Body row count is designer-controlled via the rows SLOT; defaults ship eight TableRow body rows
+- **composition:** Composes TableRow headerRow plus rows SLOT of TableRow type=body (cellCount matches columns)
+- **usage:** Do not use as mobile-only shell, single TableRow/TableCell, TableSkeleton, Card, List or decorative layout frame
+
+## Token rules
+
+- Rely on nested TableRow/TableCell/TableExpandCell DS tokens
+- Do not invent tokens on the Table shell
+
+## Accessibility
+
+Semantic table structure; headerRow → column headers; rows slot → data rows; preserve nested focus/selection/expand semantics.
+

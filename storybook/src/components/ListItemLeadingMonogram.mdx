@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ListItemLeadingMonogram" />
+
+# ListItemLeadingMonogram
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3694-16194) · node `3694:16194`
+
+## AI-READY
+
+AI-READY COMPONENT: ListItemLeadingMonogram is a compact leading visual block for ListItem when an initials-style monogram is required. Prefer Avatar for real user identity. Props: initial controls the visible character. Do not use as a standalone Avatar, Button, Badge or status indicator. Token rule: use existing DS kebab-case variables only — color/background-surface/2, text/primary, border/radius/full, body/large/medium typography tokens. Accessibility: decorative when surrounding ListItem text identifies the entity; otherwise expose the initial/name through the parent ListItem accessible label. React mapping: internal only for ListItem leadingSlot — ListItemLeadingMonogram(initial).
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `initial` | visible monogram character |
+
+## Rules
+
+- **preferAvatar:** Prefer Avatar for real user identity
+- **internalOnly:** Use inside ListItem leadingSlot — not standalone
+- **vsControls:** Do not use as Avatar, Button, Badge or status indicator
+
+## Token rules
+
+- color/background-surface/2
+- text/primary
+- border/radius/full
+- body/large/medium
+
+## Accessibility
+
+decorative when parent text identifies the entity; otherwise expose via parent ListItem label.
+

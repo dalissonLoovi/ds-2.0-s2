@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/NavigationRailExpandedItem" />
+
+# NavigationRailExpandedItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3327-5795) · node `3327:5795`
+
+## AI-READY
+
+AI-READY COMPONENT: NavigationRailExpandedItem is an interactive horizontal navigation item used inside NavigationRail expanded layouts to represent a primary or nested app destination. Use selected=true for the current active destination. Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation surfaces. Use badge=dot for activity indication and badge=count for numeric notification count. When badge=count, edit the nested Badge count (and overflowLabel when needed); keep Badge size/content as designed by the variant. Use hierarchy=nav-tree only when the item belongs to an expanded navigation tree or nested destination group. hierarchy=nav-tree is an intentional sparse axis: only resting selected variants are published (state=default, selected=true × appearance × badge); interaction states for nested tree items reuse hierarchy=default or product-level overrides — do not expect a full nav-tree state matrix. Do not use NavigationRailExpandedItem as a Button, NavigationBarItem, NavigationRailCompactItem, Chip, Badge, ListItem, MenuItem, Tab or Accordion trigger. Accessibility: implement as link or button depending on navigation behavior; use aria-current=page when selected=true and the item represents the current route; preserve visible focus and keyboard navigation; hide decorative icons from assistive technology when a visible label exists; expose an accessible label for badges when they communicate important notifications. Colors follow the intentional expanded-rail model (selected/actions and tangerine badge accents). Token rule: use existing DS variables only (interactive/*, text/*, color/actions/*, color/palette/tangerine-1, spacing/*, border/*). React mapping: NavigationRailExpandedItem(icon, label, appearance, state, hierarchy, badge, selected, count?).
+
+## Variants
+
+- **appearance:** default | inverse
+- **state:** default | hover | focus | pressed
+- **hierarchy:** default | nav-tree
+- **badge:** none | count | dot
+- **selected:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `icon` | local DS icon swap |
+| `label` | visible item label |
+| `appearance` | default \| inverse |
+| `state` | default \| hover \| focus \| pressed |
+| `hierarchy` | default \| nav-tree |
+| `badge` | none \| count \| dot |
+| `selected` | false \| true |
+| `count` | nested Badge TEXT when badge=count (exposed instance) |
+| `overflowLabel` | nested Badge TEXT when badge=count (exposed instance) |
+
+## Rules
+
+- **icons:** icon must use local DS outline icons only; no remote/external icon libraries
+- **badge:** badge mode is a variant (none|count|dot); count/overflowLabel come from exposed nested Badge — do not change Badge size/content away from the variant
+- **hierarchyNavTree:** hierarchy=nav-tree is intentional sparse: only state=default + selected=true × appearance × badge (6 variants); full interaction matrix applies to hierarchy=default
+- **colors:** intentional color model: color/actions/primary|tertiary for selected/accent, color/palette/tangerine-1 for badge accent; do not remap as feedback tokens
+- **usage:** Use inside NavigationRail expanded layouts; not as Button, NavigationBarItem, NavigationRailCompactItem, Chip, Badge, Tab or ListItem
+
+## Token rules
+
+- text/primary | text/secondary | text/on-color-disabled for labels/icons by appearance/selected
+- interactive/hover | focus | pressed | selected for interaction fills/strokes
+- color/background-surface/2 where used as surface
+- color/actions/primary | color/actions/tertiary for selected/accent affordances (intentional)
+- color/palette/tangerine-1 for badge accent (intentional)
+- spacing/0 | 150 | 200 | 600 and border/radius/0 | 300 | full
+
+## Accessibility
+
+Link or button depending on navigation behavior; selected=true maps to aria-current=page for routes; decorative icons aria-hidden when label visible; badge count needs accessible notification label when meaningful.
+

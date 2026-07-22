@@ -1,0 +1,126 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Feedback" />
+
+# Feedback — usage by layer
+
+Use the unified feedback vocabulary (info | system | success | warning | danger) and pick the token layer by surface role: content for text/icons, bg-primary for emphasized blocks, bg-secondary for subtle tint, interactive/*-surface for form validation backgrounds, border-feedback for accent borders.
+
+## Decision guide
+
+- Need readable status text/icon on a neutral surface? → feedback/\{status\}
+- Need a full feedback block (Banner, alert row, strong chip)? → color/background-feedback-primary/\{status\} + text/primary
+- Need a soft tint behind related content? → color/background-feedback-secondary/\{status\}
+- Need input/control validation background? → interactive/error-surface (danger) or interactive/success-surface (success)
+- Need a validation or selection border? → color/border-feedback/\{success|danger|primary\}
+
+## Content / status color
+
+- **Token pattern:** `feedback/\{status\}`
+- **Export prefix:** `feedback`
+- **Allowed statuses:** `success`, `warning`, `danger`
+
+**Use for**
+
+- Status text and icons on neutral surfaces
+- Inline semantic labels and helper text
+- Button intent labels for success and danger
+
+**Do not use for**
+
+- Large tinted feedback blocks — use color/background-feedback-primary/*
+- Soft page/section tint — use color/background-feedback-secondary/*
+- Input or control validation backgrounds — use interactive/*-surface
+- Accent borders — use color/border-feedback/*
+
+**Figma variables:** `feedback/success`, `feedback/warning`, `feedback/danger`
+
+**Components:** `Button`
+
+## Background — feedback primary
+
+- **Token pattern:** `color/background-feedback-primary/\{status\}`
+- **Export prefix:** `color-bg-feedback-primary`
+- **Allowed statuses:** `success`, `warning`, `danger`, `info`, `system`
+- **Text pairing:** Pair with text/primary for message, label and icon on saturated fills.
+
+**Use for**
+
+- High-emphasis feedback blocks and inline alerts
+- Banner status backgrounds
+- ChipClickable intent fills (info, system, success, warning, danger)
+- Badge emphasis when a strong status fill is required
+
+**Do not use for**
+
+- Subtle tinting behind dense content — use color/background-feedback-secondary/*
+- Form field validation — use interactive/error-surface or interactive/success-surface
+- Body copy on default page surfaces without a feedback container
+
+**Figma variables:** `color/background-feedback-primary/success`, `color/background-feedback-primary/warning`, `color/background-feedback-primary/danger`, `color/background-feedback-primary/info`, `color/background-feedback-primary/system`
+
+**Components:** `Banner`, `ChipClickable`, `Badge`
+
+## Background — feedback secondary
+
+- **Token pattern:** `color/background-feedback-secondary/\{status\}`
+- **Export prefix:** `color-bg-feedback-secondary`
+- **Allowed statuses:** `success`, `warning`, `danger`
+
+**Use for**
+
+- Soft, low-contrast feedback tint behind content
+- Secondary emphasis inside cards, forms and sections
+- Button outline / secondary success states
+
+**Do not use for**
+
+- Full-width Banner blocks — use color/background-feedback-primary/*
+- Chip fills that must read as strong status pills — prefer bg-primary
+- Validation backgrounds on inputs — use interactive/*-surface
+
+**Figma variables:** `color/background-feedback-secondary/success`, `color/background-feedback-secondary/warning`, `color/background-feedback-secondary/danger`
+
+**Components:** `Button`
+
+## Interactive validation surface
+
+- **Token pattern:** `interactive/\{semantic\}-surface`
+- **Allowed statuses:** `danger`, `success`
+
+**Use for**
+
+- Input, textarea, select and control backgrounds during validation
+- Inline field success/error affordance tied to interaction
+- ChipClickable danger intent surface when the chip represents a removable/error context
+
+**Do not use for**
+
+- Page-level Banner or toast messaging
+- Static status labels without a control surface
+- Replacing color/background-feedback-primary on Banner or Chip when the whole block is the message
+
+**Figma variables:** `interactive/error-surface`, `interactive/success-surface`
+
+**Components:** `Button`, `ChipClickable`
+
+## Border — feedback accent
+
+- **Token pattern:** `color/border-feedback/\{role\}`
+- **Export prefix:** `color-border-feedback`
+
+**Use for**
+
+- Control outlines during validation
+- Checkbox and form selection accents
+- Button outline intent borders for success and danger
+
+**Do not use for**
+
+- Large filled feedback blocks — use bg-primary or bg-secondary
+- Body text color — use feedback/* content tokens or text/*
+
+**Figma variables:** `color/border-feedback/primary`, `color/border-feedback/success`, `color/border-feedback/danger`
+
+**Components:** `Checkbox`, `Button`
+

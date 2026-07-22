@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/List" />
+
+# List
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3745-10921) · node `3745:10921`
+
+## AI-READY
+
+AI-READY COMPONENT: List is a vertical container that composes one or more ListItem rows through an items SLOT. Use type=plain for an embedded page list surface and type=dropdown for an elevated menu/panel surface. Defaults in the component set: type=dropdown, showScroll=false. Props: items is the SLOT for ListItem instances (DividerHorizontal may separate groups); showScroll toggles the local right-edge scroll affordance when content overflows. Do not put ListActionDropdownItem inside List — use ListItem only. Do not use List as a select field, combobox, navigation drawer, table, or action menu panel; for action menus use ListActionDropdown. type=dropdown is the panel surface only — the external trigger owns aria-expanded / open state. Token rule: use existing DS kebab-case variables only — color/background-surface/0, border/radius/0 (plain) or border/radius/200 (dropdown), elevation/2 on dropdown, color/palette/graph + border/radius/full for scroll, plus nested ListItem and DividerHorizontal tokens. Accessibility: map plain lists to role=list with ListItem as listitem; map dropdown panels to role=menu or listbox depending on selection pattern; keyboard and focus belong to the product implementation; scroll is visual-only. React mapping: List(\{ type, showScroll, children \}) where children map to the items slot.
+
+## Variants
+
+- **type:** plain | dropdown
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `type` | plain \| dropdown |
+| `items` | SLOT — prefer ListItem (+ DividerHorizontal for group separation) |
+| `showScroll` | boolean — toggles local scroll affordance (default false) |
+
+## Rules
+
+- **slotListItemOnly:** Compose items SLOT with ListItem only — not ListActionDropdownItem
+- **plainVsDropdown:** type=plain = page list surface; type=dropdown = elevated panel surface
+- **triggerExternal:** type=dropdown has no internal trigger — parent owns open/aria-expanded
+- **vsActionMenu:** For action menus use ListActionDropdown
+- **vsSelect:** Do not use as select field, combobox, navigation drawer or table
+- **scroll:** Absolute right-edge thumb; visible via showScroll when list overflows
+- **defaults:** type=dropdown, showScroll=false
+
+## Token rules
+
+- color/background-surface/0
+- border/radius/0 (plain) | border/radius/200 (dropdown)
+- elevation/2 on dropdown
+- scroll: color/palette/graph + border/radius/full
+- nested ListItem and DividerHorizontal tokens
+
+## Accessibility
+
+plain → role=list / listitem; dropdown → menu or listbox by selection pattern; trigger owns aria-expanded; scroll visual-only.
+
+## Composition
+
+- ListItem
+- DividerHorizontal
+

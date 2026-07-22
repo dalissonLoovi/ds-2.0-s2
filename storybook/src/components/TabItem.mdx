@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/TabItem" />
+
+# TabItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3532-6782) · node `3532:6782`
+
+## AI-READY
+
+AI-READY COMPONENT: TabItem is the individual tab control used inside a Tabs/TabList pattern to switch between related views in the same page or section. Use variant=primary for filled/elevated tab treatment and variant=secondary for underline tab treatment. Use state=default, hover, selected or disabled. Focus is intentionally not published on TabItem. Use platform=web or platform=mobile for density. Use appearance=default on standard surfaces and appearance=inverse on inverse/dark/on-color surfaces. Intentional sparse matrix: appearance=inverse is published only for variant=primary + platform=mobile. It is not published for primary+web or for any secondary combination. Use label for the visible tab text. Use showIcon to toggle the leading icon and leadingIcon (INSTANCE_SWAP) to choose the local DS outline icon. Use showAttention and attentionIcon for the optional attention/status affordance. Do not use TabItem as a standalone Button, NavigationItem, Chip, segmented control, or page-level route link. Compose TabItem only inside a Tabs/TabList wrapper. Accessibility: wrapper role=tablist; each TabItem role=tab; aria-selected=true only for state=selected; disabled tabs aria-disabled=true; decorative icons aria-hidden when label is visible; keyboard follows Tabs pattern (arrows + Enter/Space). Token rule: prefer DS kebab-case variables (color/actions/primary, color/background-surface/0, text/primary|brand, spacing/100|150, border/radius/0|300). Avoid Title Case legacy aliases; Border/Icon/20 may remain on icon stroke weight when no local kebab equivalent exists. React mapping: TabItem(variant, state, platform, appearance, label, showIcon, leadingIcon?, showAttention, attentionIcon?).
+
+## Variants
+
+- **variant:** primary | secondary
+- **state:** default | hover | selected | disabled
+- **platform:** web | mobile
+- **appearance:** default | inverse
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `variant` | primary \| secondary |
+| `state` | default \| hover \| selected \| disabled |
+| `platform` | web \| mobile |
+| `appearance` | default \| inverse |
+| `label` | TEXT — visible tab label |
+| `showIcon` | boolean — toggles leadingIcon visibility |
+| `leadingIcon` | INSTANCE_SWAP — local DS outline icon |
+| `showAttention` | boolean — toggles attentionIcon visibility |
+| `attentionIcon` | INSTANCE_SWAP — optional attention/status icon |
+
+## Rules
+
+- **composition:** Compose only inside Tabs/TabList — not a standalone Button/NavigationItem/Chip
+- **intentionalSparse:** appearance=inverse only for variant=primary + platform=mobile
+- **noFocus:** Focus is intentionally not published
+- **secondaryIndicator:** selectedIndicator visible only on state=selected for variant=secondary
+- **usage:** Do not use as Button, NavigationItem, Chip, segmented control or page-level route link
+
+## Token rules
+
+- color/actions/primary and color/background-surface/0
+- text/primary | text/brand
+- spacing/100 | 150 and border/radius/0 | 300
+- Border/Icon/20 may remain on icon strokeWeight when no local kebab equivalent exists
+
+## Accessibility
+
+role=tab inside role=tablist; aria-selected only when selected; aria-disabled when disabled; decorative icons aria-hidden when label visible.
+

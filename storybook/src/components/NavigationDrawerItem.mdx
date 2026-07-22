@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/NavigationDrawerItem" />
+
+# NavigationDrawerItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3327-1178) · node `3327:1178`
+
+## AI-READY
+
+AI-READY COMPONENT: NavigationDrawerItem is an interactive navigation item used inside NavigationDrawer or navigation surfaces to represent a destination, section or route. Use selected=true for the current active destination. Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation surfaces. Use state=default, hover, focus and pressed to represent interaction states. Use showBadge=true and badgeLabel to show an optional numeric/status count; badge is controlled by props, not by variants. The leadingIcon must come from the local DS icon library. Do not use NavigationDrawerItem as Button, Chip, Badge, ListItem, MenuItem, Accordion trigger or generic content row. Accessibility: behave as a link for routes or a button for in-place navigation; expose visible focus; map selected=true to aria-current=page or aria-selected=true depending on navigation pattern; badge counts need accessible labels when meaningful. React mapping: NavigationDrawerItem(label, leadingIcon, showLeadingIcon, showBadge, badgeLabel, appearance, state, selected).
+
+## Variants
+
+- **appearance:** default | inverse
+- **state:** default | hover | focus | pressed
+- **selected:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `leadingIcon` | local DS icon swap |
+| `showLeadingIcon` | boolean |
+| `showBadge` | boolean |
+| `badgeLabel` | optional badge text/count |
+| `label` | visible item label |
+| `appearance` | default \| inverse |
+| `state` | default \| hover \| focus \| pressed |
+| `selected` | false \| true |
+
+## Rules
+
+- **icons:** leadingIcon must use local DS outline icons only; no remote/external icon libraries
+- **badge:** badge visibility and label are props (showBadge, badgeLabel), not variants
+- **usage:** Use inside NavigationDrawer or navigation surfaces; not as Button, Chip, Badge or ListItem
+
+## Token rules
+
+- text/primary for default label
+- text/secondary for muted/badge on default surfaces
+- text/on-color-disabled for muted content on inverse surfaces
+- interactive/hover | focus | pressed | selected for interaction fills
+- color/actions/tertiary for selected/accent affordances
+- color/background-surface/2 where used as surface
+- spacing/100 | 150 | 200 | 600 and border/radius/200 | 400
+
+## Accessibility
+
+Link for routes or button for in-place navigation; visible focus; selected=true maps to aria-current=page or aria-selected=true; badge counts need accessible labels when meaningful.
+

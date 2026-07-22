@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Keyboard" />
+
+# Keyboard
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3745-4228) · node `3745:4228`
+
+## AI-READY
+
+AI-READY COMPONENT: Keyboard is a placement-only on-screen keyboard utility for prototypes and wireframes. It is not a product input component and is not an accurate representation of Android Gboard or any OS keyboard. Use configuration=base-keyboard for the default alphabet layout, configuration=alphanumeric for mixed letter/number layouts, configuration=keypad for dialer-style keys, and configuration=numeric-only for digits-only entry. Use layout=portrait for stacked mobile portrait chrome, layout=landscape for wide landscape chrome, and layout=floating for a compact floating keyboard panel. Do not use Keyboard as TextInput, Button, Modal, Bottom sheet, or a real IME implementation. Composition is decorative placement chrome (toolbar, key rows, bottomNav nesting local MobileGestureNavigation appearance=default) — keep keys as non-interactive visual placeholders in design. Prefer local DS outline icons for toolbar and modifiers (shiftIcon, backspaceIcon, enterKey icon, gifIcon via photo-outline). Token rule: use existing DS kebab-case variables only — color/background-surface/0|1|2, text/primary|secondary|brand|on-color, color/actions/primary|secondary, color/border/1|2, border/radius/100|200|300|full, spacing/050|100|150|200|300 — never Schemes/* or M3/sys/*. Typography: key labels use body/large/regular; compact modifier labels use body/medium/medium. Accessibility: treat as decorative prototype chrome in design specs; in product UI, real text entry must use native OS keyboard / platform IME, not this component. React mapping: Keyboard(configuration, layout) for prototype mocks only. Code Connect is not configured.
+
+## Variants
+
+- **configuration:** base-keyboard | alphanumeric | keypad | numeric-only
+- **layout:** portrait | landscape | floating
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `configuration` | base-keyboard \| alphanumeric \| keypad \| numeric-only (default base-keyboard) |
+| `layout` | portrait \| landscape \| floating (default portrait) |
+
+## Rules
+
+- **placementOnly:** Wireframe/prototype placement only — not a product TextInput or real IME
+- **vsTextInput:** Do not use as TextInput, Button, Modal, Bottom sheet, or OS keyboard replacement
+- **localTokens:** Never use Schemes/* or M3/sys/* — local kebab-case only; radius/spacing bound where mappable
+- **localIcons:** Local DS outline icons for toolbar/modifiers; gifIcon uses photo-outline; bottomNav nests MobileGestureNavigation
+- **typography:** body/large/regular on key labels; body/medium/medium on compact modifiers
+- **nonInteractiveKeys:** Keys are decorative placeholders in design
+
+## Token rules
+
+- color/background-surface/0|1|2
+- text/primary|secondary|brand|on-color
+- color/actions/primary|secondary
+- color/border/1|2
+- border/radius/100|200|300|full (bound)
+- spacing/050|100|150|200|300 (bound on common gaps)
+
+## Accessibility
+
+Decorative prototype chrome in design specs; product text entry must use native OS/platform IME, not this component.
+
+## Composition
+
+- local DS outline icons
+- MobileGestureNavigation
+- decorative key rows
+

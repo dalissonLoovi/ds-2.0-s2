@@ -1,0 +1,12 @@
+# Dependencies / builds
+node_modules/
+storybook/node_modules/
+storybook/storybook-static/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Temp scripts
+_tmp_*

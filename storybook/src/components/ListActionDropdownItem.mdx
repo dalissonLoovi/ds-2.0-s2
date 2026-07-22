@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ListActionDropdownItem" />
+
+# ListActionDropdownItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3681-11151) · node `3681:11151`
+
+## AI-READY
+
+AI-READY COMPONENT: ListActionDropdownItem is an internal actionable row for action menus and list action dropdowns. Use state=default|hover|pressed|selected|focus|disabled for interaction visuals. Props: label controls the visible action text; showIcon toggles leadingIcon; icon swaps the local leading DS outline icon. Composition layers must remain semantic: leadingIcon, label, focusRing. focusRing is absolute, STRETCH, and visible only on state=focus. Icon sizing rule: leadingIcon is 20×20 for density next to body/medium text; do not keep absolute border/width/025 (2px) stroke on resized icons — unbind strokeWeight and use proportional stroke (~1.67px = 2×20/24) so outline weight scales with size (same pattern as ChipClickable). After INSTANCE_SWAP, re-apply proportional stroke if the swapped icon reintroduces a 24px absolute stroke bind. Prefer 24×24 + border/width/025 only when the icon sits at native master size. Do not use remote icons, menu kits, or detached legacy list items (item List action / _Menu list item). Do not use ListActionDropdownItem as a standalone page list row, select option, button, chip, or tab. Token rule: use existing DS kebab-case variables only — color/background-surface/0, interactive/hover|pressed|selected|disabled-surface|focus, text/primary|secondary|placeholder, spacing/100|200, border/radius/100, border/width/025 (only at native 24px icon size), body/medium/* typography tokens, plus nested local icon color tokens. Accessibility: map interactive rows as role=menuitem in an action menu; disabled maps to aria-disabled=true and must not be focusable/clickable; selected only when the parent represents a selectable value (aria-selected/aria-checked); decorative icons should be aria-hidden=true; keyboard behavior belongs to the parent menu (ArrowUp/ArrowDown, Enter/Space, Escape). React mapping: ListActionDropdownItem(state, label, showIcon, icon, onSelect).
+
+## Variants
+
+- **state:** default | hover | pressed | selected | focus | disabled
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| pressed \| selected \| focus \| disabled |
+| `label` | visible action text |
+| `showIcon` | boolean — toggles leadingIcon |
+| `icon` | INSTANCE_SWAP — local DS outline icon (preferred: edit, copy, archive, plus, trash, arrow-bar-right, share-2) |
+
+## Rules
+
+- **composition:** leadingIcon + label + focusRing
+- **focusRing:** absolute STRETCH; visible only on state=focus
+- **iconsLocal:** preferredValues and default must use local DS outline icons — no remote icons
+- **iconScale20:** leadingIcon is 20×20; follow DS icon scale (stroke ≈ 1.67 = 2×20/24); unbind absolute border/width/025; re-apply after INSTANCE_SWAP
+- **vsLegacy:** Do not use item List action or _Menu list item
+- **vsStandalone:** Do not use as page list row, select option, button, chip, or tab
+- **parentMenu:** keyboard and menu semantics belong to the parent action menu/dropdown
+- **noCountry:** showCountry/countryFlag removed — not part of this component
+
+## Token rules
+
+- color/background-surface/0 (default/focus)
+- interactive/hover | pressed | selected | disabled-surface
+- interactive/focus (focusRing stroke)
+- text/primary | secondary | placeholder
+- spacing/200 (gap), spacing/300 (horizontal padding)
+- border/radius/100, border/width/025
+- body/medium/regular + nested local icon tokens
+
+## Accessibility
+
+role=menuitem in action menus; disabled → aria-disabled and not focusable; selected only for selectable parents; decorative icons aria-hidden; keyboard handled by parent menu.
+

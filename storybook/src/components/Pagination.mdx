@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Pagination" />
+
+# Pagination
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3382-9417) · node `3382:9417`
+
+## AI-READY
+
+AI-READY COMPONENT: Pagination is a navigation control used to move across paginated content such as tables, lists, search results and reports. It composes PaginationItem for page numbers and overflow indicators, plus previousAction and nextAction (Button text/icon, size=sm). Use position=start when the current page is near the beginning (previous disabled), position=middle when the current page is between ranges (both actions enabled), and position=end when the current page is near the final pages (next disabled). Use size=lg for default interfaces and size=sm for compact layouts. Do not use Pagination as tabs, breadcrumbs, stepper, carousel navigation, menu, button group or standalone page number label. Accessibility: map the wrapper to nav with aria-label=Pagination. The active page item should use aria-current=page. Previous and next actions need clear aria-label text and must be disabled when unavailable. Token rule: use existing DS variables only (spacing/100|200|250|500, nested PaginationItem/Button tokens). React mapping: Pagination(position, size, pageItems, previousAction?, nextAction?).
+
+## Variants
+
+- **position:** start | middle | end
+- **size:** lg | sm
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `position` | start \| middle \| end |
+| `size` | lg \| sm |
+
+## Rules
+
+- **composition:** Composes PaginationItem (pageItem*) plus previousAction/nextAction Button text icon-only size=sm
+- **positionActions:** start: previous disabled; middle: both enabled; end: next disabled
+- **usage:** Do not use as tabs, breadcrumbs, stepper, carousel navigation, menu or button group
+
+## Token rules
+
+- spacing/100 | 200 | 250 | 500 for gaps and action sizes
+- Nested PaginationItem and Button use their own DS tokens
+
+## Accessibility
+
+Wrapper as nav with aria-label=Pagination; active page aria-current=page; previous/next need aria-label and disabled when unavailable.
+

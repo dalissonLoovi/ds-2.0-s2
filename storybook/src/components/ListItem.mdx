@@ -1,0 +1,77 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ListItem" />
+
+# ListItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3735-7716) · node `3735:7716`
+
+## AI-READY
+
+AI-READY COMPONENT: ListItem is a selectable or navigable row used inside lists to present a primary headline with optional overline, supporting text, trailing supporting text, leading media/controls and trailing actions. Use condition=1-line|2-line|3-line for vertical content density. Use leading=none|monogram|icon|image|video|checkbox|radio|switch and trailing=none|icon|checkbox|radio|switch for slot composition. Use showOverline and showSupportingText to toggle secondary text. Props: headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, stateLayer (ListItemStateLayer INSTANCE_SWAP), divider (DividerHorizontal INSTANCE_SWAP). Defaults in the component set: condition=3-line, leading=none, trailing=none, showOverline=false, showSupportingText=true. Composition must use local S2 building blocks only: ListItemStateLayer as stateLayer overlay; ListItemLeadingMonogram for leading=monogram; ListItemImageThumbnail for leading=image; ListItemVideoThumbnail for leading=video; local Checkbox, RadioButton and Switch for selection controls; local DS outline icons for leading=icon (user-outline) and trailing=icon (chevron-right-outline); DividerHorizontal for the optional divider. Nested Checkbox and RadioButton must stay control-only inside ListItem: showLabel=false, showDescription=false, showContent=false (about 20×20). Do not nest the full labeled Checkbox/Radio composition or row height will break. Nested Switch uses size=md (showIcon as designed). Interaction visuals are owned by nested ListItemStateLayer (state=default|hover|focus|pressed|dragged) via the stateLayer swap — ListItem itself does not publish a separate state variant axis. contentRow uses padding 12/16 and gap 16 with vertical CENTER alignment between leadingSlot, Content and trailingSlot. Do not use remote Material list kits, remote state-layers, remote monogram/image/video thumbnails, remote checkboxes/radios/switches or remote icons. Do not use ListItem as a Button, Menu item (ListActionDropdownItem), NavigationDrawerItem, TableRow or Card. Token rule: use existing DS kebab-case variables and text styles only — text/primary|secondary, color/background-surface/0, plus nested building-block and control tokens; typography via body/large/medium (headline) and body/medium/regular (overline/supporting/trailingSupportingText). Accessibility: map to role=listitem inside a list; navigable rows may be links; checkbox/radio/switch keep their control roles; stateLayer focus must remain visible; decorative leading media may be aria-hidden when the headline already names the entity. React mapping: ListItem(condition, leading, trailing, showOverline, showSupportingText, headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, state, onPress) where state drives ListItemStateLayer.
+
+## Variants
+
+- **condition:** 1-line | 2-line | 3-line
+- **leading:** none | monogram | icon | image | video | checkbox | radio | switch
+- **trailing:** none | icon | checkbox | radio | switch
+- **showOverline:** false | true
+- **showSupportingText:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `headline` | primary row text |
+| `overline` | optional overline text |
+| `supportingText` | optional supporting text |
+| `trailingSupportingText` | optional trailing meta text |
+| `showTrailingSupportingText` | boolean |
+| `showDivider` | boolean |
+| `stateLayer` | INSTANCE_SWAP → ListItemStateLayer |
+| `divider` | INSTANCE_SWAP → DividerHorizontal |
+| `condition` | 1-line \| 2-line \| 3-line |
+| `leading` | none \| monogram \| icon \| image \| video \| checkbox \| radio \| switch |
+| `trailing` | none \| icon \| checkbox \| radio \| switch |
+| `showOverline` | false \| true |
+| `showSupportingText` | false \| true |
+
+## Rules
+
+- **localBuildingBlocksOnly:** Use ListItemStateLayer, ListItemLeadingMonogram, ListItemImageThumbnail, ListItemVideoThumbnail only
+- **localControlsOnly:** Use local Checkbox, RadioButton, Switch and DS outline icons
+- **stateViaStateLayer:** Interaction states come from nested ListItemStateLayer — no ListItem state variant axis
+- **noRemoteM3:** Do not use remote Material list kits or building blocks
+- **vsMenuItem:** Do not use as ListActionDropdownItem / menu row
+- **vsNav:** Do not use as NavigationDrawerItem / Button / TableRow / Card
+- **controlOnlySelection:** Nested Checkbox/RadioButton: showLabel=false, showDescription=false, showContent=false (~20×20)
+- **switchSizeMd:** Nested Switch uses size=md
+- **iconDefaults:** leading=icon → user-outline; trailing=icon → chevron-right-outline
+- **contentRowLayout:** contentRow padding 12/16, gap 16, counterAxisAlignItems CENTER
+- **defaults:** condition=3-line, leading=none, trailing=none, showOverline=false, showSupportingText=true
+
+## Token rules
+
+- text/primary | secondary
+- color/background-surface/0
+- body/large/medium for headline
+- body/medium/regular for overline/supporting/trailingSupportingText
+- nested ListItemBuildingBlocks + Checkbox/RadioButton/Switch/DividerHorizontal tokens
+
+## Accessibility
+
+role=listitem; navigable rows may be links; nested controls keep their roles; stateLayer focus visible; decorative media may be aria-hidden when headline names the entity.
+
+## Composition
+
+- ListItemStateLayer
+- ListItemLeadingMonogram
+- ListItemImageThumbnail
+- ListItemVideoThumbnail
+- Checkbox
+- RadioButton
+- Switch
+- DividerHorizontal
+

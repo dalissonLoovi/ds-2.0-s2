@@ -1,0 +1,69 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/InputTextArea" />
+
+# InputTextArea
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4052-21848) · node `4052:21848`
+
+## AI-READY
+
+AI-READY COMPONENT: InputTextArea is the Design System 2.0 multiline outlined text field — same visual identity as Input (outlined container, floating label cutout, border/radius/200) with a taller field (~160), character count, and resize affordance. Use for long text (comments, descriptions, messages). Do not use as single-line Input, InputSelect, InputPassword, InputNumber, or rich-text editor. Variants use an intentional sparse matrix (42 published / 120 theoretical): state × content × leadingIcon × trailingIcon × appearance. state: default | hover | focus | error | disabled. content: value | placeholder | label. leadingIcon/trailingIcon: false | true — true only on content=value samples for default|focus|error × default|inverse. appearance: default | inverse. Anatomy: field (leadingIcon? + content + trailingIcon? + countRow + floatingLabel) + supporting + minHeight (InputTextAreaMinHeight, absolute, exposed; nests InputTextAreaResizeHandle). countRow is absolute bottom-right inside field (manual positioning, constraints MAX/MAX) — not auto-layout. minHeight is absolute on the field’s trailing edge (manual positioning). Props: label, value, placeholder, supportingText, showSupportingText, countText, showCount, leading, trailing (INSTANCE_SWAP). Resize visibility via exposed nested minHeight showResizeHandle. Token rule: field fill color/background-surface/0 (inverse transparent); borders color/border/1 (inverse color/border/2); hover color/border-feedback/primary; focus interactive/focus; focus and error strokes border/width/025 (2px); error color/border-feedback/danger; padding spacing/200|300; root paddingTop spacing/150; float cutout background-surface/0 (inverse inverse-3). Typography: value/placeholder body/large/regular; floating label, count, supporting caption/large/regular. Accessibility: textarea role; label association; aria-invalid + aria-describedby on error; aria-disabled when disabled; announce count when relevant. React mapping: InputTextArea(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, countText, showCount, showResizeHandle?, leading?, trailing?). Code Connect is not configured.
+
+## Variants
+
+- **state:** default | hover | focus | error | disabled
+- **content:** value | placeholder | label
+- **leadingIcon:** false | true
+- **trailingIcon:** false | true
+- **appearance:** default | inverse
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| focus \| error \| disabled |
+| `content` | value \| placeholder \| label |
+| `leadingIcon` | false \| true — sparse: true only on value × default\|focus\|error samples |
+| `trailingIcon` | false \| true — sparse: true only on value × default\|focus\|error samples |
+| `appearance` | default \| inverse |
+| `label` | TEXT |
+| `value` | TEXT |
+| `placeholder` | TEXT |
+| `supportingText` | TEXT |
+| `showSupportingText` | BOOLEAN — wired on all states including error |
+| `countText` | TEXT — e.g. 0/100 |
+| `showCount` | BOOLEAN — toggles absolute countRow |
+| `leading` | INSTANCE_SWAP — local DS outline icon |
+| `trailing` | INSTANCE_SWAP — local DS outline icon |
+| `showResizeHandle` | via exposed nested minHeight (InputTextAreaMinHeight) |
+
+## Rules
+
+- **sparseMatrix:** Intentional sparse 42/120 — icon=true only on content=value × default|focus|error × default|inverse
+- **absoluteCountRow:** countRow is ABSOLUTE bottom-right inside field (manual MAX/MAX) — intentional
+- **absoluteMinHeight:** minHeight (InputTextAreaMinHeight) is ABSOLUTE on trailing edge — intentional; exposed
+- **vsSingleLine:** Not single-line Input, InputSelect, InputPassword, InputNumber, or rich-text
+- **errorStroke:** state=focus and state=error use border/width/025 (2px); other states border/width/012
+
+## Token rules
+
+- default: color/background-surface/0; color/border/1
+- inverse: transparent field; color/border/2; cutout color/background-surface/inverse-3
+- hover color/border-feedback/primary; focus interactive/focus; focus/error stroke border/width/025 (2px); error color/border-feedback/danger
+- spacing/150 (root paddingTop); spacing/200|300 (field padding)
+- border/radius/200; border/width/012 (default/hover/disabled); border/width/025 (focus/error, 2px)
+- body/large/regular (value/placeholder); caption/large/regular (label/count/supporting)
+
+## Accessibility
+
+textarea role; label association; aria-invalid + aria-describedby on error; aria-disabled when disabled; announce count when relevant.
+
+## Composition
+
+- InputTextAreaMinHeight (minHeight, exposed) + InputTextAreaResizeHandle
+- local DS outline icons (leading/trailing)
+- floatingLabel / countRow / supporting
+

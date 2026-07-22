@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Autocomplete" />
+
+# Autocomplete
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3918-573) · node `3918:573`
+
+## AI-READY
+
+AI-READY COMPONENT: Autocomplete is an editable single-select combobox used when users need to type a query, filter a known option set and confirm one valid option. It is not a Select trigger and it does not accept arbitrary free text as a final value. Variants: state=default|hover|focus|error|disabled; content=empty|query|selected; expanded=false|true; appearance=default|inverse (54 variants — state=disabled only publishes expanded=false). Anatomy: field (leadingIcon? + inputControl with resting/floating label, caret on focus, trailing clearAction/loadingIndicator/validationIcon + expandIcon) + supportingText. clearAction = local Button + x-outline; loadingIndicator = LoadingSpinner; error shows alert-circle-outline. ListActionDropdown is never nested — screens compose it floating below the field when expanded=true. appearance=default: field fill color/background-surface/0; floatingLabel cutout color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand; error feedback/danger); placeholder text/placeholder; query/selected text/primary; icon strokes text/secondary (focus text/brand, disabled text/placeholder, error leading+validation feedback/danger). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3 (all inverse states including focus); default/disabled border color/border/2; label/value/query text/on-color (focus label text/brand; error label feedback/danger); placeholder and non-error supporting text/on-color-disabled; on state=disabled all field texts use text/placeholder-inverse; icon strokes text/on-color (focus text/brand, disabled text/on-color-disabled; error leading+validation feedback/danger, expand may stay text/on-color). Feedback borders unchanged on both appearances — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Disabled: no field fill. Props: label, placeholder, query, selectedValue, supportingText, showSupportingText, showLeadingIcon, leadingIcon, showClearAction, loading. When loading=true prefer showClearAction=false. Do not use as InputSelect, free-text Input, SearchBar, multi-select or PaginationSelectInput. Accessibility: role=combobox + aria-autocomplete=list; external listbox/options; aria-invalid on error; aria-disabled when disabled. Token rule: local S2 kebab-case only. React mapping: Autocomplete(state, content, expanded, appearance, label, placeholder, query, selectedValue, supportingText, showSupportingText, showLeadingIcon?, leadingIcon?, showClearAction?, loading?). Compose ListActionDropdown externally. Code Connect is not configured.
+
+## Variants
+
+- **state:** default | hover | focus | error | disabled
+- **content:** empty | query | selected
+- **expanded:** false | true
+- **appearance:** default | inverse
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| focus \| error \| disabled (disabled has no field fill) |
+| `content` | empty \| query \| selected |
+| `expanded` | false \| true — external ListActionDropdown; invalid with disabled (not published) |
+| `appearance` | default \| inverse — inverse for dark/on-color surfaces |
+| `label` | TEXT — field label |
+| `placeholder` | TEXT — hint; visible on focus + empty |
+| `query` | TEXT — typed filter (content=query) |
+| `selectedValue` | TEXT — confirmed option (content=selected) |
+| `supportingText` | TEXT — helper or error under field |
+| `showSupportingText` | boolean |
+| `showLeadingIcon` | boolean |
+| `leadingIcon` | INSTANCE_SWAP — local DS outline |
+| `showClearAction` | boolean — prefer false when loading |
+| `loading` | boolean — LoadingSpinner in trailing status |
+
+## Rules
+
+- **appearanceInverse:** appearance=inverse: transparent field; floatingLabel cutout inverse-3 including focus; border/2; on-color texts; disabled texts text/placeholder-inverse; focus label text/brand; error label feedback/danger; hover color/border-feedback/primary (not interactive/hover)
+- **disabledNoFill:** state=disabled field has no background fill (transparent); stroke color/border/2 — keep this
+- **noDisabledExpanded:** Do not combine state=disabled with expanded=true (variants removed)
+- **externalDropdown:** ListActionDropdown floats below field when expanded=true; never nested in the set
+- **loadingOverClear:** loading=true takes precedence; bind loadingIndicator visible to loading on empty/query/selected where present
+- **floatingLabelPlaceholder:** Placeholder shows on state=focus + content=empty; resting label when empty and not focused
+- **vsInputSelectSearch:** Do not use as InputSelect, free-text Input, SearchBar, multi-select, or PaginationSelectInput
+
+## Token rules
+
+- default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand
+- inverse: transparent field; cutout color/background-surface/inverse-3; color/border/2; text/on-color|on-color-disabled; disabled texts text/placeholder-inverse
+- shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger
+- no field fill on disabled
+- border/radius/200
+- body/large/regular|body/small/regular
+
+## Accessibility
+
+role=combobox with aria-autocomplete=list, aria-expanded, aria-controls, aria-activedescendant; external listbox/options; aria-invalid on error; aria-disabled when disabled; label associated; supporting via aria-describedby.
+
+## Composition
+
+- Button (clear)
+- LoadingSpinner
+- ListActionDropdown (external)
+- local DS outline icons
+

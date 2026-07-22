@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/NavigationRailExpandedTree" />
+
+# NavigationRailExpandedTree
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3327-6048) · node `3327:6048`
+
+## AI-READY
+
+AI-READY COMPONENT: NavigationRailExpandedTree is a grouped navigation tree used inside NavigationRail expanded layouts to display a set of related navigation destinations. It composes NavigationRailExpandedItem instances and controls which item is active through selectedItem. Use level=default for a flat group of four peer destinations (selectedItem=none|item-01|item-02|item-03|item-04). Use level=second-level for a nested group: a parent NavigationRailExpandedItem (hierarchy=nav-tree) that stays selected=true as the expanded group header, plus a navTree of three child items; selectedItem=none|item-01|item-02|item-03 maps to the active child — selectedItem=item-04 is intentionally unavailable at second-level (sparse matrix). Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation rail surfaces. Nested item appearance must match the tree appearance. Do not use NavigationRailExpandedTree as a standalone sidebar, drawer, menu, tab list, accordion, list item, button group or generic content container. Accessibility: implement inside a nav region, preserve logical keyboard order, map the active destination to aria-current=page, and ensure level=second-level reflects both visual and semantic hierarchy (parent group + nested children). Token rule: use existing DS variables only (color/background-surface/2 | inverse-1, color/border/2, spacing/0|100|300|600, border/radius/050, nested NavigationRailExpandedItem tokens). React mapping: NavigationRailExpandedTree(appearance, level, selectedItem, items, parentItem?).
+
+## Variants
+
+- **selectedItem:** none | item-01 | item-02 | item-03 | item-04
+- **level:** default | second-level
+- **appearance:** default | inverse
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `selectedItem` | none \| item-01 \| item-02 \| item-03 \| item-04 (item-04 only at level=default) |
+| `level` | default \| second-level |
+| `appearance` | default \| inverse |
+
+## Rules
+
+- **composition:** Composes NavigationRailExpandedItem; chrome layers treeRail + marker; second-level adds navTree of child items
+- **secondLevel:** Parent item uses hierarchy=nav-tree and stays selected=true as group header; selectedItem controls which of the three nested children is active
+- **sparseMatrix:** selectedItem=item-04 × level=second-level is intentionally omitted (only three nested children)
+- **appearanceMatch:** Nested NavigationRailExpandedItem appearance must match tree appearance
+- **usage:** Do not use as standalone sidebar, drawer, menu, tab list, accordion or content container
+
+## Token rules
+
+- color/background-surface/2 for marker/surface accents on default
+- color/background-surface/inverse-1 where used on inverse chrome
+- color/border/2 for treeRail line
+- spacing/0 | 100 | 300 | 600 and border/radius/050 for tree chrome
+- Nested NavigationRailExpandedItem uses its own DS tokens
+
+## Accessibility
+
+Implement inside a nav region; map active destination to aria-current=page; second-level must reflect parent group + nested children hierarchy; preserve keyboard order.
+

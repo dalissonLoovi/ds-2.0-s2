@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ModalHeader" />
+
+# ModalHeader
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3786-9403) · node `3786:9403`
+
+## AI-READY
+
+AI-READY COMPONENT: ModalHeader is the header block used only inside Modal surfaces. Use layout=desktop to match Modal platform=web and layout=mobile to match Modal platform=mobile while keeping the same content hierarchy. Use alignment=start for left-aligned title/label (default) and alignment=center for optically centered title/label with a leadingSpacer matching the close action width. Props: title controls the modal heading; label controls the optional supporting label above the title; showLabel toggles that label; showCloseAction toggles the local icon-only Button used to dismiss the modal. Composition: alignment=start uses headingContent + trailingActions; alignment=center uses leadingSpacer + headingContent + trailingActions. closeAction must remain a local Button with x-outline, size=sm, variant=text, intent=primary and hidden visible label text set to Fechar modal for accessible mapping. Typography: layout=desktop title uses heading/h1/semi-bold; layout=mobile title uses heading/h3/semi-bold; label uses body/small/regular. Do not use ModalHeader as AppHeader, page header, card header, BottomSheet header or navigation. Token rule: use existing DS kebab-case variables only - text/primary, text/secondary, spacing/0|050|100|200|250|300|500, border/radius/0, plus nested Button tokens. Inherit the Modal surface instead of adding an independent background. Accessibility: the Modal owns role=dialog, aria-modal, focus trap and Escape behavior. The title must be referenced by aria-labelledby. The close action is a button with aria-label=Fechar modal and must be keyboard accessible. React mapping: ModalHeader(layout, alignment, title, label, showLabel, showCloseAction). Code Connect is not configured.
+
+## Variants
+
+- **layout:** desktop | mobile
+- **alignment:** start | center
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `layout` | desktop \| mobile (map from Modal platform web\|mobile) |
+| `alignment` | start \| center (default start) |
+| `title` | modal heading text |
+| `label` | optional supporting label above title |
+| `showLabel` | boolean — toggles label |
+| `showCloseAction` | boolean — toggles closeAction Button |
+
+## Rules
+
+- **composition:** start: headingContent + trailingActions; center: leadingSpacer + headingContent + trailingActions
+- **closeAction:** Button text/sm/primary + x-outline; accessible label Fechar modal; showLabel=false
+- **typography:** desktop title heading/h1/semi-bold; mobile title heading/h3/semi-bold; label body/small/regular
+- **centerOptical:** alignment=center uses leadingSpacer matching close width so title centers optically
+- **vsAppHeader:** Do not use as AppHeader, page header, card header, BottomSheet header or navigation
+- **parentOnly:** Use only inside Modal
+
+## Token rules
+
+- text/primary | text/secondary
+- spacing/0|050|100|200|250|300|500
+- border/radius/0
+- nested Button tokens
+
+## Accessibility
+
+Modal owns dialog semantics; title via aria-labelledby; close button aria-label=Fechar modal, keyboard accessible.
+
+## Composition
+
+- Button
+- x-outline
+

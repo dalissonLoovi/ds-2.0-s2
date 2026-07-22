@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ChipGroup" />
+
+# ChipGroup
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3437-3023) · node `3437:3023`
+
+## AI-READY
+
+AI-READY COMPONENT: ChipGroup is a layout composition that displays a set of local ChipClickable chips for input, assistive, filter or suggestion patterns. Use layout=single-row-scrollable for a horizontally scrollable row and layout=multi-row-wrap for wrapping rows. Composition: nest only local S2 ChipClickable instances — do not use remote Material chips, detached frames or custom chip visuals. Intentional ChipClickable mapping: all ChipGroup types use ChipClickable intent=outline, size=sm, width=hug; type=filter demos selected state (state=selected); input, assistive and suggestion demos state=default. Prefer showAvatar=false and showDeleteAction=false unless the specific pattern requires them. Do not use ChipGroup as a single ChipClickable, ChipTag, Button group, Tab list, checkbox group or radio group. Accessibility: provide an accessible group label in product UI; each chip must be keyboard reachable; use Enter/Space to activate or toggle; selected filter chips must expose selected/pressed state programmatically. Token rule: ChipGroup layout uses local DS spacing tokens for gaps; nested chips own ChipClickable tokens (including outline intent surfaces/borders). React mapping: ChipGroup(type, layout, children as ChipClickable[]).
+
+## Variants
+
+- **type:** input | assistive | filter | suggestion
+- **layout:** single-row-scrollable | multi-row-wrap
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `type` | input \| assistive \| filter \| suggestion |
+| `layout` | single-row-scrollable \| multi-row-wrap |
+
+## Rules
+
+- **composition:** local ChipClickable instances only (chip01–chip09 demos)
+- **chipMapping:** all types → ChipClickable intent=outline, size=sm, width=hug
+- **filterSelected:** type=filter demos state=selected; other types state=default
+- **defaults:** showAvatar=false, showDeleteAction=false unless pattern requires
+- **vsSingle:** Do not use as a single chip — use ChipClickable or ChipTag
+
+## Token rules
+
+- ChipGroup gaps/padding: local spacing/* tokens
+- nested ChipClickable owns outline intent surface/border tokens
+
+## Accessibility
+
+accessible group label; chips keyboard reachable; Enter/Space activate/toggle; selected filters expose selected state.
+

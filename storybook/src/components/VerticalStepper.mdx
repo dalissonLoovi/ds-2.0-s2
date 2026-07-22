@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/VerticalStepper" />
+
+# VerticalStepper
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3833-118) · node `3833:118`
+
+## AI-READY
+
+AI-READY COMPONENT: VerticalStepper is a vertical ordered multi-step container that composes VerticalStepperItem rows through an items SLOT. Use it for multi-step flows that need contextual title/description per step — onboarding, checkout, registration, document review and similar vertical progress lists. Do not use it for compact horizontal labeled steps (use StepperPrimary), unlabeled segmented progress (use StepProgressIndicator), continuous quantitative progress (use ProgressBar), timelines, navigation lists or plain List. Props: items is the SLOT for VerticalStepperItem instances only. Default composition demonstrates completed, current, pending, pending with showConnector=false on the final item. Connector and status live on each VerticalStepperItem; the container does not invent status math. Layout: vertical Auto Layout, width Fill container in compositions (327px demo), height Hug. Accessibility: render as an ordered list; mark the active item with aria-current=step; expose each item status in accessible text; decorative statusIcon and connector remain aria-hidden on items. Token rule: local S2 kebab-case only — spacing/0, border/radius/0; item tokens come from VerticalStepperItem and nested ListItem. React mapping: VerticalStepper(items). Code Connect is not configured.
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `items` | SLOT — VerticalStepperItem instances only (preferredValues) |
+
+## Rules
+
+- **slotItemOnly:** Compose items SLOT with VerticalStepperItem only
+- **statusOnItem:** status and showConnector live on each VerticalStepperItem — container does not invent status math
+- **defaultComposition:** completed, current, pending, pending with showConnector=false on final item
+- **vsStepperPrimary:** Use StepperPrimary for compact horizontal labeled steps
+- **vsStepProgressIndicator:** Use StepProgressIndicator for unlabeled segmented progress
+- **vsProgressBar:** Use ProgressBar for continuous quantitative progress
+- **usage:** Do not use as timeline, navigation list, plain List, StepperPrimary or StepProgressIndicator
+
+## Token rules
+
+- spacing/0, border/radius/0 on container
+- VerticalStepperItem and nested ListItem own item/content tokens
+
+## Accessibility
+
+Ordered list; aria-current=step on active item; status in accessible text; decorative icons/connectors aria-hidden on items.
+

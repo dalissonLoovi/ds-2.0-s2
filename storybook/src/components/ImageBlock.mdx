@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ImageBlock" />
+
+# ImageBlock
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3671-2329) · node `3671:2329`
+
+## AI-READY
+
+AI-READY COMPONENT: ImageBlock is a DS image container used to reserve a fixed aspect-ratio surface and optionally show an orientation overlay. Use imageSurface as the only layer for applying or replacing image fills — keep it absolute/floating, clipped, tokenized, and scaleMode FILL (crop) so the image is not distorted. Use showOrientationBlock to toggle orientationOverlay (ImageOrientationBlock), which must stay absolute/floating, rotation 0°, and centered — including when verticalResize=true. aspectRatio controls 1-1 | 4-3 | 3-2 | 16-9 | 2-1. orientation controls portrait | landscape. verticalResize=false locks width and hugs height via aspect-ratio keepers; verticalResize=true locks height and hugs width (same keeper technique, rotated). Do not use ImageBlock as a radio, checkbox, button, tab, avatar, or gallery tile. Token rule: use existing DS kebab-case variables only — color/background-surface/1 for root and imageSurface placeholder, plus nested ImageOrientationBlock tokens. Accessibility: treat as an image or figure; provide accessible name/alt from product content when a real image is applied; orientationOverlay is decorative/informational and must not steal focus. React mapping: ImageBlock(aspectRatio, orientation, verticalResize, showOrientationBlock, src, alt).
+
+## Variants
+
+- **aspectRatio:** 1-1 | 4-3 | 3-2 | 16-9 | 2-1
+- **orientation:** portrait | landscape
+- **verticalResize:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `aspectRatio` | 1-1 \| 4-3 \| 3-2 \| 16-9 \| 2-1 |
+| `orientation` | portrait \| landscape |
+| `verticalResize` | false \| true — false locks width/hugs height; true locks height/hugs width |
+| `showOrientationBlock` | boolean — toggles orientationOverlay |
+
+## Rules
+
+- **imageSurface:** only layer for image fill replacement; absolute, clipped, STRETCH, scaleMode FILL
+- **orientationOverlay:** ImageOrientationBlock; absolute; rotation 0°; centered even when verticalResize=true
+- **verticalResizeParity:** restored Aspect ratio keeper behavior: false=FIXED×HUG; true=HUG×FIXED
+- **vsControls:** Do not use as radio, checkbox, button, tab, avatar, or gallery tile
+- **composition:** aspectRatioKeeper tree + imageSurface + orientationOverlay
+
+## Token rules
+
+- color/background-surface/1 for root and imageSurface placeholder
+- nested ImageOrientationBlock owns its own DS tokens
+
+## Accessibility
+
+treat as image/figure; provide accessible name/alt when a real image is applied; orientationOverlay is decorative/informational and must not steal focus.
+

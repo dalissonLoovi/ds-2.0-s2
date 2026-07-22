@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/TableRow" />
+
+# TableRow
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3459-12787) · node `3459:12787`
+
+## AI-READY
+
+AI-READY COMPONENT: TableRow is a table row container composed of TableCell instances plus an optional trailing TableExpandCell. Use type=header for header rows and type=body for body rows. Use cellCount=3, 4, 5, 6, 7, 8 or 9 to control how many TableCell instances are visible in the row. Cells are named headerCell01–headerCell09 (header) or cell01–cell09 (body). Use showExpandCell=true to show the trailing expandCell (TableExpandCell) at the end of the row, and showExpandCell=false to hide it. Use state=default, hover, pressed, selected or focus to represent row-level interaction. Header rows intentionally publish only state=default. Body rows publish default, hover, pressed, selected and focus. state=focus is row-level only — nested TableCell instances stay on matching non-focus cell states because TableCell has no focus axis. The expandCell type matches the row type (header|body) and its state matches the row state when available. TableRow must compose local TableCell and TableExpandCell instances; it must not recreate cell internals manually. Do not use TableRow as a full Table, Card, ListItem, Button, NavigationItem, grid layout or standalone content section. Accessibility: use TableRow inside a semantic table structure. Header rows belong inside the table header and cells map to columnheader/th. Body rows map to row/tr and cells map to cell/td. Interactive rows should preserve visible focus and expose selected state when selection is meaningful. When showExpandCell=true, the expand control needs Expand row / Collapse row labeling and aria-expanded. Token rule: use existing DS variables only (border/radius/0|200, border/width/012|025, interactive/focus on focus rows, nested TableCell and TableExpandCell tokens). React mapping: TableRow(type, cellCount, state, showExpandCell, cells, expandCell?).
+
+## Variants
+
+- **type:** header | body
+- **cellCount:** 3 | 4 | 5 | 6 | 7 | 8 | 9
+- **state:** default | hover | pressed | selected | focus
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `type` | header \| body |
+| `cellCount` | 3 \| 4 \| 5 \| 6 \| 7 \| 8 \| 9 |
+| `state` | default \| hover \| pressed \| selected \| focus |
+| `showExpandCell` | boolean — toggles trailing expandCell (TableExpandCell) visibility |
+
+## Rules
+
+- **composition:** Composes local TableCell (headerCell01–09 / cell01–09) plus optional trailing expandCell
+- **showExpandCell:** BOOLEAN; expandCell is last child; type/state match the row
+- **sparseHeader:** type=header publishes only state=default (intentional-sparse)
+- **rowLevelFocus:** state=focus is row-level only; nested TableCell has no focus axis
+- **cellTypes:** Body demo cells use secondary, primary, tertiary and slot TableCell types
+- **usage:** Do not use as full Table, Card, ListItem, Button, NavigationItem or standalone layout
+
+## Token rules
+
+- border/radius/0 | 200 and border/width/012 | 025 for row chrome / focus corners
+- interactive/focus for row-level focus affordance
+- Nested TableCell and TableExpandCell use their own DS tokens
+
+## Accessibility
+
+Header rows → thead/columnheader; body rows → tr/td; preserve visible focus; expose selected when selection is meaningful; expandCell needs Expand/Collapse label and aria-expanded when shown.
+

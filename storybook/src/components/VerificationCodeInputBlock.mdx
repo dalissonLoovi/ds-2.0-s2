@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/VerificationCodeInputBlock" />
+
+# VerificationCodeInputBlock
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4028-773) · node `4028:773`
+
+## AI-READY
+
+AI-READY COMPONENT: VerificationCodeInputBlock is the Design System 2.0 single-digit cell used inside VerificationCodeInput for OTP, 2FA, and PIN entry. It is not a free-text Input — compose only as a digit slot in the verification code field. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Anatomy: fixed 56×48 frame with centered digit TEXT. Props: digit (TEXT) — displayed character (typically 0–9; canvas default "1"). Visual rules: fill color/background-surface/0; default and disabled borders color/border/1; hover border color/border-feedback/primary; focus border interactive/focus plus DROP_SHADOW ring (color color/elevation/Focus, spread spacing/050, radius/offset spacing/0); error border color/border-feedback/danger; digit text/primary (disabled text/placeholder). Geometry tokens: border/radius/300, padding spacing/050 vertical and spacing/100 horizontal, stroke border/width/012. Typography: body/large/regular on digit. The parent VerificationCodeInput selects the block state per slot. Accessibility: each block maps to a single-character input or spinbutton segment; announce errors on the group; disabled slots use aria-disabled. React mapping: VerificationCodeInputBlock(state, digit). Code Connect is not configured.
+
+## Variants
+
+- **state:** default | hover | focus | error | disabled
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| focus \| error \| disabled |
+| `digit` | TEXT — displayed digit character (typically 0–9; canvas default 1) |
+
+## Rules
+
+- **otpCellOnly:** Compose inside VerificationCodeInput — not a free-text Input
+- **noInverse:** No appearance/inverse axis (intentional)
+- **focusRing:** state=focus: interactive/focus stroke + DROP_SHADOW ring (color/elevation/Focus, spread spacing/050)
+- **disabledDigit:** state=disabled digit uses text/placeholder
+- **geometryTokens:** border/radius/300; padding spacing/050|100; stroke border/width/012
+
+## Token rules
+
+- color/background-surface/0
+- color/border/1 (default|disabled)
+- color/border-feedback/primary (hover)
+- interactive/focus (focus stroke)
+- color/elevation/Focus (focus ring effect color)
+- color/border-feedback/danger (error)
+- text/primary | text/placeholder (disabled digit)
+- border/radius/300; spacing/050|100; border/width/012; spacing/0 (ring offset/radius)
+- body/large/regular
+
+## Accessibility
+
+Single-character input/spinbutton segment; announce errors on the group; aria-disabled when disabled.
+
+## Composition
+
+- VerificationCodeInput (parent field)
+- digit TEXT (prop)
+

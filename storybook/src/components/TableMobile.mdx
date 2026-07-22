@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/TableMobile" />
+
+# TableMobile
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3452-2722) · node `3452:2722`
+
+## AI-READY
+
+AI-READY COMPONENT: TableMobile is the mobile/compact data-row composite used to present tabular data as a list or card-like block on small screens. It composes local TableMobileCell instances (and nested Button inside type=action cells). Use state=default, hover or pressed for the block interaction state. Focus, selected and disabled are intentionally not published on TableMobile. Use interactive=true when the block shows the expanded/affordance layout (second detailRow; typically taller). Use interactive=false for the compact single-row layout. Use showTag=true to show the tag TableMobileCell and showTag=false to hide it. Use columnCount=2–6 to control how many informational cells are composed in the row(s). Intentional sparse matrix: interactive=true is published only for columnCount=4|5|6 — columnCount=2|3 do not combine with interactive=true. Do not use TableMobile as desktop Table/TableRow/TableCell, as a standalone Card, or by rebuilding cells from raw text/icons. Accessibility: when interactive, map to button/link/listitem per product navigation; expose a clear accessible name from primary content; if expansion is used, expose aria-expanded on the real control; decorative icons aria-hidden=true. Token rule: use existing DS kebab-case variables only (color/background-surface/0, color/border/2, spacing/0|100|200|250|500|700|800, border/width/0|012, border/radius/0). Avoid Title Case legacy aliases. React mapping: TableMobile(state, interactive, showTag, columnCount).
+
+## Variants
+
+- **state:** default | hover | pressed
+- **interactive:** false | true
+- **showTag:** true | false
+- **columnCount:** 2 | 3 | 4 | 5 | 6
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| pressed |
+| `interactive` | false \| true — expanded/affordance layout when true |
+| `showTag` | true \| false — toggles tag TableMobileCell |
+| `columnCount` | 2 \| 3 \| 4 \| 5 \| 6 |
+
+## Rules
+
+- **composition:** Composes local TableMobileCell (row + optional detailRow)
+- **intentionalSparse:** interactive=true only with columnCount=4|5|6; not published for columnCount=2|3
+- **noFocusSelectedDisabled:** Focus, selected and disabled are intentionally not published
+- **vsTable:** Mobile composite — do not substitute for desktop Table/TableRow/TableCell
+- **usage:** Do not rebuild from raw text/icons or use as standalone Card
+
+## Token rules
+
+- color/background-surface/0 and color/border/2
+- spacing/0 | 100 | 200 | 250 | 500 | 700 | 800
+- border/width/0 | 012 and border/radius/0
+
+## Accessibility
+
+Interactive blocks map to button/link/listitem; clear accessible name; aria-expanded when expanding; decorative icons aria-hidden.
+

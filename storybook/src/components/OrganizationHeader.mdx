@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/OrganizationHeader" />
+
+# OrganizationHeader
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3644-2) · node `3644:2`
+
+## AI-READY
+
+AI-READY COMPONENT: OrganizationHeader is a documentation and library organization header for Design System pages, component catalogs, foundation pages, governance pages, and internal DS artifacts. Use it to identify the owning project or DS, the page or component title, optional maturity/type metadata, optional supporting description, and an optional informational ChipTag. Do not use OrganizationHeader as an application top bar, navigation header, dashboard header, marketing hero, card header, modal header, table header, or mobile app header. Use AppHeader for app navigation and SystemHeader for web systems, dashboards, backoffices, and admin products. Props: project controls the source or owning DS name; title controls the main heading; type controls optional secondary title metadata; description controls supporting guidance; showProject, showType, showDescription, and showLabel control visibility. Composition: headingGroup contains project and titleRow; titleRow contains title and type; descriptionSlot wraps description so supporting copy fills the content width and wraps as the header resizes (root height hugs); labelTag is the local ChipTag nested instance and remains exposed for its label and intent properties. Icons inside labelTag must use the local DS icon library only (e.g. circle-check-outline), not remote/external libraries. Token rule: use existing local DS tokens only — color/background-surface/0, color/border/1, text/link, text/primary, text/secondary, spacing/0|200|600|1200, border/radius/0|800, border/width/0|012, and existing typography styles. Accessibility: title should map to the page h1 when it identifies the documented artifact. Project should render as a link only when it has a real destination; otherwise expose it as metadata, not as a fake link. Type, description, and ChipTag are informational and must not receive focus. Keep heading hierarchy outside the component consistent with the documentation page. Responsive rule: the component may resize horizontally; descriptionSlot/description should fill and wrap; root height should hug visible content. React mapping: OrganizationHeader(project, title, type, description, showProject, showType, showDescription, showLabel, label). label maps to optional ChipTag props such as text, intent, leadingIcon and showLeadingIcon; labelTag is only the internal Figma layer name.
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `project` | owning DS / project name |
+| `title` | main documentation heading |
+| `type` | optional secondary title metadata (e.g. maturity) |
+| `description` | supporting guidance text |
+| `showProject` | boolean — default true |
+| `showType` | boolean — default false |
+| `showDescription` | boolean — default true |
+| `showLabel` | boolean — default false; toggles ChipTag labelTag |
+
+## Rules
+
+- **docsOnly:** Figma/library documentation header — not product app chrome
+- **vsAppHeader:** Do not use as application navigation header — use AppHeader
+- **vsSystemHeader:** Do not use as dashboard/admin header — use SystemHeader
+- **composition:** headingGroup + descriptionSlot(description) + labelTag (ChipTag exposed)
+- **descriptionSlot:** FILL width + wrap; visibility bound to showDescription
+- **iconsLocalOnly:** ChipTag leadingIcon must be local DS (circle-check-outline)
+
+## Token rules
+
+- color/background-surface/0, color/border/1
+- text/link | primary | secondary
+- spacing/0 | 200 | 600 | 1200
+- border/radius/0 | 800, border/width/0 | 012
+- typography: body/large/*, display/large/*
+
+## Accessibility
+
+title maps to page h1 when identifying the artifact; project is a link only with a real destination; type/description/ChipTag informational (no focus).
+

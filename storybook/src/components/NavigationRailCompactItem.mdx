@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/NavigationRailCompactItem" />
+
+# NavigationRailCompactItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3327-5296) · node `3327:5296`
+
+## AI-READY
+
+AI-READY COMPONENT: NavigationRailCompactItem is an interactive compact navigation item used inside NavigationRail compact layouts to represent a primary app destination. Use selected=true for the current active destination. Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation surfaces. Use badge=dot for an unread/activity indicator and badge=count for a numeric notification count. When badge=count, edit the nested Badge count (and overflowLabel when needed); keep Badge size/content as designed by the variant. Use showLabel=false only when the compact navigation rail supports icon-only items. Colors follow the intentional compact-rail model (selected/actions and tangerine badge accents). Do not use NavigationRailCompactItem as a Button, NavigationBarItem, Chip, Badge, ListItem, MenuItem, Tab, Accordion trigger or generic icon action. Accessibility: implement as a link when it represents a route, map selected=true to aria-current=page, preserve visible focus, support keyboard navigation, set aria-label when showLabel=false, and expose badge count with an accessible label when it communicates important notification information. Token rule: use existing DS variables only (interactive/*, text/*, color/actions/*, color/palette/tangerine-1, spacing/*, border/*). React mapping: NavigationRailCompactItem(icon, label, appearance, state, badge, selected, showLabel, count?).
+
+## Variants
+
+- **appearance:** default | inverse
+- **state:** default | hover | focus | pressed
+- **badge:** none | count | dot
+- **selected:** false | true
+- **showLabel:** true | false
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `icon` | local DS icon swap |
+| `label` | visible item label |
+| `appearance` | default \| inverse |
+| `state` | default \| hover \| focus \| pressed |
+| `badge` | none \| count \| dot |
+| `selected` | false \| true |
+| `showLabel` | true \| false |
+| `count` | nested Badge TEXT when badge=count (exposed instance) |
+| `overflowLabel` | nested Badge TEXT when badge=count (exposed instance) |
+
+## Rules
+
+- **icons:** icon must use local DS outline icons only; no remote/external icon libraries
+- **badge:** badge mode is a variant (none|count|dot); count/overflowLabel come from exposed nested Badge — do not change Badge size/content away from the variant
+- **colors:** intentional color model: color/actions/primary|tertiary for selected/accent, color/palette/tangerine-1 for badge accent; do not remap as feedback tokens
+- **usage:** Use inside NavigationRail compact layouts; not as Button, NavigationBarItem, Chip, Badge, Tab or ListItem
+
+## Token rules
+
+- text/primary | text/secondary | text/on-color | text/on-color-disabled for labels/icons by appearance/selected
+- interactive/hover | focus | pressed | selected for interaction fills/strokes
+- color/background-surface/2 where used as surface
+- color/actions/primary | color/actions/tertiary for selected/accent affordances (intentional)
+- color/palette/tangerine-1 for badge accent (intentional)
+- spacing/0 | 050 | 100 | 200 | 250 | 800 and border/radius/0 | 300 | 400 | full
+
+## Accessibility
+
+Link for routes; selected=true maps to aria-current=page; icon-only requires aria-label; badge count needs accessible notification label when meaningful.
+

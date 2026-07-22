@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/NavigationBar" />
+
+# NavigationBar
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3327-2528) · node `3327:2528`
+
+## AI-READY
+
+AI-READY COMPONENT: NavigationBar is a bottom navigation container used in mobile layouts to provide access to primary app destinations. Use itemCount=3 or 4 for bars composed only of NavigationBarItem destinations. Use itemCount=5 for the layout with four NavigationBarItem destinations plus a centered primaryIconButtonSlot (Button solid/md/primary, typically plus-outline) for the primary action — itemCount=5 is not five equal nav destinations. Use appearance=default on light surfaces and appearance=inverse on inverse or dark surfaces. NavigationBar composes NavigationBarItem for each destination; item appearance must match the bar appearance. Do not use NavigationBar as a tab bar, toolbar, bottom sheet, action bar, drawer, menu, generic footer or content container. Accessibility: implement with nav semantics; each item should represent a route or primary destination; selected item should map to aria-current=page; icons may be aria-hidden when labels are visible; the primary action button needs its own accessible name; preserve visible focus and keyboard navigation. Token rule: use existing DS variables only (color/background-surface/0 | inverse-3, spacing/800 height, nested NavigationBarItem/Button tokens). React mapping: NavigationBar(appearance, itemCount, items, primaryAction?).
+
+## Variants
+
+- **itemCount:** 3 | 4 | 5
+- **appearance:** default | inverse
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `appearance` | default \| inverse |
+| `itemCount` | 3 \| 4 \| 5 |
+
+## Rules
+
+- **composition:** Composes NavigationBarItem; item appearance must match bar appearance
+- **itemCount5:** itemCount=5 = navItem01 + navItem02 + primaryIconButtonSlot (Button) + navItem04 + navItem05 — four destinations plus centered primary action, not five equal items
+- **usage:** Do not use as tab bar, toolbar, bottom sheet, action bar, drawer, menu, footer or content container
+
+## Token rules
+
+- color/background-surface/0 for default bar surface
+- color/background-surface/inverse-3 for inverse bar surface
+- spacing/800 for bar height; spacing/0 paddings/gaps
+- border/radius/0 on bar container
+- Nested NavigationBarItem and Button (itemCount=5 FAB) use their own DS tokens; FAB size uses spacing/700
+
+## Accessibility
+
+Use nav semantics; items as routes with aria-current=page when selected; icons may be aria-hidden when labels are visible; primary action button needs its own accessible name; preserve visible focus and keyboard navigation.
+

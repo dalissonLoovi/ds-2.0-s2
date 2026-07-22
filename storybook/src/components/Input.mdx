@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Input" />
+
+# Input
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3873-334) · node `3873:334`
+
+## AI-READY
+
+AI-READY COMPONENT: Input is the Design System 2.0 single-line outlined text field. Visual identity: outlined container (height 56, border/radius/200), floating label cutout on the border for content=value|placeholder, and resting in-field label for content=label — remapped from Material Text field anatomy to local S2 tokens. Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; trailingIcon=true|false; appearance=default|inverse (120 variants). appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error feedback/danger). appearance=inverse (for inverse/dark surfaces): field fill transparent; floatingLabel cutout color/background-surface/inverse-3; default/disabled border color/border/2; label text/on-color (focus text/brand); placeholder and non-error supporting text/on-color-disabled; value text/on-color; on state=disabled all field texts (value/label/placeholder/resting/supporting) use text/placeholder-inverse; leadingIcon and trailingIcon strokes text/on-color (focus text/brand, disabled text/on-color-disabled, error feedback/danger). Feedback colors are unchanged on both appearances — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger + feedback/danger on label/supporting/trailingIconError. Error a11y: state=error always shows trailingIconError (alert-circle-outline) regardless of trailingIcon. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing. Do not use as Textarea, InputPassword, InputNumber, InputSelect, SearchBar or Autocomplete. Prefer explicit labels. Accessibility: associate label; aria-invalid on error; aria-describedby for supporting/error; aria-disabled when disabled; visible focus via interactive/focus. Token rule: local S2 kebab-case only. React mapping: Input(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?). Code Connect is not configured.
+
+## Variants
+
+- **state:** default | hover | focus | error | disabled
+- **content:** value | placeholder | label
+- **leadingIcon:** true | false
+- **trailingIcon:** true | false
+- **appearance:** default | inverse
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| focus \| error \| disabled |
+| `content` | value \| placeholder \| label |
+| `leadingIcon` | true \| false (variant axis) |
+| `trailingIcon` | true \| false (variant axis) |
+| `appearance` | default \| inverse — inverse for dark/on-color surfaces |
+| `label` | TEXT — floating or resting field label |
+| `value` | TEXT — input text (content=value) |
+| `placeholder` | TEXT — placeholder text (content=placeholder) |
+| `supportingText` | TEXT — helper or error message |
+| `showSupportingText` | boolean |
+| `leading` | INSTANCE_SWAP — local DS outline icon (default search-outline) |
+| `trailing` | INSTANCE_SWAP — local DS outline icon (x-outline; alert-circle on error demos) |
+
+## Rules
+
+- **materialMatrix:** state × content × leadingIcon × trailingIcon × appearance = 120 outlined variants
+- **appearanceInverse:** appearance=inverse: transparent field; floatingLabel cutout inverse-3 on all inverse states including focus; border/2; on-color texts; disabled texts text/placeholder-inverse; icon disabled on-color-disabled; focus label text/brand
+- **outlinedFloatingLabel:** Outlined field h=56, radius/200, floating label cutout
+- **focusCaret:** state=focus is active/pressed typing state; content=value|placeholder show text+caret; content=label raises floating label and shows caret only
+- **errorTrailingA11y:** state=error always shows trailingIconError (alert-circle-outline) regardless of trailingIcon
+- **contentModes:** value=input+float label; placeholder=placeholder+float label; label=resting empty label only
+- **errorPattern:** error uses danger border/label; trailingIconError + optional showSupportingText
+- **hoverBorder:** state=hover field stroke uses color/border-feedback/primary
+- **vsSearchSelect:** Do not use as Textarea, InputSelect, InputNumber, InputPassword, Input Search, Select, Checkbox or PaginationSelectInput
+- **labelRequired:** Prefer explicit label — do not rely on placeholder alone
+
+## Token rules
+
+- default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand
+- inverse: transparent field; color/border/2; cutout color/background-surface/inverse-3; text/on-color|on-color-disabled; disabled texts text/placeholder-inverse
+- shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger
+- spacing/050|100|200|300|700; border/radius/200; border/width/012|025
+- body/large/regular value/placeholder/resting; body/small/regular floating label/supporting
+
+## Accessibility
+
+Associate label; aria-invalid on error; aria-describedby for supporting/error; aria-disabled when disabled; focus via interactive/focus.
+

@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Breadcrumb" />
+
+# Breadcrumb
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3681-4674) · node `3681:4674`
+
+## AI-READY
+
+AI-READY COMPONENT: Breadcrumb is a navigation pattern that communicates the current page position within a hierarchy. Use size=md for standard density and size=sm for compact layouts. Props: showIcon toggles leadingIcon; icon swaps the local DS outline icon, with home-outline as the default. Composition: leadingIcon + items. The default items composition uses four local BreadcrumbItem instances named item01, overflowItem, item02 and currentItem. overflowItem uses BreadcrumbItem type=overflow state=default to collapse intermediate hierarchy; currentItem uses state=current and must hide its trailing slash. Do not restore hidden fixed item slots or remote breadcrumb/menu kits. Do not remove the slash layer owned by BreadcrumbItem on non-current items and do not add underline states. Layout must remain single-line and hug content; for narrower containers, collapse intermediate items into overflow rather than wrapping arbitrarily. Token rule: use existing DS kebab-case variables only — spacing/100 for md gaps, spacing/050 for sm gaps, plus nested BreadcrumbItem tokens. Icons must come from the local DS icon library; 16px outline icons use proportional stroke around 1.33px. Accessibility: map Breadcrumb to nav with aria-label=Breadcrumb and an ordered list; link items map to anchors; currentItem maps to aria-current=page; overflowItem maps to a button and uses aria-expanded when its local ListActionDropdown is open; slash and decorative leadingIcon are aria-hidden; skeleton items are non-interactive. React mapping: Breadcrumb(size, showIcon, icon, children as BreadcrumbItem[]). Code Connect is not configured.
+
+## Variants
+
+- **size:** md | sm
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `size` | md \| sm |
+| `showIcon` | boolean — toggles leadingIcon (default true) |
+| `icon` | INSTANCE_SWAP — local DS outline icon (default home-outline) |
+
+## Rules
+
+- **composeBreadcrumbItem:** Compose with local BreadcrumbItem only — item01, overflowItem, item02, currentItem
+- **hideCurrentSlash:** currentItem must hide trailing slash
+- **noUnderline:** Never use underline for interaction states
+- **singleLineHug:** Keep single-line hug layout; use overflow to collapse intermediate crumbs
+- **localIcon16:** leadingIcon uses local 16px outline icons with proportional stroke (~1.33px)
+- **vsRemote:** Do not use remote breadcrumb/menu kits
+
+## Token rules
+
+- spacing/100 for md gaps
+- spacing/050 for sm gaps
+- nested BreadcrumbItem tokens
+
+## Accessibility
+
+nav aria-label=Breadcrumb + ordered list; links as anchors; current → aria-current=page; overflow → button with aria-expanded when open; slash and leadingIcon aria-hidden; skeleton non-interactive.
+
+## Composition
+
+- BreadcrumbItem
+- home-outline
+

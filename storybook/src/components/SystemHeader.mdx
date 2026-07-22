@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/SystemHeader" />
+
+# SystemHeader
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3143-8933) · node `3143:8933`
+
+## AI-READY
+
+AI-READY COMPONENT: SystemHeader is a web-only header for systems, dashboards, backoffices, admin panels, and internal product pages. Use appearance=default on light surfaces and appearance=inverse on dark/inverse surfaces. Use variant=default when the page needs title, primary action, slot, profile, notifications, and auxiliary actions. Use variant=simple for a compact header with fewer visible actions. SystemHeader should generally fill the container width in web layouts. Default height is 72px; simple height is 64px. Do not use SystemHeader as a marketing site header, hero, card header, table header, modal header, or mobile app header. Use AppHeader for app/top bar contexts. Internal structure: leadingContent contains headingContent, datePickerGroup, and primaryAction. slot is the optional custom control area. trailingContent contains profileMenu, secondaryAction, tertiaryAction, and notificationAction — trailingContent exists only on variant=default (intentional sparse: variant=simple has leadingContent + slot only). datePickerGroup composes local DatePickerSelect (format=month-year). Visibility is bound to showDatePicker. datePickerSelect instance is exposed so month/year values can be edited from the parent properties panel. slot replaces the previous showCustomSlot boolean naming. In React, map visible custom controls as slot or children. Actions: primaryAction visibility → showPrimaryAction; secondaryAction → showSecondaryAction; tertiaryAction → showTertiaryAction; notificationAction → showNotificationAction. secondary/tertiary/notification stay in trailingContent (variant=default only). Icons: local DS only. primaryAction is label-only by default (plus-outline available via nested Button showIcon); secondary/tertiary default plus-outline; notificationAction bell-outline. appearance=default: fill color/background-surface/0; stroke color/border/2; title text/primary; description text/secondary. appearance=inverse: fill color/background-surface/inverse-3; stroke color/border/1; title/userName/actions text/on-color; description text/on-color-disabled; DatePickerSelect unit texts/icons on-color. Exposed nested: headingContent (Text header → title, description, showDescription); profileMenu (userName, showUserName, Avatar); datePickerSelect (DatePickerSelect format/state + nested values). Accessibility: title maps to h1 when page title; notificationAction aria-label="Notificações"; profileMenu menu semantics; datePickerGroup accessible label; inverse must keep AA contrast. Responsive: on narrower widths, collapse tertiary then secondary before notification/profile; title truncates rather than wraps. Token rule: local S2 kebab-case semantic only. React mapping: SystemHeader(appearance, variant, title, description, showDescription, slot, showPrimaryAction, showSecondaryAction, showTertiaryAction, showNotificationAction, showProfileMenu, showDatePicker, userName, showUserName). Code Connect is not configured.
+
+## Variants
+
+- **appearance:** default | inverse
+- **variant:** default | simple
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `appearance` | default \| inverse — inverse for dark/on-color surfaces |
+| `variant` | default \| simple — simple omits trailingContent (intentional sparse) |
+| `showPrimaryAction` | boolean — toggles primaryAction visibility (wired) |
+| `showSecondaryAction` | boolean — variant=default trailing only |
+| `showTertiaryAction` | boolean — variant=default trailing only |
+| `showNotificationAction` | boolean — variant=default trailing only |
+| `showProfileMenu` | boolean — variant=default trailing only |
+| `showDatePicker` | boolean — toggles datePickerGroup |
+| `slot` | SLOT — optional compact custom control area (not page-level layout) |
+| `title` | TEXT via exposed headingContent (Text header) |
+| `description` | TEXT via exposed headingContent |
+| `showDescription` | boolean via exposed headingContent |
+| `userName` | TEXT via exposed profileMenu (variant=default) |
+| `showUserName` | boolean via exposed profileMenu (variant=default) |
+
+## Rules
+
+- **webSystemsOnly:** Web/system header for dashboards/admin — not marketing, modal, table, or mobile AppHeader
+- **simpleSparseTrailing:** variant=simple has leadingContent + slot only — no trailingContent; trailing show* props apply to variant=default
+- **primaryActionWired:** showPrimaryAction binds primaryAction.visible on all variants
+- **datePickerSelectExposed:** datePickerSelect exposed; format=month-year; showDatePicker toggles datePickerGroup
+- **slotCompact:** slot is compact controls only — not page-level layout; replaces showCustomSlot naming
+- **iconsLocalOnly:** Local DS icons only; primary label-only by default; secondary/tertiary plus-outline; notification bell-outline
+
+## Token rules
+
+- default: color/background-surface/0; color/border/2; text/primary|secondary
+- inverse: color/background-surface/inverse-3; color/border/1; text/on-color|on-color-disabled
+- DatePickerSelect inherits block tokens; inverse unit text text/on-color
+- heights: default 72px; simple 64px
+- local S2 kebab-case semantic only
+
+## Accessibility
+
+title maps to h1 when page title; notificationAction aria-label Notificações; profileMenu menu semantics; datePickerGroup accessible label; inverse must keep AA contrast; actions need accessible names and visible focus.
+
+## Composition
+
+- Text header (headingContent, exposed)
+- DatePickerSelect (datePickerSelect, exposed; format=month-year)
+- Button (primaryAction / secondaryAction / tertiaryAction / notificationAction)
+- Profile menu (exposed) + Avatar
+- plus-outline / bell-outline
+

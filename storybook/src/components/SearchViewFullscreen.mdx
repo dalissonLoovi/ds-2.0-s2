@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/SearchViewFullscreen" />
+
+# SearchViewFullscreen
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3883-16492) · node `3883:16492`
+
+## AI-READY
+
+AI-READY COMPONENT: SearchViewFullscreen is the Design System 2.0 full-screen search surface (Material Search view full-screen remapped to S2). Variants: content=value|placeholder; showResults=true|false. Anatomy: header h=56 (back + query/placeholder field + clear) on background/surface/0; DividerHorizontal full-width; results stack of ListItem (2-line + monogram). Props: query (TEXT), placeholder (TEXT), showBack (BOOLEAN), showClear (BOOLEAN), backIcon (INSTANCE_SWAP default arrow-narrow-left-outline), clearIcon (INSTANCE_SWAP default x-outline), items (SLOT preferredValues→ListItem). Clear is shown when content=value. Focus caret uses interactive/focus on value variants. Do not use as SearchBar, Input, Select, or Modal. Prefer ListItem from the local DS in results. Accessibility: search landmark or role=search; back/clear as buttons with accessible names; results as list; decorative icons aria-hidden when labels exist. Token rule: local S2 kebab-case only — color/background-surface/0, text/primary|secondary|placeholder, interactive/focus, body/large/regular, DividerHorizontal and ListItem own nested tokens. React mapping: SearchViewFullscreen(content, showResults, query, placeholder, showBack, showClear, backIcon?, clearIcon?, items?). Code Connect is not configured.
+
+## Variants
+
+- **content:** value | placeholder
+- **showResults:** true | false
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `content` | value \| placeholder (variant axis) |
+| `showResults` | true \| false (variant axis) |
+| `query` | TEXT — typed search text (content=value) |
+| `placeholder` | TEXT — hint text (content=placeholder) |
+| `showBack` | boolean |
+| `showClear` | boolean |
+| `backIcon` | INSTANCE_SWAP — local DS outline (default arrow-narrow-left-outline) |
+| `clearIcon` | INSTANCE_SWAP — local DS outline (default x-outline) |
+| `items` | SLOT — preferredValues ListItem; default 5 ListItems in results |
+
+## Rules
+
+- **materialRemap:** Remapped from Material Search view full-screen to local S2 tokens/icons/typography
+- **header56:** Header height 56 on background/surface/0
+- **clearOnValue:** showClear / clear icon visible when content=value
+- **resultsListItem:** Results compose ListItem 2-line + monogram; DividerHorizontal full-width above
+- **vsSearchBarInput:** Do not use as SearchBar, SearchViewModal, Input, Select, or Modal
+
+## Token rules
+
+- color/background-surface/0
+- text/primary|secondary|placeholder
+- interactive/focus for caret
+- body/large/regular
+- DividerHorizontal + ListItem nested DS tokens
+
+## Accessibility
+
+role=search or search landmark; back/clear as named buttons; results as list; decorative icons aria-hidden when labels exist.
+
+## Composition
+
+- DividerHorizontal
+- ListItem
+- local DS outline icons
+

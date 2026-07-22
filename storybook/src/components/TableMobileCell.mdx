@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/TableMobileCell" />
+
+# TableMobileCell
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3452-2656) · node `3452:2656`
+
+## AI-READY
+
+AI-READY COMPONENT: TableMobileCell is a reusable mobile table cell used inside mobile table rows, responsive table lists or compact table-card layouts. Use type=primary for the main value, type=secondary for supporting value, type=tag for compact status/tag content via slot, type=action for an inline Button action, and type=icon for an icon-only affordance. Use state=default, hover, pressed or selected to represent visual interaction state. Focus and disabled are intentionally not published on this component. Use label for visible text on primary/secondary cells, slot for type=tag custom content (preferred Chip/Tag), and icon INSTANCE_SWAP for type=icon (local DS outline icons only). Unlike desktop TableCell, TableMobileCell has no type=header or type=tertiary and uses type=tag|action|icon instead of type=slot for those mobile patterns. Do not use TableMobileCell as a full Table, TableRow, TableCell, Card, Button, Chip, NavigationItem or standalone layout container. Accessibility: when the cell or owning row is tappable, expose button/link semantics and a clear accessible label; selected state should be communicated by the parent row/list semantics; icon-only cells require aria-label or surrounding context; decorative icons should be aria-hidden. Token rule: use existing DS variables only (color/background-surface/0, interactive/hover|pressed|selected, text/primary|secondary, spacing/0|100|800, border/radius/0). Avoid Title Case legacy aliases such as Spacing/800. React mapping: TableMobileCell(type, state, label, slot?, icon?).
+
+## Variants
+
+- **type:** primary | secondary | tag | action | icon
+- **state:** default | hover | pressed | selected
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `type` | primary \| secondary \| tag \| action \| icon |
+| `state` | default \| hover \| pressed \| selected |
+| `label` | TEXT — primary/secondary visible text |
+| `slot` | SLOT — type=tag content (preferred chip clickable) |
+| `icon` | INSTANCE_SWAP — type=icon local DS outline icon |
+
+## Rules
+
+- **noInteractiveAxis:** interactive variant axis removed — tap/action semantics live on the parent row or nested Button
+- **noFocusDisabled:** Focus and disabled are intentionally not published
+- **vsTableCell:** No type=header/tertiary; uses type=tag|action|icon instead of desktop type=slot patterns
+- **actionComposesButton:** type=action composes local Button (variant=text, size=sm)
+- **usage:** Do not use as Table, TableRow, TableCell, Card, Button, Chip, NavigationItem or standalone layout container
+
+## Token rules
+
+- color/background-surface/0 for default surface
+- interactive/hover | pressed | selected for state surfaces
+- text/primary for primary label; text/secondary for secondary label
+- spacing/0 | 100 | 800 and border/radius/0
+
+## Accessibility
+
+Tappable row/action → button/link + clear label; selected via parent semantics; icon-only needs aria-label; decorative icons aria-hidden.
+

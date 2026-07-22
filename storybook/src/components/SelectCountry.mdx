@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/SelectCountry" />
+
+# SelectCountry
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3935-5522) · node `3935:5522`
+
+## AI-READY
+
+AI-READY COMPONENT: SelectCountry is a compact country/DDI trigger used only inside InputNumber (phone). Anatomy: countryFlag (local Flags, Style=Square Radius=On) + expandIcon (local chevron-down-outline when expanded=false; local chevron-up-outline when expanded=true). Variants: state=default|hover|focus|disabled; size=sm|md; expanded=false|true (14 variants). Sparse matrix: disabled only publishes expanded=false. size=sm is in-field density for InputNumber; size=md uses spacing/100 vertical and spacing/200 horizontal. No fill on default/hover/focus; hover stroke color/border-feedback/primary + border/width/012; focus stroke interactive/focus + border/width/012. Disabled uses root opacity ≈0.64 with no stroke. Props: countryFlag (INSTANCE_SWAP → local Flags). Do not nest the country menu — compose a floating list externally when expanded=true. Do not use as InputSelect, Autocomplete, Select, stepper, or standalone field. Accessibility: trigger with accessible name beyond the flag; aria-expanded; aria-controls external list; aria-disabled when disabled. Token rule: local S2 kebab-case only — border/radius/300, border/width/012, spacing/050|100|200, interactive/focus, color/border-feedback/primary, text/primary|placeholder on expandIcon. No remote icon libraries; no Border/Icon/* tokens. React mapping: SelectCountry(\{ state, size, expanded, countryFlag, onOpenChange \}). Code Connect is not configured.
+
+## Variants
+
+- **state:** default | hover | focus | disabled
+- **size:** sm | md
+- **expanded:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| focus \| disabled (disabled ≈0.64 opacity, no stroke) |
+| `size` | sm \| md — sm for in-field InputNumber density |
+| `expanded` | false \| true — external country list; invalid with disabled (not published) |
+| `countryFlag` | INSTANCE_SWAP — local Flags set (default Brazil Square Radius=On) |
+
+## Rules
+
+- **inputNumberOnly:** Building block for InputNumber phone — not a standalone field
+- **noDisabledExpanded:** state=disabled only publishes expanded=false
+- **externalMenu:** Country list floats externally when expanded=true; never nested
+- **localAssets:** Flags from page 5. Country flags; chevrons from local DS outline icons
+- **vsSelectAutocomplete:** Do not use as InputSelect, Autocomplete, Select, stepper, or standalone field
+
+## Token rules
+
+- border/radius/300
+- border/width/012
+- spacing/050|100|200
+- interactive/focus
+- color/border-feedback/primary
+- text/primary|placeholder on expandIcon
+- no remote Border/Icon/* tokens
+
+## Accessibility
+
+button or combobox trigger with accessible name beyond the flag; aria-expanded; aria-controls external list; aria-disabled when disabled.
+
+## Composition
+
+- Flags (local)
+- chevron-down-outline / chevron-up-outline (local)
+- external country list (screen-level)
+

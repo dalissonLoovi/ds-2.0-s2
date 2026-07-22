@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ListActionDropdown" />
+
+# ListActionDropdown
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3694-1501) · node `3694:1501`
+
+## AI-READY
+
+AI-READY COMPONENT: ListActionDropdown is a menu surface container for grouped list actions opened by an external trigger. Use it as the menu panel only — compose action rows with ListActionDropdownItem and separate groups with DividerHorizontal inside the slot. Props: showScroll toggles the local scroll affordance (right-edge thumb) when the list overflows; showDivider toggles the divider instance inside the default slot composition; slot replaces the default menu content with a custom ListActionDropdownItem / DividerHorizontal composition. Do not use remote menu kits, tooltips, keyboard shortcut chrome, icons or flags. Do not use ListActionDropdown as a page list, select field, tooltip, modal, navigation drawer or standalone button. Token rule: use existing DS kebab-case variables only — color/background-surface/0, color/elevation/5, color/palette/graph, spacing/0|050|100|200|300|800, border/radius/200|full, border/width/025, plus nested ListActionDropdownItem and DividerHorizontal tokens. Accessibility: map the container to role=menu when rendered as a menu; the external trigger controls aria-expanded and aria-controls; items map to role=menuitem (or option semantics if selectable); divider is role=separator or aria-hidden when decorative; keyboard behavior belongs to the menu implementation (ArrowUp/ArrowDown, Enter/Space, Escape). React mapping: ListActionDropdown(showScroll, showDivider, children) where children map to slot.
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `showScroll` | boolean — toggles scroll affordance (default false) |
+| `showDivider` | boolean — toggles divider in default slot composition (default true) |
+| `slot` | menu content composition — prefer ListActionDropdownItem + DividerHorizontal |
+
+## Rules
+
+- **composition:** root surface + slot (items/divider) + scroll affordance
+- **itemOnly:** compose rows with ListActionDropdownItem only
+- **dividerLocal:** use DividerHorizontal for group separation
+- **scroll:** absolute right-edge thumb; visible via showScroll when list overflows
+- **vsLegacy:** Do not use List Action dropdown legacy
+- **vsStandalone:** Do not use as page list, select field, tooltip, modal, drawer or button
+- **triggerExternal:** trigger/aria-expanded live outside this component
+
+## Token rules
+
+- color/background-surface/0 for menu surface
+- color/elevation/5 + spacing/0|200|300 for drop shadow
+- spacing/0|100 for root gap/padding
+- scroll: spacing/050×800, border/radius/full, color/palette/graph
+- border/radius/200 on root
+- nested ListActionDropdownItem and DividerHorizontal own their tokens
+
+## Accessibility
+
+role=menu; trigger owns aria-expanded/aria-controls; items as menuitem; divider separator or aria-hidden; keyboard handled by menu implementation.
+

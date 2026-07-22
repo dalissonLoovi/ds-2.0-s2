@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/FileUploaderItem" />
+
+# FileUploaderItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3581-5641) · node `3581:5641`
+
+## AI-READY
+
+AI-READY COMPONENT: FileUploaderItem is the file row used inside a file uploader to represent an uploaded file, a loading file, a successful upload, focus state, and validation error states. Use when showing one file inside an upload list or upload confirmation area. Do not use as the drag-and-drop dropzone — use FileUploaderBlock for that. Variants: size=sm|md|lg controls vertical density and row height. state=uploaded|loading|success|focus|danger-short|danger-long. Use danger-short for one-line validation feedback and danger-long when a secondary explanation is needed. Props: fileName (visible file name), shortDescription (short validation message on danger states), longDescription (optional secondary validation detail on danger-long). Composition: uses local LoadingSpinner for loading; local DS icons for removeAction (x-outline), statusIcon on success (circle-check-filled) and danger (alert-circle-filled). Do not use imported icons or external library components. removeAction is a DS icon hit-target, not a Button instance. Accessibility: the file name must be announced by screen readers. loading should expose progress/status text in implementation (preferably aria-live=polite). success may announce completion with aria-live=polite. danger-short and danger-long should expose validation feedback with role=alert or aria-live when the error appears. removeAction must have an accessible label such as Remove file \{fileName\}. Decorative status icons should be aria-hidden=true when text already communicates the state. focus represents visible keyboard focus on the trailingAction/remove control. Token rule: use existing DS kebab-case variables (color/background-surface/0|1, color/border-feedback/danger, color/border/2, interactive/focus, feedback/danger|success, text/primary|secondary, spacing/*, border/radius/*, border/width/*). On danger states, errorMessage uses feedback/danger; on danger-long, errorDescription uses text/secondary. React mapping: FileUploaderItem(size, state, fileName, shortDescription, longDescription, onRemove).
+
+## Variants
+
+- **size:** sm | md | lg
+- **state:** uploaded | loading | success | focus | danger-short | danger-long
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `size` | sm \| md \| lg — vertical density |
+| `state` | uploaded \| loading \| success \| focus \| danger-short \| danger-long |
+| `fileName` | visible file name |
+| `shortDescription` | short validation message (danger states) |
+| `longDescription` | optional secondary validation detail (danger-long) |
+
+## Rules
+
+- **composition:** local loadingSpinner, statusIcon, removeAction (x-outline icon hit-target)
+- **vsBlock:** Do not use as dropzone — use FileUploaderBlock
+- **dangerText:** errorMessage = feedback/danger; danger-long errorDescription = text/secondary
+- **focusTarget:** focus stroke on trailingAction/remove control
+- **usage:** One file row in an upload list — not a Button, Card, or ProgressBar
+
+## Token rules
+
+- color/background-surface/0 | 1, color/border-feedback/danger, color/border/2
+- interactive/focus, feedback/danger | success, text/primary | secondary
+- spacing/*, border/radius/*, border/width/*
+
+## Accessibility
+
+announce fileName; loading/success aria-live=polite; danger role=alert or aria-live; removeAction accessible label; decorative status icons aria-hidden when text conveys state.
+

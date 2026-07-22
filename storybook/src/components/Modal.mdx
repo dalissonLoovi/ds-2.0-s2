@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Modal" />
+
+# Modal
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3306-4278) · node `3306:4278`
+
+## AI-READY
+
+AI-READY COMPONENT: Modal is a blocking overlay surface used to focus the user on a critical task, confirmation, form or contextual flow without leaving the current page. Use platform=web for desktop/web modal layouts and platform=mobile for mobile modal presentation. Composition: ModalHeader (layout=desktop on web, layout=mobile on mobile) plus sheetContent with slot for the modal body, form, confirmation content or custom flow content. Do not use Modal as a toast, banner, bottom sheet, side sheet, page container, card or permanent layout section. Do not nest AppHeader inside Modal — use ModalHeader only. Modal should block background interaction, trap focus, use role=dialog or alertdialog when appropriate, expose aria-modal=true, reference the ModalHeader title with aria-labelledby, support Escape to close when allowed, and restore focus to the trigger after closing. Token rule: use existing DS kebab-case variables only — color/background-surface/0 for modal surface, spacing/150 for web itemSpacing, spacing/500 for web paddingBottom, spacing/400 for mobile paddingBottom, border/radius/600 for modal radius, plus nested ModalHeader and Button tokens. React mapping: Modal(platform, title, label, showLabel, showCloseAction, children) where platform is web|mobile, header props map through ModalHeader, and children map to slot. Code Connect is not configured.
+
+## Variants
+
+- **platform:** web | mobile
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `platform` | web \| mobile |
+| `slot` | main modal body content area |
+| `title` | maps through nested ModalHeader title |
+| `label` | maps through nested ModalHeader label |
+| `showLabel` | maps through nested ModalHeader showLabel |
+| `showCloseAction` | maps through nested ModalHeader showCloseAction |
+
+## Rules
+
+- **nonPage:** Do not use Modal as toast, banner, bottom sheet, side sheet, page container or card
+- **composition:** ModalHeader (desktop on web, mobile on mobile) + sheetContent/slot — never AppHeader
+- **headerMapping:** platform=web → ModalHeader layout=desktop; platform=mobile → ModalHeader layout=mobile
+
+## Token rules
+
+- color/background-surface/0 for modal surface
+- spacing/150 for web itemSpacing
+- spacing/500 for web paddingBottom
+- spacing/400 for mobile paddingBottom
+- border/radius/600 for modal radius
+
+## Accessibility
+
+Block background interaction, trap focus, role=dialog or alertdialog, aria-modal=true, aria-labelledby for ModalHeader title, Escape to close when allowed, restore focus to trigger.
+
+## Composition
+
+- ModalHeader
+- Button
+- x-outline
+

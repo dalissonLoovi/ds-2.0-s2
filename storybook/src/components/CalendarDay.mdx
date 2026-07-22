@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/CalendarDay" />
+
+# CalendarDay
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3950-12809) · node `3950:12809`
+
+## AI-READY
+
+AI-READY COMPONENT: CalendarDay is the Design System 2.0 day cell used inside Calendar month grids (InputDatePicker panel composition). Hit target 48×48 with a 40×40 pill container and state-layer. Variants: kind × state (30). kind: default | today | range-start | range-middle | range-end | outside. state: default | hover | focus | selected | disabled. Visual rules: today shows border ring (color/border/1) when not selected/disabled; selected and range-start/range-end use color/actions/primary fill with text/on-color; range-* kinds use color/background-surface/2 track (cleared on disabled); outside uses muted placeholder text; focus uses interactive/focus stroke; hover uses interactive/hover (interactive/pressed when already selected / range ends). Props: day (TEXT) — day-of-month number. Compose inside Calendar grid — do not use as standalone date field (use InputDatePicker). Accessibility: role=gridcell; aria-selected when selected; aria-current=date for today; aria-disabled when disabled; outside days are adjacent-month. Token rule: local S2 kebab-case only — spacing/0|050, border/radius/full, color/actions/primary, color/background-surface/2, color/border/1, interactive/hover|pressed|focus, text/primary|on-color|placeholder, body/large/*. React mapping: CalendarDay(kind, state, day). Code Connect is not configured.
+
+## Variants
+
+- **kind:** default | today | range-start | range-middle | range-end | outside
+- **state:** default | hover | focus | selected | disabled
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `kind` | default \| today \| range-start \| range-middle \| range-end \| outside |
+| `state` | default \| hover \| focus \| selected \| disabled |
+| `day` | TEXT — day-of-month number shown in the cell |
+
+## Rules
+
+- **gridCellOnly:** Compose inside Calendar month grid — not a standalone date field (use InputDatePicker)
+- **hitTarget:** 48×48 hit target with 40×40 pill container + state-layer
+- **todayRing:** kind=today shows color/border/1 ring when not selected/disabled; focus replaces with interactive/focus
+- **rangeTrack:** range-* kinds use color/background-surface/2 root track; cleared on state=disabled
+- **selectedPrimary:** selected and range-start/end use color/actions/primary + text/on-color
+- **hoverPressed:** hover uses interactive/hover; when already selected (incl. range ends) hover uses interactive/pressed
+- **vsListItem:** Analogous to ListActionDropdownItem for calendar grids — not a menu row
+
+## Token rules
+
+- spacing/0|050
+- border/radius/full
+- color/actions/primary
+- color/background-surface/2 (range track)
+- color/border/1 (today ring)
+- interactive/hover|pressed|focus
+- text/primary|on-color|placeholder
+- body/large/* typography tokens
+
+## Accessibility
+
+role=gridcell; aria-selected when selected; aria-current=date for today; aria-disabled when disabled; outside days are adjacent-month.
+
+## Composition
+
+- Calendar (parent month panel)
+- InputDatePicker (external trigger)
+

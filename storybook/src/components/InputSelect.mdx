@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/InputSelect" />
+
+# InputSelect
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3898-2755) · node `3898:2755`
+
+## AI-READY
+
+AI-READY COMPONENT: InputSelect is the Design System 2.0 outlined select field (floating-label). It is a select trigger — not a free-text Input. Visual identity: outlined container (height 56, border/radius/200), floating label cutout for content=value|placeholder, resting in-field label for content=label. Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; appearance=default|inverse (60 variants). Trailing chevron is always present: chevron-down-outline by default; chevron-up-outline on state=focus. appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error leading+trailingIconError feedback/danger with chevron text/primary). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3; default/disabled border color/border/2; label text/on-color (focus text/brand); placeholder and non-error supporting text/on-color-disabled; value text/on-color; on state=disabled all field texts use text/placeholder-inverse; leadingIcon strokes text/on-color (focus text/brand, disabled text/on-color-disabled, error feedback/danger); trailing chevron text/on-color (focus text/brand, disabled text/on-color-disabled; on error chevron stays text/on-color while trailingIconError uses feedback/danger). Feedback borders unchanged — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Open menu is NOT embedded: screens compose floating ListActionDropdown under the field. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing. Do not use as Input, InputPassword, InputNumber, PaginationSelectInput, SearchBar or Autocomplete. Accessibility: combobox; aria-expanded/aria-controls when menu open; aria-invalid on error; aria-disabled when disabled. Token rule: local S2 kebab-case only. React mapping: InputSelect(state, content, leadingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?). Code Connect is not configured.
+
+## Variants
+
+- **state:** default | hover | focus | error | disabled
+- **content:** value | placeholder | label
+- **leadingIcon:** true | false
+- **appearance:** default | inverse
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| focus \| error \| disabled |
+| `content` | value \| placeholder \| label |
+| `leadingIcon` | true \| false (variant axis) |
+| `appearance` | default \| inverse — inverse for dark/on-color surfaces |
+| `label` | TEXT — floating or resting field label |
+| `value` | TEXT — selected option text (content=value) |
+| `placeholder` | TEXT — placeholder text (content=placeholder) |
+| `supportingText` | TEXT — helper or error message |
+| `showSupportingText` | boolean |
+| `leading` | INSTANCE_SWAP — local DS outline icon (default search-outline) |
+| `trailing` | INSTANCE_SWAP — always-visible chevron (default chevron-down-outline; chevron-up-outline on state=focus); alert-circle appears additionally on error |
+
+## Rules
+
+- **selectTriggerOnly:** Select field trigger only — not free-text Input; no caret/typing chrome
+- **appearanceInverse:** appearance=inverse: transparent field; floatingLabel cutout inverse-3 on all inverse states including focus; border/2; on-color texts; disabled texts text/placeholder-inverse; icon disabled on-color-disabled; focus label text/brand
+- **floatingLabel:** Outlined field h=56, radius/200, floating label cutout (same anatomy family as Input)
+- **chevronAlways:** No trailingIcon variant axis — chevron always present on all variants
+- **focusChevronUp:** state=focus uses chevron-up-outline; all other states use chevron-down-outline
+- **hoverBorder:** state=hover field stroke uses color/border-feedback/primary
+- **errorTrailingA11y:** state=error always shows trailingIconError (alert-circle-outline) beside the always-on chevron
+- **floatingListActionDropdown:** Do not embed ListActionDropdown in variants — compose floating ListActionDropdown on click in screens/prototypes
+- **noExpandedAxis:** No expanded variant axis — open state lives on the screen with floating menu
+- **vsInputPagination:** Do not use as Input, PaginationSelectInput, SearchBar, or Textarea
+
+## Token rules
+
+- default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand
+- inverse: transparent field; color/border/2; cutout color/background-surface/inverse-3; text/on-color|on-color-disabled; disabled texts text/placeholder-inverse
+- shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger
+- spacing/050|100|200|300|700; border/radius/200; border/width/012|025
+- body/large/regular value/placeholder/resting; body/small/regular floating label/supporting
+
+## Accessibility
+
+Combobox; aria-expanded/aria-controls when floating ListActionDropdown is open; aria-invalid on error; aria-disabled when disabled; focus via interactive/focus.
+
+## Composition
+
+- Floating ListActionDropdown (screen-level, on click — not nested in set)
+- ListActionDropdownItem
+- local DS outline icons
+

@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/RadioButton" />
+
+# RadioButton
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3423-120) · node `3423:120`
+
+## AI-READY
+
+AI-READY COMPONENT: RadioButton is a selectable control used when users must choose one option from a mutually exclusive group. Use checked=true for the selected option and checked=false for unselected options. Use state=default, hover, focus or disabled to represent interaction state. Use label for the primary option text and description for optional supporting text. Use showLabel, showDescription and showContent only to control visible content slots. Do not use RadioButton as a Checkbox, Toggle, Button, Chip, MenuItem or standalone multiple-selection control. Accessibility: expose the control with role=radio, reflect checked state with aria-checked, use aria-disabled when disabled, preserve visible focus, and place related options inside a RadioGroup with role=radiogroup. Token rule: use existing DS variables only (color/actions/primary for checked, color/border/1|2, interactive/hover|focus, text/primary|secondary|placeholder, border/radius/full|0, spacing/025|050|200|250|300). React mapping: RadioButton(label, description, showLabel, showDescription, showContent, state, checked).
+
+## Variants
+
+- **state:** default | hover | focus | disabled
+- **checked:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `label` | primary option text |
+| `description` | optional supporting text |
+| `showLabel` | boolean — toggles label visibility |
+| `showDescription` | boolean — toggles description visibility |
+| `showContent` | boolean — toggles labelContent slot visibility |
+| `state` | default \| hover \| focus \| disabled |
+| `checked` | false \| true |
+
+## Rules
+
+- **usage:** Do not use as Checkbox, Toggle, Button, Chip, MenuItem or standalone multiple-selection control
+- **grouping:** Related options belong in a RadioGroup (role=radiogroup)
+
+## Token rules
+
+- color/actions/primary for checked fill
+- color/border/1 | color/border/2 for control stroke
+- interactive/hover | interactive/focus for interaction states
+- text/primary | text/secondary | text/placeholder for label/description
+- border/radius/full | border/radius/0 and spacing/025 | 050 | 200 | 250 | 300
+
+## Accessibility
+
+role=radio; aria-checked reflects checked; aria-disabled when disabled; visible focus; related options in RadioGroup with role=radiogroup.
+

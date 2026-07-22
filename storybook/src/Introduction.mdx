@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# Design System 2.0 — Storybook
+
+Seed documentation catalog generated from Figma metadata JSON.
+
+| | |
+| --- | --- |
+| **Figma file** | [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940) |
+| **File key** | `mHm12Zu9tgNmaSYnooihE5` |
+| **Schema** | `ds-storybook-metadata/v2` |
+| **Updated** | 2026-07-22T15:40:00-03:00 |
+| **Revision** | `2026-07-22-slider-left-rail-recreate` |
+
+Component documentation, controls, variant options and AI-Ready rules for Storybook docs. Token values remain under tokens.
+
+## How this catalog works
+
+1. Audit / finalize a component in Figma.
+2. Update `design-system-tokens.storybook.updated.v2.json` (repo root).
+3. Run `npm run docs:generate` (also runs automatically before `storybook` / `build-storybook`).
+4. Review locally, open a PR, merge — GitHub Pages publishes the build.
+
+> **Status:** Docs-only seed. Pages marked *Seed docs* are not yet backed by React stories.
+> When a component is implemented in code, replace its seed page with CSF3 + Autodocs.
+
+## Sidebar
+
+- **Foundations** — global rules and feedback vocabulary
+- **Components** — one page per entry in the metadata JSON
+- **Changelog** — recent documentation revisions

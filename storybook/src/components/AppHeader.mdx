@@ -1,0 +1,63 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/AppHeader" />
+
+# AppHeader
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3143-8822) · node `3143:8822`
+
+## AI-READY
+
+AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles, layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level navigation, hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global and super-app publish only with layout=small-centered; specific publishes with small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. For standalone text headings, use typography/text components instead. Actions should be limited to essential navigation/account/actions. Leading actions must have accessible labels. Profile menu must behave as an accessible menu button. Token rule: local S2 kebab-case semantic only. Do not create ad-hoc colors, spacing, typography, or elevation values. Icon rule: use local DS outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline). Do not use remote/external icon libraries. Internals must use components from this DS/current file: Button, local Text header (headingContent), local Profile menu. No remote App bar building blocks; no legacy lowercase button instances. Props: showLabel toggles headingContent; showAction toggles leadingAction; showFirstTrailingAction toggles firstTrailingAction (search-outline); showSecondTrailingAction toggles secondTrailingAction (bell-outline); showProfileMenu toggles profileMenu. title/description come from exposed headingContent (Text header). For Painel Home personalized greeting, set headingContent title (demo "Olá, Rodrigo" on appearance=inverse + hierarchy=global). PAINEL HOME: appearance=inverse, hierarchy=global, layout=small-centered. Greeting via exposed headingContent title. Enable showFirstTrailingAction + showSecondTrailingAction for search and notifications. Pair profile with Avatar. Do not use SystemHeader or OrganizationHeader for this mobile app chrome. appearance=default: fill color/background-surface/0. appearance=inverse: fill color/background-surface/inverse-3; titles/actions text/on-color; supporting text/on-color-disabled. React mapping: AppHeader(layout, appearance, hierarchy, title, description, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured.
+
+## Variants
+
+- **layout:** small-centered | small | medium | large
+- **appearance:** default | inverse
+- **hierarchy:** global | specific | super-app
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `layout` | small-centered \| small \| medium \| large |
+| `appearance` | default \| inverse |
+| `hierarchy` | global \| specific \| super-app |
+| `showLabel` | boolean — toggles headingContent |
+| `showAction` | boolean — toggles leadingAction |
+| `showFirstTrailingAction` | boolean — toggles firstTrailingAction (search-outline) |
+| `showSecondTrailingAction` | boolean — toggles secondTrailingAction (bell-outline) |
+| `showProfileMenu` | boolean — toggles profileMenu |
+| `title` | TEXT via exposed headingContent (Painel Home greeting demo: Olá, Rodrigo) |
+| `description` | TEXT via exposed headingContent |
+
+## Rules
+
+- **intentionalSparse:** 11/24 published — global/super-app only with small-centered; specific with all layouts × appearance
+- **localTextHeaderOnly:** headingContent must be local Text header — no remote App bar Content building blocks
+- **trailingSemantics:** firstTrailingAction=search; secondTrailingAction=bell; profileMenu via showProfileMenu
+- **painelHome:** appearance=inverse + hierarchy=global + layout=small-centered; greeting via headingContent title; search+bell trailing
+- **vsSystemOrgHeader:** Do not use SystemHeader or OrganizationHeader for mobile app chrome
+
+## Token rules
+
+- color/background-surface/0 for default surface
+- color/background-surface/inverse-3 for inverse surface
+- text/primary | text/on-color for titles
+- text/secondary | text/on-color-disabled for supporting text
+- color/border/2 for profileMenu stroke
+- local DS icons: menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline
+
+## Accessibility
+
+Leading actions need accessible labels. Profile and trailing actions should preserve visible focus and keyboard navigation. Profile menu must behave as an accessible menu button.
+
+## Composition
+
+- Text header (headingContent, exposed)
+- Button (leadingAction / firstTrailingAction / secondTrailingAction)
+- Profile menu (exposed) + Avatar
+- menu-2-outline / arrow-left-outline / search-outline / bell-outline / plus-outline
+

@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Switch" />
+
+# Switch
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3444-318) · node `3444:318`
+
+## AI-READY
+
+AI-READY COMPONENT: Switch is a binary control used to turn a setting on or off. Use checked=true for the on state and checked=false for the off state. Use state=default, focus or disabled to represent interaction state — there is no hover state. Use size=md for standard layouts and size=sm for compact layouts. Use showIcon to show or hide the internal check/x icon on size=md only; size=sm does not publish an icon layer. Icons are structural by checked: x-outline when unchecked and check-outline when checked. Do not use Switch as a Checkbox, RadioButton, Button, Chip, ToggleGroup or navigation item. Accessibility: expose the control as role=switch, reflect state with aria-checked, use aria-disabled when disabled, preserve visible focus, and ensure the switch has an accessible label from the surrounding form field or aria-label. Token rule: use existing DS variables only (color/actions/primary, color/background-surface/0|1|3, interactive/focus|disabled-surface, text/secondary|placeholder, spacing/0|200|250|300|400|500|700, border/radius/full|0, border/width/012|025). React mapping: Switch(checked, state, size, showIcon).
+
+## Variants
+
+- **size:** md | sm
+- **state:** default | focus | disabled
+- **checked:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `size` | md \| sm |
+| `state` | default \| focus \| disabled |
+| `checked` | false \| true |
+| `showIcon` | boolean — toggles internal check/x icon visibility (size=md only) |
+
+## Rules
+
+- **icons:** structural by checked: x-outline unchecked, check-outline checked; local DS icons only; showIcon applies to size=md only
+- **states:** Only default|focus|disabled published — no hover
+- **showIconMdOnly:** size=sm does not publish an icon layer
+- **usage:** Do not use as Checkbox, RadioButton, Button, Chip, ToggleGroup or navigation item
+
+## Token rules
+
+- color/actions/primary for checked track and checked icon stroke
+- color/background-surface/0|1 for thumb; color/background-surface/3 for unchecked track
+- interactive/focus | interactive/disabled-surface for state affordances
+- text/secondary | text/placeholder for unchecked icon by state
+- spacing/0 | 200 | 250 | 300 | 400 | 500 | 700 and border/radius/full | 0, border/width/012 | 025
+
+## Accessibility
+
+role=switch; aria-checked reflects checked; aria-disabled when disabled; visible focus; accessible label from form field or aria-label.
+

@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ChipClickable" />
+
+# ChipClickable
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3242-5845) · node `3242:5845`
+
+## AI-READY
+
+AI-READY COMPONENT: ChipClickable is a compact interactive chip for selectable filters, compact options, removable selections or contextual low-emphasis actions. Use state=selected when the chip represents a selected option and state=disabled when it cannot be activated. Do not use ChipClickable as a primary button, badge, static tag, checkbox, radio, menu item, alert or navigation tab.
+
+## Variants
+
+- **size:** sm | md
+- **state:** default | hover | pressed | selected | disabled
+- **intent:** info | system | success | warning | danger | outline
+- **width:** hug | fill
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `showAvatar` | boolean |
+| `showDeleteAction` | boolean |
+| `label` | visible chip label |
+| `leadingIcon` | local DS icon swap |
+| `showLeadingIcon` | boolean |
+| `size` | sm \| md |
+| `state` | default \| hover \| pressed \| selected \| disabled |
+| `intent` | info \| system \| success \| warning \| danger \| outline |
+| `width` | hug \| fill |
+
+## Accessibility
+
+Use a button semantic for actions or a toggle button with aria-pressed for selectable chips. Removable chips need a delete action with an accessible name such as Remove \{label\}.
+

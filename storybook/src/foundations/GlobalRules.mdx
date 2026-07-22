@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Global rules" />
+
+# Global rules
+
+| Rule | Value |
+| --- | --- |
+| Variants | variant keys use lower camelCase; values use lowercase or kebab-case where possible |
+| Tokens | use local DS variables only; do not create tokens from Storybook docs |
+| Component tokens | `component/[component]/[part]/[property]/[modifier?]` |
+| Icon layers | generic Vector layers should be renamed to \{icon-name\}-path in source components |
+| Icon scale | sizes `80/64/40/32/24/20/16`; stroke from master `24px` + `border/width/025` |
+| Code Connect | not configured in this JSON |
+
+## Feedback vocabulary
+
+**Use:** `info`, `system`, `success`, `warning`, `danger`
+
+**Deprecated (do not use):** `positive`, `negative`, `delete`, `error`
+
+## Governance
+
+- **Naming:** kebab-case path segments, slash hierarchy, no spaces, no title case
+- **Disabled spelling:** use disabled, never disable
+- **Component descriptions:** AI-Ready component documentation aligned with current variables, kebab-case variants, semantic tokens and future React readiness.
+- **Icon layer naming:** Inner vector layers in icons should use \{icon-name\}-path instead of generic Vector.

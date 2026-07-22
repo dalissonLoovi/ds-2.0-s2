@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Checkbox" />
+
+# Checkbox
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3193-5027) · node `3193:5027`
+
+## AI-READY
+
+AI-READY COMPONENT: Checkbox is a form selection control for binary, multi-select or partially selected choices. Use checked=mixed only when a parent item represents partial selection of child items. Do not use Checkbox as a button, radio, switch, chip, badge, navigation item or visual-only status indicator.
+
+## Variants
+
+- **state:** default | focus | disabled
+- **checked:** false | true | mixed
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `label` | primary option text |
+| `showLabel` | boolean |
+| `description` | supporting text |
+| `showDescription` | boolean |
+| `showContent` | boolean |
+| `state` | default \| focus \| disabled |
+| `checked` | false \| true \| mixed |
+
+## Token rules
+
+- text/primary
+- text/secondary
+- text/placeholder
+- color/actions/primary
+- color/border-feedback/primary
+- color/border/2
+- interactive/focus
+
+## Accessibility
+
+Map to input type=checkbox or role=checkbox with aria-checked. Use aria-checked=mixed for partial selection. Space toggles the value.
+

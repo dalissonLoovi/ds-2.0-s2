@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/SliderLeftRail" />
+
+# SliderLeftRail
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4073-2214) · node `4073:2214`
+
+## AI-READY
+
+AI-READY COMPONENT: SliderLeftRail is the Design System 2.0 left/start rail segment used inside Slider (and related Slider track compositions). It is not a standalone control — compose only as the start rail of a Slider track; do not use as SliderRightRail / _Slider right rail, Slider handle, ProgressBar, or a free-standing track. Variants: active (2). active: false | true. No appearance/inverse axis (intentional). Anatomy: railStartSpacer + endCapSlot + endCap. Visual rules: both active=false and active=true use fill color/actions/primary on the rail root and endCap — the only visual difference is endCap size (active=false: 14×14; active=true: 20×20). The endCap intentionally overflows the 2px rail height (circle-overflow pattern) so the track tip stays continuous when composed in _Slider rail. Geometry tokens: border/radius/full on rail and endCap; itemSpacing/gap spacing/250; rail height spacing/025. Accessibility: decorative track segment; interaction and value semantics belong to the parent Slider. React mapping: SliderLeftRail(active). Code Connect is not configured.
+
+## Variants
+
+- **active:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `active` | false \| true |
+
+## Rules
+
+- **sliderRailOnly:** Compose inside Slider track — not a standalone control
+- **sameFillBothActive:** Both active=false and active=true use color/actions/primary; difference is endCap size only (14×14 vs 20×20)
+- **endCapOverflow:** endCap intentionally overflows the 2px rail (circle-overflow) for continuous track tip in _Slider rail
+- **noInverse:** No appearance/inverse axis (intentional)
+- **geometryTokens:** border/radius/full; gap spacing/250; height spacing/025
+
+## Token rules
+
+- color/actions/primary (rail + endCap, both active values)
+- border/radius/full
+- spacing/250 (itemSpacing/gap)
+- spacing/025 (rail height)
+
+## Accessibility
+
+Decorative track segment; value/interaction semantics belong to parent Slider.
+
+## Composition
+
+- Slider / _Slider rail / _Slider item (parent compositions)
+- railStartSpacer + endCapSlot + endCap
+- _Slider right rail (sibling inactive track)
+

@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/VerificationCodeInput" />
+
+# VerificationCodeInput
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4029-835) · node `4029:835`
+
+## AI-READY
+
+AI-READY COMPONENT: VerificationCodeInput is the Design System 2.0 verification-code field for OTP, 2FA, and PIN entry (SMS, email, authenticator). Do not use as Input, InputPassword, InputNumber, or InputSelect. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Fixed length: 5 digit slots. Anatomy: labelRow (label TEXT) + codeRow with five exposed VerificationCodeInputBlock instances (codeCell1…codeCell5) + supportingRow (supportingText) on state=error only. State propagation: hover/error/disabled apply the matching block state to all cells; focus keeps codeCell1–4 at default and sets codeCell5 to focus (active slot demo). Props: label (TEXT), showLabel (BOOLEAN), supportingText (TEXT), showSupportingText (BOOLEAN — targets supportingRow on error). Digit values are edited via exposed nested codeCell1…codeCell5 digit props (React: digit1…digit5). Token rule: root gap spacing/100; codeRow gap spacing/150; label body/medium/regular with text/secondary (disabled text/placeholder); supporting caption/large/regular with feedback/danger; cells inherit VerificationCodeInputBlock tokens including focus ring color/elevation/Focus. Accessibility: group of single-character inputs; label associates to the group; aria-invalid + aria-describedby on error; aria-disabled when disabled; manage focus advance per slot in product code. React mapping: VerificationCodeInput(state, label, showLabel, supportingText, showSupportingText, digit1…digit5). Code Connect is not configured.
+
+## Variants
+
+- **state:** default | hover | focus | error | disabled
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| focus \| error \| disabled |
+| `label` | TEXT — field label (default Digite o código) |
+| `showLabel` | BOOLEAN — toggles labelRow |
+| `supportingText` | TEXT — error helper (default Código inválido…) |
+| `showSupportingText` | BOOLEAN — toggles supportingRow on state=error |
+| `digit1…digit5` | React/product — map to exposed nested codeCell1…codeCell5 digit props |
+
+## Rules
+
+- **otpFieldOnly:** OTP/2FA/PIN field — not Input, InputPassword, InputNumber, or InputSelect
+- **fixedLength5:** Fixed 5 digit slots (intentional)
+- **noInverse:** No appearance/inverse axis (intentional)
+- **focusLastSlot:** state=focus demo: codeCell5=focus; codeCell1–4=default
+- **statePropagation:** hover/error/disabled propagate matching block state to all cells
+- **supportingErrorOnly:** supportingRow exists only on state=error
+- **exposedCells:** codeCell1…codeCell5 exposed for digit editing — orphan parent digit1…5 removed
+
+## Token rules
+
+- root itemSpacing spacing/100
+- codeRow itemSpacing spacing/150
+- label: body/medium/regular; text/secondary (disabled text/placeholder)
+- supporting: caption/large/regular; feedback/danger
+- inherits VerificationCodeInputBlock tokens (incl. color/elevation/Focus ring)
+
+## Accessibility
+
+Group of single-character inputs; label associates to the group; aria-invalid + aria-describedby on error; aria-disabled when disabled; product code advances focus per slot.
+
+## Composition
+
+- VerificationCodeInputBlock (codeCell1…codeCell5, exposed)
+- labelRow / codeRow / supportingRow (error)
+

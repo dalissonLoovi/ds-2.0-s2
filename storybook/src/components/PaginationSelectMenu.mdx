@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/PaginationSelectMenu" />
+
+# PaginationSelectMenu
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3841-22501) · node `3841:22501`
+
+## AI-READY
+
+AI-READY COMPONENT: PaginationSelectMenu is the numeric listing menu surface opened by PaginationSelectInput. Use it as the panel only — the select trigger owns open state via expanded. Compose rows with PaginationSelectMenuItem inside the items SLOT (numbers for page or page-size options). Props: items is the SLOT for PaginationSelectMenuItem; showScroll toggles the local right-edge scroll affordance when the list overflows. Pattern is based on ListActionDropdown (surface, elevation, scroll) but content-hug width for compact numeric options — do not force 240px. Do not use PaginationSelectMenu as ListActionDropdown, List, generic Dropdown or Modal. Do not put ListActionDropdownItem icons here. Accessibility: map to listbox or menu; trigger uses aria-expanded/aria-controls; options use PaginationSelectMenuItem semantics; scroll is visual-only. Token rule: local S2 kebab-case only — color/background-surface/0, color/elevation/5, spacing/0|100|200|300|050|800, border/radius/200|full, color/palette/graph for scroll; item tokens from PaginationSelectMenuItem. React mapping: PaginationSelectMenu(items, showScroll). Code Connect is not configured.
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `items` | SLOT — PaginationSelectMenuItem only (preferredValues) |
+| `showScroll` | boolean — toggles local scroll affordance (default false) |
+
+## Rules
+
+- **basedOnListActionDropdown:** Same surface/elevation/scroll pattern as ListActionDropdown; content-hug width for numbers
+- **slotItemOnly:** Compose items with PaginationSelectMenuItem only — not ListActionDropdownItem
+- **triggerExternal:** PaginationSelectInput owns expanded/open state
+- **usage:** Do not use as ListActionDropdown, List, generic Dropdown or Modal
+
+## Token rules
+
+- color/background-surface/0
+- color/elevation/5 drop shadow
+- spacing/0 | 100 | 200 | 300; scroll spacing/050×800 + border/radius/full
+- border/radius/200 on surface
+
+## Accessibility
+
+listbox/menu; trigger aria-expanded/aria-controls; scroll visual-only.
+
+## Composition
+
+- PaginationSelectMenuItem
+

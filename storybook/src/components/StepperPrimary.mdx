@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/StepperPrimary" />
+
+# StepperPrimary
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3437-396) · node `3437:396`
+
+## AI-READY
+
+AI-READY COMPONENT: StepperPrimary is a single step item used inside a Stepper to represent progress across a multi-step flow. Use status=completed for finished steps, status=current for the active step and status=pending for upcoming steps. Use trail=left, right or both to define which connector sides are present in the step layout. Use trailState=none, left, right or both to define which present connector sides are visually active (color/actions/primary); inactive present connectors use color/border/2. Icons are structural by status: circle-check-filled (completed), circle-dot-filled (current), circle-outline (pending). The published matrix is intentional-sparse: trailState sides must be a subset of trail; current×trail=both only publishes trailState=none|left; pending always publishes trailState=none. Use label for the visible step text. Do not use StepperPrimary as a Button, PaginationItem, ProgressBar, TimelineItem or standalone navigation item unless the stepper interaction is explicitly implemented. Accessibility: when used in a stepper navigation, expose the full stepper as an ordered list or navigation group, mark the current step with aria-current=step, and ensure completed, current and pending status are available to assistive technologies. Token rule: use existing DS variables only (color/actions/primary, color/border/2, text/primary|placeholder, spacing/0|050|100|300, border/radius/full|0, border/width/012|025). React mapping: StepperPrimary(label, status, trail, trailState).
+
+## Variants
+
+- **status:** completed | current | pending
+- **trail:** both | left | right
+- **trailState:** none | both | left | right
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `label` | visible step text |
+| `status` | completed \| current \| pending |
+| `trail` | both \| left \| right |
+| `trailState` | none \| both \| left \| right |
+
+## Rules
+
+- **icons:** structural by status: circle-check-filled | circle-dot-filled | circle-outline; local DS icons only
+- **trails:** active trails use color/actions/primary; inactive present trails use color/border/2
+- **sparseMatrix:** intentional-sparse: trailState ⊆ trail; current×both publishes none|left only; pending publishes trailState=none only
+- **usage:** Do not use as Button, PaginationItem, ProgressBar, TimelineItem or standalone navigation item
+
+## Token rules
+
+- color/actions/primary for active trails, completed/current icon fills and completed label
+- color/border/2 for inactive present trails
+- text/primary | text/placeholder for labels by status
+- spacing/0 | 050 | 100 | 300 and border/radius/full | 0, border/width/012 | 025
+
+## Accessibility
+
+Expose stepper as ordered list or navigation group; current step aria-current=step; status available to assistive technologies.
+

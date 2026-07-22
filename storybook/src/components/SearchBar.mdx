@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/SearchBar" />
+
+# SearchBar
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3881-6002) · node `3881:6002`
+
+## AI-READY
+
+AI-READY COMPONENT: SearchBar is a compact search entry surface used to display a search hint or current query and launch a SearchView. Use it in application headers, content pages, lists and result-oriented layouts — not as SearchViewFullscreen, SearchViewModal, Input, or Select. Variants: state=default|hover|focus|pressed|disabled; content=placeholder|value (10 variants). Anatomy: pill stateLayer (border/radius/full) with leadingAction (Button text + overlay icon), searchTrigger (placeholder or query), and trailingActions (search / clear Buttons + optional Avatar). Nested Button actions stay at state=default (visual feedback comes from SearchBar stateLayer). Focus uses interactive/focus stroke on stateLayer. Props: showLeadingAction, showFirstTrailingAction, showSecondTrailingAction, showProfileAction, placeholder, query, profileAvatar, leadingIcon, firstTrailingIcon, secondTrailingIcon. Token rule: local S2 kebab-case only — color/background-surface/0, interactive/hover|pressed|disabled-surface|focus, text/primary|secondary|placeholder, border/radius/full, body/large/regular|body/medium/medium. Prefer local DS outline icons. Accessibility: role=search or search landmark; actions as named buttons; decorative overlay icons aria-hidden when the control has an accessible name. React mapping: SearchBar(state, content, placeholder, query, showLeadingAction?, showFirstTrailingAction?, showSecondTrailingAction?, showProfileAction?, leadingIcon?, firstTrailingIcon?, secondTrailingIcon?, profileAvatar?). Code Connect is not configured.
+
+## Variants
+
+- **state:** default | hover | focus | pressed | disabled
+- **content:** placeholder | value
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| focus \| pressed \| disabled (variant axis; nested Buttons stay default) |
+| `content` | placeholder \| value (variant axis) |
+| `placeholder` | TEXT — hint text (content=placeholder) |
+| `query` | TEXT — current search text (content=value) |
+| `showLeadingAction` | boolean — leading text Button (e.g. menu) |
+| `showFirstTrailingAction` | boolean — first trailing text Button (e.g. search) |
+| `showSecondTrailingAction` | boolean — second trailing text Button (e.g. clear) |
+| `showProfileAction` | boolean — trailing Avatar |
+| `leadingIcon` | INSTANCE_SWAP — overlay icon on leading Button (local DS outline) |
+| `firstTrailingIcon` | INSTANCE_SWAP — overlay icon on first trailing Button (local DS outline) |
+| `secondTrailingIcon` | INSTANCE_SWAP — overlay icon on second trailing Button (local DS outline) |
+| `profileAvatar` | INSTANCE_SWAP — Avatar for profile action (default initials xs) |
+
+## Rules
+
+- **pillSurface:** stateLayer uses border/radius/full; fills interactive/hover|pressed|disabled-surface or color/background-surface/0
+- **focusStroke:** state=focus uses interactive/focus stroke on stateLayer (weight 2)
+- **buttonStateDefault:** Nested actionSurface Buttons stay state=default / disabled=false on all SearchBar variants; feedback is on stateLayer
+- **overlayIcons:** Action icons are overlays on text Buttons (intentional composition)
+- **opensSearchView:** SearchBar is an entry control — compose SearchViewFullscreen or SearchViewModal on activate
+- **vsSearchViewsInput:** Do not use as SearchViewFullscreen, SearchViewModal, Input, or Select
+
+## Token rules
+
+- color/background-surface/0
+- interactive/hover|pressed|disabled-surface|focus
+- text/primary|secondary|placeholder
+- border/radius/full
+- body/large/regular|body/medium/medium
+- Button + Avatar nested DS tokens
+
+## Accessibility
+
+role=search or search landmark; actions as named buttons; decorative overlay icons aria-hidden when the control has an accessible name.
+
+## Composition
+
+- Button (text)
+- Avatar
+- local DS outline icons
+
