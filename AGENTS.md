@@ -20,7 +20,7 @@ No Design System Figma ([DS] 2.0 - S2 e componentes relacionados):
 1. **Só auditar / revisar** o componente contra a estrutura consolidada (tokens kebab-case, props, variants, AI-Ready, storybook).
 2. **Reportar** inconsistências e correções sugeridas.
 3. **NUNCA aplicar correções de imediato** — esperar confirmação explícita do usuário (`aplicar`, etc.) antes de editar Figma, tokens, props ou storybook.
-4. Depois de aplicar: atualizar documentação no padrão atual (JSON v2, MD, changelog/`recentUpdates`, metadata do componente). Copiar também para `C:\Users\dalisson\Downloads\` quando for o fluxo do time.
+4. Depois de aplicar: atualizar documentação no padrão atual (JSON v2, MD, changelog/`recentUpdates`, metadata do componente). **Não** copiar para `Downloads`.
 
 ### Regras de conteúdo (Figma / docs)
 
@@ -57,7 +57,7 @@ O JSON é a **fonte do seed** enquanto não houver React. O Storybook MDX é **g
 ```text
 Figma (audit/apply)
   → design-system-tokens.storybook.updated.v2.json
-  → (opcional) design-system-storybook.md + cópia em Downloads
+  → (opcional) design-system-storybook.md
   → cd storybook && npm run docs:generate
   → commit + push em main
   → GitHub Pages publica o catálogo
@@ -122,6 +122,6 @@ Não commitar `storybook/node_modules` nem `storybook/storybook-static`.
 - [ ] Auditar no Figma; reportar P1/P2/P3; **não aplicar** sem confirmação
 - [ ] Com “aplicar”: corrigir Figma conforme combinado
 - [ ] Atualizar JSON v2 (+ changelog/recentUpdates)
-- [ ] Atualizar `design-system-storybook.md` / Downloads se for o padrão da sessão
+- [ ] Atualizar `design-system-storybook.md` se for o padrão da sessão
 - [ ] `cd storybook && npm run docs:generate`
 - [ ] Commit/push só se o usuário pedir

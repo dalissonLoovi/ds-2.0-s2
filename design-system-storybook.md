@@ -3,8 +3,8 @@
 > **Arquivo Figma:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940)  
 > **File key:** `mHm12Zu9tgNmaSYnooihE5`  
 > **Schema:** ds-storybook-metadata/v2  
-> **Atualizado em:** 2026-07-22T17:35:00-03:00  
-> **Revision:** 2026-07-22-image-orientation-item-rename
+> **Atualizado em:** 2026-07-23T16:55:00-03:00  
+> **Revision:** 2026-07-23-slider
 
 Component documentation, controls, variant options and AI-Ready rules for Storybook docs. Token values remain under tokens.
 
@@ -1616,7 +1616,7 @@ Single-character input/spinbutton segment; announce errors on the group; aria-di
 
 **Node ID:** `4073:2214`
 
-AI-READY COMPONENT: SliderLeftRail is the Design System 2.0 left/start rail segment used inside Slider (and related Slider track compositions). It is not a standalone control — compose only as the start rail of a Slider track; do not use as SliderRightRail / `_Slider right rail`, Slider handle, ProgressBar, or a free-standing track. Variants: active (2). active: false | true. No appearance/inverse axis (intentional). Anatomy: `railStartSpacer` + `endCapSlot` + `endCap`. Visual rules: both `active=false` and `active=true` use fill `color/actions/primary` on the rail root and `endCap` — the only visual difference is endCap size (`active=false`: 14×14; `active=true`: 20×20). The endCap intentionally overflows the 2px rail height (circle-overflow pattern) so the track tip stays continuous when composed in `_Slider rail`. Geometry tokens: `border/radius/full` on rail and endCap; itemSpacing/gap `spacing/250`; rail height `spacing/025`. Accessibility: decorative track segment; interaction and value semantics belong to the parent Slider. React mapping: SliderLeftRail(active). Code Connect is not configured.
+AI-READY COMPONENT: SliderLeftRail is the Design System 2.0 left/start rail segment used inside Slider (and related Slider track compositions). It is not a standalone control — compose only as the start rail of a Slider track; do not use as SliderRightRail, Slider handle, ProgressBar, or a free-standing track. Variants: active (2). active: false | true. No appearance/inverse axis (intentional). Anatomy: `railStartSpacer` + `endCapSlot` + `endCap`. Visual rules: both `active=false` and `active=true` use fill `color/actions/primary` on the rail root and `endCap` — the only visual difference is endCap size (`active=false`: 14×14; `active=true`: 20×20). The endCap intentionally overflows the 2px rail height (circle-overflow pattern) so the track tip stays continuous when composed in SliderRail. Geometry tokens: `border/radius/full` on rail and endCap; itemSpacing/gap `spacing/250`; rail height `spacing/025`. Accessibility: decorative track segment; interaction and value semantics belong to the parent Slider. React mapping: SliderLeftRail(active). Code Connect is not configured.
 
 ### Variants
 
@@ -1632,7 +1632,7 @@ AI-READY COMPONENT: SliderLeftRail is the Design System 2.0 left/start rail segm
 
 - **sliderRailOnly:** Compose inside Slider track — not a standalone control
 - **sameFillBothActive:** Both `active=false` and `active=true` use `color/actions/primary`; difference is endCap size only (14×14 vs 20×20)
-- **endCapOverflow:** `endCap` intentionally overflows the 2px rail (circle-overflow) for continuous track tip in `_Slider rail`
+- **endCapOverflow:** `endCap` intentionally overflows the 2px rail (circle-overflow) for continuous track tip in SliderRail
 - **noInverse:** No appearance/inverse axis (intentional)
 - **geometryTokens:** `border/radius/full`; gap `spacing/250`; height `spacing/025`
 
@@ -1649,9 +1649,280 @@ Decorative track segment; value/interaction semantics belong to parent Slider.
 
 ### Composition
 
-- Slider / `_Slider rail` / `_Slider item` (parent compositions)
+- SliderRail / SliderItem / Slider (parent compositions)
 - `railStartSpacer` + `endCapSlot` + `endCap`
-- `_Slider right rail` (sibling inactive track)
+- SliderRightRail (sibling residual track)
+
+---
+
+## SliderRightRail
+
+**Node ID:** `4073:2224`
+
+AI-READY COMPONENT: SliderRightRail is the Design System 2.0 right/end residual rail segment used inside Slider (and related Slider track compositions). It is not a standalone control — compose only as the unfilled/residual end of a Slider track; do not use as SliderLeftRail, Slider handle, ProgressBar, or a free-standing track. Single published component (no variant matrix): residual track has no active axis. Anatomy: `railLeadSpacer` + `railTrailSpacer`. Visual rules: fill `color/border/2` on the rail root for on-canvas contrast against the filled left rail (`color/actions/primary`). Geometry tokens: `border/radius/full`; itemSpacing/gap `spacing/250`; rail height `spacing/025` (FIXED, parity with SliderLeftRail). No appearance/inverse axis (intentional). Accessibility: decorative track segment; interaction and value semantics belong to the parent Slider. React mapping: SliderRightRail(). Code Connect is not configured.
+
+### Variants
+
+_(none — single residual component)_
+
+### Props
+
+_(none)_
+
+### Rules
+
+- **sliderRailOnly:** Compose inside Slider track — not a standalone control
+- **singleResidual:** Single component — no active axis (residual/unfilled track)
+- **fillContrast:** `color/border/2` vs SliderLeftRail `color/actions/primary`
+- **noInverse:** No appearance/inverse axis (intentional)
+- **geometryTokens:** `border/radius/full`; gap `spacing/250`; height `spacing/025` FIXED
+
+### Token rules
+
+- `color/border/2`
+- `border/radius/full`
+- `spacing/250` (itemSpacing/gap)
+- `spacing/025` (rail height)
+
+### Accessibility
+
+Decorative track segment; value/interaction semantics belong to parent Slider.
+
+### Composition
+
+- SliderRail / SliderItem / Slider (parent compositions)
+- `railLeadSpacer` + `railTrailSpacer`
+- SliderLeftRail (sibling filled track)
+
+---
+
+## SliderRail
+
+**Node ID:** `4073:2228`
+
+AI-READY COMPONENT: SliderRail is the Design System 2.0 composed Slider track used inside Slider / SliderItem compositions. It is not a standalone control — compose only as the track of a Slider; do not use as SliderLeftRail or SliderRightRail alone, Slider handle, ProgressBar, or a free-standing bar. Single published component (no variant matrix on the shell). Anatomy: SliderRightRail (residual) + SliderLeftRail (filled, exposed). Child order is Right then Left (intentional — packs with `primaryAxisAlignItems=MAX` so the filled segment and endCap sit correctly on the track). Parent shell fill is empty — track color comes from child rails (Left: `color/actions/primary`; Right: `color/border/2`). Shell tokens: `border/radius/full`. Shell vertical sizing is HUG (children own height `spacing/025`). No appearance/inverse axis (intentional). Accessibility: decorative track; value/interaction semantics belong to the parent Slider. React mapping: SliderRail(leftRailActive?). Code Connect is not configured.
+
+### Variants
+
+_(none — single composed track)_
+
+### Props
+
+| Prop | Tipo / valores |
+|---|---|
+| `leftRail` | Exposed nested SliderLeftRail (`active` VARIANT editable from parent) |
+
+### Rules
+
+- **composeOnly:** Compose inside Slider / SliderItem — not a standalone control
+- **childOrder:** SliderRightRail then SliderLeftRail (intentional packing with `primaryAxisAlignItems=MAX`)
+- **emptyShellFill:** Parent shell fill empty — colors from child rails
+- **shellHug:** Shell `layoutSizingVertical` HUG — children own `spacing/025` height
+- **exposedLeft:** SliderLeftRail is exposed for `active` editing
+- **noInverse:** No appearance/inverse axis (intentional)
+
+### Token rules
+
+- `border/radius/full` (shell)
+- inherits SliderLeftRail + SliderRightRail tokens
+
+### Accessibility
+
+Decorative track; value/interaction semantics belong to parent Slider.
+
+### Composition
+
+- SliderRightRail
+- SliderLeftRail (exposed)
+- SliderItem / Slider (parents)
+
+---
+
+## SliderItem
+
+**Node ID:** `4073:2232`
+
+AI-READY COMPONENT: SliderItem is the Design System 2.0 track cell used inside Slider compositions. It combines an optional middle tick mark with a nested SliderRail (SliderRightRail + SliderLeftRail). It is not a standalone control — compose only as a Slider track cell; do not use as SliderRail alone, Slider handle, ProgressBar, or a free-standing bar. Variants: active (2). active: false | true — maps to nested SliderLeftRail.active (endCap 14 when false, 20 when true). Anatomy: `middleIndicatorOverflow` → `middleIndicator` + SliderRail (exposed). Visual rules: middleIndicator fill `color/border/2` size `spacing/025`×`spacing/025`; rail colors from child rails. Shell fill empty; vertical sizing HUG. `middleIndicatorOverflow` may keep a 1px bottom pad for optical tick alignment (intentional). No appearance/inverse axis (intentional). Accessibility: decorative track cell; value/interaction semantics belong to the parent Slider. React mapping: SliderItem(active). Code Connect is not configured.
+
+### Variants
+
+- **active:** false | true
+
+### Props
+
+| Prop | Tipo / valores |
+|---|---|
+| `active` | false \| true — maps to nested SliderLeftRail.active |
+| `sliderRail` | Exposed nested SliderRail |
+
+### Rules
+
+- **composeOnly:** Compose inside Slider — not a standalone control
+- **activeMapsLeftRail:** `active=false` → LeftRail `active=false` (endCap 14); `active=true` → LeftRail `active=true` (endCap 20)
+- **exposedRail:** SliderRail is exposed for nested editing
+- **middleTick:** `middleIndicator` `color/border/2`; size `spacing/025`; overflow may use 1px bottom pad
+- **shellHug:** Shell `layoutSizingVertical` HUG
+- **noInverse:** No appearance/inverse axis (intentional)
+
+### Token rules
+
+- `color/border/2` (middleIndicator)
+- `spacing/025` (middleIndicator width/height)
+- inherits SliderRail / SliderLeftRail / SliderRightRail tokens
+
+### Accessibility
+
+Decorative track cell; value/interaction semantics belong to parent Slider.
+
+### Composition
+
+- `middleIndicatorOverflow` / `middleIndicator`
+- SliderRail (exposed)
+- Slider / SliderSkeletonItem (parents)
+
+---
+
+## SliderSkeletonItem
+
+**Node ID:** `4092:4005`
+
+AI-READY COMPONENT: SliderSkeletonItem is the Design System 2.0 loading placeholder for Slider. It is not interactive and must not be used as the live Slider, SliderItem, SliderRail, or a ProgressBar. Single published component (no variant matrix). Anatomy: `labelBone` + `sliderRow` (`minValueBone` + SliderItem + `maxValueBone`). Visual rules: all bone fills use `color/border/2`; nested SliderItem rails/endCap are overridden to `color/border/2` so no active primary appears in skeleton. Geometry tokens: root and sliderRow gap `spacing/100`; sliderRow vertical padding `spacing/200`; bone corners `border/radius/100`. Shell fill empty; vertical sizing HUG. Nested SliderItem is exposed for rare overrides (keep `active=false` in skeleton demos). No appearance/inverse axis (intentional). Accessibility: decorative loading placeholder; announce loading on the parent Slider when used. React mapping: SliderSkeletonItem(). Code Connect is not configured.
+
+### Variants
+
+_(none — single skeleton component)_
+
+### Props
+
+| Prop | Tipo / valores |
+|---|---|
+| `sliderItem` | Exposed nested SliderItem (keep `active=false` in skeleton demos) |
+
+### Rules
+
+- **skeletonOnly:** Loading placeholder — not the live Slider / SliderItem
+- **bonesBorder2:** All bones + nested rail/endCap overrides use `color/border/2` (no active primary)
+- **geometryTokens:** gap `spacing/100`; sliderRow paddingY `spacing/200`; bone radius `border/radius/100`
+- **exposedItem:** SliderItem exposed; keep `active=false` for skeleton demos
+- **shellHug:** Shell `layoutSizingVertical` HUG
+- **noInverse:** No appearance/inverse axis (intentional)
+
+### Token rules
+
+- `color/border/2` (bones + nested rail overrides)
+- `spacing/100` (root + sliderRow gap)
+- `spacing/200` (sliderRow paddingTop/Bottom)
+- `border/radius/100` (bones)
+- inherits SliderItem tokens where not overridden
+
+### Accessibility
+
+Decorative loading placeholder; announce loading on the parent Slider when used.
+
+### Composition
+
+- `labelBone`
+- `sliderRow` (`minValueBone` + SliderItem + `maxValueBone`)
+- Slider `Status=Skeleton` (parent)
+
+---
+
+## SliderBaseItem
+
+**Node ID:** `3950:7416`
+
+AI-READY INTERNAL COMPONENT: SliderBaseItem — internal labeled slider row used to compose the top-level Slider. Props: `label` (TEXT); `minValue` (TEXT); `maxValue` (TEXT). Composition: `label` + `sliderRow` (`railRow` with `minValue`, SliderItem, `maxValue` + Input). Expose SliderItem and Input for nested overrides (`active`, `value`, Input state). Tokens: `text/secondary` (label), `text/primary` (minValue/maxValue); track via SliderItem (`color/actions/primary` + `color/border/2`). Gaps: `spacing/100` (root, railRow), `spacing/200` (sliderRow). Input uses local S2 Input (state mapped by parent Slider; `content=value`; no icons; `appearance=default`).
+
+### Variants
+
+_(none — single internal component)_
+
+### Props
+
+| Prop | Tipo / valores |
+|---|---|
+| `label` | TEXT — field label above the track |
+| `minValue` | TEXT — min label at rail start |
+| `maxValue` | TEXT — max label at rail end |
+| `sliderItem` | Exposed nested SliderItem (`active`) |
+| `input` | Exposed nested Input (`value` + state overrides from parent Slider) |
+
+### Rules
+
+- **internalOnly:** Compose inside Slider — not a standalone page control
+- **exposeNested:** SliderItem and Input are exposed for parent overrides
+- **inputContentValue:** Input `content=value` (numeric value field)
+- **gaps:** root + railRow `spacing/100`; sliderRow `spacing/200`
+- **noInverse:** No appearance/inverse axis (intentional)
+
+### Token rules
+
+- `text/secondary` (label)
+- `text/primary` (minValue/maxValue)
+- `spacing/100` (root + railRow gap)
+- `spacing/200` (sliderRow gap)
+- inherits SliderItem + Input tokens
+
+### Accessibility
+
+Label provides accessible name context; value semantics belong to parent Slider + Input.
+
+### Composition
+
+- `label`
+- `sliderRow` (`railRow`: `minValue` + SliderItem + `maxValue` + Input)
+- Slider (parent)
+
+---
+
+## Slider
+
+**Node ID:** `3950:7327`
+
+AI-READY COMPONENT: Slider — adjustable value control with horizontal track, min/max labels, and numeric Input. Props: `status=enabled|hover|focus|active|error|warning|disabled|read-only|skeleton`; `errorText`; `warningText`. Nested (exposed): SliderBaseItem (`label`, `minValue`, `maxValue`; nested SliderItem + Input) on live statuses; SliderSkeletonItem on `status=skeleton` (BaseItem kept hidden as structural keeper). Composition: SliderBaseItem = label + railRow (minValue, SliderItem, maxValue) + Input; skeleton swaps to SliderSkeletonItem. Input state maps to status: enabled→default; hover→hover; focus/active→focus; error→error; warning→default + warningText; disabled→disabled; read-only→default (Input has no read-only state — intentional; non-editable semantics belong to product/runtime). Feedback text uses `body/small/regular` + `feedback/danger|warning` fills; `status=error|warning` gap `spacing/100`. Tokens via children: `color/actions/primary`, `color/border/2`, `text/primary`, `text/secondary`, `spacing/100|200`. No appearance/inverse (intentional). Accessibility: provide accessible name from label; announce value changes; associate errorText/warningText with the control. React mapping: Slider(status, errorText, warningText, …exposed nested). Code Connect is not configured.
+
+### Variants
+
+- **status:** enabled | hover | focus | active | error | warning | disabled | read-only | skeleton
+
+### Props
+
+| Prop | Tipo / valores |
+|---|---|
+| `status` | enabled \| hover \| focus \| active \| error \| warning \| disabled \| read-only \| skeleton |
+| `errorText` | TEXT — shown under track when `status=error`; `body/small/regular` + `feedback/danger` |
+| `warningText` | TEXT — shown under track when `status=warning`; `body/small/regular` + `feedback/warning` |
+| `sliderBaseItem` | Exposed nested SliderBaseItem (`label`, `minValue`, `maxValue`; nested SliderItem + Input) on live statuses |
+| `sliderSkeletonItem` | Exposed nested SliderSkeletonItem on `status=skeleton` |
+
+### Rules
+
+- **statusMatrix:** Published 9/9 status variants
+- **inputMapping:** enabled→default; hover→hover; focus/active→focus; error→error; warning/read-only→default; disabled→disabled
+- **readOnlyIntentional:** `read-only` uses Input default — Input has no read-only state; runtime owns non-editable behavior
+- **feedbackTypography:** errorText/warningText use `body/small/regular` (not Carbon Utility styles)
+- **feedbackGap:** `status=error|warning` itemSpacing bound to `spacing/100`
+- **exposedNested:** SliderBaseItem exposed on live statuses; SliderSkeletonItem (+ hidden BaseItem keeper) on skeleton
+- **skeletonSwap:** `status=skeleton` hides BaseItem and shows SliderSkeletonItem
+- **noInverse:** No appearance/inverse axis (intentional)
+
+### Token rules
+
+- `body/small/regular` (errorText/warningText)
+- `feedback/danger` (errorText fill)
+- `feedback/warning` (warningText fill)
+- `spacing/100` (error/warning gap)
+- inherits SliderBaseItem / SliderSkeletonItem / SliderItem / Input tokens
+
+### Accessibility
+
+Provide accessible name from label; announce value changes; associate errorText/warningText with the control.
+
+### Composition
+
+- SliderBaseItem (live statuses; exposed)
+- `errorText` / `warningText` (`status=error|warning`)
+- SliderSkeletonItem (`status=skeleton`; exposed)
 
 ---
 
@@ -4289,6 +4560,7 @@ Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); trac
 
 ## Atualizações recentes
 
+- **slider-docs:** Slider + SliderBaseItem: AI-READY; feedback typography; spacing gaps; expose nested; Base TEXT props; storybook entries.
 - **painel-home-gap-close:** Closed Painel Home gap — promo surface tokens; ChipTag emphasis=soft; ChipClickable Adicionar veículo exemplar; Button intent=secondary; AppHeader greeting; NavigationBar layout=floating; new QuickAccessTile, VehicleSummaryCard, OfferProductCard, ReferralDiscountCard.
 - **input-focus-caret-error-icon-docs:** Input: added focus caret (Material pattern) and always-on trailingIconError (alert-circle) for error a11y; docs updated.
 - **input-docs:** Added Input (outlined floating-label, h=56, radius/200) from Material Text field matrix + target visual identity; S2 tokens; AI-Ready and storybook docs.
@@ -4372,6 +4644,11 @@ Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); trac
 
 ## Changelog (meta)
 
+- **2026-07-23** [storybook-slider]: Slider (`3950:7327`) + SliderBaseItem (`3950:7416`): AI-READY EN; feedback `body/small/regular`; spacing/100 gaps; expose Base/Skeleton (+ Base Item/Input); Base TEXT label/min/max + Input `content=value`; storybook entries; read-only→Input default documented.
+- **2026-07-23** [storybook-slider-skeleton-item]: SliderSkeletonItem (`4092:4005`): AI-READY EN; spacing/100|200 + bone radius/100; expose SliderItem; rewired Status=Skeleton off legacy; storybook entry.
+- **2026-07-22** [storybook-slider-item]: SliderItem (`4073:2232`): AI-READY EN; active wired to nested SliderLeftRail; expose SliderRail; middleIndicator `spacing/025`; rewired 12 legacy `_Slider item` instances; storybook entry active×2.
+- **2026-07-22** [storybook-slider-rail]: SliderRail (`4073:2228`): AI-READY EN; child order Right→Left (intentional); expose SliderLeftRail; rewired 14 instances off legacy `_Slider rail`; shell HUG kept; storybook entry.
+- **2026-07-22** [storybook-slider-right-rail]: SliderRightRail (`4073:2224`): AI-READY EN; spacing/250 gap + spacing/025 height FIXED parity with LeftRail; storybook entry; LeftRail composition refs synced to SliderRightRail.
 - **2026-07-22** [storybook-image-orientation-item-rename]: ImageOrientationBlock→ImageOrientationItem (`3671:2318`) + prop showOrientationBlock→showOrientationItem; FileUploader rule keys vsBlock→vsDropzone and Button/Block prose → FileUploaderDropzoneItem. Completes Block→Item naming pass. Figma + docs synced.
 - **2026-07-22** [storybook-block-to-item-rename]: Renamed subcomponent suffix Block→Item: VerificationCodeInputItem, DatePickerSelectItem, CommentItem, ImageItem; FileUploaderBlock→FileUploaderDropzoneItem (collision with FileUploaderItem). Figma + docs synced.
 - **2026-07-22** [storybook-slider-left-rail-recreate]: SliderLeftRail recreate `4073:2214`: AI-READY EN; spacing/250|025 binds; wired into `_Slider rail` + Slider overrides; storybook nodeId sync.

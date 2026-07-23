@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/SliderRail" />
+
+# SliderRail
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4073-2228) · node `4073:2228`
+
+## AI-READY
+
+AI-READY COMPONENT: SliderRail is the Design System 2.0 composed Slider track used inside Slider / SliderItem compositions. It is not a standalone control — compose only as the track of a Slider; do not use as SliderLeftRail or SliderRightRail alone, Slider handle, ProgressBar, or a free-standing bar. Single published component (no variant matrix on the shell). Anatomy: SliderRightRail (residual) + SliderLeftRail (filled, exposed). Child order is Right then Left (intentional — packs with primaryAxisAlignItems=MAX so the filled segment and endCap sit correctly on the track). Parent shell fill is empty — track color comes from child rails (Left: color/actions/primary; Right: color/border/2). Shell tokens: border/radius/full. Shell vertical sizing is HUG (children own height spacing/025). No appearance/inverse axis (intentional). Accessibility: decorative track; value/interaction semantics belong to the parent Slider. React mapping: SliderRail(leftRailActive?). Code Connect is not configured.
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `leftRail` | Exposed nested SliderLeftRail (active VARIANT editable from parent) |
+
+## Rules
+
+- **composeOnly:** Compose inside Slider / SliderItem — not a standalone control
+- **childOrder:** SliderRightRail then SliderLeftRail (intentional packing with primaryAxisAlignItems=MAX)
+- **emptyShellFill:** Parent shell fill empty — colors from child rails
+- **shellHug:** Shell layoutSizingVertical HUG — children own spacing/025 height
+- **exposedLeft:** SliderLeftRail is exposed for active editing
+- **noInverse:** No appearance/inverse axis (intentional)
+
+## Token rules
+
+- border/radius/full (shell)
+- inherits SliderLeftRail + SliderRightRail tokens
+
+## Accessibility
+
+Decorative track; value/interaction semantics belong to parent Slider.
+
+## Composition
+
+- SliderRightRail
+- SliderLeftRail (exposed)
+- SliderItem / Slider (parents)
+
