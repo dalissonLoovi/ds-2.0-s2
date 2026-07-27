@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/PhotoTextItem" />
+
+# PhotoTextItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4149-479) · node `4149:479`
+
+## AI-READY
+
+AI-READY INTERNAL COMPONENT: PhotoTextItem — full-bleed text scrim overlay used inside ImageItem (and photo compositions). Props: showSupportingText=true|false; label (TEXT); supportingText (TEXT). Anatomy: content (bottom-aligned column) with label and optional supportingText over a bottom scrim. Layout: when nested in ImageItem, instance is absolute STRETCH/STRETCH so content fills the entire photo surface; keep rotation 0°. Tokens: text/on-color on texts; content padding spacing/200; gap spacing/050; scrim uses interactive/overlay alpha ramp (bottom-weighted). Typography: body/medium/medium (label), body/small/regular (supportingText). Do not use as ImageOrientationItem, ChipTag, Banner, or a standalone card. Accessibility: overlay text is content — ensure contrast on photo; prefer concise labels. React mapping: PhotoTextItem(showSupportingText, label, supportingText).
+
+## Variants
+
+- **showSupportingText:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `showSupportingText` | false \| true — toggles supportingText row |
+| `label` | TEXT — primary overlay label; body/medium/medium + text/on-color |
+| `supportingText` | TEXT — secondary line when showSupportingText=true; body/small/regular + text/on-color |
+
+## Rules
+
+- **internalOverlay:** Compose inside ImageItem as photoTextOverlay — not a standalone card
+- **fullBleed:** Parent instance must be absolute STRETCH/STRETCH to fill the photo surface
+- **scrim:** Bottom-weighted interactive/overlay alpha ramp on content
+- **typography:** body/medium/medium (label) + body/small/regular (supportingText); no remote M3/Roboto
+- **vsOrientation:** Not ImageOrientationItem — text scrim vs centered orientation badge
+
+## Token rules
+
+- text/on-color (label + supportingText)
+- spacing/200 (content padding)
+- spacing/050 (content gap)
+- interactive/overlay (scrim alpha ramp)
+- body/medium/medium; body/small/regular
+
+## Accessibility
+
+Overlay text is content — ensure contrast on photo; prefer concise labels.
+
+## Composition
+
+- content (label + optional supportingText)
+- ImageItem.photoTextOverlay (parent)
+

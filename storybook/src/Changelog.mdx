@@ -8,6 +8,32 @@ Documentation revisions for the Design System 2.0 Storybook seed.
 
 ## Recent updates
 
+- **card-stacked-tokens:** CardStacked: media FILL; radius/300 binds; Avatar initials local type; docs synced.
+- **chip-clickable-label-tokens:** ChipClickable: soft label prop wired; local body/small/medium; danger gaps spacing/100; docs synced.
+- **chip-clickable-soft:** ChipClickable intent=soft: soft surface chip matrix 16; docs synced.
+- **navigation-bar-fab-local:** NavigationBar FAB: local circular Button overrides only in this component; docs synced.
+- **navigation-bar-floating-docs:** NavigationBar: layout floating matrix 12/12; pill + soft shadow; nodeId 3653:14851; AI-READY + storybook.
+- **app-header-global-icon-stroke:** AppHeader global trailing icons: stroke text/primary|on-color (manual); docs synced.
+- **app-header-global-docs:** AppHeader global: Avatar+greeting; local Button/icons; bell visible / search hidden; inverse-3; AI-READY + storybook.
+- **section-header-docs:** SectionHeader (4235:406): local Button text/sm; Title default; S2 tokens; AI-READY + storybook 2.
+- **offer-product-card-docs:** OfferProductCard (4227:418): local Button sm; package-outline; generic defaults; S2 tokens; AI-READY + storybook 1.
+- **dashboard-card-primary-apply:** DashboardCardPrimary: clear remotes; local type; chartTrack/Accent; inverse-4; docs synced.
+- **dashboard-card-primary-docs:** DashboardCardPrimary (4181:493): dark inverse-* S2; local icons; type=web|mobile; AI-READY + storybook 2.
+- **dashboard-card-secondary-docs:** DashboardCardSecondary (4181:528): S2 surfaces; growth success|danger; type×growth 4; AI-READY + storybook.
+- **quick-access-tile-icon-brand:** QuickAccessTile icon: stroke text/brand (disabled text/placeholder); docs synced.
+- **quick-access-tile-generic:** QuickAccessTile: generic defaults Label + apps-outline; docs synced.
+- **quick-access-tile-label-left:** QuickAccessTile: label textAlign LEFT; docs synced.
+- **quick-access-tile-docs:** QuickAccessTile (4203:447): S2 kebab tokens; local icon; caption/medium/medium; text/primary; storybook state×3.
+- **card-stacked-docs:** CardStacked: S2 spacing; slot 100/200; media FILL; expose Avatar/actions; AI-READY + storybook 6.
+- **card-horizontal-slot-pad:** CardHorizontal layout=slot: pad vertical spacing/100 + horizontal spacing/200; docs synced.
+- **card-horizontal-docs:** CardHorizontal: drop slotSwap; slot + spacing/radius tokens; expose Avatar; media FILL; storybook 6.
+- **card-elevated-filled-items-docs:** CardElevatedItem + CardFilledItem: S2 parity with CardOutlinedItem; AI-READY + storybook state×5.
+- **card-outlined-pressed-sync:** CardOutlinedItem pressed: root interactive/pressed; stateLayer empty; docs synced.
+- **card-outlined-item-docs:** CardOutlinedItem: focus ring default on; spacing/100; fill/elevation sync; AI-READY + storybook state×5.
+- **carousel-shell-docs:** Carousel: showPaginationItem toggle; slot demos + ImageItem preferredValues; AI-READY + storybook sync.
+- **carousel-pagination-gap-100:** CarouselPaginationItem dots gap → spacing/100 (8px); docs synced.
+- **carousel-pagination-item-docs:** CarouselPaginationItem (ex-CarouselItem): local spacing; expose on Carousel; AI-READY + storybook sparse 14.
+- **photo-text-item-docs:** PhotoTextItem + ImageItem showPhotoTextItem: full-bleed text scrim; S2 tokens; storybook entries.
 - **slider-docs:** Slider + SliderBaseItem: AI-READY; feedback typography; spacing gaps; expose nested; Base TEXT props; storybook entries.
 - **slider-skeleton-item-docs:** SliderSkeletonItem: AI-READY; spacing + bone radius; expose SliderItem; rewired Status=Skeleton; storybook entry.
 - **slider-item-docs:** SliderItem: AI-READY; active→LeftRail; expose SliderRail; middleIndicator tokens; rewired 12 instances; storybook active×2.
@@ -133,6 +159,32 @@ Documentation revisions for the Design System 2.0 Storybook seed.
 
 ## Meta changelog
 
+- **2026-07-27** [storybook-card-stacked-tokens]: CardStacked (4170:4433): mediaImage scaleMode FILL; corner radius binds border/radius/300 (+ slotContent 200); unify slot content clip; Avatar initials local type styles (clear remotes); dots-vertical-outline path rename; AI-READY + storybook.
+- **2026-07-27** [storybook-chip-clickable-label-tokens]: ChipClickable (3653:23577): soft label TEXT prop re-wired (16); label typography local body/small/medium (cleared remotes on 116); danger itemSpacing→spacing/100; AI-READY + storybook.
+- **2026-07-24** [storybook-chip-clickable-soft]: ChipClickable (3653:23577): new intent=soft (16 variants) — surface/2 + border/2; Painel Adicionar veículo; AI-READY + storybook.
+- **2026-07-24** [storybook-navigation-bar-fab-local]: NavigationBar itemCount=5: document NavigationBar-local Button FAB overrides (circular lg 56, radius/full, plus-outline, text/on-color) — not Button master; AI-READY + docs.
+- **2026-07-24** [storybook-navigation-bar-floating]: NavigationBar (3653:14851): full matrix layout flush|floating × itemCount 3|4|5 × appearance; floating pill radius/full + soft shadow; spacing/100 slot gap; AI-READY + storybook 12.
+- **2026-07-24** [storybook-app-header-global-icon-stroke]: AppHeader global: manual sync — trailing Button icon stroke text/primary (default) / text/on-color (inverse); AI-READY + docs.
+- **2026-07-24** [storybook-app-header-global]: AppHeader global (3143:8822): default+inverse small-centered; local Button text/md; local icons; greeting prop + body/large/medium; Avatar exposed; bell-only trailing; inverse-3 AI-READY + docs.
+- **2026-07-24** [storybook-section-header]: SectionHeader (4235:406): clear remotes; body/large/semi-bold + text/primary; local Button text/sm icon-only; generic Title; AI-READY + storybook showAction×2.
+- **2026-07-24** [storybook-offer-product-card]: OfferProductCard (4227:418): clear remotes; local Button solid/sm; package-outline + generic copy; surface/2|3; radius/500; AI-READY + storybook state×1.
+- **2026-07-24** [storybook-dashboard-card-primary-apply]: DashboardCardPrimary (4181:493): clear remotes; local typography; icon strokes on-color*; rename chartTrack/Accent + metricItem1|2; inverse-4 AI-READY + docs sync.
+- **2026-07-24** [storybook-dashboard-card-primary]: DashboardCardPrimary (4181:493): rename from Dash-card-primary; type=web|mobile kebab; camelCase props; local inverse-* dark surface + text/on-color*; local icons; AI-READY + storybook type×2.
+- **2026-07-24** [storybook-dashboard-card-secondary]: DashboardCardSecondary (4181:528): S2 spacing/surface; icon chip text/brand+on-color; info placeholder; rename percentual/percentageRow; AI-READY + storybook type×growth 4.
+- **2026-07-24** [storybook-quick-access-tile-icon-brand]: QuickAccessTile icon: manual sync — outline stroke text/brand (disabled text/placeholder); AI-READY + docs.
+- **2026-07-24** [storybook-quick-access-tile-generic]: QuickAccessTile: generic defaults — label "Label" + icon apps-outline; preferredValues mix; AI-READY + docs.
+- **2026-07-24** [storybook-quick-access-tile-label-left]: QuickAccessTile: manual sync — label textAlign LEFT; AI-READY + docs.
+- **2026-07-24** [storybook-quick-access-tile]: QuickAccessTile (4203:447): remap remotes→S2 kebab; local credit-card-outline + preferredValues; caption/medium/medium; text/primary + actions/primary; AI-READY + storybook state×3.
+- **2026-07-24** [storybook-card-stacked]: CardStacked (4170:4433): S2 spacing binds; slot 100vert/200horiz + content wrapper; media FILL; layer renames; expose Avatar/actions; demos + ImageItem preferredValues; AI-READY + storybook style×layout 6.
+- **2026-07-24** [storybook-card-horizontal-slot-pad]: CardHorizontal layout=slot: manual pad sync — vertical spacing/100 + horizontal spacing/200 (filled aligned); AI-READY + docs.
+- **2026-07-24** [storybook-card-horizontal]: CardHorizontal (4170:4506): removed slotSwap; slot kept + demos; spacing/200|050 + radius/300; expose Avatar; media FILL; AI-READY + storybook style×layout 6.
+- **2026-07-23** [storybook-card-elevated-filled-items]: CardElevatedItem (4170:4564) + CardFilledItem (4170:4576): rename from Material Card states; kebab state; showFocusIndicator default true; S2 surfaces/interactive/elevation; spacing/100; pressed root fill; AI-READY + storybook state×5.
+- **2026-07-23** [storybook-card-outlined-pressed]: CardOutlinedItem pressed: manual sync — root interactive/pressed over surface/0; stateLayer empty; AI-READY + docs.
+- **2026-07-23** [storybook-card-outlined-item]: CardOutlinedItem (4170:4552): showFocusIndicator default true; border/2 on focus; stateLayer spacing/100; dedupe hover/pressed fills; elevation/6|/5 AI-READY; storybook state×5.
+- **2026-07-23** [storybook-carousel]: Carousel (4152:849): showPaginationItem BOOLEAN; slot demos×4 + ImageItem preferredValues; stretchChildOnInsert; AI-READY EN + storybook sync (no chevrons intentional).
+- **2026-07-23** [storybook-carousel-pagination-gap]: CarouselPaginationItem: dots gap spacing/050→spacing/100 (8px); AI-READY + docs sync.
+- **2026-07-23** [storybook-carousel-pagination-item]: CarouselItem→CarouselPaginationItem (4152:495): local spacing/*; dot size spacing/100; rename dots; expose on Carousel; AI-READY EN; Carousel shell docs; storybook sparse 14.
+- **2026-07-23** [storybook-photo-text-item]: PhotoTextItem (4149:479): AI-READY INTERNAL; S2 typography/tokens; showSupportingText; nested in ImageItem 20/20 via showPhotoTextItem BOOLEAN (STRETCH fill); ImageItem AI-READY sync; storybook entries.
 - **2026-07-23** [storybook-slider]: Slider (3950:7327) + SliderBaseItem (3950:7416): AI-READY EN; feedback body/small/regular; spacing/100 gaps; expose Base/Skeleton (+ Base Item/Input); Base TEXT label/min/max + Input content=value; storybook entries; read-only→Input default documented.
 - **2026-07-23** [storybook-slider-skeleton-item]: SliderSkeletonItem (4092:4005): AI-READY EN; spacing/100|200 + bone radius/100; expose SliderItem; rewired Status=Skeleton off legacy; storybook entry.
 - **2026-07-22** [storybook-slider-item]: SliderItem (4073:2232): AI-READY EN; active wired to nested SliderLeftRail; expose SliderRail; middleIndicator spacing/025; rewired 12 legacy _Slider item instances; storybook entry active×2.

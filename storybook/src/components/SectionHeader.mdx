@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/SectionHeader" />
+
+# SectionHeader
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4235-406) · node `4235:406`
+
+## AI-READY
+
+AI-READY COMPONENT: SectionHeader — section title row that segments content groups on a screen, with an optional trailing action. Props: showAction=false|true; title (TEXT, default "Title"). Anatomy: title; when showAction=true, trailing action (local Button variant=text size=sm intent=primary, exposed; showLabel=false, showIcon=true, default icon arrow-narrow-right-outline). Use showAction=false when the section content fits the viewport (e.g. quick-access grid). Use showAction=true for overflow / see-more (e.g. offers carousel). Tokens: text/primary; body/large/semi-bold; spacing/0 (pad/gap); root horizontal SPACE_BETWEEN. Do not use as AppHeader, OrganizationHeader, SystemHeader, or as a full Section with content slot — body content is composed separately below. Accessibility: title is the section heading; action needs an accessible name (aria-label) when icon-only. React mapping: SectionHeader(title, showAction, onActionPress). Code Connect is not configured.
+
+## Variants
+
+- **showAction:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `showAction` | false \| true — toggles trailing action Button |
+| `title` | TEXT — default "Title"; body/large/semi-bold + text/primary |
+| `action` | Exposed nested Button text/sm/primary when showAction=true; showLabel=false, showIcon=true; default icon arrow-narrow-right-outline |
+
+## Rules
+
+- **matrix:** Published 2/2 — showAction
+- **nestedButton:** action is local Button text/sm/primary (exposed) — not remote Material button
+- **genericDefaults:** Default title "Title" (product copy via prop)
+- **iconLocal:** Default action icon arrow-narrow-right-outline (local DS)
+- **noContentSlot:** Body content is composed separately below — not a Section with slot
+- **vsHeaders:** Do not use as AppHeader, OrganizationHeader, or SystemHeader
+
+## Token rules
+
+- text/primary
+- body/large/semi-bold
+- spacing/0 (pad/gap)
+- inherits Button text/sm/primary tokens (action)
+
+## Accessibility
+
+Title is the section heading; icon-only action needs an accessible name (aria-label).
+
+## Composition
+
+- title (TEXT)
+- action (Button text/sm/primary; exposed; showAction=true only)
+

@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/QuickAccessTile" />
+
+# QuickAccessTile
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4203-447) · node `4203:447`
+
+## AI-READY
+
+AI-READY COMPONENT: QuickAccessTile — compact mobile shortcut tile for home quick-access grids (pay bill, assist, insurance). Props: state=default|pressed|disabled; label (TEXT, default "Label"); icon (INSTANCE_SWAP — local outline icons; default apps-outline; preferredValues include apps-outline, layout-grid-outline, category-outline, squares-outline, star-outline, credit-card-outline). Composition: icon (24) + label (up to 2 lines, left-aligned). state=pressed adds absolute stateLayer with interactive/pressed over the surface. Tokens: color/background-surface/2; border/radius/400; spacing/200 (vertical pad); spacing/150 (horizontal pad); spacing/050 (gap); size spacing/1000×spacing/1100 (80×88); icon stroke text/brand (disabled: text/placeholder) on outline path — not fill; label text/primary + caption/medium/medium (disabled: text/placeholder). No hover/focus variants (intentional — mobile press model). Do not use as Button, Chip, marketing Card, or NavigationBarItem. Document group pattern "Acesso rápido" as a screen composition of N tiles — not a separate published component set. Accessibility: expose as button; label is accessible name; disabled must not be focusable. React mapping: QuickAccessTile(icon, label, state, onPress). Code Connect is not configured.
+
+## Variants
+
+- **state:** default | pressed | disabled
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| pressed \| disabled |
+| `label` | TEXT — tile label (default "Label"); caption/medium/medium + text/primary (disabled: text/placeholder); textAlign LEFT |
+| `icon` | INSTANCE_SWAP — local outline icon (default apps-outline); preferredValues: apps-outline, layout-grid-outline, category-outline, squares-outline, star-outline, credit-card-outline; stroke text/brand (disabled: text/placeholder) |
+
+## Rules
+
+- **matrix:** Published 3/3 — state
+- **pressedOverlay:** state=pressed uses absolute stateLayer interactive/pressed over surface
+- **noHoverFocus:** No hover/focus variants (intentional — mobile press model)
+- **groupPattern:** Acesso rápido grid is a screen composition of N tiles — not a separate component set
+- **demoSize:** FIXED 80×88 via spacing/1000×spacing/1100
+- **typography:** caption/medium/medium (nearest local to former 10px remote)
+- **labelAlign:** label textAlign LEFT (manual)
+- **genericDefaults:** Default label "Label" + icon apps-outline (product copy/icons via props)
+- **iconStroke:** Outline path uses stroke text/brand (not fill color/actions/primary); disabled text/placeholder
+- **iconLocal:** Default and preferredValues use local DS outline icons — no remotes
+
+## Token rules
+
+- color/background-surface/2
+- border/radius/400
+- spacing/200 (vertical pad); spacing/150 (horizontal pad); spacing/050 (gap)
+- spacing/1000 × spacing/1100 (size)
+- text/brand (icon stroke; disabled text/placeholder)
+- text/primary (label; disabled text/placeholder)
+- caption/medium/medium
+- interactive/pressed (pressed stateLayer)
+
+## Accessibility
+
+Expose as button; label is accessible name; disabled must not be focusable.
+
+## Composition
+
+- stateLayer (pressed only; absolute STRETCH)
+- icon (INSTANCE_SWAP 24)
+- label (TEXT; left-aligned)
+

@@ -45,10 +45,10 @@ No Design System Figma ([DS] 2.0 - S2 e componentes relacionados):
 - **Não renomear no Figma/docs sem confirmação explícita** do usuário (mesma dinâmica de apply).
 - Exceções só se o usuário definir outro significado para um nome legado. Na dúvida, reportar e perguntar.
 
-Inventário alinhado (rename 2026-07-22):
+Inventário alinhado (rename 2026-07-22+):
 
-- **`Item` (incl. renomes):** BreadcrumbItem, FileUploaderItem, FileUploaderDropzoneItem (ex-FileUploaderBlock; dropzone — não colidir com FileUploaderItem), ListItem, ListActionDropdownItem, VerticalStepperItem, TabItem, PaginationSelectMenuItem, PaginationItem, NavigationRail*Item, NavigationBarItem, NavigationDrawerItem, CommentItem, ImageItem, VerificationCodeInputItem, DatePickerSelectItem
-- **Colisão resolvida:** `FileUploaderBlock` → `FileUploaderDropzoneItem` (não `FileUploaderItem`)
+- **`Item` (incl. renomes):** BreadcrumbItem, FileUploaderItem, FileUploaderDropzoneItem (ex-FileUploaderBlock; dropzone — não colidir com FileUploaderItem), ListItem, ListActionDropdownItem, VerticalStepperItem, TabItem, PaginationSelectMenuItem, PaginationItem, NavigationRail*Item, NavigationBarItem, NavigationDrawerItem, CommentItem, ImageItem, VerificationCodeInputItem, DatePickerSelectItem, CarouselPaginationItem (ex-CarouselItem; dots — não slide), CardOutlinedItem, CardElevatedItem (ex-Card states/Elevated), CardFilledItem (ex-Card states/Filled)
+- **Colisão resolvida:** `FileUploaderBlock` → `FileUploaderDropzoneItem` (não `FileUploaderItem`); `CarouselItem` → `CarouselPaginationItem` (pagination dots)
 
 ## Fluxo de documentação → Storybook
 
