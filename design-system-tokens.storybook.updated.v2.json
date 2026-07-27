@@ -7,7 +7,7 @@
         "figmaUrl": "https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940",
         "exportedAt": "2026-07-21T12:00:00-03:00",
         "revision": "2026-07-21-painel-home-tokens",
-        "variableCount": 269,
+        "variableCount": 271,
         "textStyleCount": 50,
         "effectStyleCount": 9,
         "painelHomeTokenMap": {
@@ -46,6 +46,16 @@
                 "name": "color/background-surface/promo-accent",
                 "id": "VariableID:3942:231",
                 "aliasOf": "primitive-colors/lavender-1"
+            },
+            {
+                "name": "primitive-colors/brand-blue",
+                "id": "VariableID:4300:23",
+                "hex": "#4967EE"
+            },
+            {
+                "name": "color/background-surface/brand",
+                "id": "VariableID:4300:24",
+                "aliasOf": "primitive-colors/brand-blue"
             }
         ],
         "collections": [
@@ -122,6 +132,45 @@
                     "64": "large empty states",
                     "80": "hero / marketing / onboarding illustrations-as-icons"
                 }
+            },
+            "iconLibraries": {
+                "summary": "Multi-product icons use Library Swap plus a shared DS name contract (*-outline / *-filled). Do not encode product icon packs as multi-theme variants on a single icon component.",
+                "nameContract": "*-outline | *-filled (kebab-case). Same keys across S2 component slots, Escritório Virtual, and App Cliente semantic aliases.",
+                "strategy": "Library Swap (A) + INSTANCE_SWAP slots on S2 components (B). Avoid multi-theme icon variants (C).",
+                "componentSlots": "S2 INSTANCE_SWAP props use the DS name contract only — never product-native Hugeicons names (e.g. search-02, notification-02).",
+                "libraries": [
+                    {
+                        "id": "escritorio-virtual",
+                        "label": "DS Icons — Escritório Virtual",
+                        "fileKey": "ThZ5XtMuDWUWXiSLbRyEXL",
+                        "figmaUrl": "https://www.figma.com/design/ThZ5XtMuDWUWXiSLbRyEXL/-DS--Icons---Escrit%C3%B3rio-Virtual",
+                        "sourcePack": "Tabler Icons",
+                        "naming": "Native DS contract (*-outline / *-filled)",
+                        "productTheme": "escritorio-virtual"
+                    },
+                    {
+                        "id": "app-cliente",
+                        "label": "DS Icons — App Cliente",
+                        "fileKey": "4LsFOmHu3B25vXsDPjklWs",
+                        "figmaUrl": "https://www.figma.com/design/4LsFOmHu3B25vXsDPjklWs/-DS--Icons---App-Cliente",
+                        "sourcePack": "Hugeicons",
+                        "naming": "Keep Hugeicons catalog names as-is; publish DS Semantic Aliases (swap contract) clones under *-outline / *-filled",
+                        "aliasesSection": "DS Semantic Aliases (swap contract)",
+                        "aliasesNodeId": "7003:12884",
+                        "productTheme": "app-cliente"
+                    }
+                ],
+                "aliasRules": [
+                    "Clone + rename to DS contract names — do not rename the Hugeicons catalog in place",
+                    "Never create an alias whose name already exists elsewhere in the same file (duplicate names block Publish library)",
+                    "Expand aliases from S2 usage inventory and preferredValues — not the full Tabler inventory",
+                    "Re-publish the App Cliente library after adding aliases before Library Swap consumers can resolve new keys"
+                ],
+                "doNot": [
+                    "Multi-theme variants on one icon for product packs",
+                    "Put Hugeicons native names in S2 INSTANCE_SWAP preferredValues",
+                    "Expect 1:1 alias coverage of the entire Tabler set"
+                ]
             },
             "feedbackUsageTable": {
                 "vocabulary": [
@@ -316,7 +365,8 @@
                     "Need input/control validation background? → interactive/error-surface (danger) or interactive/success-surface (success)",
                     "Need a validation or selection border? → color/border-feedback/{success|danger|primary}"
                 ]
-            }
+            },
+            "brandSurface": "color/background-surface/brand (#4967EE via primitive-colors/brand-blue) for solid brand chrome backgrounds (FRAME_FILL|SHAPE_FILL). Do not use for text (text/brand / color/palette/brand = sapphire #516CE7) or primary actions (color/actions/primary = azure-wave #4C6BF8)."
         },
         "previousCollections": [
             "Colors",
@@ -324,9 +374,84 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-07-27T11:20:00-03:00",
-        "storybookRevision": "2026-07-27-card-stacked-tokens",
+        "storybookUpdatedAt": "2026-07-27T19:15:00-03:00",
+        "storybookRevision": "2026-07-27-app-header-audit-apply",
         "changelog": [
+            {
+                "date": "2026-07-27",
+                "type": "storybook-app-header-audit-apply",
+                "summary": "AppHeader audit apply: super-app anatomy fixed (leading|heading|trailing + center TextHeader); spacing binds; legacy action removed; medium/large keepers; icon *-path; profileMenu=super-app only; AI-READY desc; docs synced."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-bottom-sheet-header-audit-apply",
+                "summary": "BottomSheetHeader audit apply: body/medium/medium + text/primary; AI-READY descriptions; icon *-path renames; spacing/0 gap; Button instances refreshed; BottomSheet nest swapped; docs synced."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-bottom-sheet-header-close-edge",
+                "summary": "BottomSheetHeader: headingContent FILL slot — showLabel off / only close keeps X on the trailing edge; docs synced."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-bottom-sheet-header-leading",
+                "summary": "BottomSheetHeader: no inverse; leading optionsAction + leadingAction; showLabel toggles title; docs synced."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-bottom-sheet-header",
+                "summary": "BottomSheetHeader (4307:3760): dedicated sheet header (appearance default|inverse, title, showCloseAction); BottomSheet header=app-header→sheet-header nests BottomSheetHeader (not AppHeader); docs synced."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-app-header-leading-optical-center",
+                "summary": "AppHeader small|small-centered specific default|inverse: leadingActions FIXED 48 + leadingSlotKeeper — showAction off keeps optical center with trailing visible; docs synced."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-app-header-textheader-small",
+                "summary": "AppHeader specific small|small-centered default: headingContent = local TextHeader size=small (left|center), showDescription=false; docs synced."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-background-surface-brand",
+                "summary": "Tokens: primitive-colors/brand-blue (#4967EE) + color/background-surface/brand (FRAME_FILL|SHAPE_FILL alias); docs synced."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-app-header-optical-center",
+                "summary": "AppHeader small|small-centered: unbind trailingActions.visible from showSecondTrailingAction; fixed 48 slot + keeper — optical center holds when trailing off; docs synced."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-app-header-optical-center",
+                "summary": "AppHeader small|small-centered: unbind trailingActions.visible from showSecondTrailingAction; fixed 48 slot + keeper — optical center holds when trailing off; docs synced."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-app-header-trailing-layout",
+                "summary": "AppHeader small|small-centered specific: headingContent auto-layout (not absolute); trailingActions minWidth 48 — hiding trailing no longer recenters leadingAction; AI-READY + docs."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-app-header-inverse-text",
+                "summary": "AppHeader appearance=inverse: TextHeader title → text/on-color (overrides); docs synced."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-text-header-normalize",
+                "summary": "TextHeader (3667:4129): rename from Text header; kebab size/alignment; title/description/showDescription; AppHeader non-global → TextHeader; global greeting body/large/medium kept as characteristic; orphan set removed; AI-READY + storybook."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-icon-libraries-swap",
+                "summary": "Documented multi-product icon architecture: Library Swap + DS name contract (*-outline/*-filled); EV Tabler vs App Cliente Hugeicons + Semantic Aliases; alias publish rules; foundations/GlobalRules + storybook MD."
+            },
+            {
+                "date": "2026-07-27",
+                "type": "storybook-avatar-surface-3",
+                "summary": "Avatar (3669:8605): default fill color/background-surface/3 for initials|placeholder across all sizes; nodeId synced; AI-READY + storybook."
+            },
             {
                 "date": "2026-07-27",
                 "type": "storybook-card-stacked-tokens",
@@ -1329,6 +1454,11 @@
                     "$type": "color",
                     "$value": "#261F31",
                     "$description": "export: color-bg-surface-inverse-4 | intentional inverse ramp: highest inverse surface step. Do not reorder aliases without revisiting inverse surface contrast."
+                },
+                "brand": {
+                    "$type": "color",
+                    "$value": "#4967EE",
+                    "$description": "export: color-bg-surface-brand | solid brand chrome background. Alias of primitive-colors/brand-blue. Scopes: FRAME_FILL, SHAPE_FILL. Not for text/brand or color/actions/primary."
                 }
             },
             "border-feedback": {
@@ -1923,6 +2053,11 @@
             "breeze": {
                 "$type": "color",
                 "$value": "#FFD700"
+            },
+            "brand-blue": {
+                "$type": "color",
+                "$value": "#4967EE",
+                "$description": "export: primitive-colors-brand-blue | brand blue solid for color/background-surface/brand"
             },
             "charcoal": {
                 "$type": "color",
@@ -2952,7 +3087,7 @@
     },
     "storybook": {
         "schemaVersion": "ds-storybook-metadata/v2",
-        "updatedAt": "2026-07-20T11:45:00-03:00",
+        "updatedAt": "2026-07-27T18:50:00-03:00",
         "purpose": "Component documentation, controls, variant options and AI-Ready rules for Storybook docs. Token values remain under tokens.",
         "globalRules": {
             "variantNaming": "variant keys use lower camelCase; values use lowercase or kebab-case where possible",
@@ -2972,6 +3107,7 @@
             ],
             "componentTokens": "component/[component]/[part]/[property]/[modifier?]",
             "iconLayers": "generic Vector layers should be renamed to {icon-name}-path in source components",
+            "iconLibraries": "Library Swap + shared *-outline/*-filled contract; App Cliente uses Hugeicons catalog + DS Semantic Aliases (see meta.governance.iconLibraries)",
             "codeConnect": "not configured in this JSON",
             "feedbackUsageTable": {
                 "vocabulary": [
@@ -3236,8 +3372,8 @@
                 ]
             },
             "Avatar": {
-                "nodeId": "3056:3985",
-                "description": "AI-READY COMPONENT: Avatar represents a user, customer, driver, team member, profile or account identity. Use content=image for photo identity, content=initials when the name is known but no photo exists, and content=placeholder when identity is unavailable. Avatar is not interactive by default; interaction belongs to a wrapper such as AvatarButton or AvatarUpload.",
+                "nodeId": "3669:8605",
+                "description": "AI-READY COMPONENT: Avatar represents a user, customer, driver, team member, profile or account identity. Use content=image for photo identity, content=initials when the name is known but no photo exists, and content=placeholder when identity is unavailable. Default fill for content=initials and content=placeholder (all sizes/states): color/background-surface/3. content=image uses the photo fill (no surface/3 shell); image hover may use color/elevation/inverse-3 overlay. Avatar is not interactive by default; interaction belongs to a wrapper such as AvatarButton or AvatarUpload.",
                 "variants": {
                     "content": [
                         "image",
@@ -3265,7 +3401,12 @@
                     "size": "micro | xs | sm | md | lg | xl",
                     "state": "default | hover | focus | disabled | loading"
                 },
+                "rules": {
+                    "defaultFill": "initials|placeholder → color/background-surface/3 across all sizes",
+                    "imageFill": "content=image uses photo fill; hover may use color/elevation/inverse-3 overlay"
+                },
                 "tokenRules": [
+                    "color/background-surface/3 (default fill — initials|placeholder, all sizes)",
                     "initials micro → body/small/regular",
                     "initials xs → body/large/regular",
                     "initials sm → heading/h3/regular",
@@ -3939,7 +4080,7 @@
             },
             "AppHeader": {
                 "nodeId": "3143:8822",
-                "description": "AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. For standalone text headings, use typography/text components instead. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Actions should be limited to essential navigation/account/actions. Leading actions must have accessible labels. Profile menu must behave as an accessible menu button. Token rule: local S2 kebab-case semantic only. Icon rule: local DS outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline). Internals must use components from this DS/current file: Button, local Text header (headingContent), local Profile menu, local Avatar. No remote App bar building blocks; no legacy Material button instances. Props: showLabel toggles headingContent (specific/super-app) or greeting visibility (global); showAction toggles leadingAction (specific/super-app); showFirstTrailingAction toggles firstTrailingAction (search-outline; default false — hidden); showSecondTrailingAction toggles secondTrailingAction (bell-outline; default true — visible); showProfileMenu toggles profileMenu (specific/super-app); greeting (TEXT, default \"Olá, Rodrigo\") on hierarchy=global. title/description come from exposed headingContent (Text header) on non-global hierarchies. PAINEL HOME: appearance=inverse|default, hierarchy=global, layout=small-centered. Anatomy: leadingCluster (Avatar exposed + greeting) + trailingActions (search hidden by default; bell visible). appearance=default → color/background-surface/0 + text/primary; appearance=inverse → color/background-surface/inverse-3 + text/on-color. Greeting uses body/large/medium. Trailing actions are local Button text/md/primary icon-only; icon outline stroke is manually synced — appearance=default uses text/primary, appearance=inverse uses text/on-color (not the Button default brand stroke). React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Do not nest AppHeader inside BottomSheet — use BottomSheetHeader. Token rule: local S2 kebab-case semantic only. Icon rule: local DS outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline); internal paths use {icon}-path. Internals: Button, local TextHeader (headingContent), local Profile menu, local Avatar — no remotes. Props: showLabel; showAction; showFirstTrailingAction (search-outline, default false); showSecondTrailingAction (bell-outline, default true); showProfileMenu (hierarchy=super-app only); greeting (TEXT, default \"Olá, Rodrigo\", global only). title/description via exposed headingContent TextHeader on non-global. Anatomy — global: leadingCluster + trailingActions. specific|super-app small|small-centered: leadingActions (slot + leadingSlotKeeper + leadingAction) + headingContent FILL + trailingActions. super-app: leadingActions FIXED 96 balances trailing (bell + profileMenu); TextHeader size=small alignment=center. specific medium|large: headerControls (leadingActions + trailingActions, SPACE_BETWEEN) above headingContent; keepers on both slots; no legacy action layer. Optical center: do not bind slot containers' visible to show* — keepers preserve width. Spacing: global pad spacing/050 vert + spacing/300 horiz; small/small-centered pad spacing/100 vert + spacing/050 horiz; medium/large root gap spacing/100 + paddingBottom spacing/150. PAINEL HOME: hierarchy=global + layout=small-centered; default surface/0 + text/primary; inverse surface/inverse-3 + text/on-color; greeting body/large/medium; trailing icon strokes default text/primary / inverse text/on-color. React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured.",
                 "variants": {
                     "layout": [
                         "small-centered",
@@ -3965,40 +4106,55 @@
                     "showAction": "boolean — toggles leadingAction (specific/super-app)",
                     "showFirstTrailingAction": "boolean — toggles firstTrailingAction search-outline (default false; hidden on Painel Home)",
                     "showSecondTrailingAction": "boolean — toggles secondTrailingAction bell-outline (default true; visible)",
-                    "showProfileMenu": "boolean — toggles profileMenu (specific/super-app)",
-                    "greeting": "TEXT — hierarchy=global only (default \"Olá, Rodrigo\"); body/large/medium",
-                    "title": "TEXT via exposed headingContent (non-global)",
-                    "description": "TEXT via exposed headingContent (non-global)"
+                    "showProfileMenu": "boolean — toggles profileMenu (hierarchy=super-app only)",
+                    "greeting": "TEXT — hierarchy=global only (default \"Olá, Rodrigo\"); body/large/medium characteristic — not TextHeader",
+                    "title": "TEXT via exposed headingContent TextHeader (non-global)",
+                    "description": "TEXT via exposed headingContent TextHeader (non-global)"
                 },
                 "rules": {
                     "intentionalSparse": "11/24 published — global: small-centered × default|inverse; super-app: small-centered × default only; specific: all layouts × appearance",
                     "globalAnatomy": "hierarchy=global: leadingCluster (Avatar exposed + greeting) + trailingActions — not headingContent/back",
+                    "superAppAnatomy": "hierarchy=super-app: leadingActions (FIXED 96 + keeper + menu leadingAction) | headingContent TextHeader size=small alignment=center FILL | trailingActions HUG (search optional + bell + profileMenu)",
+                    "profileMenuScope": "showProfileMenu / profileMenu published only on hierarchy=super-app",
                     "painelHomeTrailing": "Painel Home keeps only bell visible; search via showFirstTrailingAction=false by default",
-                    "localTextHeaderOnly": "headingContent must be local Text header — no remote App bar Content building blocks",
-                    "trailingSemantics": "firstTrailingAction=search; secondTrailingAction=bell; local Button text/md icon-only",
+                    "localTextHeaderOnly": "headingContent must be local TextHeader (3667:4129) — no remote App bar Content / orphan Text header sets",
+                    "globalGreetingCharacteristic": "hierarchy=global keeps dedicated greeting TEXT with body/large/medium — does NOT nest TextHeader",
+                    "trailingSemantics": "firstTrailingAction=search; secondTrailingAction=bell; local Button text/md icon-only FIXED 48",
+                    "noLegacyAction": "Do not expose or keep a legacy action layer — use leadingAction only",
                     "painelHome": "appearance=inverse|default + hierarchy=global + layout=small-centered; greeting prop; Avatar + bell",
                     "vsSystemOrgHeader": "Do not use SystemHeader or OrganizationHeader for mobile app chrome",
                     "inverseFill": "appearance=inverse uses color/background-surface/inverse-3 (not color/actions/primary)",
-                    "globalTrailingIconStroke": "Manual sync on hierarchy=global trailing Button icons: default → text/primary; inverse → text/on-color"
+                    "globalTrailingIconStroke": "Manual sync on hierarchy=global trailing Button icons: default → text/primary; inverse → text/on-color",
+                    "inverseTextHeader": "appearance=inverse: nested TextHeader title uses text/on-color (description text/on-color-disabled when shown); default keeps text/primary|secondary",
+                    "smallLayoutFlow": "small|small-centered × specific|super-app: leadingActions + headingContent=TextHeader size=small FILL + trailingActions. Do not bind slot containers' visible to show*; keepers preserve optical center.",
+                    "mediumLargeFlow": "medium|large × specific: headerControls SPACE_BETWEEN (leadingActions FIXED 48 + trailingActions FIXED 48 with keepers) above headingContent; root gap spacing/100 + paddingBottom spacing/150",
+                    "textHeaderSizeMap": "layout→TextHeader size: small|small-centered → size=small (alignment left|center); medium → size=medium; large → size=large. Exemplars showDescription=false; title uses TextHeader typography (small = heading/h3/medium).",
+                    "leadingOpticalCenter": "showAction=false must not collapse the leading slot — leadingSlotKeeper keeps width so headingContent optical center holds while trailingActions stay visible (mirror of trailingSlotKeeper).",
+                    "vsBottomSheetHeader": "Do not use AppHeader inside BottomSheet — use BottomSheetHeader"
                 },
                 "tokenRules": [
                     "color/background-surface/0 for default surface",
                     "color/background-surface/inverse-3 for inverse surface",
                     "text/primary | text/on-color for titles/greeting",
                     "text/secondary | text/on-color-disabled for supporting text",
-                    "body/large/medium for global greeting",
-                    "spacing/300 (horizontal pad); spacing/050 (vertical pad); spacing/150 (leadingCluster gap)",
+                    "body/large/medium for global greeting (characteristic — not TextHeader)",
+                    "global: spacing/050 vert + spacing/300 horiz pad; spacing/150 leadingCluster gap",
+                    "small|small-centered: spacing/100 vert + spacing/050 horiz pad; spacing/0 gap",
+                    "medium|large: spacing/100 root gap + spacing/150 paddingBottom; headerControls spacing/0 gap SPACE_BETWEEN",
                     "color/border/2 for profileMenu stroke",
-                    "local DS icons: menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline",
-                    "text/primary (global trailing icon stroke on default); text/on-color (on inverse)"
+                    "local DS icons: menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline ({icon}-path)",
+                    "text/primary (global trailing icon stroke on default); text/on-color (on inverse)",
+                    "text/on-color for TextHeader title on appearance=inverse",
+                    "text/on-color-disabled for TextHeader description on appearance=inverse when shown",
+                    "heading/h3/medium via TextHeader size=small on layout=small|small-centered (specific|super-app)"
                 ],
-                "iconRules": "Use local DS outline icons only; do not use remote/external icon libraries inside AppHeader.",
+                "iconRules": "Use local DS outline icons only; do not use remote/external icon libraries inside AppHeader. Internal VECTOR layers use {icon}-path naming.",
                 "accessibility": "Leading actions need accessible labels. Profile and trailing actions should preserve visible focus and keyboard navigation. Profile menu must behave as an accessible menu button. Icon-only search/bell need accessible names.",
                 "composition": [
-                    "global: leadingCluster (Avatar exposed + greeting) + trailingActions (Button text/md)",
-                    "specific/super-app: Text header (headingContent, exposed)",
-                    "Button (leadingAction / firstTrailingAction / secondTrailingAction)",
-                    "Profile menu (exposed) + Avatar",
+                    "global: leadingCluster (Avatar exposed + greeting body/large/medium) + trailingActions (Button text/md)",
+                    "specific/super-app: TextHeader (headingContent, exposed)",
+                    "Button (leadingAction inside leadingActions slot / firstTrailingAction / secondTrailingAction)",
+                    "Profile menu (exposed on super-app) + Avatar",
                     "menu-2-outline / arrow-left-outline / search-outline / bell-outline / plus-outline / user-outline"
                 ]
             },
@@ -4081,7 +4237,7 @@
             },
             "SystemHeader": {
                 "nodeId": "3143:8933",
-                "description": "AI-READY COMPONENT: SystemHeader is a web-only header for systems, dashboards, backoffices, admin panels, and internal product pages. Use appearance=default on light surfaces and appearance=inverse on dark/inverse surfaces. Use variant=default when the page needs title, primary action, slot, profile, notifications, and auxiliary actions. Use variant=simple for a compact header with fewer visible actions. SystemHeader should generally fill the container width in web layouts. Default height is 72px; simple height is 64px. Do not use SystemHeader as a marketing site header, hero, card header, table header, modal header, or mobile app header. Use AppHeader for app/top bar contexts. Internal structure: leadingContent contains headingContent, datePickerGroup, and primaryAction. slot is the optional custom control area. trailingContent contains profileMenu, secondaryAction, tertiaryAction, and notificationAction — trailingContent exists only on variant=default (intentional sparse: variant=simple has leadingContent + slot only). datePickerGroup composes local DatePickerSelect (format=month-year). Visibility is bound to showDatePicker. datePickerSelect instance is exposed so month/year values can be edited from the parent properties panel. slot replaces the previous showCustomSlot boolean naming. In React, map visible custom controls as slot or children. Actions: primaryAction visibility → showPrimaryAction; secondaryAction → showSecondaryAction; tertiaryAction → showTertiaryAction; notificationAction → showNotificationAction. secondary/tertiary/notification stay in trailingContent (variant=default only). Icons: local DS only. primaryAction is label-only by default (plus-outline available via nested Button showIcon); secondary/tertiary default plus-outline; notificationAction bell-outline. appearance=default: fill color/background-surface/0; stroke color/border/2; title text/primary; description text/secondary. appearance=inverse: fill color/background-surface/inverse-3; stroke color/border/1; title/userName/actions text/on-color; description text/on-color-disabled; DatePickerSelect unit texts/icons on-color. Exposed nested: headingContent (Text header → title, description, showDescription); profileMenu (userName, showUserName, Avatar); datePickerSelect (DatePickerSelect format/state + nested values). Accessibility: title maps to h1 when page title; notificationAction aria-label=\"Notificações\"; profileMenu menu semantics; datePickerGroup accessible label; inverse must keep AA contrast. Responsive: on narrower widths, collapse tertiary then secondary before notification/profile; title truncates rather than wraps. Token rule: local S2 kebab-case semantic only. React mapping: SystemHeader(appearance, variant, title, description, showDescription, slot, showPrimaryAction, showSecondaryAction, showTertiaryAction, showNotificationAction, showProfileMenu, showDatePicker, userName, showUserName). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: SystemHeader is a web-only header for systems, dashboards, backoffices, admin panels, and internal product pages. Use appearance=default on light surfaces and appearance=inverse on dark/inverse surfaces. Use variant=default when the page needs title, primary action, slot, profile, notifications, and auxiliary actions. Use variant=simple for a compact header with fewer visible actions. SystemHeader should generally fill the container width in web layouts. Default height is 72px; simple height is 64px. Do not use SystemHeader as a marketing site header, hero, card header, table header, modal header, or mobile app header. Use AppHeader for app/top bar contexts. Internal structure: leadingContent contains headingContent, datePickerGroup, and primaryAction. slot is the optional custom control area. trailingContent contains profileMenu, secondaryAction, tertiaryAction, and notificationAction — trailingContent exists only on variant=default (intentional sparse: variant=simple has leadingContent + slot only). datePickerGroup composes local DatePickerSelect (format=month-year). Visibility is bound to showDatePicker. datePickerSelect instance is exposed so month/year values can be edited from the parent properties panel. slot replaces the previous showCustomSlot boolean naming. In React, map visible custom controls as slot or children. Actions: primaryAction visibility → showPrimaryAction; secondaryAction → showSecondaryAction; tertiaryAction → showTertiaryAction; notificationAction → showNotificationAction. secondary/tertiary/notification stay in trailingContent (variant=default only). Icons: local DS only. primaryAction is label-only by default (plus-outline available via nested Button showIcon); secondary/tertiary default plus-outline; notificationAction bell-outline. appearance=default: fill color/background-surface/0; stroke color/border/2; title text/primary; description text/secondary. appearance=inverse: fill color/background-surface/inverse-3; stroke color/border/1; title/userName/actions text/on-color; description text/on-color-disabled; DatePickerSelect unit texts/icons on-color. Exposed nested: headingContent (TextHeader → title, description, showDescription); profileMenu (userName, showUserName, Avatar); datePickerSelect (DatePickerSelect format/state + nested values). Accessibility: title maps to h1 when page title; notificationAction aria-label=\"Notificações\"; profileMenu menu semantics; datePickerGroup accessible label; inverse must keep AA contrast. Responsive: on narrower widths, collapse tertiary then secondary before notification/profile; title truncates rather than wraps. Token rule: local S2 kebab-case semantic only. React mapping: SystemHeader(appearance, variant, title, description, showDescription, slot, showPrimaryAction, showSecondaryAction, showTertiaryAction, showNotificationAction, showProfileMenu, showDatePicker, userName, showUserName). Code Connect is not configured.",
                 "variants": {
                     "appearance": [
                         "default",
@@ -4102,7 +4258,7 @@
                     "showProfileMenu": "boolean — variant=default trailing only",
                     "showDatePicker": "boolean — toggles datePickerGroup",
                     "slot": "SLOT — optional compact custom control area (not page-level layout)",
-                    "title": "TEXT via exposed headingContent (Text header)",
+                    "title": "TEXT via exposed headingContent (TextHeader)",
                     "description": "TEXT via exposed headingContent",
                     "showDescription": "boolean via exposed headingContent",
                     "userName": "TEXT via exposed profileMenu (variant=default)",
@@ -4125,7 +4281,7 @@
                 ],
                 "accessibility": "title maps to h1 when page title; notificationAction aria-label Notificações; profileMenu menu semantics; datePickerGroup accessible label; inverse must keep AA contrast; actions need accessible names and visible focus.",
                 "composition": [
-                    "Text header (headingContent, exposed)",
+                    "TextHeader (headingContent, exposed)",
                     "DatePickerSelect (datePickerSelect, exposed; format=month-year)",
                     "Button (primaryAction / secondaryAction / tertiaryAction / notificationAction)",
                     "Profile menu (exposed) + Avatar",
@@ -4221,18 +4377,27 @@
             },
             "BottomSheet": {
                 "nodeId": "3181:8289",
-                "description": "AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobile or responsive experiences. Use it for contextual content that supports a task without navigating away. Do not use it as a centered modal, side drawer, toast, tooltip, card, full page or permanent layout container.",
+                "description": "AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobile or responsive experiences. Use it for contextual content that supports a task without navigating away. Do not use it as a centered modal, side drawer, toast, tooltip, card, full page or permanent layout container. Variant rule: header=none shows dragHandle + slot only; header=sheet-header nests local BottomSheetHeader (compact 48 height, headingContent title, optional leading options/action, optional close) above sheetContent/slot. Do not nest AppHeader or ModalHeader inside BottomSheet. React mapping: BottomSheet(header, children). Code Connect is not configured.",
                 "variants": {
                     "header": [
                         "none",
-                        "app-header"
+                        "sheet-header"
                     ]
                 },
                 "props": {
                     "slot": "main content area",
-                    "header": "none | app-header"
+                    "header": "none | sheet-header"
                 },
-                "accessibility": "Modal usage should block background interaction, trap focus, support Escape to close and restore focus to the trigger. Non-modal usage should use an appropriate region semantic when needed."
+                "accessibility": "Modal usage should block background interaction, trap focus, support Escape to close and restore focus to the trigger. Non-modal usage should use an appropriate region semantic when needed.",
+                "rules": {
+                    "headerComposition": "header=sheet-header nests BottomSheetHeader — not AppHeader",
+                    "vsAppHeader": "Do not nest AppHeader in BottomSheet"
+                },
+                "composition": [
+                    "BottomSheetHeader (when header=sheet-header)",
+                    "dragHandle (header=none)",
+                    "slot / sheetContent"
+                ]
             },
             "Accordion": {
                 "nodeId": "3181:8443",
@@ -6178,7 +6343,8 @@
                     "typography": "desktop title heading/h1/semi-bold; mobile title heading/h3/semi-bold; label body/small/regular",
                     "centerOptical": "alignment=center uses leadingSpacer matching close width so title centers optically",
                     "vsAppHeader": "Do not use as AppHeader, page header, card header, BottomSheet header or navigation",
-                    "parentOnly": "Use only inside Modal"
+                    "parentOnly": "Use only inside Modal",
+                    "vsBottomSheetHeader": "Do not use as BottomSheet header — use BottomSheetHeader"
                 },
                 "tokenRules": [
                     "text/primary | text/secondary",
@@ -6848,6 +7014,41 @@
                     "Border/Icon/* may remain on nested icon strokeWeight when no local kebab equivalent exists"
                 ],
                 "accessibility": "role=tablist; nested TabItem role=tab; aria-selected on active tab; ArrowLeft/ArrowRight and Home/End when applicable; decorative icons aria-hidden when label visible."
+            },
+            "TextHeader": {
+                "nodeId": "3667:4129",
+                "description": "AI-READY COMPONENT: TextHeader is the compact title + optional supporting text block used inside AppHeader, SystemHeader, and similar chrome. Props: size=large|medium|small; alignment=left|center; title (TEXT); description (TEXT); showDescription (BOOLEAN, default true). Typography: size=large → heading/h1/medium + body/large/regular; size=medium → heading/h2/medium + body/medium/regular; size=small → heading/h3/medium + body/small/regular. Do not use TextHeader as AppHeader itself, as a Button label, Chip, Banner, or page hero. Prefer nesting TextHeader via exposed headingContent in parent headers. Note: AppHeader hierarchy=global does not use TextHeader — it keeps greeting TEXT body/large/medium as a characteristic. Token rule: local S2 text styles and text/primary|secondary only. React mapping: TextHeader(size, alignment, title, description, showDescription). Code Connect is not configured.",
+                "variants": {
+                    "size": [
+                        "large",
+                        "medium",
+                        "small"
+                    ],
+                    "alignment": [
+                        "left",
+                        "center"
+                    ]
+                },
+                "props": {
+                    "size": "large | medium | small",
+                    "alignment": "left | center",
+                    "title": "TEXT — headline label",
+                    "description": "TEXT — supporting text",
+                    "showDescription": "boolean — default true"
+                },
+                "rules": {
+                    "matrix": "Published 6/6 — size × alignment",
+                    "appHeaderUsage": "AppHeader hierarchy=specific|super-app nests TextHeader as headingContent; hierarchy=global uses greeting body/large/medium instead",
+                    "kebab": "Variant keys/values are kebab-case (size/alignment; large|medium|small; left|center)",
+                    "inverseOverride": "When nested in appearance=inverse chrome (e.g. AppHeader), override title → text/on-color and description → text/on-color-disabled"
+                },
+                "tokenRules": [
+                    "size=large: heading/h1/medium + body/large/regular",
+                    "size=medium: heading/h2/medium + body/medium/regular",
+                    "size=small: heading/h3/medium + body/small/regular",
+                    "text/primary on title; text/secondary on description"
+                ],
+                "accessibility": "Title provides the accessible name for the header region when nested; supporting description is supplementary."
             },
             "Toast": {
                 "nodeId": "3550:4107",
@@ -7875,9 +8076,114 @@
                     "Nested NavigationDrawerItem and DividerHorizontal use their own DS tokens"
                 ],
                 "accessibility": "Use nav semantics or aria-label; items as links for routes; selected maps to aria-current=page; visible focus and keyboard navigation; badge counts need accessible labels when meaningful."
+            },
+            "BottomSheetHeader": {
+                "nodeId": "4307:3760",
+                "description": "AI-READY COMPONENT: BottomSheetHeader is the compact header used only inside BottomSheet surfaces. No inverse appearance — sheets use default surface only (appearance fixed to default). Anatomy: leadingActions (optional optionsAction + leadingAction) + headingContent (FILL with title) + trailingActions (closeAction + trailingSlotKeeper). Height 48. Props: title (TEXT, default \"Label\"); showLabel (BOOLEAN, default true); showOptionsAction (BOOLEAN, default false — dots-vertical-outline); showLeadingAction (BOOLEAN, default false — arrow-left-outline); showCloseAction (BOOLEAN, default true — x-outline). showLabel toggles title inside headingContent — the FILL slot stays so close never recenters. Typography: body/medium/medium + text/primary on color/background-surface/0. Padding spacing/050; itemSpacing spacing/0. leadingActions hugs with min width 48 when empty. Icon preferredValues: options=dots-vertical-outline; leading=arrow-left-outline; close=x-outline (INSTANCE_SWAP on nested Button Icon). Internal icon paths use {icon}-path naming. Do not use as AppHeader or ModalHeader. React mapping: BottomSheetHeader(title, showLabel, showOptionsAction, showLeadingAction, showCloseAction, onOptions, onAction, onClose). Code Connect is not configured.",
+                "variants": {
+                    "appearance": [
+                        "default"
+                    ]
+                },
+                "props": {
+                    "appearance": "default only — residual VARIANT axis with a single value; no inverse for BottomSheet",
+                    "title": "TEXT — sheet heading (default \"Label\")",
+                    "showLabel": "boolean — toggles title visibility (default true)",
+                    "showOptionsAction": "boolean — toggles optionsAction dots-vertical-outline (default false)",
+                    "showLeadingAction": "boolean — toggles leadingAction arrow-left-outline (default false)",
+                    "showCloseAction": "boolean — toggles closeAction x-outline (default true)"
+                },
+                "rules": {
+                    "parentOnly": "Use only inside BottomSheet (header=sheet-header)",
+                    "noInverse": "Do not publish appearance=inverse — BottomSheet headers are default surface only; appearance remains a single-value VARIANT axis",
+                    "composition": "leadingActions + headingContent(FILL, always in layout) + trailingActions(FIXED 48 + trailingSlotKeeper). title visibility binds to showLabel inside headingContent — do not hide the FILL slot.",
+                    "leadingActions": "Left-side optional controls: optionsAction (menu) and leadingAction (contextual). Both default hidden. HUG with minWidth 48 when empty (no absolute leading keeper).",
+                    "iconPreferred": "Nested Button Icon preferred swaps: options→dots-vertical-outline; leading→arrow-left-outline; close→x-outline. Paths renamed to {icon}-path.",
+                    "showLabel": "showLabel=false hides the title while keeping leading/trailing actions",
+                    "density": "Fixed height 48",
+                    "closeAction": "Button text/md/primary + x-outline; showLabel=false; accessible label Fechar; ABSOLUTE in trailingActions",
+                    "vsAppHeader": "Do not use AppHeader inside BottomSheet — use BottomSheetHeader",
+                    "vsModalHeader": "Do not use as ModalHeader; Modal uses ModalHeader",
+                    "closeEdge": "closeAction must stay on the trailing edge. Root primaryAxisAlignItems=MIN; headingContent FILL keeps trailingActions right when showLabel=false or leading is empty."
+                },
+                "tokenRules": [
+                    "color/background-surface/0 only (no inverse)",
+                    "text/primary",
+                    "body/medium/medium",
+                    "spacing/050 horizontal pad",
+                    "spacing/0 root itemSpacing",
+                    "nested Button tokens; dots-vertical-outline; arrow-left-outline; x-outline"
+                ],
+                "accessibility": "Sheet owns dialog/sheet semantics; title via aria-labelledby when showLabel=true; options/leading/close icon-only buttons need accessible names (Opções / Ação / Fechar).",
+                "composition": [
+                    "Button",
+                    "dots-vertical-outline",
+                    "arrow-left-outline",
+                    "x-outline"
+                ]
             }
         },
         "recentUpdates": [
+            {
+                "id": "app-header-audit-apply",
+                "summary": "AppHeader audit apply: super-app anatomy, spacing binds, keepers, icon paths; docs synced."
+            },
+            {
+                "id": "bottom-sheet-header-audit-apply",
+                "summary": "BottomSheetHeader audit apply: type style, descriptions, icon paths, spacing/0; docs synced."
+            },
+            {
+                "id": "bottom-sheet-header-close-edge",
+                "summary": "BottomSheetHeader: close stays trailing when only showCloseAction; docs synced."
+            },
+            {
+                "id": "bottom-sheet-header-leading",
+                "summary": "BottomSheetHeader: default-only; left options/action; showLabel; docs synced."
+            },
+            {
+                "id": "bottom-sheet-header",
+                "summary": "BottomSheetHeader + BottomSheet header=sheet-header (no AppHeader nest); docs synced."
+            },
+            {
+                "id": "app-header-leading-optical-center",
+                "summary": "AppHeader small|small-centered: leadingSlotKeeper mirrors trailing — showAction off keeps optical center; docs synced."
+            },
+            {
+                "id": "app-header-textheader-small",
+                "summary": "AppHeader small|small-centered specific: headingContent TextHeader size=small; docs synced."
+            },
+            {
+                "id": "background-surface-brand",
+                "summary": "Token color/background-surface/brand (#4967EE via brand-blue); FRAME_FILL|SHAPE_FILL; docs synced."
+            },
+            {
+                "id": "app-header-optical-center",
+                "summary": "AppHeader: trailing slot stays when showSecondTrailingAction off; optical center fixed; docs synced."
+            },
+            {
+                "id": "app-header-optical-center",
+                "summary": "AppHeader: trailing slot stays when showSecondTrailingAction off; optical center fixed; docs synced."
+            },
+            {
+                "id": "app-header-trailing-layout",
+                "summary": "AppHeader small/small-centered: fix leading recenter when trailing hidden; docs synced."
+            },
+            {
+                "id": "app-header-inverse-text",
+                "summary": "AppHeader inverse: TextHeader title text/on-color; docs synced."
+            },
+            {
+                "id": "text-header-normalize",
+                "summary": "TextHeader: kebab size/alignment; AppHeader nests TextHeader (non-global); global greeting body/large/medium characteristic; docs synced."
+            },
+            {
+                "id": "icon-libraries-swap",
+                "summary": "Icon libs: Library Swap + *-outline/*-filled contract; EV Tabler / App Hugeicons aliases; foundations docs."
+            },
+            {
+                "id": "avatar-surface-3",
+                "summary": "Avatar: default fill color/background-surface/3 for initials|placeholder all sizes; nodeId 3669:8605; docs synced."
+            },
             {
                 "id": "card-stacked-tokens",
                 "summary": "CardStacked: media FILL; radius/300 binds; Avatar initials local type; docs synced."

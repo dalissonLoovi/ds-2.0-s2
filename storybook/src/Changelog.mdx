@@ -8,6 +8,21 @@ Documentation revisions for the Design System 2.0 Storybook seed.
 
 ## Recent updates
 
+- **app-header-audit-apply:** AppHeader audit apply: super-app anatomy, spacing binds, keepers, icon paths; docs synced.
+- **bottom-sheet-header-audit-apply:** BottomSheetHeader audit apply: type style, descriptions, icon paths, spacing/0; docs synced.
+- **bottom-sheet-header-close-edge:** BottomSheetHeader: close stays trailing when only showCloseAction; docs synced.
+- **bottom-sheet-header-leading:** BottomSheetHeader: default-only; left options/action; showLabel; docs synced.
+- **bottom-sheet-header:** BottomSheetHeader + BottomSheet header=sheet-header (no AppHeader nest); docs synced.
+- **app-header-leading-optical-center:** AppHeader small|small-centered: leadingSlotKeeper mirrors trailing — showAction off keeps optical center; docs synced.
+- **app-header-textheader-small:** AppHeader small|small-centered specific: headingContent TextHeader size=small; docs synced.
+- **background-surface-brand:** Token color/background-surface/brand (#4967EE via brand-blue); FRAME_FILL|SHAPE_FILL; docs synced.
+- **app-header-optical-center:** AppHeader: trailing slot stays when showSecondTrailingAction off; optical center fixed; docs synced.
+- **app-header-optical-center:** AppHeader: trailing slot stays when showSecondTrailingAction off; optical center fixed; docs synced.
+- **app-header-trailing-layout:** AppHeader small/small-centered: fix leading recenter when trailing hidden; docs synced.
+- **app-header-inverse-text:** AppHeader inverse: TextHeader title text/on-color; docs synced.
+- **text-header-normalize:** TextHeader: kebab size/alignment; AppHeader nests TextHeader (non-global); global greeting body/large/medium characteristic; docs synced.
+- **icon-libraries-swap:** Icon libs: Library Swap + *-outline/*-filled contract; EV Tabler / App Hugeicons aliases; foundations docs.
+- **avatar-surface-3:** Avatar: default fill color/background-surface/3 for initials|placeholder all sizes; nodeId 3669:8605; docs synced.
 - **card-stacked-tokens:** CardStacked: media FILL; radius/300 binds; Avatar initials local type; docs synced.
 - **chip-clickable-label-tokens:** ChipClickable: soft label prop wired; local body/small/medium; danger gaps spacing/100; docs synced.
 - **chip-clickable-soft:** ChipClickable intent=soft: soft surface chip matrix 16; docs synced.
@@ -159,6 +174,21 @@ Documentation revisions for the Design System 2.0 Storybook seed.
 
 ## Meta changelog
 
+- **2026-07-27** [storybook-app-header-audit-apply]: AppHeader audit apply: super-app anatomy fixed (leading|heading|trailing + center TextHeader); spacing binds; legacy action removed; medium/large keepers; icon *-path; profileMenu=super-app only; AI-READY desc; docs synced.
+- **2026-07-27** [storybook-bottom-sheet-header-audit-apply]: BottomSheetHeader audit apply: body/medium/medium + text/primary; AI-READY descriptions; icon *-path renames; spacing/0 gap; Button instances refreshed; BottomSheet nest swapped; docs synced.
+- **2026-07-27** [storybook-bottom-sheet-header-close-edge]: BottomSheetHeader: headingContent FILL slot — showLabel off / only close keeps X on the trailing edge; docs synced.
+- **2026-07-27** [storybook-bottom-sheet-header-leading]: BottomSheetHeader: no inverse; leading optionsAction + leadingAction; showLabel toggles title; docs synced.
+- **2026-07-27** [storybook-bottom-sheet-header]: BottomSheetHeader (4307:3760): dedicated sheet header (appearance default|inverse, title, showCloseAction); BottomSheet header=app-header→sheet-header nests BottomSheetHeader (not AppHeader); docs synced.
+- **2026-07-27** [storybook-app-header-leading-optical-center]: AppHeader small|small-centered specific default|inverse: leadingActions FIXED 48 + leadingSlotKeeper — showAction off keeps optical center with trailing visible; docs synced.
+- **2026-07-27** [storybook-app-header-textheader-small]: AppHeader specific small|small-centered default: headingContent = local TextHeader size=small (left|center), showDescription=false; docs synced.
+- **2026-07-27** [storybook-background-surface-brand]: Tokens: primitive-colors/brand-blue (#4967EE) + color/background-surface/brand (FRAME_FILL|SHAPE_FILL alias); docs synced.
+- **2026-07-27** [storybook-app-header-optical-center]: AppHeader small|small-centered: unbind trailingActions.visible from showSecondTrailingAction; fixed 48 slot + keeper — optical center holds when trailing off; docs synced.
+- **2026-07-27** [storybook-app-header-optical-center]: AppHeader small|small-centered: unbind trailingActions.visible from showSecondTrailingAction; fixed 48 slot + keeper — optical center holds when trailing off; docs synced.
+- **2026-07-27** [storybook-app-header-trailing-layout]: AppHeader small|small-centered specific: headingContent auto-layout (not absolute); trailingActions minWidth 48 — hiding trailing no longer recenters leadingAction; AI-READY + docs.
+- **2026-07-27** [storybook-app-header-inverse-text]: AppHeader appearance=inverse: TextHeader title → text/on-color (overrides); docs synced.
+- **2026-07-27** [storybook-text-header-normalize]: TextHeader (3667:4129): rename from Text header; kebab size/alignment; title/description/showDescription; AppHeader non-global → TextHeader; global greeting body/large/medium kept as characteristic; orphan set removed; AI-READY + storybook.
+- **2026-07-27** [storybook-icon-libraries-swap]: Documented multi-product icon architecture: Library Swap + DS name contract (*-outline/*-filled); EV Tabler vs App Cliente Hugeicons + Semantic Aliases; alias publish rules; foundations/GlobalRules + storybook MD.
+- **2026-07-27** [storybook-avatar-surface-3]: Avatar (3669:8605): default fill color/background-surface/3 for initials|placeholder across all sizes; nodeId synced; AI-READY + storybook.
 - **2026-07-27** [storybook-card-stacked-tokens]: CardStacked (4170:4433): mediaImage scaleMode FILL; corner radius binds border/radius/300 (+ slotContent 200); unify slot content clip; Avatar initials local type styles (clear remotes); dots-vertical-outline path rename; AI-READY + storybook.
 - **2026-07-27** [storybook-chip-clickable-label-tokens]: ChipClickable (3653:23577): soft label TEXT prop re-wired (16); label typography local body/small/medium (cleared remotes on 116); danger itemSpacing→spacing/100; AI-READY + storybook.
 - **2026-07-24** [storybook-chip-clickable-soft]: ChipClickable (3653:23577): new intent=soft (16 variants) — surface/2 + border/2; Painel Adicionar veículo; AI-READY + storybook.

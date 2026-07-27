@@ -11,6 +11,7 @@ import { Meta } from '@storybook/blocks';
 | Component tokens | `component/[component]/[part]/[property]/[modifier?]` |
 | Icon layers | generic Vector layers should be renamed to \{icon-name\}-path in source components |
 | Icon scale | sizes `80/64/40/32/24/20/16`; stroke from master `24px` + `border/width/025` |
+| Icon libraries | Library Swap + shared *-outline/*-filled contract; App Cliente uses Hugeicons catalog + DS Semantic Aliases (see meta.governance.iconLibraries) |
 | Code Connect | not configured in this JSON |
 
 ## Feedback vocabulary
@@ -25,3 +26,31 @@ import { Meta } from '@storybook/blocks';
 - **Disabled spelling:** use disabled, never disable
 - **Component descriptions:** AI-Ready component documentation aligned with current variables, kebab-case variants, semantic tokens and future React readiness.
 - **Icon layer naming:** Inner vector layers in icons should use \{icon-name\}-path instead of generic Vector.
+
+## Icon libraries (multi-product)
+
+Multi-product icons use Library Swap plus a shared DS name contract (*-outline / *-filled). Do not encode product icon packs as multi-theme variants on a single icon component.
+
+| Library | File key | Source pack | Naming | Product theme |
+| --- | --- | --- | --- | --- |
+| [DS Icons — Escritório Virtual](https://www.figma.com/design/ThZ5XtMuDWUWXiSLbRyEXL/-DS--Icons---Escrit%C3%B3rio-Virtual) | `ThZ5XtMuDWUWXiSLbRyEXL` | Tabler Icons | Native DS contract (*-outline / *-filled) | `escritorio-virtual` |
+| [DS Icons — App Cliente](https://www.figma.com/design/4LsFOmHu3B25vXsDPjklWs/-DS--Icons---App-Cliente) | `4LsFOmHu3B25vXsDPjklWs` | Hugeicons | Keep Hugeicons catalog names as-is; publish DS Semantic Aliases (swap contract) clones under *-outline / *-filled | `app-cliente` |
+
+- **Name contract:** *-outline | *-filled (kebab-case). Same keys across S2 component slots, Escritório Virtual, and App Cliente semantic aliases.
+- **Strategy:** Library Swap (A) + INSTANCE_SWAP slots on S2 components (B). Avoid multi-theme icon variants (C).
+- **Component slots:** S2 INSTANCE_SWAP props use the DS name contract only — never product-native Hugeicons names (e.g. search-02, notification-02).
+
+### Alias rules (App Cliente)
+
+- Clone + rename to DS contract names — do not rename the Hugeicons catalog in place
+- Never create an alias whose name already exists elsewhere in the same file (duplicate names block Publish library)
+- Expand aliases from S2 usage inventory and preferredValues — not the full Tabler inventory
+- Re-publish the App Cliente library after adding aliases before Library Swap consumers can resolve new keys
+
+
+### Do not
+
+- Multi-theme variants on one icon for product packs
+- Put Hugeicons native names in S2 INSTANCE_SWAP preferredValues
+- Expect 1:1 alias coverage of the entire Tabler set
+

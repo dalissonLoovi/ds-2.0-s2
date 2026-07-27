@@ -1,10 +1,10 @@
-# Design System 2.0 — Storybook
+﻿# Design System 2.0 — Storybook
 
 > **Arquivo Figma:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940)  
 > **File key:** `mHm12Zu9tgNmaSYnooihE5`  
 > **Schema:** ds-storybook-metadata/v2  
-> **Atualizado em:** 2026-07-27T11:20:00-03:00  
-> **Revision:** 2026-07-27-card-stacked-tokens
+> **Atualizado em:** 2026-07-27T18:50:00-03:00  
+> **Revision:** 2026-07-27-bottom-sheet-header-close-edge
 
 Component documentation, controls, variant options and AI-Ready rules for Storybook docs. Token values remain under tokens.
 
@@ -19,58 +19,95 @@ Component documentation, controls, variant options and AI-Ready rules for Storyb
 | Component tokens | `component/[component]/[part]/[property]/[modifier?]` |
 | Icon layers | generic Vector layers should be renamed to `{icon-name}-path` in source components |
 | Icon scale | sizes `80/64/40/32/24/20/16`; stroke scales from master `24px` + `border/width/025` (2px) |
+| Icon libraries | Library Swap + shared `*-outline` / `*-filled` contract (EV Tabler / App Hugeicons + aliases) |
 | Code Connect | not configured in this JSON |
 
-### Vocabulário de feedback
+### VocabulÃ¡rio de feedback
 
 **Usar:** `info`, `system`, `success`, `warning`, `danger`
 
-**Deprecated (não usar):** `positive`, `negative`, `delete`, `error`
+**Deprecated (nÃ£o usar):** `positive`, `negative`, `delete`, `error`
 
-### Governança adicional
+### GovernanÃ§a adicional
 
 - **Nomenclatura:** kebab-case path segments, slash hierarchy, no spaces, no title case
 - **Disabled:** use disabled, never disable
-- **Descrições de componentes:** AI-Ready component documentation aligned with current variables, kebab-case variants, semantic tokens and future React readiness.
-- **Camadas de ícone:** Inner vector layers in icons should use `{icon-name}-path` instead of generic Vector.
-- **Escala de ícone:** ver seção [Iconografia — escala de tamanho e stroke](#iconografia--escala-de-tamanho-e-stroke)
+- **DescriÃ§Ãµes de componentes:** AI-Ready component documentation aligned with current variables, kebab-case variants, semantic tokens and future React readiness.
+- **Camadas de Ã­cone:** Inner vector layers in icons should use `{icon-name}-path` instead of generic Vector.
+- **Escala de Ã­cone:** ver seÃ§Ã£o [Iconografia — escala de tamanho e stroke](#iconografia--escala-de-tamanho-e-stroke)
+- **Libs de Ã­cone (multi-produto):** ver seÃ§Ã£o [Iconografia — libs e Library Swap](#iconografia--libs-e-library-swap)
+- **Brand surface:** `color/background-surface/brand` (`#4967EE` via `primitive-colors/brand-blue`) — fills de chrome brand (`FRAME_FILL`|`SHAPE_FILL`). NÃ£o usar para texto (`text/brand` / `color/palette/brand` = sapphire `#516CE7`) nem aÃ§Ã£o primÃ¡ria (`color/actions/primary` = azure-wave `#4C6BF8`).
 
 ---
 
 ## Iconografia — escala de tamanho e stroke
 
-Outline icons no S2 são desenhados no master **24×24** com stroke token **`border/width/025` (= 2px)**. Para usar o mesmo asset em outros tamanhos, o stroke deve ser **proporcional** — não manter o bind absoluto de 2px.
+Outline icons no S2 sÃ£o desenhados no master **24×24** com stroke token **`border/width/025` (= 2px)**. Para usar o mesmo asset em outros tamanhos, o stroke deve ser **proporcional** — nÃ£o manter o bind absoluto de 2px.
 
-### Fórmula
+### FÃ³rmula
 
 `strokePx = 2 × (size / 24)`
 
 ### Escala oficial
 
-| Size (px) | Stroke (px) | Bind de stroke | Uso típico |
+| Size (px) | Stroke (px) | Bind de stroke | Uso tÃ­pico |
 |---|---|---|---|
 | **80** | 6.67 | unbind + proporcional (ou Scale **K**) | hero / onboarding |
 | **64** | 5.33 | unbind + proporcional (ou Scale **K**) | empty state grande |
-| **40** | 3.33 | unbind + proporcional (ou Scale **K**) | empty state médio / featured |
-| **32** | 2.67 | unbind + proporcional (ou Scale **K**) | ação enfatizada |
+| **40** | 3.33 | unbind + proporcional (ou Scale **K**) | empty state mÃ©dio / featured |
+| **32** | 2.67 | unbind + proporcional (ou Scale **K**) | aÃ§Ã£o enfatizada |
 | **24** | **2.00** | **`border/width/025` (nativo)** | default — Button e master |
 | **20** | 1.67 | unbind + proporcional (ou Scale **K**) | list row, chip, controle denso + body/medium |
 | **16** | 1.33 | unbind + proporcional (ou Scale **K**) | caption / chrome compacto |
 
 ### Regras
 
-1. **Só o size 24** pode manter `strokeWeight` bound em `border/width/025`.
+1. **SÃ³ o size 24** pode manter `strokeWeight` bound em `border/width/025`.
 2. Em **qualquer outro size**, ao redimensionar a partir do master 24: usar **Scale tool (K)** no Figma **ou** unbind `strokeWeight` e aplicar o valor da tabela.
 3. **`INSTANCE_SWAP`** reinsere o bind 2px do master — reaplicar stroke proporcional quando `size !== 24`.
-4. Não inventar tokens de stroke intermediários só para caber a escala; a escala é governança de uso sobre o master + `border/width/025`.
-5. **Futuro (óptico):** para ≤16 (e 20 quando o detalhe colapsar), preferir desenhos ópticos dedicados; até lá, a regra proporcional é a oficial.
+4. NÃ£o inventar tokens de stroke intermediÃ¡rios sÃ³ para caber a escala; a escala Ã© governanÃ§a de uso sobre o master + `border/width/025`.
+5. **Futuro (Ã³ptico):** para â‰¤16 (e 20 quando o detalhe colapsar), preferir desenhos Ã³pticos dedicados; atÃ© lÃ¡, a regra proporcional Ã© a oficial.
 
-### Pairing rápido
+### Pairing rÃ¡pido
 
-- Texto `body/medium` em row densa → ícone **20**
-- Button / ação padrão → ícone **24**
+- Texto `body/medium` em row densa → Ã­cone **20**
+- Button / aÃ§Ã£o padrÃ£o → Ã­cone **24**
 - Empty state → **40** ou **64**
 - Hero → **80**
+
+---
+
+## Iconografia — libs e Library Swap
+
+Ãcones multi-produto usam **Library Swap** + um **contrato de nome DS** compartilhado (`*-outline` / `*-filled`). NÃ£o codificar packs de produto como variantes multi-theme em um Ãºnico componente de Ã­cone.
+
+### Contrato e estratÃ©gia
+
+| Item | Regra |
+|---|---|
+| Name contract | `*-outline` \| `*-filled` (kebab-case) — mesmas chaves no S2, EV e aliases App |
+| EstratÃ©gia | Library Swap (A) + `INSTANCE_SWAP` nos componentes S2 (B). Evitar variantes multi-theme (C) |
+| Slots S2 | `INSTANCE_SWAP` sÃ³ no contrato DS — nunca nomes nativos Hugeicons (`search-02`, `notification-02`, â€¦) |
+
+### Bibliotecas
+
+| Library | File key | Pack | Naming | Theme |
+|---|---|---|---|---|
+| [[DS] Icons — EscritÃ³rio Virtual](https://www.figma.com/design/ThZ5XtMuDWUWXiSLbRyEXL/-DS--Icons---Escrit%C3%B3rio-Virtual) | `ThZ5XtMuDWUWXiSLbRyEXL` | Tabler | Nativo `*-outline` / `*-filled` | `escritorio-virtual` |
+| [[DS] Icons — App Cliente](https://www.figma.com/design/4LsFOmHu3B25vXsDPjklWs/-DS--Icons---App-Cliente) | `4LsFOmHu3B25vXsDPjklWs` | Hugeicons | CatÃ¡logo Hugeicons intacto + seÃ§Ã£o **DS Semantic Aliases (swap contract)** (`7003:12884`) com clones no contrato DS | `app-cliente` |
+
+### Regras de alias (App Cliente)
+
+- Clonar + renomear para o contrato DS — **nÃ£o** renomear o catÃ¡logo Hugeicons in-place
+- **Nunca** criar alias cujo nome jÃ¡ exista no mesmo arquivo (nome duplicado bloqueia Publish library)
+- Expandir aliases a partir do inventÃ¡rio de uso do S2 / preferredValues — **nÃ£o** do Tabler completo
+- **Republicar** a lib App Cliente depois de adicionar aliases, antes do Library Swap nos consumidores
+
+### NÃ£o fazer
+
+- Variantes multi-theme em um Ã­cone para packs de produto
+- Colocar nomes nativos Hugeicons em preferredValues de `INSTANCE_SWAP` no S2
+- Esperar cobertura 1:1 do inventÃ¡rio Tabler inteiro
 
 ---
 
@@ -78,9 +115,9 @@ Outline icons no S2 são desenhados no master **24×24** com stroke token **`bor
 
 Use the unified feedback vocabulary (info | system | success | warning | danger) and pick the token layer by surface role: content for text/icons, bg-primary for emphasized blocks, bg-secondary for subtle tint, interactive/*-surface for form validation backgrounds, border-feedback for accent borders.
 
-### Resumo rápido
+### Resumo rÃ¡pido
 
-| Camada | Padrão de token | Status / papéis | Componentes |
+| Camada | PadrÃ£o de token | Status / papÃ©is | Componentes |
 |---|---|---|---|
 | Content / status color | `feedback/{status}` | success, warning, danger | Button |
 | Background — feedback primary | `color/background-feedback-primary/{status}` | success, warning, danger, info, system | Banner, ChipClickable, ChipTag, Badge |
@@ -88,7 +125,7 @@ Use the unified feedback vocabulary (info | system | success | warning | danger)
 | Interactive validation surface | `interactive/{semantic}-surface` | danger, success | Button, ChipClickable |
 | Border — feedback accent | `color/border-feedback/{role}` | primary, success, danger | Checkbox, Button |
 
-### Guia de decisão
+### Guia de decisÃ£o
 
 - Need readable status text/icon on a neutral surface? → `feedback/{status}`
 - Need a full feedback block (Banner, alert row, strong chip)? → `color/background-feedback-primary/{status}` + `text/primary`
@@ -98,17 +135,17 @@ Use the unified feedback vocabulary (info | system | success | warning | danger)
 
 ### Content / status color
 
-- **Padrão:** `feedback/{status}`
+- **PadrÃ£o:** `feedback/{status}`
 - **Export prefix:** `feedback`
-- **Status disponíveis:** success, warning, danger
-- **Status indisponíveis nesta camada:**
+- **Status disponÃ­veis:** success, warning, danger
+- **Status indisponÃ­veis nesta camada:**
   - **info:** No feedback/info content token. Use text/primary on color/background-feedback-primary/info or neutral surfaces with info iconography.
   - **system:** No feedback/system content token. Use text/primary on color/background-feedback-primary/system or neutral surfaces with system iconography.
 - **Usar para:**
   - Status text and icons on neutral surfaces
   - Inline semantic labels and helper text
   - Button intent labels for success and danger
-- **Não usar para:**
+- **NÃ£o usar para:**
   - Large tinted feedback blocks — use color/background-feedback-primary/*
   - Soft page/section tint — use color/background-feedback-secondary/*
   - Input or control validation backgrounds — use interactive/*-surface
@@ -118,16 +155,16 @@ Use the unified feedback vocabulary (info | system | success | warning | danger)
 
 ### Background — feedback primary
 
-- **Padrão:** `color/background-feedback-primary/{status}`
+- **PadrÃ£o:** `color/background-feedback-primary/{status}`
 - **Export prefix:** `color-bg-feedback-primary`
-- **Status disponíveis:** success, warning, danger, info, system
+- **Status disponÃ­veis:** success, warning, danger, info, system
 - **Text pairing:** Pair with text/primary for message, label and icon on saturated fills.
 - **Usar para:**
   - High-emphasis feedback blocks and inline alerts
   - Banner status backgrounds
   - ChipClickable and ChipTag intent fills (info, system, success, warning, danger)
   - Badge emphasis when a strong status fill is required
-- **Não usar para:**
+- **NÃ£o usar para:**
   - Subtle tinting behind dense content — use color/background-feedback-secondary/*
   - Form field validation — use interactive/error-surface or interactive/success-surface
   - Body copy on default page surfaces without a feedback container
@@ -136,17 +173,17 @@ Use the unified feedback vocabulary (info | system | success | warning | danger)
 
 ### Background — feedback secondary
 
-- **Padrão:** `color/background-feedback-secondary/{status}`
+- **PadrÃ£o:** `color/background-feedback-secondary/{status}`
 - **Export prefix:** `color-bg-feedback-secondary`
-- **Status disponíveis:** success, warning, danger
-- **Status indisponíveis nesta camada:**
+- **Status disponÃ­veis:** success, warning, danger
+- **Status indisponÃ­veis nesta camada:**
   - **info:** No bg-secondary/info token. Use color/background-feedback-primary/info for info emphasis or a neutral surface for subtle info.
   - **system:** No bg-secondary/system token. Use color/background-feedback-primary/system for system emphasis or a neutral surface.
 - **Usar para:**
   - Soft, low-contrast feedback tint behind content
   - Secondary emphasis inside cards, forms and sections
   - Button outline / secondary success states
-- **Não usar para:**
+- **NÃ£o usar para:**
   - Full-width Banner blocks — use color/background-feedback-primary/*
   - Chip fills that must read as strong status pills — prefer bg-primary
   - Validation backgrounds on inputs — use interactive/*-surface
@@ -155,12 +192,12 @@ Use the unified feedback vocabulary (info | system | success | warning | danger)
 
 ### Interactive validation surface
 
-- **Padrão:** `interactive/{semantic}-surface`
-- **Mapeamento de vocabulário:**
+- **PadrÃ£o:** `interactive/{semantic}-surface`
+- **Mapeamento de vocabulÃ¡rio:**
   - `error-surface` → danger — failed validation, field error, destructive input state
   - `success-surface` → success — passed validation, confirmed input state
-- **Status disponíveis:** danger, success
-- **Status indisponíveis nesta camada:**
+- **Status disponÃ­veis:** danger, success
+- **Status indisponÃ­veis nesta camada:**
   - **info:** No interactive/info-surface token. Keep info at container level with bg-primary/info.
   - **system:** No interactive/system-surface token. Keep system at container level with bg-primary/system.
   - **warning:** No interactive/warning-surface token. Use bg-primary/warning or bg-secondary/warning for warning containers.
@@ -168,7 +205,7 @@ Use the unified feedback vocabulary (info | system | success | warning | danger)
   - Input, textarea, select and control backgrounds during validation
   - Inline field success/error affordance tied to interaction
   - ChipClickable danger intent surface when the chip represents a removable/error context
-- **Não usar para:**
+- **NÃ£o usar para:**
   - Page-level Banner or toast messaging
   - Static status labels without a control surface
   - Replacing color/background-feedback-primary on Banner or Chip when the whole block is the message
@@ -177,9 +214,9 @@ Use the unified feedback vocabulary (info | system | success | warning | danger)
 
 ### Border — feedback accent
 
-- **Padrão:** `color/border-feedback/{role}`
+- **PadrÃ£o:** `color/border-feedback/{role}`
 - **Export prefix:** `color-border-feedback`
-- **Papéis:**
+- **PapÃ©is:**
   - `primary` — Selection or focus accent not tied to success/warning/danger semantics (e.g. Checkbox checked border).
   - `success` — Success validation or approved-state borders on controls and containers.
   - `danger` — Error, failed or destructive-state borders on controls and containers.
@@ -187,7 +224,7 @@ Use the unified feedback vocabulary (info | system | success | warning | danger)
   - Control outlines during validation
   - Checkbox and form selection accents
   - Button outline intent borders for success and danger
-- **Não usar para:**
+- **NÃ£o usar para:**
   - Large filled feedback blocks — use bg-primary or bg-secondary
   - Body text color — use feedback/* content tokens or text/*
 - **Variables Figma:** `color/border-feedback/primary`, `color/border-feedback/success`, `color/border-feedback/danger`
@@ -237,7 +274,7 @@ The trigger must behave as a button, support Enter and Space, expose aria-expand
 
 **Node ID:** `3143:8822`
 
-AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. For standalone text headings, use typography/text components instead. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Actions should be limited to essential navigation/account/actions. Leading actions must have accessible labels. Profile menu must behave as an accessible menu button. Token rule: local S2 kebab-case semantic only. Icon rule: local DS outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline). Internals must use components from this DS/current file: Button, local Text header (headingContent), local Profile menu, local Avatar. No remote App bar building blocks; no legacy Material button instances. Props: showLabel toggles headingContent (specific/super-app) or greeting visibility (global); showAction toggles leadingAction (specific/super-app); showFirstTrailingAction toggles firstTrailingAction (search-outline; default false — hidden); showSecondTrailingAction toggles secondTrailingAction (bell-outline; default true — visible); showProfileMenu toggles profileMenu (specific/super-app); greeting (TEXT, default "Olá, Rodrigo") on hierarchy=global. title/description come from exposed headingContent (Text header) on non-global hierarchies. PAINEL HOME: appearance=inverse|default, hierarchy=global, layout=small-centered. Anatomy: leadingCluster (Avatar exposed + greeting) + trailingActions (search hidden by default; bell visible). appearance=default → color/background-surface/0 + text/primary; appearance=inverse → color/background-surface/inverse-3 + text/on-color. Greeting uses body/large/medium. Trailing actions are local Button text/md/primary icon-only; icon outline stroke is manually synced — appearance=default uses text/primary, appearance=inverse uses text/on-color (not the Button default brand stroke). React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured.
+AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use `layout=small-centered` for compact centered page titles (`hierarchy=specific|super-app`) or for the Painel Home greeting chrome (`hierarchy=global`). Use `layout=small` for compact left-aligned titles, `layout=medium` for taller page headers, and `layout=large` for high-emphasis page headers. Use `appearance=default` on light surfaces and `appearance=inverse` on inverse/dark surfaces. Intentional sparse matrix (11/24): global = `small-centered` × default|inverse; super-app = `small-centered` × default only; specific = all layouts × appearance. Do not nest inside BottomSheet — use BottomSheetHeader. `showProfileMenu` / `profileMenu` are **super-app only**. Spacing: global `spacing/050` vert + `spacing/300` horiz; small/small-centered `spacing/100` vert + `spacing/050` horiz; medium/large root gap `spacing/100` + `paddingBottom spacing/150`. Optical keepers on small|small-centered and medium|large slots. Icon paths `{icon}-path`. React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured.
 
 ### Variants
 
@@ -256,7 +293,7 @@ AI-READY COMPONENT: AppHeader is the top page/application header used to identif
 | `showAction` | boolean — toggles `leadingAction` (specific/super-app) |
 | `showFirstTrailingAction` | boolean — search (`default false`; hidden) |
 | `showSecondTrailingAction` | boolean — bell (`default true`; visible) |
-| `showProfileMenu` | boolean — toggles `profileMenu` (specific/super-app) |
+| `showProfileMenu` | boolean — toggles `profileMenu` (**super-app only**) |
 | `greeting` | TEXT — `hierarchy=global` only (default `Olá, Rodrigo`) |
 | `title` | TEXT via exposed `headingContent` (non-global) |
 | `description` | TEXT via exposed `headingContent` (non-global) |
@@ -265,13 +302,23 @@ AI-READY COMPONENT: AppHeader is the top page/application header used to identif
 
 - **intentionalSparse:** 11/24 — global: `small-centered` × default\|inverse; super-app: `small-centered` × default only; specific: all layouts × appearance
 - **globalAnatomy:** `hierarchy=global`: `leadingCluster` (Avatar exposed + greeting) + `trailingActions` — not `headingContent`/back
+- **superAppAnatomy:** `leadingActions` (FIXED 96 + keeper + menu) \| TextHeader `size=small` `alignment=center` FILL \| `trailingActions` HUG (search optional + bell + profileMenu)
+- **profileMenuScope:** `showProfileMenu` / `profileMenu` published only on `hierarchy=super-app`
 - **painelHomeTrailing:** Painel Home keeps only bell visible; search via `showFirstTrailingAction=false`
-- **localTextHeaderOnly:** `headingContent` must be local Text header — no remote App bar Content building blocks
-- **trailingSemantics:** `firstTrailingAction`=search; `secondTrailingAction`=bell; local Button text/md icon-only
-- **painelHome:** `appearance=inverse|default` + `hierarchy=global` + `layout=small-centered`; greeting prop; Avatar + bell
-- **inverseFill:** `appearance=inverse` uses `color/background-surface/inverse-3` (not `color/actions/primary`)
-- **globalTrailingIconStroke:** Manual sync on `hierarchy=global` trailing Button icons: `default` → `text/primary`; `inverse` → `text/on-color`
+- **localTextHeaderOnly:** `headingContent` must be local `TextHeader` (`3667:4129`)
+- **textHeaderSizeMap:** `layout` → TextHeader `size`: `small|small-centered` → `size=small` (alignment left|center); `medium` → `medium`; `large` → `large`
+- **globalGreetingCharacteristic:** `hierarchy=global` keeps greeting TEXT with `body/large/medium` — does **not** nest TextHeader
+- **inverseTextHeader:** `appearance=inverse`: nested TextHeader title → `text/on-color`; default keeps `text/primary|secondary`
+- **smallLayoutFlow:** `small|small-centered` × specific|super-app: `leadingActions` + `headingContent` FILL + `trailingActions`; keepers preserve optical center — do not bind slot `visible` to show*
+- **mediumLargeFlow:** `medium|large`: `headerControls` SPACE_BETWEEN with keepers above `headingContent`; no legacy `action` layer
+- **leadingOpticalCenter:** `showAction=false` must not collapse the leading slot — `leadingSlotKeeper` keeps width
+- **trailingSemantics:** `firstTrailingAction`=search; `secondTrailingAction`=bell; Button text/md icon-only FIXED 48
+- **noLegacyAction:** Use `leadingAction` only — remove/unexpose legacy `action`
+- **painelHome:** `appearance=inverse|default` + `hierarchy=global` + `layout=small-centered`; greeting; Avatar + bell
+- **inverseFill:** `appearance=inverse` uses `color/background-surface/inverse-3`
+- **globalTrailingIconStroke:** default → `text/primary`; inverse → `text/on-color`
 - **vsSystemOrgHeader:** Do not use SystemHeader or OrganizationHeader for mobile app chrome
+- **vsBottomSheetHeader:** Do not use AppHeader inside BottomSheet — use BottomSheetHeader
 
 ### Token rules
 
@@ -279,15 +326,17 @@ AI-READY COMPONENT: AppHeader is the top page/application header used to identif
 - `color/background-surface/inverse-3` for inverse surface
 - `text/primary` \| `text/on-color` for titles/greeting
 - `text/secondary` \| `text/on-color-disabled` for supporting text
-- `body/large/medium` for global greeting
-- `text/primary` (global trailing icon stroke on default); `text/on-color` (on inverse)
-- `spacing/300` (horizontal pad); `spacing/050` (vertical pad); `spacing/150` (leadingCluster gap)
+- `body/large/medium` for global greeting (characteristic — not TextHeader)
+- `heading/h3/medium` via TextHeader `size=small` on `layout=small|small-centered`
+- global: `spacing/050` vert + `spacing/300` horiz; `spacing/150` leadingCluster gap
+- small\|small-centered: `spacing/100` vert + `spacing/050` horiz; `spacing/0` gap
+- medium\|large: `spacing/100` root gap + `spacing/150` paddingBottom
 - `color/border/2` for profileMenu stroke
-- Local DS icons: `menu-2-outline`, `bell-outline`, `arrow-left-outline`, `search-outline`, `plus-outline`, `user-outline`
+- Local DS icons with `{icon}-path`: `menu-2-outline`, `bell-outline`, `arrow-left-outline`, `search-outline`, `plus-outline`, `user-outline`
 
 ### Icon rules
 
-Use local DS outline icons only; do not use remote/external icon libraries inside AppHeader.
+Use local DS outline icons only; do not use remote/external icon libraries inside AppHeader. Internal VECTOR layers use `{icon}-path` naming.
 
 ### Accessibility
 
@@ -295,10 +344,10 @@ Leading actions need accessible labels. Profile and trailing actions should pres
 
 ### Composition
 
-- global: `leadingCluster` (Avatar exposed + greeting) + `trailingActions` (Button text/md)
-- specific/super-app: Text header (`headingContent`, exposed)
+- global: `leadingCluster` (Avatar exposed + greeting `body/large/medium`) + `trailingActions` (Button text/md)
+- specific/super-app: `TextHeader` (`headingContent`, exposed)
 - Button (`leadingAction` / `firstTrailingAction` / `secondTrailingAction`)
-- Profile menu (exposed) + Avatar
+- Profile menu (exposed on super-app) + Avatar
 - menu-2-outline / arrow-left-outline / search-outline / bell-outline / plus-outline / user-outline
 
 ---
@@ -369,9 +418,9 @@ role=combobox with aria-autocomplete=list, aria-expanded, aria-controls, aria-ac
 
 ## Avatar
 
-**Node ID:** `3056:3985`
+**Node ID:** `3669:8605`
 
-AI-READY COMPONENT: Avatar represents a user, customer, driver, team member, profile or account identity. Use content=image for photo identity, content=initials when the name is known but no photo exists, and content=placeholder when identity is unavailable. Avatar is not interactive by default; interaction belongs to a wrapper such as AvatarButton or AvatarUpload.
+AI-READY COMPONENT: Avatar represents a user, customer, driver, team member, profile or account identity. Use content=image for photo identity, content=initials when the name is known but no photo exists, and content=placeholder when identity is unavailable. Default fill for `content=initials` and `content=placeholder` (all sizes/states): `color/background-surface/3`. `content=image` uses the photo fill (no surface/3 shell); image hover may use `color/elevation/inverse-3` overlay. Avatar is not interactive by default; interaction belongs to a wrapper such as AvatarButton or AvatarUpload.
 
 ### Variants
 
@@ -387,12 +436,21 @@ AI-READY COMPONENT: Avatar represents a user, customer, driver, team member, pro
 | `size` | micro \| xs \| sm \| md \| lg \| xl |
 | `state` | default \| hover \| focus \| disabled \| loading |
 
+### Rules
+
+- **defaultFill:** initials|placeholder → `color/background-surface/3` across all sizes
+- **imageFill:** `content=image` uses photo fill; hover may use `color/elevation/inverse-3` overlay
+
 ### Token rules
 
+- `color/background-surface/3` (default fill — initials|placeholder, all sizes)
+- initials micro → `body/small/regular`
 - initials xs → `body/large/regular`
 - initials sm → `heading/h3/regular`
 - initials md → `heading/h2/regular`
-- no legacy `$fs-*` text styles on initials
+- initials lg → `heading/h1/regular`
+- initials xl → `display/large/regular`
+- local text styles only — no remote typography variables on initials
 
 ### Accessibility
 
@@ -470,7 +528,7 @@ AI-READY COMPONENT: Banner provides contextual inline feedback at page, section,
 
 ### Status map
 
-| Status | Ícone | Background token |
+| Status | Ãcone | Background token |
 |---|---|---|
 | success | `check-outline` | `color/background-feedback-primary/success` |
 | warning | `alert-triangle-outline` | `color/background-feedback-primary/warning` |
@@ -493,18 +551,29 @@ Use role=status for success and info. Use role=alert only for urgent warning or 
 
 **Node ID:** `3181:8289`
 
-AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobile or responsive experiences. Use it for contextual content that supports a task without navigating away. Do not use it as a centered modal, side drawer, toast, tooltip, card, full page or permanent layout container.
+AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobile or responsive experiences. Use it for contextual content that supports a task without navigating away. Do not use it as a centered modal, side drawer, toast, tooltip, card, full page or permanent layout container. Variant rule: `header=none` shows dragHandle + slot only; `header=sheet-header` nests local BottomSheetHeader (compact 48 height, `headingContent` title, optional leading options/action, optional close) above sheetContent/slot. Do not nest AppHeader or ModalHeader inside BottomSheet.
 
 ### Variants
 
-- **header:** none | app-header
+- **header:** none | sheet-header
 
 ### Props
 
 | Prop | Tipo / valores |
 |---|---|
 | `slot` | main content area |
-| `header` | none \| app-header |
+| `header` | none \| sheet-header |
+
+### Rules
+
+- **headerComposition:** `header=sheet-header` nests BottomSheetHeader — not AppHeader
+- **vsAppHeader:** Do not nest AppHeader in BottomSheet
+
+### Composition
+
+- BottomSheetHeader (when `header=sheet-header`)
+- dragHandle (`header=none`)
+- slot / sheetContent
 
 ### Accessibility
 
@@ -512,11 +581,68 @@ Modal usage should block background interaction, trap focus, support Escape to c
 
 ---
 
+## BottomSheetHeader
+
+**Node ID:** `4307:3760`
+
+AI-READY COMPONENT: BottomSheetHeader is the compact header used only inside BottomSheet surfaces. No inverse appearance — sheets use default surface only (`appearance` fixed to `default`). Anatomy: `leadingActions` (optional `optionsAction` + `leadingAction`) + `headingContent` (FILL with title) + `trailingActions` (`closeAction` + `trailingSlotKeeper`). Height 48. Props: `title` (TEXT, default "Label"); `showLabel` (BOOLEAN, default true); `showOptionsAction` (BOOLEAN, default false — `dots-vertical-outline`); `showLeadingAction` (BOOLEAN, default false — `arrow-left-outline`); `showCloseAction` (BOOLEAN, default true — `x-outline`). `showLabel` toggles title inside `headingContent` — the FILL slot stays so close never recenters. Typography: `body/medium/medium` + `text/primary` on `color/background-surface/0`. Padding `spacing/050`; itemSpacing `spacing/0`. `leadingActions` hugs with min width 48 when empty. Icon preferredValues: options=`dots-vertical-outline`; leading=`arrow-left-outline`; close=`x-outline`. Internal icon paths use `{icon}-path`. Do not use as AppHeader or ModalHeader. React mapping: BottomSheetHeader(title, showLabel, showOptionsAction, showLeadingAction, showCloseAction, onOptions, onAction, onClose). Code Connect is not configured.
+
+### Variants
+
+- **appearance:** default only (residual single-value VARIANT axis; no inverse)
+
+### Props
+
+| Prop | Tipo / valores |
+|---|---|
+| `appearance` | `default` only — residual VARIANT axis; no inverse for BottomSheet |
+| `title` | TEXT — sheet heading (default `Label`) |
+| `showLabel` | boolean — toggles title visibility (default true) |
+| `showOptionsAction` | boolean — toggles `optionsAction` `dots-vertical-outline` (default false) |
+| `showLeadingAction` | boolean — toggles `leadingAction` `arrow-left-outline` (default false) |
+| `showCloseAction` | boolean — toggles `closeAction` `x-outline` (default true) |
+
+### Rules
+
+- **parentOnly:** Use only inside BottomSheet (`header=sheet-header`)
+- **noInverse:** Do not publish `appearance=inverse` — BottomSheet headers are default surface only; `appearance` remains a single-value VARIANT axis
+- **composition:** `leadingActions` + `headingContent` (FILL, always in layout) + `trailingActions` (FIXED 48 + `trailingSlotKeeper`). `showLabel` toggles `title` inside `headingContent` — do not hide the FILL slot
+- **closeEdge:** `closeAction` stays on the trailing edge. Root `primaryAxisAlignItems=MIN`; `headingContent` FILL keeps `trailingActions` right when `showLabel=false` or leading is empty
+- **leadingActions:** Left-side optional controls — options (menu) and leading action; both default hidden. HUG with `minWidth` 48 when empty (no absolute leading keeper)
+- **iconPreferred:** Nested Button Icon preferred swaps: options→`dots-vertical-outline`; leading→`arrow-left-outline`; close→`x-outline`. Paths renamed to `{icon}-path`
+- **showLabel:** `showLabel=false` hides the title while keeping leading/trailing actions
+- **density:** Fixed height 48
+- **closeAction:** Button text/md/primary + `x-outline`; accessible label Fechar; ABSOLUTE in `trailingActions`
+- **vsAppHeader:** Do not use AppHeader inside BottomSheet — use BottomSheetHeader
+- **vsModalHeader:** Do not use as ModalHeader; Modal uses ModalHeader
+
+### Token rules
+
+- `color/background-surface/0` only (no inverse)
+- `text/primary`
+- `body/medium/medium`
+- `spacing/050` horizontal pad
+- `spacing/0` root itemSpacing
+- nested Button tokens; `dots-vertical-outline`; `arrow-left-outline`; `x-outline`
+
+### Composition
+
+- Button
+- dots-vertical-outline
+- arrow-left-outline
+- x-outline
+
+### Accessibility
+
+Sheet owns dialog/sheet semantics; title via aria-labelledby when `showLabel=true`; options/leading/close icon-only buttons need accessible names (Opções / Ação / Fechar).
+
+---
+
 ## Button
 
 **Node ID:** `3104:3723`
 
-AI-READY COMPONENT: Button triggers an explicit user action. Use variant=solid for the strongest action, variant=outline for secondary emphasis and variant=text for low-emphasis actions. Use intent=primary, success, danger or secondary to communicate action meaning. intent=secondary maps to color/actions/secondary (lavender) for brand-accent CTAs such as Painel “Convidar”; the secondary matrix is intentionally sparse (solid/md key states). Icon-only actions use showLabel=false with showIcon=true (header search/bell on inverse surfaces). On variant=text with intent=primary and disabled=false, showIcon (leadingIcon) uses text/primary across states so the icon matches the label. Loading variants are spinner-only and must hide label and icons.
+AI-READY COMPONENT: Button triggers an explicit user action. Use variant=solid for the strongest action, variant=outline for secondary emphasis and variant=text for low-emphasis actions. Use intent=primary, success, danger or secondary to communicate action meaning. intent=secondary maps to color/actions/secondary (lavender) for brand-accent CTAs such as Painel "Convidar"; the secondary matrix is intentionally sparse (solid/md key states). Icon-only actions use showLabel=false with showIcon=true (header search/bell on inverse surfaces). On variant=text with intent=primary and disabled=false, showIcon (leadingIcon) uses text/primary across states so the icon matches the label. Loading variants are spinner-only and must hide label and icons.
 
 ### Variants
 
@@ -621,7 +747,7 @@ Map to input type=checkbox or role=checkbox with aria-checked. Use aria-checked=
 
 **Node ID:** `3653:23220`
 
-AI-READY COMPONENT: ChipTag is a compact non-interactive label used to display category, status, metadata or contextual classification. Use intent=info, system, success, warning or danger for semantic status tags, and intent=outline for neutral outlined tags. Use emphasis=strong (default) for saturated feedback-primary fills and emphasis=soft for low-contrast status pills on cards (Painel vehicle “Ativo” — fill uses color/background-feedback-secondary/{intent} where available). Soft matrix is intentionally sparse today for intent=success + state=default. Do not use ChipTag as a button, selectable filter, removable chip, navigation tab, checkbox, badge, alert or CTA. For interactive chips (including “Adicionar veículo”), use ChipClickable.
+AI-READY COMPONENT: ChipTag is a compact non-interactive label used to display category, status, metadata or contextual classification. Use intent=info, system, success, warning or danger for semantic status tags, and intent=outline for neutral outlined tags. Use emphasis=strong (default) for saturated feedback-primary fills and emphasis=soft for low-contrast status pills on cards (Painel vehicle "Ativo" — fill uses color/background-feedback-secondary/{intent} where available). Soft matrix is intentionally sparse today for intent=success + state=default. Do not use ChipTag as a button, selectable filter, removable chip, navigation tab, checkbox, badge, alert or CTA. For interactive chips (including "Adicionar veÃ­culo"), use ChipClickable.
 
 ### Variants
 
@@ -683,7 +809,7 @@ ChipTag is not interactive by default, should not receive focus and should not u
 
 **Node ID:** `3653:23577`
 
-AI-READY COMPONENT: ChipClickable is a compact interactive chip used for selectable filters, compact options, removable selections, or contextual actions with low visual emphasis. Usage rule: use ChipClickable when a compact item can be clicked, selected, or removed. Do not use it as a primary button, badge, static tag, checkbox, radio, menu item, alert, or navigation tab. Variant rule: size=sm|md; state=default|hover|pressed|selected|disabled (disabled intentional sparse); intent=info|system|success|warning|danger|outline|soft; width=hug|fill. Intent rule: feedback intents use feedback surfaces; outline is stroke-only on default; **intent=soft** is the soft actionable chip (Painel “Adicionar veículo”): default `color/background-surface/2` + `color/border/2`; hover/pressed/selected use `interactive/hover|pressed|selected`; exemplar: showLeadingIcon=true (circle-plus-outline/plus-outline), showAvatar=false, showDeleteAction=false — never ChipTag. Label TEXT prop wired on all published variants (including soft). Label typography: local `body/small/medium` (no remote typography). React mapping: ChipClickable(size, state, intent, width, label, showLeadingIcon, leadingIcon, showAvatar, showDeleteAction).
+AI-READY COMPONENT: ChipClickable is a compact interactive chip used for selectable filters, compact options, removable selections, or contextual actions with low visual emphasis. Usage rule: use ChipClickable when a compact item can be clicked, selected, or removed. Do not use it as a primary button, badge, static tag, checkbox, radio, menu item, alert, or navigation tab. Variant rule: size=sm|md; state=default|hover|pressed|selected|disabled (disabled intentional sparse); intent=info|system|success|warning|danger|outline|soft; width=hug|fill. Intent rule: feedback intents use feedback surfaces; outline is stroke-only on default; **intent=soft** is the soft actionable chip (Painel "Adicionar veÃ­culo"): default `color/background-surface/2` + `color/border/2`; hover/pressed/selected use `interactive/hover|pressed|selected`; exemplar: showLeadingIcon=true (circle-plus-outline/plus-outline), showAvatar=false, showDeleteAction=false — never ChipTag. Label TEXT prop wired on all published variants (including soft). Label typography: local `body/small/medium` (no remote typography). React mapping: ChipClickable(size, state, intent, width, label, showLeadingIcon, leadingIcon, showAvatar, showDeleteAction).
 
 ### Variants
 
@@ -824,7 +950,7 @@ Title is the section heading; icon-only action needs an accessible name (aria-la
 
 **Node ID:** `3143:8933`
 
-AI-READY COMPONENT: SystemHeader is a web-only header for systems, dashboards, backoffices, admin panels, and internal product pages. Use appearance=default on light surfaces and appearance=inverse on dark/inverse surfaces. Use variant=default when the page needs title, primary action, slot, profile, notifications, and auxiliary actions. Use variant=simple for a compact header with fewer visible actions. SystemHeader should generally fill the container width in web layouts. Default height is 72px; simple height is 64px. Do not use SystemHeader as a marketing site header, hero, card header, table header, modal header, or mobile app header. Use AppHeader for app/top bar contexts. Internal structure: leadingContent contains headingContent, datePickerGroup, and primaryAction. slot is the optional custom control area. trailingContent contains profileMenu, secondaryAction, tertiaryAction, and notificationAction — trailingContent exists only on variant=default (intentional sparse: variant=simple has leadingContent + slot only). datePickerGroup composes local DatePickerSelect (format=month-year). Visibility is bound to showDatePicker. datePickerSelect instance is exposed so month/year values can be edited from the parent properties panel. slot replaces the previous showCustomSlot boolean naming. In React, map visible custom controls as slot or children. Actions: primaryAction visibility → showPrimaryAction; secondaryAction → showSecondaryAction; tertiaryAction → showTertiaryAction; notificationAction → showNotificationAction. secondary/tertiary/notification stay in trailingContent (variant=default only). Icons: local DS only. primaryAction is label-only by default (plus-outline available via nested Button showIcon); secondary/tertiary default plus-outline; notificationAction bell-outline. appearance=default: fill color/background-surface/0; stroke color/border/2; title text/primary; description text/secondary. appearance=inverse: fill color/background-surface/inverse-3; stroke color/border/1; title/userName/actions text/on-color; description text/on-color-disabled; DatePickerSelect unit texts/icons on-color. Exposed nested: headingContent (Text header → title, description, showDescription); profileMenu (userName, showUserName, Avatar); datePickerSelect (DatePickerSelect format/state + nested values). Accessibility: title maps to h1 when page title; notificationAction aria-label="Notificações"; profileMenu menu semantics; datePickerGroup accessible label; inverse must keep AA contrast. Responsive: on narrower widths, collapse tertiary then secondary before notification/profile; title truncates rather than wraps. Token rule: local S2 kebab-case semantic only. React mapping: SystemHeader(appearance, variant, title, description, showDescription, slot, showPrimaryAction, showSecondaryAction, showTertiaryAction, showNotificationAction, showProfileMenu, showDatePicker, userName, showUserName). Code Connect is not configured.
+AI-READY COMPONENT: SystemHeader is a web-only header for systems, dashboards, backoffices, admin panels, and internal product pages. Use appearance=default on light surfaces and appearance=inverse on dark/inverse surfaces. Use variant=default when the page needs title, primary action, slot, profile, notifications, and auxiliary actions. Use variant=simple for a compact header with fewer visible actions. SystemHeader should generally fill the container width in web layouts. Default height is 72px; simple height is 64px. Do not use SystemHeader as a marketing site header, hero, card header, table header, modal header, or mobile app header. Use AppHeader for app/top bar contexts. Internal structure: leadingContent contains headingContent, datePickerGroup, and primaryAction. slot is the optional custom control area. trailingContent contains profileMenu, secondaryAction, tertiaryAction, and notificationAction — trailingContent exists only on variant=default (intentional sparse: variant=simple has leadingContent + slot only). datePickerGroup composes local DatePickerSelect (format=month-year). Visibility is bound to showDatePicker. datePickerSelect instance is exposed so month/year values can be edited from the parent properties panel. slot replaces the previous showCustomSlot boolean naming. In React, map visible custom controls as slot or children. Actions: primaryAction visibility → showPrimaryAction; secondaryAction → showSecondaryAction; tertiaryAction → showTertiaryAction; notificationAction → showNotificationAction. secondary/tertiary/notification stay in trailingContent (variant=default only). Icons: local DS only. primaryAction is label-only by default (plus-outline available via nested Button showIcon); secondary/tertiary default plus-outline; notificationAction bell-outline. appearance=default: fill color/background-surface/0; stroke color/border/2; title text/primary; description text/secondary. appearance=inverse: fill color/background-surface/inverse-3; stroke color/border/1; title/userName/actions text/on-color; description text/on-color-disabled; DatePickerSelect unit texts/icons on-color. Exposed nested: headingContent (TextHeader → title, description, showDescription); profileMenu (userName, showUserName, Avatar); datePickerSelect (DatePickerSelect format/state + nested values). Accessibility: title maps to h1 when page title; notificationAction aria-label="NotificaÃ§Ãµes"; profileMenu menu semantics; datePickerGroup accessible label; inverse must keep AA contrast. Responsive: on narrower widths, collapse tertiary then secondary before notification/profile; title truncates rather than wraps. Token rule: local S2 kebab-case semantic only. React mapping: SystemHeader(appearance, variant, title, description, showDescription, slot, showPrimaryAction, showSecondaryAction, showTertiaryAction, showNotificationAction, showProfileMenu, showDatePicker, userName, showUserName). Code Connect is not configured.
 
 ### Variants
 
@@ -844,7 +970,7 @@ AI-READY COMPONENT: SystemHeader is a web-only header for systems, dashboards, b
 | `showProfileMenu` | boolean — `variant=default` trailing only |
 | `showDatePicker` | boolean — toggles `datePickerGroup` |
 | `slot` | SLOT — optional compact custom control area (not page-level layout) |
-| `title` | TEXT via exposed `headingContent` (Text header) |
+| `title` | TEXT via exposed `headingContent` (TextHeader) |
 | `description` | TEXT via exposed `headingContent` |
 | `showDescription` | boolean via exposed `headingContent` |
 | `userName` | TEXT via exposed `profileMenu` (`variant=default`) |
@@ -869,11 +995,11 @@ AI-READY COMPONENT: SystemHeader is a web-only header for systems, dashboards, b
 
 ### Accessibility
 
-title maps to h1 when page title; notificationAction aria-label Notificações; profileMenu menu semantics; datePickerGroup accessible label; inverse must keep AA contrast; actions need accessible names and visible focus.
+title maps to h1 when page title; notificationAction aria-label NotificaÃ§Ãµes; profileMenu menu semantics; datePickerGroup accessible label; inverse must keep AA contrast; actions need accessible names and visible focus.
 
 ### Composition
 
-- Text header (`headingContent`, exposed)
+- TextHeader (`headingContent`, exposed)
 - DatePickerSelect (`datePickerSelect`, exposed; `format=month-year`)
 - Button (`primaryAction` / `secondaryAction` / `tertiaryAction` / `notificationAction`)
 - Profile menu (exposed) + Avatar
@@ -1285,7 +1411,7 @@ expose label and status; pending/rejected actions use visible labels and stay ke
 
 **Node ID:** `3671:2329`
 
-AI-READY COMPONENT: ImageItem is a DS image container used to reserve a fixed aspect-ratio surface and optionally show orientation and photo-text overlays. Use `imageSurface` as the only layer for applying or replacing image fills — keep it absolute/floating, clipped, tokenized, and scaleMode FILL (crop) so the image is not distorted. Use `showOrientationItem` to toggle `orientationOverlay` (ImageOrientationItem), which must stay absolute/floating, rotation 0°, and centered — including when `verticalResize=true`. Use `showPhotoTextItem` to toggle `photoTextOverlay` (PhotoTextItem), which must stay absolute/floating, rotation 0°, and STRETCH/STRETCH so it fills the entire photo surface. `aspectRatio` controls 1-1 | 4-3 | 3-2 | 16-9 | 2-1. `orientation` controls portrait | landscape. `verticalResize=false` locks width and hugs height via aspect-ratio keepers; `verticalResize=true` locks height and hugs width (same keeper technique, rotated). `photoTextOverlay` is exposed for `label`/`supportingText`/`showSupportingText` edits. `orientationOverlay` remains informational/decorative. Do not use ImageItem as a radio, checkbox, button, tab, avatar, or gallery tile. Token rule: use existing DS kebab-case variables only — `color/background-surface/1` for root and imageSurface placeholder, plus nested ImageOrientationItem and PhotoTextItem tokens. Accessibility: treat as an image or figure; provide accessible name/alt from product content when a real image is applied; orientationOverlay is decorative/informational; photoTextOverlay label/supportingText are content and must remain readable. React mapping: ImageItem(aspectRatio, orientation, verticalResize, showOrientationItem, showPhotoTextItem, src, alt). Code Connect is not configured.
+AI-READY COMPONENT: ImageItem is a DS image container used to reserve a fixed aspect-ratio surface and optionally show orientation and photo-text overlays. Use `imageSurface` as the only layer for applying or replacing image fills — keep it absolute/floating, clipped, tokenized, and scaleMode FILL (crop) so the image is not distorted. Use `showOrientationItem` to toggle `orientationOverlay` (ImageOrientationItem), which must stay absolute/floating, rotation 0Â°, and centered — including when `verticalResize=true`. Use `showPhotoTextItem` to toggle `photoTextOverlay` (PhotoTextItem), which must stay absolute/floating, rotation 0Â°, and STRETCH/STRETCH so it fills the entire photo surface. `aspectRatio` controls 1-1 | 4-3 | 3-2 | 16-9 | 2-1. `orientation` controls portrait | landscape. `verticalResize=false` locks width and hugs height via aspect-ratio keepers; `verticalResize=true` locks height and hugs width (same keeper technique, rotated). `photoTextOverlay` is exposed for `label`/`supportingText`/`showSupportingText` edits. `orientationOverlay` remains informational/decorative. Do not use ImageItem as a radio, checkbox, button, tab, avatar, or gallery tile. Token rule: use existing DS kebab-case variables only — `color/background-surface/1` for root and imageSurface placeholder, plus nested ImageOrientationItem and PhotoTextItem tokens. Accessibility: treat as an image or figure; provide accessible name/alt from product content when a real image is applied; orientationOverlay is decorative/informational; photoTextOverlay label/supportingText are content and must remain readable. React mapping: ImageItem(aspectRatio, orientation, verticalResize, showOrientationItem, showPhotoTextItem, src, alt). Code Connect is not configured.
 
 ### Variants
 
@@ -1307,8 +1433,8 @@ AI-READY COMPONENT: ImageItem is a DS image container used to reserve a fixed as
 ### Rules
 
 - **imageSurface:** only layer for image fill replacement; absolute, clipped, STRETCH, scaleMode FILL
-- **orientationOverlay:** ImageOrientationItem; absolute; rotation 0°; centered even when verticalResize=true
-- **photoTextOverlay:** PhotoTextItem; absolute; rotation 0°; STRETCH/STRETCH fills entire photo; exposed
+- **orientationOverlay:** ImageOrientationItem; absolute; rotation 0Â°; centered even when verticalResize=true
+- **photoTextOverlay:** PhotoTextItem; absolute; rotation 0Â°; STRETCH/STRETCH fills entire photo; exposed
 - **showPhotoTextItem:** BOOLEAN default false — wires photoTextOverlay.visible
 - **verticalResizeParity:** restored Aspect ratio keeper behavior: false=FIXED×HUG; true=HUG×FIXED
 - **vsControls:** Do not use as radio, checkbox, button, tab, avatar, or gallery tile
@@ -1337,7 +1463,7 @@ treat as image/figure; provide accessible name/alt when a real image is applied;
 
 **Node ID:** `4149:479`
 
-AI-READY INTERNAL COMPONENT: PhotoTextItem — full-bleed text scrim overlay used inside ImageItem (and photo compositions). Props: `showSupportingText=true|false`; `label` (TEXT); `supportingText` (TEXT). Anatomy: `content` (bottom-aligned column) with `label` and optional `supportingText` over a bottom scrim. Layout: when nested in ImageItem, instance is absolute STRETCH/STRETCH so content fills the entire photo surface; keep rotation 0°. Tokens: `text/on-color` on texts; content padding `spacing/200`; gap `spacing/050`; scrim uses `interactive/overlay` alpha ramp (bottom-weighted). Typography: `body/medium/medium` (label), `body/small/regular` (supportingText). Do not use as ImageOrientationItem, ChipTag, Banner, or a standalone card. Accessibility: overlay text is content — ensure contrast on photo; prefer concise labels. React mapping: PhotoTextItem(showSupportingText, label, supportingText).
+AI-READY INTERNAL COMPONENT: PhotoTextItem — full-bleed text scrim overlay used inside ImageItem (and photo compositions). Props: `showSupportingText=true|false`; `label` (TEXT); `supportingText` (TEXT). Anatomy: `content` (bottom-aligned column) with `label` and optional `supportingText` over a bottom scrim. Layout: when nested in ImageItem, instance is absolute STRETCH/STRETCH so content fills the entire photo surface; keep rotation 0Â°. Tokens: `text/on-color` on texts; content padding `spacing/200`; gap `spacing/050`; scrim uses `interactive/overlay` alpha ramp (bottom-weighted). Typography: `body/medium/medium` (label), `body/small/regular` (supportingText). Do not use as ImageOrientationItem, ChipTag, Banner, or a standalone card. Accessibility: overlay text is content — ensure contrast on photo; prefer concise labels. React mapping: PhotoTextItem(showSupportingText, label, supportingText).
 
 ### Variants
 
@@ -1440,7 +1566,7 @@ Associate label; aria-invalid on error; aria-describedby for supporting/error; a
 
 **Node ID:** `4052:21848`
 
-AI-READY COMPONENT: InputTextArea is the Design System 2.0 multiline outlined text field — same visual identity as Input (outlined container, floating label cutout, `border/radius/200`) with a taller field (~160), character count, and resize affordance. Use for long text (comments, descriptions, messages). Do not use as single-line Input, InputSelect, InputPassword, InputNumber, or rich-text editor. Variants use an intentional sparse matrix (42 published / 120 theoretical): state × content × leadingIcon × trailingIcon × appearance. state: default | hover | focus | error | disabled. content: value | placeholder | label. leadingIcon/trailingIcon: false | true — true only on content=value samples for default|focus|error × default|inverse. appearance: default | inverse. Anatomy: `field` (leadingIcon? + content + trailingIcon? + countRow + floatingLabel) + `supporting` + `minHeight` (InputTextAreaMinHeight, absolute, exposed; nests InputTextAreaResizeHandle). `countRow` is absolute bottom-right inside field (manual positioning, constraints MAX/MAX) — not auto-layout. `minHeight` is absolute on the field’s trailing edge (manual positioning). Props: label, value, placeholder, supportingText, showSupportingText, countText, showCount, leading, trailing (INSTANCE_SWAP). Resize visibility via exposed nested `minHeight` `showResizeHandle`. Token rule: local S2 kebab-case only — focus and error field strokes use `border/width/025` (2px). React mapping: InputTextArea(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, countText, showCount, showResizeHandle?, leading?, trailing?). Code Connect is not configured.
+AI-READY COMPONENT: InputTextArea is the Design System 2.0 multiline outlined text field — same visual identity as Input (outlined container, floating label cutout, `border/radius/200`) with a taller field (~160), character count, and resize affordance. Use for long text (comments, descriptions, messages). Do not use as single-line Input, InputSelect, InputPassword, InputNumber, or rich-text editor. Variants use an intentional sparse matrix (42 published / 120 theoretical): state × content × leadingIcon × trailingIcon × appearance. state: default | hover | focus | error | disabled. content: value | placeholder | label. leadingIcon/trailingIcon: false | true — true only on content=value samples for default|focus|error × default|inverse. appearance: default | inverse. Anatomy: `field` (leadingIcon? + content + trailingIcon? + countRow + floatingLabel) + `supporting` + `minHeight` (InputTextAreaMinHeight, absolute, exposed; nests InputTextAreaResizeHandle). `countRow` is absolute bottom-right inside field (manual positioning, constraints MAX/MAX) — not auto-layout. `minHeight` is absolute on the field's trailing edge (manual positioning). Props: label, value, placeholder, supportingText, showSupportingText, countText, showCount, leading, trailing (INSTANCE_SWAP). Resize visibility via exposed nested `minHeight` `showResizeHandle`. Token rule: local S2 kebab-case only — focus and error field strokes use `border/width/025` (2px). React mapping: InputTextArea(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, countText, showCount, showResizeHandle?, leading?, trailing?). Code Connect is not configured.
 
 ### Variants
 
@@ -1521,7 +1647,7 @@ AI-READY COMPONENT: InputNumber is the Design System 2.0 single-line outlined nu
 | `leadingIcon` | true \| false (variant axis) |
 | `trailingIcon` | true \| false (variant axis) |
 | `appearance` | default \| inverse — inverse for dark/on-color surfaces |
-| `label` | TEXT — floating or resting field label (phone demo: Número de telefone) |
+| `label` | TEXT — floating or resting field label (phone demo: NÃºmero de telefone) |
 | `value` | TEXT — input text (phone demo: + 55) |
 | `placeholder` | TEXT — placeholder text |
 | `supportingText` | TEXT — helper or error message |
@@ -1564,7 +1690,7 @@ Labeled input; aria-invalid on error; aria-disabled when disabled; country trigg
 
 **Node ID:** `3950:1701`
 
-AI-READY COMPONENT: InputPassword is the Design System 2.0 outlined password field — same visual identity as Input (height 56, border/radius/200, floating label for content=value|placeholder, resting label for content=label). Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; visibility=hidden|visible; appearance=default|inverse (120 variants). appearance=default uses the standard Input surface tokens (field fill color/background-surface/0, default border color/border/1, label text/secondary, placeholder text/placeholder, value text/primary). appearance=inverse is for inverse/dark surfaces: field fill transparent; floatingLabel cutout color/background-surface/inverse-3 (all inverse states including focus); default/disabled border color/border/2; label (labelText/restingLabel) text/on-color (focus text/brand); placeholder text/on-color-disabled; value text/on-color; on state=disabled all field texts use text/placeholder-inverse. Feedback colors are unchanged on both appearances — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger + feedback/danger on label/supporting. visibilityAction is always present: local Button variant=text size=sm intent=primary icon-only (showLabel=false). Use eye-closed-outline when visibility=hidden and eye-outline when visibility=visible. When visibility=hidden and content=value, mask the value glyphs (••••••••). Nested Button stays at state=default while the field owns hover/focus/error strokes; when InputPassword state=disabled, visibilityAction uses Button disabled=true. state=error always shows trailingIconError (alert-circle-outline) beside visibilityAction. Props: label (default Senha), value, placeholder (default Digite sua senha), supportingText, showSupportingText, leading (INSTANCE_SWAP preferred lock/password/key). Do not use as Input, InputNumber, InputSelect, SearchBar or Autocomplete. Accessibility: password field with labeled show/hide control; aria-invalid on error; aria-describedby for supporting/error; aria-disabled when disabled. Token rule: local S2 kebab-case only. React mapping: InputPassword(state, content, leadingIcon, visibility, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, onVisibilityChange). Code Connect is not configured.
+AI-READY COMPONENT: InputPassword is the Design System 2.0 outlined password field — same visual identity as Input (height 56, border/radius/200, floating label for content=value|placeholder, resting label for content=label). Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; visibility=hidden|visible; appearance=default|inverse (120 variants). appearance=default uses the standard Input surface tokens (field fill color/background-surface/0, default border color/border/1, label text/secondary, placeholder text/placeholder, value text/primary). appearance=inverse is for inverse/dark surfaces: field fill transparent; floatingLabel cutout color/background-surface/inverse-3 (all inverse states including focus); default/disabled border color/border/2; label (labelText/restingLabel) text/on-color (focus text/brand); placeholder text/on-color-disabled; value text/on-color; on state=disabled all field texts use text/placeholder-inverse. Feedback colors are unchanged on both appearances — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger + feedback/danger on label/supporting. visibilityAction is always present: local Button variant=text size=sm intent=primary icon-only (showLabel=false). Use eye-closed-outline when visibility=hidden and eye-outline when visibility=visible. When visibility=hidden and content=value, mask the value glyphs (â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢). Nested Button stays at state=default while the field owns hover/focus/error strokes; when InputPassword state=disabled, visibilityAction uses Button disabled=true. state=error always shows trailingIconError (alert-circle-outline) beside visibilityAction. Props: label (default Senha), value, placeholder (default Digite sua senha), supportingText, showSupportingText, leading (INSTANCE_SWAP preferred lock/password/key). Do not use as Input, InputNumber, InputSelect, SearchBar or Autocomplete. Accessibility: password field with labeled show/hide control; aria-invalid on error; aria-describedby for supporting/error; aria-disabled when disabled. Token rule: local S2 kebab-case only. React mapping: InputPassword(state, content, leadingIcon, visibility, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, onVisibilityChange). Code Connect is not configured.
 
 ### Variants
 
@@ -1584,7 +1710,7 @@ AI-READY COMPONENT: InputPassword is the Design System 2.0 outlined password fie
 | `visibility` | hidden \| visible — password reveal axis |
 | `appearance` | default \| inverse — inverse for dark/on-color surfaces |
 | `label` | TEXT — default Senha |
-| `value` | TEXT — masked •••• when hidden; plaintext when visible |
+| `value` | TEXT — masked â€¢â€¢â€¢â€¢ when hidden; plaintext when visible |
 | `placeholder` | TEXT — default Digite sua senha |
 | `supportingText` | TEXT — helper or error message |
 | `showSupportingText` | boolean |
@@ -1626,7 +1752,7 @@ Password field; show/hide button named Mostrar senha / Ocultar senha; aria-inval
 
 **Node ID:** `4029:835`
 
-AI-READY COMPONENT: VerificationCodeInput is the Design System 2.0 verification-code field for OTP, 2FA, and PIN entry (SMS, email, authenticator). Do not use as Input, InputPassword, InputNumber, or InputSelect. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Fixed length: 5 digit slots. Anatomy: `labelRow` (label TEXT) + `codeRow` with five exposed VerificationCodeInputItem instances (`codeCell1`…`codeCell5`) + `supportingRow` (supportingText) on state=error only. State propagation: hover/error/disabled apply the matching block state to all cells; focus keeps codeCell1–4 at default and sets codeCell5 to focus (active slot demo). Props: `label` (TEXT), `showLabel` (BOOLEAN), `supportingText` (TEXT), `showSupportingText` (BOOLEAN — targets supportingRow on error). Digit values are edited via exposed nested `codeCell1`…`codeCell5` `digit` props (React: `digit1`…`digit5`). Token rule: root gap `spacing/100`; codeRow gap `spacing/150`; label `body/medium/regular` with `text/secondary` (disabled `text/placeholder`); supporting `caption/large/regular` with `feedback/danger`; cells inherit VerificationCodeInputItem tokens including focus ring `color/elevation/Focus`. Accessibility: group of single-character inputs; label associates to the group; aria-invalid + aria-describedby on error; aria-disabled when disabled; manage focus advance per slot in product code. React mapping: VerificationCodeInput(state, label, showLabel, supportingText, showSupportingText, digit1…digit5). Code Connect is not configured.
+AI-READY COMPONENT: VerificationCodeInput is the Design System 2.0 verification-code field for OTP, 2FA, and PIN entry (SMS, email, authenticator). Do not use as Input, InputPassword, InputNumber, or InputSelect. Variants: state (5). state: default | hover | focus | error | disabled. No appearance/inverse axis (intentional). Fixed length: 5 digit slots. Anatomy: `labelRow` (label TEXT) + `codeRow` with five exposed VerificationCodeInputItem instances (`codeCell1`â€¦`codeCell5`) + `supportingRow` (supportingText) on state=error only. State propagation: hover/error/disabled apply the matching block state to all cells; focus keeps codeCell1–4 at default and sets codeCell5 to focus (active slot demo). Props: `label` (TEXT), `showLabel` (BOOLEAN), `supportingText` (TEXT), `showSupportingText` (BOOLEAN — targets supportingRow on error). Digit values are edited via exposed nested `codeCell1`â€¦`codeCell5` `digit` props (React: `digit1`â€¦`digit5`). Token rule: root gap `spacing/100`; codeRow gap `spacing/150`; label `body/medium/regular` with `text/secondary` (disabled `text/placeholder`); supporting `caption/large/regular` with `feedback/danger`; cells inherit VerificationCodeInputItem tokens including focus ring `color/elevation/Focus`. Accessibility: group of single-character inputs; label associates to the group; aria-invalid + aria-describedby on error; aria-disabled when disabled; manage focus advance per slot in product code. React mapping: VerificationCodeInput(state, label, showLabel, supportingText, showSupportingText, digit1â€¦digit5). Code Connect is not configured.
 
 ### Variants
 
@@ -1637,11 +1763,11 @@ AI-READY COMPONENT: VerificationCodeInput is the Design System 2.0 verification-
 | Prop | Tipo / valores |
 |---|---|
 | `state` | default \| hover \| focus \| error \| disabled |
-| `label` | TEXT — field label (default Digite o código) |
+| `label` | TEXT — field label (default Digite o cÃ³digo) |
 | `showLabel` | BOOLEAN — toggles `labelRow` |
-| `supportingText` | TEXT — error helper (default Código inválido…) |
+| `supportingText` | TEXT — error helper (default CÃ³digo invÃ¡lidoâ€¦) |
 | `showSupportingText` | BOOLEAN — toggles `supportingRow` on state=error |
-| `digit1`…`digit5` | React/product — map to exposed nested `codeCell1`…`codeCell5` `digit` |
+| `digit1`â€¦`digit5` | React/product — map to exposed nested `codeCell1`â€¦`codeCell5` `digit` |
 
 ### Rules
 
@@ -1651,7 +1777,7 @@ AI-READY COMPONENT: VerificationCodeInput is the Design System 2.0 verification-
 - **focusLastSlot:** `state=focus` demo: `codeCell5=focus`; `codeCell1–4=default`
 - **statePropagation:** hover/error/disabled propagate matching block state to all cells
 - **supportingErrorOnly:** `supportingRow` exists only on `state=error`
-- **exposedCells:** `codeCell1`…`codeCell5` exposed for digit editing — orphan parent `digit1`…`5` removed
+- **exposedCells:** `codeCell1`â€¦`codeCell5` exposed for digit editing — orphan parent `digit1`â€¦`5` removed
 
 ### Token rules
 
@@ -1667,7 +1793,7 @@ Group of single-character inputs; label associates to the group; aria-invalid + 
 
 ### Composition
 
-- VerificationCodeInputItem (`codeCell1`…`codeCell5`, exposed)
+- VerificationCodeInputItem (`codeCell1`â€¦`codeCell5`, exposed)
 - `labelRow` / `codeRow` / `supportingRow` (error)
 
 ---
@@ -1987,7 +2113,7 @@ Label provides accessible name context; value semantics belong to parent Slider 
 
 **Node ID:** `3950:7327`
 
-AI-READY COMPONENT: Slider — adjustable value control with horizontal track, min/max labels, and numeric Input. Props: `status=enabled|hover|focus|active|error|warning|disabled|read-only|skeleton`; `errorText`; `warningText`. Nested (exposed): SliderBaseItem (`label`, `minValue`, `maxValue`; nested SliderItem + Input) on live statuses; SliderSkeletonItem on `status=skeleton` (BaseItem kept hidden as structural keeper). Composition: SliderBaseItem = label + railRow (minValue, SliderItem, maxValue) + Input; skeleton swaps to SliderSkeletonItem. Input state maps to status: enabled→default; hover→hover; focus/active→focus; error→error; warning→default + warningText; disabled→disabled; read-only→default (Input has no read-only state — intentional; non-editable semantics belong to product/runtime). Feedback text uses `body/small/regular` + `feedback/danger|warning` fills; `status=error|warning` gap `spacing/100`. Tokens via children: `color/actions/primary`, `color/border/2`, `text/primary`, `text/secondary`, `spacing/100|200`. No appearance/inverse (intentional). Accessibility: provide accessible name from label; announce value changes; associate errorText/warningText with the control. React mapping: Slider(status, errorText, warningText, …exposed nested). Code Connect is not configured.
+AI-READY COMPONENT: Slider — adjustable value control with horizontal track, min/max labels, and numeric Input. Props: `status=enabled|hover|focus|active|error|warning|disabled|read-only|skeleton`; `errorText`; `warningText`. Nested (exposed): SliderBaseItem (`label`, `minValue`, `maxValue`; nested SliderItem + Input) on live statuses; SliderSkeletonItem on `status=skeleton` (BaseItem kept hidden as structural keeper). Composition: SliderBaseItem = label + railRow (minValue, SliderItem, maxValue) + Input; skeleton swaps to SliderSkeletonItem. Input state maps to status: enabled→default; hover→hover; focus/active→focus; error→error; warning→default + warningText; disabled→disabled; read-only→default (Input has no read-only state — intentional; non-editable semantics belong to product/runtime). Feedback text uses `body/small/regular` + `feedback/danger|warning` fills; `status=error|warning` gap `spacing/100`. Tokens via children: `color/actions/primary`, `color/border/2`, `text/primary`, `text/secondary`, `spacing/100|200`. No appearance/inverse (intentional). Accessibility: provide accessible name from label; announce value changes; associate errorText/warningText with the control. React mapping: Slider(status, errorText, warningText, â€¦exposed nested). Code Connect is not configured.
 
 ### Variants
 
@@ -2038,7 +2164,7 @@ Provide accessible name from label; announce value changes; associate errorText/
 
 **Node ID:** `4170:4506`
 
-AI-READY COMPONENT: CardHorizontal — horizontal Card layout with media/text or custom slot content. Props: `style=outlined|elevated|filled`; `layout=media-and-text|slot`; `headerText`; `subheadText`; `slot` (SLOT). Composition: absolute `background` (CardOutlinedItem|CardElevatedItem|CardFilledItem, exposed) + content. `layout=media-and-text`: body (Avatar exposed + text header/subhead) + media (`mediaImage` placeholder). `layout=slot`: slot fills content (`stretchChildOnInsert=true`). Demo shell FIXED 360×80 (mobile exemplar). Tokens: `spacing/200` (body padding + body gap + slot horizontal padding); `spacing/100` (slot vertical padding); `spacing/050` (text gap); `border/radius/300`; `text/primary` + `text/secondary`; `heading/h3/regular` + `body/medium/regular`; media placeholder `color/background-surface/2` with IMAGE scaleMode FILL. No `slotSwap` (removed — use `slot`). No appearance/inverse (intentional). React mapping: CardHorizontal(style, layout, headerText, subheadText, slot, …exposed background/Avatar). Code Connect is not configured.
+AI-READY COMPONENT: CardHorizontal — horizontal Card layout with media/text or custom slot content. Props: `style=outlined|elevated|filled`; `layout=media-and-text|slot`; `headerText`; `subheadText`; `slot` (SLOT). Composition: absolute `background` (CardOutlinedItem|CardElevatedItem|CardFilledItem, exposed) + content. `layout=media-and-text`: body (Avatar exposed + text header/subhead) + media (`mediaImage` placeholder). `layout=slot`: slot fills content (`stretchChildOnInsert=true`). Demo shell FIXED 360×80 (mobile exemplar). Tokens: `spacing/200` (body padding + body gap + slot horizontal padding); `spacing/100` (slot vertical padding); `spacing/050` (text gap); `border/radius/300`; `text/primary` + `text/secondary`; `heading/h3/regular` + `body/medium/regular`; media placeholder `color/background-surface/2` with IMAGE scaleMode FILL. No `slotSwap` (removed — use `slot`). No appearance/inverse (intentional). React mapping: CardHorizontal(style, layout, headerText, subheadText, slot, â€¦exposed background/Avatar). Code Connect is not configured.
 
 ### Variants
 
@@ -2093,7 +2219,7 @@ Provide accessible name from `headerText`; media may need alt from product; Avat
 
 **Node ID:** `4170:4433`
 
-AI-READY COMPONENT: CardStacked — vertical stacked Card with media, header, body text, and actions (or custom slot). Props: `style=outlined|elevated|filled`; `layout=media-and-text|slot`; `headerText`; `subheadText`; `titleText`; `subtitleText`; `supportingText`; `showSecondaryAction` (BOOLEAN, default true); `slot` (SLOT). Composition: absolute `background` (CardOutlinedItem|CardElevatedItem|CardFilledItem, exposed) + content. `layout=media-and-text`: `headerRow` (Avatar exposed + text header/subhead + `menuAction` Button text exposed) + `media` (`mediaImage`) + `body` (`headline` title/subtitle + `supportingText` + `actions`: secondary outline + primary solid, both exposed). `layout=slot`: `content` → `slot` (demo `slotContent`; ImageItem preferredValues). Demo shell FIXED 360×480 (mobile exemplar). Tokens: `spacing/200` (body padding + slot horizontal); `spacing/100` (slot vertical + actions gap); `spacing/150|050` (headerRow); `spacing/400` (body gap); `spacing/050` (text/headline gaps); `border/radius/300` bound on root/content/slot; media IMAGE scaleMode FILL over `color/background-surface/2` (demo FIXED ~360×188). No `slotSwap`. No appearance/inverse (intentional). React mapping: CardStacked(style, layout, headerText, subheadText, titleText, subtitleText, supportingText, showSecondaryAction, slot, …exposed). Code Connect is not configured.
+AI-READY COMPONENT: CardStacked — vertical stacked Card with media, header, body text, and actions (or custom slot). Props: `style=outlined|elevated|filled`; `layout=media-and-text|slot`; `headerText`; `subheadText`; `titleText`; `subtitleText`; `supportingText`; `showSecondaryAction` (BOOLEAN, default true); `slot` (SLOT). Composition: absolute `background` (CardOutlinedItem|CardElevatedItem|CardFilledItem, exposed) + content. `layout=media-and-text`: `headerRow` (Avatar exposed + text header/subhead + `menuAction` Button text exposed) + `media` (`mediaImage`) + `body` (`headline` title/subtitle + `supportingText` + `actions`: secondary outline + primary solid, both exposed). `layout=slot`: `content` → `slot` (demo `slotContent`; ImageItem preferredValues). Demo shell FIXED 360×480 (mobile exemplar). Tokens: `spacing/200` (body padding + slot horizontal); `spacing/100` (slot vertical + actions gap); `spacing/150|050` (headerRow); `spacing/400` (body gap); `spacing/050` (text/headline gaps); `border/radius/300` bound on root/content/slot; media IMAGE scaleMode FILL over `color/background-surface/2` (demo FIXED ~360×188). No `slotSwap`. No appearance/inverse (intentional). React mapping: CardStacked(style, layout, headerText, subheadText, titleText, subtitleText, supportingText, showSecondaryAction, slot, â€¦exposed). Code Connect is not configured.
 
 ### Variants
 
@@ -2456,7 +2582,7 @@ Announce current page via pagination props; provide accessible names for slide c
 
 **Node ID:** `4152:495`
 
-AI-READY INTERNAL COMPONENT: CarouselPaginationItem — pagination dots used inside Carousel (not a slide/card). Props: `itemCount=2|3|4|5`; `itemView=1|2|3|4|5` (sparse matrix: itemView must be ≤ itemCount; 14 published variants). Anatomy: `dots` row of solid ellipse nodes (`dot1…dotN`). Active index = `itemView` uses `color/actions/primary`; inactive dots use `color/border/2`. Geometry tokens: dot size `spacing/100`; dots gap `spacing/100`; root vertical padding `spacing/100`; other paddings/gaps `spacing/0`. Compose only inside Carousel (exposed as nested pagination). Do not use as Carousel slide, ProgressBar, StepProgressIndicator, or Tabs. No appearance/inverse axis (intentional). Accessibility: decorative pagination indicator — announce page X of Y on the parent Carousel; dots themselves are not focus targets in design. React mapping: CarouselPaginationItem(itemCount, itemView). Code Connect is not configured.
+AI-READY INTERNAL COMPONENT: CarouselPaginationItem — pagination dots used inside Carousel (not a slide/card). Props: `itemCount=2|3|4|5`; `itemView=1|2|3|4|5` (sparse matrix: itemView must be â‰¤ itemCount; 14 published variants). Anatomy: `dots` row of solid ellipse nodes (`dot1â€¦dotN`). Active index = `itemView` uses `color/actions/primary`; inactive dots use `color/border/2`. Geometry tokens: dot size `spacing/100`; dots gap `spacing/100`; root vertical padding `spacing/100`; other paddings/gaps `spacing/0`. Compose only inside Carousel (exposed as nested pagination). Do not use as Carousel slide, ProgressBar, StepProgressIndicator, or Tabs. No appearance/inverse axis (intentional). Accessibility: decorative pagination indicator — announce page X of Y on the parent Carousel; dots themselves are not focus targets in design. React mapping: CarouselPaginationItem(itemCount, itemView). Code Connect is not configured.
 
 ### Variants
 
@@ -2468,11 +2594,11 @@ AI-READY INTERNAL COMPONENT: CarouselPaginationItem — pagination dots used ins
 | Prop | Tipo / valores |
 |---|---|
 | `itemCount` | 2 \| 3 \| 4 \| 5 — number of dots |
-| `itemView` | 1 \| 2 \| 3 \| 4 \| 5 — active index; must be ≤ itemCount (sparse 14) |
+| `itemView` | 1 \| 2 \| 3 \| 4 \| 5 — active index; must be â‰¤ itemCount (sparse 14) |
 
 ### Rules
 
-- **sparseMatrix:** Published 14/20 — itemView must be ≤ itemCount
+- **sparseMatrix:** Published 14/20 — itemView must be â‰¤ itemCount
 - **activeDot:** Active index = itemView → `color/actions/primary`; others `color/border/2`
 - **composeOnly:** Compose inside Carousel — not a slide, ProgressBar, StepProgress, or Tabs
 - **geometryTokens:** dot size `spacing/100`; dots gap `spacing/100`; root padY `spacing/100`; other gaps/pads `spacing/0`
@@ -2493,7 +2619,7 @@ Decorative pagination indicator — announce page X of Y on the parent Carousel;
 
 ### Composition
 
-- `dots` (`dot1…dotN`)
+- `dots` (`dot1â€¦dotN`)
 - Carousel (parent; exposed)
 
 ---
@@ -2502,7 +2628,7 @@ Decorative pagination indicator — announce page X of Y on the parent Carousel;
 
 **Node ID:** `3982:5542`
 
-AI-READY COMPONENT: Calendar is the Design System 2.0 date-selection panel used with InputDatePicker (compose the panel externally — never nest Calendar inside the field). It renders the month grid, optional period navigation, month/year unit strip, local actions, and (on complete/web) preset select lists. Variants use an intentional sparse matrix (8 published): mode × picker × platform. mode: simple | month | month-year | complete | time. picker: default | month | year (meaningful mainly with mode=month-year). platform: mobile | web (complete publishes both; other modes publish mobile demos). Anatomy by mode: simple = `monthTitle` TEXT + weekday headers + CalendarDay grid + local actions; month = selectionRow with CalendarPeriodNav (`periodNav`, exposed) + grid + actions; month-year = selectionRow with DatePickerSelect (`datePickerSelect`, exposed) + optional month/year ListActionDropdownItem lists when picker=month|year; complete/web = Select presets column (`showSelectItems`) + CalendarPeriodNav + grid + feedback + actions; complete/mobile = intentional dual-month range (two `periodNav` + two grids) + feedback range summary + actions; time = DatePickerSelect (month-year) + `timePicker` columns built from ListActionDropdownItem rows (placeholder hour/minute lists — not a dedicated TimePicker atom). Props: `monthTitle` (TEXT) — month heading on mode=simple; `showSelectItems` (BOOLEAN) — toggles preset list column on mode=complete + platform=web only. Nested `periodNav` and `datePickerSelect` (incl. nested month/year) are exposed. Local actions `clearAction` / `cancelAction` / `confirmAction` are NOT exposed. Demo grids include representative CalendarDay kinds/states (today, hover, focus, selected, range-*, disabled). Do not use Calendar as InputDatePicker, CalendarDay alone, DatePickerSelect alone, or a remote day-cell library. Token rule: local S2 kebab-case only. React mapping: Calendar(mode, picker, platform, monthTitle, showSelectItems, …exposed nested props). Code Connect is not configured.
+AI-READY COMPONENT: Calendar is the Design System 2.0 date-selection panel used with InputDatePicker (compose the panel externally — never nest Calendar inside the field). It renders the month grid, optional period navigation, month/year unit strip, local actions, and (on complete/web) preset select lists. Variants use an intentional sparse matrix (8 published): mode × picker × platform. mode: simple | month | month-year | complete | time. picker: default | month | year (meaningful mainly with mode=month-year). platform: mobile | web (complete publishes both; other modes publish mobile demos). Anatomy by mode: simple = `monthTitle` TEXT + weekday headers + CalendarDay grid + local actions; month = selectionRow with CalendarPeriodNav (`periodNav`, exposed) + grid + actions; month-year = selectionRow with DatePickerSelect (`datePickerSelect`, exposed) + optional month/year ListActionDropdownItem lists when picker=month|year; complete/web = Select presets column (`showSelectItems`) + CalendarPeriodNav + grid + feedback + actions; complete/mobile = intentional dual-month range (two `periodNav` + two grids) + feedback range summary + actions; time = DatePickerSelect (month-year) + `timePicker` columns built from ListActionDropdownItem rows (placeholder hour/minute lists — not a dedicated TimePicker atom). Props: `monthTitle` (TEXT) — month heading on mode=simple; `showSelectItems` (BOOLEAN) — toggles preset list column on mode=complete + platform=web only. Nested `periodNav` and `datePickerSelect` (incl. nested month/year) are exposed. Local actions `clearAction` / `cancelAction` / `confirmAction` are NOT exposed. Demo grids include representative CalendarDay kinds/states (today, hover, focus, selected, range-*, disabled). Do not use Calendar as InputDatePicker, CalendarDay alone, DatePickerSelect alone, or a remote day-cell library. Token rule: local S2 kebab-case only. React mapping: Calendar(mode, picker, platform, monthTitle, showSelectItems, â€¦exposed nested props). Code Connect is not configured.
 
 ### Variants
 
@@ -2617,7 +2743,7 @@ role=gridcell; aria-selected when selected; aria-current=date for today; aria-di
 
 **Node ID:** `3995:5664`
 
-AI-READY COMPONENT: CalendarPeriodNav is the Design System 2.0 mobile period navigator for Calendar / date-picker surfaces. It changes the visible period in the viewer (month/year step and optional month-year picker entry). Prefer on Display=Mobile calendar headers and date bottom sheets — not for list/table Pagination. Variants: appearance × previousDisabled × nextDisabled (8). appearance: default | inverse. previousDisabled/nextDisabled: false | true (boundary of navigable range). Anatomy: previousAction (Button text/sm icon-only chevron-left-outline) + periodAction (FRAME with periodLabel TEXT + expandIcon chevron-down-outline) + nextAction (Button text/sm icon-only chevron-right-outline). periodAction opens month/year selection when the product supports Calendar Select=Month|Year — implement as a button in product code (aria-haspopup) even though the Figma layer is a FRAME, not a nested Button instance. previous/next step the visible period. appearance=default: transparent root; actions/label text/primary; disabled chevrons text/placeholder. appearance=inverse: root fill color/background-surface/inverse-3; actions/label text/on-color; disabled chevrons text/on-color-disabled. Props: periodLabel (TEXT) — visible period, e.g. "Abril 2025". Nested Button labels carry accessible names (Período anterior / Próximo período). Do not use as Pagination, PaginationItem, PaginationSelectInput, or InputDatePicker field. Compose with Calendar + CalendarDay grid. Accessibility: toolbar/group; icon-only buttons need accessible names; periodAction maps to a button that may set aria-haspopup; announce period changes with aria-live when stepped. Token rule: local S2 kebab-case only. React mapping: CalendarPeriodNav(appearance, previousDisabled, nextDisabled, periodLabel). Code Connect is not configured.
+AI-READY COMPONENT: CalendarPeriodNav is the Design System 2.0 mobile period navigator for Calendar / date-picker surfaces. It changes the visible period in the viewer (month/year step and optional month-year picker entry). Prefer on Display=Mobile calendar headers and date bottom sheets — not for list/table Pagination. Variants: appearance × previousDisabled × nextDisabled (8). appearance: default | inverse. previousDisabled/nextDisabled: false | true (boundary of navigable range). Anatomy: previousAction (Button text/sm icon-only chevron-left-outline) + periodAction (FRAME with periodLabel TEXT + expandIcon chevron-down-outline) + nextAction (Button text/sm icon-only chevron-right-outline). periodAction opens month/year selection when the product supports Calendar Select=Month|Year — implement as a button in product code (aria-haspopup) even though the Figma layer is a FRAME, not a nested Button instance. previous/next step the visible period. appearance=default: transparent root; actions/label text/primary; disabled chevrons text/placeholder. appearance=inverse: root fill color/background-surface/inverse-3; actions/label text/on-color; disabled chevrons text/on-color-disabled. Props: periodLabel (TEXT) — visible period, e.g. "Abril 2025". Nested Button labels carry accessible names (PerÃ­odo anterior / PrÃ³ximo perÃ­odo). Do not use as Pagination, PaginationItem, PaginationSelectInput, or InputDatePicker field. Compose with Calendar + CalendarDay grid. Accessibility: toolbar/group; icon-only buttons need accessible names; periodAction maps to a button that may set aria-haspopup; announce period changes with aria-live when stepped. Token rule: local S2 kebab-case only. React mapping: CalendarPeriodNav(appearance, previousDisabled, nextDisabled, periodLabel). Code Connect is not configured.
 
 ### Variants
 
@@ -3293,7 +3419,7 @@ AI-READY COMPONENT: ListItemVideoThumbnail is a compact video thumbnail block fo
 
 - `color/background-surface/2`, `border/radius/100`
 - `text/on-color` for playIcon
-- icon scale 20px (stroke ≈ 1.67)
+- icon scale 20px (stroke â‰ˆ 1.67)
 
 ### Accessibility
 
@@ -3580,7 +3706,7 @@ AI-READY COMPONENT: StepperPrimary is a single step item used inside a Stepper t
 
 - **icons:** structural by status: circle-check-filled | circle-dot-filled | circle-outline; local DS icons only
 - **trails:** active trails use color/actions/primary; inactive present trails use color/border/2
-- **sparseMatrix:** intentional-sparse: trailState ⊆ trail; current×both publishes none|left only; pending publishes trailState=none only
+- **sparseMatrix:** intentional-sparse: trailState âŠ† trail; current×both publishes none|left only; pending publishes trailState=none only
 - **usage:** Do not use as Button, PaginationItem, ProgressBar, TimelineItem or standalone navigation item
 
 ### Token rules
@@ -3691,7 +3817,7 @@ Parent ordered list; aria-current=step on active item; status in accessible text
 
 **Node ID:** `3935:5522`
 
-AI-READY COMPONENT: SelectCountry is a compact country/DDI trigger used only inside InputNumber (phone). Anatomy: countryFlag (local Flags, Style=Square Radius=On) + expandIcon (local chevron-down-outline when expanded=false; local chevron-up-outline when expanded=true). Variants: state=default|hover|focus|disabled; size=sm|md; expanded=false|true (14 variants). Sparse matrix: disabled only publishes expanded=false. size=sm is in-field density for InputNumber; size=md uses spacing/100 vertical and spacing/200 horizontal. No fill on default/hover/focus; hover stroke color/border-feedback/primary + border/width/012; focus stroke interactive/focus + border/width/012. Disabled uses root opacity ≈0.64 with no stroke. Props: countryFlag (INSTANCE_SWAP → local Flags). Do not nest the country menu — compose a floating list externally when expanded=true. Do not use as InputSelect, Autocomplete, Select, stepper, or standalone field. Accessibility: trigger with accessible name beyond the flag; aria-expanded; aria-controls external list; aria-disabled when disabled. Token rule: local S2 kebab-case only — border/radius/300, border/width/012, spacing/050|100|200, interactive/focus, color/border-feedback/primary, text/primary|placeholder on expandIcon. No remote icon libraries; no Border/Icon/* tokens. React mapping: SelectCountry({ state, size, expanded, countryFlag, onOpenChange }). Code Connect is not configured.
+AI-READY COMPONENT: SelectCountry is a compact country/DDI trigger used only inside InputNumber (phone). Anatomy: countryFlag (local Flags, Style=Square Radius=On) + expandIcon (local chevron-down-outline when expanded=false; local chevron-up-outline when expanded=true). Variants: state=default|hover|focus|disabled; size=sm|md; expanded=false|true (14 variants). Sparse matrix: disabled only publishes expanded=false. size=sm is in-field density for InputNumber; size=md uses spacing/100 vertical and spacing/200 horizontal. No fill on default/hover/focus; hover stroke color/border-feedback/primary + border/width/012; focus stroke interactive/focus + border/width/012. Disabled uses root opacity â‰ˆ0.64 with no stroke. Props: countryFlag (INSTANCE_SWAP → local Flags). Do not nest the country menu — compose a floating list externally when expanded=true. Do not use as InputSelect, Autocomplete, Select, stepper, or standalone field. Accessibility: trigger with accessible name beyond the flag; aria-expanded; aria-controls external list; aria-disabled when disabled. Token rule: local S2 kebab-case only — border/radius/300, border/width/012, spacing/050|100|200, interactive/focus, color/border-feedback/primary, text/primary|placeholder on expandIcon. No remote icon libraries; no Border/Icon/* tokens. React mapping: SelectCountry({ state, size, expanded, countryFlag, onOpenChange }). Code Connect is not configured.
 
 ### Variants
 
@@ -3703,7 +3829,7 @@ AI-READY COMPONENT: SelectCountry is a compact country/DDI trigger used only ins
 
 | Prop | Tipo / valores |
 |---|---|
-| `state` | default \| hover \| focus \| disabled (disabled ≈0.64 opacity, no stroke) |
+| `state` | default \| hover \| focus \| disabled (disabled â‰ˆ0.64 opacity, no stroke) |
 | `size` | sm \| md — sm for in-field InputNumber density |
 | `expanded` | false \| true — external country list; invalid with disabled (not published) |
 | `countryFlag` | INSTANCE_SWAP — local Flags set (default Brazil Square Radius=On) |
@@ -3908,6 +4034,47 @@ role=tablist; nested TabItem role=tab; aria-selected on active tab; ArrowLeft/Ar
 
 ---
 
+## TextHeader
+
+**Node ID:** `3667:4129`
+
+AI-READY COMPONENT: TextHeader is the compact title + optional supporting text block used inside AppHeader, SystemHeader, and similar chrome. Props: `size=large|medium|small`; `alignment=left|center`; `title` (TEXT); `description` (TEXT); `showDescription` (BOOLEAN, default true). Typography: `large` → `heading/h1/medium` + `body/large/regular`; `medium` → `heading/h2/medium` + `body/medium/regular`; `small` → `heading/h3/medium` + `body/small/regular`. Do not use Text AppHeader, Button label, Chip, Banner, or page hero. AppHeader `hierarchy=global` does **not** use TextHeader — greeting stays `body/large/medium`. React mapping: TextHeader(size, alignment, title, description, showDescription).
+
+### Variants
+
+- **size:** large | medium | small
+- **alignment:** left | center
+
+### Props
+
+| Prop | Tipo / valores |
+|---|---|
+| `size` | large \| medium \| small |
+| `alignment` | left \| center |
+| `title` | TEXT — headline |
+| `description` | TEXT — supporting |
+| `showDescription` | boolean — default true |
+
+### Rules
+
+- **matrix:** Published 6/6 — size × alignment
+- **appHeaderUsage:** AppHeader specific|super-app nests TextHeader as `headingContent`; global uses greeting `body/large/medium`
+- **inverseOverride:** When nested in `appearance=inverse` chrome (e.g. AppHeader), override title → `text/on-color` and description → `text/on-color-disabled`
+- **kebab:** Variant keys/values kebab-case
+
+### Token rules
+
+- size=large: `heading/h1/medium` + `body/large/regular`
+- size=medium: `heading/h2/medium` + `body/medium/regular`
+- size=small: `heading/h3/medium` + `body/small/regular`
+- `text/primary` on title; `text/secondary` on description
+
+### Accessibility
+
+Title provides the accessible name for the header region when nested; supporting description is supplementary.
+
+---
+
 ## Toast
 
 **Node ID:** `3550:4107`
@@ -3937,7 +4104,7 @@ AI-READY COMPONENT: Toast is a transient feedback message used to confirm an act
 
 ### Status map
 
-| Status | Ícone | Icon fill token |
+| Status | Ãcone | Icon fill token |
 |---|---|---|
 | system | — | — |
 | info | `info-circle-filled` | `color/background-feedback-primary/info` |
@@ -5000,7 +5167,7 @@ Use nav semantics or aria-label; items as links for routes; selected maps to ari
 
 **Node ID:** `4203:447`
 
-AI-READY COMPONENT: QuickAccessTile — compact mobile shortcut tile for home quick-access grids (pay bill, assist, insurance). Props: `state=default|pressed|disabled`; `label` (TEXT, default `Label`); `icon` (INSTANCE_SWAP — local outline; default `apps-outline`; preferredValues include apps/grid/category/squares/star/credit-card outlines). Composition: icon (24) + label (up to 2 lines, left-aligned). `state=pressed` adds absolute `stateLayer` with `interactive/pressed` over the surface. Tokens: `color/background-surface/2`; `border/radius/400`; `spacing/200` (vertical pad); `spacing/150` (horizontal pad); `spacing/050` (gap); size `spacing/1000`×`spacing/1100` (80×88); icon stroke `text/brand` (disabled: `text/placeholder`) on outline path — not fill; label `text/primary` + `caption/medium/medium` (disabled: `text/placeholder`). No hover/focus (intentional — mobile press model). Do not use as Button, Chip, marketing Card, or NavigationBarItem. Document group pattern “Acesso rápido” as a screen composition of N tiles — not a separate published component set. React mapping: QuickAccessTile(icon, label, state, onPress). Code Connect is not configured.
+AI-READY COMPONENT: QuickAccessTile — compact mobile shortcut tile for home quick-access grids (pay bill, assist, insurance). Props: `state=default|pressed|disabled`; `label` (TEXT, default `Label`); `icon` (INSTANCE_SWAP — local outline; default `apps-outline`; preferredValues include apps/grid/category/squares/star/credit-card outlines). Composition: icon (24) + label (up to 2 lines, left-aligned). `state=pressed` adds absolute `stateLayer` with `interactive/pressed` over the surface. Tokens: `color/background-surface/2`; `border/radius/400`; `spacing/200` (vertical pad); `spacing/150` (horizontal pad); `spacing/050` (gap); size `spacing/1000`×`spacing/1100` (80×88); icon stroke `text/brand` (disabled: `text/placeholder`) on outline path — not fill; label `text/primary` + `caption/medium/medium` (disabled: `text/placeholder`). No hover/focus (intentional — mobile press model). Do not use as Button, Chip, marketing Card, or NavigationBarItem. Document group pattern "Acesso rÃ¡pido" as a screen composition of N tiles — not a separate published component set. React mapping: QuickAccessTile(icon, label, state, onPress). Code Connect is not configured.
 
 ### Variants
 
@@ -5019,7 +5186,7 @@ AI-READY COMPONENT: QuickAccessTile — compact mobile shortcut tile for home qu
 - **matrix:** Published 3/3 — state
 - **pressedOverlay:** `state=pressed` uses absolute `stateLayer` `interactive/pressed` over surface
 - **noHoverFocus:** No hover/focus variants (intentional — mobile press model)
-- **groupPattern:** Acesso rápido grid is a screen composition of N tiles — not a separate set
+- **groupPattern:** Acesso rÃ¡pido grid is a screen composition of N tiles — not a separate set
 - **demoSize:** FIXED 80×88 via `spacing/1000`×`spacing/1100`
 - **typography:** `caption/medium/medium` (nearest local to former 10px remote)
 - **labelAlign:** label textAlign LEFT (manual)
@@ -5086,7 +5253,7 @@ Card behaves as a single button/link to vehicle details; status label must remai
 
 **Node ID:** `4227:418`
 
-AI-READY COMPONENT: OfferProductCard — add-on product offer card for Home/Painel carousels. Props: state=default; title (TEXT, default "Title"); description (TEXT, default "Description"); price (TEXT, default "R$ 0,00"); pricePeriod (TEXT, default "/mês"); icon (INSTANCE_SWAP — local outline; default package-outline; preferredValues include package/tag/gift/box/shopping-bag/apps outlines). Anatomy: iconContainer (icon) + text (title + description) + priceRow (price + pricePeriod) + cta (local Button solid/sm/primary, exposed; default label "Label"). Tokens: color/background-surface/2; color/background-surface/3 (iconContainer); border/radius/500; spacing/250 (pad); spacing/150 (root gap); spacing/100 (text gap); text/primary + text/secondary; body/medium/semi-bold (title); body/small/regular (description/period); heading/h3/semi-bold (price); icon stroke text/brand. Do not use as VehicleSummaryCard, Banner, CardStacked/Horizontal, or a carousel shell (carousel is a screen pattern). Accessibility: CTA is the primary action; title maps to accessible name for the offer. React mapping: OfferProductCard(icon, title, description, price, pricePeriod, ctaLabel, onAdd). Code Connect is not configured.
+AI-READY COMPONENT: OfferProductCard — add-on product offer card for Home/Painel carousels. Props: state=default; title (TEXT, default "Title"); description (TEXT, default "Description"); price (TEXT, default "R$ 0,00"); pricePeriod (TEXT, default "/mÃªs"); icon (INSTANCE_SWAP — local outline; default package-outline; preferredValues include package/tag/gift/box/shopping-bag/apps outlines). Anatomy: iconContainer (icon) + text (title + description) + priceRow (price + pricePeriod) + cta (local Button solid/sm/primary, exposed; default label "Label"). Tokens: color/background-surface/2; color/background-surface/3 (iconContainer); border/radius/500; spacing/250 (pad); spacing/150 (root gap); spacing/100 (text gap); text/primary + text/secondary; body/medium/semi-bold (title); body/small/regular (description/period); heading/h3/semi-bold (price); icon stroke text/brand. Do not use as VehicleSummaryCard, Banner, CardStacked/Horizontal, or a carousel shell (carousel is a screen pattern). Accessibility: CTA is the primary action; title maps to accessible name for the offer. React mapping: OfferProductCard(icon, title, description, price, pricePeriod, ctaLabel, onAdd). Code Connect is not configured.
 
 ### Variants
 
@@ -5099,7 +5266,7 @@ AI-READY COMPONENT: OfferProductCard — add-on product offer card for Home/Pain
 | `title` | TEXT — default `Title` |
 | `description` | TEXT — default `Description` |
 | `price` | TEXT — default `R$ 0,00` |
-| `pricePeriod` | TEXT — default `/mês` |
+| `pricePeriod` | TEXT — default `/mÃªs` |
 | `icon` | INSTANCE_SWAP — default `package-outline` |
 | `cta` | Exposed Button solid/sm/primary — default label `Label` |
 | `state` | default |
@@ -5123,7 +5290,7 @@ CTA is the primary action; card title should map to accessible name for the offe
 
 **Node ID:** `3943:24343`
 
-AI-READY COMPONENT: ReferralDiscountCard is the Home/Painel referral promo with a 10-step discount simulator (descontômetro). Rule: 10 referrals = 100% discount (mensalidade zerada). Anatomy: promo surface (color/background-surface/promo-1|2|accent), title, description, simulator link, discrete 10-node track (completed/current/pending), discount summary, CTA Convidar via Button intent=secondary (color/actions/secondary). Variants: referralCount=0|2|10 (sparse exemplars; product may interpolate 0..10). Do NOT replace with ProgressBar, StepProgressIndicator, or StepperPrimary. React mapping: ReferralDiscountCard(title, description, referralCount, maxReferrals=10, discountPercent, discountAmount, interactive, onInvite, onOpenSimulator).
+AI-READY COMPONENT: ReferralDiscountCard is the Home/Painel referral promo with a 10-step discount simulator (descontÃ´metro). Rule: 10 referrals = 100% discount (mensalidade zerada). Anatomy: promo surface (color/background-surface/promo-1|2|accent), title, description, simulator link, discrete 10-node track (completed/current/pending), discount summary, CTA Convidar via Button intent=secondary (color/actions/secondary). Variants: referralCount=0|2|10 (sparse exemplars; product may interpolate 0..10). Do NOT replace with ProgressBar, StepProgressIndicator, or StepperPrimary. React mapping: ReferralDiscountCard(title, description, referralCount, maxReferrals=10, discountPercent, discountAmount, interactive, onInvite, onOpenSimulator).
 
 ### Variants
 
@@ -5147,7 +5314,7 @@ AI-READY COMPONENT: ReferralDiscountCard is the Home/Painel referral promo with 
 
 ### Accessibility
 
-Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); track nodes decorative when text equivalent exists; CTA and simulator link keyboard reachable.
+Expose referral progress in text (e.g. 2 de 10 indicaÃ§Ãµes, 20% desconto); track nodes decorative when text equivalent exists; CTA and simulator link keyboard reachable.
 
 ---
 
@@ -5156,15 +5323,15 @@ Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); trac
 | Elemento da tela | Componente DS | Notas |
 |---|---|---|
 | Status bar iOS | — | Sistema, fora do DS |
-| Header Olá + avatar + search/bell | `AppHeader` + `Avatar` | `hierarchy=global`; bell visível; search opcional (`showFirstTrailingAction`) |
-| Card veículo | `VehicleSummaryCard` | status soft via `ChipTag` |
-| Adicionar veículo | `ChipClickable` | `intent=soft` + leading plus |
-| Acesso rápido tiles | `QuickAccessTile` | grupo = composição de tela |
-| Títulos de seção | `SectionHeader` | `showAction` para overflow / ver mais |
-| Zere sua mensalidade | `ReferralDiscountCard` | descontômetro próprio |
-| Simulador de indicação | `Link` (ou texto link no card) | nested / composed |
+| Header OlÃ¡ + avatar + search/bell | `AppHeader` + `Avatar` | `hierarchy=global`; bell visÃ­vel; search opcional (`showFirstTrailingAction`) |
+| Card veÃ­culo | `VehicleSummaryCard` | status soft via `ChipTag` |
+| Adicionar veÃ­culo | `ChipClickable` | `intent=soft` + leading plus |
+| Acesso rÃ¡pido tiles | `QuickAccessTile` | grupo = composiÃ§Ã£o de tela |
+| TÃ­tulos de seÃ§Ã£o | `SectionHeader` | `showAction` para overflow / ver mais |
+| Zere sua mensalidade | `ReferralDiscountCard` | descontÃ´metro prÃ³prio |
+| Simulador de indicaÃ§Ã£o | `Link` (ou texto link no card) | nested / composed |
 | Convidar | `Button` intent=secondary | color/actions/secondary |
-| Ofertas cards | `OfferProductCard` | carrossel = padrão de tela |
+| Ofertas cards | `OfferProductCard` | carrossel = padrÃ£o de tela |
 | Adicionar ao plano | `Button` solid primary | nested |
 | Bottom nav floating | `NavigationBar` | layout=floating; itemCount=5 + Acionar |
 
@@ -5172,6 +5339,12 @@ Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); trac
 
 ## Atualizações recentes
 
+- **app-header-optical-center:** AppHeader: trailing slot stays when showSecondTrailingAction off; optical center fixed; docs synced.
+- **app-header-trailing-layout:** AppHeader small/small-centered: fix leading recenter when trailing hidden; docs synced.
+- **app-header-inverse-text:** AppHeader inverse: TextHeader title text/on-color; docs synced.
+- **text-header-normalize:** TextHeader: kebab size/alignment; AppHeader nests TextHeader (non-global); global greeting body/large/medium characteristic; docs synced.
+- **icon-libraries-swap:** Icon libs: Library Swap + *-outline/*-filled contract; EV Tabler / App Hugeicons aliases; foundations docs.
+- **avatar-surface-3:** Avatar: default fill color/background-surface/3 for initials|placeholder all sizes; nodeId 3669:8605; docs synced.
 - **card-stacked-tokens:** CardStacked: media FILL; radius/300 binds; Avatar initials local type; docs synced.
 - **chip-clickable-label-tokens:** ChipClickable: soft label prop wired; local body/small/medium; danger gaps spacing/100; docs synced.
 - **chip-clickable-soft:** ChipClickable intent=soft: soft surface chip matrix 16; docs synced.
@@ -5199,7 +5372,7 @@ Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); trac
 - **carousel-pagination-item-docs:** CarouselPaginationItem (ex-CarouselItem): local spacing; expose on Carousel; AI-READY + storybook sparse 14.
 - **photo-text-item-docs:** PhotoTextItem + ImageItem showPhotoTextItem: full-bleed text scrim; S2 tokens; storybook entries.
 - **slider-docs:** Slider + SliderBaseItem: AI-READY; feedback typography; spacing gaps; expose nested; Base TEXT props; storybook entries.
-- **painel-home-gap-close:** Closed Painel Home gap — promo surface tokens; ChipTag emphasis=soft; ChipClickable Adicionar veículo exemplar; Button intent=secondary; AppHeader greeting; NavigationBar layout=floating; new QuickAccessTile, VehicleSummaryCard, OfferProductCard, ReferralDiscountCard.
+- **painel-home-gap-close:** Closed Painel Home gap — promo surface tokens; ChipTag emphasis=soft; ChipClickable Adicionar veÃ­culo exemplar; Button intent=secondary; AppHeader greeting; NavigationBar layout=floating; new QuickAccessTile, VehicleSummaryCard, OfferProductCard, ReferralDiscountCard.
 - **input-focus-caret-error-icon-docs:** Input: added focus caret (Material pattern) and always-on trailingIconError (alert-circle) for error a11y; docs updated.
 - **input-docs:** Added Input (outlined floating-label, h=56, radius/200) from Material Text field matrix + target visual identity; S2 tokens; AI-Ready and storybook docs.
 - **input-removed-docs:** Removed Input component from Figma and cleared Input storybook/AI-Ready docs to restart from scratch.
@@ -5282,9 +5455,23 @@ Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); trac
 
 ## Changelog (meta)
 
+- **2026-07-27** [storybook-app-header-audit-apply]: AppHeader audit apply: super-app anatomy fixed; spacing binds; legacy action removed; medium/large keepers; icon `*-path`; profileMenu=super-app only; docs synced.
+- **2026-07-27** [storybook-bottom-sheet-header-audit-apply]: BottomSheetHeader audit apply: `body/medium/medium` + `text/primary`; AI-READY descriptions; icon `*-path` renames; `spacing/0` gap; Button instances refreshed; BottomSheet nest swapped; docs synced.
+- **2026-07-27** [storybook-bottom-sheet-header-close-edge]: BottomSheetHeader: `headingContent` FILL — `showLabel` off / only close keeps X on the trailing edge; docs synced.
+- **2026-07-27** [storybook-bottom-sheet-header-leading]: BottomSheetHeader: no inverse; leading `optionsAction` + `leadingAction`; `showLabel` toggles title; docs synced.
+- **2026-07-27** [storybook-bottom-sheet-header]: BottomSheetHeader (`4307:3760`): dedicated sheet header (`appearance` default|inverse, `title`, `showCloseAction`); BottomSheet `header=app-header`→`sheet-header` nests BottomSheetHeader (not AppHeader); docs synced.
+- **2026-07-27** [storybook-app-header-leading-optical-center]: AppHeader `small|small-centered` specific default|inverse: `leadingActions` FIXED 48 + `leadingSlotKeeper` — `showAction` off keeps optical center with trailing visible; docs synced.
+- **2026-07-27** [storybook-app-header-textheader-small]: AppHeader specific `small|small-centered` default: `headingContent` = local TextHeader `size=small` (left|center), `showDescription=false`; docs synced.
+- **2026-07-27** [storybook-background-surface-brand]: Tokens: `primitive-colors/brand-blue` (`#4967EE`) + `color/background-surface/brand` (`FRAME_FILL`|`SHAPE_FILL` alias); docs synced.
+- **2026-07-27** [storybook-app-header-optical-center]: AppHeader small|small-centered: unbind `trailingActions.visible` from `showSecondTrailingAction`; fixed 48 slot + keeper — optical center holds when trailing off; docs synced.
+- **2026-07-27** [storybook-app-header-trailing-layout]: AppHeader small|small-centered specific: `headingContent` in auto-layout (not absolute); `trailingActions` minWidth 48 — hiding trailing no longer recenters `leadingAction`; docs synced.
+- **2026-07-27** [storybook-app-header-inverse-text]: AppHeader `appearance=inverse`: TextHeader title → `text/on-color` (overrides); docs synced.
+- **2026-07-27** [storybook-text-header-normalize]: TextHeader (`3667:4129`): rename from Text header; kebab `size`/`alignment`; `title`/`description`/`showDescription`; AppHeader non-global → TextHeader; global greeting `body/large/medium` kept as characteristic; orphan set removed; AI-READY + storybook.
+- **2026-07-27** [storybook-icon-libraries-swap]: Documented multi-product icon architecture — Library Swap + DS name contract (`*-outline`/`*-filled`); EV Tabler vs App Cliente Hugeicons + Semantic Aliases; alias publish rules; foundations/GlobalRules + storybook MD.
+- **2026-07-27** [storybook-avatar-surface-3]: Avatar (`3669:8605`): default fill `color/background-surface/3` for initials|placeholder across all sizes; nodeId synced; AI-READY + storybook.
 - **2026-07-27** [storybook-card-stacked-tokens]: CardStacked (`4170:4433`): mediaImage scaleMode FILL; corner radius binds `border/radius/300` (+ slotContent `200`); unify slot content clip; Avatar initials local type styles; dots-vertical-outline path rename; AI-READY + storybook.
 - **2026-07-27** [storybook-chip-clickable-label-tokens]: ChipClickable (`3653:23577`): soft label TEXT prop re-wired (16); label typography local `body/small/medium` (cleared remotes on 116); danger itemSpacing→`spacing/100`; AI-READY + storybook.
-- **2026-07-24** [storybook-chip-clickable-soft]: ChipClickable (`3653:23577`): new intent=soft (16 variants) — surface/2 + border/2; Painel Adicionar veículo; AI-READY + storybook.
+- **2026-07-24** [storybook-chip-clickable-soft]: ChipClickable (`3653:23577`): new intent=soft (16 variants) — surface/2 + border/2; Painel Adicionar veÃ­culo; AI-READY + storybook.
 - **2026-07-24** [storybook-navigation-bar-fab-local]: NavigationBar itemCount=5: document NavigationBar-local Button FAB overrides (circular lg 56, radius/full, plus-outline, text/on-color) — not Button master; AI-READY + docs.
 - **2026-07-24** [storybook-navigation-bar-floating]: NavigationBar (`3653:14851`): full matrix layout flush|floating × itemCount 3|4|5 × appearance; floating pill radius/full + soft shadow; AI-READY + storybook 12.
 - **2026-07-24** [storybook-app-header-global-icon-stroke]: AppHeader global: manual sync — trailing Button icon stroke `text/primary` (default) / `text/on-color` (inverse); AI-READY + docs.
@@ -5317,7 +5504,7 @@ Expose referral progress in text (e.g. 2 de 10 indicações, 20% desconto); trac
 - **2026-07-22** [storybook-block-to-item-rename]: Renamed subcomponent suffix Block→Item: VerificationCodeInputItem, DatePickerSelectItem, CommentItem, ImageItem; FileUploaderBlock→FileUploaderDropzoneItem (collision with FileUploaderItem). Figma + docs synced.
 - **2026-07-22** [storybook-slider-left-rail-recreate]: SliderLeftRail recreate `4073:2214`: AI-READY EN; spacing/250|025 binds; wired into `_Slider rail` + Slider overrides; storybook nodeId sync.
 - **2026-07-22** [storybook-slider-left-rail]: SliderLeftRail: both active fills color/actions/primary (size-only diff); AI-READY EN; spacing/250 gap + spacing/025 height binds; page Slider trim; storybook entry active×2.
-- **2026-07-21** [storybook-app-header]: AppHeader: swapped remote App bar text→local Text header; showProfileMenu; first/second trailing=search/bell; showAction wired; Painel Home search+greeting title; storybook sync.
+- **2026-07-21** [storybook-app-header]: AppHeader: swapped remote App bar text→local TextHeader; showProfileMenu; first/second trailing=search/bell; showAction wired; Painel Home search+greeting title; storybook sync.
 - **2026-07-21** [storybook-system-header]: SystemHeader: wired showPrimaryAction; exposed datePickerSelect; slot description; AI-READY + storybook sync (simple sparse trailing).
 - **2026-07-21** [storybook-date-picker-select]: DatePickerSelect: exposed nested day/month/year DatePickerSelectItem instances; AI-READY desc (value via nested); storybook entry format×state 16.
 - **2026-07-21** [storybook-date-picker-select-block]: DatePickerSelectItem: wired value TEXT on all 21 variants; renamed chevron-up-outline Vector→*-path; storybook entry (unit×state×expanded).

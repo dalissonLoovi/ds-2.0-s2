@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. For standalone text headings, use typography/text components instead. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Actions should be limited to essential navigation/account/actions. Leading actions must have accessible labels. Profile menu must behave as an accessible menu button. Token rule: local S2 kebab-case semantic only. Icon rule: local DS outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline). Internals must use components from this DS/current file: Button, local Text header (headingContent), local Profile menu, local Avatar. No remote App bar building blocks; no legacy Material button instances. Props: showLabel toggles headingContent (specific/super-app) or greeting visibility (global); showAction toggles leadingAction (specific/super-app); showFirstTrailingAction toggles firstTrailingAction (search-outline; default false — hidden); showSecondTrailingAction toggles secondTrailingAction (bell-outline; default true — visible); showProfileMenu toggles profileMenu (specific/super-app); greeting (TEXT, default "Olá, Rodrigo") on hierarchy=global. title/description come from exposed headingContent (Text header) on non-global hierarchies. PAINEL HOME: appearance=inverse|default, hierarchy=global, layout=small-centered. Anatomy: leadingCluster (Avatar exposed + greeting) + trailingActions (search hidden by default; bell visible). appearance=default → color/background-surface/0 + text/primary; appearance=inverse → color/background-surface/inverse-3 + text/on-color. Greeting uses body/large/medium. Trailing actions are local Button text/md/primary icon-only; icon outline stroke is manually synced — appearance=default uses text/primary, appearance=inverse uses text/on-color (not the Button default brand stroke). React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured.
+AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Do not nest AppHeader inside BottomSheet — use BottomSheetHeader. Token rule: local S2 kebab-case semantic only. Icon rule: local DS outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline); internal paths use \{icon\}-path. Internals: Button, local TextHeader (headingContent), local Profile menu, local Avatar — no remotes. Props: showLabel; showAction; showFirstTrailingAction (search-outline, default false); showSecondTrailingAction (bell-outline, default true); showProfileMenu (hierarchy=super-app only); greeting (TEXT, default "Olá, Rodrigo", global only). title/description via exposed headingContent TextHeader on non-global. Anatomy — global: leadingCluster + trailingActions. specific|super-app small|small-centered: leadingActions (slot + leadingSlotKeeper + leadingAction) + headingContent FILL + trailingActions. super-app: leadingActions FIXED 96 balances trailing (bell + profileMenu); TextHeader size=small alignment=center. specific medium|large: headerControls (leadingActions + trailingActions, SPACE_BETWEEN) above headingContent; keepers on both slots; no legacy action layer. Optical center: do not bind slot containers' visible to show* — keepers preserve width. Spacing: global pad spacing/050 vert + spacing/300 horiz; small/small-centered pad spacing/100 vert + spacing/050 horiz; medium/large root gap spacing/100 + paddingBottom spacing/150. PAINEL HOME: hierarchy=global + layout=small-centered; default surface/0 + text/primary; inverse surface/inverse-3 + text/on-color; greeting body/large/medium; trailing icon strokes default text/primary / inverse text/on-color. React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured.
 
 ## Variants
 
@@ -29,22 +29,32 @@ AI-READY COMPONENT: AppHeader is the top page/application header used to identif
 | `showAction` | boolean — toggles leadingAction (specific/super-app) |
 | `showFirstTrailingAction` | boolean — toggles firstTrailingAction search-outline (default false; hidden on Painel Home) |
 | `showSecondTrailingAction` | boolean — toggles secondTrailingAction bell-outline (default true; visible) |
-| `showProfileMenu` | boolean — toggles profileMenu (specific/super-app) |
-| `greeting` | TEXT — hierarchy=global only (default "Olá, Rodrigo"); body/large/medium |
-| `title` | TEXT via exposed headingContent (non-global) |
-| `description` | TEXT via exposed headingContent (non-global) |
+| `showProfileMenu` | boolean — toggles profileMenu (hierarchy=super-app only) |
+| `greeting` | TEXT — hierarchy=global only (default "Olá, Rodrigo"); body/large/medium characteristic — not TextHeader |
+| `title` | TEXT via exposed headingContent TextHeader (non-global) |
+| `description` | TEXT via exposed headingContent TextHeader (non-global) |
 
 ## Rules
 
 - **intentionalSparse:** 11/24 published — global: small-centered × default|inverse; super-app: small-centered × default only; specific: all layouts × appearance
 - **globalAnatomy:** hierarchy=global: leadingCluster (Avatar exposed + greeting) + trailingActions — not headingContent/back
+- **superAppAnatomy:** hierarchy=super-app: leadingActions (FIXED 96 + keeper + menu leadingAction) | headingContent TextHeader size=small alignment=center FILL | trailingActions HUG (search optional + bell + profileMenu)
+- **profileMenuScope:** showProfileMenu / profileMenu published only on hierarchy=super-app
 - **painelHomeTrailing:** Painel Home keeps only bell visible; search via showFirstTrailingAction=false by default
-- **localTextHeaderOnly:** headingContent must be local Text header — no remote App bar Content building blocks
-- **trailingSemantics:** firstTrailingAction=search; secondTrailingAction=bell; local Button text/md icon-only
+- **localTextHeaderOnly:** headingContent must be local TextHeader (3667:4129) — no remote App bar Content / orphan Text header sets
+- **globalGreetingCharacteristic:** hierarchy=global keeps dedicated greeting TEXT with body/large/medium — does NOT nest TextHeader
+- **trailingSemantics:** firstTrailingAction=search; secondTrailingAction=bell; local Button text/md icon-only FIXED 48
+- **noLegacyAction:** Do not expose or keep a legacy action layer — use leadingAction only
 - **painelHome:** appearance=inverse|default + hierarchy=global + layout=small-centered; greeting prop; Avatar + bell
 - **vsSystemOrgHeader:** Do not use SystemHeader or OrganizationHeader for mobile app chrome
 - **inverseFill:** appearance=inverse uses color/background-surface/inverse-3 (not color/actions/primary)
 - **globalTrailingIconStroke:** Manual sync on hierarchy=global trailing Button icons: default → text/primary; inverse → text/on-color
+- **inverseTextHeader:** appearance=inverse: nested TextHeader title uses text/on-color (description text/on-color-disabled when shown); default keeps text/primary|secondary
+- **smallLayoutFlow:** small|small-centered × specific|super-app: leadingActions + headingContent=TextHeader size=small FILL + trailingActions. Do not bind slot containers' visible to show*; keepers preserve optical center.
+- **mediumLargeFlow:** medium|large × specific: headerControls SPACE_BETWEEN (leadingActions FIXED 48 + trailingActions FIXED 48 with keepers) above headingContent; root gap spacing/100 + paddingBottom spacing/150
+- **textHeaderSizeMap:** layout→TextHeader size: small|small-centered → size=small (alignment left|center); medium → size=medium; large → size=large. Exemplars showDescription=false; title uses TextHeader typography (small = heading/h3/medium).
+- **leadingOpticalCenter:** showAction=false must not collapse the leading slot — leadingSlotKeeper keeps width so headingContent optical center holds while trailingActions stay visible (mirror of trailingSlotKeeper).
+- **vsBottomSheetHeader:** Do not use AppHeader inside BottomSheet — use BottomSheetHeader
 
 ## Token rules
 
@@ -52,11 +62,16 @@ AI-READY COMPONENT: AppHeader is the top page/application header used to identif
 - color/background-surface/inverse-3 for inverse surface
 - text/primary | text/on-color for titles/greeting
 - text/secondary | text/on-color-disabled for supporting text
-- body/large/medium for global greeting
-- spacing/300 (horizontal pad); spacing/050 (vertical pad); spacing/150 (leadingCluster gap)
+- body/large/medium for global greeting (characteristic — not TextHeader)
+- global: spacing/050 vert + spacing/300 horiz pad; spacing/150 leadingCluster gap
+- small|small-centered: spacing/100 vert + spacing/050 horiz pad; spacing/0 gap
+- medium|large: spacing/100 root gap + spacing/150 paddingBottom; headerControls spacing/0 gap SPACE_BETWEEN
 - color/border/2 for profileMenu stroke
-- local DS icons: menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline
+- local DS icons: menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline (\{icon\}-path)
 - text/primary (global trailing icon stroke on default); text/on-color (on inverse)
+- text/on-color for TextHeader title on appearance=inverse
+- text/on-color-disabled for TextHeader description on appearance=inverse when shown
+- heading/h3/medium via TextHeader size=small on layout=small|small-centered (specific|super-app)
 
 ## Accessibility
 
@@ -64,9 +79,9 @@ Leading actions need accessible labels. Profile and trailing actions should pres
 
 ## Composition
 
-- global: leadingCluster (Avatar exposed + greeting) + trailingActions (Button text/md)
-- specific/super-app: Text header (headingContent, exposed)
-- Button (leadingAction / firstTrailingAction / secondTrailingAction)
-- Profile menu (exposed) + Avatar
+- global: leadingCluster (Avatar exposed + greeting body/large/medium) + trailingActions (Button text/md)
+- specific/super-app: TextHeader (headingContent, exposed)
+- Button (leadingAction inside leadingActions slot / firstTrailingAction / secondTrailingAction)
+- Profile menu (exposed on super-app) + Avatar
 - menu-2-outline / arrow-left-outline / search-outline / bell-outline / plus-outline / user-outline
 

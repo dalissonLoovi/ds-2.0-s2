@@ -6,11 +6,11 @@ import { Meta } from '@storybook/blocks';
 
 > **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
 
-[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3056-3985) · node `3056:3985`
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3669-8605) · node `3669:8605`
 
 ## AI-READY
 
-AI-READY COMPONENT: Avatar represents a user, customer, driver, team member, profile or account identity. Use content=image for photo identity, content=initials when the name is known but no photo exists, and content=placeholder when identity is unavailable. Avatar is not interactive by default; interaction belongs to a wrapper such as AvatarButton or AvatarUpload.
+AI-READY COMPONENT: Avatar represents a user, customer, driver, team member, profile or account identity. Use content=image for photo identity, content=initials when the name is known but no photo exists, and content=placeholder when identity is unavailable. Default fill for content=initials and content=placeholder (all sizes/states): color/background-surface/3. content=image uses the photo fill (no surface/3 shell); image hover may use color/elevation/inverse-3 overlay. Avatar is not interactive by default; interaction belongs to a wrapper such as AvatarButton or AvatarUpload.
 
 ## Variants
 
@@ -26,8 +26,14 @@ AI-READY COMPONENT: Avatar represents a user, customer, driver, team member, pro
 | `size` | micro \| xs \| sm \| md \| lg \| xl |
 | `state` | default \| hover \| focus \| disabled \| loading |
 
+## Rules
+
+- **defaultFill:** initials|placeholder → color/background-surface/3 across all sizes
+- **imageFill:** content=image uses photo fill; hover may use color/elevation/inverse-3 overlay
+
 ## Token rules
 
+- color/background-surface/3 (default fill — initials|placeholder, all sizes)
 - initials micro → body/small/regular
 - initials xs → body/large/regular
 - initials sm → heading/h3/regular

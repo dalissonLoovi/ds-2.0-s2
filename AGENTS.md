@@ -26,7 +26,7 @@ No Design System Figma ([DS] 2.0 - S2 e componentes relacionados):
 
 - Descrições de componente: **inglês**, prefixo `AI-READY COMPONENT:` (ou `AI-READY INTERNAL COMPONENT:` quando for interno).
 - Tokens: **kebab-case** local S2; sem remotes; sem Title Case legado.
-- Ícones: preferir ícones locais do DS; layers internas `{icon-name}-path`.
+- Ícones: contrato DS `*-outline` / `*-filled`; libs por produto via **Library Swap** (EV Tabler nativo; App Cliente = Hugeicons + aliases em `DS Semantic Aliases`). Slots S2 = `INSTANCE_SWAP` só no contrato DS. Layers internas `{icon-name}-path`. Ver `meta.governance.iconLibraries`.
 - Vocabulário de feedback: `info` \| `system` \| `success` \| `warning` \| `danger`. Deprecated: `positive`, `negative`, `delete`, `error` (como intent/status).
 - Não editar descrições de props VARIANT via API Figma quando isso for restrição conhecida; documentar TEXT/BOOLEAN no storybook metadata se a API falhar.
 

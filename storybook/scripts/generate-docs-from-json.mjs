@@ -182,6 +182,40 @@ ${escapeMdx(storybook.purpose || '')}
 function generateGlobalRules(storybook, meta) {
   const gr = storybook.globalRules || {};
   const gov = meta.governance || {};
+  const libs = gov.iconLibraries || {};
+  const libraryRows = asList(libs.libraries)
+    .map((lib) => {
+      const label = lib.label || lib.id || 'Library';
+      const url = lib.figmaUrl ? `[${escapeMdx(label)}](${lib.figmaUrl})` : escapeMdx(label);
+      return `| ${url} | \`${escapeMdx(lib.fileKey || '')}\` | ${escapeMdx(lib.sourcePack || '')} | ${escapeMdx(lib.naming || '')} | \`${escapeMdx(lib.productTheme || '')}\` |`;
+    })
+    .join('\n');
+
+  let iconLibrariesSection = '';
+  if (libs.summary || libraryRows) {
+    iconLibrariesSection = `
+## Icon libraries (multi-product)
+
+${escapeMdx(libs.summary || '')}
+
+| Library | File key | Source pack | Naming | Product theme |
+| --- | --- | --- | --- | --- |
+${libraryRows || '| — | — | — | — | — |'}
+
+- **Name contract:** ${escapeMdx(libs.nameContract || '*-outline | *-filled')}
+- **Strategy:** ${escapeMdx(libs.strategy || 'Library Swap + INSTANCE_SWAP')}
+- **Component slots:** ${escapeMdx(libs.componentSlots || 'DS name contract only')}
+
+### Alias rules (App Cliente)
+
+${bulletList(libs.aliasRules)}
+
+### Do not
+
+${bulletList(libs.doNot)}
+`;
+  }
+
   return `import { Meta } from '@storybook/blocks';
 
 <Meta title="Foundations/Global rules" />
@@ -195,6 +229,7 @@ function generateGlobalRules(storybook, meta) {
 | Component tokens | \`${escapeMdx(gr.componentTokens || '')}\` |
 | Icon layers | ${escapeMdx(gr.iconLayers || '')} |
 | Icon scale | sizes \`80/64/40/32/24/20/16\`; stroke from master \`24px\` + \`border/width/025\` |
+| Icon libraries | ${escapeMdx(gr.iconLibraries || libs.summary || 'Library Swap + *-outline/*-filled contract')} |
 | Code Connect | ${escapeMdx(gr.codeConnect || 'not configured')} |
 
 ## Feedback vocabulary
@@ -209,7 +244,7 @@ function generateGlobalRules(storybook, meta) {
 - **Disabled spelling:** ${escapeMdx(gov.disabledSpelling || 'use disabled, never disable')}
 - **Component descriptions:** ${escapeMdx(gov.componentDescriptions || 'AI-Ready aligned with variables and kebab-case variants')}
 - **Icon layer naming:** ${escapeMdx(gov.iconLayerNaming || '{icon-name}-path instead of Vector')}
-`;
+${iconLibrariesSection}`;
 }
 
 function generateFeedback(storybook) {
