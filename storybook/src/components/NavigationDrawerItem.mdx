@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: NavigationDrawerItem is an interactive navigation item used inside NavigationDrawer or navigation surfaces to represent a destination, section or route. Use selected=true for the current active destination. Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation surfaces. Use state=default, hover, focus and pressed to represent interaction states. Use showBadge=true and badgeLabel to show an optional numeric/status count; badge is controlled by props, not by variants. The leadingIcon must come from the local DS icon library. Do not use NavigationDrawerItem as Button, Chip, Badge, ListItem, MenuItem, Accordion trigger or generic content row. Accessibility: behave as a link for routes or a button for in-place navigation; expose visible focus; map selected=true to aria-current=page or aria-selected=true depending on navigation pattern; badge counts need accessible labels when meaningful. React mapping: NavigationDrawerItem(label, leadingIcon, showLeadingIcon, showBadge, badgeLabel, appearance, state, selected).
+AI-READY COMPONENT: NavigationDrawerItem is an interactive navigation item used inside NavigationDrawer or navigation surfaces to represent a destination, section or route. Use selected=true for the current active destination. Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation surfaces. Use state=default, hover, focus and pressed to represent interaction states. Use showBadge=true and badgeLabel to show an optional numeric/status count; badge is controlled by props, not by variants. The leadingIcon must come from the DS Icons — Escritório Virtual icons library. Do not use NavigationDrawerItem as Button, Chip, Badge, ListItem, MenuItem, Accordion trigger or generic content row. Accessibility: behave as a link for routes or a button for in-place navigation; expose visible focus; map selected=true to aria-current=page or aria-selected=true depending on navigation pattern; badge counts need accessible labels when meaningful. React mapping: NavigationDrawerItem(label, leadingIcon, showLeadingIcon, showBadge, badgeLabel, appearance, state, selected).
 
 ## Variants
 
@@ -22,7 +22,7 @@ AI-READY COMPONENT: NavigationDrawerItem is an interactive navigation item used 
 
 | Prop | Type / values |
 | --- | --- |
-| `leadingIcon` | local DS icon swap |
+| `leadingIcon` | DS Icons — Escritório Virtual icons swap |
 | `showLeadingIcon` | boolean |
 | `showBadge` | boolean |
 | `badgeLabel` | optional badge text/count |
@@ -33,7 +33,7 @@ AI-READY COMPONENT: NavigationDrawerItem is an interactive navigation item used 
 
 ## Rules
 
-- **icons:** leadingIcon must use local DS outline icons only; no remote/external icon libraries
+- **icons:** leadingIcon must use DS Icons — Escritório Virtual outline icons only; no remote/external icon libraries
 - **badge:** badge visibility and label are props (showBadge, badgeLabel), not variants
 - **usage:** Use inside NavigationDrawer or navigation surfaces; not as Button, Chip, Badge or ListItem
 

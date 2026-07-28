@@ -255,7 +255,10 @@
                     "Multi-theme variants on one icon for product packs",
                     "Put Hugeicons native names in S2 INSTANCE_SWAP preferredValues",
                     "Expect 1:1 alias coverage of the entire Tabler set"
-                ]
+                ],
+                "sourceOfTruth": "ThZ5XtMuDWUWXiSLbRyEXL",
+                "s2LocalIcons": "DEPRECATED — page 4. Icons masters superseded by [DS] Icons / Escritório Virtual; do not add new local icon components in S2",
+                "migrationStatus": "2026-07-28: leftovers cleared (Tokens/Illustrations/Photo/ImageOrientationItem); component pages + foundations clean outside deprecated Icons page"
             },
             "feedbackUsageTable": {
                 "vocabulary": [
@@ -459,9 +462,17 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-07-28T14:50:00-03:00",
-        "storybookRevision": "2026-07-28-alert-feedback-info",
+        "storybookUpdatedAt": "2026-07-28T18:39:49.280Z",
+        "storybookRevision": "2026-07-28-icons-ev-leftovers-cleared",
         "changelog": [
+            {
+                "date": "2026-07-28",
+                "summary": "Cleared leftover local icon instances on Tokens, Illustrations, and Photo (ImageOrientationItem crop icons) — all now EV library. Docs icon wording tightened."
+            },
+            {
+                "date": "2026-07-28",
+                "summary": "Icon instances across S2 components swapped from local page 4. Icons to published library [DS] Icons / Escritório Virtual (Library Swap). Docs: prefer EV remote icons over local masters."
+            },
             {
                 "date": "2026-07-28",
                 "type": "storybook-alert-feedback-info",
@@ -3595,7 +3606,7 @@
                     "supportingText": "TEXT — helper or error under field",
                     "showSupportingText": "boolean",
                     "showLeadingIcon": "boolean",
-                    "leadingIcon": "INSTANCE_SWAP — local DS outline",
+                    "leadingIcon": "INSTANCE_SWAP — EV library outline",
                     "showClearAction": "boolean — prefer false when loading",
                     "loading": "boolean — LoadingSpinner in trailing status"
                 },
@@ -3621,7 +3632,7 @@
                     "Button (clear)",
                     "LoadingSpinner",
                     "ListActionDropdown (external)",
-                    "local DS outline icons"
+                    "DS Icons — Escritório Virtual outline icons"
                 ]
             },
             "Avatar": {
@@ -3999,7 +4010,7 @@
                 "props": {
                     "type": "web | mobile",
                     "growth": "up | down — maps growth icon + success|danger color",
-                    "icon": "INSTANCE_SWAP — local outline icon (web; default file-description-outline)",
+                    "icon": "INSTANCE_SWAP — EV library outline icon (web; default file-description-outline)",
                     "showIcon": "boolean — default true; web-only (intentional sparse)",
                     "title": "TEXT — metric title; text/primary",
                     "value": "TEXT — primary value; text/primary",
@@ -4142,7 +4153,7 @@
             },
             "Breadcrumb": {
                 "nodeId": "3681:4674",
-                "description": "AI-READY COMPONENT: Breadcrumb is a navigation pattern that communicates the current page position within a hierarchy. Use size=md for standard density and size=sm for compact layouts. Props: showIcon toggles leadingIcon; icon swaps the local DS outline icon, with home-outline as the default. Composition: leadingIcon + items. The default items composition uses four local BreadcrumbItem instances named item01, overflowItem, item02 and currentItem. overflowItem uses BreadcrumbItem type=overflow state=default to collapse intermediate hierarchy; currentItem uses state=current and must hide its trailing slash. Do not restore hidden fixed item slots or remote breadcrumb/menu kits. Do not remove the slash layer owned by BreadcrumbItem on non-current items and do not add underline states. Layout must remain single-line and hug content; for narrower containers, collapse intermediate items into overflow rather than wrapping arbitrarily. Token rule: use existing DS kebab-case variables only — spacing/100 for md gaps, spacing/050 for sm gaps, plus nested BreadcrumbItem tokens. Icons must come from the local DS icon library; 16px outline icons use proportional stroke around 1.33px. Accessibility: map Breadcrumb to nav with aria-label=Breadcrumb and an ordered list; link items map to anchors; currentItem maps to aria-current=page; overflowItem maps to a button and uses aria-expanded when its local ListActionDropdown is open; slash and decorative leadingIcon are aria-hidden; skeleton items are non-interactive. React mapping: Breadcrumb(size, showIcon, icon, children as BreadcrumbItem[]). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: Breadcrumb is a navigation pattern that communicates the current page position within a hierarchy. Use size=md for standard density and size=sm for compact layouts. Props: showIcon toggles leadingIcon; icon swaps the DS Icons — Escritório Virtual outline icons, with home-outline as the default. Composition: leadingIcon + items. The default items composition uses four local BreadcrumbItem instances named item01, overflowItem, item02 and currentItem. overflowItem uses BreadcrumbItem type=overflow state=default to collapse intermediate hierarchy; currentItem uses state=current and must hide its trailing slash. Do not restore hidden fixed item slots or remote breadcrumb/menu kits. Do not remove the slash layer owned by BreadcrumbItem on non-current items and do not add underline states. Layout must remain single-line and hug content; for narrower containers, collapse intermediate items into overflow rather than wrapping arbitrarily. Token rule: use existing DS kebab-case variables only — spacing/100 for md gaps, spacing/050 for sm gaps, plus nested BreadcrumbItem tokens. Icons must come from the DS Icons — Escritório Virtual icons library; 16px outline icons use proportional stroke around 1.33px. Accessibility: map Breadcrumb to nav with aria-label=Breadcrumb and an ordered list; link items map to anchors; currentItem maps to aria-current=page; overflowItem maps to a button and uses aria-expanded when its local ListActionDropdown is open; slash and decorative leadingIcon are aria-hidden; skeleton items are non-interactive. React mapping: Breadcrumb(size, showIcon, icon, children as BreadcrumbItem[]). Code Connect is not configured.",
                 "variants": {
                     "size": [
                         "md",
@@ -4152,14 +4163,14 @@
                 "props": {
                     "size": "md | sm",
                     "showIcon": "boolean — toggles leadingIcon (default true)",
-                    "icon": "INSTANCE_SWAP — local DS outline icon (default home-outline)"
+                    "icon": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons (default home-outline)"
                 },
                 "rules": {
                     "composeBreadcrumbItem": "Compose with local BreadcrumbItem only — item01, overflowItem, item02, currentItem",
                     "hideCurrentSlash": "currentItem must hide trailing slash",
                     "noUnderline": "Never use underline for interaction states",
                     "singleLineHug": "Keep single-line hug layout; use overflow to collapse intermediate crumbs",
-                    "localIcon16": "leadingIcon uses local 16px outline icons with proportional stroke (~1.33px)",
+                    "localIcon16": "leadingIcon uses EV library 16px outline icons with proportional stroke (~1.33px)",
                     "vsRemote": "Do not use remote breadcrumb/menu kits"
                 },
                 "tokenRules": [
@@ -4175,7 +4186,7 @@
             },
             "Alert": {
                 "nodeId": "4406:91",
-                "description": "AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Variants: status=system|info|success|danger|warning (same vocabulary as Toast). status=system is intentional-sparse and has no statusIcon; other statuses compose a local DS filled statusIcon (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with content-layer icon fills: info|success|danger|warning → feedback/info|success|danger|warning. Icon paths use {icon}-path. Props: title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Composition: statusIcon (when present) + content → text (title + description) + action (local Button outline/sm/primary). actionLabel is React-side — in Figma set nested action Button label when showAction=true. Anatomy: vertical stack (icon above content). Tokens: color/background-surface/brand + overlay paint color/elevation/inverse-3 @ ~48% opacity (second fill layer); text/on-color (title) + text/on-color-disabled (description); border/radius/400; spacing/100 (root gap) | spacing/150 (pad top / content gap) | spacing/250 (pad sides/bottom) | spacing/100 (text gap). Action outline stroke/label use text/on-color for contrast on brand. Do not use as Toast, Banner, Modal, or inline field validation. Accessibility: role=status for system|info|success; role=alert for warning|danger when urgent; action needs accessible name; decorative status icons aria-hidden when title conveys status. React mapping: Alert(status, title, description, showDescription, showAction, actionLabel). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Variants: status=system|info|success|danger|warning (same vocabulary as Toast). status=system is intentional-sparse and has no statusIcon; other statuses compose a EV library filled statusIcon (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with content-layer icon fills: info|success|danger|warning → feedback/info|success|danger|warning. Icon paths use {icon}-path. Props: title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Composition: statusIcon (when present) + content → text (title + description) + action (local Button outline/sm/primary). actionLabel is React-side — in Figma set nested action Button label when showAction=true. Anatomy: vertical stack (icon above content). Tokens: color/background-surface/brand + overlay paint color/elevation/inverse-3 @ ~48% opacity (second fill layer); text/on-color (title) + text/on-color-disabled (description); border/radius/400; spacing/100 (root gap) | spacing/150 (pad top / content gap) | spacing/250 (pad sides/bottom) | spacing/100 (text gap). Action outline stroke/label use text/on-color for contrast on brand. Do not use as Toast, Banner, Modal, or inline field validation. Accessibility: role=status for system|info|success; role=alert for warning|danger when urgent; action needs accessible name; decorative status icons aria-hidden when title conveys status. React mapping: Alert(status, title, description, showDescription, showAction, actionLabel). Code Connect is not configured.",
                 "variants": {
                     "status": [
                         "system",
@@ -4238,7 +4249,7 @@
                 ],
                 "accessibility": "role=status for system|info|success; role=alert for urgent warning|danger; action accessible name; decorative statusIcon aria-hidden when title conveys status.",
                 "composition": [
-                    "statusIcon (filled local DS; omitted on system)",
+                    "statusIcon (filled EV library; omitted on system)",
                     "content → text (title + description) + action (Button outline/sm)"
                 ]
             },
@@ -4370,7 +4381,7 @@
                     "label": "visible button label",
                     "showTrailingIcon": "boolean",
                     "showLabel": "boolean",
-                    "Icon": "local DS icon instance swap for leadingIcon",
+                    "Icon": "DS Icons — Escritório Virtual icons instance swap for leadingIcon",
                     "loading": "boolean",
                     "disabled": "boolean"
                 },
@@ -4402,7 +4413,7 @@
             },
             "AppHeader": {
                 "nodeId": "3143:8822",
-                "description": "AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Do not nest AppHeader inside BottomSheet — use BottomSheetHeader. Token rule: local S2 kebab-case semantic + product-theme component/app-header/* aliases. Product-theme (collection product-theme, modes escritorio-virtual|site-loovi|app-cliente): component/app-header/inverse/background (appearance=inverse root fill; EV→inverse-3, site-loovi|app-cliente→brand); component/app-header/leading-action/background + leading-action/radius (leadingAction on specific|super-app; EV→surface/0 + radius/200, site-loovi|app-cliente→surface/2 + radius/full); component/app-header/avatar/background + avatar/icon-color (hierarchy=global × appearance=inverse Avatar; EV→surface/3 + text/primary, site-loovi|app-cliente→white 16% + text/on-color). Switch product-theme mode to preview; do not hardcode brand/inverse fills on themed slots. Icon rule: local DS outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline); internal paths use {icon}-path. Internals: Button, local TextHeader (headingContent), local Profile menu, local Avatar — no remotes. Props: showLabel; showAction; showFirstTrailingAction (search-outline, default false); showSecondTrailingAction (bell-outline, default true); showProfileMenu (hierarchy=super-app only); greeting (TEXT, default \"Olá, Rodrigo\", global only). title/description via exposed headingContent TextHeader on non-global. Anatomy — global: leadingCluster + trailingActions. specific|super-app small|small-centered: leadingActions (slot + leadingSlotKeeper + leadingAction) + headingContent FILL + trailingActions. super-app: leadingActions FIXED 96 balances trailing (bell + profileMenu); TextHeader size=small alignment=center. specific medium|large: headerControls (leadingActions + trailingActions, SPACE_BETWEEN) above headingContent; keepers on both slots; no legacy action layer. Optical center: do not bind slot containers' visible to show* — keepers preserve width. Spacing: global pad spacing/050 vert + spacing/300 horiz; small/small-centered pad spacing/100 vert + spacing/050 horiz; medium/large root gap spacing/100 + paddingBottom spacing/150. PAINEL HOME: hierarchy=global + layout=small-centered; default surface/0 + text/primary; inverse surface/inverse-3 + text/on-color; greeting body/large/medium; trailing icon strokes default text/primary / inverse text/on-color. React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured. Product-theme title typography on small|small-centered × default × specific: component/app-header/title/font-size|line-height|font-weight (EV|site-loovi→heading/h3+medium; app-cliente→body/medium+regular). Figma textCase remains ORIGINAL; app-cliente must apply text-transform:uppercase in code.",
+                "description": "AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Do not nest AppHeader inside BottomSheet — use BottomSheetHeader. Token rule: local S2 kebab-case semantic + product-theme component/app-header/* aliases. Product-theme (collection product-theme, modes escritorio-virtual|site-loovi|app-cliente): component/app-header/inverse/background (appearance=inverse root fill; EV→inverse-3, site-loovi|app-cliente→brand); component/app-header/leading-action/background + leading-action/radius (leadingAction on specific|super-app; EV→surface/0 + radius/200, site-loovi|app-cliente→surface/2 + radius/full); component/app-header/avatar/background + avatar/icon-color (hierarchy=global × appearance=inverse Avatar; EV→surface/3 + text/primary, site-loovi|app-cliente→white 16% + text/on-color). Switch product-theme mode to preview; do not hardcode brand/inverse fills on themed slots. Icon rule: DS Icons — Escritório Virtual outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline); internal paths use {icon}-path. Internals: Button, local TextHeader (headingContent), local Profile menu, local Avatar — use EV library (not S2 local masters). Props: showLabel; showAction; showFirstTrailingAction (search-outline, default false); showSecondTrailingAction (bell-outline, default true); showProfileMenu (hierarchy=super-app only); greeting (TEXT, default \"Olá, Rodrigo\", global only). title/description via exposed headingContent TextHeader on non-global. Anatomy — global: leadingCluster + trailingActions. specific|super-app small|small-centered: leadingActions (slot + leadingSlotKeeper + leadingAction) + headingContent FILL + trailingActions. super-app: leadingActions FIXED 96 balances trailing (bell + profileMenu); TextHeader size=small alignment=center. specific medium|large: headerControls (leadingActions + trailingActions, SPACE_BETWEEN) above headingContent; keepers on both slots; no legacy action layer. Optical center: do not bind slot containers' visible to show* — keepers preserve width. Spacing: global pad spacing/050 vert + spacing/300 horiz; small/small-centered pad spacing/100 vert + spacing/050 horiz; medium/large root gap spacing/100 + paddingBottom spacing/150. PAINEL HOME: hierarchy=global + layout=small-centered; default surface/0 + text/primary; inverse surface/inverse-3 + text/on-color; greeting body/large/medium; trailing icon strokes default text/primary / inverse text/on-color. React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured. Product-theme title typography on small|small-centered × default × specific: component/app-header/title/font-size|line-height|font-weight (EV|site-loovi→heading/h3+medium; app-cliente→body/medium+regular). Figma textCase remains ORIGINAL; app-cliente must apply text-transform:uppercase in code.",
                 "variants": {
                     "layout": [
                         "small-centered",
@@ -4477,13 +4488,13 @@
                     "small|small-centered: spacing/100 vert + spacing/050 horiz pad; spacing/0 gap",
                     "medium|large: spacing/100 root gap + spacing/150 paddingBottom; headerControls spacing/0 gap SPACE_BETWEEN",
                     "color/border/2 for profileMenu stroke",
-                    "local DS icons: menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline ({icon}-path)",
+                    "DS Icons — Escritório Virtual icons: menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline ({icon}-path)",
                     "text/primary (global trailing icon stroke on default); text/on-color (on inverse)",
                     "text/on-color for TextHeader title on appearance=inverse",
                     "text/on-color-disabled for TextHeader description on appearance=inverse when shown",
                     "heading/h3/medium via TextHeader size=small on layout=small|small-centered (specific|super-app)"
                 ],
-                "iconRules": "Use local DS outline icons only; do not use remote/external icon libraries inside AppHeader. Internal VECTOR layers use {icon}-path naming.",
+                "iconRules": "Use DS Icons — Escritório Virtual outline icons only; do not use remote/external icon libraries inside AppHeader. Internal VECTOR layers use {icon}-path naming.",
                 "accessibility": "Leading actions need accessible labels. Profile and trailing actions should preserve visible focus and keyboard navigation. Profile menu must behave as an accessible menu button. Icon-only search/bell need accessible names.",
                 "composition": [
                     "global: leadingCluster (Avatar exposed + greeting body/large/medium) + trailingActions (Button text/md)",
@@ -4577,7 +4588,7 @@
             },
             "OfferProductCard": {
                 "nodeId": "4227:418",
-                "description": "AI-READY COMPONENT: OfferProductCard — add-on product offer card for Home/Painel carousels. Props: state=default; title (TEXT, default \"Title\"); description (TEXT, default \"Description\"); price (TEXT, default \"R$ 0,00\"); pricePeriod (TEXT, default \"/mês\"); icon (INSTANCE_SWAP — local outline; default package-outline; preferredValues include package/tag/gift/box/shopping-bag/apps outlines). Anatomy: iconContainer (icon) + text (title + description) + priceRow (price + pricePeriod) + cta (local Button solid/sm/primary, exposed; default label \"Label\"). Tokens: color/background-surface/2; color/background-surface/3 (iconContainer); border/radius/500; spacing/250 (pad); spacing/150 (root gap); spacing/100 (text gap); text/primary + text/secondary; body/medium/semi-bold (title); body/small/regular (description/period); heading/h3/semi-bold (price); icon stroke text/brand. Do not use as VehicleSummaryCard, Banner, CardStacked/Horizontal, or a carousel shell (carousel is a screen pattern). Accessibility: CTA is the primary action; title maps to accessible name for the offer. React mapping: OfferProductCard(icon, title, description, price, pricePeriod, ctaLabel, onAdd). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: OfferProductCard — add-on product offer card for Home/Painel carousels. Props: state=default; title (TEXT, default \"Title\"); description (TEXT, default \"Description\"); price (TEXT, default \"R$ 0,00\"); pricePeriod (TEXT, default \"/mês\"); icon (INSTANCE_SWAP — EV library outline; default package-outline; preferredValues include package/tag/gift/box/shopping-bag/apps outlines). Anatomy: iconContainer (icon) + text (title + description) + priceRow (price + pricePeriod) + cta (local Button solid/sm/primary, exposed; default label \"Label\"). Tokens: color/background-surface/2; color/background-surface/3 (iconContainer); border/radius/500; spacing/250 (pad); spacing/150 (root gap); spacing/100 (text gap); text/primary + text/secondary; body/medium/semi-bold (title); body/small/regular (description/period); heading/h3/semi-bold (price); icon stroke text/brand. Do not use as VehicleSummaryCard, Banner, CardStacked/Horizontal, or a carousel shell (carousel is a screen pattern). Accessibility: CTA is the primary action; title maps to accessible name for the offer. React mapping: OfferProductCard(icon, title, description, price, pricePeriod, ctaLabel, onAdd). Code Connect is not configured.",
                 "variants": {
                     "state": [
                         "default"
@@ -4589,14 +4600,14 @@
                     "description": "TEXT — default \"Description\"; body/small/regular + text/secondary",
                     "price": "TEXT — default \"R$ 0,00\"; heading/h3/semi-bold + text/primary",
                     "pricePeriod": "TEXT — default \"/mês\"; body/small/regular + text/primary",
-                    "icon": "INSTANCE_SWAP — local outline (default package-outline); preferredValues: package/tag/gift/box/shopping-bag/apps outlines; stroke text/brand",
+                    "icon": "INSTANCE_SWAP — EV library outline (default package-outline); preferredValues: package/tag/gift/box/shopping-bag/apps outlines; stroke text/brand",
                     "cta": "Exposed nested Button solid/sm/primary; default label \"Label\""
                 },
                 "rules": {
                     "matrix": "Published 1/1 — state=default",
                     "nestedButton": "cta is local Button solid/sm/primary (exposed) — not remote Material button",
                     "genericDefaults": "Title / Description / R$ 0,00 / /mês / Label + package-outline",
-                    "iconLocal": "Default and preferredValues use local DS outline icons — no remotes",
+                    "iconLocal": "Default and preferredValues use DS Icons — Escritório Virtual outline icons — use EV library (not S2 local masters)",
                     "carouselPattern": "Horizontal offers carousel is a screen pattern — not this component",
                     "vsOthers": "Do not use as VehicleSummaryCard, VehicleConfirmCard, Banner, CardStacked/Horizontal"
                 },
@@ -4636,7 +4647,7 @@
                     "matrix": "Published 2/2 — showAction",
                     "nestedButton": "action is local Button text/sm/primary (exposed) — not remote Material button",
                     "genericDefaults": "Default title \"Title\" (product copy via prop)",
-                    "iconLocal": "Default action icon arrow-narrow-right-outline (local DS)",
+                    "iconLocal": "Default action icon arrow-narrow-right-outline (EV library)",
                     "noContentSlot": "Body content is composed separately below — not a Section with slot",
                     "vsHeaders": "Do not use as AppHeader, OrganizationHeader, or SystemHeader"
                 },
@@ -4654,7 +4665,7 @@
             },
             "SystemHeader": {
                 "nodeId": "3143:8933",
-                "description": "AI-READY COMPONENT: SystemHeader is a web-only header for systems, dashboards, backoffices, admin panels, and internal product pages. Use appearance=default on light surfaces and appearance=inverse on dark/inverse surfaces. Use variant=default when the page needs title, primary action, slot, profile, notifications, and auxiliary actions. Use variant=simple for a compact header with fewer visible actions. SystemHeader should generally fill the container width in web layouts. Default height is 72px; simple height is 64px. Do not use SystemHeader as a marketing site header, hero, card header, table header, modal header, or mobile app header. Use AppHeader for app/top bar contexts. Internal structure: leadingContent contains headingContent, datePickerGroup, and primaryAction. slot is the optional custom control area. trailingContent contains profileMenu, secondaryAction, tertiaryAction, and notificationAction — trailingContent exists only on variant=default (intentional sparse: variant=simple has leadingContent + slot only). datePickerGroup composes local DatePickerSelect (format=month-year). Visibility is bound to showDatePicker. datePickerSelect instance is exposed so month/year values can be edited from the parent properties panel. slot replaces the previous showCustomSlot boolean naming. In React, map visible custom controls as slot or children. Actions: primaryAction visibility → showPrimaryAction; secondaryAction → showSecondaryAction; tertiaryAction → showTertiaryAction; notificationAction → showNotificationAction. secondary/tertiary/notification stay in trailingContent (variant=default only). Icons: local DS only. primaryAction is label-only by default (plus-outline available via nested Button showIcon); secondary/tertiary default plus-outline; notificationAction bell-outline. appearance=default: fill color/background-surface/0; stroke color/border/2; title text/primary; description text/secondary. appearance=inverse: fill color/background-surface/inverse-3; stroke color/border/1; title/userName/actions text/on-color; description text/on-color-disabled; DatePickerSelect unit texts/icons on-color. Exposed nested: headingContent (TextHeader → title, description, showDescription); profileMenu (userName, showUserName, Avatar); datePickerSelect (DatePickerSelect format/state + nested values). Accessibility: title maps to h1 when page title; notificationAction aria-label=\"Notificações\"; profileMenu menu semantics; datePickerGroup accessible label; inverse must keep AA contrast. Responsive: on narrower widths, collapse tertiary then secondary before notification/profile; title truncates rather than wraps. Token rule: local S2 kebab-case semantic only. React mapping: SystemHeader(appearance, variant, title, description, showDescription, slot, showPrimaryAction, showSecondaryAction, showTertiaryAction, showNotificationAction, showProfileMenu, showDatePicker, userName, showUserName). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: SystemHeader is a web-only header for systems, dashboards, backoffices, admin panels, and internal product pages. Use appearance=default on light surfaces and appearance=inverse on dark/inverse surfaces. Use variant=default when the page needs title, primary action, slot, profile, notifications, and auxiliary actions. Use variant=simple for a compact header with fewer visible actions. SystemHeader should generally fill the container width in web layouts. Default height is 72px; simple height is 64px. Do not use SystemHeader as a marketing site header, hero, card header, table header, modal header, or mobile app header. Use AppHeader for app/top bar contexts. Internal structure: leadingContent contains headingContent, datePickerGroup, and primaryAction. slot is the optional custom control area. trailingContent contains profileMenu, secondaryAction, tertiaryAction, and notificationAction — trailingContent exists only on variant=default (intentional sparse: variant=simple has leadingContent + slot only). datePickerGroup composes local DatePickerSelect (format=month-year). Visibility is bound to showDatePicker. datePickerSelect instance is exposed so month/year values can be edited from the parent properties panel. slot replaces the previous showCustomSlot boolean naming. In React, map visible custom controls as slot or children. Actions: primaryAction visibility → showPrimaryAction; secondaryAction → showSecondaryAction; tertiaryAction → showTertiaryAction; notificationAction → showNotificationAction. secondary/tertiary/notification stay in trailingContent (variant=default only). Icons: DS Icons — Escritório Virtual only. primaryAction is label-only by default (plus-outline available via nested Button showIcon); secondary/tertiary default plus-outline; notificationAction bell-outline. appearance=default: fill color/background-surface/0; stroke color/border/2; title text/primary; description text/secondary. appearance=inverse: fill color/background-surface/inverse-3; stroke color/border/1; title/userName/actions text/on-color; description text/on-color-disabled; DatePickerSelect unit texts/icons on-color. Exposed nested: headingContent (TextHeader → title, description, showDescription); profileMenu (userName, showUserName, Avatar); datePickerSelect (DatePickerSelect format/state + nested values). Accessibility: title maps to h1 when page title; notificationAction aria-label=\"Notificações\"; profileMenu menu semantics; datePickerGroup accessible label; inverse must keep AA contrast. Responsive: on narrower widths, collapse tertiary then secondary before notification/profile; title truncates rather than wraps. Token rule: local S2 kebab-case semantic only. React mapping: SystemHeader(appearance, variant, title, description, showDescription, slot, showPrimaryAction, showSecondaryAction, showTertiaryAction, showNotificationAction, showProfileMenu, showDatePicker, userName, showUserName). Code Connect is not configured.",
                 "variants": {
                     "appearance": [
                         "default",
@@ -4687,7 +4698,7 @@
                     "primaryActionWired": "showPrimaryAction binds primaryAction.visible on all variants",
                     "datePickerSelectExposed": "datePickerSelect exposed; format=month-year; showDatePicker toggles datePickerGroup",
                     "slotCompact": "slot is compact controls only — not page-level layout; replaces showCustomSlot naming",
-                    "iconsLocalOnly": "Local DS icons only; primary label-only by default; secondary/tertiary plus-outline; notification bell-outline"
+                    "iconsLocalOnly": "DS Icons — Escritório Virtual icons only; primary label-only by default; secondary/tertiary plus-outline; notification bell-outline"
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/2; text/primary|secondary",
@@ -4707,7 +4718,7 @@
             },
             "OrganizationHeader": {
                 "nodeId": "3644:2",
-                "description": "AI-READY COMPONENT: OrganizationHeader is a documentation and library organization header for Design System pages, component catalogs, foundation pages, governance pages, and internal DS artifacts. Use it to identify the owning project or DS, the page or component title, optional maturity/type metadata, optional supporting description, and an optional informational ChipTag. Do not use OrganizationHeader as an application top bar, navigation header, dashboard header, marketing hero, card header, modal header, table header, or mobile app header. Use AppHeader for app navigation and SystemHeader for web systems, dashboards, backoffices, and admin products. Props: project controls the source or owning DS name; title controls the main heading; type controls optional secondary title metadata; description controls supporting guidance; showProject, showType, showDescription, and showLabel control visibility. Composition: headingGroup contains project and titleRow; titleRow contains title and type; descriptionSlot wraps description so supporting copy fills the content width and wraps as the header resizes (root height hugs); labelTag is the local ChipTag nested instance and remains exposed for its label and intent properties. Icons inside labelTag must use the local DS icon library only (e.g. circle-check-outline), not remote/external libraries. Token rule: use existing local DS tokens only — color/background-surface/0, color/border/1, text/link, text/primary, text/secondary, spacing/0|200|600|1200, border/radius/0|800, border/width/0|012, and existing typography styles. Accessibility: title should map to the page h1 when it identifies the documented artifact. Project should render as a link only when it has a real destination; otherwise expose it as metadata, not as a fake link. Type, description, and ChipTag are informational and must not receive focus. Keep heading hierarchy outside the component consistent with the documentation page. Responsive rule: the component may resize horizontally; descriptionSlot/description should fill and wrap; root height should hug visible content. React mapping: OrganizationHeader(project, title, type, description, showProject, showType, showDescription, showLabel, label). label maps to optional ChipTag props such as text, intent, leadingIcon and showLeadingIcon; labelTag is only the internal Figma layer name.",
+                "description": "AI-READY COMPONENT: OrganizationHeader is a documentation and library organization header for Design System pages, component catalogs, foundation pages, governance pages, and internal DS artifacts. Use it to identify the owning project or DS, the page or component title, optional maturity/type metadata, optional supporting description, and an optional informational ChipTag. Do not use OrganizationHeader as an application top bar, navigation header, dashboard header, marketing hero, card header, modal header, table header, or mobile app header. Use AppHeader for app navigation and SystemHeader for web systems, dashboards, backoffices, and admin products. Props: project controls the source or owning DS name; title controls the main heading; type controls optional secondary title metadata; description controls supporting guidance; showProject, showType, showDescription, and showLabel control visibility. Composition: headingGroup contains project and titleRow; titleRow contains title and type; descriptionSlot wraps description so supporting copy fills the content width and wraps as the header resizes (root height hugs); labelTag is the local ChipTag nested instance and remains exposed for its label and intent properties. Icons inside labelTag must use the DS Icons — Escritório Virtual icons library only (e.g. circle-check-outline), not remote/external libraries. Token rule: use existing local DS tokens only — color/background-surface/0, color/border/1, text/link, text/primary, text/secondary, spacing/0|200|600|1200, border/radius/0|800, border/width/0|012, and existing typography styles. Accessibility: title should map to the page h1 when it identifies the documented artifact. Project should render as a link only when it has a real destination; otherwise expose it as metadata, not as a fake link. Type, description, and ChipTag are informational and must not receive focus. Keep heading hierarchy outside the component consistent with the documentation page. Responsive rule: the component may resize horizontally; descriptionSlot/description should fill and wrap; root height should hug visible content. React mapping: OrganizationHeader(project, title, type, description, showProject, showType, showDescription, showLabel, label). label maps to optional ChipTag props such as text, intent, leadingIcon and showLeadingIcon; labelTag is only the internal Figma layer name.",
                 "variants": {},
                 "props": {
                     "project": "owning DS / project name",
@@ -4734,12 +4745,12 @@
                     "border/radius/0 | 800, border/width/0 | 012",
                     "typography: body/large/*, display/large/*"
                 ],
-                "iconRules": "Use local DS outline icons only inside labelTag; do not use remote/external icon libraries.",
+                "iconRules": "Use DS Icons — Escritório Virtual outline icons only inside labelTag; do not use remote/external icon libraries.",
                 "accessibility": "title maps to page h1 when identifying the artifact; project is a link only with a real destination; type/description/ChipTag informational (no focus)."
             },
             "CommentItem": {
                 "nodeId": "3653:340",
-                "description": "AI-READY COMPONENT: CommentItem is an internal Figma-only annotation used to add contextual comments, notes, questions, alignment points, usability-test notes, developer specs, checks and design decisions inside the design system file. Do not use CommentItem as product UI, app chrome, Toast, Banner, Tooltip, Card or any user-facing component. Do not map to React, Code Connect or production code. Variants: placement=right|left|top|bottom controls callout arrow side; category selects the annotation type. Intentional composition split: category=generic uses header (leadingIcon + title) plus description — title, showIcon and leadingIcon props apply only here; all other categories use categoryTag (local DS categoryIcon + categoryLabel) plus description, without title. Props: description (all categories); title, showIcon, leadingIcon (generic only). Category icons must remain local DS outline icons (eye, test-pipe, code, heart-handshake, adjustments, help-circle, bulb, circle-check, message-circle). Token rule: use existing local DS kebab-case variables only — color/background-surface/0|2|3, color/border/1, text/primary|secondary, spacing/0|050|100|150, border/radius/100, border/width/012, color/elevation/pressed (effect). Accessibility: Figma-only organizer with no runtime a11y role; product headings/notes must be implemented separately in product UI. React mapping: none — Figma organizer only.",
+                "description": "AI-READY COMPONENT: CommentItem is an internal Figma-only annotation used to add contextual comments, notes, questions, alignment points, usability-test notes, developer specs, checks and design decisions inside the design system file. Do not use CommentItem as product UI, app chrome, Toast, Banner, Tooltip, Card or any user-facing component. Do not map to React, Code Connect or production code. Variants: placement=right|left|top|bottom controls callout arrow side; category selects the annotation type. Intentional composition split: category=generic uses header (leadingIcon + title) plus description — title, showIcon and leadingIcon props apply only here; all other categories use categoryTag (local DS categoryIcon + categoryLabel) plus description, without title. Props: description (all categories); title, showIcon, leadingIcon (generic only). Category icons must remain DS Icons — Escritório Virtual outline icons (eye, test-pipe, code, heart-handshake, adjustments, help-circle, bulb, circle-check, message-circle). Token rule: use existing local DS kebab-case variables only — color/background-surface/0|2|3, color/border/1, text/primary|secondary, spacing/0|050|100|150, border/radius/100, border/width/012, color/elevation/pressed (effect). Accessibility: Figma-only organizer with no runtime a11y role; product headings/notes must be implemented separately in product UI. React mapping: none — Figma organizer only.",
                 "variants": {
                     "placement": [
                         "right",
@@ -4765,13 +4776,13 @@
                     "description": "annotation body — all categories",
                     "title": "short title — generic only",
                     "showIcon": "boolean — generic only",
-                    "leadingIcon": "INSTANCE_SWAP local DS icon — generic only"
+                    "leadingIcon": "INSTANCE_SWAP DS Icons — Escritório Virtual icons — generic only"
                 },
                 "rules": {
                     "figmaOnly": "Figma annotation organizer — no React/Code Connect/product UI",
                     "compositionIntentional": "generic = header(leadingIcon+title)+description; other categories = categoryTag+description (no title)",
                     "propsScope": "title/showIcon/leadingIcon apply only to category=generic",
-                    "iconsLocalOnly": "categoryIcon and leadingIcon must be local DS outline icons"
+                    "iconsLocalOnly": "categoryIcon and leadingIcon must be DS Icons — Escritório Virtual outline icons"
                 },
                 "categoryIconMap": {
                     "generic": "message-circle-outline (via leadingIcon)",
@@ -4929,7 +4940,7 @@
                     "showAvatar": "boolean",
                     "showDeleteAction": "boolean",
                     "label": "TEXT — visible chip label",
-                    "leadingIcon": "INSTANCE_SWAP — local DS outline icon (circle-plus-outline / plus-outline for soft exemplar)",
+                    "leadingIcon": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons (circle-plus-outline / plus-outline for soft exemplar)",
                     "showLeadingIcon": "boolean",
                     "size": "sm | md",
                     "state": "default | hover | pressed | selected | disabled (sparse)",
@@ -5019,7 +5030,7 @@
                 },
                 "props": {
                     "showAvatar": "boolean",
-                    "leadingIcon": "local DS icon swap",
+                    "leadingIcon": "DS Icons — Escritório Virtual icons swap",
                     "showLeadingIcon": "boolean",
                     "label": "visible chip label",
                     "size": "sm | md",
@@ -5214,7 +5225,7 @@
             },
             "FileUploaderItem": {
                 "nodeId": "3581:5641",
-                "description": "AI-READY COMPONENT: FileUploaderItem is the file row used inside a file uploader to represent an uploaded file, a loading file, a successful upload, focus state, and validation error states. Use when showing one file inside an upload list or upload confirmation area. Do not use as the drag-and-drop dropzone — use FileUploaderDropzoneItem for that. Variants: size=sm|md|lg controls vertical density and row height. state=uploaded|loading|success|focus|danger-short|danger-long. Use danger-short for one-line validation feedback and danger-long when a secondary explanation is needed. Props: fileName (visible file name), shortDescription (short validation message on danger states), longDescription (optional secondary validation detail on danger-long). Composition: uses local LoadingSpinner for loading; local DS icons for removeAction (x-outline), statusIcon on success (circle-check-filled) and danger (alert-circle-filled). Do not use imported icons or external library components. removeAction is a DS icon hit-target, not a Button instance. Accessibility: the file name must be announced by screen readers. loading should expose progress/status text in implementation (preferably aria-live=polite). success may announce completion with aria-live=polite. danger-short and danger-long should expose validation feedback with role=alert or aria-live when the error appears. removeAction must have an accessible label such as Remove file {fileName}. Decorative status icons should be aria-hidden=true when text already communicates the state. focus represents visible keyboard focus on the trailingAction/remove control. Token rule: use existing DS kebab-case variables (color/background-surface/0|1, color/border-feedback/danger, color/border/2, interactive/focus, feedback/danger|success, text/primary|secondary, spacing/*, border/radius/*, border/width/*). On danger states, errorMessage uses feedback/danger; on danger-long, errorDescription uses text/secondary. React mapping: FileUploaderItem(size, state, fileName, shortDescription, longDescription, onRemove).",
+                "description": "AI-READY COMPONENT: FileUploaderItem is the file row used inside a file uploader to represent an uploaded file, a loading file, a successful upload, focus state, and validation error states. Use when showing one file inside an upload list or upload confirmation area. Do not use as the drag-and-drop dropzone — use FileUploaderDropzoneItem for that. Variants: size=sm|md|lg controls vertical density and row height. state=uploaded|loading|success|focus|danger-short|danger-long. Use danger-short for one-line validation feedback and danger-long when a secondary explanation is needed. Props: fileName (visible file name), shortDescription (short validation message on danger states), longDescription (optional secondary validation detail on danger-long). Composition: uses local LoadingSpinner for loading; DS Icons — Escritório Virtual icons for removeAction (x-outline), statusIcon on success (circle-check-filled) and danger (alert-circle-filled). Do not use imported icons or external library components. removeAction is a DS icon hit-target, not a Button instance. Accessibility: the file name must be announced by screen readers. loading should expose progress/status text in implementation (preferably aria-live=polite). success may announce completion with aria-live=polite. danger-short and danger-long should expose validation feedback with role=alert or aria-live when the error appears. removeAction must have an accessible label such as Remove file {fileName}. Decorative status icons should be aria-hidden=true when text already communicates the state. focus represents visible keyboard focus on the trailingAction/remove control. Token rule: use existing DS kebab-case variables (color/background-surface/0|1, color/border-feedback/danger, color/border/2, interactive/focus, feedback/danger|success, text/primary|secondary, spacing/*, border/radius/*, border/width/*). On danger states, errorMessage uses feedback/danger; on danger-long, errorDescription uses text/secondary. React mapping: FileUploaderItem(size, state, fileName, shortDescription, longDescription, onRemove).",
                 "variants": {
                     "size": [
                         "sm",
@@ -5440,8 +5451,8 @@
                     "placeholder": "TEXT — placeholder text (content=placeholder)",
                     "supportingText": "TEXT — helper or error message",
                     "showSupportingText": "boolean",
-                    "leading": "INSTANCE_SWAP — local DS outline icon (default search-outline)",
-                    "trailing": "INSTANCE_SWAP — local DS outline icon (x-outline; alert-circle on error demos)"
+                    "leading": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons (default search-outline)",
+                    "trailing": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons (x-outline; alert-circle on error demos)"
                 },
                 "rules": {
                     "materialMatrix": "state × content × leadingIcon × trailingIcon × appearance = 120 outlined variants",
@@ -5506,8 +5517,8 @@
                     "showSupportingText": "BOOLEAN — wired on all states including error",
                     "countText": "TEXT — e.g. 0/100",
                     "showCount": "BOOLEAN — toggles absolute countRow",
-                    "leading": "INSTANCE_SWAP — local DS outline icon",
-                    "trailing": "INSTANCE_SWAP — local DS outline icon",
+                    "leading": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons",
+                    "trailing": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons",
                     "showResizeHandle": "via exposed nested minHeight (InputTextAreaMinHeight)"
                 },
                 "rules": {
@@ -5528,7 +5539,7 @@
                 "accessibility": "textarea role; label association; aria-invalid + aria-describedby on error; aria-disabled when disabled; announce count when relevant.",
                 "composition": [
                     "InputTextAreaMinHeight (minHeight, exposed) + InputTextAreaResizeHandle",
-                    "local DS outline icons (leading/trailing)",
+                    "DS Icons — Escritório Virtual outline icons (leading/trailing)",
                     "floatingLabel / countRow / supporting"
                 ]
             },
@@ -5572,8 +5583,8 @@
                     "placeholder": "TEXT — placeholder text",
                     "supportingText": "TEXT — helper or error message",
                     "showSupportingText": "boolean",
-                    "leading": "INSTANCE_SWAP — local DS outline icon",
-                    "trailing": "INSTANCE_SWAP — local DS outline icon",
+                    "leading": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons",
+                    "trailing": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons",
                     "showSelectCountry": "boolean — toggles SelectCountry sm + DividerVertical in field (default false)"
                 },
                 "rules": {
@@ -5596,7 +5607,7 @@
                 "composition": [
                     "SelectCountry",
                     "DividerVertical",
-                    "local DS outline icons"
+                    "DS Icons — Escritório Virtual outline icons"
                 ]
             },
             "InputPassword": {
@@ -5639,7 +5650,7 @@
                     "placeholder": "TEXT — default Digite sua senha",
                     "supportingText": "TEXT — helper or error message",
                     "showSupportingText": "boolean",
-                    "leading": "INSTANCE_SWAP — local DS outline (default lock-outline)"
+                    "leading": "INSTANCE_SWAP — EV library outline (default lock-outline)"
                 },
                 "rules": {
                     "appearanceInverse": "appearance=inverse: transparent field; floatingLabel cutout inverse-3 on all inverse states including focus; border/2 default|disabled; text/on-color (focus label text/brand); disabled texts text/placeholder-inverse; icons disabled on-color-disabled; feedback strokes unchanged",
@@ -6252,7 +6263,7 @@
                     "placeholder": "TEXT — placeholder text (content=placeholder)",
                     "supportingText": "TEXT — helper or error message",
                     "showSupportingText": "boolean",
-                    "leading": "INSTANCE_SWAP — local DS outline leading icon",
+                    "leading": "INSTANCE_SWAP — EV library outline leading icon",
                     "trailing": "INSTANCE_SWAP — always-visible calendar (default calendar-outline); alert-circle on error demos"
                 },
                 "rules": {
@@ -6276,7 +6287,7 @@
                 "composition": [
                     "Calendar (external panel)",
                     "calendar-outline / alert-circle-outline",
-                    "local DS outline icons"
+                    "DS Icons — Escritório Virtual outline icons"
                 ]
             },
             "InputSelect": {
@@ -6314,7 +6325,7 @@
                     "placeholder": "TEXT — placeholder text (content=placeholder)",
                     "supportingText": "TEXT — helper or error message",
                     "showSupportingText": "boolean",
-                    "leading": "INSTANCE_SWAP — local DS outline icon (default search-outline)",
+                    "leading": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons (default search-outline)",
                     "trailing": "INSTANCE_SWAP — always-visible chevron (default chevron-down-outline; chevron-up-outline on state=focus); alert-circle appears additionally on error"
                 },
                 "rules": {
@@ -6340,12 +6351,12 @@
                 "composition": [
                     "Floating ListActionDropdown (screen-level, on click — not nested in set)",
                     "ListActionDropdownItem",
-                    "local DS outline icons"
+                    "DS Icons — Escritório Virtual outline icons"
                 ]
             },
             "Keyboard": {
                 "nodeId": "3745:4228",
-                "description": "AI-READY COMPONENT: Keyboard is a placement-only on-screen keyboard utility for prototypes and wireframes. It is not a product input component and is not an accurate representation of Android Gboard or any OS keyboard. Use configuration=base-keyboard for the default alphabet layout, configuration=alphanumeric for mixed letter/number layouts, configuration=keypad for dialer-style keys, and configuration=numeric-only for digits-only entry. Use layout=portrait for stacked mobile portrait chrome, layout=landscape for wide landscape chrome, and layout=floating for a compact floating keyboard panel. Do not use Keyboard as TextInput, Button, Modal, Bottom sheet, or a real IME implementation. Composition is decorative placement chrome (toolbar, key rows, bottomNav nesting local MobileGestureNavigation appearance=default) — keep keys as non-interactive visual placeholders in design. Prefer local DS outline icons for toolbar and modifiers (shiftIcon, backspaceIcon, enterKey icon, gifIcon via photo-outline). Token rule: use existing DS kebab-case variables only — color/background-surface/0|1|2, text/primary|secondary|brand|on-color, color/actions/primary|secondary, color/border/1|2, border/radius/100|200|300|full, spacing/050|100|150|200|300 — never Schemes/* or M3/sys/*. Typography: key labels use body/large/regular; compact modifier labels use body/medium/medium. Accessibility: treat as decorative prototype chrome in design specs; in product UI, real text entry must use native OS keyboard / platform IME, not this component. React mapping: Keyboard(configuration, layout) for prototype mocks only. Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: Keyboard is a placement-only on-screen keyboard utility for prototypes and wireframes. It is not a product input component and is not an accurate representation of Android Gboard or any OS keyboard. Use configuration=base-keyboard for the default alphabet layout, configuration=alphanumeric for mixed letter/number layouts, configuration=keypad for dialer-style keys, and configuration=numeric-only for digits-only entry. Use layout=portrait for stacked mobile portrait chrome, layout=landscape for wide landscape chrome, and layout=floating for a compact floating keyboard panel. Do not use Keyboard as TextInput, Button, Modal, Bottom sheet, or a real IME implementation. Composition is decorative placement chrome (toolbar, key rows, bottomNav nesting local MobileGestureNavigation appearance=default) — keep keys as non-interactive visual placeholders in design. Prefer DS Icons — Escritório Virtual outline icons for toolbar and modifiers (shiftIcon, backspaceIcon, enterKey icon, gifIcon via photo-outline). Token rule: use existing DS kebab-case variables only — color/background-surface/0|1|2, text/primary|secondary|brand|on-color, color/actions/primary|secondary, color/border/1|2, border/radius/100|200|300|full, spacing/050|100|150|200|300 — never Schemes/* or M3/sys/*. Typography: key labels use body/large/regular; compact modifier labels use body/medium/medium. Accessibility: treat as decorative prototype chrome in design specs; in product UI, real text entry must use native OS keyboard / platform IME, not this component. React mapping: Keyboard(configuration, layout) for prototype mocks only. Code Connect is not configured.",
                 "variants": {
                     "configuration": [
                         "base-keyboard",
@@ -6367,7 +6378,7 @@
                     "placementOnly": "Wireframe/prototype placement only — not a product TextInput or real IME",
                     "vsTextInput": "Do not use as TextInput, Button, Modal, Bottom sheet, or OS keyboard replacement",
                     "localTokens": "Never use Schemes/* or M3/sys/* — local kebab-case only; radius/spacing bound where mappable",
-                    "localIcons": "Local DS outline icons for toolbar/modifiers; gifIcon uses photo-outline; bottomNav nests MobileGestureNavigation",
+                    "localIcons": "DS Icons — Escritório Virtual outline icons for toolbar/modifiers; gifIcon uses photo-outline; bottomNav nests MobileGestureNavigation",
                     "typography": "body/large/regular on key labels; body/medium/medium on compact modifiers",
                     "nonInteractiveKeys": "Keys are decorative placeholders in design"
                 },
@@ -6381,14 +6392,14 @@
                 ],
                 "accessibility": "Decorative prototype chrome in design specs; product text entry must use native OS/platform IME, not this component.",
                 "composition": [
-                    "local DS outline icons",
+                    "DS Icons — Escritório Virtual outline icons",
                     "MobileGestureNavigation",
                     "decorative key rows"
                 ]
             },
             "Link": {
                 "nodeId": "3820:13913",
-                "description": "AI-READY COMPONENT: Link is a text navigation control for in-page or external destinations. Use size=lg|md|sm for type density. Use state=default|hover|focus|active|visited|disabled for interaction. Use appearance=default on standard surfaces and appearance=inverse on inverse/dark/on-color surfaces. Props: label is the visible link text; inline toggles underline-only inline treatment (no trailing icon); showIcon toggles the trailing icon for standalone links; trailingIcon is an INSTANCE_SWAP for a local DS outline icon (default arrow-narrow-right-outline). Inline rule: when inline=true, hide the trailing icon and use underline; when inline=false, no underline and showIcon may reveal trailingIcon. Do not use Link as a Button, TabItem, BreadcrumbItem, MenuItem or Checkbox. Prefer Button variant=text for actions that are not navigational. Accessibility: expose as a link (a / role=link); ensure visible focus; communicate visited when relevant; do not rely on color alone; decorative trailingIcon should be aria-hidden when label is present. Token rule: local S2 kebab-case variables and text styles only — text/link|brand|secondary|primary|placeholder|on-color|on-color-disabled, interactive/focus, spacing/0|100, body/large|medium|small/regular. React mapping: Link(size, state, appearance, label, inline, showIcon, trailingIcon?). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: Link is a text navigation control for in-page or external destinations. Use size=lg|md|sm for type density. Use state=default|hover|focus|active|visited|disabled for interaction. Use appearance=default on standard surfaces and appearance=inverse on inverse/dark/on-color surfaces. Props: label is the visible link text; inline toggles underline-only inline treatment (no trailing icon); showIcon toggles the trailing icon for standalone links; trailingIcon is an INSTANCE_SWAP for a DS Icons — Escritório Virtual outline icons (default arrow-narrow-right-outline). Inline rule: when inline=true, hide the trailing icon and use underline; when inline=false, no underline and showIcon may reveal trailingIcon. Do not use Link as a Button, TabItem, BreadcrumbItem, MenuItem or Checkbox. Prefer Button variant=text for actions that are not navigational. Accessibility: expose as a link (a / role=link); ensure visible focus; communicate visited when relevant; do not rely on color alone; decorative trailingIcon should be aria-hidden when label is present. Token rule: local S2 kebab-case variables and text styles only — text/link|brand|secondary|primary|placeholder|on-color|on-color-disabled, interactive/focus, spacing/0|100, body/large|medium|small/regular. React mapping: Link(size, state, appearance, label, inline, showIcon, trailingIcon?). Code Connect is not configured.",
                 "variants": {
                     "size": [
                         "lg",
@@ -6415,11 +6426,11 @@
                     "label": "TEXT — visible link text",
                     "inline": "boolean — underline inline treatment; hide trailing icon",
                     "showIcon": "boolean — toggles trailingIcon (standalone)",
-                    "trailingIcon": "INSTANCE_SWAP — local DS outline icon (default arrow-narrow-right-outline)"
+                    "trailingIcon": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons (default arrow-narrow-right-outline)"
                 },
                 "rules": {
                     "inlineVsStandalone": "inline=true → underline, no icon; inline=false → no underline, optional trailingIcon",
-                    "localIcons": "trailingIcon local DS outline only; preferredValues include arrow-narrow-right, arrow-right, arrow-big-right, chevron-right",
+                    "localIcons": "trailingIcon EV library outline only; preferredValues include arrow-narrow-right, arrow-right, arrow-big-right, chevron-right",
                     "vsButton": "Prefer Button variant=text for non-navigational actions",
                     "usage": "Do not use as Button, TabItem, BreadcrumbItem, MenuItem or Checkbox"
                 },
@@ -6469,7 +6480,7 @@
             },
             "ListItem": {
                 "nodeId": "3735:7716",
-                "description": "AI-READY COMPONENT: ListItem is a selectable or navigable row used inside lists to present a primary headline with optional overline, supporting text, trailing supporting text, leading media/controls and trailing actions. Use condition=1-line|2-line|3-line for vertical content density. Use leading=none|monogram|icon|image|video|checkbox|radio|switch and trailing=none|icon|checkbox|radio|switch for slot composition. Use showOverline and showSupportingText to toggle secondary text. Props: headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, stateLayer (ListItemStateLayer INSTANCE_SWAP), divider (DividerHorizontal INSTANCE_SWAP). Defaults in the component set: condition=3-line, leading=none, trailing=none, showOverline=false, showSupportingText=true. Composition must use local S2 building blocks only: ListItemStateLayer as stateLayer overlay; ListItemLeadingMonogram for leading=monogram; ListItemImageThumbnail for leading=image; ListItemVideoThumbnail for leading=video; local Checkbox, RadioButton and Switch for selection controls; local DS outline icons for leading=icon (user-outline) and trailing=icon (chevron-right-outline); DividerHorizontal for the optional divider. Nested Checkbox and RadioButton must stay control-only inside ListItem: showLabel=false, showDescription=false, showContent=false (about 20×20). Do not nest the full labeled Checkbox/Radio composition or row height will break. Nested Switch uses size=md (showIcon as designed). Interaction visuals are owned by nested ListItemStateLayer (state=default|hover|focus|pressed|dragged) via the stateLayer swap — ListItem itself does not publish a separate state variant axis. contentRow uses padding 12/16 and gap 16 with vertical CENTER alignment between leadingSlot, Content and trailingSlot. Do not use remote Material list kits, remote state-layers, remote monogram/image/video thumbnails, remote checkboxes/radios/switches or remote icons. Do not use ListItem as a Button, Menu item (ListActionDropdownItem), NavigationDrawerItem, TableRow or Card. Token rule: use existing DS kebab-case variables and text styles only — text/primary|secondary, color/background-surface/0, plus nested building-block and control tokens; typography via body/large/medium (headline) and body/medium/regular (overline/supporting/trailingSupportingText). Accessibility: map to role=listitem inside a list; navigable rows may be links; checkbox/radio/switch keep their control roles; stateLayer focus must remain visible; decorative leading media may be aria-hidden when the headline already names the entity. React mapping: ListItem(condition, leading, trailing, showOverline, showSupportingText, headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, state, onPress) where state drives ListItemStateLayer.",
+                "description": "AI-READY COMPONENT: ListItem is a selectable or navigable row used inside lists to present a primary headline with optional overline, supporting text, trailing supporting text, leading media/controls and trailing actions. Use condition=1-line|2-line|3-line for vertical content density. Use leading=none|monogram|icon|image|video|checkbox|radio|switch and trailing=none|icon|checkbox|radio|switch for slot composition. Use showOverline and showSupportingText to toggle secondary text. Props: headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, stateLayer (ListItemStateLayer INSTANCE_SWAP), divider (DividerHorizontal INSTANCE_SWAP). Defaults in the component set: condition=3-line, leading=none, trailing=none, showOverline=false, showSupportingText=true. Composition must use local S2 building blocks only: ListItemStateLayer as stateLayer overlay; ListItemLeadingMonogram for leading=monogram; ListItemImageThumbnail for leading=image; ListItemVideoThumbnail for leading=video; local Checkbox, RadioButton and Switch for selection controls; DS Icons — Escritório Virtual outline icons for leading=icon (user-outline) and trailing=icon (chevron-right-outline); DividerHorizontal for the optional divider. Nested Checkbox and RadioButton must stay control-only inside ListItem: showLabel=false, showDescription=false, showContent=false (about 20×20). Do not nest the full labeled Checkbox/Radio composition or row height will break. Nested Switch uses size=md (showIcon as designed). Interaction visuals are owned by nested ListItemStateLayer (state=default|hover|focus|pressed|dragged) via the stateLayer swap — ListItem itself does not publish a separate state variant axis. contentRow uses padding 12/16 and gap 16 with vertical CENTER alignment between leadingSlot, Content and trailingSlot. Do not use remote Material list kits, remote state-layers, remote monogram/image/video thumbnails, remote checkboxes/radios/switches or remote icons. Do not use ListItem as a Button, Menu item (ListActionDropdownItem), NavigationDrawerItem, TableRow or Card. Token rule: use existing DS kebab-case variables and text styles only — text/primary|secondary, color/background-surface/0, plus nested building-block and control tokens; typography via body/large/medium (headline) and body/medium/regular (overline/supporting/trailingSupportingText). Accessibility: map to role=listitem inside a list; navigable rows may be links; checkbox/radio/switch keep their control roles; stateLayer focus must remain visible; decorative leading media may be aria-hidden when the headline already names the entity. React mapping: ListItem(condition, leading, trailing, showOverline, showSupportingText, headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, state, onPress) where state drives ListItemStateLayer.",
                 "variants": {
                     "condition": [
                         "1-line",
@@ -6566,12 +6577,12 @@
                     "state": "default | hover | pressed | selected | focus | disabled",
                     "label": "visible action text",
                     "showIcon": "boolean — toggles leadingIcon",
-                    "icon": "INSTANCE_SWAP — local DS outline icon (preferred: edit, copy, archive, plus, trash, arrow-bar-right, share-2)"
+                    "icon": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons (preferred: edit, copy, archive, plus, trash, arrow-bar-right, share-2)"
                 },
                 "rules": {
                     "composition": "leadingIcon + label + focusRing",
                     "focusRing": "absolute STRETCH; visible only on state=focus",
-                    "iconsLocal": "preferredValues and default must use local DS outline icons — no remote icons",
+                    "iconsLocal": "preferredValues and default must use DS Icons — Escritório Virtual outline icons — no remote icons",
                     "iconScale20": "leadingIcon is 20×20; follow DS icon scale (stroke ≈ 1.67 = 2×20/24); unbind absolute border/width/025; re-apply after INSTANCE_SWAP",
                     "vsLegacy": "Do not use item List action or _Menu list item",
                     "vsStandalone": "Do not use as page list row, select option, button, chip, or tab",
@@ -6810,7 +6821,7 @@
             },
             "QuickAccessTile": {
                 "nodeId": "4203:447",
-                "description": "AI-READY COMPONENT: QuickAccessTile — compact mobile shortcut tile for home quick-access grids (pay bill, assist, insurance). Props: state=default|pressed|disabled; label (TEXT, default \"Label\"); icon (INSTANCE_SWAP — local outline icons; default apps-outline; preferredValues include apps-outline, layout-grid-outline, category-outline, squares-outline, star-outline, credit-card-outline). Composition: icon (24) + label (up to 2 lines, left-aligned). state=pressed adds absolute stateLayer with interactive/pressed over the surface. Tokens: color/background-surface/2; border/radius/400; spacing/200 (vertical pad); spacing/150 (horizontal pad); spacing/050 (gap); size spacing/1000×spacing/1100 (80×88); icon stroke text/brand (disabled: text/placeholder) on outline path — not fill; label text/primary + caption/medium/medium (disabled: text/placeholder). No hover/focus variants (intentional — mobile press model). Do not use as Button, Chip, marketing Card, or NavigationBarItem. Document group pattern \"Acesso rápido\" as a screen composition of N tiles — not a separate published component set. Accessibility: expose as button; label is accessible name; disabled must not be focusable. React mapping: QuickAccessTile(icon, label, state, onPress). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: QuickAccessTile — compact mobile shortcut tile for home quick-access grids (pay bill, assist, insurance). Props: state=default|pressed|disabled; label (TEXT, default \"Label\"); icon (INSTANCE_SWAP — EV library outline icons; default apps-outline; preferredValues include apps-outline, layout-grid-outline, category-outline, squares-outline, star-outline, credit-card-outline). Composition: icon (24) + label (up to 2 lines, left-aligned). state=pressed adds absolute stateLayer with interactive/pressed over the surface. Tokens: color/background-surface/2; border/radius/400; spacing/200 (vertical pad); spacing/150 (horizontal pad); spacing/050 (gap); size spacing/1000×spacing/1100 (80×88); icon stroke text/brand (disabled: text/placeholder) on outline path — not fill; label text/primary + caption/medium/medium (disabled: text/placeholder). No hover/focus variants (intentional — mobile press model). Do not use as Button, Chip, marketing Card, or NavigationBarItem. Document group pattern \"Acesso rápido\" as a screen composition of N tiles — not a separate published component set. Accessibility: expose as button; label is accessible name; disabled must not be focusable. React mapping: QuickAccessTile(icon, label, state, onPress). Code Connect is not configured.",
                 "variants": {
                     "state": [
                         "default",
@@ -6821,7 +6832,7 @@
                 "props": {
                     "state": "default | pressed | disabled",
                     "label": "TEXT — tile label (default \"Label\"); caption/medium/medium + text/primary (disabled: text/placeholder); textAlign LEFT",
-                    "icon": "INSTANCE_SWAP — local outline icon (default apps-outline); preferredValues: apps-outline, layout-grid-outline, category-outline, squares-outline, star-outline, credit-card-outline; stroke text/brand (disabled: text/placeholder)"
+                    "icon": "INSTANCE_SWAP — EV library outline icon (default apps-outline); preferredValues: apps-outline, layout-grid-outline, category-outline, squares-outline, star-outline, credit-card-outline; stroke text/brand (disabled: text/placeholder)"
                 },
                 "rules": {
                     "matrix": "Published 3/3 — state",
@@ -6833,7 +6844,7 @@
                     "labelAlign": "label textAlign LEFT (manual)",
                     "genericDefaults": "Default label \"Label\" + icon apps-outline (product copy/icons via props)",
                     "iconStroke": "Outline path uses stroke text/brand (not fill color/actions/primary); disabled text/placeholder",
-                    "iconLocal": "Default and preferredValues use local DS outline icons — no remotes"
+                    "iconLocal": "Default and preferredValues use DS Icons — Escritório Virtual outline icons — use EV library (not S2 local masters)"
                 },
                 "tokenRules": [
                     "color/background-surface/2",
@@ -6998,7 +7009,7 @@
                     "trailState": "none | both | left | right"
                 },
                 "rules": {
-                    "icons": "structural by status: circle-check-filled | circle-dot-filled | circle-outline; local DS icons only",
+                    "icons": "structural by status: circle-check-filled | circle-dot-filled | circle-outline; DS Icons — Escritório Virtual icons only",
                     "trails": "active trails use color/actions/primary; inactive present trails use color/border/2",
                     "sparseMatrix": "intentional-sparse: trailState ⊆ trail; current×both publishes none|left only; pending publishes trailState=none only",
                     "usage": "Do not use as Button, PaginationItem, ProgressBar, TimelineItem or standalone navigation item"
@@ -7058,7 +7069,7 @@
             },
             "FeatureStepsItem": {
                 "nodeId": "4343:222",
-                "description": "AI-READY COMPONENT: FeatureStepsItem is an illustrative vertical step row used to present a task, benefit or onboarding action with a thematic icon — not process progress feedback. Use inside FeatureSteps. Anatomy: indicatorColumn (iconBadge 48 with leadingIcon INSTANCE_SWAP + soft connector width spacing/100) + content (headline + supportingText). Layout: horizontal Auto Layout, spacing/200 between badge and content, counterAxisAlignItems=CENTER; indicatorColumn and content itemSpacing=spacing/0; content uses padding-bottom spacing/300 so the connector stretches and creates vertical rhythm when FeatureSteps itemSpacing is spacing/0. supportingText uses textAutoResize HEIGHT and vertical Hug so longer copy does not clip. Demo width 342; height Hug (Label/Description master demo). Props: leadingIcon (INSTANCE_SWAP; preferredValues local DS outlines: square-check-outline, car-outline, trophy-outline, camera-outline, file-outline, checkbox-outline), headline (TEXT, default Label), supportingText (TEXT, default Description), showSupportingText (BOOLEAN, default true), showConnector (BOOLEAN, default true — hide on final item). Icon vector layers use {icon}-path naming; strokeWeight bound to border/width/025. Do not use status completed/current/pending/error — that belongs to VerticalStepperItem. Do not use as VerticalStepperItem, StepperPrimary, StepProgressIndicator, ProgressBar, ListItem or timeline progress. Token rule: local S2 kebab-case only — color/background-surface/2, text/primary, text/secondary, border/radius/full, spacing/0|100|150|200|300, border/width/025. Typography: body/large/semi-bold (headline), body/medium/regular (supportingText). Prefer local DS icons. Accessibility: decorative icon and connector aria-hidden; convey meaning via headline/supportingText. React mapping: FeatureStepsItem(leadingIcon, headline, supportingText, showSupportingText?, showConnector?). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: FeatureStepsItem is an illustrative vertical step row used to present a task, benefit or onboarding action with a thematic icon — not process progress feedback. Use inside FeatureSteps. Anatomy: indicatorColumn (iconBadge 48 with leadingIcon INSTANCE_SWAP + soft connector width spacing/100) + content (headline + supportingText). Layout: horizontal Auto Layout, spacing/200 between badge and content, counterAxisAlignItems=CENTER; indicatorColumn and content itemSpacing=spacing/0; content uses padding-bottom spacing/300 so the connector stretches and creates vertical rhythm when FeatureSteps itemSpacing is spacing/0. supportingText uses textAutoResize HEIGHT and vertical Hug so longer copy does not clip. Demo width 342; height Hug (Label/Description master demo). Props: leadingIcon (INSTANCE_SWAP; preferredValues EV library outlines: square-check-outline, car-outline, trophy-outline, camera-outline, file-outline, checkbox-outline), headline (TEXT, default Label), supportingText (TEXT, default Description), showSupportingText (BOOLEAN, default true), showConnector (BOOLEAN, default true — hide on final item). Icon vector layers use {icon}-path naming; strokeWeight bound to border/width/025. Do not use status completed/current/pending/error — that belongs to VerticalStepperItem. Do not use as VerticalStepperItem, StepperPrimary, StepProgressIndicator, ProgressBar, ListItem or timeline progress. Token rule: local S2 kebab-case only — color/background-surface/2, text/primary, text/secondary, border/radius/full, spacing/0|100|150|200|300, border/width/025. Typography: body/large/semi-bold (headline), body/medium/regular (supportingText). Prefer DS Icons — Escritório Virtual icons. Accessibility: decorative icon and connector aria-hidden; convey meaning via headline/supportingText. React mapping: FeatureStepsItem(leadingIcon, headline, supportingText, showSupportingText?, showConnector?). Code Connect is not configured.",
                 "variants": {},
                 "props": {
                     "leadingIcon": "INSTANCE_SWAP — preferredValues: square-check-outline | car-outline | trophy-outline | camera-outline | file-outline | checkbox-outline",
@@ -7072,7 +7083,7 @@
                     "verticalRhythm": "content padding-bottom spacing/300 drives row height and connector stretch when parent gap is spacing/0",
                     "alignment": "counterAxisAlignItems=CENTER between badge column and content",
                     "illustrativeOnly": "No progress status matrix — thematic icon communicates topic, not completion",
-                    "icons": "INSTANCE_SWAP leadingIcon; preferred local outlines listed in props; vector layers {icon}-path; stroke border/width/025",
+                    "icons": "INSTANCE_SWAP leadingIcon; preferred EV library outlines listed in props; vector layers {icon}-path; stroke border/width/025",
                     "connector": "soft color/background-surface/2 — same as badge; width spacing/100; hide on final item",
                     "vsVerticalStepperItem": "Use VerticalStepperItem for real progress status (completed/current/pending/error)",
                     "usage": "Do not use as VerticalStepperItem, StepperPrimary, StepProgressIndicator, ProgressBar, ListItem or timeline progress"
@@ -7118,7 +7129,7 @@
                     "composition": "indicatorColumn (statusIcon + connector) + nested ListItem; ListItem props exposed on the set",
                     "leadingDefault": "leading=none by default — status lives in indicatorColumn; avoid duplicate leading status icons",
                     "interaction": "default non-interactive (stateLayer=default); enable ListItem states/controls only when step is intentionally actionable",
-                    "icons": "structural by status: circle-check-filled | circle-dot-filled | circle-outline | circle-x-filled; local DS icons only",
+                    "icons": "structural by status: circle-check-filled | circle-dot-filled | circle-outline | circle-x-filled; DS Icons — Escritório Virtual icons only",
                     "connector": "completed uses color/actions/primary; current|pending|error use color/border/2",
                     "vsStepperPrimary": "Use StepperPrimary for compact horizontal labeled steps",
                     "vsStepProgressIndicator": "Use StepProgressIndicator for unlabeled segmented progress",
@@ -7135,7 +7146,7 @@
             },
             "SearchBar": {
                 "nodeId": "3881:6002",
-                "description": "AI-READY COMPONENT: SearchBar is a compact search entry surface used to display a search hint or current query and launch a SearchView. Use it in application headers, content pages, lists and result-oriented layouts — not as SearchViewFullscreen, SearchViewModal, Input, or Select. Variants: state=default|hover|focus|pressed|disabled; content=placeholder|value (10 variants). Anatomy: pill stateLayer (border/radius/full) with leadingAction (Button text + overlay icon), searchTrigger (placeholder or query), and trailingActions (search / clear Buttons + optional Avatar). Nested Button actions stay at state=default (visual feedback comes from SearchBar stateLayer). Focus uses interactive/focus stroke on stateLayer. Props: showLeadingAction, showFirstTrailingAction, showSecondTrailingAction, showProfileAction, placeholder, query, profileAvatar, leadingIcon, firstTrailingIcon, secondTrailingIcon. Token rule: local S2 kebab-case only — color/background-surface/0, interactive/hover|pressed|disabled-surface|focus, text/primary|secondary|placeholder, border/radius/full, body/large/regular|body/medium/medium. Prefer local DS outline icons. Accessibility: role=search or search landmark; actions as named buttons; decorative overlay icons aria-hidden when the control has an accessible name. React mapping: SearchBar(state, content, placeholder, query, showLeadingAction?, showFirstTrailingAction?, showSecondTrailingAction?, showProfileAction?, leadingIcon?, firstTrailingIcon?, secondTrailingIcon?, profileAvatar?). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: SearchBar is a compact search entry surface used to display a search hint or current query and launch a SearchView. Use it in application headers, content pages, lists and result-oriented layouts — not as SearchViewFullscreen, SearchViewModal, Input, or Select. Variants: state=default|hover|focus|pressed|disabled; content=placeholder|value (10 variants). Anatomy: pill stateLayer (border/radius/full) with leadingAction (Button text + overlay icon), searchTrigger (placeholder or query), and trailingActions (search / clear Buttons + optional Avatar). Nested Button actions stay at state=default (visual feedback comes from SearchBar stateLayer). Focus uses interactive/focus stroke on stateLayer. Props: showLeadingAction, showFirstTrailingAction, showSecondTrailingAction, showProfileAction, placeholder, query, profileAvatar, leadingIcon, firstTrailingIcon, secondTrailingIcon. Token rule: local S2 kebab-case only — color/background-surface/0, interactive/hover|pressed|disabled-surface|focus, text/primary|secondary|placeholder, border/radius/full, body/large/regular|body/medium/medium. Prefer DS Icons — Escritório Virtual outline icons. Accessibility: role=search or search landmark; actions as named buttons; decorative overlay icons aria-hidden when the control has an accessible name. React mapping: SearchBar(state, content, placeholder, query, showLeadingAction?, showFirstTrailingAction?, showSecondTrailingAction?, showProfileAction?, leadingIcon?, firstTrailingIcon?, secondTrailingIcon?, profileAvatar?). Code Connect is not configured.",
                 "variants": {
                     "state": [
                         "default",
@@ -7158,9 +7169,9 @@
                     "showFirstTrailingAction": "boolean — first trailing text Button (e.g. search)",
                     "showSecondTrailingAction": "boolean — second trailing text Button (e.g. clear)",
                     "showProfileAction": "boolean — trailing Avatar",
-                    "leadingIcon": "INSTANCE_SWAP — overlay icon on leading Button (local DS outline)",
-                    "firstTrailingIcon": "INSTANCE_SWAP — overlay icon on first trailing Button (local DS outline)",
-                    "secondTrailingIcon": "INSTANCE_SWAP — overlay icon on second trailing Button (local DS outline)",
+                    "leadingIcon": "INSTANCE_SWAP — overlay icon on leading Button (EV library outline)",
+                    "firstTrailingIcon": "INSTANCE_SWAP — overlay icon on first trailing Button (EV library outline)",
+                    "secondTrailingIcon": "INSTANCE_SWAP — overlay icon on second trailing Button (EV library outline)",
                     "profileAvatar": "INSTANCE_SWAP — Avatar for profile action (default initials xs)"
                 },
                 "rules": {
@@ -7183,7 +7194,7 @@
                 "composition": [
                     "Button (text)",
                     "Avatar",
-                    "local DS outline icons"
+                    "DS Icons — Escritório Virtual outline icons"
                 ]
             },
             "SearchViewFullscreen": {
@@ -7206,8 +7217,8 @@
                     "placeholder": "TEXT — hint text (content=placeholder)",
                     "showBack": "boolean",
                     "showClear": "boolean",
-                    "backIcon": "INSTANCE_SWAP — local DS outline (default arrow-narrow-left-outline)",
-                    "clearIcon": "INSTANCE_SWAP — local DS outline (default x-outline)",
+                    "backIcon": "INSTANCE_SWAP — EV library outline (default arrow-narrow-left-outline)",
+                    "clearIcon": "INSTANCE_SWAP — EV library outline (default x-outline)",
                     "items": "SLOT — preferredValues ListItem; default 5 ListItems in results"
                 },
                 "rules": {
@@ -7228,7 +7239,7 @@
                 "composition": [
                     "DividerHorizontal",
                     "ListItem",
-                    "local DS outline icons"
+                    "DS Icons — Escritório Virtual outline icons"
                 ]
             },
             "SearchViewModal": {
@@ -7251,8 +7262,8 @@
                     "placeholder": "TEXT — hint text (content=placeholder)",
                     "showBack": "boolean",
                     "showClear": "boolean",
-                    "backIcon": "INSTANCE_SWAP — local DS outline (default arrow-narrow-left-outline)",
-                    "clearIcon": "INSTANCE_SWAP — local DS outline (default x-outline)",
+                    "backIcon": "INSTANCE_SWAP — EV library outline (default arrow-narrow-left-outline)",
+                    "clearIcon": "INSTANCE_SWAP — EV library outline (default x-outline)",
                     "items": "SLOT — preferredValues ListItem; default 5 ListItems in results"
                 },
                 "rules": {
@@ -7275,7 +7286,7 @@
                 "composition": [
                     "DividerHorizontal",
                     "ListItem",
-                    "local DS outline icons"
+                    "DS Icons — Escritório Virtual outline icons"
                 ]
             },
             "SelectCountry": {
@@ -7307,7 +7318,7 @@
                     "inputNumberOnly": "Building block for InputNumber phone — not a standalone field",
                     "noDisabledExpanded": "state=disabled only publishes expanded=false",
                     "externalMenu": "Country list floats externally when expanded=true; never nested",
-                    "localAssets": "Flags from page 5. Country flags; chevrons from local DS outline icons",
+                    "localAssets": "Flags from page 5. Country flags; chevrons from DS Icons — Escritório Virtual outline icons",
                     "vsSelectAutocomplete": "Do not use as InputSelect, Autocomplete, Select, stepper, or standalone field"
                 },
                 "tokenRules": [
@@ -7351,7 +7362,7 @@
                     "showIcon": "boolean — toggles internal check/x icon visibility (size=md only)"
                 },
                 "rules": {
-                    "icons": "structural by checked: x-outline unchecked, check-outline checked; local DS icons only; showIcon applies to size=md only",
+                    "icons": "structural by checked: x-outline unchecked, check-outline checked; DS Icons — Escritório Virtual icons only; showIcon applies to size=md only",
                     "states": "Only default|focus|disabled published — no hover",
                     "showIconMdOnly": "size=sm does not publish an icon layer",
                     "usage": "Do not use as Checkbox, RadioButton, Button, Chip, ToggleGroup or navigation item"
@@ -7367,7 +7378,7 @@
             },
             "TabItem": {
                 "nodeId": "3532:6782",
-                "description": "AI-READY COMPONENT: TabItem is the individual tab control used inside a Tabs/TabList pattern to switch between related views in the same page or section. Use variant=primary for filled/elevated tab treatment and variant=secondary for underline tab treatment. Use state=default, hover, selected or disabled. Focus is intentionally not published on TabItem. Use platform=web or platform=mobile for density. Use appearance=default on standard surfaces and appearance=inverse on inverse/dark/on-color surfaces. Intentional sparse matrix: appearance=inverse is published only for variant=primary + platform=mobile. It is not published for primary+web or for any secondary combination. Use label for the visible tab text. Use showIcon to toggle the leading icon and leadingIcon (INSTANCE_SWAP) to choose the local DS outline icon. Use showAttention and attentionIcon for the optional attention/status affordance. Do not use TabItem as a standalone Button, NavigationItem, Chip, segmented control, or page-level route link. Compose TabItem only inside a Tabs/TabList wrapper. Accessibility: wrapper role=tablist; each TabItem role=tab; aria-selected=true only for state=selected; disabled tabs aria-disabled=true; decorative icons aria-hidden when label is visible; keyboard follows Tabs pattern (arrows + Enter/Space). Token rule: prefer DS kebab-case variables (color/actions/primary, color/background-surface/0, text/primary|brand, spacing/100|150, border/radius/0|300). Avoid Title Case legacy aliases; Border/Icon/20 may remain on icon stroke weight when no local kebab equivalent exists. React mapping: TabItem(variant, state, platform, appearance, label, showIcon, leadingIcon?, showAttention, attentionIcon?).",
+                "description": "AI-READY COMPONENT: TabItem is the individual tab control used inside a Tabs/TabList pattern to switch between related views in the same page or section. Use variant=primary for filled/elevated tab treatment and variant=secondary for underline tab treatment. Use state=default, hover, selected or disabled. Focus is intentionally not published on TabItem. Use platform=web or platform=mobile for density. Use appearance=default on standard surfaces and appearance=inverse on inverse/dark/on-color surfaces. Intentional sparse matrix: appearance=inverse is published only for variant=primary + platform=mobile. It is not published for primary+web or for any secondary combination. Use label for the visible tab text. Use showIcon to toggle the leading icon and leadingIcon (INSTANCE_SWAP) to choose the DS Icons — Escritório Virtual outline icons. Use showAttention and attentionIcon for the optional attention/status affordance. Do not use TabItem as a standalone Button, NavigationItem, Chip, segmented control, or page-level route link. Compose TabItem only inside a Tabs/TabList wrapper. Accessibility: wrapper role=tablist; each TabItem role=tab; aria-selected=true only for state=selected; disabled tabs aria-disabled=true; decorative icons aria-hidden when label is visible; keyboard follows Tabs pattern (arrows + Enter/Space). Token rule: prefer DS kebab-case variables (color/actions/primary, color/background-surface/0, text/primary|brand, spacing/100|150, border/radius/0|300). Avoid Title Case legacy aliases; Border/Icon/20 may remain on icon stroke weight when no local kebab equivalent exists. React mapping: TabItem(variant, state, platform, appearance, label, showIcon, leadingIcon?, showAttention, attentionIcon?).",
                 "variants": {
                     "variant": [
                         "primary",
@@ -7395,7 +7406,7 @@
                     "appearance": "default | inverse",
                     "label": "TEXT — visible tab label",
                     "showIcon": "boolean — toggles leadingIcon visibility",
-                    "leadingIcon": "INSTANCE_SWAP — local DS outline icon",
+                    "leadingIcon": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons",
                     "showAttention": "boolean — toggles attentionIcon visibility",
                     "attentionIcon": "INSTANCE_SWAP — optional attention/status icon"
                 },
@@ -7530,7 +7541,7 @@
             },
             "Toast": {
                 "nodeId": "3550:4107",
-                "description": "AI-READY COMPONENT: Toast is a transient feedback message used to confirm an action, inform system status, or warn about a temporary condition. Use for short, non-blocking messages. Do not use as Modal, Banner, AlertDialog, Snackbar replacement for persistent critical content, or primary navigation. Variants: status=system|info|success|danger|warning. status=danger replaces deprecated error naming. status=system is intentional-sparse and has no statusIcon; other statuses compose a local DS statusIcon. Props: message (TEXT), showAction (BOOLEAN, default false), dismissible (BOOLEAN, default true). When showAction=true, set the nested action Button label (React actionLabel). dismiss controls the dismiss Button (x-outline). Composition: action and dismiss use the local Button component (variant=text). Status icons use local DS filled icons only (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled). Accessibility: role=status for system|info|success. role=alert only for urgent warning|danger. Do not move focus automatically. If dismissible=true, expose a clear accessible close label. Decorative status icons should be aria-hidden=true when the message already communicates status. Token rule: use existing DS kebab-case variables (color/background-surface/inverse-3, text/on-color, spacing/0|150|200, border/radius/400, color/elevation/6). Status icon fills: feedback/success|danger|warning; info uses feedback/info (no local feedback/info). React mapping: Toast(status, message, showAction, actionLabel, dismissible, onAction, onDismiss).",
+                "description": "AI-READY COMPONENT: Toast is a transient feedback message used to confirm an action, inform system status, or warn about a temporary condition. Use for short, non-blocking messages. Do not use as Modal, Banner, AlertDialog, Snackbar replacement for persistent critical content, or primary navigation. Variants: status=system|info|success|danger|warning. status=danger replaces deprecated error naming. status=system is intentional-sparse and has no statusIcon; other statuses compose an EV library statusIcon. Props: message (TEXT), showAction (BOOLEAN, default false), dismissible (BOOLEAN, default true). When showAction=true, set the nested action Button label (React actionLabel). dismiss controls the dismiss Button (x-outline). Composition: action and dismiss use the local Button component (variant=text). Status icons use DS Icons — Escritório Virtual filled icons only (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled). Accessibility: role=status for system|info|success. role=alert only for urgent warning|danger. Do not move focus automatically. If dismissible=true, expose a clear accessible close label. Decorative status icons should be aria-hidden=true when the message already communicates status. Token rule: use existing DS kebab-case variables (color/background-surface/inverse-3, text/on-color, spacing/0|150|200, border/radius/400, color/elevation/6). Status icon fills: feedback/success|danger|warning; info uses feedback/info (no local feedback/info). React mapping: Toast(status, message, showAction, actionLabel, dismissible, onAction, onDismiss).",
                 "variants": {
                     "status": [
                         "system",
@@ -7548,7 +7559,7 @@
                     "dismissible": "boolean — toggles dismiss Button with x-outline (default true)"
                 },
                 "rules": {
-                    "composition": "Compose local Button for action and dismiss; local DS filled status icons only",
+                    "composition": "Compose local Button for action and dismiss; EV library filled status icons only",
                     "intentionalSparse": "status=system publishes no statusIcon",
                     "actionLabel": "actionLabel is React-side; in Figma set nested action Button label when showAction=true",
                     "usage": "Do not use as Modal, Banner, Alert, AlertDialog or persistent critical content"
@@ -7640,7 +7651,7 @@
                     "secondaryActionLabel": "React mapping for nested secondary Button label"
                 },
                 "rules": {
-                    "composition": "primaryAction = Button solid/sm/primary; secondaryAction = Button text/sm/primary; local DS icons only",
+                    "composition": "primaryAction = Button solid/sm/primary; secondaryAction = Button text/sm/primary; DS Icons — Escritório Virtual icons only",
                     "intentionalSecondaryOnColor": "secondaryAction label uses text/on-color on inverse surface — intentional override, do not remap to text/primary",
                     "layerOrder": "content → arrow → actions on all placements",
                     "usage": "Do not use as Modal, Toast, Dropdown, Select, Menu, or persistent help panel"
@@ -7716,7 +7727,7 @@
                     ]
                 },
                 "props": {
-                    "icon": "INSTANCE_SWAP — local DS outline icon; applies to non-selected states",
+                    "icon": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons; applies to non-selected states",
                     "type": "body | header",
                     "state": "default | hover | pressed | selected | focus | disabled",
                     "showChevron": "true | false — header spacer when false (intentional-sparse with state=default only)"
@@ -7726,7 +7737,7 @@
                     "selectedExpanded": "state=selected = expanded visual (chevron-up-outline, text/primary)",
                     "iconStructuralSelected": "On state=selected, chevron-up is structural and not icon INSTANCE_SWAP-driven",
                     "headerSpacer": "type=header + state=default + showChevron=false keeps 56×40 with no chevron; not published for type=body",
-                    "icons": "Collapsed states: chevron-down-outline; local DS icons only",
+                    "icons": "Collapsed states: chevron-down-outline; DS Icons — Escritório Virtual icons only",
                     "usage": "Do not use as TableCell, Button, PaginationItem, NavigationItem or generic icon button outside table rows"
                 },
                 "tokenRules": [
@@ -7784,7 +7795,7 @@
             },
             "TableMobileCell": {
                 "nodeId": "3452:2656",
-                "description": "AI-READY COMPONENT: TableMobileCell is a reusable mobile table cell used inside mobile table rows, responsive table lists or compact table-card layouts. Use type=primary for the main value, type=secondary for supporting value, type=tag for compact status/tag content via slot, type=action for an inline Button action, and type=icon for an icon-only affordance. Use state=default, hover, pressed or selected to represent visual interaction state. Focus and disabled are intentionally not published on this component. Use label for visible text on primary/secondary cells, slot for type=tag custom content (preferred Chip/Tag), and icon INSTANCE_SWAP for type=icon (local DS outline icons only). Unlike desktop TableCell, TableMobileCell has no type=header or type=tertiary and uses type=tag|action|icon instead of type=slot for those mobile patterns. Do not use TableMobileCell as a full Table, TableRow, TableCell, Card, Button, Chip, NavigationItem or standalone layout container. Accessibility: when the cell or owning row is tappable, expose button/link semantics and a clear accessible label; selected state should be communicated by the parent row/list semantics; icon-only cells require aria-label or surrounding context; decorative icons should be aria-hidden. Token rule: use existing DS variables only (color/background-surface/0, interactive/hover|pressed|selected, text/primary|secondary, spacing/0|100|800, border/radius/0). Avoid Title Case legacy aliases such as Spacing/800. React mapping: TableMobileCell(type, state, label, slot?, icon?).",
+                "description": "AI-READY COMPONENT: TableMobileCell is a reusable mobile table cell used inside mobile table rows, responsive table lists or compact table-card layouts. Use type=primary for the main value, type=secondary for supporting value, type=tag for compact status/tag content via slot, type=action for an inline Button action, and type=icon for an icon-only affordance. Use state=default, hover, pressed or selected to represent visual interaction state. Focus and disabled are intentionally not published on this component. Use label for visible text on primary/secondary cells, slot for type=tag custom content (preferred Chip/Tag), and icon INSTANCE_SWAP for type=icon (DS Icons — Escritório Virtual outline icons only). Unlike desktop TableCell, TableMobileCell has no type=header or type=tertiary and uses type=tag|action|icon instead of type=slot for those mobile patterns. Do not use TableMobileCell as a full Table, TableRow, TableCell, Card, Button, Chip, NavigationItem or standalone layout container. Accessibility: when the cell or owning row is tappable, expose button/link semantics and a clear accessible label; selected state should be communicated by the parent row/list semantics; icon-only cells require aria-label or surrounding context; decorative icons should be aria-hidden. Token rule: use existing DS variables only (color/background-surface/0, interactive/hover|pressed|selected, text/primary|secondary, spacing/0|100|800, border/radius/0). Avoid Title Case legacy aliases such as Spacing/800. React mapping: TableMobileCell(type, state, label, slot?, icon?).",
                 "variants": {
                     "type": [
                         "primary",
@@ -7805,7 +7816,7 @@
                     "state": "default | hover | pressed | selected",
                     "label": "TEXT — primary/secondary visible text",
                     "slot": "SLOT — type=tag content (preferred chip clickable)",
-                    "icon": "INSTANCE_SWAP — type=icon local DS outline icon"
+                    "icon": "INSTANCE_SWAP — type=icon DS Icons — Escritório Virtual outline icons"
                 },
                 "rules": {
                     "noInteractiveAxis": "interactive variant axis removed — tap/action semantics live on the parent row or nested Button",
@@ -8008,7 +8019,7 @@
                     "expanded": "false | true"
                 },
                 "rules": {
-                    "icons": "trailing chevron is structural by expanded (down when closed, up when open); local DS outline icons only",
+                    "icons": "trailing chevron is structural by expanded (down when closed, up when open); DS Icons — Escritório Virtual outline icons only",
                     "states": "Only default|hover published — no focus/pressed/disabled axes",
                     "expandedBorder": "expanded=true uses interactive/focus border (not border-feedback)",
                     "openOverlay": "expanded=true nests PaginationSelectMenu absolute below trigger; root hugs trigger only",
@@ -8115,13 +8126,13 @@
                 },
                 "props": {
                     "label": "page number text (content=number)",
-                    "icon": "local DS icon swap (content=overflow, typically dots-outline)",
+                    "icon": "DS Icons — Escritório Virtual icons swap (content=overflow, typically dots-outline)",
                     "content": "number | overflow",
                     "state": "default | hover | focus | disabled",
                     "selected": "false | true"
                 },
                 "rules": {
-                    "icons": "overflow icon must use local DS outline icons only (dots-outline)",
+                    "icons": "overflow icon must use DS Icons — Escritório Virtual outline icons only (dots-outline)",
                     "noPressed": "No pressed interaction state — use default|hover|focus|disabled only",
                     "sparseSelected": "selected=true × focus and selected=true × disabled are intentionally omitted",
                     "usage": "Use inside Pagination; not as Button, NavigationItem, Chip, Badge, Tab or MenuItem"
@@ -8250,7 +8261,7 @@
                     ]
                 },
                 "props": {
-                    "icon": "local DS icon swap",
+                    "icon": "DS Icons — Escritório Virtual icons swap",
                     "label": "visible item label",
                     "appearance": "default | inverse",
                     "state": "default | hover | focus | pressed",
@@ -8261,7 +8272,7 @@
                     "overflowLabel": "nested Badge TEXT when badge=count (exposed instance)"
                 },
                 "rules": {
-                    "icons": "icon must use local DS outline icons only; no remote/external icon libraries",
+                    "icons": "icon must use DS Icons — Escritório Virtual outline icons only; no remote/external icon libraries",
                     "badge": "badge mode is a variant (none|count|dot); count/overflowLabel come from exposed nested Badge — do not change Badge size/content away from the variant",
                     "hierarchyNavTree": "hierarchy=nav-tree is intentional sparse: only state=default + selected=true × appearance × badge (6 variants); full interaction matrix applies to hierarchy=default",
                     "colors": "intentional color model: color/actions/primary|tertiary for selected/accent, color/palette/tangerine-1 for badge accent; do not remap as feedback tokens",
@@ -8345,7 +8356,7 @@
                     ]
                 },
                 "props": {
-                    "icon": "local DS icon swap",
+                    "icon": "DS Icons — Escritório Virtual icons swap",
                     "label": "visible item label",
                     "appearance": "default | inverse",
                     "state": "default | hover | focus | pressed",
@@ -8356,7 +8367,7 @@
                     "overflowLabel": "nested Badge TEXT when badge=count (exposed instance)"
                 },
                 "rules": {
-                    "icons": "icon must use local DS outline icons only; no remote/external icon libraries",
+                    "icons": "icon must use DS Icons — Escritório Virtual outline icons only; no remote/external icon libraries",
                     "badge": "badge mode is a variant (none|count|dot); count/overflowLabel come from exposed nested Badge — do not change Badge size/content away from the variant",
                     "colors": "intentional color model: color/actions/primary|tertiary for selected/accent, color/palette/tangerine-1 for badge accent; do not remap as feedback tokens",
                     "usage": "Use inside NavigationRail compact layouts; not as Button, NavigationBarItem, Chip, Badge, Tab or ListItem"
@@ -8450,7 +8461,7 @@
                     ]
                 },
                 "props": {
-                    "icon": "local DS icon swap",
+                    "icon": "DS Icons — Escritório Virtual icons swap",
                     "label": "visible item label",
                     "appearance": "default | inverse",
                     "state": "default | hover | focus | pressed",
@@ -8461,7 +8472,7 @@
                     "overflowLabel": "nested Badge TEXT when badge=count (exposed instance)"
                 },
                 "rules": {
-                    "icons": "icon must use local DS outline icons only; no remote/external icon libraries",
+                    "icons": "icon must use DS Icons — Escritório Virtual outline icons only; no remote/external icon libraries",
                     "badge": "badge mode is a variant (none|count|dot); count/overflowLabel come from exposed nested Badge — do not change Badge size/content away from the variant",
                     "colors": "intentional color model: color/actions/primary|tertiary for selected/accent, color/palette/tangerine-1 for badge accent; do not remap as feedback tokens",
                     "usage": "Use inside NavigationBar or navigation rail; not as Button, Chip, Badge, Tab or ListItem"
@@ -8478,7 +8489,7 @@
             },
             "NavigationDrawerItem": {
                 "nodeId": "3327:1178",
-                "description": "AI-READY COMPONENT: NavigationDrawerItem is an interactive navigation item used inside NavigationDrawer or navigation surfaces to represent a destination, section or route. Use selected=true for the current active destination. Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation surfaces. Use state=default, hover, focus and pressed to represent interaction states. Use showBadge=true and badgeLabel to show an optional numeric/status count; badge is controlled by props, not by variants. The leadingIcon must come from the local DS icon library. Do not use NavigationDrawerItem as Button, Chip, Badge, ListItem, MenuItem, Accordion trigger or generic content row. Accessibility: behave as a link for routes or a button for in-place navigation; expose visible focus; map selected=true to aria-current=page or aria-selected=true depending on navigation pattern; badge counts need accessible labels when meaningful. React mapping: NavigationDrawerItem(label, leadingIcon, showLeadingIcon, showBadge, badgeLabel, appearance, state, selected).",
+                "description": "AI-READY COMPONENT: NavigationDrawerItem is an interactive navigation item used inside NavigationDrawer or navigation surfaces to represent a destination, section or route. Use selected=true for the current active destination. Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation surfaces. Use state=default, hover, focus and pressed to represent interaction states. Use showBadge=true and badgeLabel to show an optional numeric/status count; badge is controlled by props, not by variants. The leadingIcon must come from the DS Icons — Escritório Virtual icons library. Do not use NavigationDrawerItem as Button, Chip, Badge, ListItem, MenuItem, Accordion trigger or generic content row. Accessibility: behave as a link for routes or a button for in-place navigation; expose visible focus; map selected=true to aria-current=page or aria-selected=true depending on navigation pattern; badge counts need accessible labels when meaningful. React mapping: NavigationDrawerItem(label, leadingIcon, showLeadingIcon, showBadge, badgeLabel, appearance, state, selected).",
                 "variants": {
                     "appearance": [
                         "default",
@@ -8496,7 +8507,7 @@
                     ]
                 },
                 "props": {
-                    "leadingIcon": "local DS icon swap",
+                    "leadingIcon": "DS Icons — Escritório Virtual icons swap",
                     "showLeadingIcon": "boolean",
                     "showBadge": "boolean",
                     "badgeLabel": "optional badge text/count",
@@ -8506,7 +8517,7 @@
                     "selected": "false | true"
                 },
                 "rules": {
-                    "icons": "leadingIcon must use local DS outline icons only; no remote/external icon libraries",
+                    "icons": "leadingIcon must use DS Icons — Escritório Virtual outline icons only; no remote/external icon libraries",
                     "badge": "badge visibility and label are props (showBadge, badgeLabel), not variants",
                     "usage": "Use inside NavigationDrawer or navigation surfaces; not as Button, Chip, Badge or ListItem"
                 },
@@ -8639,10 +8650,10 @@
             },
             "ModalCheckItem": {
                 "nodeId": "4372:19371",
-                "description": "AI-READY COMPONENT: ModalCheckItem is a guideline / checklist row used inside Modal body content to present a tip or requirement with a leading check icon. Props: leadingIcon (INSTANCE_SWAP — local DS; default circle-check-filled; preferredValues circle-check-filled and circle-check-outline); description (TEXT — multi-line body copy; demo may include text/brand SemiBold emphasis spans). Anatomy: leadingIcon (20 FIXED) + description. Layout: horizontal Auto Layout, counterAxisAlignItems=MIN (icon top-aligned with first line), itemSpacing spacing/100, padding spacing/0, demo width 318, height Hug. Tokens: local body/medium/regular + text/secondary for base description; text/brand + body/medium/semi-bold (font-weight/semi-bold bound on emphasis spans) for optional in-copy emphasis; color/actions/primary on filled check icon paths; border/width/025 on strokes when applicable. Do not use as Checkbox (interactive selection), ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or BottomSheetCheckItem (use BottomSheetCheckItem inside BottomSheet). Use inside Modal slot / sheetContent stacks. Icon is decorative (aria-hidden); meaning comes from description. React mapping: ModalCheckItem({ leadingIcon, description }).",
+                "description": "AI-READY COMPONENT: ModalCheckItem is a guideline / checklist row used inside Modal body content to present a tip or requirement with a leading check icon. Props: leadingIcon (INSTANCE_SWAP — DS Icons — Escritório Virtual; default circle-check-filled; preferredValues circle-check-filled and circle-check-outline); description (TEXT — multi-line body copy; demo may include text/brand SemiBold emphasis spans). Anatomy: leadingIcon (20 FIXED) + description. Layout: horizontal Auto Layout, counterAxisAlignItems=MIN (icon top-aligned with first line), itemSpacing spacing/100, padding spacing/0, demo width 318, height Hug. Tokens: local body/medium/regular + text/secondary for base description; text/brand + body/medium/semi-bold (font-weight/semi-bold bound on emphasis spans) for optional in-copy emphasis; color/actions/primary on filled check icon paths; border/width/025 on strokes when applicable. Do not use as Checkbox (interactive selection), ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or BottomSheetCheckItem (use BottomSheetCheckItem inside BottomSheet). Use inside Modal slot / sheetContent stacks. Icon is decorative (aria-hidden); meaning comes from description. React mapping: ModalCheckItem({ leadingIcon, description }).",
                 "variants": {},
                 "props": {
-                    "leadingIcon": "INSTANCE_SWAP — local DS (default circle-check-filled); preferredValues: circle-check-filled | circle-check-outline; size FIXED 20; paths color/actions/primary; outline path circle-check-outline-path + border/width/025",
+                    "leadingIcon": "INSTANCE_SWAP — DS Icons — Escritório Virtual (default circle-check-filled); preferredValues: circle-check-filled | circle-check-outline; size FIXED 20; paths color/actions/primary; outline path circle-check-outline-path + border/width/025",
                     "description": "TEXT — multi-line guideline copy (local body/medium/regular + text/secondary; optional text/brand + font-weight/semi-bold emphasis spans); master default EN tip with emphasis on \"glasses, hats or accessories\""
                 },
                 "rules": {
@@ -8671,10 +8682,10 @@
             },
             "BottomSheetCheckItem": {
                 "nodeId": "4389:80",
-                "description": "AI-READY COMPONENT: BottomSheetCheckItem is a guideline / checklist row used inside BottomSheet body content (slot / sheetContent) to present a tip or requirement with a leading check icon. Props: leadingIcon (INSTANCE_SWAP — local DS; default circle-check-filled; preferredValues circle-check-filled and circle-check-outline); description (TEXT — multi-line body copy; demo may include text/brand SemiBold emphasis spans). Anatomy: leadingIcon (20 FIXED) + description. Layout: horizontal Auto Layout, counterAxisAlignItems=MIN (icon top-aligned with first line), itemSpacing spacing/100, padding spacing/0, demo width 318, height Hug. Tokens: local body/medium/regular + text/secondary for base description; text/brand + body/medium/semi-bold (font-weight/semi-bold bound on emphasis spans) for optional in-copy emphasis; color/actions/primary on filled check icon paths; border/width/025 on strokes when applicable. Do not use as Checkbox (interactive selection), ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or ModalCheckItem (use ModalCheckItem inside Modal). Use inside BottomSheet slot / sheetContent stacks. Icon is decorative (aria-hidden); meaning comes from description. React mapping: BottomSheetCheckItem({ leadingIcon, description }).",
+                "description": "AI-READY COMPONENT: BottomSheetCheckItem is a guideline / checklist row used inside BottomSheet body content (slot / sheetContent) to present a tip or requirement with a leading check icon. Props: leadingIcon (INSTANCE_SWAP — DS Icons — Escritório Virtual; default circle-check-filled; preferredValues circle-check-filled and circle-check-outline); description (TEXT — multi-line body copy; demo may include text/brand SemiBold emphasis spans). Anatomy: leadingIcon (20 FIXED) + description. Layout: horizontal Auto Layout, counterAxisAlignItems=MIN (icon top-aligned with first line), itemSpacing spacing/100, padding spacing/0, demo width 318, height Hug. Tokens: local body/medium/regular + text/secondary for base description; text/brand + body/medium/semi-bold (font-weight/semi-bold bound on emphasis spans) for optional in-copy emphasis; color/actions/primary on filled check icon paths; border/width/025 on strokes when applicable. Do not use as Checkbox (interactive selection), ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or ModalCheckItem (use ModalCheckItem inside Modal). Use inside BottomSheet slot / sheetContent stacks. Icon is decorative (aria-hidden); meaning comes from description. React mapping: BottomSheetCheckItem({ leadingIcon, description }).",
                 "variants": {},
                 "props": {
-                    "leadingIcon": "INSTANCE_SWAP — local DS (default circle-check-filled); preferredValues: circle-check-filled | circle-check-outline; size FIXED 20; paths color/actions/primary; outline path circle-check-outline-path + border/width/025",
+                    "leadingIcon": "INSTANCE_SWAP — DS Icons — Escritório Virtual (default circle-check-filled); preferredValues: circle-check-filled | circle-check-outline; size FIXED 20; paths color/actions/primary; outline path circle-check-outline-path + border/width/025",
                     "description": "TEXT — multi-line guideline copy (local body/medium/regular + text/secondary; optional text/brand + font-weight/semi-bold emphasis spans); master default EN tip with emphasis on \"glasses, hats or accessories\""
                 },
                 "rules": {
@@ -8703,6 +8714,14 @@
             }
         },
         "recentUpdates": [
+            {
+                "date": "2026-07-28",
+                "summary": "Pre-delete cleanup: Photo/ImageOrientationItem + Tokens + Illustrations icon leftovers swapped to [DS] Icons / Escritório Virtual."
+            },
+            {
+                "date": "2026-07-28",
+                "summary": "Library Swap: S2 component icon instances now bind to [DS] Icons / Escritório Virtual (ThZ5XtMuDWUWXiSLbRyEXL). Local page 4. Icons marked deprecated for removal after publish cleanup."
+            },
             {
                 "id": "alert-feedback-info",
                 "summary": "feedback/info token created; Alert+Toast info icon fills use content-layer feedback/info; docs synced."

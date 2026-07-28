@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: OfferProductCard — add-on product offer card for Home/Painel carousels. Props: state=default; title (TEXT, default "Title"); description (TEXT, default "Description"); price (TEXT, default "R$ 0,00"); pricePeriod (TEXT, default "/mês"); icon (INSTANCE_SWAP — local outline; default package-outline; preferredValues include package/tag/gift/box/shopping-bag/apps outlines). Anatomy: iconContainer (icon) + text (title + description) + priceRow (price + pricePeriod) + cta (local Button solid/sm/primary, exposed; default label "Label"). Tokens: color/background-surface/2; color/background-surface/3 (iconContainer); border/radius/500; spacing/250 (pad); spacing/150 (root gap); spacing/100 (text gap); text/primary + text/secondary; body/medium/semi-bold (title); body/small/regular (description/period); heading/h3/semi-bold (price); icon stroke text/brand. Do not use as VehicleSummaryCard, Banner, CardStacked/Horizontal, or a carousel shell (carousel is a screen pattern). Accessibility: CTA is the primary action; title maps to accessible name for the offer. React mapping: OfferProductCard(icon, title, description, price, pricePeriod, ctaLabel, onAdd). Code Connect is not configured.
+AI-READY COMPONENT: OfferProductCard — add-on product offer card for Home/Painel carousels. Props: state=default; title (TEXT, default "Title"); description (TEXT, default "Description"); price (TEXT, default "R$ 0,00"); pricePeriod (TEXT, default "/mês"); icon (INSTANCE_SWAP — EV library outline; default package-outline; preferredValues include package/tag/gift/box/shopping-bag/apps outlines). Anatomy: iconContainer (icon) + text (title + description) + priceRow (price + pricePeriod) + cta (local Button solid/sm/primary, exposed; default label "Label"). Tokens: color/background-surface/2; color/background-surface/3 (iconContainer); border/radius/500; spacing/250 (pad); spacing/150 (root gap); spacing/100 (text gap); text/primary + text/secondary; body/medium/semi-bold (title); body/small/regular (description/period); heading/h3/semi-bold (price); icon stroke text/brand. Do not use as VehicleSummaryCard, Banner, CardStacked/Horizontal, or a carousel shell (carousel is a screen pattern). Accessibility: CTA is the primary action; title maps to accessible name for the offer. React mapping: OfferProductCard(icon, title, description, price, pricePeriod, ctaLabel, onAdd). Code Connect is not configured.
 
 ## Variants
 
@@ -25,7 +25,7 @@ AI-READY COMPONENT: OfferProductCard — add-on product offer card for Home/Pain
 | `description` | TEXT — default "Description"; body/small/regular + text/secondary |
 | `price` | TEXT — default "R$ 0,00"; heading/h3/semi-bold + text/primary |
 | `pricePeriod` | TEXT — default "/mês"; body/small/regular + text/primary |
-| `icon` | INSTANCE_SWAP — local outline (default package-outline); preferredValues: package/tag/gift/box/shopping-bag/apps outlines; stroke text/brand |
+| `icon` | INSTANCE_SWAP — EV library outline (default package-outline); preferredValues: package/tag/gift/box/shopping-bag/apps outlines; stroke text/brand |
 | `cta` | Exposed nested Button solid/sm/primary; default label "Label" |
 
 ## Rules
@@ -33,7 +33,7 @@ AI-READY COMPONENT: OfferProductCard — add-on product offer card for Home/Pain
 - **matrix:** Published 1/1 — state=default
 - **nestedButton:** cta is local Button solid/sm/primary (exposed) — not remote Material button
 - **genericDefaults:** Title / Description / R$ 0,00 / /mês / Label + package-outline
-- **iconLocal:** Default and preferredValues use local DS outline icons — no remotes
+- **iconLocal:** Default and preferredValues use DS Icons — Escritório Virtual outline icons — use EV library (not S2 local masters)
 - **carouselPattern:** Horizontal offers carousel is a screen pattern — not this component
 - **vsOthers:** Do not use as VehicleSummaryCard, VehicleConfirmCard, Banner, CardStacked/Horizontal
 

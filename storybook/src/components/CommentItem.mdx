@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: CommentItem is an internal Figma-only annotation used to add contextual comments, notes, questions, alignment points, usability-test notes, developer specs, checks and design decisions inside the design system file. Do not use CommentItem as product UI, app chrome, Toast, Banner, Tooltip, Card or any user-facing component. Do not map to React, Code Connect or production code. Variants: placement=right|left|top|bottom controls callout arrow side; category selects the annotation type. Intentional composition split: category=generic uses header (leadingIcon + title) plus description — title, showIcon and leadingIcon props apply only here; all other categories use categoryTag (local DS categoryIcon + categoryLabel) plus description, without title. Props: description (all categories); title, showIcon, leadingIcon (generic only). Category icons must remain local DS outline icons (eye, test-pipe, code, heart-handshake, adjustments, help-circle, bulb, circle-check, message-circle). Token rule: use existing local DS kebab-case variables only — color/background-surface/0|2|3, color/border/1, text/primary|secondary, spacing/0|050|100|150, border/radius/100, border/width/012, color/elevation/pressed (effect). Accessibility: Figma-only organizer with no runtime a11y role; product headings/notes must be implemented separately in product UI. React mapping: none — Figma organizer only.
+AI-READY COMPONENT: CommentItem is an internal Figma-only annotation used to add contextual comments, notes, questions, alignment points, usability-test notes, developer specs, checks and design decisions inside the design system file. Do not use CommentItem as product UI, app chrome, Toast, Banner, Tooltip, Card or any user-facing component. Do not map to React, Code Connect or production code. Variants: placement=right|left|top|bottom controls callout arrow side; category selects the annotation type. Intentional composition split: category=generic uses header (leadingIcon + title) plus description — title, showIcon and leadingIcon props apply only here; all other categories use categoryTag (local DS categoryIcon + categoryLabel) plus description, without title. Props: description (all categories); title, showIcon, leadingIcon (generic only). Category icons must remain DS Icons — Escritório Virtual outline icons (eye, test-pipe, code, heart-handshake, adjustments, help-circle, bulb, circle-check, message-circle). Token rule: use existing local DS kebab-case variables only — color/background-surface/0|2|3, color/border/1, text/primary|secondary, spacing/0|050|100|150, border/radius/100, border/width/012, color/elevation/pressed (effect). Accessibility: Figma-only organizer with no runtime a11y role; product headings/notes must be implemented separately in product UI. React mapping: none — Figma organizer only.
 
 ## Variants
 
@@ -26,14 +26,14 @@ AI-READY COMPONENT: CommentItem is an internal Figma-only annotation used to add
 | `description` | annotation body — all categories |
 | `title` | short title — generic only |
 | `showIcon` | boolean — generic only |
-| `leadingIcon` | INSTANCE_SWAP local DS icon — generic only |
+| `leadingIcon` | INSTANCE_SWAP DS Icons — Escritório Virtual icons — generic only |
 
 ## Rules
 
 - **figmaOnly:** Figma annotation organizer — no React/Code Connect/product UI
 - **compositionIntentional:** generic = header(leadingIcon+title)+description; other categories = categoryTag+description (no title)
 - **propsScope:** title/showIcon/leadingIcon apply only to category=generic
-- **iconsLocalOnly:** categoryIcon and leadingIcon must be local DS outline icons
+- **iconsLocalOnly:** categoryIcon and leadingIcon must be DS Icons — Escritório Virtual outline icons
 
 ## Token rules
 

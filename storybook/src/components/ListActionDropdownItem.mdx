@@ -23,13 +23,13 @@ AI-READY COMPONENT: ListActionDropdownItem is an internal actionable row for act
 | `state` | default \| hover \| pressed \| selected \| focus \| disabled |
 | `label` | visible action text |
 | `showIcon` | boolean — toggles leadingIcon |
-| `icon` | INSTANCE_SWAP — local DS outline icon (preferred: edit, copy, archive, plus, trash, arrow-bar-right, share-2) |
+| `icon` | INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons (preferred: edit, copy, archive, plus, trash, arrow-bar-right, share-2) |
 
 ## Rules
 
 - **composition:** leadingIcon + label + focusRing
 - **focusRing:** absolute STRETCH; visible only on state=focus
-- **iconsLocal:** preferredValues and default must use local DS outline icons — no remote icons
+- **iconsLocal:** preferredValues and default must use DS Icons — Escritório Virtual outline icons — no remote icons
 - **iconScale20:** leadingIcon is 20×20; follow DS icon scale (stroke ≈ 1.67 = 2×20/24); unbind absolute border/width/025; re-apply after INSTANCE_SWAP
 - **vsLegacy:** Do not use item List action or _Menu list item
 - **vsStandalone:** Do not use as page list row, select option, button, chip, or tab
