@@ -591,9 +591,24 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-07-28T20:48:21.745Z",
-        "storybookRevision": "2026-07-28-product-theme-docs",
+        "storybookUpdatedAt": "2026-07-28T23:07:40.830Z",
+        "storybookRevision": "2026-07-28-radiobuttoncard-description",
         "changelog": [
+            {
+                "date": "2026-07-28",
+                "type": "storybook-radiobuttoncard-description",
+                "summary": "RadioButtonCard: added description + showDescription (parity with RadioButton helper text); labelContent anatomy; docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-radiobuttoncard-audit-apply",
+                "summary": "RadioButtonCard (4498:68) audit apply: hover stateLayer interactive/hover; radio radius/full; stroke side weights border/width/012|025|050; disabled+checked stroke 025; AI-READY + storybook seed."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-app-header-horizontal-pad",
+                "summary": "AppHeader horizontal pad unified to spacing/200 on all layouts (was global spacing/300, small spacing/050); vertical pads unchanged; docs synced."
+            },
             {
                 "date": "2026-07-28",
                 "type": "storybook-product-theme-catalog",
@@ -5110,7 +5125,7 @@
             },
             "AppHeader": {
                 "nodeId": "3143:8822",
-                "description": "AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Do not nest AppHeader inside BottomSheet — use BottomSheetHeader. Token rule: local S2 kebab-case semantic + product-theme component/app-header/* aliases. Product-theme (collection product-theme, modes escritorio-virtual|site-loovi|app-cliente): component/app-header/inverse/background (appearance=inverse root fill; EV→inverse-3, site-loovi|app-cliente→brand); component/app-header/leading-action/background + leading-action/radius (leadingAction on specific|super-app; EV→surface/0 + radius/200, site-loovi|app-cliente→surface/2 + radius/full); component/app-header/avatar/background + avatar/icon-color (hierarchy=global × appearance=inverse Avatar; EV→surface/3 + text/primary, site-loovi|app-cliente→white 16% + text/on-color). Switch product-theme mode to preview; do not hardcode brand/inverse fills on themed slots. Icon rule: DS Icons — Escritório Virtual outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline); internal paths use {icon}-path. Internals: Button, local TextHeader (headingContent), local Profile menu, local Avatar — use EV library (not S2 local masters). Props: showLabel; showAction; showFirstTrailingAction (search-outline, default false); showSecondTrailingAction (bell-outline, default true); showProfileMenu (hierarchy=super-app only); greeting (TEXT, default \"Olá, Rodrigo\", global only). title/description via exposed headingContent TextHeader on non-global. Anatomy — global: leadingCluster + trailingActions. specific|super-app small|small-centered: leadingActions (slot + leadingSlotKeeper + leadingAction) + headingContent FILL + trailingActions. super-app: leadingActions FIXED 96 balances trailing (bell + profileMenu); TextHeader size=small alignment=center. specific medium|large: headerControls (leadingActions + trailingActions, SPACE_BETWEEN) above headingContent; keepers on both slots; no legacy action layer. Optical center: do not bind slot containers' visible to show* — keepers preserve width. Spacing: global pad spacing/050 vert + spacing/300 horiz; small/small-centered pad spacing/100 vert + spacing/050 horiz; medium/large root gap spacing/100 + paddingBottom spacing/150. PAINEL HOME: hierarchy=global + layout=small-centered; default surface/0 + text/primary; inverse surface/inverse-3 + text/on-color; greeting body/large/medium; trailing icon strokes default text/primary / inverse text/on-color. React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured. Product-theme title typography on small|small-centered × default × specific: component/app-header/title/font-size|line-height|font-weight (EV|site-loovi→heading/h3+medium; app-cliente→body/medium+regular). Figma textCase remains ORIGINAL; app-cliente must apply text-transform:uppercase in code.",
+                "description": "AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Do not nest AppHeader inside BottomSheet — use BottomSheetHeader. Token rule: local S2 kebab-case semantic + product-theme component/app-header/* aliases. Product-theme (collection product-theme, modes escritorio-virtual|site-loovi|app-cliente): component/app-header/inverse/background (appearance=inverse root fill; EV→inverse-3, site-loovi|app-cliente→brand); component/app-header/leading-action/background + leading-action/radius (leadingAction on specific|super-app; EV→surface/0 + radius/200, site-loovi|app-cliente→surface/2 + radius/full); component/app-header/avatar/background + avatar/icon-color (hierarchy=global × appearance=inverse Avatar; EV→surface/3 + text/primary, site-loovi|app-cliente→white 16% + text/on-color). Switch product-theme mode to preview; do not hardcode brand/inverse fills on themed slots. Icon rule: DS Icons — Escritório Virtual outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline); internal paths use {icon}-path. Internals: Button, local TextHeader (headingContent), local Profile menu, local Avatar — use EV library (not S2 local masters). Props: showLabel; showAction; showFirstTrailingAction (search-outline, default false); showSecondTrailingAction (bell-outline, default true); showProfileMenu (hierarchy=super-app only); greeting (TEXT, default \"Olá, Rodrigo\", global only). title/description via exposed headingContent TextHeader on non-global. Anatomy — global: leadingCluster + trailingActions. specific|super-app small|small-centered: leadingActions (slot + leadingSlotKeeper + leadingAction) + headingContent FILL + trailingActions. super-app: leadingActions FIXED 96 balances trailing (bell + profileMenu); TextHeader size=small alignment=center. specific medium|large: headerControls (leadingActions + trailingActions, SPACE_BETWEEN) above headingContent; keepers on both slots; no legacy action layer. Optical center: do not bind slot containers' visible to show* — keepers preserve width. Spacing: all layouts share horizontal pad spacing/200; global pad spacing/050 vert + spacing/200 horiz; small|small-centered (specific|super-app) pad spacing/100 vert + spacing/200 horiz; medium|large pad spacing/200 horiz + paddingBottom spacing/150 (paddingTop 0) + root gap spacing/100. PAINEL HOME: hierarchy=global + layout=small-centered; default surface/0 + text/primary; inverse surface/inverse-3 + text/on-color; greeting body/large/medium; trailing icon strokes default text/primary / inverse text/on-color. React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured. Product-theme title typography on small|small-centered × default × specific: component/app-header/title/font-size|line-height|font-weight (EV|site-loovi→heading/h3+medium; app-cliente→body/medium+regular). Figma textCase remains ORIGINAL; app-cliente must apply text-transform:uppercase in code.",
                 "variants": {
                     "layout": [
                         "small-centered",
@@ -5157,7 +5172,7 @@
                     "globalTrailingIconStroke": "Manual sync on hierarchy=global trailing Button icons: default → text/primary; inverse → text/on-color",
                     "inverseTextHeader": "appearance=inverse: nested TextHeader title uses text/on-color (description text/on-color-disabled when shown); default keeps text/primary|secondary",
                     "smallLayoutFlow": "small|small-centered × specific|super-app: leadingActions + headingContent=TextHeader size=small FILL + trailingActions. Do not bind slot containers' visible to show*; keepers preserve optical center.",
-                    "mediumLargeFlow": "medium|large × specific: headerControls SPACE_BETWEEN FILL (leadingActions FIXED 40 + trailingActions FIXED 40 with 40 keepers) above headingContent; root gap spacing/100 + paddingBottom spacing/150",
+                    "mediumLargeFlow": "medium|large × specific: headerControls SPACE_BETWEEN FILL (leadingActions FIXED 40 + trailingActions FIXED 40 with 40 keepers) above headingContent; root gap spacing/100; pad spacing/200 horiz + paddingBottom spacing/150 (paddingTop 0)",
                     "textHeaderSizeMap": "layout→TextHeader size: small|small-centered → size=small (alignment left|center); medium → size=medium; large → size=large. Exemplars showDescription=false; title uses TextHeader typography (small = heading/h3/medium).",
                     "leadingOpticalCenter": "showAction=false must not collapse the leading slot — leadingSlotKeeper 40 keeps width so headingContent optical center holds while trailingActions stay visible (mirror of trailingSlotKeeper 40).",
                     "vsBottomSheetHeader": "Do not use AppHeader inside BottomSheet — use BottomSheetHeader",
@@ -5166,7 +5181,8 @@
                     "avatarTheme": "hierarchy=global × appearance=inverse: Avatar fill → component/app-header/avatar/background; user-outline stroke → component/app-header/avatar/icon-color",
                     "titleThemeTypo": "small|small-centered × appearance=default × hierarchy=specific: title binds component/app-header/title/font-size|line-height|font-weight (EV|site-loovi→heading/h3 + medium; app-cliente→body/medium + regular). textStyleId cleared on those titles.",
                     "appClienteTitleCase": "app-cliente only: apply text-transform:uppercase in product UI — Figma keeps textCase=ORIGINAL (textCase is not mode-aware). Do not set UPPER on the published variants.",
-                    "slotSizeSync": "After Button size sm migration: leadingSlotKeeper/trailingSlotKeeper and FIXED leadingActions/trailingActions are 40×40 (not legacy 48). trailingActions may have carried minWidth=48 — must clear when resizing."
+                    "slotSizeSync": "After Button size sm migration: leadingSlotKeeper/trailingSlotKeeper and FIXED leadingActions/trailingActions are 40×40 (not legacy 48). trailingActions may have carried minWidth=48 — must clear when resizing.",
+                    "horizontalPad": "All published variants bind paddingLeft|paddingRight to spacing/200 (16) — unified lateral inset (replaces legacy global spacing/300 and small spacing/050 horiz)."
                 },
                 "tokenRules": [
                     "app-cliente: text-transform uppercase in implementation (Figma textCase ORIGINAL)",
@@ -5182,9 +5198,9 @@
                     "text/primary | text/on-color for titles/greeting",
                     "text/secondary | text/on-color-disabled for supporting text",
                     "body/large/medium for global greeting (characteristic — not TextHeader)",
-                    "global: spacing/050 vert + spacing/300 horiz pad; spacing/150 leadingCluster gap",
-                    "small|small-centered: spacing/100 vert + spacing/050 horiz pad; spacing/0 gap",
-                    "medium|large: spacing/100 root gap + spacing/150 paddingBottom; headerControls spacing/0 gap SPACE_BETWEEN",
+                    "all layouts: spacing/200 horiz pad; global: spacing/050 vert + spacing/200 horiz; spacing/150 leadingCluster gap",
+                    "small|small-centered (specific|super-app): spacing/100 vert + spacing/200 horiz; spacing/0 gap",
+                    "medium|large: spacing/200 horiz + spacing/150 paddingBottom (paddingTop 0) + spacing/100 root gap; headerControls spacing/0 gap SPACE_BETWEEN",
                     "color/border/2 for profileMenu stroke",
                     "DS Icons — Escritório Virtual icons: menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline ({icon}-path)",
                     "text/primary (global trailing icon stroke on default); text/on-color (on inverse)",
@@ -7648,7 +7664,7 @@
                 ]
             },
             "RadioButton": {
-                "nodeId": "3423:120",
+                "nodeId": "3653:5279",
                 "description": "AI-READY COMPONENT: RadioButton is a selectable control used when users must choose one option from a mutually exclusive group. Use checked=true for the selected option and checked=false for unselected options. Use state=default, hover, focus or disabled to represent interaction state. Use label for the primary option text and description for optional supporting text. Use showLabel, showDescription and showContent only to control visible content slots. Do not use RadioButton as a Checkbox, Toggle, Button, Chip, MenuItem or standalone multiple-selection control. Accessibility: expose the control with role=radio, reflect checked state with aria-checked, use aria-disabled when disabled, preserve visible focus, and place related options inside a RadioGroup with role=radiogroup. Token rule: use existing DS variables only (color/actions/primary for checked, color/border/1|2, interactive/hover|focus, text/primary|secondary|placeholder, border/radius/full|0, spacing/025|050|200|250|300). React mapping: RadioButton(label, description, showLabel, showDescription, showContent, state, checked).",
                 "variants": {
                     "state": [
@@ -7673,7 +7689,8 @@
                 },
                 "rules": {
                     "usage": "Do not use as Checkbox, Toggle, Button, Chip, MenuItem or standalone multiple-selection control",
-                    "grouping": "Related options belong in a RadioGroup (role=radiogroup)"
+                    "grouping": "Related options belong in a RadioGroup (role=radiogroup)",
+                    "vsRadioButtonCard": "For full-width card/row selectable options use RadioButtonCard (4498:68); keep RadioButton for compact label+description"
                 },
                 "tokenRules": [
                     "color/actions/primary for checked fill",
@@ -9495,9 +9512,79 @@
                     "leadingIcon (INSTANCE_SWAP FIXED 20)",
                     "description (TEXT HEIGHT + Hug)"
                 ]
+            },
+            "RadioButtonCard": {
+                "nodeId": "4498:68",
+                "description": "AI-READY COMPONENT: RadioButtonCard is the card/row variation of RadioButton for mutually exclusive choices presented as selectable full-width rows (e.g. Sim/Não). Master demo width is FIXED 343 (mobile exemplar); instances should Fill container. Use when the option needs a full-width tappable surface with radio + label + optional helper description — not only the compact RadioButton. Variants: state=default|hover|focus|disabled; checked=false|true (same axes vocabulary as RadioButton). Props: label (TEXT); description (TEXT, default 'Texto de descrição abaixo do label do radio'); showDescription (BOOLEAN, default true). Composition: card shell + radioControl (20, top-aligned) + labelContent (label body/medium/medium + description body/small/regular); hover adds absolute stateLayer with interactive/hover. Description uses text/secondary (text/placeholder when disabled), matching RadioButton helper text; labelContent gap spacing/050. checked=true uses color/background-surface/1 + color/border-feedback/primary on the shell and color/actions/primary on radioControl (stroke border/width/050). checked=false uses color/background-surface/0 + color/border/1 (radio stroke border/width/025). hover uses an absolute stateLayer fill interactive/hover over the shell. focus uses interactive/focus on the shell stroke. disabled uses color/border/2 + text/placeholder on label and description; disabled+checked radioControl stroke weight matches RadioButton (border/width/025). Shell stroke border/width/012; radius border/radius/400; radioControl radius border/radius/full; pad/gap spacing/200|100. Do not use as Checkbox, Chip, ListItem alone, or Toast. Accessibility: role=radio; aria-checked; aria-describedby when description is shown; group in radiogroup; card surface is the hit target. React mapping: RadioButtonCard(state, checked, label, description, showDescription). Code Connect is not configured.",
+                "variants": {
+                    "state": [
+                        "default",
+                        "hover",
+                        "focus",
+                        "disabled"
+                    ],
+                    "checked": [
+                        "false",
+                        "true"
+                    ]
+                },
+                "props": {
+                    "state": "default | hover | focus | disabled",
+                    "checked": "false | true",
+                    "label": "TEXT — option label (default \"Label\")",
+                    "description": "TEXT — helper text below label (default \"Texto de descrição abaixo do label do radio\")",
+                    "showDescription": "boolean — toggles description visibility (default true)"
+                },
+                "rules": {
+                    "vsRadioButton": "Use RadioButtonCard for full-width tappable card/row choices with optional description; use RadioButton for compact non-card text+description options",
+                    "hoverStateLayer": "state=hover: absolute stateLayer fill interactive/hover over shell (clipsContent true); radius matches border/radius/400",
+                    "checkedVisual": "checked=true: shell surface/1 + border-feedback/primary; radioControl actions/primary @ border/width/050",
+                    "uncheckedVisual": "checked=false: shell surface/0 + border/1; radioControl border/1 @ border/width/025 (focus unchecked radio uses border/2)",
+                    "disabledAlign": "disabled+checked radioControl stroke uses border/width/025 (2) — aligned with RadioButton",
+                    "demoWidth": "Master FIXED 343 mobile exemplar; instances should Fill container",
+                    "usage": "Do not use as Checkbox, Chip, ListItem alone, or Toast",
+                    "grouping": "Related options belong in a RadioGroup (role=radiogroup)",
+                    "descriptionParity": "Mirrors RadioButton helper text: description TEXT + showDescription BOOLEAN; body/small/regular; text/secondary (placeholder when disabled); labelContent gap spacing/050",
+                    "composition": "radioControl (20, counterAxisAlign MIN/top) + labelContent (label + description); hover prepends absolute stateLayer"
+                },
+                "tokenRules": [
+                    "color/background-surface/0 | color/background-surface/1",
+                    "color/border/1 | color/border/2 | color/border-feedback/primary",
+                    "interactive/hover (hover stateLayer) | interactive/focus (shell stroke)",
+                    "color/actions/primary (checked radioControl stroke)",
+                    "text/primary | text/placeholder",
+                    "body/medium/medium",
+                    "border/radius/400 (shell) | border/radius/full (radioControl)",
+                    "border/width/012 (shell) | border/width/025 (unchecked/disabled radio) | border/width/050 (checked radio)",
+                    "spacing/200 (pad) | spacing/100 (gap)",
+                    "text/secondary for description (enabled); text/placeholder when disabled",
+                    "body/small/regular for description",
+                    "spacing/050 (labelContent gap between label and description)"
+                ],
+                "accessibility": "role=radio; aria-checked reflects checked; aria-disabled when disabled; aria-describedby when description is shown; visible focus on shell; card surface is the hit target; related options in RadioGroup with role=radiogroup.",
+                "composition": [
+                    "radioControl (20, top-aligned) + labelContent (label + description)",
+                    "stateLayer absolute on hover (interactive/hover)"
+                ],
+                "reactMapping": "RadioButtonCard(state, checked, label, description, showDescription)"
             }
         },
         "recentUpdates": [
+            {
+                "id": "radiobuttoncard-description",
+                "date": "2026-07-28",
+                "summary": "RadioButtonCard: description helper text + showDescription; AI-READY + storybook."
+            },
+            {
+                "id": "radiobuttoncard-audit-apply",
+                "date": "2026-07-28",
+                "summary": "RadioButtonCard: card/row radio; hover stateLayer; token binds; docs seeded."
+            },
+            {
+                "id": "app-header-pad-200",
+                "date": "2026-07-28",
+                "summary": "AppHeader: lateral padding → spacing/200 across global|small|medium|large; docs synced."
+            },
             {
                 "id": "product-theme-catalog",
                 "date": "2026-07-28",

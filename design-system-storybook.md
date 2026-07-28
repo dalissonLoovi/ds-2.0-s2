@@ -3,8 +3,8 @@
 > **Arquivo Figma:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940)  
 > **File key:** `mHm12Zu9tgNmaSYnooihE5`  
 > **Schema:** ds-storybook-metadata/v2  
-> **Atualizado em:** 2026-07-28T18:00:00-03:00  
-> **Revision:** 2026-07-28-product-theme-docs
+> **Atualizado em:** 2026-07-28T20:20:00-03:00  
+> **Revision:** 2026-07-28-radiobuttoncard-description
 
 Component documentation, controls, variant options and AI-Ready rules for Storybook docs. Token values remain under tokens.
 
@@ -372,7 +372,8 @@ Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
 - **globalGreetingCharacteristic:** `hierarchy=global` keeps greeting TEXT with `body/large/medium` — does **not** nest TextHeader
 - **inverseTextHeader:** `appearance=inverse`: nested TextHeader title → `text/on-color`; default keeps `text/primary|secondary`
 - **smallLayoutFlow:** `small|small-centered` × specific|super-app: `leadingActions` + `headingContent` FILL + `trailingActions`; keepers preserve optical center — do not bind slot `visible` to show*
-- **mediumLargeFlow:** `medium|large`: `headerControls` SPACE_BETWEEN with keepers above `headingContent`; no legacy `action` layer
+- **mediumLargeFlow:** `medium|large`: `headerControls` SPACE_BETWEEN with keepers above `headingContent`; root gap `spacing/100`; pad `spacing/200` horiz + `paddingBottom spacing/150` (paddingTop 0)
+- **horizontalPad:** all layouts bind `paddingLeft|paddingRight` → `spacing/200` (replaces legacy global `spacing/300` and small `spacing/050` horiz)
 - **leadingOpticalCenter:** `showAction=false` must not collapse the leading slot — `leadingSlotKeeper` keeps width
 - **trailingSemantics:** `firstTrailingAction`=search; `secondTrailingAction`=bell; Button text/md icon-only FIXED 48
 - **noLegacyAction:** Use `leadingAction` only — remove/unexpose legacy `action`
@@ -398,9 +399,10 @@ Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
 - `text/secondary` \| `text/on-color-disabled` for supporting text
 - `body/large/medium` for global greeting (characteristic — not TextHeader)
 - `heading/h3/medium` via TextHeader `size=small` on `layout=small|small-centered`
-- global: `spacing/050` vert + `spacing/300` horiz; `spacing/150` leadingCluster gap
-- small\|small-centered: `spacing/100` vert + `spacing/050` horiz; `spacing/0` gap
-- medium\|large: `spacing/100` root gap + `spacing/150` paddingBottom
+- all layouts: `spacing/200` horiz pad
+- global: `spacing/050` vert + `spacing/200` horiz; `spacing/150` leadingCluster gap
+- small\|small-centered (specific|super-app): `spacing/100` vert + `spacing/200` horiz; `spacing/0` gap
+- medium\|large: `spacing/200` horiz + `spacing/150` paddingBottom (paddingTop 0) + `spacing/100` root gap
 - `color/border/2` for profileMenu stroke
 - Local DS icons with `{icon}-path`: `menu-2-outline`, `bell-outline`, `arrow-left-outline`, `search-outline`, `plus-outline`, `user-outline`
 
@@ -3816,7 +3818,7 @@ role=progressbar with aria-valuemin=0, aria-valuemax=100, aria-valuenow; if show
 
 ## RadioButton
 
-**Node ID:** `3423:120`
+**Node ID:** `3653:5279`
 
 AI-READY COMPONENT: RadioButton is a selectable control used when users must choose one option from a mutually exclusive group. Use checked=true for the selected option and checked=false for unselected options. Use state=default, hover, focus or disabled to represent interaction state. Use label for the primary option text and description for optional supporting text. Use showLabel, showDescription and showContent only to control visible content slots. Do not use RadioButton as a Checkbox, Toggle, Button, Chip, MenuItem or standalone multiple-selection control. Accessibility: expose the control with role=radio, reflect checked state with aria-checked, use aria-disabled when disabled, preserve visible focus, and place related options inside a RadioGroup with role=radiogroup. Token rule: use existing DS variables only (color/actions/primary for checked, color/border/1|2, interactive/hover|focus, text/primary|secondary|placeholder, border/radius/full|0, spacing/025|050|200|250|300). React mapping: RadioButton(label, description, showLabel, showDescription, showContent, state, checked).
 
@@ -3841,6 +3843,7 @@ AI-READY COMPONENT: RadioButton is a selectable control used when users must cho
 
 - **usage:** Do not use as Checkbox, Toggle, Button, Chip, MenuItem or standalone multiple-selection control
 - **grouping:** Related options belong in a RadioGroup (role=radiogroup)
+- **vsRadioButtonCard:** For full-width card/row options use `RadioButtonCard` (`4498:68`)
 
 ### Token rules
 
@@ -3856,6 +3859,61 @@ role=radio; aria-checked reflects checked; aria-disabled when disabled; visible 
 
 ---
 
+
+
+## RadioButtonCard
+
+**Node ID:** `4498:68`
+
+AI-READY COMPONENT: RadioButtonCard is the card/row variation of RadioButton for mutually exclusive choices presented as selectable full-width rows (e.g. Sim/Não). Master demo width is FIXED 343 (mobile exemplar); instances should Fill container. Use when the option needs a full-width tappable surface with radio + label + optional helper description. Variants: state=default|hover|focus|disabled; checked=false|true. Props: label (TEXT); description (TEXT, default helper copy); showDescription (BOOLEAN, default true). Composition: radioControl (20, top-aligned) + labelContent (label + description); hover adds absolute stateLayer with interactive/hover. Description: body/small/regular + text/secondary (text/placeholder when disabled), gap spacing/050 — parity with RadioButton. React mapping: RadioButtonCard(state, checked, label, description, showDescription).
+
+### Variants
+
+- **state:** default | hover | focus | disabled
+- **checked:** false | true
+
+### Props
+
+| Prop | Tipo / valores |
+|---|---|
+| `state` | default \| hover \| focus \| disabled |
+| `checked` | false \| true |
+| `label` | TEXT — option label (default `Label`) |
+| `description` | TEXT — helper below label (default `Texto de descrição abaixo do label do radio`) |
+| `showDescription` | boolean — toggles description (default true) |
+
+### Rules
+
+- **descriptionParity:** mirrors RadioButton helper text (`description` + `showDescription`; `body/small/regular`; `text/secondary` / `text/placeholder` disabled)
+- **vsRadioButton:** full-width card/row → RadioButtonCard; compact non-card → RadioButton
+- **hoverStateLayer:** `state=hover` absolute `stateLayer` fill `interactive/hover`
+- **disabledAlign:** disabled+checked radio stroke `border/width/025`
+- **demoWidth:** master FIXED 343; instances Fill container
+- **usage:** Do not use as Checkbox, Chip, ListItem alone, or Toast
+- **grouping:** Related options in RadioGroup (`role=radiogroup`)
+
+### Token rules
+
+- `color/background-surface/0` | `color/background-surface/1`
+- `color/border/1` | `color/border/2` | `color/border-feedback/primary`
+- `interactive/hover` (hover stateLayer) | `interactive/focus` (shell stroke)
+- `color/actions/primary` (checked radioControl stroke)
+- `text/primary` | `text/secondary` (description) | `text/placeholder` (disabled)
+- `body/medium/medium` (label) | `body/small/regular` (description)
+- `border/radius/400` (shell) | `border/radius/full` (radioControl)
+- `border/width/012` | `border/width/025` | `border/width/050`
+- `spacing/200` (pad) | `spacing/100` (gap) | `spacing/050` (labelContent gap)
+
+### Accessibility
+
+role=radio; aria-checked; aria-disabled when disabled; aria-describedby when description is shown; visible focus on shell; card surface is the hit target; related options in RadioGroup.
+
+### Composition
+
+- radioControl (20, top-aligned) + labelContent (label + description)
+- stateLayer absolute on hover (`interactive/hover`)
+
+---
 
 ## StepProgressIndicator
 
@@ -5727,6 +5785,9 @@ Expose referral progress in text (e.g. 2 de 10 indicaÃ§Ãµes, 20% desconto); 
 
 ## Atualizações recentes
 
+- **radiobuttoncard-description:** RadioButtonCard: description helper text + showDescription; AI-READY + storybook.
+- **radiobuttoncard-audit-apply:** RadioButtonCard: card/row radio; hover stateLayer; token binds; docs seeded.
+- **app-header-pad-200:** AppHeader: lateral padding → spacing/200 across global|small|medium|large; docs synced.
 - **product-theme-catalog:** product-theme docs: complete mode matrix for AppHeader (8), Button (6), ModalHeader (3), Input (1), InputTextArea (1). Switch mode to preview; no per-product component forks.
 - **alert-overlay-token:** Alert: overlay paint → color/elevation/inverse-3 @ ~48% opacity; docs synced.
 - **alert-audit-apply:** Alert: seed docs; icon *-path; clear icon fills; AI-READY + actionLabel; dark overlay characteristic; docs synced.
