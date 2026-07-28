@@ -54,3 +54,46 @@ Multi-product icons use Library Swap plus a shared DS name contract (*-outline /
 - Put Hugeicons native names in S2 INSTANCE_SWAP preferredValues
 - Expect 1:1 alias coverage of the entire Tabler set
 
+
+
+## Product theme (`product-theme`)
+
+Multi-product theming for S2. One published component master stays mode-aware via product-theme aliases — switch escritorio-virtual | site-loovi | app-cliente to preview. Do not fork components per product; do not hardcode product fills/radii on themed slots.
+
+| Field | Value |
+| --- | --- |
+| Collection | `product-theme` |
+| Modes | `escritorio-virtual` \| `site-loovi` \| `app-cliente` |
+| Components | `AppHeader`, `Button`, `ModalHeader`, `Input`, `InputTextArea` |
+| Variable count | 19 |
+
+| Token | Component | Bind | escritorio-virtual | site-loovi | app-cliente |
+| --- | --- | --- | --- | --- | --- |
+| `component/app-header/inverse/background` | AppHeader | appearance=inverse root fills | `color/background-surface/inverse-3` | `color/background-surface/brand` | `color/background-surface/brand` |
+| `component/app-header/leading-action/background` | AppHeader | leadingAction fills (specific\|super-app) | `color/background-surface/0` | `color/background-surface/2` | `color/background-surface/2` |
+| `component/app-header/leading-action/radius` | AppHeader | leadingAction corner radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/app-header/avatar/background` | AppHeader | Avatar fill on hierarchy=global × appearance=inverse | `color/background-surface/3` | `rgba(255,255,255,0.16)` | `rgba(255,255,255,0.16)` |
+| `component/app-header/avatar/icon-color` | AppHeader | Avatar user-outline stroke on global × inverse | `text/primary` | `text/on-color` | `text/on-color` |
+| `component/app-header/title/font-size` | AppHeader | title on small\|small-centered × default × specific | `heading/h3/font-size` | `heading/h3/font-size` | `body/medium/font-size` |
+| `component/app-header/title/line-height` | AppHeader | title on small\|small-centered × default × specific | `heading/h3/line-height` | `heading/h3/line-height` | `body/medium/line-height` |
+| `component/app-header/title/font-weight` | AppHeader | title on small\|small-centered × default × specific | `font-weight/medium` | `font-weight/medium` | `font-weight/regular` |
+| `component/button/container/background` | Button | solid container fill (primary intent) | `color/actions/primary` | `color/background-feedback-primary/success` | `color/actions/primary` |
+| `component/button/container/radius/lg` | Button | container radius on size=md\|lg | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/button/container/radius/sm` | Button | container radius on size=sm | `border/radius/150` | `border/radius/full` | `border/radius/full` |
+| `component/button/label/color` | Button | solid label text fill | `text/on-color` | `text/primary` | `text/on-color` |
+| `component/button/label/font-weight` | Button | label font weight | `font-weight/medium` | `font-weight/semi-bold` | `font-weight/medium` |
+| `component/button/icon/color` | Button | solid/outline icon stroke where bound | `text/on-color` | `text/primary` | `text/on-color` |
+| `component/modal-header/close-action/background` | ModalHeader | closeAction Button fill | `color/background-surface/0` | `color/background-surface/2` | `color/background-surface/2` |
+| `component/modal-header/close-action/radius` | ModalHeader | closeAction Button corner radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/modal-header/close-action/size-mobile` | ModalHeader | closeAction hit size on layout=mobile (raw px per mode) | `40` | `40` | `32` |
+| `component/input/field/radius` | Input | outlined field container corner radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/input-textarea/field/radius` | InputTextArea | outlined multiline field container corner radius | `border/radius/200` | `border/radius/500` | `border/radius/500` |
+
+### Notes
+
+- site-loovi solid Button uses success feedback fill + text/primary label/icon (not on-color).
+- app-cliente AppHeader titles on small|small-centered × default × specific use body/medium/regular; apply text-transform:uppercase in product UI (Figma textCase stays ORIGINAL).
+- app-cliente ModalHeader close-action size-mobile is 32px; EV and site-loovi stay 40px.
+- Avatar backgrounds on site-loovi|app-cliente use raw rgba white @ 16% (no semantic alias yet).
+- Input field radius: EV→200; site-loovi|app-cliente→full. InputTextArea field radius: EV→200; site-loovi|app-cliente→500 (not full).
+

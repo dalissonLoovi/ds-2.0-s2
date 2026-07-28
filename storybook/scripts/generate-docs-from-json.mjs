@@ -116,6 +116,92 @@ function tokenRulesSection(tokenRules) {
   return '## Token rules\n\n' + bulletList(list) + '\n';
 }
 
+function productThemeSection(productTheme) {
+  if (!productTheme || typeof productTheme !== 'object') return '';
+  const modes = asList(productTheme.modes);
+  const tokens = asList(productTheme.tokens);
+  if (!modes.length && !tokens.length) return '';
+
+  let md = '## Product theme\n\n';
+  if (productTheme.collection) {
+    md += `Collection: \`${escapeMdx(productTheme.collection)}\`\n\n`;
+  }
+  if (modes.length) {
+    md += `Modes: ${modes.map((m) => `\`${escapeMdx(m)}\``).join(' | ')}\n\n`;
+  }
+  if (productTheme.summary) {
+    md += `${escapeMdx(productTheme.summary)}\n\n`;
+  }
+
+  if (tokens.length) {
+    const modeHeaders = modes.length
+      ? modes
+      : [...new Set(tokens.flatMap((t) => Object.keys(t.aliases || t.aliasByMode || {})))];
+    md += `| Token | Bind | ${modeHeaders.map((m) => escapeTableCell(m)).join(' | ')} |\n`;
+    md += `| --- | --- | ${modeHeaders.map(() => '---').join(' | ')} |\n`;
+    for (const t of tokens) {
+      const aliases = t.aliases || t.aliasByMode || {};
+      const cells = modeHeaders.map((m) => {
+        const val = aliases[m];
+        return val == null ? '—' : `\`${escapeTableCell(val)}\``;
+      });
+      md += `| \`${escapeTableCell(t.name || '')}\` | ${escapeTableCell(t.binds || '')} | ${cells.join(' | ')} |\n`;
+    }
+    md += '\n';
+  }
+
+  const notes = asList(productTheme.notes);
+  if (notes.length) {
+    md += '### Notes\n\n' + bulletList(notes) + '\n';
+  }
+  return md;
+}
+
+function productThemeGlobalSection(productTheme, metaProductTheme) {
+  const pt = productTheme || metaProductTheme;
+  if (!pt || typeof pt !== 'object') return '';
+  const modes = asList(pt.modes);
+  const tokens = asList(pt.tokens || metaProductTheme?.tokens);
+  const components = asList(pt.components || Object.keys(metaProductTheme?.byComponent || {}));
+  const notes = asList(pt.notes || metaProductTheme?.notes);
+
+  let md = `
+## Product theme (\`product-theme\`)
+
+${escapeMdx(pt.summary || metaProductTheme?.summary || '')}
+
+| Field | Value |
+| --- | --- |
+| Collection | \`${escapeMdx(pt.collection || metaProductTheme?.collection || 'product-theme')}\` |
+| Modes | ${modes.map((m) => `\`${escapeMdx(m)}\``).join(' \\| ') || '—'} |
+| Components | ${components.map((c) => `\`${escapeMdx(c)}\``).join(', ') || '—'} |
+| Variable count | ${escapeMdx(String(metaProductTheme?.variableCount ?? tokens.length ?? '—'))} |
+
+`;
+
+  if (tokens.length) {
+    const modeHeaders = modes.length
+      ? modes
+      : [...new Set(tokens.flatMap((t) => Object.keys(t.aliases || t.aliasByMode || {})))];
+    md += `| Token | Component | Bind | ${modeHeaders.map((m) => escapeTableCell(m)).join(' | ')} |\n`;
+    md += `| --- | --- | --- | ${modeHeaders.map(() => '---').join(' | ')} |\n`;
+    for (const t of tokens) {
+      const aliases = t.aliases || t.aliasByMode || {};
+      const cells = modeHeaders.map((m) => {
+        const val = aliases[m];
+        return val == null ? '—' : `\`${escapeTableCell(val)}\``;
+      });
+      md += `| \`${escapeTableCell(t.name || '')}\` | ${escapeTableCell(t.component || '')} | ${escapeTableCell(t.binds || '')} | ${cells.join(' | ')} |\n`;
+    }
+    md += '\n';
+  }
+
+  if (notes.length) {
+    md += '### Notes\n\n' + bulletList(notes) + '\n';
+  }
+  return md;
+}
+
 function compositionSection(composition) {
   const list = asList(composition);
   if (!list.length) return '';
@@ -244,7 +330,8 @@ ${bulletList(libs.doNot)}
 - **Disabled spelling:** ${escapeMdx(gov.disabledSpelling || 'use disabled, never disable')}
 - **Component descriptions:** ${escapeMdx(gov.componentDescriptions || 'AI-Ready aligned with variables and kebab-case variants')}
 - **Icon layer naming:** ${escapeMdx(gov.iconLayerNaming || '{icon-name}-path instead of Vector')}
-${iconLibrariesSection}`;
+${iconLibrariesSection}
+${productThemeGlobalSection(gr.productTheme, meta.productTheme)}`;
 }
 
 function generateFeedback(storybook) {
@@ -320,6 +407,7 @@ ${escapeMdx(component.description || '_No description._')}
   md += variantsSection(component.variants);
   md += propsSection(component.props);
   md += statusMapSection(component.statusMap);
+  md += productThemeSection(component.productTheme);
   md += rulesSection(component.rules);
   md += tokenRulesSection(component.tokenRules);
 

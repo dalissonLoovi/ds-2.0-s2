@@ -3,8 +3,8 @@
 > **Arquivo Figma:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940)  
 > **File key:** `mHm12Zu9tgNmaSYnooihE5`  
 > **Schema:** ds-storybook-metadata/v2  
-> **Atualizado em:** 2026-07-27T18:50:00-03:00  
-> **Revision:** 2026-07-27-bottom-sheet-header-close-edge
+> **Atualizado em:** 2026-07-28T18:00:00-03:00  
+> **Revision:** 2026-07-28-product-theme-docs
 
 Component documentation, controls, variant options and AI-Ready rules for Storybook docs. Token values remain under tokens.
 
@@ -37,6 +37,50 @@ Component documentation, controls, variant options and AI-Ready rules for Storyb
 - **Escala de Ã­cone:** ver seÃ§Ã£o [Iconografia — escala de tamanho e stroke](#iconografia--escala-de-tamanho-e-stroke)
 - **Libs de Ã­cone (multi-produto):** ver seÃ§Ã£o [Iconografia — libs e Library Swap](#iconografia--libs-e-library-swap)
 - **Brand surface:** `color/background-surface/brand` (`#4967EE` via `primitive-colors/brand-blue`) — fills de chrome brand (`FRAME_FILL`|`SHAPE_FILL`). NÃ£o usar para texto (`text/brand` / `color/palette/brand` = sapphire `#516CE7`) nem aÃ§Ã£o primÃ¡ria (`color/actions/primary` = azure-wave `#4C6BF8`).
+- **Product theme:** ver seÃ§Ã£o [Product theme (`product-theme`)](#product-theme-product-theme)
+
+---
+
+## Product theme (`product-theme`)
+
+Multi-product theming for S2. One published component master stays mode-aware via `product-theme` aliases — switch `escritorio-virtual` | `site-loovi` | `app-cliente` to preview. Do not fork components per product; do not hardcode product fills/radii on themed slots.
+
+| Field | Value |
+|---|---|
+| Collection | `product-theme` (`VariableCollectionId:3218:3688`) |
+| Modes | `escritorio-virtual` \| `site-loovi` \| `app-cliente` |
+| Components | `AppHeader`, `Button`, `ModalHeader`, `Input`, `InputTextArea` |
+| Variable count | 19 |
+
+| Token | Component | Bind | escritorio-virtual | site-loovi | app-cliente |
+|---|---|---|---|---|---|
+| `component/app-header/inverse/background` | AppHeader | `appearance=inverse` root fill | `color/background-surface/inverse-3` | `color/background-surface/brand` | `color/background-surface/brand` |
+| `component/app-header/leading-action/background` | AppHeader | `leadingAction` fill | `color/background-surface/0` | `color/background-surface/2` | `color/background-surface/2` |
+| `component/app-header/leading-action/radius` | AppHeader | `leadingAction` radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/app-header/avatar/background` | AppHeader | Avatar fill (global × inverse) | `color/background-surface/3` | `rgba(255,255,255,0.16)` | `rgba(255,255,255,0.16)` |
+| `component/app-header/avatar/icon-color` | AppHeader | Avatar icon stroke (global × inverse) | `text/primary` | `text/on-color` | `text/on-color` |
+| `component/app-header/title/font-size` | AppHeader | title small\|small-centered × default × specific | `heading/h3/font-size` | `heading/h3/font-size` | `body/medium/font-size` |
+| `component/app-header/title/line-height` | AppHeader | title small\|small-centered × default × specific | `heading/h3/line-height` | `heading/h3/line-height` | `body/medium/line-height` |
+| `component/app-header/title/font-weight` | AppHeader | title small\|small-centered × default × specific | `font-weight/medium` | `font-weight/medium` | `font-weight/regular` |
+| `component/button/container/background` | Button | solid container fill | `color/actions/primary` | `color/background-feedback-primary/success` | `color/actions/primary` |
+| `component/button/container/radius/lg` | Button | radius size=md\|lg | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/button/container/radius/sm` | Button | radius size=sm | `border/radius/150` | `border/radius/full` | `border/radius/full` |
+| `component/button/label/color` | Button | solid label | `text/on-color` | `text/primary` | `text/on-color` |
+| `component/button/label/font-weight` | Button | label weight | `font-weight/medium` | `font-weight/semi-bold` | `font-weight/medium` |
+| `component/button/icon/color` | Button | solid/outline icon | `text/on-color` | `text/primary` | `text/on-color` |
+| `component/modal-header/close-action/background` | ModalHeader | closeAction fill | `color/background-surface/0` | `color/background-surface/2` | `color/background-surface/2` |
+| `component/modal-header/close-action/radius` | ModalHeader | closeAction radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/modal-header/close-action/size-mobile` | ModalHeader | closeAction size (mobile) | `40` | `40` | `32` |
+| `component/input/field/radius` | Input | field corner radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/input-textarea/field/radius` | InputTextArea | field corner radius | `border/radius/200` | `border/radius/500` | `border/radius/500` |
+
+### Notes
+
+- site-loovi solid Button uses success feedback fill + `text/primary` label/icon (not on-color).
+- app-cliente AppHeader titles on `small|small-centered` × default × specific use `body/medium/regular`; apply `text-transform:uppercase` in product UI (Figma `textCase` stays ORIGINAL).
+- app-cliente ModalHeader close-action `size-mobile` is 32px; EV and site-loovi stay 40px.
+- Avatar backgrounds on site-loovi|app-cliente use raw rgba white @ 16% (no semantic alias yet).
+- Input field radius: EV→200; site-loovi|app-cliente→full. InputTextArea field radius: EV→200; site-loovi|app-cliente→500 (not full).
 
 ---
 
@@ -742,6 +786,19 @@ AI-READY COMPONENT: Button triggers an explicit user action. Use variant=solid f
 | `loading` | boolean |
 | `disabled` | boolean |
 
+### Product theme (`product-theme`)
+
+Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
+
+| Token | Bind | escritorio-virtual | site-loovi | app-cliente |
+|---|---|---|---|---|
+| `component/button/container/background` | solid container fill | `color/actions/primary` | `color/background-feedback-primary/success` | `color/actions/primary` |
+| `component/button/container/radius/lg` | radius size=md\|lg | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/button/container/radius/sm` | radius size=sm | `border/radius/150` | `border/radius/full` | `border/radius/full` |
+| `component/button/label/color` | solid label | `text/on-color` | `text/primary` | `text/on-color` |
+| `component/button/label/font-weight` | label weight | `font-weight/medium` | `font-weight/semi-bold` | `font-weight/medium` |
+| `component/button/icon/color` | solid/outline icon | `text/on-color` | `text/primary` | `text/on-color` |
+
 ### Rules
 
 - **leadingIconSizing:**
@@ -750,12 +807,13 @@ AI-READY COMPONENT: Button triggers an explicit user action. Use variant=solid f
   - sm: 16px icon with 1.33px stroke
 - **textPrimaryIcon:** variant=text + intent=primary + disabled=false: leadingIcon (showIcon) uses text/primary across default|hover|focus|pressed|selected|loading
 - **loading:** spinner-only, no label, no leading icon, no trailing icon, centered spinner
+- **productTheme:** mode-aware via `product-theme`; bind solid container/label/icon/radius to `component/button/*` — do not hardcode product fills or pill radii
 
 ### Token rules
 
-- `component/button/container/background`
-- `component/button/container/radius/lg`
-- `component/button/container/radius/sm`
+- `product-theme component/button/container/background`
+- `product-theme component/button/container/radius/lg`
+- `product-theme component/button/container/radius/sm`
 - `component/button/icon/color` for solid/outline icon colors where bound
 - `text/primary` for variant=text + intent=primary leadingIcon (enabled)
 - `component/button/label/color`
@@ -1586,7 +1644,7 @@ Overlay text is content — ensure contrast on photo; prefer concise labels.
 
 **Node ID:** `3873:334`
 
-AI-READY COMPONENT: Input is the Design System 2.0 single-line outlined text field. Visual identity: outlined container (height 56, border/radius/200), floating label cutout on the border for content=value|placeholder, and resting in-field label for content=label — remapped from Material Text field anatomy to local S2 tokens. Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; trailingIcon=true|false; appearance=default|inverse (120 variants). appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error feedback/danger). appearance=inverse (for inverse/dark surfaces): field fill transparent; floatingLabel cutout color/background-surface/inverse-3; default/disabled border color/border/2; label text/on-color (focus text/brand); placeholder and non-error supporting text/on-color-disabled; value text/on-color; on state=disabled all field texts (value/label/placeholder/resting/supporting) use text/placeholder-inverse; leadingIcon and trailingIcon strokes text/on-color (focus text/brand, disabled text/on-color-disabled, error feedback/danger). Feedback colors are unchanged on both appearances — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger + feedback/danger on label/supporting/trailingIconError. Error a11y: state=error always shows trailingIconError (alert-circle-outline) regardless of trailingIcon. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing. Do not use as Textarea, InputPassword, InputNumber, InputSelect, SearchBar or Autocomplete. Prefer explicit labels. Accessibility: associate label; aria-invalid on error; aria-describedby for supporting/error; aria-disabled when disabled; visible focus via interactive/focus. Token rule: local S2 kebab-case only. React mapping: Input(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?). Code Connect is not configured.
+AI-READY COMPONENT: Input is the Design System 2.0 single-line outlined text field. Visual identity: outlined container (height 56, corner radius via product-theme `component/input/field/radius`), floating label cutout on the border for content=value|placeholder, and resting in-field label for content=label — remapped from Material Text field anatomy to local S2 tokens. Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; trailingIcon=true|false; appearance=default|inverse (120 variants). appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error feedback/danger). appearance=inverse (for inverse/dark surfaces): field fill transparent; floatingLabel cutout color/background-surface/inverse-3; default/disabled border color/border/2; label text/on-color (focus text/brand); placeholder and non-error supporting text/on-color-disabled; value text/on-color; on state=disabled all field texts (value/label/placeholder/resting/supporting) use text/placeholder-inverse; leadingIcon and trailingIcon strokes text/on-color (focus text/brand, disabled text/on-color-disabled, error feedback/danger). Feedback colors are unchanged on both appearances — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger + feedback/danger on label/supporting/trailingIconError. Error a11y: state=error always shows trailingIconError (alert-circle-outline) regardless of trailingIcon. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing. Do not use as Textarea, InputPassword, InputNumber, InputSelect, SearchBar or Autocomplete. Prefer explicit labels. Accessibility: associate label; aria-invalid on error; aria-describedby for supporting/error; aria-disabled when disabled; visible focus via interactive/focus. Token rule: local S2 kebab-case + product-theme `component/input/field/radius` (EV→`border/radius/200`; site-loovi|app-cliente→`border/radius/full`). React mapping: Input(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?). Code Connect is not configured.
 
 ### Variants
 
@@ -1613,11 +1671,20 @@ AI-READY COMPONENT: Input is the Design System 2.0 single-line outlined text fie
 | `leading` | INSTANCE_SWAP — local DS outline icon (default `search-outline`) |
 | `trailing` | INSTANCE_SWAP — local DS outline icon (`x-outline`; `alert-circle-outline` on error demos) |
 
+### Product theme (`product-theme`)
+
+Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
+
+| Token | Bind | escritorio-virtual | site-loovi | app-cliente |
+|---|---|---|---|---|
+| `component/input/field/radius` | outlined field corner radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+
 ### Rules
 
 - **materialMatrix:** state × content × leadingIcon × trailingIcon × appearance = 120 outlined variants
 - **appearanceInverse:** `appearance=inverse`: transparent field; floatingLabel cutout `inverse-3` on all inverse states including focus; `border/2`; on-color texts; disabled texts `text/placeholder-inverse`; icon disabled `on-color-disabled`; focus label `text/brand`
-- **outlinedFloatingLabel:** Outlined field h=56, radius/200, floating label cutout
+- **outlinedFloatingLabel:** Outlined field h=56, corner radius via product-theme `component/input/field/radius`, floating label cutout
+- **productTheme:** field radius binds `component/input/field/radius` — EV→200; site-loovi|app-cliente→full
 - **focusCaret:** state=focus is active/pressed typing state; content=value|placeholder show text+caret; content=label raises floating label and shows caret only (empty focused field)
 - **errorTrailingA11y:** state=error always shows trailingIconError (alert-circle-outline) regardless of trailingIcon
 - **contentModes:** value=input+float label; placeholder=placeholder+float label; label=resting empty label only
@@ -1631,7 +1698,8 @@ AI-READY COMPONENT: Input is the Design System 2.0 single-line outlined text fie
 - default: `color/background-surface/0`; `color/border/1`; `text/primary|secondary|placeholder|brand`
 - inverse: transparent field; `color/border/2`; cutout `color/background-surface/inverse-3`; `text/on-color|on-color-disabled`; disabled texts `text/placeholder-inverse`
 - shared feedback: `color/border-feedback/primary|danger`, `interactive/focus`, `feedback/danger`
-- `spacing/050|100|200|300|700`; `border/radius/200`; `border/width/012|025`
+- `product-theme component/input/field/radius` (EV→200; site-loovi|app-cliente→full)
+- `spacing/050|100|200|300|700`; `border/width/012|025`
 - `body/large/regular` value/placeholder/resting; `body/small/regular` floating label/supporting
 
 ### Accessibility
@@ -1644,7 +1712,7 @@ Associate label; aria-invalid on error; aria-describedby for supporting/error; a
 
 **Node ID:** `4052:21848`
 
-AI-READY COMPONENT: InputTextArea is the Design System 2.0 multiline outlined text field — same visual identity as Input (outlined container, floating label cutout, `border/radius/200`) with a taller field (~160), character count, and resize affordance. Use for long text (comments, descriptions, messages). Do not use as single-line Input, InputSelect, InputPassword, InputNumber, or rich-text editor. Variants use an intentional sparse matrix (42 published / 120 theoretical): state × content × leadingIcon × trailingIcon × appearance. state: default | hover | focus | error | disabled. content: value | placeholder | label. leadingIcon/trailingIcon: false | true — true only on content=value samples for default|focus|error × default|inverse. appearance: default | inverse. Anatomy: `field` (leadingIcon? + content + trailingIcon? + countRow + floatingLabel) + `supporting` + `minHeight` (InputTextAreaMinHeight, absolute, exposed; nests InputTextAreaResizeHandle). `countRow` is absolute bottom-right inside field (manual positioning, constraints MAX/MAX) — not auto-layout. `minHeight` is absolute on the field's trailing edge (manual positioning). Props: label, value, placeholder, supportingText, showSupportingText, countText, showCount, leading, trailing (INSTANCE_SWAP). Resize visibility via exposed nested `minHeight` `showResizeHandle`. Token rule: local S2 kebab-case only — focus and error field strokes use `border/width/025` (2px). React mapping: InputTextArea(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, countText, showCount, showResizeHandle?, leading?, trailing?). Code Connect is not configured.
+AI-READY COMPONENT: InputTextArea is the Design System 2.0 multiline outlined text field — same visual identity as Input (outlined container, floating label cutout; corner radius via product-theme `component/input-textarea/field/radius`) with a taller field (~160), character count, and resize affordance. Use for long text (comments, descriptions, messages). Do not use as single-line Input, InputSelect, InputPassword, InputNumber, or rich-text editor. Variants use an intentional sparse matrix (42 published / 120 theoretical): state × content × leadingIcon × trailingIcon × appearance. state: default | hover | focus | error | disabled. content: value | placeholder | label. leadingIcon/trailingIcon: false | true — true only on content=value samples for default|focus|error × default|inverse. appearance: default | inverse. Anatomy: `field` (leadingIcon? + content + trailingIcon? + countRow + floatingLabel) + `supporting` + `minHeight` (InputTextAreaMinHeight, absolute, exposed; nests InputTextAreaResizeHandle). `countRow` is absolute bottom-right inside field (manual positioning, constraints MAX/MAX) — not auto-layout. `minHeight` is absolute on the field's trailing edge (manual positioning). Props: label, value, placeholder, supportingText, showSupportingText, countText, showCount, leading, trailing (INSTANCE_SWAP). Resize visibility via exposed nested `minHeight` `showResizeHandle`. Token rule: local S2 kebab-case + product-theme `component/input-textarea/field/radius` (EV→`border/radius/200`; site-loovi|app-cliente→`border/radius/500`) — focus and error field strokes use `border/width/025` (2px). React mapping: InputTextArea(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, countText, showCount, showResizeHandle?, leading?, trailing?). Code Connect is not configured.
 
 ### Variants
 
@@ -1673,11 +1741,20 @@ AI-READY COMPONENT: InputTextArea is the Design System 2.0 multiline outlined te
 | `leading` / `trailing` | INSTANCE_SWAP — local DS outline |
 | `showResizeHandle` | via exposed nested `minHeight` |
 
+### Product theme (`product-theme`)
+
+Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
+
+| Token | Bind | escritorio-virtual | site-loovi | app-cliente |
+|---|---|---|---|---|
+| `component/input-textarea/field/radius` | outlined multiline field corner radius | `border/radius/200` | `border/radius/500` | `border/radius/500` |
+
 ### Rules
 
 - **sparseMatrix:** Intentional sparse 42/120 — icon=true only on content=value × default|focus|error × default|inverse
 - **absoluteCountRow:** `countRow` is ABSOLUTE bottom-right inside field (manual MAX/MAX) — intentional
 - **absoluteMinHeight:** `minHeight` (InputTextAreaMinHeight) is ABSOLUTE on trailing edge — intentional; exposed
+- **productTheme:** field radius binds `component/input-textarea/field/radius` — EV→200; site-loovi|app-cliente→500 (not full)
 - **vsSingleLine:** Not single-line Input, InputSelect, InputPassword, InputNumber, or rich-text
 - **errorStroke:** `state=focus` and `state=error` use `border/width/025` (2px); other states `border/width/012`
 
@@ -1687,7 +1764,8 @@ AI-READY COMPONENT: InputTextArea is the Design System 2.0 multiline outlined te
 - inverse: transparent field; `color/border/2`; cutout `color/background-surface/inverse-3`
 - hover `color/border-feedback/primary`; focus `interactive/focus`; error `color/border-feedback/danger`
 - `spacing/150` (root paddingTop); `spacing/200|300` (field padding)
-- `border/radius/200`; `border/width/012` (default/hover/disabled); `border/width/025` (focus/error, 2px)
+- `product-theme component/input-textarea/field/radius` (EV→200; site-loovi|app-cliente→500)
+- `border/width/012` (default/hover/disabled); `border/width/025` (focus/error, 2px)
 - `body/large/regular` (value/placeholder); `caption/large/regular` (label/count/supporting)
 
 ### Accessibility
@@ -3557,7 +3635,7 @@ ModalHeader, Button, x-outline, ModalCheckItem (optional guideline rows in slot)
 
 **Node ID:** `3786:9403`
 
-AI-READY COMPONENT: ModalHeader is the header block used only inside Modal surfaces. Use layout=desktop to match Modal platform=web and layout=mobile to match Modal platform=mobile|mobile-landscape while keeping the same content hierarchy. Use alignment=start for left-aligned title/label (default) and alignment=center for optically centered title/label with a leadingSpacer matching the close action width. Props: title controls the modal heading; label controls the optional supporting label above the title; showLabel toggles that label; showCloseAction toggles the local icon-only Button used to dismiss the modal. Composition: alignment=start uses headingContent + trailingActions; alignment=center uses leadingSpacer + headingContent + trailingActions. closeAction must remain a local Button with x-outline, size=sm, variant=text, intent=primary and hidden visible label text set to Fechar modal for accessible mapping. Typography: layout=desktop title uses heading/h1/semi-bold; layout=mobile title uses heading/h3/semi-bold; label uses body/small/regular. Do not use ModalHeader as AppHeader, page header, card header, BottomSheet header or navigation. Token rule: use existing DS kebab-case variables only - text/primary, text/secondary, spacing/0|050|100|200|250|300|500, border/radius/0, plus nested Button tokens. Inherit the Modal surface instead of adding an independent background. Accessibility: the Modal owns role=dialog, aria-modal, focus trap and Escape behavior. The title must be referenced by aria-labelledby. The close action is a button with aria-label=Fechar modal and must be keyboard accessible. React mapping: ModalHeader(layout, alignment, title, label, showLabel, showCloseAction). Code Connect is not configured.
+AI-READY COMPONENT: ModalHeader is the header block used only inside Modal surfaces. Use layout=desktop to match Modal platform=web and layout=mobile to match Modal platform=mobile|mobile-landscape while keeping the same content hierarchy. Use alignment=start for left-aligned title/label (default) and alignment=center for optically centered title/label with a leadingSpacer matching the close action width. Props: title controls the modal heading; label controls the optional supporting label above the title; showLabel toggles that label; showCloseAction toggles the local icon-only Button used to dismiss the modal. Composition: alignment=start uses headingContent + trailingActions; alignment=center uses leadingSpacer + headingContent + trailingActions. closeAction must remain a local Button with x-outline, size=sm, variant=text, intent=primary and hidden visible label text set to Fechar modal for accessible mapping. Typography: layout=desktop title uses heading/h1/semi-bold; layout=mobile title uses heading/h3/semi-bold; label uses body/small/regular. Do not use ModalHeader as AppHeader, page header, card header, BottomSheet header or navigation. Token rule: local S2 kebab-case + product-theme `component/modal-header/close-action/*` (background, radius, size-mobile). Modes `escritorio-virtual`|`site-loovi`|`app-cliente` — do not hardcode close chip fill/radius/size. Inherit the Modal surface instead of adding an independent background. Accessibility: the Modal owns role=dialog, aria-modal, focus trap and Escape behavior. The title must be referenced by aria-labelledby. The close action is a button with aria-label=Fechar modal and must be keyboard accessible. React mapping: ModalHeader(layout, alignment, title, label, showLabel, showCloseAction). Code Connect is not configured.
 
 ### Variants
 
@@ -3575,20 +3653,33 @@ AI-READY COMPONENT: ModalHeader is the header block used only inside Modal surfa
 | `showLabel` | boolean — toggles label |
 | `showCloseAction` | boolean — toggles closeAction Button |
 
+### Product theme (`product-theme`)
+
+Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
+
+| Token | Bind | escritorio-virtual | site-loovi | app-cliente |
+|---|---|---|---|---|
+| `component/modal-header/close-action/background` | closeAction fill | `color/background-surface/0` | `color/background-surface/2` | `color/background-surface/2` |
+| `component/modal-header/close-action/radius` | closeAction radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/modal-header/close-action/size-mobile` | closeAction size (mobile) | `40` | `40` | `32` |
+
 ### Rules
 
 - **composition:** start: headingContent + trailingActions; center: leadingSpacer + headingContent + trailingActions
 - **closeAction:** Button text/sm/primary + x-outline; accessible label Fechar modal; showLabel=false
 - **typography:** desktop title heading/h1/semi-bold; mobile title heading/h3/semi-bold; label body/small/regular
 - **centerOptical:** alignment=center uses leadingSpacer matching close width so title centers optically
+- **productTheme:** closeAction binds `component/modal-header/close-action/background` + radius + size-mobile (EV: surface/0 + 200 + 40; site-loovi: surface/2 + full + 40; app-cliente: surface/2 + full + 32)
 - **vsAppHeader:** Do not use as AppHeader, page header, card header, BottomSheet header or navigation
 - **parentOnly:** Use only inside Modal
 
 ### Token rules
 
+- `product-theme component/modal-header/close-action/background`
+- `product-theme component/modal-header/close-action/radius`
+- `product-theme component/modal-header/close-action/size-mobile` (EV|site-loovi=40; app-cliente=32)
 - `text/primary` | `text/secondary`
 - `spacing/0|050|100|200|250|300|500`
-- `border/radius/0`
 - nested Button tokens
 
 ### Accessibility
@@ -5636,6 +5727,7 @@ Expose referral progress in text (e.g. 2 de 10 indicaÃ§Ãµes, 20% desconto); 
 
 ## Atualizações recentes
 
+- **product-theme-catalog:** product-theme docs: complete mode matrix for AppHeader (8), Button (6), ModalHeader (3), Input (1), InputTextArea (1). Switch mode to preview; no per-product component forks.
 - **alert-overlay-token:** Alert: overlay paint → color/elevation/inverse-3 @ ~48% opacity; docs synced.
 - **alert-audit-apply:** Alert: seed docs; icon *-path; clear icon fills; AI-READY + actionLabel; dark overlay characteristic; docs synced.
 - **modal-audit-apply:** Modal audit apply: mobile-landscape docs; spacing/050 + sheetContent spacing/0 binds; elevation tokenRules; nested ModalHeader props; docs synced.

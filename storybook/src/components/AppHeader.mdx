@@ -34,16 +34,33 @@ AI-READY COMPONENT: AppHeader is the top page/application header used to identif
 | `title` | TEXT via exposed headingContent TextHeader (non-global) |
 | `description` | TEXT via exposed headingContent TextHeader (non-global) |
 
+## Product theme
+
+Collection: `product-theme`
+
+Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
+
+| Token | Bind | escritorio-virtual | site-loovi | app-cliente |
+| --- | --- | --- | --- | --- |
+| `component/app-header/inverse/background` | appearance=inverse root fills | `color/background-surface/inverse-3` | `color/background-surface/brand` | `color/background-surface/brand` |
+| `component/app-header/leading-action/background` | leadingAction fills (specific\|super-app) | `color/background-surface/0` | `color/background-surface/2` | `color/background-surface/2` |
+| `component/app-header/leading-action/radius` | leadingAction corner radius (specific\|super-app) | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/app-header/avatar/background` | Avatar fill on hierarchy=global × appearance=inverse | `color/background-surface/3` | `rgba(255,255,255,0.16)` | `rgba(255,255,255,0.16)` |
+| `component/app-header/avatar/icon-color` | Avatar user-outline stroke on hierarchy=global × appearance=inverse | `text/primary` | `text/on-color` | `text/on-color` |
+| `component/app-header/title/font-size` | title fontSize on small\|small-centered × default × specific | `heading/h3/font-size` | `heading/h3/font-size` | `body/medium/font-size` |
+| `component/app-header/title/line-height` | title lineHeight on small\|small-centered × default × specific | `heading/h3/line-height` | `heading/h3/line-height` | `body/medium/line-height` |
+| `component/app-header/title/font-weight` | title fontStyle on small\|small-centered × default × specific | `font-weight/medium` | `font-weight/medium` | `font-weight/regular` |
+
 ## Rules
 
 - **intentionalSparse:** 11/24 published — global: small-centered × default|inverse; super-app: small-centered × default only; specific: all layouts × appearance
 - **globalAnatomy:** hierarchy=global: leadingCluster (Avatar exposed + greeting) + trailingActions — not headingContent/back
-- **superAppAnatomy:** hierarchy=super-app: leadingActions (FIXED 96 + keeper + menu leadingAction) | headingContent TextHeader size=small alignment=center FILL | trailingActions HUG (search optional + bell + profileMenu)
+- **superAppAnatomy:** hierarchy=super-app: leadingActions FIXED 40 (keeper + menu leadingAction sm) | headingContent TextHeader size=small alignment=center FILL | trailingActions HUG (search optional sm + bell sm + profileMenu 48)
 - **profileMenuScope:** showProfileMenu / profileMenu published only on hierarchy=super-app
 - **painelHomeTrailing:** Painel Home keeps only bell visible; search via showFirstTrailingAction=false by default
 - **localTextHeaderOnly:** headingContent must be local TextHeader (3667:4129) — no remote App bar Content / orphan Text header sets
 - **globalGreetingCharacteristic:** hierarchy=global keeps dedicated greeting TEXT with body/large/medium — does NOT nest TextHeader
-- **trailingSemantics:** firstTrailingAction=search; secondTrailingAction=bell; local Button text/md icon-only FIXED 48
+- **trailingSemantics:** firstTrailingAction=search; secondTrailingAction=bell; local Button text/sm icon-only FIXED 40 (keepers + leading/trailing slots FIXED 40; clear minWidth leftovers from md/48)
 - **noLegacyAction:** Do not expose or keep a legacy action layer — use leadingAction only
 - **painelHome:** appearance=inverse|default + hierarchy=global + layout=small-centered; greeting prop; Avatar + bell
 - **vsSystemOrgHeader:** Do not use SystemHeader or OrganizationHeader for mobile app chrome
@@ -51,15 +68,16 @@ AI-READY COMPONENT: AppHeader is the top page/application header used to identif
 - **globalTrailingIconStroke:** Manual sync on hierarchy=global trailing Button icons: default → text/primary; inverse → text/on-color
 - **inverseTextHeader:** appearance=inverse: nested TextHeader title uses text/on-color (description text/on-color-disabled when shown); default keeps text/primary|secondary
 - **smallLayoutFlow:** small|small-centered × specific|super-app: leadingActions + headingContent=TextHeader size=small FILL + trailingActions. Do not bind slot containers' visible to show*; keepers preserve optical center.
-- **mediumLargeFlow:** medium|large × specific: headerControls SPACE_BETWEEN (leadingActions FIXED 48 + trailingActions FIXED 48 with keepers) above headingContent; root gap spacing/100 + paddingBottom spacing/150
+- **mediumLargeFlow:** medium|large × specific: headerControls SPACE_BETWEEN FILL (leadingActions FIXED 40 + trailingActions FIXED 40 with 40 keepers) above headingContent; root gap spacing/100 + paddingBottom spacing/150
 - **textHeaderSizeMap:** layout→TextHeader size: small|small-centered → size=small (alignment left|center); medium → size=medium; large → size=large. Exemplars showDescription=false; title uses TextHeader typography (small = heading/h3/medium).
-- **leadingOpticalCenter:** showAction=false must not collapse the leading slot — leadingSlotKeeper keeps width so headingContent optical center holds while trailingActions stay visible (mirror of trailingSlotKeeper).
+- **leadingOpticalCenter:** showAction=false must not collapse the leading slot — leadingSlotKeeper 40 keeps width so headingContent optical center holds while trailingActions stay visible (mirror of trailingSlotKeeper 40).
 - **vsBottomSheetHeader:** Do not use AppHeader inside BottomSheet — use BottomSheetHeader
 - **productTheme:** AppHeader is mode-aware via product-theme collection (escritorio-virtual | site-loovi | app-cliente). Bind themed slots to component/app-header/* — do not hardcode inverse-3/brand or surface/0|2 on those slots.
 - **leadingActionTheme:** leadingAction binds component/app-header/leading-action/background + leading-action/radius (EV: surface/0 + radius/200; site-loovi|app-cliente: surface/2 + radius/full)
 - **avatarTheme:** hierarchy=global × appearance=inverse: Avatar fill → component/app-header/avatar/background; user-outline stroke → component/app-header/avatar/icon-color
 - **titleThemeTypo:** small|small-centered × appearance=default × hierarchy=specific: title binds component/app-header/title/font-size|line-height|font-weight (EV|site-loovi→heading/h3 + medium; app-cliente→body/medium + regular). textStyleId cleared on those titles.
 - **appClienteTitleCase:** app-cliente only: apply text-transform:uppercase in product UI — Figma keeps textCase=ORIGINAL (textCase is not mode-aware). Do not set UPPER on the published variants.
+- **slotSizeSync:** After Button size sm migration: leadingSlotKeeper/trailingSlotKeeper and FIXED leadingActions/trailingActions are 40×40 (not legacy 48). trailingActions may have carried minWidth=48 — must clear when resizing.
 
 ## Token rules
 
@@ -92,7 +110,7 @@ Leading actions need accessible labels. Profile and trailing actions should pres
 
 ## Composition
 
-- global: leadingCluster (Avatar exposed + greeting body/large/medium) + trailingActions (Button text/md)
+- global: leadingCluster (Avatar exposed + greeting body/large/medium) + trailingActions (Button text/sm)
 - specific/super-app: TextHeader (headingContent, exposed)
 - Button (leadingAction inside leadingActions slot / firstTrailingAction / secondTrailingAction)
 - Profile menu (exposed on super-app) + Avatar

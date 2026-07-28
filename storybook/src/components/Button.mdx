@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: Button triggers an explicit user action. Use variant=solid for the strongest action, variant=outline for secondary emphasis and variant=text for low-emphasis actions. Use intent=primary, success or danger to communicate action meaning. On variant=text with intent=primary and disabled=false, showIcon (leadingIcon) uses text/primary across states so the icon matches the label. Loading variants are spinner-only and must hide label and icons.
+AI-READY COMPONENT: Button triggers an explicit user action. Use variant=solid for the strongest action, variant=outline for secondary emphasis and variant=text for low-emphasis actions. Use intent=primary, success or danger to communicate action meaning. On variant=text with intent=primary and disabled=false, showIcon (leadingIcon) uses text/primary across states so the icon matches the label. Loading variants are spinner-only and must hide label and icons. Product-theme (modes escritorio-virtual|site-loovi|app-cliente): bind solid container/label/icon/radius to component/button/* — do not hardcode product fills or pill radii.
 
 ## Variants
 
@@ -32,6 +32,21 @@ AI-READY COMPONENT: Button triggers an explicit user action. Use variant=solid f
 | `loading` | boolean |
 | `disabled` | boolean |
 
+## Product theme
+
+Collection: `product-theme`
+
+Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
+
+| Token | Bind | escritorio-virtual | site-loovi | app-cliente |
+| --- | --- | --- | --- | --- |
+| `component/button/container/background` | solid container fill (primary intent) | `color/actions/primary` | `color/background-feedback-primary/success` | `color/actions/primary` |
+| `component/button/container/radius/lg` | container radius on size=md\|lg | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/button/container/radius/sm` | container radius on size=sm | `border/radius/150` | `border/radius/full` | `border/radius/full` |
+| `component/button/label/color` | solid label text fill | `text/on-color` | `text/primary` | `text/on-color` |
+| `component/button/label/font-weight` | label font weight | `font-weight/medium` | `font-weight/semi-bold` | `font-weight/medium` |
+| `component/button/icon/color` | solid/outline icon stroke where bound | `text/on-color` | `text/primary` | `text/on-color` |
+
 ## Rules
 
 - **leadingIconSizing:**
@@ -40,16 +55,17 @@ AI-READY COMPONENT: Button triggers an explicit user action. Use variant=solid f
   - **sm:** 16px icon with 1.33px stroke
 - **textPrimaryIcon:** variant=text + intent=primary + disabled=false: leadingIcon (showIcon) uses text/primary across default|hover|focus|pressed|selected|loading
 - **loading:** spinner-only, no label, no leading icon, no trailing icon, centered spinner
+- **productTheme:** Mode-aware via product-theme: container/background, container/radius/sm|lg, label/color, label/font-weight, icon/color. site-loovi solid uses feedback-primary/success + text/primary; EV|app-cliente use actions/primary + text/on-color. Radii: EV sm→150 / md|lg→200; site-loovi|app-cliente → full.
 
 ## Token rules
 
-- component/button/container/background
-- component/button/container/radius/lg
-- component/button/container/radius/sm
-- component/button/icon/color for solid/outline icon colors where bound
+- product-theme component/button/container/background
+- product-theme component/button/container/radius/lg
+- product-theme component/button/container/radius/sm
+- product-theme component/button/label/color
+- product-theme component/button/label/font-weight
+- product-theme component/button/icon/color for solid/outline icon colors where bound
 - text/primary for variant=text + intent=primary leadingIcon (enabled)
-- component/button/label/color
-- component/button/label/font-weight
 
 ## Accessibility
 
