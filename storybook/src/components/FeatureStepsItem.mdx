@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/FeatureStepsItem" />
+
+# FeatureStepsItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4343-222) · node `4343:222`
+
+## AI-READY
+
+AI-READY COMPONENT: FeatureStepsItem is an illustrative vertical step row used to present a task, benefit or onboarding action with a thematic icon — not process progress feedback. Use inside FeatureSteps. Anatomy: indicatorColumn (iconBadge 48 with leadingIcon INSTANCE_SWAP + soft connector width spacing/100) + content (headline + supportingText). Layout: horizontal Auto Layout, spacing/200 between badge and content, counterAxisAlignItems=CENTER; indicatorColumn and content itemSpacing=spacing/0; content uses padding-bottom spacing/300 so the connector stretches and creates vertical rhythm when FeatureSteps itemSpacing is spacing/0. supportingText uses textAutoResize HEIGHT and vertical Hug so longer copy does not clip. Demo width 342; height Hug (Label/Description master demo). Props: leadingIcon (INSTANCE_SWAP; preferredValues local DS outlines: square-check-outline, car-outline, trophy-outline, camera-outline, file-outline, checkbox-outline), headline (TEXT, default Label), supportingText (TEXT, default Description), showSupportingText (BOOLEAN, default true), showConnector (BOOLEAN, default true — hide on final item). Icon vector layers use \{icon\}-path naming; strokeWeight bound to border/width/025. Do not use status completed/current/pending/error — that belongs to VerticalStepperItem. Do not use as VerticalStepperItem, StepperPrimary, StepProgressIndicator, ProgressBar, ListItem or timeline progress. Token rule: local S2 kebab-case only — color/background-surface/2, text/primary, text/secondary, border/radius/full, spacing/0|100|150|200|300, border/width/025. Typography: body/large/semi-bold (headline), body/medium/regular (supportingText). Prefer local DS icons. Accessibility: decorative icon and connector aria-hidden; convey meaning via headline/supportingText. React mapping: FeatureStepsItem(leadingIcon, headline, supportingText, showSupportingText?, showConnector?). Code Connect is not configured.
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `leadingIcon` | INSTANCE_SWAP — preferredValues: square-check-outline \| car-outline \| trophy-outline \| camera-outline \| file-outline \| checkbox-outline |
+| `headline` | TEXT — primary label (body/large/semi-bold, text/primary); master default Label |
+| `supportingText` | TEXT — supporting copy (body/medium/regular, text/secondary); HEIGHT + Hug; master default Description |
+| `showSupportingText` | boolean — default true |
+| `showConnector` | boolean — hides soft connector for final item; default true |
+
+## Rules
+
+- **composition:** indicatorColumn (iconBadge 48 + connector spacing/100 FILL) + content (headline + supportingText)
+- **verticalRhythm:** content padding-bottom spacing/300 drives row height and connector stretch when parent gap is spacing/0
+- **alignment:** counterAxisAlignItems=CENTER between badge column and content
+- **illustrativeOnly:** No progress status matrix — thematic icon communicates topic, not completion
+- **icons:** INSTANCE_SWAP leadingIcon; preferred local outlines listed in props; vector layers \{icon\}-path; stroke border/width/025
+- **connector:** soft color/background-surface/2 — same as badge; width spacing/100; hide on final item
+- **vsVerticalStepperItem:** Use VerticalStepperItem for real progress status (completed/current/pending/error)
+- **usage:** Do not use as VerticalStepperItem, StepperPrimary, StepProgressIndicator, ProgressBar, ListItem or timeline progress
+
+## Token rules
+
+- color/background-surface/2 on iconBadge and connector
+- text/primary on headline; text/secondary on supportingText
+- border/radius/full on iconBadge
+- spacing/0 column gaps; spacing/100 connector width; spacing/150 badge padding; spacing/200 gap badge→content; spacing/300 content padding-bottom
+- border/width/025 on preferred icon strokes
+- body/large/semi-bold; body/medium/regular
+
+## Accessibility
+
+Decorative icon/connector aria-hidden; meaning via headline and supportingText.
+

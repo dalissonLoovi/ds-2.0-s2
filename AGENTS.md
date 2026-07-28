@@ -47,7 +47,7 @@ No Design System Figma ([DS] 2.0 - S2 e componentes relacionados):
 
 Inventário alinhado (rename 2026-07-22+):
 
-- **`Item` (incl. renomes):** BreadcrumbItem, FileUploaderItem, FileUploaderDropzoneItem (ex-FileUploaderBlock; dropzone — não colidir com FileUploaderItem), ListItem, ListActionDropdownItem, VerticalStepperItem, TabItem, PaginationSelectMenuItem, PaginationItem, NavigationRail*Item, NavigationBarItem, NavigationDrawerItem, CommentItem, ImageItem, VerificationCodeInputItem, DatePickerSelectItem, CarouselPaginationItem (ex-CarouselItem; dots — não slide), CardOutlinedItem, CardElevatedItem (ex-Card states/Elevated), CardFilledItem (ex-Card states/Filled)
+- **`Item` (incl. renomes):** BreadcrumbItem, FileUploaderItem, FileUploaderDropzoneItem (ex-FileUploaderBlock; dropzone — não colidir com FileUploaderItem), ListItem, ListActionDropdownItem, VerticalStepperItem, FeatureStepsItem, TabItem, PaginationSelectMenuItem, PaginationItem, NavigationRail*Item, NavigationBarItem, NavigationDrawerItem, CommentItem, ImageItem, VerificationCodeInputItem, DatePickerSelectItem, CarouselPaginationItem (ex-CarouselItem; dots — não slide), CardOutlinedItem, CardElevatedItem (ex-Card states/Elevated), CardFilledItem (ex-Card states/Filled), ModalCheckItem, BottomSheetCheckItem
 - **Colisão resolvida:** `FileUploaderBlock` → `FileUploaderDropzoneItem` (não `FileUploaderItem`); `CarouselItem` → `CarouselPaginationItem` (pagination dots)
 
 ## Fluxo de documentação → Storybook

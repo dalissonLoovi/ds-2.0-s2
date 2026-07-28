@@ -56,6 +56,86 @@
                 "name": "color/background-surface/brand",
                 "id": "VariableID:4300:24",
                 "aliasOf": "primitive-colors/brand-blue"
+            },
+            {
+                "name": "component/app-header/inverse/background",
+                "id": "VariableID:4335:843",
+                "collection": "product-theme",
+                "aliasByMode": {
+                    "escritorio-virtual": "color/background-surface/inverse-3",
+                    "site-loovi": "color/background-surface/brand",
+                    "app-cliente": "color/background-surface/brand"
+                }
+            },
+            {
+                "name": "component/app-header/leading-action/background",
+                "id": "VariableID:4335:844",
+                "collection": "product-theme",
+                "aliasByMode": {
+                    "escritorio-virtual": "color/background-surface/0",
+                    "site-loovi": "color/background-surface/2",
+                    "app-cliente": "color/background-surface/2"
+                }
+            },
+            {
+                "name": "component/app-header/leading-action/radius",
+                "id": "VariableID:4335:845",
+                "collection": "product-theme",
+                "aliasByMode": {
+                    "escritorio-virtual": "border/radius/200",
+                    "site-loovi": "border/radius/full",
+                    "app-cliente": "border/radius/full"
+                }
+            },
+            {
+                "name": "component/app-header/avatar/background",
+                "id": "VariableID:4337:729",
+                "collection": "product-theme",
+                "aliasByMode": {
+                    "escritorio-virtual": "color/background-surface/3",
+                    "site-loovi": "rgba(255,255,255,0.16)",
+                    "app-cliente": "rgba(255,255,255,0.16)"
+                }
+            },
+            {
+                "name": "component/app-header/avatar/icon-color",
+                "id": "VariableID:4337:20452",
+                "collection": "product-theme",
+                "aliasByMode": {
+                    "escritorio-virtual": "text/primary",
+                    "site-loovi": "text/on-color",
+                    "app-cliente": "text/on-color"
+                }
+            },
+            {
+                "name": "component/app-header/title/font-size",
+                "id": "VariableID:4341:676",
+                "collection": "product-theme",
+                "aliasByMode": {
+                    "escritorio-virtual": "heading/h3/font-size",
+                    "site-loovi": "heading/h3/font-size",
+                    "app-cliente": "body/medium/font-size"
+                }
+            },
+            {
+                "name": "component/app-header/title/line-height",
+                "id": "VariableID:4341:677",
+                "collection": "product-theme",
+                "aliasByMode": {
+                    "escritorio-virtual": "heading/h3/line-height",
+                    "site-loovi": "heading/h3/line-height",
+                    "app-cliente": "body/medium/line-height"
+                }
+            },
+            {
+                "name": "component/app-header/title/font-weight",
+                "id": "VariableID:4341:678",
+                "collection": "product-theme",
+                "aliasByMode": {
+                    "escritorio-virtual": "font-weight/medium",
+                    "site-loovi": "font-weight/medium",
+                    "app-cliente": "font-weight/regular"
+                }
             }
         ],
         "collections": [
@@ -374,9 +454,79 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-07-27T19:15:00-03:00",
-        "storybookRevision": "2026-07-27-app-header-audit-apply",
+        "storybookUpdatedAt": "2026-07-28T14:00:00-03:00",
+        "storybookRevision": "2026-07-28-modal-audit-apply",
         "changelog": [
+            {
+                "date": "2026-07-28",
+                "type": "storybook-modal-audit-apply",
+                "summary": "Modal audit apply: document platform mobile-landscape; bind itemSpacing spacing/050 (mobile|landscape) + sheetContent spacing/0; AI-READY + ModalCheckItem preferredValues; elevation tokenRules; header props via nested ModalHeader; docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-bottom-sheet-check-item-audit-apply",
+                "summary": "BottomSheetCheckItem + ModalCheckItem audit apply: emphasis span binds font-weight/semi-bold; Modal AI-READY mentions sibling; Modal SLOT preferredValues→ModalCheckItem; docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-bottom-sheet-check-item",
+                "summary": "BottomSheetCheckItem (4389:80): ModalCheckItem sibling for BottomSheet slot/sheetContent; preferredValues on BottomSheet slot; docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-bottom-sheet-header-layout-fix",
+                "summary": "BottomSheetHeader layout fix: Button text/sm icon-only 40×40 (was md 208); leadingSlotKeeper + absolute actions; SPACE_BETWEEN; height 40; matches MENU sheet reference; docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-modal-check-item-audit-apply",
+                "summary": "ModalCheckItem audit apply: replace remote Font/* with local body/medium typography; root height Hug; circle-check-outline-path + border/width/025; generic EN demo with text/brand emphasis; icon stays FIXED 20; docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-modal-check-item",
+                "summary": "ModalCheckItem: Modal body checklist/guideline row (leadingIcon circle-check-filled + description); not Checkbox/ListItem; docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-vehicle-confirm-card-audit-apply",
+                "summary": "VehicleConfirmCard audit apply: rename vehicleArt/artwork; illustration SLOT description + preferredValues vehicle-confirm-car; master demo ABC1D23/Brand Model; SLOT height Hug; product vectors documented as unbound exception; docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-vehicle-confirm-card-visual-fix",
+                "summary": "VehicleConfirmCard visual polish sync: padding spacing/250 L/T/B + spacing/0 right (illustration bleed); SLOT end-aligned; default shadow color/background-surface/3; docs + AI-Ready description updated."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-vehicle-confirm-card",
+                "summary": "VehicleConfirmCard: onboarding plate-hero confirmation card (plate + brandModel + illustration SLOT); distinct from VehicleSummaryCard/OfferProductCard/CardHorizontal; docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-feature-steps-item-audit-apply",
+                "summary": "FeatureStepsItem audit apply: preferredValues local DS outlines confirmed; icon paths *-path + border/width/025 stroke; spacing/0 on columns; supportingText HUG/HEIGHT; connector width spacing/100; master demo Label/Description; docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-feature-steps-visual-fix",
+                "summary": "FeatureSteps visual polish sync: container spacing/0 (rhythm via Item content padding-bottom spacing/300 + FILL connector); Item ~86h demo; docs + AI-Ready descriptions updated."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-feature-steps",
+                "summary": "FeatureSteps + FeatureStepsItem: illustrative sibling of VerticalStepper (thematic icon badge + soft connector + headline/supportingText; no progress status). Default onboarding copy from app prototype; docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-app-header-title-theme-typo",
+                "summary": "AppHeader product-theme title typography: component/app-header/title/font-size|line-height|font-weight — EV|site-loovi→heading/h3+medium; app-cliente→body/medium+regular on small|small-centered × default × specific; UPPER via text-transform in app-cliente impl (Figma textCase ORIGINAL); docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-app-header-product-theme",
+                "summary": "AppHeader product-theme tokens (5): inverse/background, leading-action/background|radius, avatar/background|icon-color — modes escritorio-virtual|site-loovi|app-cliente; docs synced."
+            },
             {
                 "date": "2026-07-27",
                 "type": "storybook-app-header-audit-apply",
@@ -1724,6 +1874,88 @@
                             "site-loovi": "SemiBold",
                             "app-cliente": "Medium"
                         }
+                    }
+                }
+            },
+            "app-header": {
+                "inverse": {
+                    "background": {
+                        "$type": "color",
+                        "$value": {
+                            "escritorio-virtual": "#3A3345",
+                            "site-loovi": "#4967EE",
+                            "app-cliente": "#4967EE"
+                        },
+                        "$description": "product-theme component/app-header/inverse/background — bound on appearance=inverse root fills. EV→surface/inverse-3; site-loovi|app-cliente→surface/brand."
+                    }
+                },
+                "leading-action": {
+                    "background": {
+                        "$type": "color",
+                        "$value": {
+                            "escritorio-virtual": "#FFFFFF",
+                            "site-loovi": "#E7EFFC",
+                            "app-cliente": "#E7EFFC"
+                        },
+                        "$description": "product-theme component/app-header/leading-action/background — bound on leadingAction fills (specific|super-app). EV→surface/0; site-loovi|app-cliente→surface/2."
+                    },
+                    "radius": {
+                        "$type": "dimension",
+                        "$value": {
+                            "escritorio-virtual": 8,
+                            "site-loovi": 9999,
+                            "app-cliente": 9999
+                        },
+                        "$description": "product-theme component/app-header/leading-action/radius — bound on leadingAction corner radius. EV→border/radius/200; site-loovi|app-cliente→border/radius/full."
+                    }
+                },
+                "avatar": {
+                    "background": {
+                        "$type": "color",
+                        "$value": {
+                            "escritorio-virtual": "#D0D9E8",
+                            "site-loovi": "rgba(255,255,255,0.16)",
+                            "app-cliente": "rgba(255,255,255,0.16)"
+                        },
+                        "$description": "product-theme component/app-header/avatar/background — bound on hierarchy=global × appearance=inverse Avatar fill. EV→surface/3; site-loovi|app-cliente→white @ 16%."
+                    },
+                    "icon-color": {
+                        "$type": "color",
+                        "$value": {
+                            "escritorio-virtual": "#1A1E1F",
+                            "site-loovi": "#FFFFFF",
+                            "app-cliente": "#FFFFFF"
+                        },
+                        "$description": "product-theme component/app-header/avatar/icon-color — bound on Avatar user-outline stroke (global inverse). EV→text/primary; site-loovi|app-cliente→text/on-color."
+                    }
+                },
+                "title": {
+                    "font-size": {
+                        "$type": "dimension",
+                        "$value": {
+                            "escritorio-virtual": 20,
+                            "site-loovi": 20,
+                            "app-cliente": 14
+                        },
+                        "$description": "product-theme component/app-header/title/font-size — small|small-centered × default × specific title. EV|site-loovi→heading/h3; app-cliente→body/medium."
+                    },
+                    "line-height": {
+                        "$type": "dimension",
+                        "$value": {
+                            "escritorio-virtual": 28,
+                            "site-loovi": 28,
+                            "app-cliente": 20
+                        },
+                        "$description": "product-theme component/app-header/title/line-height — paired with title/font-size. Confirm body/medium line-height token value if export differs."
+                    },
+                    "font-weight": {
+                        "$type": "string",
+                        "$value": {
+                            "escritorio-virtual": "Medium",
+                            "site-loovi": "Medium",
+                            "app-cliente": "Regular"
+                        },
+                        "$description": "product-theme component/app-header/title/font-weight — EV|site-loovi→font-weight/medium; app-cliente→font-weight/regular."
                     }
                 }
             }
@@ -4080,7 +4312,7 @@
             },
             "AppHeader": {
                 "nodeId": "3143:8822",
-                "description": "AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Do not nest AppHeader inside BottomSheet — use BottomSheetHeader. Token rule: local S2 kebab-case semantic only. Icon rule: local DS outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline); internal paths use {icon}-path. Internals: Button, local TextHeader (headingContent), local Profile menu, local Avatar — no remotes. Props: showLabel; showAction; showFirstTrailingAction (search-outline, default false); showSecondTrailingAction (bell-outline, default true); showProfileMenu (hierarchy=super-app only); greeting (TEXT, default \"Olá, Rodrigo\", global only). title/description via exposed headingContent TextHeader on non-global. Anatomy — global: leadingCluster + trailingActions. specific|super-app small|small-centered: leadingActions (slot + leadingSlotKeeper + leadingAction) + headingContent FILL + trailingActions. super-app: leadingActions FIXED 96 balances trailing (bell + profileMenu); TextHeader size=small alignment=center. specific medium|large: headerControls (leadingActions + trailingActions, SPACE_BETWEEN) above headingContent; keepers on both slots; no legacy action layer. Optical center: do not bind slot containers' visible to show* — keepers preserve width. Spacing: global pad spacing/050 vert + spacing/300 horiz; small/small-centered pad spacing/100 vert + spacing/050 horiz; medium/large root gap spacing/100 + paddingBottom spacing/150. PAINEL HOME: hierarchy=global + layout=small-centered; default surface/0 + text/primary; inverse surface/inverse-3 + text/on-color; greeting body/large/medium; trailing icon strokes default text/primary / inverse text/on-color. React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Do not nest AppHeader inside BottomSheet — use BottomSheetHeader. Token rule: local S2 kebab-case semantic + product-theme component/app-header/* aliases. Product-theme (collection product-theme, modes escritorio-virtual|site-loovi|app-cliente): component/app-header/inverse/background (appearance=inverse root fill; EV→inverse-3, site-loovi|app-cliente→brand); component/app-header/leading-action/background + leading-action/radius (leadingAction on specific|super-app; EV→surface/0 + radius/200, site-loovi|app-cliente→surface/2 + radius/full); component/app-header/avatar/background + avatar/icon-color (hierarchy=global × appearance=inverse Avatar; EV→surface/3 + text/primary, site-loovi|app-cliente→white 16% + text/on-color). Switch product-theme mode to preview; do not hardcode brand/inverse fills on themed slots. Icon rule: local DS outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline); internal paths use {icon}-path. Internals: Button, local TextHeader (headingContent), local Profile menu, local Avatar — no remotes. Props: showLabel; showAction; showFirstTrailingAction (search-outline, default false); showSecondTrailingAction (bell-outline, default true); showProfileMenu (hierarchy=super-app only); greeting (TEXT, default \"Olá, Rodrigo\", global only). title/description via exposed headingContent TextHeader on non-global. Anatomy — global: leadingCluster + trailingActions. specific|super-app small|small-centered: leadingActions (slot + leadingSlotKeeper + leadingAction) + headingContent FILL + trailingActions. super-app: leadingActions FIXED 96 balances trailing (bell + profileMenu); TextHeader size=small alignment=center. specific medium|large: headerControls (leadingActions + trailingActions, SPACE_BETWEEN) above headingContent; keepers on both slots; no legacy action layer. Optical center: do not bind slot containers' visible to show* — keepers preserve width. Spacing: global pad spacing/050 vert + spacing/300 horiz; small/small-centered pad spacing/100 vert + spacing/050 horiz; medium/large root gap spacing/100 + paddingBottom spacing/150. PAINEL HOME: hierarchy=global + layout=small-centered; default surface/0 + text/primary; inverse surface/inverse-3 + text/on-color; greeting body/large/medium; trailing icon strokes default text/primary / inverse text/on-color. React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured. Product-theme title typography on small|small-centered × default × specific: component/app-header/title/font-size|line-height|font-weight (EV|site-loovi→heading/h3+medium; app-cliente→body/medium+regular). Figma textCase remains ORIGINAL; app-cliente must apply text-transform:uppercase in code.",
                 "variants": {
                     "layout": [
                         "small-centered",
@@ -4123,18 +4355,31 @@
                     "noLegacyAction": "Do not expose or keep a legacy action layer — use leadingAction only",
                     "painelHome": "appearance=inverse|default + hierarchy=global + layout=small-centered; greeting prop; Avatar + bell",
                     "vsSystemOrgHeader": "Do not use SystemHeader or OrganizationHeader for mobile app chrome",
-                    "inverseFill": "appearance=inverse uses color/background-surface/inverse-3 (not color/actions/primary)",
+                    "inverseFill": "appearance=inverse root fill binds component/app-header/inverse/background (EV→color/background-surface/inverse-3; site-loovi|app-cliente→color/background-surface/brand) — not color/actions/primary",
                     "globalTrailingIconStroke": "Manual sync on hierarchy=global trailing Button icons: default → text/primary; inverse → text/on-color",
                     "inverseTextHeader": "appearance=inverse: nested TextHeader title uses text/on-color (description text/on-color-disabled when shown); default keeps text/primary|secondary",
                     "smallLayoutFlow": "small|small-centered × specific|super-app: leadingActions + headingContent=TextHeader size=small FILL + trailingActions. Do not bind slot containers' visible to show*; keepers preserve optical center.",
                     "mediumLargeFlow": "medium|large × specific: headerControls SPACE_BETWEEN (leadingActions FIXED 48 + trailingActions FIXED 48 with keepers) above headingContent; root gap spacing/100 + paddingBottom spacing/150",
                     "textHeaderSizeMap": "layout→TextHeader size: small|small-centered → size=small (alignment left|center); medium → size=medium; large → size=large. Exemplars showDescription=false; title uses TextHeader typography (small = heading/h3/medium).",
                     "leadingOpticalCenter": "showAction=false must not collapse the leading slot — leadingSlotKeeper keeps width so headingContent optical center holds while trailingActions stay visible (mirror of trailingSlotKeeper).",
-                    "vsBottomSheetHeader": "Do not use AppHeader inside BottomSheet — use BottomSheetHeader"
+                    "vsBottomSheetHeader": "Do not use AppHeader inside BottomSheet — use BottomSheetHeader",
+                    "productTheme": "AppHeader is mode-aware via product-theme collection (escritorio-virtual | site-loovi | app-cliente). Bind themed slots to component/app-header/* — do not hardcode inverse-3/brand or surface/0|2 on those slots.",
+                    "leadingActionTheme": "leadingAction binds component/app-header/leading-action/background + leading-action/radius (EV: surface/0 + radius/200; site-loovi|app-cliente: surface/2 + radius/full)",
+                    "avatarTheme": "hierarchy=global × appearance=inverse: Avatar fill → component/app-header/avatar/background; user-outline stroke → component/app-header/avatar/icon-color",
+                    "titleThemeTypo": "small|small-centered × appearance=default × hierarchy=specific: title binds component/app-header/title/font-size|line-height|font-weight (EV|site-loovi→heading/h3 + medium; app-cliente→body/medium + regular). textStyleId cleared on those titles.",
+                    "appClienteTitleCase": "app-cliente only: apply text-transform:uppercase in product UI — Figma keeps textCase=ORIGINAL (textCase is not mode-aware). Do not set UPPER on the published variants."
                 },
                 "tokenRules": [
+                    "app-cliente: text-transform uppercase in implementation (Figma textCase ORIGINAL)",
+                    "product-theme component/app-header/title/font-weight (small|small-centered default specific)",
+                    "product-theme component/app-header/title/line-height (small|small-centered default specific)",
+                    "product-theme component/app-header/title/font-size (small|small-centered default specific)",
+                    "product-theme component/app-header/inverse/background (appearance=inverse root)",
+                    "product-theme component/app-header/leading-action/background (leadingAction fill)",
+                    "product-theme component/app-header/leading-action/radius (leadingAction radius)",
+                    "product-theme component/app-header/avatar/background (global inverse Avatar)",
+                    "product-theme component/app-header/avatar/icon-color (global inverse Avatar icon stroke)",
                     "color/background-surface/0 for default surface",
-                    "color/background-surface/inverse-3 for inverse surface",
                     "text/primary | text/on-color for titles/greeting",
                     "text/secondary | text/on-color-disabled for supporting text",
                     "body/large/medium for global greeting (characteristic — not TextHeader)",
@@ -4156,7 +4401,89 @@
                     "Button (leadingAction inside leadingActions slot / firstTrailingAction / secondTrailingAction)",
                     "Profile menu (exposed on super-app) + Avatar",
                     "menu-2-outline / arrow-left-outline / search-outline / bell-outline / plus-outline / user-outline"
-                ]
+                ],
+                "productTheme": {
+                    "collection": "product-theme",
+                    "modes": [
+                        "escritorio-virtual",
+                        "site-loovi",
+                        "app-cliente"
+                    ],
+                    "tokens": [
+                        {
+                            "name": "component/app-header/inverse/background",
+                            "binds": "appearance=inverse root fills",
+                            "aliases": {
+                                "escritorio-virtual": "color/background-surface/inverse-3",
+                                "site-loovi": "color/background-surface/brand",
+                                "app-cliente": "color/background-surface/brand"
+                            }
+                        },
+                        {
+                            "name": "component/app-header/leading-action/background",
+                            "binds": "leadingAction fills (specific|super-app)",
+                            "aliases": {
+                                "escritorio-virtual": "color/background-surface/0",
+                                "site-loovi": "color/background-surface/2",
+                                "app-cliente": "color/background-surface/2"
+                            }
+                        },
+                        {
+                            "name": "component/app-header/leading-action/radius",
+                            "binds": "leadingAction corner radius (specific|super-app)",
+                            "aliases": {
+                                "escritorio-virtual": "border/radius/200",
+                                "site-loovi": "border/radius/full",
+                                "app-cliente": "border/radius/full"
+                            }
+                        },
+                        {
+                            "name": "component/app-header/avatar/background",
+                            "binds": "Avatar fill on hierarchy=global × appearance=inverse",
+                            "aliases": {
+                                "escritorio-virtual": "color/background-surface/3",
+                                "site-loovi": "rgba(255,255,255,0.16)",
+                                "app-cliente": "rgba(255,255,255,0.16)"
+                            }
+                        },
+                        {
+                            "name": "component/app-header/avatar/icon-color",
+                            "binds": "Avatar user-outline stroke on hierarchy=global × appearance=inverse",
+                            "aliases": {
+                                "escritorio-virtual": "text/primary",
+                                "site-loovi": "text/on-color",
+                                "app-cliente": "text/on-color"
+                            }
+                        },
+                        {
+                            "name": "component/app-header/title/font-size",
+                            "binds": "title fontSize on small|small-centered × default × specific",
+                            "aliases": {
+                                "escritorio-virtual": "heading/h3/font-size",
+                                "site-loovi": "heading/h3/font-size",
+                                "app-cliente": "body/medium/font-size"
+                            }
+                        },
+                        {
+                            "name": "component/app-header/title/line-height",
+                            "binds": "title lineHeight on small|small-centered × default × specific",
+                            "aliases": {
+                                "escritorio-virtual": "heading/h3/line-height",
+                                "site-loovi": "heading/h3/line-height",
+                                "app-cliente": "body/medium/line-height"
+                            }
+                        },
+                        {
+                            "name": "component/app-header/title/font-weight",
+                            "binds": "title fontStyle on small|small-centered × default × specific",
+                            "aliases": {
+                                "escritorio-virtual": "font-weight/medium",
+                                "site-loovi": "font-weight/medium",
+                                "app-cliente": "font-weight/regular"
+                            }
+                        }
+                    ]
+                }
             },
             "OfferProductCard": {
                 "nodeId": "4227:418",
@@ -4181,7 +4508,7 @@
                     "genericDefaults": "Title / Description / R$ 0,00 / /mês / Label + package-outline",
                     "iconLocal": "Default and preferredValues use local DS outline icons — no remotes",
                     "carouselPattern": "Horizontal offers carousel is a screen pattern — not this component",
-                    "vsOthers": "Do not use as VehicleSummaryCard, Banner, CardStacked/Horizontal"
+                    "vsOthers": "Do not use as VehicleSummaryCard, VehicleConfirmCard, Banner, CardStacked/Horizontal"
                 },
                 "tokenRules": [
                     "color/background-surface/2 (root)",
@@ -4377,7 +4704,7 @@
             },
             "BottomSheet": {
                 "nodeId": "3181:8289",
-                "description": "AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobile or responsive experiences. Use it for contextual content that supports a task without navigating away. Do not use it as a centered modal, side drawer, toast, tooltip, card, full page or permanent layout container. Variant rule: header=none shows dragHandle + slot only; header=sheet-header nests local BottomSheetHeader (compact 48 height, headingContent title, optional leading options/action, optional close) above sheetContent/slot. Do not nest AppHeader or ModalHeader inside BottomSheet. React mapping: BottomSheet(header, children). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobile or responsive experiences. Use it for contextual content that supports a task without navigating away. Do not use it as a centered modal, side drawer, toast, tooltip, card, full page or permanent layout container. Variant rule: header=none shows dragHandle + slot only; header=sheet-header nests local BottomSheetHeader (compact headingContent title, optional leading options/action, optional close) above sheetContent/slot. Compose guideline/checklist rows with BottomSheetCheckItem in slot / sheetContent (preferredValues) — not Checkbox, not ModalCheckItem. Do not nest AppHeader or ModalHeader inside BottomSheet. React mapping: BottomSheet(header, children). Code Connect is not configured.",
                 "variants": {
                     "header": [
                         "none",
@@ -4385,16 +4712,18 @@
                     ]
                 },
                 "props": {
-                    "slot": "main content area",
+                    "slot": "SLOT — main content; preferredValues include BottomSheetCheckItem for guideline rows",
                     "header": "none | sheet-header"
                 },
                 "accessibility": "Modal usage should block background interaction, trap focus, support Escape to close and restore focus to the trigger. Non-modal usage should use an appropriate region semantic when needed.",
                 "rules": {
                     "headerComposition": "header=sheet-header nests BottomSheetHeader — not AppHeader",
-                    "vsAppHeader": "Do not nest AppHeader in BottomSheet"
+                    "vsAppHeader": "Do not nest AppHeader in BottomSheet",
+                    "slotCheckItems": "Optional guideline stacks in slot / sheetContent compose BottomSheetCheckItem rows (not Checkbox, not ModalCheckItem)"
                 },
                 "composition": [
                     "BottomSheetHeader (when header=sheet-header)",
+                    "BottomSheetCheckItem (optional guideline rows in slot / sheetContent)",
                     "dragHandle (header=none)",
                     "slot / sheetContent"
                 ]
@@ -6282,43 +6611,48 @@
             },
             "Modal": {
                 "nodeId": "3306:4278",
-                "description": "AI-READY COMPONENT: Modal is a blocking overlay surface used to focus the user on a critical task, confirmation, form or contextual flow without leaving the current page. Use platform=web for desktop/web modal layouts and platform=mobile for mobile modal presentation. Composition: ModalHeader (layout=desktop on web, layout=mobile on mobile) plus sheetContent with slot for the modal body, form, confirmation content or custom flow content. Do not use Modal as a toast, banner, bottom sheet, side sheet, page container, card or permanent layout section. Do not nest AppHeader inside Modal — use ModalHeader only. Modal should block background interaction, trap focus, use role=dialog or alertdialog when appropriate, expose aria-modal=true, reference the ModalHeader title with aria-labelledby, support Escape to close when allowed, and restore focus to the trigger after closing. Token rule: use existing DS kebab-case variables only — color/background-surface/0 for modal surface, spacing/150 for web itemSpacing, spacing/500 for web paddingBottom, spacing/400 for mobile paddingBottom, border/radius/600 for modal radius, plus nested ModalHeader and Button tokens. React mapping: Modal(platform, title, label, showLabel, showCloseAction, children) where platform is web|mobile, header props map through ModalHeader, and children map to slot. Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: Modal is the dialog surface for focused tasks that require user attention without leaving the current context. Props: platform=web|mobile|mobile-landscape; slot (SLOT — modal body; preferredValues include ModalCheckItem for guideline rows). Nested ModalHeader owns title, label, showLabel, showCloseAction (edit on nested instance — keep layout mapped to platform). Use platform=web for desktop/web dialogs, platform=mobile for portrait phone dialogs, and platform=mobile-landscape when the phone is rotated horizontally (same ModalHeader layout=mobile + sheetContent/slot as mobile, wider shorter shell). Composition: ModalHeader (web→layout=desktop; mobile|mobile-landscape→layout=mobile) + sheetContent → slot. Tokens: color/background-surface/0; border/radius/600; elevation DROP_SHADOW color/elevation/6 (radius/offsetY spacing/100; spread/offsetX spacing/0); itemSpacing spacing/150 (web) | spacing/050 (mobile|mobile-landscape); paddingBottom spacing/500 (web) | spacing/400 (mobile|mobile-landscape); sheetContent horizontal pad spacing/300 (web) | spacing/200 (mobile|mobile-landscape); sheetContent itemSpacing spacing/0. Do not use as BottomSheet, page, card, toast, or AppHeader host — use ModalHeader only. Compose guideline rows with ModalCheckItem in slot (not Checkbox, not BottomSheetCheckItem). Accessibility: dialog semantics owned by Modal; title via ModalHeader; close via showCloseAction. React mapping: Modal(platform, title, label, showLabel, showCloseAction, children). Code Connect is not configured.",
                 "variants": {
                     "platform": [
                         "web",
-                        "mobile"
+                        "mobile",
+                        "mobile-landscape"
                     ]
                 },
                 "props": {
-                    "platform": "web | mobile",
-                    "slot": "main modal body content area",
-                    "title": "maps through nested ModalHeader title",
-                    "label": "maps through nested ModalHeader label",
-                    "showLabel": "maps through nested ModalHeader showLabel",
-                    "showCloseAction": "maps through nested ModalHeader showCloseAction"
+                    "platform": "web | mobile | mobile-landscape",
+                    "slot": "SLOT — main modal body; preferredValues include ModalCheckItem for guideline rows",
+                    "title": "nested ModalHeader TEXT — modal heading",
+                    "label": "nested ModalHeader TEXT — optional supporting label",
+                    "showLabel": "nested ModalHeader BOOLEAN — toggles label",
+                    "showCloseAction": "nested ModalHeader BOOLEAN — toggles closeAction Button"
                 },
                 "tokenRules": [
                     "color/background-surface/0 for modal surface",
-                    "spacing/150 for web itemSpacing",
-                    "spacing/500 for web paddingBottom",
-                    "spacing/400 for mobile paddingBottom",
-                    "border/radius/600 for modal radius"
+                    "border/radius/600",
+                    "color/elevation/6 drop shadow (radius/offsetY spacing/100; spread/offsetX spacing/0)",
+                    "itemSpacing spacing/150 (web) | spacing/050 (mobile|mobile-landscape)",
+                    "paddingBottom spacing/500 (web) | spacing/400 (mobile|mobile-landscape)",
+                    "sheetContent pad horizontal spacing/300 (web) | spacing/200 (mobile|mobile-landscape); itemSpacing spacing/0"
                 ],
                 "accessibility": "Block background interaction, trap focus, role=dialog or alertdialog, aria-modal=true, aria-labelledby for ModalHeader title, Escape to close when allowed, restore focus to trigger.",
                 "rules": {
                     "nonPage": "Do not use Modal as toast, banner, bottom sheet, side sheet, page container or card",
-                    "composition": "ModalHeader (desktop on web, mobile on mobile) + sheetContent/slot — never AppHeader",
-                    "headerMapping": "platform=web → ModalHeader layout=desktop; platform=mobile → ModalHeader layout=mobile"
+                    "composition": "ModalHeader (desktop on web, mobile on mobile|mobile-landscape) + sheetContent/slot — never AppHeader",
+                    "headerMapping": "platform=web → ModalHeader layout=desktop; platform=mobile|mobile-landscape → ModalHeader layout=mobile",
+                    "headerProps": "title/label/showLabel/showCloseAction live on nested ModalHeader — do not remount AppHeader",
+                    "slotCheckItems": "Optional guideline stacks in slot may compose ModalCheckItem rows (not Checkbox, not BottomSheetCheckItem)"
                 },
                 "composition": [
                     "ModalHeader",
                     "Button",
-                    "x-outline"
+                    "x-outline",
+                    "ModalCheckItem (optional guideline rows in slot)"
                 ]
             },
             "ModalHeader": {
                 "nodeId": "3786:9403",
-                "description": "AI-READY COMPONENT: ModalHeader is the header block used only inside Modal surfaces. Use layout=desktop to match Modal platform=web and layout=mobile to match Modal platform=mobile while keeping the same content hierarchy. Use alignment=start for left-aligned title/label (default) and alignment=center for optically centered title/label with a leadingSpacer matching the close action width. Props: title controls the modal heading; label controls the optional supporting label above the title; showLabel toggles that label; showCloseAction toggles the local icon-only Button used to dismiss the modal. Composition: alignment=start uses headingContent + trailingActions; alignment=center uses leadingSpacer + headingContent + trailingActions. closeAction must remain a local Button with x-outline, size=sm, variant=text, intent=primary and hidden visible label text set to Fechar modal for accessible mapping. Typography: layout=desktop title uses heading/h1/semi-bold; layout=mobile title uses heading/h3/semi-bold; label uses body/small/regular. Do not use ModalHeader as AppHeader, page header, card header, BottomSheet header or navigation. Token rule: use existing DS kebab-case variables only - text/primary, text/secondary, spacing/0|050|100|200|250|300|500, border/radius/0, plus nested Button tokens. Inherit the Modal surface instead of adding an independent background. Accessibility: the Modal owns role=dialog, aria-modal, focus trap and Escape behavior. The title must be referenced by aria-labelledby. The close action is a button with aria-label=Fechar modal and must be keyboard accessible. React mapping: ModalHeader(layout, alignment, title, label, showLabel, showCloseAction). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: ModalHeader is the header block used only inside Modal surfaces. Use layout=desktop to match Modal platform=web and layout=mobile to match Modal platform=mobile|mobile-landscape while keeping the same content hierarchy. Use alignment=start for left-aligned title/label (default) and alignment=center for optically centered title/label with a leadingSpacer matching the close action width. Props: title controls the modal heading; label controls the optional supporting label above the title; showLabel toggles that label; showCloseAction toggles the local icon-only Button used to dismiss the modal. Composition: alignment=start uses headingContent + trailingActions; alignment=center uses leadingSpacer + headingContent + trailingActions. closeAction must remain a local Button with x-outline, size=sm, variant=text, intent=primary and hidden visible label text set to Fechar modal for accessible mapping. Typography: layout=desktop title uses heading/h1/semi-bold; layout=mobile title uses heading/h3/semi-bold; label uses body/small/regular. Do not use ModalHeader as AppHeader, page header, card header, BottomSheet header or navigation. Token rule: use existing DS kebab-case variables only - text/primary, text/secondary, spacing/0|050|100|200|250|300|500, border/radius/0, plus nested Button tokens. Inherit the Modal surface instead of adding an independent background. Accessibility: the Modal owns role=dialog, aria-modal, focus trap and Escape behavior. The title must be referenced by aria-labelledby. The close action is a button with aria-label=Fechar modal and must be keyboard accessible. React mapping: ModalHeader(layout, alignment, title, label, showLabel, showCloseAction). Code Connect is not configured.",
                 "variants": {
                     "layout": [
                         "desktop",
@@ -6330,7 +6664,7 @@
                     ]
                 },
                 "props": {
-                    "layout": "desktop | mobile (map from Modal platform web|mobile)",
+                    "layout": "desktop | mobile (map from Modal platform: web→desktop; mobile|mobile-landscape→mobile)",
                     "alignment": "start | center (default start)",
                     "title": "modal heading text",
                     "label": "optional supporting label above title",
@@ -6601,13 +6935,67 @@
                     "vsStepperPrimary": "Use StepperPrimary for compact horizontal labeled steps",
                     "vsStepProgressIndicator": "Use StepProgressIndicator for unlabeled segmented progress",
                     "vsProgressBar": "Use ProgressBar for continuous quantitative progress",
-                    "usage": "Do not use as timeline, navigation list, plain List, StepperPrimary or StepProgressIndicator"
+                    "vsFeatureSteps": "Use FeatureSteps for illustrative task/benefit lists with thematic icons (no progress status)",
+                    "usage": "Do not use as timeline, navigation list, plain List, StepperPrimary, StepProgressIndicator or FeatureSteps"
                 },
                 "tokenRules": [
                     "spacing/0, border/radius/0 on container",
                     "VerticalStepperItem and nested ListItem own item/content tokens"
                 ],
                 "accessibility": "Ordered list; aria-current=step on active item; status in accessible text; decorative icons/connectors aria-hidden on items."
+            },
+            "FeatureSteps": {
+                "nodeId": "4344:224",
+                "description": "AI-READY COMPONENT: FeatureSteps is a vertical illustrative steps container that composes FeatureStepsItem rows through an items SLOT. Use it to present tasks, benefits or onboarding actions with thematic icons — not to communicate process progress. Do not use as VerticalStepper (progress feedback), StepperPrimary, StepProgressIndicator, ProgressBar, timeline status list or plain List. Props: items is the SLOT for FeatureStepsItem instances only (preferredValues). Default composition mirrors app onboarding copy: Permissões, Confirmar Veículo, Enviar fotos e documentos with showConnector=false on the final item (FeatureStepsItem master defaults remain generic Label/Description). Connector and leadingIcon live on each FeatureStepsItem; the container does not invent status math. Layout: vertical Auto Layout with spacing/0 between items (vertical rhythm comes from FeatureStepsItem content padding-bottom spacing/300 + stretching connector), width Fill container in compositions (342px demo), height Hug. Accessibility: render as a list; decorative icons/connectors aria-hidden on items; meaning comes from headline and supportingText. Token rule: local S2 kebab-case only — spacing/0, border/radius/0 on container; item tokens from FeatureStepsItem. React mapping: FeatureSteps(items). Code Connect is not configured.",
+                "variants": {},
+                "props": {
+                    "items": "SLOT — FeatureStepsItem instances only (preferredValues)"
+                },
+                "rules": {
+                    "slotItemOnly": "Compose items SLOT with FeatureStepsItem only",
+                    "noProgressStatus": "Do not invent completed/current/pending/error — that belongs to VerticalStepper",
+                    "defaultComposition": "Permissões, Confirmar Veículo, Enviar fotos e documentos; showConnector=false on final item (master Item uses Label/Description)",
+                    "spacingModel": "Container itemSpacing=spacing/0; rhythm from FeatureStepsItem content padding-bottom spacing/300 + FILL connector",
+                    "vsVerticalStepper": "Use VerticalStepper when communicating real step progress feedback",
+                    "vsStepperPrimary": "Use StepperPrimary for compact horizontal labeled progress",
+                    "usage": "Do not use as VerticalStepper, StepperPrimary, StepProgressIndicator, ProgressBar, timeline status list or plain List"
+                },
+                "tokenRules": [
+                    "spacing/0, border/radius/0 on container",
+                    "FeatureStepsItem owns badge/connector/text tokens and vertical rhythm (spacing/300)"
+                ],
+                "accessibility": "List; decorative icons/connectors aria-hidden; meaning via headline and supportingText."
+            },
+            "FeatureStepsItem": {
+                "nodeId": "4343:222",
+                "description": "AI-READY COMPONENT: FeatureStepsItem is an illustrative vertical step row used to present a task, benefit or onboarding action with a thematic icon — not process progress feedback. Use inside FeatureSteps. Anatomy: indicatorColumn (iconBadge 48 with leadingIcon INSTANCE_SWAP + soft connector width spacing/100) + content (headline + supportingText). Layout: horizontal Auto Layout, spacing/200 between badge and content, counterAxisAlignItems=CENTER; indicatorColumn and content itemSpacing=spacing/0; content uses padding-bottom spacing/300 so the connector stretches and creates vertical rhythm when FeatureSteps itemSpacing is spacing/0. supportingText uses textAutoResize HEIGHT and vertical Hug so longer copy does not clip. Demo width 342; height Hug (Label/Description master demo). Props: leadingIcon (INSTANCE_SWAP; preferredValues local DS outlines: square-check-outline, car-outline, trophy-outline, camera-outline, file-outline, checkbox-outline), headline (TEXT, default Label), supportingText (TEXT, default Description), showSupportingText (BOOLEAN, default true), showConnector (BOOLEAN, default true — hide on final item). Icon vector layers use {icon}-path naming; strokeWeight bound to border/width/025. Do not use status completed/current/pending/error — that belongs to VerticalStepperItem. Do not use as VerticalStepperItem, StepperPrimary, StepProgressIndicator, ProgressBar, ListItem or timeline progress. Token rule: local S2 kebab-case only — color/background-surface/2, text/primary, text/secondary, border/radius/full, spacing/0|100|150|200|300, border/width/025. Typography: body/large/semi-bold (headline), body/medium/regular (supportingText). Prefer local DS icons. Accessibility: decorative icon and connector aria-hidden; convey meaning via headline/supportingText. React mapping: FeatureStepsItem(leadingIcon, headline, supportingText, showSupportingText?, showConnector?). Code Connect is not configured.",
+                "variants": {},
+                "props": {
+                    "leadingIcon": "INSTANCE_SWAP — preferredValues: square-check-outline | car-outline | trophy-outline | camera-outline | file-outline | checkbox-outline",
+                    "headline": "TEXT — primary label (body/large/semi-bold, text/primary); master default Label",
+                    "supportingText": "TEXT — supporting copy (body/medium/regular, text/secondary); HEIGHT + Hug; master default Description",
+                    "showSupportingText": "boolean — default true",
+                    "showConnector": "boolean — hides soft connector for final item; default true"
+                },
+                "rules": {
+                    "composition": "indicatorColumn (iconBadge 48 + connector spacing/100 FILL) + content (headline + supportingText)",
+                    "verticalRhythm": "content padding-bottom spacing/300 drives row height and connector stretch when parent gap is spacing/0",
+                    "alignment": "counterAxisAlignItems=CENTER between badge column and content",
+                    "illustrativeOnly": "No progress status matrix — thematic icon communicates topic, not completion",
+                    "icons": "INSTANCE_SWAP leadingIcon; preferred local outlines listed in props; vector layers {icon}-path; stroke border/width/025",
+                    "connector": "soft color/background-surface/2 — same as badge; width spacing/100; hide on final item",
+                    "vsVerticalStepperItem": "Use VerticalStepperItem for real progress status (completed/current/pending/error)",
+                    "usage": "Do not use as VerticalStepperItem, StepperPrimary, StepProgressIndicator, ProgressBar, ListItem or timeline progress"
+                },
+                "tokenRules": [
+                    "color/background-surface/2 on iconBadge and connector",
+                    "text/primary on headline; text/secondary on supportingText",
+                    "border/radius/full on iconBadge",
+                    "spacing/0 column gaps; spacing/100 connector width; spacing/150 badge padding; spacing/200 gap badge→content; spacing/300 content padding-bottom",
+                    "border/width/025 on preferred icon strokes",
+                    "body/large/semi-bold; body/medium/regular"
+                ],
+                "accessibility": "Decorative icon/connector aria-hidden; meaning via headline and supportingText."
             },
             "VerticalStepperItem": {
                 "nodeId": "3437:531",
@@ -8079,7 +8467,7 @@
             },
             "BottomSheetHeader": {
                 "nodeId": "4307:3760",
-                "description": "AI-READY COMPONENT: BottomSheetHeader is the compact header used only inside BottomSheet surfaces. No inverse appearance — sheets use default surface only (appearance fixed to default). Anatomy: leadingActions (optional optionsAction + leadingAction) + headingContent (FILL with title) + trailingActions (closeAction + trailingSlotKeeper). Height 48. Props: title (TEXT, default \"Label\"); showLabel (BOOLEAN, default true); showOptionsAction (BOOLEAN, default false — dots-vertical-outline); showLeadingAction (BOOLEAN, default false — arrow-left-outline); showCloseAction (BOOLEAN, default true — x-outline). showLabel toggles title inside headingContent — the FILL slot stays so close never recenters. Typography: body/medium/medium + text/primary on color/background-surface/0. Padding spacing/050; itemSpacing spacing/0. leadingActions hugs with min width 48 when empty. Icon preferredValues: options=dots-vertical-outline; leading=arrow-left-outline; close=x-outline (INSTANCE_SWAP on nested Button Icon). Internal icon paths use {icon}-path naming. Do not use as AppHeader or ModalHeader. React mapping: BottomSheetHeader(title, showLabel, showOptionsAction, showLeadingAction, showCloseAction, onOptions, onAction, onClose). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: BottomSheetHeader is the compact header used only inside BottomSheet surfaces. No inverse appearance — sheets use default surface only (appearance fixed to default). Anatomy: leadingActions (FIXED 40 + leadingSlotKeeper + absolute optionsAction/leadingAction) + headingContent (FILL with centered title) + trailingActions (FIXED 40 + trailingSlotKeeper + absolute closeAction). Height 40. Layout: horizontal SPACE_BETWEEN, itemSpacing spacing/150, padding spacing/0. Props: title (TEXT, default \"Label\"); showLabel (BOOLEAN, default true); showOptionsAction (BOOLEAN, default false — dots-vertical-outline); showLeadingAction (BOOLEAN, default false — arrow-left-outline); showCloseAction (BOOLEAN, default true — x-outline). Nested Buttons are text/sm icon-only (40×40), showLabel=false. showLabel toggles title inside headingContent — the FILL slot stays so close never recenters. Typography: body/medium/medium + text/primary on color/background-surface/0. Icon preferredValues: options=dots-vertical-outline; leading=arrow-left-outline; close=x-outline. Internal icon paths use {icon}-path naming. Do not use as AppHeader or ModalHeader. React mapping: BottomSheetHeader(title, showLabel, showOptionsAction, showLeadingAction, showCloseAction, onOptions, onAction, onClose). Code Connect is not configured.",
                 "variants": {
                     "appearance": [
                         "default"
@@ -8096,34 +8484,192 @@
                 "rules": {
                     "parentOnly": "Use only inside BottomSheet (header=sheet-header)",
                     "noInverse": "Do not publish appearance=inverse — BottomSheet headers are default surface only; appearance remains a single-value VARIANT axis",
-                    "composition": "leadingActions + headingContent(FILL, always in layout) + trailingActions(FIXED 48 + trailingSlotKeeper). title visibility binds to showLabel inside headingContent — do not hide the FILL slot.",
-                    "leadingActions": "Left-side optional controls: optionsAction (menu) and leadingAction (contextual). Both default hidden. HUG with minWidth 48 when empty (no absolute leading keeper).",
+                    "composition": "leadingActions(FIXED 40 + keeper) + headingContent(FILL, always in layout) + trailingActions(FIXED 40 + keeper). title visibility binds to showLabel inside headingContent — do not hide the FILL slot.",
+                    "leadingActions": "Left-side optional controls: optionsAction (menu) and leadingAction (contextual). Both default hidden. FIXED 40 with leadingSlotKeeper; buttons ABSOLUTE so hidden state does not expand layout.",
                     "iconPreferred": "Nested Button Icon preferred swaps: options→dots-vertical-outline; leading→arrow-left-outline; close→x-outline. Paths renamed to {icon}-path.",
                     "showLabel": "showLabel=false hides the title while keeping leading/trailing actions",
-                    "density": "Fixed height 48",
-                    "closeAction": "Button text/md/primary + x-outline; showLabel=false; accessible label Fechar; ABSOLUTE in trailingActions",
+                    "density": "Fixed height 40; icon buttons 40×40",
+                    "closeAction": "Button text/sm/primary icon-only + x-outline; showLabel=false; accessible label Fechar; ABSOLUTE in trailingActions",
                     "vsAppHeader": "Do not use AppHeader inside BottomSheet — use BottomSheetHeader",
                     "vsModalHeader": "Do not use as ModalHeader; Modal uses ModalHeader",
-                    "closeEdge": "closeAction must stay on the trailing edge. Root primaryAxisAlignItems=MIN; headingContent FILL keeps trailingActions right when showLabel=false or leading is empty."
+                    "closeEdge": "closeAction must stay on the trailing edge. Root primaryAxisAlignItems=SPACE_BETWEEN; matched 40 leading/trailing slots keep title optically centered."
                 },
                 "tokenRules": [
                     "color/background-surface/0 only (no inverse)",
                     "text/primary",
                     "body/medium/medium",
-                    "spacing/050 horizontal pad",
-                    "spacing/0 root itemSpacing",
-                    "nested Button tokens; dots-vertical-outline; arrow-left-outline; x-outline"
+                    "spacing/0 pad",
+                    "spacing/150 root itemSpacing",
+                    "nested Button text/sm icon-only; dots-vertical-outline; arrow-left-outline; x-outline"
                 ],
                 "accessibility": "Sheet owns dialog/sheet semantics; title via aria-labelledby when showLabel=true; options/leading/close icon-only buttons need accessible names (Opções / Ação / Fechar).",
                 "composition": [
-                    "Button",
+                    "Button text/sm icon-only",
                     "dots-vertical-outline",
                     "arrow-left-outline",
                     "x-outline"
                 ]
+            },
+            "VehicleConfirmCard": {
+                "nodeId": "4360:444",
+                "description": "AI-READY COMPONENT: VehicleConfirmCard — onboarding vehicle confirmation card. Shows plate as the hero identifier plus brand/model, with a decorative vehicle illustration that bleeds to the trailing edge. Props: plate (TEXT, default \"ABC1D23\"); brandModel (TEXT, default \"Brand Model\"); illustration (SLOT — product vehicle art; preferredValues vehicle-confirm-car; default soft shadow uses color/background-surface/3). Anatomy: text (plate + brandModel) + illustration (SLOT, end-aligned; nested vehicleArt + artwork). Layout: horizontal Auto Layout, counterAxisAlignItems=CENTER; demo width 342; height Hug (~105); clipsContent true. Padding: spacing/250 top/left/bottom, spacing/0 right (illustration bleed); itemSpacing spacing/0. Tokens: color/background-surface/2; border/radius/400; text/primary + heading/h1/semi-bold (plate); text/secondary + body/medium/regular (brandModel). Product illustration vectors may remain unbound fills (not DS icon *-path). Use to validate/confirm which vehicle is being onboarded. Do not use as VehicleSummaryCard (Home/Painel status+coverages), OfferProductCard, CardHorizontal, CardFilledItem shell alone, or Banner. Confirm CTA lives on the screen, not inside this card. React mapping: VehicleConfirmCard({ plate, brandModel, illustration }).",
+                "variants": {},
+                "props": {
+                    "plate": "TEXT — vehicle plate / hero identifier (heading/h1/semi-bold + text/primary); master default \"ABC1D23\"",
+                    "brandModel": "TEXT — brand + model supporting line (body/medium/regular + text/secondary); master default \"Brand Model\"",
+                    "illustration": "SLOT — decorative product vehicle art; preferredValues: vehicle-confirm-car (local); nested vehicleArt + artwork; shadow color/background-surface/3"
+                },
+                "rules": {
+                    "job": "Onboarding vehicle validation/confirmation display — not Home status summary",
+                    "ctaOutside": "Confirm CTA lives on the screen, not inside this card",
+                    "plateHero": "Plate is the primary typographic hierarchy (heading/h1), brandModel is secondary",
+                    "illustrationSlot": "illustration SLOT holds product art via preferredValues (vehicle-confirm-car); not DS outline icons",
+                    "illustrationLayers": "Nested naming: vehicleArt (group) + artwork (frame); product Vector fills may stay unbound (illustration exception, not icon *-path)",
+                    "vsVehicleSummaryCard": "Use VehicleSummaryCard for Home/Painel (status ChipTag + coverages + elevated surface)",
+                    "vsOfferProductCard": "Use OfferProductCard for add-on offers with price + CTA",
+                    "vsCardHorizontal": "Do not force CardHorizontal — Avatar + header/subhead + 80 media does not match plate-hero anatomy",
+                    "usage": "Do not use as VehicleSummaryCard, OfferProductCard, CardHorizontal, CardFilledItem alone, or Banner",
+                    "paddingBleed": "spacing/250 top/left/bottom; spacing/0 right so illustration can bleed to the trailing edge",
+                    "illustrationAlign": "illustration SLOT end-aligned (primaryAxisAlignItems=MAX); width FIXED 140 demo, height Hug",
+                    "shadowToken": "Default soft shadow uses color/background-surface/3"
+                },
+                "tokenRules": [
+                    "color/background-surface/2",
+                    "border/radius/400",
+                    "spacing/250 (pad top/left/bottom); spacing/0 (pad right + gap)",
+                    "text/primary (plate); text/secondary (brandModel)",
+                    "heading/h1/semi-bold (plate); body/medium/regular (brandModel)",
+                    "color/background-surface/3 (default illustration shadow)"
+                ],
+                "accessibility": "Present plate and brandModel as text; decorative illustration aria-hidden. If the card is pressable, expose accessible name from plate + brandModel. Confirm action is a separate control on the screen.",
+                "composition": [
+                    "text → plate + brandModel",
+                    "illustration (SLOT → vehicle-confirm-car instance: vehicleArt + artwork + shadow)"
+                ]
+            },
+            "ModalCheckItem": {
+                "nodeId": "4372:19371",
+                "description": "AI-READY COMPONENT: ModalCheckItem is a guideline / checklist row used inside Modal body content to present a tip or requirement with a leading check icon. Props: leadingIcon (INSTANCE_SWAP — local DS; default circle-check-filled; preferredValues circle-check-filled and circle-check-outline); description (TEXT — multi-line body copy; demo may include text/brand SemiBold emphasis spans). Anatomy: leadingIcon (20 FIXED) + description. Layout: horizontal Auto Layout, counterAxisAlignItems=MIN (icon top-aligned with first line), itemSpacing spacing/100, padding spacing/0, demo width 318, height Hug. Tokens: local body/medium/regular + text/secondary for base description; text/brand + body/medium/semi-bold (font-weight/semi-bold bound on emphasis spans) for optional in-copy emphasis; color/actions/primary on filled check icon paths; border/width/025 on strokes when applicable. Do not use as Checkbox (interactive selection), ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or BottomSheetCheckItem (use BottomSheetCheckItem inside BottomSheet). Use inside Modal slot / sheetContent stacks. Icon is decorative (aria-hidden); meaning comes from description. React mapping: ModalCheckItem({ leadingIcon, description }).",
+                "variants": {},
+                "props": {
+                    "leadingIcon": "INSTANCE_SWAP — local DS (default circle-check-filled); preferredValues: circle-check-filled | circle-check-outline; size FIXED 20; paths color/actions/primary; outline path circle-check-outline-path + border/width/025",
+                    "description": "TEXT — multi-line guideline copy (local body/medium/regular + text/secondary; optional text/brand + font-weight/semi-bold emphasis spans); master default EN tip with emphasis on \"glasses, hats or accessories\""
+                },
+                "rules": {
+                    "parentOnly": "Compose inside Modal slot / sheetContent — not a standalone page pattern",
+                    "decorativeIcon": "leadingIcon is decorative (aria-hidden); meaning via description",
+                    "mixedEmphasis": "Optional in-copy emphasis uses text/brand + font-weight/semi-bold (body/medium size/line-height); product copy may restyle spans",
+                    "typographyLocal": "Use local body/medium/* + font-family/base — no remote Font/* Title Case variables",
+                    "vsCheckbox": "Do not use as Checkbox — this is not an interactive selection control",
+                    "vsListItem": "Do not use as ListItem — no state layer, trailing, density matrix",
+                    "vsFeatureStepsItem": "Do not use as FeatureStepsItem / VerticalStepperItem",
+                    "vsBottomSheetCheckItem": "Use BottomSheetCheckItem inside BottomSheet — not ModalCheckItem",
+                    "usage": "Do not use as Checkbox, ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or BottomSheetCheckItem"
+                },
+                "tokenRules": [
+                    "spacing/100 (gap); spacing/0 (pad)",
+                    "body/medium/font-size|line-height + font-family/base + font-weight/regular (base description)",
+                    "text/secondary (base); text/brand + font-weight/semi-bold (optional emphasis spans)",
+                    "color/actions/primary on filled icon paths",
+                    "border/width/025 on icon strokes when applicable"
+                ],
+                "accessibility": "Decorative leadingIcon aria-hidden; expose description as list item / guideline text. Not a checkbox — do not announce checked state.",
+                "composition": [
+                    "leadingIcon (INSTANCE_SWAP FIXED 20)",
+                    "description (TEXT HEIGHT + Hug)"
+                ]
+            },
+            "BottomSheetCheckItem": {
+                "nodeId": "4389:80",
+                "description": "AI-READY COMPONENT: BottomSheetCheckItem is a guideline / checklist row used inside BottomSheet body content (slot / sheetContent) to present a tip or requirement with a leading check icon. Props: leadingIcon (INSTANCE_SWAP — local DS; default circle-check-filled; preferredValues circle-check-filled and circle-check-outline); description (TEXT — multi-line body copy; demo may include text/brand SemiBold emphasis spans). Anatomy: leadingIcon (20 FIXED) + description. Layout: horizontal Auto Layout, counterAxisAlignItems=MIN (icon top-aligned with first line), itemSpacing spacing/100, padding spacing/0, demo width 318, height Hug. Tokens: local body/medium/regular + text/secondary for base description; text/brand + body/medium/semi-bold (font-weight/semi-bold bound on emphasis spans) for optional in-copy emphasis; color/actions/primary on filled check icon paths; border/width/025 on strokes when applicable. Do not use as Checkbox (interactive selection), ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or ModalCheckItem (use ModalCheckItem inside Modal). Use inside BottomSheet slot / sheetContent stacks. Icon is decorative (aria-hidden); meaning comes from description. React mapping: BottomSheetCheckItem({ leadingIcon, description }).",
+                "variants": {},
+                "props": {
+                    "leadingIcon": "INSTANCE_SWAP — local DS (default circle-check-filled); preferredValues: circle-check-filled | circle-check-outline; size FIXED 20; paths color/actions/primary; outline path circle-check-outline-path + border/width/025",
+                    "description": "TEXT — multi-line guideline copy (local body/medium/regular + text/secondary; optional text/brand + font-weight/semi-bold emphasis spans); master default EN tip with emphasis on \"glasses, hats or accessories\""
+                },
+                "rules": {
+                    "parentOnly": "Compose inside BottomSheet slot / sheetContent — not a standalone page pattern",
+                    "decorativeIcon": "leadingIcon is decorative (aria-hidden); meaning via description",
+                    "mixedEmphasis": "Optional in-copy emphasis uses text/brand + font-weight/semi-bold (body/medium size/line-height); product copy may restyle spans",
+                    "typographyLocal": "Use local body/medium/* + font-family/base — no remote Font/* Title Case variables",
+                    "vsCheckbox": "Do not use as Checkbox — this is not an interactive selection control",
+                    "vsListItem": "Do not use as ListItem — no state layer, trailing, density matrix",
+                    "vsFeatureStepsItem": "Do not use as FeatureStepsItem / VerticalStepperItem",
+                    "vsModalCheckItem": "Use ModalCheckItem inside Modal — not BottomSheetCheckItem",
+                    "usage": "Do not use as Checkbox, ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or ModalCheckItem"
+                },
+                "tokenRules": [
+                    "spacing/100 (gap); spacing/0 (pad)",
+                    "body/medium/font-size|line-height + font-family/base + font-weight/regular (base description)",
+                    "text/secondary (base); text/brand + font-weight/semi-bold (optional emphasis spans)",
+                    "color/actions/primary on filled icon paths",
+                    "border/width/025 on icon strokes when applicable"
+                ],
+                "accessibility": "Decorative leadingIcon aria-hidden; expose description as list item / guideline text. Not a checkbox — do not announce checked state.",
+                "composition": [
+                    "leadingIcon (INSTANCE_SWAP FIXED 20)",
+                    "description (TEXT HEIGHT + Hug)"
+                ]
             }
         },
         "recentUpdates": [
+            {
+                "id": "modal-audit-apply",
+                "summary": "Modal audit apply: mobile-landscape docs; spacing/050 + sheetContent spacing/0 binds; elevation tokenRules; nested ModalHeader props; docs synced."
+            },
+            {
+                "id": "bottom-sheet-check-item-audit-apply",
+                "summary": "BottomSheetCheckItem + ModalCheckItem audit apply: font-weight/semi-bold on emphasis; Modal SLOT preferredValues; docs synced."
+            },
+            {
+                "id": "bottom-sheet-check-item",
+                "summary": "BottomSheetCheckItem: ModalCheckItem sibling for BottomSheet slot; preferredValues wired; docs synced."
+            },
+            {
+                "id": "bottom-sheet-header-layout-fix",
+                "summary": "BottomSheetHeader layout fix: text/sm icon-only 40×40; leadingSlotKeeper; SPACE_BETWEEN; matches MENU sheet reference; docs synced."
+            },
+
+            {
+                "id": "modal-check-item-audit-apply",
+                "summary": "ModalCheckItem audit apply: local body/medium typography (no remote Font/*); root Hug; outline *-path; EN demo emphasis; docs synced."
+            },
+            {
+                "id": "modal-check-item",
+                "summary": "ModalCheckItem: guideline check row for Modal slot (local circle-check-filled, description TEXT); docs synced."
+            },
+            {
+                "id": "vehicle-confirm-card-audit-apply",
+                "summary": "VehicleConfirmCard audit apply: vehicleArt/artwork naming; SLOT preferredValues vehicle-confirm-car; ABC1D23/Brand Model; docs synced."
+            },
+            {
+                "id": "vehicle-confirm-card-visual-fix",
+                "summary": "VehicleConfirmCard: asymmetric pad (0 right) for car bleed; shadow surface/3; SLOT end-aligned; docs synced."
+            },
+            {
+                "id": "vehicle-confirm-card",
+                "summary": "VehicleConfirmCard: onboarding vehicle confirmation (plate hero, brand/model, illustration SLOT); docs synced."
+            },
+            {
+                "id": "feature-steps-item-audit-apply",
+                "summary": "FeatureStepsItem audit apply: local preferred icons, *-path + stroke token, spacing/0|100, supportingText Hug, Label/Description master; docs synced."
+            },
+            {
+                "id": "feature-steps-visual-fix",
+                "summary": "FeatureSteps: spacing/0 container; Item rhythm via spacing/300 content pad + connector stretch; docs synced."
+            },
+            {
+                "id": "feature-steps",
+                "summary": "FeatureSteps + FeatureStepsItem: illustrative vertical steps (icon badge, soft connector); not VerticalStepper progress feedback; docs synced."
+            },
+            {
+                "id": "app-header-title-theme-typo",
+                "summary": "AppHeader title product-theme typography (app-cliente→body/medium/regular); UPPER via impl text-transform; docs synced."
+            },
+            {
+                "id": "app-header-product-theme",
+                "summary": "AppHeader product-theme tokens (inverse bg, leading-action bg/radius, avatar bg/icon-color); docs synced."
+            },
             {
                 "id": "app-header-audit-apply",
                 "summary": "AppHeader audit apply: super-app anatomy, spacing binds, keepers, icon paths; docs synced."

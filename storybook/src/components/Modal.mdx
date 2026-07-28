@@ -10,36 +10,39 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: Modal is a blocking overlay surface used to focus the user on a critical task, confirmation, form or contextual flow without leaving the current page. Use platform=web for desktop/web modal layouts and platform=mobile for mobile modal presentation. Composition: ModalHeader (layout=desktop on web, layout=mobile on mobile) plus sheetContent with slot for the modal body, form, confirmation content or custom flow content. Do not use Modal as a toast, banner, bottom sheet, side sheet, page container, card or permanent layout section. Do not nest AppHeader inside Modal — use ModalHeader only. Modal should block background interaction, trap focus, use role=dialog or alertdialog when appropriate, expose aria-modal=true, reference the ModalHeader title with aria-labelledby, support Escape to close when allowed, and restore focus to the trigger after closing. Token rule: use existing DS kebab-case variables only — color/background-surface/0 for modal surface, spacing/150 for web itemSpacing, spacing/500 for web paddingBottom, spacing/400 for mobile paddingBottom, border/radius/600 for modal radius, plus nested ModalHeader and Button tokens. React mapping: Modal(platform, title, label, showLabel, showCloseAction, children) where platform is web|mobile, header props map through ModalHeader, and children map to slot. Code Connect is not configured.
+AI-READY COMPONENT: Modal is the dialog surface for focused tasks that require user attention without leaving the current context. Props: platform=web|mobile|mobile-landscape; slot (SLOT — modal body; preferredValues include ModalCheckItem for guideline rows). Nested ModalHeader owns title, label, showLabel, showCloseAction (edit on nested instance — keep layout mapped to platform). Use platform=web for desktop/web dialogs, platform=mobile for portrait phone dialogs, and platform=mobile-landscape when the phone is rotated horizontally (same ModalHeader layout=mobile + sheetContent/slot as mobile, wider shorter shell). Composition: ModalHeader (web→layout=desktop; mobile|mobile-landscape→layout=mobile) + sheetContent → slot. Tokens: color/background-surface/0; border/radius/600; elevation DROP_SHADOW color/elevation/6 (radius/offsetY spacing/100; spread/offsetX spacing/0); itemSpacing spacing/150 (web) | spacing/050 (mobile|mobile-landscape); paddingBottom spacing/500 (web) | spacing/400 (mobile|mobile-landscape); sheetContent horizontal pad spacing/300 (web) | spacing/200 (mobile|mobile-landscape); sheetContent itemSpacing spacing/0. Do not use as BottomSheet, page, card, toast, or AppHeader host — use ModalHeader only. Compose guideline rows with ModalCheckItem in slot (not Checkbox, not BottomSheetCheckItem). Accessibility: dialog semantics owned by Modal; title via ModalHeader; close via showCloseAction. React mapping: Modal(platform, title, label, showLabel, showCloseAction, children). Code Connect is not configured.
 
 ## Variants
 
-- **platform:** web | mobile
+- **platform:** web | mobile | mobile-landscape
 
 ## Props
 
 | Prop | Type / values |
 | --- | --- |
-| `platform` | web \| mobile |
-| `slot` | main modal body content area |
-| `title` | maps through nested ModalHeader title |
-| `label` | maps through nested ModalHeader label |
-| `showLabel` | maps through nested ModalHeader showLabel |
-| `showCloseAction` | maps through nested ModalHeader showCloseAction |
+| `platform` | web \| mobile \| mobile-landscape |
+| `slot` | SLOT — main modal body; preferredValues include ModalCheckItem for guideline rows |
+| `title` | nested ModalHeader TEXT — modal heading |
+| `label` | nested ModalHeader TEXT — optional supporting label |
+| `showLabel` | nested ModalHeader BOOLEAN — toggles label |
+| `showCloseAction` | nested ModalHeader BOOLEAN — toggles closeAction Button |
 
 ## Rules
 
 - **nonPage:** Do not use Modal as toast, banner, bottom sheet, side sheet, page container or card
-- **composition:** ModalHeader (desktop on web, mobile on mobile) + sheetContent/slot — never AppHeader
-- **headerMapping:** platform=web → ModalHeader layout=desktop; platform=mobile → ModalHeader layout=mobile
+- **composition:** ModalHeader (desktop on web, mobile on mobile|mobile-landscape) + sheetContent/slot — never AppHeader
+- **headerMapping:** platform=web → ModalHeader layout=desktop; platform=mobile|mobile-landscape → ModalHeader layout=mobile
+- **headerProps:** title/label/showLabel/showCloseAction live on nested ModalHeader — do not remount AppHeader
+- **slotCheckItems:** Optional guideline stacks in slot may compose ModalCheckItem rows (not Checkbox, not BottomSheetCheckItem)
 
 ## Token rules
 
 - color/background-surface/0 for modal surface
-- spacing/150 for web itemSpacing
-- spacing/500 for web paddingBottom
-- spacing/400 for mobile paddingBottom
-- border/radius/600 for modal radius
+- border/radius/600
+- color/elevation/6 drop shadow (radius/offsetY spacing/100; spread/offsetX spacing/0)
+- itemSpacing spacing/150 (web) | spacing/050 (mobile|mobile-landscape)
+- paddingBottom spacing/500 (web) | spacing/400 (mobile|mobile-landscape)
+- sheetContent pad horizontal spacing/300 (web) | spacing/200 (mobile|mobile-landscape); itemSpacing spacing/0
 
 ## Accessibility
 
@@ -50,4 +53,5 @@ Block background interaction, trap focus, role=dialog or alertdialog, aria-modal
 - ModalHeader
 - Button
 - x-outline
+- ModalCheckItem (optional guideline rows in slot)
 

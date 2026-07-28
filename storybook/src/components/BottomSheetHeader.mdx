@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: BottomSheetHeader is the compact header used only inside BottomSheet surfaces. No inverse appearance — sheets use default surface only (appearance fixed to default). Anatomy: leadingActions (optional optionsAction + leadingAction) + headingContent (FILL with title) + trailingActions (closeAction + trailingSlotKeeper). Height 48. Props: title (TEXT, default "Label"); showLabel (BOOLEAN, default true); showOptionsAction (BOOLEAN, default false — dots-vertical-outline); showLeadingAction (BOOLEAN, default false — arrow-left-outline); showCloseAction (BOOLEAN, default true — x-outline). showLabel toggles title inside headingContent — the FILL slot stays so close never recenters. Typography: body/medium/medium + text/primary on color/background-surface/0. Padding spacing/050; itemSpacing spacing/0. leadingActions hugs with min width 48 when empty. Icon preferredValues: options=dots-vertical-outline; leading=arrow-left-outline; close=x-outline (INSTANCE_SWAP on nested Button Icon). Internal icon paths use \{icon\}-path naming. Do not use as AppHeader or ModalHeader. React mapping: BottomSheetHeader(title, showLabel, showOptionsAction, showLeadingAction, showCloseAction, onOptions, onAction, onClose). Code Connect is not configured.
+AI-READY COMPONENT: BottomSheetHeader is the compact header used only inside BottomSheet surfaces. No inverse appearance — sheets use default surface only (appearance fixed to default). Anatomy: leadingActions (FIXED 40 + leadingSlotKeeper + absolute optionsAction/leadingAction) + headingContent (FILL with centered title) + trailingActions (FIXED 40 + trailingSlotKeeper + absolute closeAction). Height 40. Layout: horizontal SPACE_BETWEEN, itemSpacing spacing/150, padding spacing/0. Props: title (TEXT, default "Label"); showLabel (BOOLEAN, default true); showOptionsAction (BOOLEAN, default false — dots-vertical-outline); showLeadingAction (BOOLEAN, default false — arrow-left-outline); showCloseAction (BOOLEAN, default true — x-outline). Nested Buttons are text/sm icon-only (40×40), showLabel=false. showLabel toggles title inside headingContent — the FILL slot stays so close never recenters. Typography: body/medium/medium + text/primary on color/background-surface/0. Icon preferredValues: options=dots-vertical-outline; leading=arrow-left-outline; close=x-outline. Internal icon paths use \{icon\}-path naming. Do not use as AppHeader or ModalHeader. React mapping: BottomSheetHeader(title, showLabel, showOptionsAction, showLeadingAction, showCloseAction, onOptions, onAction, onClose). Code Connect is not configured.
 
 ## Variants
 
@@ -31,24 +31,24 @@ AI-READY COMPONENT: BottomSheetHeader is the compact header used only inside Bot
 
 - **parentOnly:** Use only inside BottomSheet (header=sheet-header)
 - **noInverse:** Do not publish appearance=inverse — BottomSheet headers are default surface only; appearance remains a single-value VARIANT axis
-- **composition:** leadingActions + headingContent(FILL, always in layout) + trailingActions(FIXED 48 + trailingSlotKeeper). title visibility binds to showLabel inside headingContent — do not hide the FILL slot.
-- **leadingActions:** Left-side optional controls: optionsAction (menu) and leadingAction (contextual). Both default hidden. HUG with minWidth 48 when empty (no absolute leading keeper).
+- **composition:** leadingActions(FIXED 40 + keeper) + headingContent(FILL, always in layout) + trailingActions(FIXED 40 + keeper). title visibility binds to showLabel inside headingContent — do not hide the FILL slot.
+- **leadingActions:** Left-side optional controls: optionsAction (menu) and leadingAction (contextual). Both default hidden. FIXED 40 with leadingSlotKeeper; buttons ABSOLUTE so hidden state does not expand layout.
 - **iconPreferred:** Nested Button Icon preferred swaps: options→dots-vertical-outline; leading→arrow-left-outline; close→x-outline. Paths renamed to \{icon\}-path.
 - **showLabel:** showLabel=false hides the title while keeping leading/trailing actions
-- **density:** Fixed height 48
-- **closeAction:** Button text/md/primary + x-outline; showLabel=false; accessible label Fechar; ABSOLUTE in trailingActions
+- **density:** Fixed height 40; icon buttons 40×40
+- **closeAction:** Button text/sm/primary icon-only + x-outline; showLabel=false; accessible label Fechar; ABSOLUTE in trailingActions
 - **vsAppHeader:** Do not use AppHeader inside BottomSheet — use BottomSheetHeader
 - **vsModalHeader:** Do not use as ModalHeader; Modal uses ModalHeader
-- **closeEdge:** closeAction must stay on the trailing edge. Root primaryAxisAlignItems=MIN; headingContent FILL keeps trailingActions right when showLabel=false or leading is empty.
+- **closeEdge:** closeAction must stay on the trailing edge. Root primaryAxisAlignItems=SPACE_BETWEEN; matched 40 leading/trailing slots keep title optically centered.
 
 ## Token rules
 
 - color/background-surface/0 only (no inverse)
 - text/primary
 - body/medium/medium
-- spacing/050 horizontal pad
-- spacing/0 root itemSpacing
-- nested Button tokens; dots-vertical-outline; arrow-left-outline; x-outline
+- spacing/0 pad
+- spacing/150 root itemSpacing
+- nested Button text/sm icon-only; dots-vertical-outline; arrow-left-outline; x-outline
 
 ## Accessibility
 
@@ -56,7 +56,7 @@ Sheet owns dialog/sheet semantics; title via aria-labelledby when showLabel=true
 
 ## Composition
 
-- Button
+- Button text/sm icon-only
 - dots-vertical-outline
 - arrow-left-outline
 - x-outline

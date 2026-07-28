@@ -8,6 +8,20 @@ Documentation revisions for the Design System 2.0 Storybook seed.
 
 ## Recent updates
 
+- **modal-audit-apply:** Modal audit apply: mobile-landscape docs; spacing/050 + sheetContent spacing/0 binds; elevation tokenRules; nested ModalHeader props; docs synced.
+- **bottom-sheet-check-item-audit-apply:** BottomSheetCheckItem + ModalCheckItem audit apply: font-weight/semi-bold on emphasis; Modal SLOT preferredValues; docs synced.
+- **bottom-sheet-check-item:** BottomSheetCheckItem: ModalCheckItem sibling for BottomSheet slot; preferredValues wired; docs synced.
+- **bottom-sheet-header-layout-fix:** BottomSheetHeader layout fix: text/sm icon-only 40×40; leadingSlotKeeper; SPACE_BETWEEN; matches MENU sheet reference; docs synced.
+- **modal-check-item-audit-apply:** ModalCheckItem audit apply: local body/medium typography (no remote Font/*); root Hug; outline *-path; EN demo emphasis; docs synced.
+- **modal-check-item:** ModalCheckItem: guideline check row for Modal slot (local circle-check-filled, description TEXT); docs synced.
+- **vehicle-confirm-card-audit-apply:** VehicleConfirmCard audit apply: vehicleArt/artwork naming; SLOT preferredValues vehicle-confirm-car; ABC1D23/Brand Model; docs synced.
+- **vehicle-confirm-card-visual-fix:** VehicleConfirmCard: asymmetric pad (0 right) for car bleed; shadow surface/3; SLOT end-aligned; docs synced.
+- **vehicle-confirm-card:** VehicleConfirmCard: onboarding vehicle confirmation (plate hero, brand/model, illustration SLOT); docs synced.
+- **feature-steps-item-audit-apply:** FeatureStepsItem audit apply: local preferred icons, *-path + stroke token, spacing/0|100, supportingText Hug, Label/Description master; docs synced.
+- **feature-steps-visual-fix:** FeatureSteps: spacing/0 container; Item rhythm via spacing/300 content pad + connector stretch; docs synced.
+- **feature-steps:** FeatureSteps + FeatureStepsItem: illustrative vertical steps (icon badge, soft connector); not VerticalStepper progress feedback; docs synced.
+- **app-header-title-theme-typo:** AppHeader title product-theme typography (app-cliente→body/medium/regular); UPPER via impl text-transform; docs synced.
+- **app-header-product-theme:** AppHeader product-theme tokens (inverse bg, leading-action bg/radius, avatar bg/icon-color); docs synced.
 - **app-header-audit-apply:** AppHeader audit apply: super-app anatomy, spacing binds, keepers, icon paths; docs synced.
 - **bottom-sheet-header-audit-apply:** BottomSheetHeader audit apply: type style, descriptions, icon paths, spacing/0; docs synced.
 - **bottom-sheet-header-close-edge:** BottomSheetHeader: close stays trailing when only showCloseAction; docs synced.
@@ -174,6 +188,20 @@ Documentation revisions for the Design System 2.0 Storybook seed.
 
 ## Meta changelog
 
+- **2026-07-28** [storybook-modal-audit-apply]: Modal audit apply: document platform mobile-landscape; bind itemSpacing spacing/050 (mobile|landscape) + sheetContent spacing/0; AI-READY + ModalCheckItem preferredValues; elevation tokenRules; header props via nested ModalHeader; docs synced.
+- **2026-07-28** [storybook-bottom-sheet-check-item-audit-apply]: BottomSheetCheckItem + ModalCheckItem audit apply: emphasis span binds font-weight/semi-bold; Modal AI-READY mentions sibling; Modal SLOT preferredValues→ModalCheckItem; docs synced.
+- **2026-07-28** [storybook-bottom-sheet-check-item]: BottomSheetCheckItem (4389:80): ModalCheckItem sibling for BottomSheet slot/sheetContent; preferredValues on BottomSheet slot; docs synced.
+- **2026-07-28** [storybook-bottom-sheet-header-layout-fix]: BottomSheetHeader layout fix: Button text/sm icon-only 40×40 (was md 208); leadingSlotKeeper + absolute actions; SPACE_BETWEEN; height 40; matches MENU sheet reference; docs synced.
+- **2026-07-28** [storybook-modal-check-item-audit-apply]: ModalCheckItem audit apply: replace remote Font/* with local body/medium typography; root height Hug; circle-check-outline-path + border/width/025; generic EN demo with text/brand emphasis; icon stays FIXED 20; docs synced.
+- **2026-07-28** [storybook-modal-check-item]: ModalCheckItem: Modal body checklist/guideline row (leadingIcon circle-check-filled + description); not Checkbox/ListItem; docs synced.
+- **2026-07-28** [storybook-vehicle-confirm-card-audit-apply]: VehicleConfirmCard audit apply: rename vehicleArt/artwork; illustration SLOT description + preferredValues vehicle-confirm-car; master demo ABC1D23/Brand Model; SLOT height Hug; product vectors documented as unbound exception; docs synced.
+- **2026-07-28** [storybook-vehicle-confirm-card-visual-fix]: VehicleConfirmCard visual polish sync: padding spacing/250 L/T/B + spacing/0 right (illustration bleed); SLOT end-aligned; default shadow color/background-surface/3; docs + AI-Ready description updated.
+- **2026-07-28** [storybook-vehicle-confirm-card]: VehicleConfirmCard: onboarding plate-hero confirmation card (plate + brandModel + illustration SLOT); distinct from VehicleSummaryCard/OfferProductCard/CardHorizontal; docs synced.
+- **2026-07-28** [storybook-feature-steps-item-audit-apply]: FeatureStepsItem audit apply: preferredValues local DS outlines confirmed; icon paths *-path + border/width/025 stroke; spacing/0 on columns; supportingText HUG/HEIGHT; connector width spacing/100; master demo Label/Description; docs synced.
+- **2026-07-28** [storybook-feature-steps-visual-fix]: FeatureSteps visual polish sync: container spacing/0 (rhythm via Item content padding-bottom spacing/300 + FILL connector); Item ~86h demo; docs + AI-Ready descriptions updated.
+- **2026-07-28** [storybook-feature-steps]: FeatureSteps + FeatureStepsItem: illustrative sibling of VerticalStepper (thematic icon badge + soft connector + headline/supportingText; no progress status). Default onboarding copy from app prototype; docs synced.
+- **2026-07-28** [storybook-app-header-title-theme-typo]: AppHeader product-theme title typography: component/app-header/title/font-size|line-height|font-weight — EV|site-loovi→heading/h3+medium; app-cliente→body/medium+regular on small|small-centered × default × specific; UPPER via text-transform in app-cliente impl (Figma textCase ORIGINAL); docs synced.
+- **2026-07-28** [storybook-app-header-product-theme]: AppHeader product-theme tokens (5): inverse/background, leading-action/background|radius, avatar/background|icon-color — modes escritorio-virtual|site-loovi|app-cliente; docs synced.
 - **2026-07-27** [storybook-app-header-audit-apply]: AppHeader audit apply: super-app anatomy fixed (leading|heading|trailing + center TextHeader); spacing binds; legacy action removed; medium/large keepers; icon *-path; profileMenu=super-app only; AI-READY desc; docs synced.
 - **2026-07-27** [storybook-bottom-sheet-header-audit-apply]: BottomSheetHeader audit apply: body/medium/medium + text/primary; AI-READY descriptions; icon *-path renames; spacing/0 gap; Button instances refreshed; BottomSheet nest swapped; docs synced.
 - **2026-07-27** [storybook-bottom-sheet-header-close-edge]: BottomSheetHeader: headingContent FILL slot — showLabel off / only close keeps X on the trailing edge; docs synced.

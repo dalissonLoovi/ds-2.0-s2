@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobile or responsive experiences. Use it for contextual content that supports a task without navigating away. Do not use it as a centered modal, side drawer, toast, tooltip, card, full page or permanent layout container. Variant rule: header=none shows dragHandle + slot only; header=sheet-header nests local BottomSheetHeader (compact 48 height, headingContent title, optional leading options/action, optional close) above sheetContent/slot. Do not nest AppHeader or ModalHeader inside BottomSheet. React mapping: BottomSheet(header, children). Code Connect is not configured.
+AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobile or responsive experiences. Use it for contextual content that supports a task without navigating away. Do not use it as a centered modal, side drawer, toast, tooltip, card, full page or permanent layout container. Variant rule: header=none shows dragHandle + slot only; header=sheet-header nests local BottomSheetHeader (compact headingContent title, optional leading options/action, optional close) above sheetContent/slot. Compose guideline/checklist rows with BottomSheetCheckItem in slot / sheetContent (preferredValues) — not Checkbox, not ModalCheckItem. Do not nest AppHeader or ModalHeader inside BottomSheet. React mapping: BottomSheet(header, children). Code Connect is not configured.
 
 ## Variants
 
@@ -20,13 +20,14 @@ AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobil
 
 | Prop | Type / values |
 | --- | --- |
-| `slot` | main content area |
+| `slot` | SLOT — main content; preferredValues include BottomSheetCheckItem for guideline rows |
 | `header` | none \| sheet-header |
 
 ## Rules
 
 - **headerComposition:** header=sheet-header nests BottomSheetHeader — not AppHeader
 - **vsAppHeader:** Do not nest AppHeader in BottomSheet
+- **slotCheckItems:** Optional guideline stacks in slot / sheetContent compose BottomSheetCheckItem rows (not Checkbox, not ModalCheckItem)
 
 ## Accessibility
 
@@ -35,6 +36,7 @@ Modal usage should block background interaction, trap focus, support Escape to c
 ## Composition
 
 - BottomSheetHeader (when header=sheet-header)
+- BottomSheetCheckItem (optional guideline rows in slot / sheetContent)
 - dragHandle (header=none)
 - slot / sheetContent
 

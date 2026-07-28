@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/VehicleConfirmCard" />
+
+# VehicleConfirmCard
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4360-444) · node `4360:444`
+
+## AI-READY
+
+AI-READY COMPONENT: VehicleConfirmCard — onboarding vehicle confirmation card. Shows plate as the hero identifier plus brand/model, with a decorative vehicle illustration that bleeds to the trailing edge. Props: plate (TEXT, default "ABC1D23"); brandModel (TEXT, default "Brand Model"); illustration (SLOT — product vehicle art; preferredValues vehicle-confirm-car; default soft shadow uses color/background-surface/3). Anatomy: text (plate + brandModel) + illustration (SLOT, end-aligned; nested vehicleArt + artwork). Layout: horizontal Auto Layout, counterAxisAlignItems=CENTER; demo width 342; height Hug (~105); clipsContent true. Padding: spacing/250 top/left/bottom, spacing/0 right (illustration bleed); itemSpacing spacing/0. Tokens: color/background-surface/2; border/radius/400; text/primary + heading/h1/semi-bold (plate); text/secondary + body/medium/regular (brandModel). Product illustration vectors may remain unbound fills (not DS icon *-path). Use to validate/confirm which vehicle is being onboarded. Do not use as VehicleSummaryCard (Home/Painel status+coverages), OfferProductCard, CardHorizontal, CardFilledItem shell alone, or Banner. Confirm CTA lives on the screen, not inside this card. React mapping: VehicleConfirmCard(\{ plate, brandModel, illustration \}).
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `plate` | TEXT — vehicle plate / hero identifier (heading/h1/semi-bold + text/primary); master default "ABC1D23" |
+| `brandModel` | TEXT — brand + model supporting line (body/medium/regular + text/secondary); master default "Brand Model" |
+| `illustration` | SLOT — decorative product vehicle art; preferredValues: vehicle-confirm-car (local); nested vehicleArt + artwork; shadow color/background-surface/3 |
+
+## Rules
+
+- **job:** Onboarding vehicle validation/confirmation display — not Home status summary
+- **ctaOutside:** Confirm CTA lives on the screen, not inside this card
+- **plateHero:** Plate is the primary typographic hierarchy (heading/h1), brandModel is secondary
+- **illustrationSlot:** illustration SLOT holds product art via preferredValues (vehicle-confirm-car); not DS outline icons
+- **illustrationLayers:** Nested naming: vehicleArt (group) + artwork (frame); product Vector fills may stay unbound (illustration exception, not icon *-path)
+- **vsVehicleSummaryCard:** Use VehicleSummaryCard for Home/Painel (status ChipTag + coverages + elevated surface)
+- **vsOfferProductCard:** Use OfferProductCard for add-on offers with price + CTA
+- **vsCardHorizontal:** Do not force CardHorizontal — Avatar + header/subhead + 80 media does not match plate-hero anatomy
+- **usage:** Do not use as VehicleSummaryCard, OfferProductCard, CardHorizontal, CardFilledItem alone, or Banner
+- **paddingBleed:** spacing/250 top/left/bottom; spacing/0 right so illustration can bleed to the trailing edge
+- **illustrationAlign:** illustration SLOT end-aligned (primaryAxisAlignItems=MAX); width FIXED 140 demo, height Hug
+- **shadowToken:** Default soft shadow uses color/background-surface/3
+
+## Token rules
+
+- color/background-surface/2
+- border/radius/400
+- spacing/250 (pad top/left/bottom); spacing/0 (pad right + gap)
+- text/primary (plate); text/secondary (brandModel)
+- heading/h1/semi-bold (plate); body/medium/regular (brandModel)
+- color/background-surface/3 (default illustration shadow)
+
+## Accessibility
+
+Present plate and brandModel as text; decorative illustration aria-hidden. If the card is pressable, expose accessible name from plate + brandModel. Confirm action is a separate control on the screen.
+
+## Composition
+
+- text → plate + brandModel
+- illustration (SLOT → vehicle-confirm-car instance: vehicleArt + artwork + shadow)
+
