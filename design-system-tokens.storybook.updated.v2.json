@@ -7,7 +7,7 @@
         "figmaUrl": "https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940",
         "exportedAt": "2026-07-21T12:00:00-03:00",
         "revision": "2026-07-21-painel-home-tokens",
-        "variableCount": 271,
+        "variableCount": 272,
         "textStyleCount": 50,
         "effectStyleCount": 9,
         "painelHomeTokenMap": {
@@ -136,6 +136,11 @@
                     "site-loovi": "font-weight/medium",
                     "app-cliente": "font-weight/regular"
                 }
+            },
+            {
+                "name": "feedback/info",
+                "id": "VariableID:4419:32",
+                "aliasOf": "primitive-colors/aqua-gleam"
             }
         ],
         "collections": [
@@ -454,9 +459,24 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-07-28T14:00:00-03:00",
-        "storybookRevision": "2026-07-28-modal-audit-apply",
+        "storybookUpdatedAt": "2026-07-28T14:50:00-03:00",
+        "storybookRevision": "2026-07-28-alert-feedback-info",
         "changelog": [
+            {
+                "date": "2026-07-28",
+                "type": "storybook-alert-feedback-info",
+                "summary": "Created feedback/info (alias aqua-gleam); Alert+Toast status=info icon fills → feedback/info (content layer). actionLabel stays nested Button.label (Figma API cannot bind parent TEXT to instance sublayer). Docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-alert-overlay-token",
+                "summary": "Alert: overlay paint bound to color/elevation/inverse-3 @ ~48% opacity (was unbound black); AI-READY + docs synced."
+            },
+            {
+                "date": "2026-07-28",
+                "type": "storybook-alert-audit-apply",
+                "summary": "Alert (4406:91): seed docs; icon paths *-path; clear icon root fills; AI-READY icon-fill accuracy + actionLabel; dark overlay documented as characteristic; docs synced."
+            },
             {
                 "date": "2026-07-28",
                 "type": "storybook-modal-audit-apply",
@@ -3363,12 +3383,12 @@
                         "tokenPattern": "feedback/{status}",
                         "exportPrefix": "feedback",
                         "allowedStatuses": [
+                            "info",
                             "success",
                             "warning",
                             "danger"
                         ],
                         "unavailableStatuses": {
-                            "info": "No feedback/info content token. Use text/primary on color/background-feedback-primary/info or neutral surfaces with info iconography.",
                             "system": "No feedback/system content token. Use text/primary on color/background-feedback-primary/system or neutral surfaces with system iconography."
                         },
                         "useFor": [
@@ -3383,6 +3403,7 @@
                             "Accent borders — use color/border-feedback/*"
                         ],
                         "figmaVariables": [
+                            "feedback/info",
                             "feedback/success",
                             "feedback/warning",
                             "feedback/danger"
@@ -4150,6 +4171,75 @@
                 "composition": [
                     "BreadcrumbItem",
                     "home-outline"
+                ]
+            },
+            "Alert": {
+                "nodeId": "4406:91",
+                "description": "AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Variants: status=system|info|success|danger|warning (same vocabulary as Toast). status=system is intentional-sparse and has no statusIcon; other statuses compose a local DS filled statusIcon (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with content-layer icon fills: info|success|danger|warning → feedback/info|success|danger|warning. Icon paths use {icon}-path. Props: title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Composition: statusIcon (when present) + content → text (title + description) + action (local Button outline/sm/primary). actionLabel is React-side — in Figma set nested action Button label when showAction=true. Anatomy: vertical stack (icon above content). Tokens: color/background-surface/brand + overlay paint color/elevation/inverse-3 @ ~48% opacity (second fill layer); text/on-color (title) + text/on-color-disabled (description); border/radius/400; spacing/100 (root gap) | spacing/150 (pad top / content gap) | spacing/250 (pad sides/bottom) | spacing/100 (text gap). Action outline stroke/label use text/on-color for contrast on brand. Do not use as Toast, Banner, Modal, or inline field validation. Accessibility: role=status for system|info|success; role=alert for warning|danger when urgent; action needs accessible name; decorative status icons aria-hidden when title conveys status. React mapping: Alert(status, title, description, showDescription, showAction, actionLabel). Code Connect is not configured.",
+                "variants": {
+                    "status": [
+                        "system",
+                        "info",
+                        "success",
+                        "danger",
+                        "warning"
+                    ]
+                },
+                "props": {
+                    "status": "system | info | success | danger | warning",
+                    "title": "TEXT — alert heading (body/medium/semi-bold + text/on-color)",
+                    "description": "TEXT — supporting copy (body/small/regular + text/on-color-disabled)",
+                    "showDescription": "boolean — toggles description (default true)",
+                    "showAction": "boolean — toggles nested outline Button (default true)",
+                    "actionLabel": "React mapping for nested action Button label (Figma: Button.label)"
+                },
+                "statusMap": {
+                    "system": {
+                        "icon": null,
+                        "iconFillToken": null
+                    },
+                    "info": {
+                        "icon": "info-circle-filled",
+                        "iconPath": "info-circle-filled-path",
+                        "iconFillToken": "feedback/info"
+                    },
+                    "success": {
+                        "icon": "circle-check-filled",
+                        "iconPath": "circle-check-filled-path",
+                        "iconFillToken": "feedback/success"
+                    },
+                    "danger": {
+                        "icon": "alert-circle-filled",
+                        "iconPath": "alert-circle-filled-path",
+                        "iconFillToken": "feedback/danger"
+                    },
+                    "warning": {
+                        "icon": "alert-triangle-filled",
+                        "iconPath": "alert-triangle-filled-path",
+                        "iconFillToken": "feedback/warning"
+                    }
+                },
+                "rules": {
+                    "intentionalSparse": "status=system publishes no statusIcon",
+                    "actionLabel": "actionLabel is React-side / nested Button.label — Figma parent TEXT cannot bind to instance sublayer via API; edit nested action label when showAction=true",
+                    "vsToast": "Do not use as Toast — Alert is persistent in-flow; Toast is transient",
+                    "vsBanner": "Do not use as Banner — Banner is full-width page/section feedback on feedback-primary surfaces",
+                    "vsModal": "Do not use as Modal / AlertDialog — Alert does not block the page",
+                    "darkOverlay": "Second fill layer color/elevation/inverse-3 @ ~48% opacity over color/background-surface/brand",
+                    "usage": "Do not use as Toast, Banner, Modal, or inline field validation"
+                },
+                "tokenRules": [
+                    "color/background-surface/brand + color/elevation/inverse-3 @ ~48% opacity (overlay)",
+                    "text/on-color (title); text/on-color-disabled (description)",
+                    "border/radius/400",
+                    "spacing/100 (root gap, text gap); spacing/150 (pad top, content gap); spacing/250 (pad sides/bottom)",
+                    "status icon fills: feedback/info|success|danger|warning",
+                    "action Button outline stroke/label text/on-color"
+                ],
+                "accessibility": "role=status for system|info|success; role=alert for urgent warning|danger; action accessible name; decorative statusIcon aria-hidden when title conveys status.",
+                "composition": [
+                    "statusIcon (filled local DS; omitted on system)",
+                    "content → text (title + description) + action (Button outline/sm)"
                 ]
             },
             "Banner": {
@@ -7440,7 +7530,7 @@
             },
             "Toast": {
                 "nodeId": "3550:4107",
-                "description": "AI-READY COMPONENT: Toast is a transient feedback message used to confirm an action, inform system status, or warn about a temporary condition. Use for short, non-blocking messages. Do not use as Modal, Banner, AlertDialog, Snackbar replacement for persistent critical content, or primary navigation. Variants: status=system|info|success|danger|warning. status=danger replaces deprecated error naming. status=system is intentional-sparse and has no statusIcon; other statuses compose a local DS statusIcon. Props: message (TEXT), showAction (BOOLEAN, default false), dismissible (BOOLEAN, default true). When showAction=true, set the nested action Button label (React actionLabel). dismiss controls the dismiss Button (x-outline). Composition: action and dismiss use the local Button component (variant=text). Status icons use local DS filled icons only (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled). Accessibility: role=status for system|info|success. role=alert only for urgent warning|danger. Do not move focus automatically. If dismissible=true, expose a clear accessible close label. Decorative status icons should be aria-hidden=true when the message already communicates status. Token rule: use existing DS kebab-case variables (color/background-surface/inverse-3, text/on-color, spacing/0|150|200, border/radius/400, color/elevation/6). Status icon fills: feedback/success|danger|warning; info uses color/background-feedback-primary/info (no local feedback/info). React mapping: Toast(status, message, showAction, actionLabel, dismissible, onAction, onDismiss).",
+                "description": "AI-READY COMPONENT: Toast is a transient feedback message used to confirm an action, inform system status, or warn about a temporary condition. Use for short, non-blocking messages. Do not use as Modal, Banner, AlertDialog, Snackbar replacement for persistent critical content, or primary navigation. Variants: status=system|info|success|danger|warning. status=danger replaces deprecated error naming. status=system is intentional-sparse and has no statusIcon; other statuses compose a local DS statusIcon. Props: message (TEXT), showAction (BOOLEAN, default false), dismissible (BOOLEAN, default true). When showAction=true, set the nested action Button label (React actionLabel). dismiss controls the dismiss Button (x-outline). Composition: action and dismiss use the local Button component (variant=text). Status icons use local DS filled icons only (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled). Accessibility: role=status for system|info|success. role=alert only for urgent warning|danger. Do not move focus automatically. If dismissible=true, expose a clear accessible close label. Decorative status icons should be aria-hidden=true when the message already communicates status. Token rule: use existing DS kebab-case variables (color/background-surface/inverse-3, text/on-color, spacing/0|150|200, border/radius/400, color/elevation/6). Status icon fills: feedback/success|danger|warning; info uses feedback/info (no local feedback/info). React mapping: Toast(status, message, showAction, actionLabel, dismissible, onAction, onDismiss).",
                 "variants": {
                     "status": [
                         "system",
@@ -7461,7 +7551,7 @@
                     "composition": "Compose local Button for action and dismiss; local DS filled status icons only",
                     "intentionalSparse": "status=system publishes no statusIcon",
                     "actionLabel": "actionLabel is React-side; in Figma set nested action Button label when showAction=true",
-                    "usage": "Do not use as Modal, Banner, AlertDialog or persistent critical content"
+                    "usage": "Do not use as Modal, Banner, Alert, AlertDialog or persistent critical content"
                 },
                 "statusMap": {
                     "system": {
@@ -7470,7 +7560,7 @@
                     },
                     "info": {
                         "icon": "info-circle-filled",
-                        "iconFillToken": "color/background-feedback-primary/info"
+                        "iconFillToken": "feedback/info"
                     },
                     "success": {
                         "icon": "circle-check-filled",
@@ -7488,7 +7578,7 @@
                 "tokenRules": [
                     "color/background-surface/inverse-3, text/on-color",
                     "spacing/0 | 150 | 200, border/radius/400, color/elevation/6",
-                    "status icon fills: feedback/success|danger|warning; info → color/background-feedback-primary/info"
+                    "status icon fills: feedback/info|success|danger|warning"
                 ],
                 "accessibility": "role=status for system|info|success; role=alert only for urgent warning|danger; no automatic focus move; dismiss needs accessible close label; decorative status icons aria-hidden when message conveys status."
             },
@@ -8614,6 +8704,18 @@
         },
         "recentUpdates": [
             {
+                "id": "alert-feedback-info",
+                "summary": "feedback/info token created; Alert+Toast info icon fills use content-layer feedback/info; docs synced."
+            },
+            {
+                "id": "alert-overlay-token",
+                "summary": "Alert: overlay paint → color/elevation/inverse-3 @ ~48% opacity; docs synced."
+            },
+            {
+                "id": "alert-audit-apply",
+                "summary": "Alert: seed docs; icon *-path; clear icon fills; AI-READY + actionLabel; dark overlay characteristic; docs synced."
+            },
+            {
                 "id": "modal-audit-apply",
                 "summary": "Modal audit apply: mobile-landscape docs; spacing/050 + sheetContent spacing/0 binds; elevation tokenRules; nested ModalHeader props; docs synced."
             },
@@ -8629,7 +8731,6 @@
                 "id": "bottom-sheet-header-layout-fix",
                 "summary": "BottomSheetHeader layout fix: text/sm icon-only 40×40; leadingSlotKeeper; SPACE_BETWEEN; matches MENU sheet reference; docs synced."
             },
-
             {
                 "id": "modal-check-item-audit-apply",
                 "summary": "ModalCheckItem audit apply: local body/medium typography (no remote Font/*); root Hug; outline *-path; EN demo emphasis; docs synced."
