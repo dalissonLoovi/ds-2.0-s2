@@ -613,9 +613,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-07-29T17:15:17.233Z",
-        "storybookRevision": "2026-07-29-modal-container-radius",
+        "storybookUpdatedAt": "2026-07-29T17:30:00.000Z",
+        "storybookRevision": "2026-07-29-uploadphotos-chiptag-canonical",
         "changelog": [
+            {
+                "date": "2026-07-29",
+                "type": "storybook-uploadphotos-chiptag-canonical",
+                "summary": "UploadPhotos: statusTag instances swapped from orphan ChipTag 3291:690 → canonical ChipTag 3653:23220 (sm/hug/strong; system|success|danger); ChipTag docs nodeId + emphasis axis synced."
+            },
             {
                 "date": "2026-07-29",
                 "type": "storybook-modal-container-radius",
@@ -5831,8 +5836,8 @@
                 "accessibility": "accessible group label; chips keyboard reachable; Enter/Space activate/toggle; selected filters expose selected state."
             },
             "ChipTag": {
-                "nodeId": "3291:690",
-                "description": "AI-READY COMPONENT: ChipTag is a compact non-interactive label used to display category, status, metadata or contextual classification. Use intent=info, system, success, warning or danger for semantic status tags, and intent=outline for neutral outlined tags. Do not use ChipTag as a button, selectable filter, removable chip, navigation tab, checkbox, badge, alert or CTA. For interactive chips, use ChipClickable.",
+                "nodeId": "3653:23220",
+                "description": "AI-READY COMPONENT: ChipTag is a compact non-interactive label used to display category, status, metadata or contextual classification. Use intent=info, system, success, warning or danger for semantic status tags, and intent=outline for neutral outlined tags. Use emphasis=strong for saturated feedback fills and emphasis=soft where available (success soft exemplars) for low-emphasis status. Do not use ChipTag as a button, selectable filter, removable chip, navigation tab, checkbox, badge, alert or CTA. For interactive chips, use ChipClickable. Canonical set lives on the Chip page (3653:23220) — do not instance the orphan legacy set 3291:690.",
                 "variants": {
                     "size": [
                         "sm",
@@ -5853,6 +5858,10 @@
                     "state": [
                         "default",
                         "disabled"
+                    ],
+                    "emphasis": [
+                        "strong",
+                        "soft"
                     ]
                 },
                 "props": {
@@ -5863,16 +5872,20 @@
                     "size": "sm | md",
                     "intent": "info | system | success | warning | danger | outline",
                     "width": "hug | fill",
-                    "state": "default | disabled"
+                    "state": "default | disabled",
+                    "emphasis": "strong | soft — soft exemplars currently published for success; prefer strong when leadingIcon must render"
                 },
                 "rules": {
                     "disabled": "disabled is state=disabled only; never intent=disabled. Disabled exemplars exist for intent=system (matches ChipClickable pattern).",
-                    "nonInteractive": "ChipTag must not receive focus or onClick; use ChipClickable for interaction."
+                    "nonInteractive": "ChipTag must not receive focus or onClick; use ChipClickable for interaction.",
+                    "canonicalSet": "Use component set 3653:23220 only; legacy 3291:690 is orphan and must not be nested in product components.",
+                    "softLeadingIcon": "emphasis=soft success may omit leadingIcon from the instance tree — use emphasis=strong when an icon is required."
                 },
                 "tokenRules": [
-                    "color/background-feedback-primary/{intent} for info, system, success, warning, danger fills",
+                    "color/background-feedback-primary/{intent} for strong fills (info, system, success, warning, danger)",
+                    "soft success uses soft feedback fill tokens where bound",
                     "color/border/2 for outline stroke and disabled fill",
-                    "text/primary for label on saturated fills",
+                    "text/primary for label on saturated fills; text/on-color when fill requires inverse label",
                     "text/secondary for muted icon/label on outline and disabled",
                     "border/radius/full",
                     "spacing/*",
@@ -6141,10 +6154,11 @@
                 },
                 "statusMap": {
                     "pending": "Button text/sm/primary — label + trailing chevron (Adicionar foto); surface/2",
-                    "in-review": "ChipTag system — no leading icon; surface/1",
-                    "approved": "ChipTag success; surface/1",
-                    "rejected": "ChipTag danger + Button text/sm/primary — label + trailing chevron (Refazer foto); surface/2"
+                    "in-review": "ChipTag canonical 3653:23220 — sm/system/hug/strong; no leading icon; surface/1",
+                    "approved": "ChipTag canonical — sm/success/hug/strong + circle-check-outline; surface/1",
+                    "rejected": "ChipTag canonical — sm/danger/hug/strong + alert-circle-outline + Button text/sm/primary — label + trailing chevron (Refazer foto); surface/2"
                 },
+                "compositionNote": "statusTag must instance ChipTag 3653:23220 only (not orphan 3291:690).",
                 "tokenRules": [
                     "color/background-surface/1 | 2 (intentional by status)",
                     "text/primary | secondary",
@@ -9741,6 +9755,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "uploadphotos-chiptag-canonical",
+                "date": "2026-07-29",
+                "summary": "UploadPhotos: statusTag → canonical ChipTag (3653:23220); ChipTag nodeId/emphasis docs synced."
+            },
             {
                 "id": "modal-container-radius",
                 "date": "2026-07-29",
