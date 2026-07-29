@@ -281,6 +281,17 @@
                     "site-loovi": "border/radius/500",
                     "app-cliente": "border/radius/500"
                 }
+            },
+            {
+                "name": "component/modal/container/radius",
+                "id": "VariableID:4532:134",
+                "collection": "product-theme",
+                "resolvedType": "FLOAT",
+                "aliasByMode": {
+                    "escritorio-virtual": "border/radius/600",
+                    "site-loovi": "border/radius/600",
+                    "app-cliente": "border/radius/800"
+                }
             }
         ],
         "collections": [
@@ -602,9 +613,19 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-07-29T16:26:36.318Z",
-        "storybookRevision": "2026-07-29-alert-fill-stack",
+        "storybookUpdatedAt": "2026-07-29T17:15:17.233Z",
+        "storybookRevision": "2026-07-29-modal-container-radius",
         "changelog": [
+            {
+                "date": "2026-07-29",
+                "type": "storybook-modal-container-radius",
+                "summary": "Modal product-theme: component/modal/container/radius (EV|site-loovi→600; app-cliente→800); catalog 21 vars; shell radius docs synced."
+            },
+            {
+                "date": "2026-07-29",
+                "type": "storybook-modalheader-app-cliente",
+                "summary": "ModalHeader app-cliente docs: close chip surface/2 + radius/full + size-mobile 32 on layout=mobile; desktop close stays spacing/500 (40); leadingSpacer/centerOptical scope clarified."
+            },
             {
                 "date": "2026-07-29",
                 "type": "storybook-alert-fill-stack",
@@ -1547,7 +1568,7 @@
                 "app-cliente"
             ],
             "summary": "Multi-product theming for S2. One published component master stays mode-aware via product-theme aliases — switch escritorio-virtual | site-loovi | app-cliente to preview. Do not fork components per product; do not hardcode product fills/radii on themed slots.",
-            "variableCount": 20,
+            "variableCount": 21,
             "byComponent": {
                 "AppHeader": [
                     "component/app-header/inverse/background",
@@ -1583,6 +1604,9 @@
                 ],
                 "List": [
                     "component/list-action/container/radius"
+                ],
+                "Modal": [
+                    "component/modal/container/radius"
                 ]
             },
             "tokens": [
@@ -1759,7 +1783,7 @@
                     "id": "VariableID:4364:125",
                     "resolvedType": "COLOR",
                     "component": "ModalHeader",
-                    "binds": "closeAction Button fill",
+                    "binds": "closeAction Button fill (all layouts)",
                     "aliasByMode": {
                         "escritorio-virtual": "color/background-surface/0",
                         "site-loovi": "color/background-surface/2",
@@ -1771,7 +1795,7 @@
                     "id": "VariableID:4364:126",
                     "resolvedType": "FLOAT",
                     "component": "ModalHeader",
-                    "binds": "closeAction Button corner radius",
+                    "binds": "closeAction Button corner radius (all layouts)",
                     "aliasByMode": {
                         "escritorio-virtual": "border/radius/200",
                         "site-loovi": "border/radius/full",
@@ -1783,7 +1807,7 @@
                     "id": "VariableID:4382:176",
                     "resolvedType": "FLOAT",
                     "component": "ModalHeader",
-                    "binds": "closeAction hit size on layout=mobile (raw px per mode)",
+                    "binds": "closeAction (+ center leadingSpacer) hit size on layout=mobile only; desktop close stays spacing/500 (40)",
                     "aliasByMode": {
                         "escritorio-virtual": 40,
                         "site-loovi": 40,
@@ -1825,15 +1849,28 @@
                         "site-loovi": "border/radius/500",
                         "app-cliente": "border/radius/500"
                     }
+                },
+                {
+                    "name": "component/modal/container/radius",
+                    "id": "VariableID:4532:134",
+                    "resolvedType": "FLOAT",
+                    "component": "Modal",
+                    "binds": "Modal shell corner radius (all platforms)",
+                    "aliasByMode": {
+                        "escritorio-virtual": "border/radius/600",
+                        "site-loovi": "border/radius/600",
+                        "app-cliente": "border/radius/800"
+                    }
                 }
             ],
             "notes": [
                 "site-loovi solid Button uses success feedback fill + text/primary label/icon (not on-color).",
                 "app-cliente AppHeader titles on small|small-centered × default × specific use body/medium/regular; apply text-transform:uppercase in product UI (Figma textCase stays ORIGINAL).",
-                "app-cliente ModalHeader close-action size-mobile is 32px; EV and site-loovi stay 40px.",
+                "app-cliente ModalHeader close-action: mobile size-mobile=32 + surface/2 + radius/full; desktop close size stays spacing/500 (40). EV|site-loovi mobile size stay 40.",
                 "Avatar backgrounds on site-loovi|app-cliente use raw rgba white @ 16% (no semantic alias yet).",
                 "Input field radius: EV→200; site-loovi|app-cliente→full. InputTextArea field radius: EV→200; site-loovi|app-cliente→500 (not full).",
-                "component/list-action/container/radius is shared by ListActionDropdown and List (plain|dropdown): EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full)."
+                "component/list-action/container/radius is shared by ListActionDropdown and List (plain|dropdown): EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full).",
+                "Modal shell radius binds component/modal/container/radius — EV|site-loovi→border/radius/600 (24); app-cliente→border/radius/800 (32). Do not hardcode radius/600 on the Modal root."
             ]
         }
     },
@@ -4055,6 +4092,7 @@
                 "components": [
                     "AppHeader",
                     "Button",
+                    "Modal",
                     "ModalHeader",
                     "Input",
                     "InputTextArea",
@@ -4064,10 +4102,11 @@
                 "notes": [
                     "site-loovi solid Button uses success feedback fill + text/primary label/icon (not on-color).",
                     "app-cliente AppHeader titles on small|small-centered × default × specific use body/medium/regular; apply text-transform:uppercase in product UI (Figma textCase stays ORIGINAL).",
-                    "app-cliente ModalHeader close-action size-mobile is 32px; EV and site-loovi stay 40px.",
+                    "app-cliente ModalHeader close-action: mobile size-mobile=32 + surface/2 + radius/full; desktop close size stays spacing/500 (40). EV|site-loovi mobile size stay 40.",
                     "Avatar backgrounds on site-loovi|app-cliente use raw rgba white @ 16% (no semantic alias yet).",
                     "Input field radius: EV→200; site-loovi|app-cliente→full. InputTextArea field radius: EV→200; site-loovi|app-cliente→500 (not full).",
-                    "component/list-action/container/radius is shared by ListActionDropdown and List (plain|dropdown): EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full)."
+                    "component/list-action/container/radius is shared by ListActionDropdown and List (plain|dropdown): EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full).",
+                    "Modal shell radius binds component/modal/container/radius — EV|site-loovi→border/radius/600 (24); app-cliente→border/radius/800 (32). Do not hardcode radius/600 on the Modal root."
                 ],
                 "tokens": [
                     {
@@ -4213,7 +4252,7 @@
                     {
                         "name": "component/modal-header/close-action/background",
                         "component": "ModalHeader",
-                        "binds": "closeAction Button fill",
+                        "binds": "closeAction Button fill (all layouts)",
                         "aliases": {
                             "escritorio-virtual": "color/background-surface/0",
                             "site-loovi": "color/background-surface/2",
@@ -4223,7 +4262,7 @@
                     {
                         "name": "component/modal-header/close-action/radius",
                         "component": "ModalHeader",
-                        "binds": "closeAction Button corner radius",
+                        "binds": "closeAction Button corner radius (all layouts)",
                         "aliases": {
                             "escritorio-virtual": "border/radius/200",
                             "site-loovi": "border/radius/full",
@@ -4233,7 +4272,7 @@
                     {
                         "name": "component/modal-header/close-action/size-mobile",
                         "component": "ModalHeader",
-                        "binds": "closeAction hit size on layout=mobile (raw px per mode)",
+                        "binds": "closeAction (+ center leadingSpacer) hit size on layout=mobile only; desktop close stays spacing/500 (40)",
                         "aliases": {
                             "escritorio-virtual": 40,
                             "site-loovi": 40,
@@ -4268,6 +4307,16 @@
                             "escritorio-virtual": "border/radius/200",
                             "site-loovi": "border/radius/500",
                             "app-cliente": "border/radius/500"
+                        }
+                    },
+                    {
+                        "name": "component/modal/container/radius",
+                        "component": "Modal",
+                        "binds": "Modal shell corner radius (all platforms)",
+                        "aliases": {
+                            "escritorio-virtual": "border/radius/600",
+                            "site-loovi": "border/radius/600",
+                            "app-cliente": "border/radius/800"
                         }
                     }
                 ]
@@ -7572,7 +7621,7 @@
             },
             "Modal": {
                 "nodeId": "3306:4278",
-                "description": "AI-READY COMPONENT: Modal is the dialog surface for focused tasks that require user attention without leaving the current context. Props: platform=web|mobile|mobile-landscape; slot (SLOT — modal body; preferredValues include ModalCheckItem for guideline rows). Nested ModalHeader owns title, label, showLabel, showCloseAction (edit on nested instance — keep layout mapped to platform). Use platform=web for desktop/web dialogs, platform=mobile for portrait phone dialogs, and platform=mobile-landscape when the phone is rotated horizontally (same ModalHeader layout=mobile + sheetContent/slot as mobile, wider shorter shell). Composition: ModalHeader (web→layout=desktop; mobile|mobile-landscape→layout=mobile) + sheetContent → slot. Tokens: color/background-surface/0; border/radius/600; elevation DROP_SHADOW color/elevation/6 (radius/offsetY spacing/100; spread/offsetX spacing/0); itemSpacing spacing/150 (web) | spacing/050 (mobile|mobile-landscape); paddingBottom spacing/500 (web) | spacing/400 (mobile|mobile-landscape); sheetContent horizontal pad spacing/300 (web) | spacing/200 (mobile|mobile-landscape); sheetContent itemSpacing spacing/0. Do not use as BottomSheet, page, card, toast, or AppHeader host — use ModalHeader only. Compose guideline rows with ModalCheckItem in slot (not Checkbox, not BottomSheetCheckItem). Accessibility: dialog semantics owned by Modal; title via ModalHeader; close via showCloseAction. React mapping: Modal(platform, title, label, showLabel, showCloseAction, children). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: Modal is the dialog surface for focused tasks that require user attention without leaving the current context. Props: platform=web|mobile|mobile-landscape; slot (SLOT — modal body; preferredValues include ModalCheckItem for guideline rows). Nested ModalHeader owns title, label, showLabel, showCloseAction (edit on nested instance — keep layout mapped to platform). Use platform=web for desktop/web dialogs, platform=mobile for portrait phone dialogs, and platform=mobile-landscape when the phone is rotated horizontally (same ModalHeader layout=mobile + sheetContent/slot as mobile, wider shorter shell). Composition: ModalHeader (web→layout=desktop; mobile|mobile-landscape→layout=mobile) + sheetContent → slot. Tokens: color/background-surface/0; shell corner radius via product-theme component/modal/container/radius (EV|site-loovi→border/radius/600; app-cliente→border/radius/800); elevation DROP_SHADOW color/elevation/6 (radius/offsetY spacing/100; spread/offsetX spacing/0); itemSpacing spacing/150 (web) | spacing/050 (mobile|mobile-landscape); paddingBottom spacing/500 (web) | spacing/400 (mobile|mobile-landscape); sheetContent horizontal pad spacing/300 (web) | spacing/200 (mobile|mobile-landscape); sheetContent itemSpacing spacing/0. Nested ModalHeader close chip stays mode-aware via component/modal-header/close-action/*. Do not hardcode shell radius/600. Do not use as BottomSheet, page, card, toast, or AppHeader host — use ModalHeader only. Compose guideline rows with ModalCheckItem in slot (not Checkbox, not BottomSheetCheckItem). Accessibility: dialog semantics owned by Modal; title via ModalHeader; close via showCloseAction. React mapping: Modal(platform, title, label, showLabel, showCloseAction, children). Code Connect is not configured.",
                 "variants": {
                     "platform": [
                         "web",
@@ -7590,11 +7639,12 @@
                 },
                 "tokenRules": [
                     "color/background-surface/0 for modal surface",
-                    "border/radius/600",
+                    "product-theme component/modal/container/radius (EV|site-loovi→border/radius/600; app-cliente→border/radius/800)",
                     "color/elevation/6 drop shadow (radius/offsetY spacing/100; spread/offsetX spacing/0)",
                     "itemSpacing spacing/150 (web) | spacing/050 (mobile|mobile-landscape)",
                     "paddingBottom spacing/500 (web) | spacing/400 (mobile|mobile-landscape)",
-                    "sheetContent pad horizontal spacing/300 (web) | spacing/200 (mobile|mobile-landscape); itemSpacing spacing/0"
+                    "sheetContent pad horizontal spacing/300 (web) | spacing/200 (mobile|mobile-landscape); itemSpacing spacing/0",
+                    "nested ModalHeader product-theme close-action/*"
                 ],
                 "accessibility": "Block background interaction, trap focus, role=dialog or alertdialog, aria-modal=true, aria-labelledby for ModalHeader title, Escape to close when allowed, restore focus to trigger.",
                 "rules": {
@@ -7602,18 +7652,38 @@
                     "composition": "ModalHeader (desktop on web, mobile on mobile|mobile-landscape) + sheetContent/slot — never AppHeader",
                     "headerMapping": "platform=web → ModalHeader layout=desktop; platform=mobile|mobile-landscape → ModalHeader layout=mobile",
                     "headerProps": "title/label/showLabel/showCloseAction live on nested ModalHeader — do not remount AppHeader",
-                    "slotCheckItems": "Optional guideline stacks in slot may compose ModalCheckItem rows (not Checkbox, not BottomSheetCheckItem)"
+                    "slotCheckItems": "Optional guideline stacks in slot may compose ModalCheckItem rows (not Checkbox, not BottomSheetCheckItem)",
+                    "productTheme": "Shell corners bind component/modal/container/radius — EV|site-loovi→600 (24px); app-cliente→800 (32px). Nested ModalHeader close-action tokens remain mode-aware. Do not hardcode radius/600 on the Modal root."
                 },
                 "composition": [
                     "ModalHeader",
                     "Button",
                     "x-outline",
                     "ModalCheckItem (optional guideline rows in slot)"
-                ]
+                ],
+                "productTheme": {
+                    "collection": "product-theme",
+                    "modes": [
+                        "escritorio-virtual",
+                        "site-loovi",
+                        "app-cliente"
+                    ],
+                    "tokens": [
+                        {
+                            "name": "component/modal/container/radius",
+                            "binds": "Modal shell corner radius (all platforms)",
+                            "aliases": {
+                                "escritorio-virtual": "border/radius/600",
+                                "site-loovi": "border/radius/600",
+                                "app-cliente": "border/radius/800"
+                            }
+                        }
+                    ]
+                }
             },
             "ModalHeader": {
                 "nodeId": "3786:9403",
-                "description": "AI-READY COMPONENT: ModalHeader is the header block used only inside Modal surfaces. Use layout=desktop to match Modal platform=web and layout=mobile to match Modal platform=mobile|mobile-landscape while keeping the same content hierarchy. Use alignment=start for left-aligned title/label (default) and alignment=center for optically centered title/label with a leadingSpacer matching the close action width. Props: title controls the modal heading; label controls the optional supporting label above the title; showLabel toggles that label; showCloseAction toggles the local icon-only Button used to dismiss the modal. Composition: alignment=start uses headingContent + trailingActions; alignment=center uses leadingSpacer + headingContent + trailingActions. closeAction must remain a local Button with x-outline, size=sm, variant=text, intent=primary and hidden visible label text set to Fechar modal for accessible mapping. Typography: layout=desktop title uses heading/h1/semi-bold; layout=mobile title uses heading/h3/semi-bold; label uses body/small/regular. Do not use ModalHeader as AppHeader, page header, card header, BottomSheet header or navigation. Token rule: local S2 kebab-case + product-theme component/modal-header/close-action/* (background, radius, size-mobile). Modes escritorio-virtual|site-loovi|app-cliente — do not hardcode close chip fill/radius/size. Inherit the Modal surface instead of adding an independent background. Accessibility: the Modal owns role=dialog, aria-modal, focus trap and Escape behavior. The title must be referenced by aria-labelledby. The close action is a button with aria-label=Fechar modal and must be keyboard accessible. React mapping: ModalHeader(layout, alignment, title, label, showLabel, showCloseAction). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: ModalHeader is the header block used only inside Modal surfaces. Use layout=desktop to match Modal platform=web and layout=mobile to match Modal platform=mobile|mobile-landscape while keeping the same content hierarchy. Use alignment=start for left-aligned title/label (default) and alignment=center for optically centered title/label with a leadingSpacer matching the close action width on layout=mobile. Props: title controls the modal heading; label controls the optional supporting label above the title; showLabel toggles that label; showCloseAction toggles the local icon-only Button used to dismiss the modal. Composition: alignment=start uses headingContent + trailingActions; alignment=center uses leadingSpacer + headingContent + trailingActions. closeAction must remain a local Button with x-outline, size=sm, variant=text, intent=primary and hidden visible label text set to Fechar modal for accessible mapping. Typography: layout=desktop title uses heading/h1/semi-bold; layout=mobile title uses heading/h3/semi-bold; label uses body/small/regular. Product-theme (escritorio-virtual|site-loovi|app-cliente): closeAction fill/radius bind component/modal-header/close-action/background + radius on all layouts; layout=mobile closeAction (+ center leadingSpacer) bind size-mobile (EV|site-loovi=40; app-cliente=32); layout=desktop closeAction size stays spacing/500 (40) in all modes. app-cliente resolves to surface/2 + radius/full + 32 on mobile. Do not hardcode close chip fill/radius/size. Do not use ModalHeader as AppHeader, page header, card header, BottomSheet header or navigation. Inherit the Modal surface instead of adding an independent background. Accessibility: the Modal owns role=dialog, aria-modal, focus trap and Escape behavior. The title must be referenced by aria-labelledby. The close action is a button with aria-label=Fechar modal and must be keyboard accessible. React mapping: ModalHeader(layout, alignment, title, label, showLabel, showCloseAction). Code Connect is not configured.",
                 "variants": {
                     "layout": [
                         "desktop",
@@ -7636,20 +7706,17 @@
                     "composition": "start: headingContent + trailingActions; center: leadingSpacer + headingContent + trailingActions",
                     "closeAction": "Button text/sm/primary + x-outline; accessible label Fechar modal; showLabel=false",
                     "typography": "desktop title heading/h1/semi-bold; mobile title heading/h3/semi-bold; label body/small/regular",
-                    "centerOptical": "alignment=center uses leadingSpacer matching close width so title centers optically",
+                    "centerOptical": "alignment=center leadingSpacer must match close hit size. On layout=mobile both bind size-mobile. On layout=desktop close uses spacing/500 (40); keep spacer in parity with that close width (do not leave spacer on size-mobile alone when app-cliente resolves size-mobile to 32).",
                     "vsAppHeader": "Do not use as AppHeader, page header, card header, BottomSheet header or navigation",
                     "parentOnly": "Use only inside Modal",
                     "vsBottomSheetHeader": "Do not use as BottomSheet header — use BottomSheetHeader",
-                    "productTheme": "closeAction binds component/modal-header/close-action/background + radius + size-mobile. EV: surface/0 + radius/200 + 40; site-loovi: surface/2 + full + 40; app-cliente: surface/2 + full + 32."
+                    "productTheme": "closeAction binds background + radius on all layouts. size-mobile binds layout=mobile close (+ center leadingSpacer). EV: surface/0 + radius/200 + size 40; site-loovi: surface/2 + full + 40; app-cliente: surface/2 + full + 32 (mobile only). Desktop close size remains spacing/500 (40) across modes."
                 },
                 "tokenRules": [
-                    "text/primary | text/secondary",
-                    "spacing/0|050|100|200|250|300|500",
-                    "border/radius/0",
-                    "nested Button tokens",
-                    "product-theme component/modal-header/close-action/background",
-                    "product-theme component/modal-header/close-action/radius",
-                    "product-theme component/modal-header/close-action/size-mobile (EV|site-loovi=40; app-cliente=32)",
+                    "product-theme component/modal-header/close-action/background (EV→surface/0; site-loovi|app-cliente→surface/2)",
+                    "product-theme component/modal-header/close-action/radius (EV→200; site-loovi|app-cliente→full)",
+                    "product-theme component/modal-header/close-action/size-mobile on layout=mobile close (+ center leadingSpacer): EV|site-loovi=40; app-cliente=32",
+                    "layout=desktop closeAction size → spacing/500 (40) all modes",
                     "text/primary | text/secondary",
                     "spacing/0|050|100|200|250|300|500",
                     "nested Button tokens"
@@ -7669,7 +7736,7 @@
                     "tokens": [
                         {
                             "name": "component/modal-header/close-action/background",
-                            "binds": "closeAction Button fill",
+                            "binds": "closeAction Button fill (all layouts)",
                             "aliases": {
                                 "escritorio-virtual": "color/background-surface/0",
                                 "site-loovi": "color/background-surface/2",
@@ -7678,7 +7745,7 @@
                         },
                         {
                             "name": "component/modal-header/close-action/radius",
-                            "binds": "closeAction Button corner radius",
+                            "binds": "closeAction Button corner radius (all layouts)",
                             "aliases": {
                                 "escritorio-virtual": "border/radius/200",
                                 "site-loovi": "border/radius/full",
@@ -7687,7 +7754,7 @@
                         },
                         {
                             "name": "component/modal-header/close-action/size-mobile",
-                            "binds": "closeAction hit size on layout=mobile (raw px per mode)",
+                            "binds": "closeAction (+ center leadingSpacer) hit size on layout=mobile only; desktop close stays spacing/500 (40)",
                             "aliases": {
                                 "escritorio-virtual": 40,
                                 "site-loovi": 40,
@@ -9674,6 +9741,16 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "modal-container-radius",
+                "date": "2026-07-29",
+                "summary": "Modal: product-theme shell radius for app-cliente (800); AI-READY + storybook."
+            },
+            {
+                "id": "modalheader-app-cliente",
+                "date": "2026-07-29",
+                "summary": "ModalHeader: app-cliente close-action matrix refined (mobile 32 vs desktop 40); AI-READY + storybook."
+            },
             {
                 "id": "alert-fill-stack",
                 "date": "2026-07-29",

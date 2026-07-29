@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: Modal is the dialog surface for focused tasks that require user attention without leaving the current context. Props: platform=web|mobile|mobile-landscape; slot (SLOT — modal body; preferredValues include ModalCheckItem for guideline rows). Nested ModalHeader owns title, label, showLabel, showCloseAction (edit on nested instance — keep layout mapped to platform). Use platform=web for desktop/web dialogs, platform=mobile for portrait phone dialogs, and platform=mobile-landscape when the phone is rotated horizontally (same ModalHeader layout=mobile + sheetContent/slot as mobile, wider shorter shell). Composition: ModalHeader (web→layout=desktop; mobile|mobile-landscape→layout=mobile) + sheetContent → slot. Tokens: color/background-surface/0; border/radius/600; elevation DROP_SHADOW color/elevation/6 (radius/offsetY spacing/100; spread/offsetX spacing/0); itemSpacing spacing/150 (web) | spacing/050 (mobile|mobile-landscape); paddingBottom spacing/500 (web) | spacing/400 (mobile|mobile-landscape); sheetContent horizontal pad spacing/300 (web) | spacing/200 (mobile|mobile-landscape); sheetContent itemSpacing spacing/0. Do not use as BottomSheet, page, card, toast, or AppHeader host — use ModalHeader only. Compose guideline rows with ModalCheckItem in slot (not Checkbox, not BottomSheetCheckItem). Accessibility: dialog semantics owned by Modal; title via ModalHeader; close via showCloseAction. React mapping: Modal(platform, title, label, showLabel, showCloseAction, children). Code Connect is not configured.
+AI-READY COMPONENT: Modal is the dialog surface for focused tasks that require user attention without leaving the current context. Props: platform=web|mobile|mobile-landscape; slot (SLOT — modal body; preferredValues include ModalCheckItem for guideline rows). Nested ModalHeader owns title, label, showLabel, showCloseAction (edit on nested instance — keep layout mapped to platform). Use platform=web for desktop/web dialogs, platform=mobile for portrait phone dialogs, and platform=mobile-landscape when the phone is rotated horizontally (same ModalHeader layout=mobile + sheetContent/slot as mobile, wider shorter shell). Composition: ModalHeader (web→layout=desktop; mobile|mobile-landscape→layout=mobile) + sheetContent → slot. Tokens: color/background-surface/0; shell corner radius via product-theme component/modal/container/radius (EV|site-loovi→border/radius/600; app-cliente→border/radius/800); elevation DROP_SHADOW color/elevation/6 (radius/offsetY spacing/100; spread/offsetX spacing/0); itemSpacing spacing/150 (web) | spacing/050 (mobile|mobile-landscape); paddingBottom spacing/500 (web) | spacing/400 (mobile|mobile-landscape); sheetContent horizontal pad spacing/300 (web) | spacing/200 (mobile|mobile-landscape); sheetContent itemSpacing spacing/0. Nested ModalHeader close chip stays mode-aware via component/modal-header/close-action/*. Do not hardcode shell radius/600. Do not use as BottomSheet, page, card, toast, or AppHeader host — use ModalHeader only. Compose guideline rows with ModalCheckItem in slot (not Checkbox, not BottomSheetCheckItem). Accessibility: dialog semantics owned by Modal; title via ModalHeader; close via showCloseAction. React mapping: Modal(platform, title, label, showLabel, showCloseAction, children). Code Connect is not configured.
 
 ## Variants
 
@@ -27,6 +27,16 @@ AI-READY COMPONENT: Modal is the dialog surface for focused tasks that require u
 | `showLabel` | nested ModalHeader BOOLEAN — toggles label |
 | `showCloseAction` | nested ModalHeader BOOLEAN — toggles closeAction Button |
 
+## Product theme
+
+Collection: `product-theme`
+
+Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
+
+| Token | Bind | escritorio-virtual | site-loovi | app-cliente |
+| --- | --- | --- | --- | --- |
+| `component/modal/container/radius` | Modal shell corner radius (all platforms) | `border/radius/600` | `border/radius/600` | `border/radius/800` |
+
 ## Rules
 
 - **nonPage:** Do not use Modal as toast, banner, bottom sheet, side sheet, page container or card
@@ -34,15 +44,17 @@ AI-READY COMPONENT: Modal is the dialog surface for focused tasks that require u
 - **headerMapping:** platform=web → ModalHeader layout=desktop; platform=mobile|mobile-landscape → ModalHeader layout=mobile
 - **headerProps:** title/label/showLabel/showCloseAction live on nested ModalHeader — do not remount AppHeader
 - **slotCheckItems:** Optional guideline stacks in slot may compose ModalCheckItem rows (not Checkbox, not BottomSheetCheckItem)
+- **productTheme:** Shell corners bind component/modal/container/radius — EV|site-loovi→600 (24px); app-cliente→800 (32px). Nested ModalHeader close-action tokens remain mode-aware. Do not hardcode radius/600 on the Modal root.
 
 ## Token rules
 
 - color/background-surface/0 for modal surface
-- border/radius/600
+- product-theme component/modal/container/radius (EV|site-loovi→border/radius/600; app-cliente→border/radius/800)
 - color/elevation/6 drop shadow (radius/offsetY spacing/100; spread/offsetX spacing/0)
 - itemSpacing spacing/150 (web) | spacing/050 (mobile|mobile-landscape)
 - paddingBottom spacing/500 (web) | spacing/400 (mobile|mobile-landscape)
 - sheetContent pad horizontal spacing/300 (web) | spacing/200 (mobile|mobile-landscape); itemSpacing spacing/0
+- nested ModalHeader product-theme close-action/*
 
 ## Accessibility
 

@@ -64,8 +64,8 @@ Multi-product theming for S2. One published component master stays mode-aware vi
 | --- | --- |
 | Collection | `product-theme` |
 | Modes | `escritorio-virtual` \| `site-loovi` \| `app-cliente` |
-| Components | `AppHeader`, `Button`, `ModalHeader`, `Input`, `InputTextArea`, `ListActionDropdown`, `List` |
-| Variable count | 20 |
+| Components | `AppHeader`, `Button`, `Modal`, `ModalHeader`, `Input`, `InputTextArea`, `ListActionDropdown`, `List` |
+| Variable count | 21 |
 
 | Token | Component | Bind | escritorio-virtual | site-loovi | app-cliente |
 | --- | --- | --- | --- | --- | --- |
@@ -83,19 +83,21 @@ Multi-product theming for S2. One published component master stays mode-aware vi
 | `component/button/label/color` | Button | solid label text fill | `text/on-color` | `text/primary` | `text/on-color` |
 | `component/button/label/font-weight` | Button | label font weight | `font-weight/medium` | `font-weight/semi-bold` | `font-weight/medium` |
 | `component/button/icon/color` | Button | solid/outline icon stroke where bound | `text/on-color` | `text/primary` | `text/on-color` |
-| `component/modal-header/close-action/background` | ModalHeader | closeAction Button fill | `color/background-surface/0` | `color/background-surface/2` | `color/background-surface/2` |
-| `component/modal-header/close-action/radius` | ModalHeader | closeAction Button corner radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
-| `component/modal-header/close-action/size-mobile` | ModalHeader | closeAction hit size on layout=mobile (raw px per mode) | `40` | `40` | `32` |
+| `component/modal-header/close-action/background` | ModalHeader | closeAction Button fill (all layouts) | `color/background-surface/0` | `color/background-surface/2` | `color/background-surface/2` |
+| `component/modal-header/close-action/radius` | ModalHeader | closeAction Button corner radius (all layouts) | `border/radius/200` | `border/radius/full` | `border/radius/full` |
+| `component/modal-header/close-action/size-mobile` | ModalHeader | closeAction (+ center leadingSpacer) hit size on layout=mobile only; desktop close stays spacing/500 (40) | `40` | `40` | `32` |
 | `component/input/field/radius` | Input | outlined field container corner radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
 | `component/input-textarea/field/radius` | InputTextArea | outlined multiline field container corner radius | `border/radius/200` | `border/radius/500` | `border/radius/500` |
 | `component/list-action/container/radius` | ListActionDropdown \| List | List + ListActionDropdown shell corner radius (all corners) | `border/radius/200` | `border/radius/500` | `border/radius/500` |
+| `component/modal/container/radius` | Modal | Modal shell corner radius (all platforms) | `border/radius/600` | `border/radius/600` | `border/radius/800` |
 
 ### Notes
 
 - site-loovi solid Button uses success feedback fill + text/primary label/icon (not on-color).
 - app-cliente AppHeader titles on small|small-centered × default × specific use body/medium/regular; apply text-transform:uppercase in product UI (Figma textCase stays ORIGINAL).
-- app-cliente ModalHeader close-action size-mobile is 32px; EV and site-loovi stay 40px.
+- app-cliente ModalHeader close-action: mobile size-mobile=32 + surface/2 + radius/full; desktop close size stays spacing/500 (40). EV|site-loovi mobile size stay 40.
 - Avatar backgrounds on site-loovi|app-cliente use raw rgba white @ 16% (no semantic alias yet).
 - Input field radius: EV→200; site-loovi|app-cliente→full. InputTextArea field radius: EV→200; site-loovi|app-cliente→500 (not full).
 - component/list-action/container/radius is shared by ListActionDropdown and List (plain|dropdown): EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full).
+- Modal shell radius binds component/modal/container/radius — EV|site-loovi→border/radius/600 (24); app-cliente→border/radius/800 (32). Do not hardcode radius/600 on the Modal root.
 
