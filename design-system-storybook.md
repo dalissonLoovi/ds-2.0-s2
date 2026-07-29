@@ -3,8 +3,8 @@
 > **Arquivo Figma:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940)  
 > **File key:** `mHm12Zu9tgNmaSYnooihE5`  
 > **Schema:** ds-storybook-metadata/v2  
-> **Atualizado em:** 2026-07-28T20:20:00-03:00  
-> **Revision:** 2026-07-28-radiobuttoncard-description
+> **Atualizado em:** 2026-07-29T13:30:00-03:00  
+> **Revision:** 2026-07-29-alert-fill-stack
 
 Component documentation, controls, variant options and AI-Ready rules for Storybook docs. Token values remain under tokens.
 
@@ -49,8 +49,8 @@ Multi-product theming for S2. One published component master stays mode-aware vi
 |---|---|
 | Collection | `product-theme` (`VariableCollectionId:3218:3688`) |
 | Modes | `escritorio-virtual` \| `site-loovi` \| `app-cliente` |
-| Components | `AppHeader`, `Button`, `ModalHeader`, `Input`, `InputTextArea` |
-| Variable count | 19 |
+| Components | `AppHeader`, `Button`, `ModalHeader`, `Input`, `InputTextArea`, `ListActionDropdown`, `List` |
+| Variable count | 20 |
 
 | Token | Component | Bind | escritorio-virtual | site-loovi | app-cliente |
 |---|---|---|---|---|---|
@@ -73,6 +73,7 @@ Multi-product theming for S2. One published component master stays mode-aware vi
 | `component/modal-header/close-action/size-mobile` | ModalHeader | closeAction size (mobile) | `40` | `40` | `32` |
 | `component/input/field/radius` | Input | field corner radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
 | `component/input-textarea/field/radius` | InputTextArea | field corner radius | `border/radius/200` | `border/radius/500` | `border/radius/500` |
+| `component/list-action/container/radius` | ListActionDropdown \| List | shell corner radius (menu + List plain\|dropdown) | `border/radius/200` | `border/radius/500` | `border/radius/500` |
 
 ### Notes
 
@@ -81,6 +82,7 @@ Multi-product theming for S2. One published component master stays mode-aware vi
 - app-cliente ModalHeader close-action `size-mobile` is 32px; EV and site-loovi stay 40px.
 - Avatar backgrounds on site-loovi|app-cliente use raw rgba white @ 16% (no semantic alias yet).
 - Input field radius: EV→200; site-loovi|app-cliente→full. InputTextArea field radius: EV→200; site-loovi|app-cliente→500 (not full).
+- `component/list-action/container/radius` shared by ListActionDropdown and List (`plain`|`dropdown`): EV→`border/radius/200`; site-loovi|app-cliente→`border/radius/500` (same step as InputTextArea, not full).
 
 ---
 
@@ -582,7 +584,7 @@ If the badge is the only indicator, provide an accessible label on the parent. I
 
 **Node ID:** `4406:91`
 
-AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Variants: status=system|info|success|danger|warning (same vocabulary as Toast). status=system is intentional-sparse and has no statusIcon; other statuses compose a local DS filled statusIcon (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with Toast-aligned fills: info → feedback/info; success|danger|warning → feedback/success|danger|warning. Icon paths use `{icon}-path`. Props: title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Composition: statusIcon (when present) + content → text (title + description) + action (local Button outline/sm/primary). actionLabel is React-side — in Figma set nested action Button label when showAction=true. Anatomy: vertical stack (icon above content). Tokens: color/background-surface/brand + overlay paint color/elevation/inverse-3 @ ~48% opacity (second fill layer); text/on-color (title) + text/on-color-disabled (description); border/radius/400; spacing/100|150|250. Action outline stroke/label use text/on-color. Do not use as Toast, Banner, Modal, or inline field validation. React mapping: Alert(status, title, description, showDescription, showAction, actionLabel).
+AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Variants: status=system|info|success|danger|warning. status=system has no statusIcon; other statuses use EV filled icons at 32px. Shell fills bottom→top: `color/elevation/inverse-3` (base) + `color/background-surface/brand` @ ~48% (overlay). Title `text/on-color` / description `text/on-color-disabled`. Action: Button outline/sm with `text/on-color`. React mapping: Alert(status, title, description, showDescription, showAction, actionLabel).
 
 ### Variants
 
@@ -602,20 +604,22 @@ AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call at
 ### Rules
 
 - **intentionalSparse:** status=system publishes no statusIcon
+- **darkOverlay:** shell fills bottom→top — `color/elevation/inverse-3` (base, opacity 1) + `color/background-surface/brand` @ ~48% (overlay). Do not reverse the stack.
+- **iconSize:** statusIcon FIXED 32×32 on info|success|danger|warning
+- **iconFillParity:** prefer `feedback/{status}` on `{icon}-path`. success already OK; info|danger|warning still use `color/background-feedback-primary/*` on `Vector` — align when convenient
 - **actionLabel:** React-side; in Figma set nested action Button label when showAction=true
 - **vsToast:** Do not use as Toast — Alert is persistent in-flow; Toast is transient
 - **vsBanner:** Do not use as Banner — Banner is full-width feedback-primary surface
 - **vsModal:** Do not use as Modal / AlertDialog
-- **darkOverlay:** Second fill layer `color/elevation/inverse-3` @ ~48% opacity over `color/background-surface/brand`
 - **usage:** Do not use as Toast, Banner, Modal, or inline field validation
 
 ### Token rules
 
-- `color/background-surface/brand` + `color/elevation/inverse-3` @ ~48% opacity (overlay)
+- `color/elevation/inverse-3` (base) + `color/background-surface/brand` @ ~48% (overlay)
 - `text/on-color` (title); `text/on-color-disabled` (description)
 - `border/radius/400`
 - `spacing/100` | `150` | `250`
-- icon fills: `feedback/info`; `feedback/success|danger|warning`
+- statusIcon 32: success → `feedback/success`; info|danger|warning → prefer `feedback/*`
 - action outline stroke/label `text/on-color`
 
 ### Accessibility
@@ -624,7 +628,7 @@ role=status for system|info|success; role=alert for urgent warning|danger; actio
 
 ### Composition
 
-statusIcon (filled local DS; omitted on system), content → text (title + description) + action (Button outline/sm)
+statusIcon 32 filled EV (omitted on system), content → text (title + description) + action (Button outline/sm)
 
 ---
 
@@ -4892,6 +4896,89 @@ Semantic table structure; headerRow → column headers; rows slot → data rows;
 
 ---
 
+## List
+
+**Node ID:** `3745:10921`
+
+AI-READY COMPONENT: List is a vertical container that composes one or more ListItem rows through an items SLOT. Use type=plain for an embedded page list surface and type=dropdown for an elevated menu/panel surface. Defaults: type=dropdown, showScroll=false. Props: items (SLOT — ListItem + optional DividerHorizontal); showScroll. Product-theme: `component/list-action/container/radius` on both plain and dropdown shells (EV→`border/radius/200`; site-loovi|app-cliente→`border/radius/500` — shared with ListActionDropdown). Dropdown elevation `color/elevation/5`. Do not use ListActionDropdownItem inside List. React mapping: List({ type, showScroll, children }).
+
+### Variants
+
+- **type:** plain | dropdown
+
+### Props
+
+| Prop | Tipo / valores |
+|---|---|
+| `type` | plain \| dropdown |
+| `items` | SLOT — prefer ListItem (+ DividerHorizontal) |
+| `showScroll` | boolean — toggles local scroll affordance (default false) |
+
+### Product theme (`product-theme`)
+
+Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
+
+| Token | Bind | escritorio-virtual | site-loovi | app-cliente |
+|---|---|---|---|---|
+| `component/list-action/container/radius` | shell corner radius on `plain`\|\`dropdown` | `border/radius/200` | `border/radius/500` | `border/radius/500` |
+
+### Rules
+
+- **productTheme:** both types bind shell corners to shared `component/list-action/container/radius` — do not hardcode `radius/0` or `radius/200`
+- **slotListItemOnly:** Compose items SLOT with ListItem only — not ListActionDropdownItem
+- **plainVsDropdown:** plain = page list surface; dropdown = elevated panel (`elevation/5`)
+- **triggerExternal:** dropdown has no internal trigger — parent owns open/aria-expanded
+- **vsActionMenu:** For action menus use ListActionDropdown
+
+### Token rules
+
+- `product-theme component/list-action/container/radius` (EV→200; site-loovi|app-cliente→500; shared with ListActionDropdown)
+- `color/background-surface/0`
+- `elevation/5` on type=dropdown
+- scroll: `color/palette/graph` + `border/radius/full`
+- nested ListItem and DividerHorizontal tokens
+
+---
+
+## ListActionDropdown
+
+**Node ID:** `3694:1501`
+
+AI-READY COMPONENT: ListActionDropdown is a menu surface container for grouped list actions opened by an external trigger. Use it as the menu panel only — compose action rows with ListActionDropdownItem and separate groups with DividerHorizontal inside the slot. Props: showScroll; showDivider; slot. Product-theme: `component/list-action/container/radius` (EV→`border/radius/200`; site-loovi|app-cliente→`border/radius/500`). Tokens: `color/background-surface/0`, `color/elevation/5`, scroll `color/palette/graph`, spacing/0|050|100|200|300|800. React mapping: ListActionDropdown(showScroll, showDivider, children).
+
+### Props
+
+| Prop | Tipo / valores |
+|---|---|
+| `showScroll` | boolean — toggles scroll affordance (default false) |
+| `showDivider` | boolean — toggles divider in default slot composition (default true) |
+| `slot` | menu content — prefer ListActionDropdownItem + DividerHorizontal |
+
+### Product theme (`product-theme`)
+
+Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
+
+| Token | Bind | escritorio-virtual | site-loovi | app-cliente |
+|---|---|---|---|---|
+| `component/list-action/container/radius` | shell corner radius (shared with List) | `border/radius/200` | `border/radius/500` | `border/radius/500` |
+
+### Rules
+
+- **productTheme:** shell radius via product-theme — do not hardcode `radius/200`
+- **composition:** root surface + slot (items/divider) + scroll affordance
+- **itemOnly:** compose rows with ListActionDropdownItem only
+- **dividerLocal:** use DividerHorizontal for group separation
+- **triggerExternal:** trigger/aria-expanded live outside this component
+
+### Token rules
+
+- `product-theme component/list-action/container/radius` (EV→200; site-loovi|app-cliente→500)
+- `color/background-surface/0` for menu surface
+- `color/elevation/5` + `spacing/0|200|300` for drop shadow
+- nested ListActionDropdownItem and DividerHorizontal tokens
+
+---
+
 ## PaginationSelectMenu
 
 **Node ID:** `3841:22501`
@@ -5785,6 +5872,9 @@ Expose referral progress in text (e.g. 2 de 10 indicaÃ§Ãµes, 20% desconto); 
 
 ## Atualizações recentes
 
+- **alert-fill-stack:** Alert: shell fill stack inverse-3 + brand overlay; icon 32 docs; AI-READY + storybook.
+- **list-product-theme:** List: product-theme shell radius shared with ListActionDropdown; AI-READY + storybook.
+- **list-action-dropdown-product-theme:** ListActionDropdown: product-theme shell radius for site-loovi|app-cliente; AI-READY + storybook.
 - **radiobuttoncard-description:** RadioButtonCard: description helper text + showDescription; AI-READY + storybook.
 - **radiobuttoncard-audit-apply:** RadioButtonCard: card/row radio; hover stateLayer; token binds; docs seeded.
 - **app-header-pad-200:** AppHeader: lateral padding → spacing/200 across global|small|medium|large; docs synced.

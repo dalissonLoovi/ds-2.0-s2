@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Variants: status=system|info|success|danger|warning (same vocabulary as Toast). status=system is intentional-sparse and has no statusIcon; other statuses compose a EV library filled statusIcon (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with content-layer icon fills: info|success|danger|warning → feedback/info|success|danger|warning. Icon paths use \{icon\}-path. Props: title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Composition: statusIcon (when present) + content → text (title + description) + action (local Button outline/sm/primary). actionLabel is React-side — in Figma set nested action Button label when showAction=true. Anatomy: vertical stack (icon above content). Tokens: color/background-surface/brand + overlay paint color/elevation/inverse-3 @ ~48% opacity (second fill layer); text/on-color (title) + text/on-color-disabled (description); border/radius/400; spacing/100 (root gap) | spacing/150 (pad top / content gap) | spacing/250 (pad sides/bottom) | spacing/100 (text gap). Action outline stroke/label use text/on-color for contrast on brand. Do not use as Toast, Banner, Modal, or inline field validation. Accessibility: role=status for system|info|success; role=alert for warning|danger when urgent; action needs accessible name; decorative status icons aria-hidden when title conveys status. React mapping: Alert(status, title, description, showDescription, showAction, actionLabel). Code Connect is not configured.
+AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Variants: status=system|info|success|danger|warning (same vocabulary as Toast). status=system is intentional-sparse and has no statusIcon; other statuses compose a DS Icons — Escritório Virtual filled statusIcon at 32px (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with content-layer icon fills feedback/info|success|danger|warning on \{icon\}-path layers. Props: title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Composition: statusIcon (when present) + content → text (title + description) + action (local Button outline/sm/primary, label default Action). actionLabel is React-side — in Figma set nested action Button label when showAction=true. Anatomy: vertical stack (icon above content). Tokens: shell fills bottom→top — color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay); text/on-color (title body/medium/semi-bold) + text/on-color-disabled (description body/small/regular); border/radius/400; spacing/100 (root gap, text gap) | spacing/150 (pad top, content gap) | spacing/250 (pad sides/bottom). Action outline stroke/label use text/on-color for contrast on the dark shell. Do not use as Toast, Banner, Modal, or inline field validation. Accessibility: role=status for system|info|success; role=alert for warning|danger when urgent; action needs accessible name; decorative status icons aria-hidden when title conveys status. React mapping: Alert(status, title, description, showDescription, showAction, actionLabel). Code Connect is not configured.
 
 ## Variants
 
@@ -44,17 +44,19 @@ AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call at
 - **vsToast:** Do not use as Toast — Alert is persistent in-flow; Toast is transient
 - **vsBanner:** Do not use as Banner — Banner is full-width page/section feedback on feedback-primary surfaces
 - **vsModal:** Do not use as Modal / AlertDialog — Alert does not block the page
-- **darkOverlay:** Second fill layer color/elevation/inverse-3 @ ~48% opacity over color/background-surface/brand
+- **darkOverlay:** Shell fills bottom→top: color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay). Do not reverse the stack.
 - **usage:** Do not use as Toast, Banner, Modal, or inline field validation
+- **iconSize:** statusIcon is FIXED 32×32 on info|success|danger|warning
+- **iconFillParity:** Prefer content-layer feedback/\{info|success|danger|warning\} on \{icon\}-path. success already uses feedback/success; info|danger|warning still use background-feedback-primary/* on Vector — align when convenient.
 
 ## Token rules
 
-- color/background-surface/brand + color/elevation/inverse-3 @ ~48% opacity (overlay)
-- text/on-color (title); text/on-color-disabled (description)
+- color/elevation/inverse-3 (base) + color/background-surface/brand @ ~48% opacity (overlay)
+- text/on-color (title body/medium/semi-bold); text/on-color-disabled (description body/small/regular)
 - border/radius/400
 - spacing/100 (root gap, text gap); spacing/150 (pad top, content gap); spacing/250 (pad sides/bottom)
-- status icon fills: feedback/info|success|danger|warning
-- action Button outline stroke/label text/on-color
+- statusIcon 32: success → feedback/success; info|danger|warning → color/background-feedback-primary/\{status\} (prefer feedback/*)
+- action Button outline/sm stroke/label text/on-color
 
 ## Accessibility
 
@@ -62,6 +64,6 @@ role=status for system|info|success; role=alert for urgent warning|danger; actio
 
 ## Composition
 
-- statusIcon (filled EV library; omitted on system)
-- content → text (title + description) + action (Button outline/sm)
+- statusIcon 32 filled EV library (omitted on system)
+- content → text (title + description) + action (Button outline/sm, label Action)
 

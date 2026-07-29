@@ -64,8 +64,8 @@ Multi-product theming for S2. One published component master stays mode-aware vi
 | --- | --- |
 | Collection | `product-theme` |
 | Modes | `escritorio-virtual` \| `site-loovi` \| `app-cliente` |
-| Components | `AppHeader`, `Button`, `ModalHeader`, `Input`, `InputTextArea` |
-| Variable count | 19 |
+| Components | `AppHeader`, `Button`, `ModalHeader`, `Input`, `InputTextArea`, `ListActionDropdown`, `List` |
+| Variable count | 20 |
 
 | Token | Component | Bind | escritorio-virtual | site-loovi | app-cliente |
 | --- | --- | --- | --- | --- | --- |
@@ -88,6 +88,7 @@ Multi-product theming for S2. One published component master stays mode-aware vi
 | `component/modal-header/close-action/size-mobile` | ModalHeader | closeAction hit size on layout=mobile (raw px per mode) | `40` | `40` | `32` |
 | `component/input/field/radius` | Input | outlined field container corner radius | `border/radius/200` | `border/radius/full` | `border/radius/full` |
 | `component/input-textarea/field/radius` | InputTextArea | outlined multiline field container corner radius | `border/radius/200` | `border/radius/500` | `border/radius/500` |
+| `component/list-action/container/radius` | ListActionDropdown \| List | List + ListActionDropdown shell corner radius (all corners) | `border/radius/200` | `border/radius/500` | `border/radius/500` |
 
 ### Notes
 
@@ -96,4 +97,5 @@ Multi-product theming for S2. One published component master stays mode-aware vi
 - app-cliente ModalHeader close-action size-mobile is 32px; EV and site-loovi stay 40px.
 - Avatar backgrounds on site-loovi|app-cliente use raw rgba white @ 16% (no semantic alias yet).
 - Input field radius: EV→200; site-loovi|app-cliente→full. InputTextArea field radius: EV→200; site-loovi|app-cliente→500 (not full).
+- component/list-action/container/radius is shared by ListActionDropdown and List (plain|dropdown): EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full).
 
