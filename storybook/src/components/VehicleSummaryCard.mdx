@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/VehicleSummaryCard" />
+
+# VehicleSummaryCard
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4581-1451) · node `4581:1451`
+
+## AI-READY
+
+AI-READY COMPONENT: VehicleSummaryCard — Home/Painel compact card for a user vehicle: illustration, brand, model, plate, and insurance status ChipTag. Props: status=active|inactive; brandModel (TEXT, default Marca); model (TEXT, default Modelo); plate (TEXT); illustration (INSTANCE_SWAP — local vehicle illustration, default sedan); showStatus (BOOLEAN, default true). Anatomy: leading (illustration + name row brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm). status=active ChipTag label Ativo + local circle-dot-filled (feedback/success); status=inactive label Inativo + local circle-dot-filled (feedback/danger). Tokens: color/background-surface/0; border/radius/400; spacing/100 vertical pad; spacing/200 horizontal pad + root gap; spacing/100 leading gap; text/primary (brand/model); text/secondary + heading/h3/regular (plate); nested ChipTag uses body/small/medium. Interaction: product wires onPress as button/link to vehicle detail — no Figma hover/pressed/disabled variants on this set. Do not use as VehicleConfirmCard (onboarding plate-hero), OfferProductCard, CardHorizontal, or Banner. Accessibility: expose as button/link to vehicle detail; status text must not rely on color alone; illustration decorative when brandModel+model+plate name the vehicle. React mapping: VehicleSummaryCard(status, brandModel, model, plate, illustration, showStatus, onPress). Code Connect is not configured.
+
+## Variants
+
+- **status:** active | inactive
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `status` | active \| inactive |
+| `brandModel` | TEXT — brand label (default Marca) |
+| `model` | TEXT — model label (default Modelo) |
+| `plate` | TEXT — plate string |
+| `illustration` | INSTANCE_SWAP — local vehicle-icon (sedan\|van\|suv preferred) |
+| `showStatus` | boolean — default true; toggles statusChip |
+
+## Status map
+
+| Status | Icon | Background token |
+| --- | --- | --- |
+| active | `—` | `—` |
+| inactive | `—` | `—` |
+
+## Rules
+
+- **composition:** leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm)
+- **statusChip:** canonical ChipTag 3653:23220 outline/sm/hug/strong + circle-dot-filled; active→feedback/success; inactive→feedback/danger
+- **noFigmaInteractionVariants:** onPress is runtime only — do not add hover/pressed/disabled variants to this set
+- **vsConfirm:** Do not use as VehicleConfirmCard
+- **vsOffer:** Do not use as OfferProductCard
+- **vsBanner:** Do not use as Banner
+
+## Token rules
+
+- color/background-surface/0
+- border/radius/400
+- spacing/100 (vertical pad, leading gap); spacing/200 (horizontal pad, root gap)
+- text/primary + body/medium/regular|semi-bold (brandModel/model)
+- text/secondary + heading/h3/regular (plate)
+- nested ChipTag: body/small/medium; color/border/2 outline; feedback/success|danger on dot
+
+## Accessibility
+
+expose as button/link to vehicle detail; status text must not rely on color alone; illustration decorative when brandModel+model+plate name the vehicle.
+
+## Composition
+
+- leading.illustration
+- leading.text.brandModel
+- leading.text.model
+- leading.text.plate
+- spacer
+- statusChip (ChipTag)
+

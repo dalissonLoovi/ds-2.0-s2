@@ -292,6 +292,28 @@
                     "site-loovi": "border/radius/600",
                     "app-cliente": "border/radius/800"
                 }
+            },
+            {
+                "name": "component/section-header/action/background",
+                "id": "VariableID:4597:655",
+                "collection": "product-theme",
+                "resolvedType": "COLOR",
+                "aliasByMode": {
+                    "escritorio-virtual": "color/background-surface/0",
+                    "site-loovi": "color/background-surface/2",
+                    "app-cliente": "color/background-surface/2"
+                }
+            },
+            {
+                "name": "component/section-header/action/radius",
+                "id": "VariableID:4597:656",
+                "collection": "product-theme",
+                "resolvedType": "FLOAT",
+                "aliasByMode": {
+                    "escritorio-virtual": "component/button/container/radius/sm",
+                    "site-loovi": "border/radius/full",
+                    "app-cliente": "border/radius/full"
+                }
             }
         ],
         "collections": [
@@ -613,9 +635,29 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-07-29T17:30:00.000Z",
-        "storybookRevision": "2026-07-29-uploadphotos-chiptag-canonical",
+        "storybookUpdatedAt": "2026-07-30T18:15:00.000Z",
+        "storybookRevision": "2026-07-30-sectionheader-product-theme",
         "changelog": [
+            {
+                "date": "2026-07-30",
+                "type": "storybook-sectionheader-product-theme",
+                "summary": "SectionHeader product-theme: action binds component/section-header/action/background + radius (EV→surface/0 + button radius/sm; site-loovi|app-cliente→surface/2 + full); catalog 23 vars; docs synced."
+            },
+            {
+                "date": "2026-07-30",
+                "type": "storybook-referraldiscountcard-simulator-title",
+                "summary": "ReferralDiscountCard: simulator meta uses simulatorTitle text (body/small/semi-bold + text/primary) — not Link."
+            },
+            {
+                "date": "2026-07-30",
+                "type": "storybook-referraldiscountcard-audit-apply",
+                "summary": "ReferralDiscountCard (4594:995): local text styles; track fills→actions/primary; radius/400 both modes; local spacing; circle-dot current marker; Link sm for simulator; layers renamed; AI-READY + storybook seed."
+            },
+            {
+                "date": "2026-07-30",
+                "type": "storybook-vehiclesummarycard-audit-apply",
+                "summary": "VehicleSummaryCard (4581:1451) seeded; ChipTag labels → local body/small|medium (was remote $fs-*); description plate→heading/h3/regular; illustration preferredValues sedan|van|suv; outline+dot status kept."
+            },
             {
                 "date": "2026-07-29",
                 "type": "storybook-uploadphotos-chiptag-canonical",
@@ -1573,7 +1615,7 @@
                 "app-cliente"
             ],
             "summary": "Multi-product theming for S2. One published component master stays mode-aware via product-theme aliases — switch escritorio-virtual | site-loovi | app-cliente to preview. Do not fork components per product; do not hardcode product fills/radii on themed slots.",
-            "variableCount": 21,
+            "variableCount": 23,
             "byComponent": {
                 "AppHeader": [
                     "component/app-header/inverse/background",
@@ -1612,6 +1654,10 @@
                 ],
                 "Modal": [
                     "component/modal/container/radius"
+                ],
+                "SectionHeader": [
+                    "component/section-header/action/background",
+                    "component/section-header/action/radius"
                 ]
             },
             "tokens": [
@@ -1866,6 +1912,30 @@
                         "site-loovi": "border/radius/600",
                         "app-cliente": "border/radius/800"
                     }
+                },
+                {
+                    "name": "component/section-header/action/background",
+                    "id": "VariableID:4597:655",
+                    "resolvedType": "COLOR",
+                    "component": "SectionHeader",
+                    "binds": "trailing action Button fill when showAction=true",
+                    "aliasByMode": {
+                        "escritorio-virtual": "color/background-surface/0",
+                        "site-loovi": "color/background-surface/2",
+                        "app-cliente": "color/background-surface/2"
+                    }
+                },
+                {
+                    "name": "component/section-header/action/radius",
+                    "id": "VariableID:4597:656",
+                    "resolvedType": "FLOAT",
+                    "component": "SectionHeader",
+                    "binds": "trailing action Button corner radius when showAction=true",
+                    "aliasByMode": {
+                        "escritorio-virtual": "component/button/container/radius/sm",
+                        "site-loovi": "border/radius/full",
+                        "app-cliente": "border/radius/full"
+                    }
                 }
             ],
             "notes": [
@@ -1875,7 +1945,8 @@
                 "Avatar backgrounds on site-loovi|app-cliente use raw rgba white @ 16% (no semantic alias yet).",
                 "Input field radius: EV→200; site-loovi|app-cliente→full. InputTextArea field radius: EV→200; site-loovi|app-cliente→500 (not full).",
                 "component/list-action/container/radius is shared by ListActionDropdown and List (plain|dropdown): EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full).",
-                "Modal shell radius binds component/modal/container/radius — EV|site-loovi→border/radius/600 (24); app-cliente→border/radius/800 (32). Do not hardcode radius/600 on the Modal root."
+                "Modal shell radius binds component/modal/container/radius — EV|site-loovi→border/radius/600 (24); app-cliente→border/radius/800 (32). Do not hardcode radius/600 on the Modal root.",
+                "SectionHeader action binds component/section-header/action/background + radius — EV→surface/0 + button radius/sm; site-loovi|app-cliente→surface/2 + radius/full."
             ]
         }
     },
@@ -4102,7 +4173,8 @@
                     "Input",
                     "InputTextArea",
                     "ListActionDropdown",
-                    "List"
+                    "List",
+                    "SectionHeader"
                 ],
                 "notes": [
                     "site-loovi solid Button uses success feedback fill + text/primary label/icon (not on-color).",
@@ -4111,7 +4183,8 @@
                     "Avatar backgrounds on site-loovi|app-cliente use raw rgba white @ 16% (no semantic alias yet).",
                     "Input field radius: EV→200; site-loovi|app-cliente→full. InputTextArea field radius: EV→200; site-loovi|app-cliente→500 (not full).",
                     "component/list-action/container/radius is shared by ListActionDropdown and List (plain|dropdown): EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full).",
-                    "Modal shell radius binds component/modal/container/radius — EV|site-loovi→border/radius/600 (24); app-cliente→border/radius/800 (32). Do not hardcode radius/600 on the Modal root."
+                    "Modal shell radius binds component/modal/container/radius — EV|site-loovi→border/radius/600 (24); app-cliente→border/radius/800 (32). Do not hardcode radius/600 on the Modal root.",
+                    "SectionHeader action binds component/section-header/action/background + radius — EV→surface/0 + button radius/sm; site-loovi|app-cliente→surface/2 + radius/full."
                 ],
                 "tokens": [
                     {
@@ -5463,7 +5536,7 @@
             },
             "SectionHeader": {
                 "nodeId": "4235:406",
-                "description": "AI-READY COMPONENT: SectionHeader — section title row that segments content groups on a screen, with an optional trailing action. Props: showAction=false|true; title (TEXT, default \"Title\"). Anatomy: title; when showAction=true, trailing action (local Button variant=text size=sm intent=primary, exposed; showLabel=false, showIcon=true, default icon arrow-narrow-right-outline). Use showAction=false when the section content fits the viewport (e.g. quick-access grid). Use showAction=true for overflow / see-more (e.g. offers carousel). Tokens: text/primary; body/large/semi-bold; spacing/0 (pad/gap); root horizontal SPACE_BETWEEN. Do not use as AppHeader, OrganizationHeader, SystemHeader, or as a full Section with content slot — body content is composed separately below. Accessibility: title is the section heading; action needs an accessible name (aria-label) when icon-only. React mapping: SectionHeader(title, showAction, onActionPress). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: SectionHeader — section title row that segments content groups on a screen, with an optional trailing action. Props: showAction=false|true; title (TEXT, default Title). Anatomy: title; when showAction=true, trailing action (local Button variant=text size=sm intent=primary, exposed; showLabel=false, showIcon=true, default icon arrow-narrow-right-outline). Use showAction=false when the section content fits the viewport (e.g. quick-access grid). Use showAction=true for overflow / see-more (e.g. offers carousel). Tokens: text/primary; body/large/semi-bold; spacing/0 (pad/gap); root horizontal SPACE_BETWEEN. Product-theme: action chip binds component/section-header/action/background (EV→surface/0; site-loovi|app-cliente→surface/2) and component/section-header/action/radius (EV→component/button/container/radius/sm; site-loovi|app-cliente→border/radius/full). Do not hardcode surface/0|2 or radius on the action. Do not use as AppHeader, OrganizationHeader, SystemHeader, or as a full Section with content slot — body content is composed separately below. Accessibility: title is the section heading; action needs an accessible name (aria-label) when icon-only. React mapping: SectionHeader(title, showAction, onActionPress). Code Connect is not configured.",
                 "variants": {
                     "showAction": [
                         "false",
@@ -5472,28 +5545,59 @@
                 },
                 "props": {
                     "showAction": "false | true — toggles trailing action Button",
-                    "title": "TEXT — default \"Title\"; body/large/semi-bold + text/primary",
+                    "title": "TEXT — default Title; body/large/semi-bold + text/primary",
                     "action": "Exposed nested Button text/sm/primary when showAction=true; showLabel=false, showIcon=true; default icon arrow-narrow-right-outline"
                 },
                 "rules": {
                     "matrix": "Published 2/2 — showAction",
                     "nestedButton": "action is local Button text/sm/primary (exposed) — not remote Material button",
-                    "genericDefaults": "Default title \"Title\" (product copy via prop)",
+                    "genericDefaults": "Default title Title (product copy via prop)",
                     "iconLocal": "Default action icon arrow-narrow-right-outline (EV library)",
                     "noContentSlot": "Body content is composed separately below — not a Section with slot",
-                    "vsHeaders": "Do not use as AppHeader, OrganizationHeader, or SystemHeader"
+                    "vsHeaders": "Do not use as AppHeader, OrganizationHeader, or SystemHeader",
+                    "productTheme": "Action fill/radius bind component/section-header/action/* — EV→surface/0 + button radius/sm; site-loovi|app-cliente→surface/2 + radius/full. Do not hardcode those slots."
                 },
                 "tokenRules": [
                     "text/primary",
                     "body/large/semi-bold",
                     "spacing/0 (pad/gap)",
+                    "product-theme component/section-header/action/background (EV→surface/0; site-loovi|app-cliente→surface/2)",
+                    "product-theme component/section-header/action/radius (EV→button radius/sm; site-loovi|app-cliente→full)",
                     "inherits Button text/sm/primary tokens (action)"
                 ],
                 "accessibility": "Title is the section heading; icon-only action needs an accessible name (aria-label).",
                 "composition": [
                     "title (TEXT)",
                     "action (Button text/sm/primary; exposed; showAction=true only)"
-                ]
+                ],
+                "productTheme": {
+                    "collection": "product-theme",
+                    "modes": [
+                        "escritorio-virtual",
+                        "site-loovi",
+                        "app-cliente"
+                    ],
+                    "tokens": [
+                        {
+                            "name": "component/section-header/action/background",
+                            "binds": "trailing action Button fill when showAction=true",
+                            "aliases": {
+                                "escritorio-virtual": "color/background-surface/0",
+                                "site-loovi": "color/background-surface/2",
+                                "app-cliente": "color/background-surface/2"
+                            }
+                        },
+                        {
+                            "name": "component/section-header/action/radius",
+                            "binds": "trailing action Button corner radius when showAction=true",
+                            "aliases": {
+                                "escritorio-virtual": "component/button/container/radius/sm",
+                                "site-loovi": "border/radius/full",
+                                "app-cliente": "border/radius/full"
+                            }
+                        }
+                    ]
+                }
             },
             "SystemHeader": {
                 "nodeId": "3143:8933",
@@ -5887,6 +5991,7 @@
                     "color/border/2 for outline stroke and disabled fill",
                     "text/primary for label on saturated fills; text/on-color when fill requires inverse label",
                     "text/secondary for muted icon/label on outline and disabled",
+                    "typography: size=sm → body/small/medium; size=md → body/medium/medium (local — do not use remote $fs-* styles)",
                     "border/radius/full",
                     "spacing/*",
                     "border/width/012",
@@ -6167,6 +6272,105 @@
                     "nested Button and ChipTag own their own DS tokens"
                 ],
                 "accessibility": "expose label and status; pending/rejected actions use visible labels and stay keyboard-accessible; in-review/approved are informational (no focus unless an action is added)."
+            },
+            "VehicleSummaryCard": {
+                "nodeId": "4581:1451",
+                "description": "AI-READY COMPONENT: VehicleSummaryCard — Home/Painel compact card for a user vehicle: illustration, brand, model, plate, and insurance status ChipTag. Props: status=active|inactive; brandModel (TEXT, default Marca); model (TEXT, default Modelo); plate (TEXT); illustration (INSTANCE_SWAP — local vehicle illustration, default sedan); showStatus (BOOLEAN, default true). Anatomy: leading (illustration + name row brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm). status=active ChipTag label Ativo + local circle-dot-filled (feedback/success); status=inactive label Inativo + local circle-dot-filled (feedback/danger). Tokens: color/background-surface/0; border/radius/400; spacing/100 vertical pad; spacing/200 horizontal pad + root gap; spacing/100 leading gap; text/primary (brand/model); text/secondary + heading/h3/regular (plate); nested ChipTag uses body/small/medium. Interaction: product wires onPress as button/link to vehicle detail — no Figma hover/pressed/disabled variants on this set. Do not use as VehicleConfirmCard (onboarding plate-hero), OfferProductCard, CardHorizontal, or Banner. Accessibility: expose as button/link to vehicle detail; status text must not rely on color alone; illustration decorative when brandModel+model+plate name the vehicle. React mapping: VehicleSummaryCard(status, brandModel, model, plate, illustration, showStatus, onPress). Code Connect is not configured.",
+                "variants": {
+                    "status": [
+                        "active",
+                        "inactive"
+                    ]
+                },
+                "props": {
+                    "status": "active | inactive",
+                    "brandModel": "TEXT — brand label (default Marca)",
+                    "model": "TEXT — model label (default Modelo)",
+                    "plate": "TEXT — plate string",
+                    "illustration": "INSTANCE_SWAP — local vehicle-icon (sedan|van|suv preferred)",
+                    "showStatus": "boolean — default true; toggles statusChip"
+                },
+                "rules": {
+                    "composition": "leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm)",
+                    "statusChip": "canonical ChipTag 3653:23220 outline/sm/hug/strong + circle-dot-filled; active→feedback/success; inactive→feedback/danger",
+                    "noFigmaInteractionVariants": "onPress is runtime only — do not add hover/pressed/disabled variants to this set",
+                    "vsConfirm": "Do not use as VehicleConfirmCard",
+                    "vsOffer": "Do not use as OfferProductCard",
+                    "vsBanner": "Do not use as Banner"
+                },
+                "statusMap": {
+                    "active": "ChipTag outline + circle-dot-filled (feedback/success) label Ativo",
+                    "inactive": "ChipTag outline + circle-dot-filled (feedback/danger) label Inativo"
+                },
+                "tokenRules": [
+                    "color/background-surface/0",
+                    "border/radius/400",
+                    "spacing/100 (vertical pad, leading gap); spacing/200 (horizontal pad, root gap)",
+                    "text/primary + body/medium/regular|semi-bold (brandModel/model)",
+                    "text/secondary + heading/h3/regular (plate)",
+                    "nested ChipTag: body/small/medium; color/border/2 outline; feedback/success|danger on dot"
+                ],
+                "accessibility": "expose as button/link to vehicle detail; status text must not rely on color alone; illustration decorative when brandModel+model+plate name the vehicle.",
+                "composition": [
+                    "leading.illustration",
+                    "leading.text.brandModel",
+                    "leading.text.model",
+                    "leading.text.plate",
+                    "spacer",
+                    "statusChip (ChipTag)"
+                ]
+            },
+            "ReferralDiscountCard": {
+                "nodeId": "4594:995",
+                "description": "AI-READY COMPONENT: ReferralDiscountCard — Home/Painel referral discount meter (descontometro). Props: mode=status|simulator; title (TEXT, status heading); promoTitle (TEXT, simulator heading); description (TEXT, simulator); referralCount (TEXT); discountPercent (TEXT, status); savingsAmount + savingsCaption (TEXT, status); simulatorTitle (TEXT, simulator section title); projectedDiscount + discountAmount (TEXT, simulator). Anatomy: surface color/background-surface/2 + border/radius/400; mode=status — meter meta + 10-step track + savings + CTA; mode=simulator — absolute blur ellipses (blurPrimary/Secondary/Tertiary/Light* with LAYER_BLUR) behind content, promo header, simulator meta (simulatorTitle + referralCount), track, projection + CTA. Track: local circle-filled (completed), circle-dot-filled (current), circle-outline (pending), progressFill/progressActive rails bound to color/actions/primary; do NOT replace with ProgressBar, StepProgressIndicator, or StepperPrimary. CTA nests Button solid/md/intent=secondary (label Convidar). simulatorTitle is a non-interactive section title (body/small/semi-bold + text/primary) — not a Link. Tokens: spacing/250 pad; spacing/150 gaps; local text styles body/large/semi-bold (titles), body/small/* (meta), caption/large/regular (tick labels), heading/h2/semi-bold (savingsAmount). Rule: 10 referrals = 100% discount. Interaction: product wires onInvite — no extra Figma hover variants on the card set. Do not use as OfferProductCard, VehicleSummaryCard, Banner, or ProgressBar. Accessibility: expose progress in text (referralCount + percent); track nodes decorative when text equivalent exists; CTA keyboard-focusable; simulatorTitle is informational heading text. React mapping: ReferralDiscountCard(mode, title, promoTitle, description, referralCount, discountPercent, savingsAmount, savingsCaption, simulatorTitle, projectedDiscount, discountAmount, onInvite). Code Connect is not configured.",
+                "variants": {
+                    "mode": [
+                        "status",
+                        "simulator"
+                    ]
+                },
+                "props": {
+                    "mode": "status | simulator",
+                    "title": "TEXT — status heading (default Descontometro)",
+                    "promoTitle": "TEXT — simulator heading",
+                    "description": "TEXT — simulator body copy",
+                    "referralCount": "TEXT — e.g. 2 indicacoes",
+                    "discountPercent": "TEXT — status meta percent label",
+                    "savingsAmount": "TEXT — status savings hero",
+                    "savingsCaption": "TEXT — status savings caption",
+                    "simulatorTitle": "TEXT — simulator section title (non-interactive; not a Link)",
+                    "projectedDiscount": "TEXT — simulator projected percent",
+                    "discountAmount": "TEXT — simulator amount line"
+                },
+                "rules": {
+                    "composition": "surface/2 + track (10 steps) + CTA Button secondary; simulator adds blur ellipses + simulatorTitle",
+                    "track": "circle-filled + circle-dot-filled (current) + circle-outline; progressFill → color/actions/primary — never ProgressBar/StepProgress/StepperPrimary",
+                    "simulatorTitle": "non-interactive title text (body/small/semi-bold + text/primary) — do not use Link",
+                    "cta": "Button solid/md/secondary label Convidar",
+                    "noFigmaInteractionVariants": "onInvite is runtime only",
+                    "vsOffer": "Do not use as OfferProductCard",
+                    "vsProgress": "Do not replace track with ProgressBar / StepProgressIndicator / StepperPrimary"
+                },
+                "statusMap": {
+                    "status": "meter meta + track + savingsAmount/Caption + CTA",
+                    "simulator": "promo header + description + simulatorTitle + track + projection + CTA; decorative blurs"
+                },
+                "tokenRules": [
+                    "color/background-surface/2; border/radius/400",
+                    "spacing/250 pad; spacing/150 gaps; spacing/0 where intentional",
+                    "color/actions/primary on progressFill + circle-dot-filled",
+                    "blur ellipses: color/actions/primary|secondary|tertiary + text/on-color",
+                    "body/large/semi-bold (titles); body/small/semi-bold (simulatorTitle); body/small/* (meta); caption/large/regular (ticks); heading/h2/semi-bold (savingsAmount)",
+                    "nested Button secondary owns its tokens"
+                ],
+                "accessibility": "expose progress in text; track decorative when text equivalent exists; CTA keyboard-focusable; simulatorTitle is informational heading text.",
+                "composition": [
+                    "title | promoTitle",
+                    "meta (referralCount, discountPercent | simulatorTitle)",
+                    "track (circle-filled, progressFill, circle-dot-filled, rails, circle-outline)",
+                    "footer (savings | projection + cta Button)",
+                    "simulator blurs (absolute)"
+                ]
             },
             "ImageItem": {
                 "nodeId": "3671:2329",
@@ -9755,6 +9959,26 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "sectionheader-product-theme",
+                "date": "2026-07-30",
+                "summary": "SectionHeader: product-theme action background/radius for site-loovi|app-cliente; catalog 23 vars; AI-READY + storybook."
+            },
+            {
+                "id": "referraldiscountcard-simulator-title",
+                "date": "2026-07-30",
+                "summary": "ReferralDiscountCard: simulatorTitle text replaces Link; docs synced."
+            },
+            {
+                "id": "referraldiscountcard-audit-apply",
+                "date": "2026-07-30",
+                "summary": "ReferralDiscountCard: local typography/tokens; track primary; Link simulator; circle-dot marker; AI-READY + storybook."
+            },
+            {
+                "id": "vehiclesummarycard-audit-apply",
+                "date": "2026-07-30",
+                "summary": "VehicleSummaryCard seeded; ChipTag local body typography; outline+dot status docs; AI-READY + storybook."
+            },
             {
                 "id": "uploadphotos-chiptag-canonical",
                 "date": "2026-07-29",

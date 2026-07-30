@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: SectionHeader — section title row that segments content groups on a screen, with an optional trailing action. Props: showAction=false|true; title (TEXT, default "Title"). Anatomy: title; when showAction=true, trailing action (local Button variant=text size=sm intent=primary, exposed; showLabel=false, showIcon=true, default icon arrow-narrow-right-outline). Use showAction=false when the section content fits the viewport (e.g. quick-access grid). Use showAction=true for overflow / see-more (e.g. offers carousel). Tokens: text/primary; body/large/semi-bold; spacing/0 (pad/gap); root horizontal SPACE_BETWEEN. Do not use as AppHeader, OrganizationHeader, SystemHeader, or as a full Section with content slot — body content is composed separately below. Accessibility: title is the section heading; action needs an accessible name (aria-label) when icon-only. React mapping: SectionHeader(title, showAction, onActionPress). Code Connect is not configured.
+AI-READY COMPONENT: SectionHeader — section title row that segments content groups on a screen, with an optional trailing action. Props: showAction=false|true; title (TEXT, default Title). Anatomy: title; when showAction=true, trailing action (local Button variant=text size=sm intent=primary, exposed; showLabel=false, showIcon=true, default icon arrow-narrow-right-outline). Use showAction=false when the section content fits the viewport (e.g. quick-access grid). Use showAction=true for overflow / see-more (e.g. offers carousel). Tokens: text/primary; body/large/semi-bold; spacing/0 (pad/gap); root horizontal SPACE_BETWEEN. Product-theme: action chip binds component/section-header/action/background (EV→surface/0; site-loovi|app-cliente→surface/2) and component/section-header/action/radius (EV→component/button/container/radius/sm; site-loovi|app-cliente→border/radius/full). Do not hardcode surface/0|2 or radius on the action. Do not use as AppHeader, OrganizationHeader, SystemHeader, or as a full Section with content slot — body content is composed separately below. Accessibility: title is the section heading; action needs an accessible name (aria-label) when icon-only. React mapping: SectionHeader(title, showAction, onActionPress). Code Connect is not configured.
 
 ## Variants
 
@@ -21,23 +21,37 @@ AI-READY COMPONENT: SectionHeader — section title row that segments content gr
 | Prop | Type / values |
 | --- | --- |
 | `showAction` | false \| true — toggles trailing action Button |
-| `title` | TEXT — default "Title"; body/large/semi-bold + text/primary |
+| `title` | TEXT — default Title; body/large/semi-bold + text/primary |
 | `action` | Exposed nested Button text/sm/primary when showAction=true; showLabel=false, showIcon=true; default icon arrow-narrow-right-outline |
+
+## Product theme
+
+Collection: `product-theme`
+
+Modes: `escritorio-virtual` | `site-loovi` | `app-cliente`
+
+| Token | Bind | escritorio-virtual | site-loovi | app-cliente |
+| --- | --- | --- | --- | --- |
+| `component/section-header/action/background` | trailing action Button fill when showAction=true | `color/background-surface/0` | `color/background-surface/2` | `color/background-surface/2` |
+| `component/section-header/action/radius` | trailing action Button corner radius when showAction=true | `component/button/container/radius/sm` | `border/radius/full` | `border/radius/full` |
 
 ## Rules
 
 - **matrix:** Published 2/2 — showAction
 - **nestedButton:** action is local Button text/sm/primary (exposed) — not remote Material button
-- **genericDefaults:** Default title "Title" (product copy via prop)
+- **genericDefaults:** Default title Title (product copy via prop)
 - **iconLocal:** Default action icon arrow-narrow-right-outline (EV library)
 - **noContentSlot:** Body content is composed separately below — not a Section with slot
 - **vsHeaders:** Do not use as AppHeader, OrganizationHeader, or SystemHeader
+- **productTheme:** Action fill/radius bind component/section-header/action/* — EV→surface/0 + button radius/sm; site-loovi|app-cliente→surface/2 + radius/full. Do not hardcode those slots.
 
 ## Token rules
 
 - text/primary
 - body/large/semi-bold
 - spacing/0 (pad/gap)
+- product-theme component/section-header/action/background (EV→surface/0; site-loovi|app-cliente→surface/2)
+- product-theme component/section-header/action/radius (EV→button radius/sm; site-loovi|app-cliente→full)
 - inherits Button text/sm/primary tokens (action)
 
 ## Accessibility

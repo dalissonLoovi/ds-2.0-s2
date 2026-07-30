@@ -64,8 +64,8 @@ Multi-product theming for S2. One published component master stays mode-aware vi
 | --- | --- |
 | Collection | `product-theme` |
 | Modes | `escritorio-virtual` \| `site-loovi` \| `app-cliente` |
-| Components | `AppHeader`, `Button`, `Modal`, `ModalHeader`, `Input`, `InputTextArea`, `ListActionDropdown`, `List` |
-| Variable count | 21 |
+| Components | `AppHeader`, `Button`, `Modal`, `ModalHeader`, `Input`, `InputTextArea`, `ListActionDropdown`, `List`, `SectionHeader` |
+| Variable count | 23 |
 
 | Token | Component | Bind | escritorio-virtual | site-loovi | app-cliente |
 | --- | --- | --- | --- | --- | --- |
@@ -100,4 +100,5 @@ Multi-product theming for S2. One published component master stays mode-aware vi
 - Input field radius: EV→200; site-loovi|app-cliente→full. InputTextArea field radius: EV→200; site-loovi|app-cliente→500 (not full).
 - component/list-action/container/radius is shared by ListActionDropdown and List (plain|dropdown): EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full).
 - Modal shell radius binds component/modal/container/radius — EV|site-loovi→border/radius/600 (24); app-cliente→border/radius/800 (32). Do not hardcode radius/600 on the Modal root.
+- SectionHeader action binds component/section-header/action/background + radius — EV→surface/0 + button radius/sm; site-loovi|app-cliente→surface/2 + radius/full.
 
