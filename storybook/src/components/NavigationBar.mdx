@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: NavigationBar is a bottom navigation container used in mobile layouts to provide access to primary app destinations. Props: itemCount=3|4|5; appearance=default|inverse; layout=flush|floating. Intentional full matrix 12/12 (itemCount × appearance × layout). Use itemCount=3 or 4 for bars composed only of NavigationBarItem destinations. Use itemCount=5 for four NavigationBarItem destinations plus a centered primaryIconButtonSlot for the primary action — itemCount=5 is not five equal nav destinations. Use appearance=default on light surfaces and appearance=inverse on inverse or dark surfaces. Use layout=flush for edge-to-edge bars (border/radius/0, no elevation). Use layout=floating for the pill bottom bar (border/radius/full + soft DROP_SHADOW y=8 blur=24 a=0.16 — manual elevation, not a bound color/elevation/* token). NavigationBar composes NavigationBarItem for each destination; item appearance must match the bar appearance. Do not use NavigationBar as a tab bar, toolbar, bottom sheet, action bar, drawer, menu, generic footer or content container. PRIMARY ACTION (itemCount=5 only — NavigationBar-local overrides on nested Button; do NOT change the Button component master for this pattern): nest local Button variant=solid size=lg intent=primary as primaryIconButton (exposed). NavigationBar-specific instance overrides: FIXED square spacing/700×spacing/700 (56); border/radius/full (circular FAB); padding spacing/400 horizontal + spacing/200 vertical; itemSpacing spacing/200; showLabel=false; showIcon=true; default icon plus-outline; icon stroke text/on-color. Fill keeps component/button/container/background (primary) on both appearance=default and appearance=inverse. Slot primaryIconButtonSlot uses height spacing/600 and paddingBottom spacing/050. This circular FAB chrome is exclusive to NavigationBar itemCount=5 — other surfaces must use standard Button sizes/radii. Accessibility: implement with nav semantics; each item should represent a route or primary destination; selected item should map to aria-current=page; icons may be aria-hidden when labels are visible; the primary action button needs its own accessible name (e.g. Acionar); preserve visible focus and keyboard navigation. Token rule: color/background-surface/0 | inverse-3; spacing/800 height; spacing/0 root pads/gaps; nested NavigationBarItem tokens; FAB overrides as above. PAINEL HOME: layout=floating + itemCount=5 (four destinations + Acionar primary). Horizontal inset margins around the pill are a screen composition pattern, not part of this component. React mapping: NavigationBar(appearance, itemCount, layout, items, primaryAction?). Code Connect is not configured.
+AI-READY COMPONENT: NavigationBar is a bottom navigation container used in mobile layouts to provide access to primary app destinations. Props: itemCount=3|4|5; appearance=default|inverse; layout=flush|floating; primaryLabel (TEXT, default Acionar — used when itemCount=5). Intentional full matrix 12/12 (itemCount × appearance × layout). Use itemCount=3 or 4 for bars composed only of NavigationBarItem destinations. Use itemCount=5 for four NavigationBarItem destinations plus a centered primaryIconButtonSlot for the primary action — itemCount=5 is not five equal nav destinations. primaryIconButtonSlot stacks primaryIconButton (Button solid/lg with NavigationBar-local circular FAB overrides) above a caption/medium/medium label matching NavigationBarItem label pattern (gap spacing/050; paddingBottom spacing/150; slot height matches bar spacing/800; default appearance text/secondary; inverse text/on-color-disabled). Use appearance=default on light surfaces and appearance=inverse on inverse or dark surfaces. Use layout=flush for edge-to-edge bars (border/radius/0, no elevation). Use layout=floating for the pill bottom bar (border/radius/full + soft DROP_SHADOW y=8 blur=24 a=0.16 — manual elevation, not a bound color/elevation/* token). NavigationBar composes NavigationBarItem for each destination; item appearance must match the bar appearance. Do not use NavigationBar as a tab bar, toolbar, bottom sheet, action bar, drawer, menu, generic footer or content container. PRIMARY ACTION (itemCount=5 only — NavigationBar-local overrides on nested Button; do NOT change the Button component master for this pattern): nest local Button variant=solid size=lg intent=primary as primaryIconButton (exposed). NavigationBar-specific instance overrides: FIXED square spacing/700×spacing/700 (56); border/radius/full (circular FAB); padding spacing/400 horizontal + spacing/200 vertical; itemSpacing spacing/200; showLabel=false; showIcon=true; default icon plus-outline; icon stroke text/on-color. Fill keeps component/button/container/background (primary) on both appearance=default and appearance=inverse. This circular FAB chrome is exclusive to NavigationBar itemCount=5 — other surfaces must use standard Button sizes/radii. Accessibility: implement with nav semantics; each item should represent a route or primary destination; selected item should map to aria-current=page; icons may be aria-hidden when labels are visible; the primary action button needs its own accessible name (e.g. Acionar); preserve visible focus and keyboard navigation. Token rule: color/background-surface/0 | inverse-3; spacing/800 height; spacing/0 root pads/gaps; nested NavigationBarItem tokens; FAB overrides as above. PAINEL HOME: layout=floating + itemCount=5 (four destinations + Acionar primary). Horizontal inset margins around the pill are a screen composition pattern, not part of this component. React mapping: NavigationBar(appearance, itemCount, layout, primaryLabel, items, primaryAction?). Code Connect is not configured.
 
 ## Variants
 
@@ -25,6 +25,7 @@ AI-READY COMPONENT: NavigationBar is a bottom navigation container used in mobil
 | `itemCount` | 3 \| 4 \| 5 — 5 = four NavigationBarItem + centered primaryIconButtonSlot |
 | `appearance` | default \| inverse |
 | `layout` | flush \| floating — floating = pill (radius/full + soft shadow) |
+| `primaryLabel` | TEXT — FAB caption when itemCount=5 (default Acionar); caption/medium/medium |
 
 ## Rules
 
@@ -38,6 +39,7 @@ AI-READY COMPONENT: NavigationBar is a bottom navigation container used in mobil
 - **painelHome:** PAINEL HOME: layout=floating + itemCount=5 (Acionar primary)
 - **primaryFabLocalOnly:** itemCount=5 primaryIconButton uses NavigationBar-local Button overrides (circular lg 56 / radius/full / plus-outline / text/on-color) — do NOT change Button master; other surfaces use standard Button
 - **primaryFabSpec:** Button solid/lg/primary; FIXED spacing/700×700; border/radius/full; pad 400/200; gap 200; showLabel=false showIcon=true; icon plus-outline stroke text/on-color; fill component/button/container/background on default and inverse
+- **primaryLabel:** primaryLabel uses caption/medium/medium; default text/secondary; inverse text/on-color-disabled
 
 ## Token rules
 
@@ -47,7 +49,8 @@ AI-READY COMPONENT: NavigationBar is a bottom navigation container used in mobil
 - border/radius/0 on flush; border/radius/full on floating
 - floating shadow: manual DROP_SHADOW y=8 blur=24 a=0.16
 - FAB (NavigationBar-local): spacing/700×700; border/radius/full; pad spacing/400|200; gap spacing/200; icon stroke text/on-color; fill component/button/container/background
-- primaryIconButtonSlot: height spacing/600; paddingBottom spacing/050
+- primaryIconButtonSlot: height spacing/800 (matches bar); gap spacing/050; paddingBottom spacing/150
+- primaryLabel: caption/medium/medium; text/secondary (default) | text/on-color-disabled (inverse)
 
 ## Accessibility
 
@@ -56,5 +59,5 @@ Use nav semantics; items as routes with aria-current=page when selected; icons m
 ## Composition
 
 - navItem01..N (NavigationBarItem, exposed)
-- primaryIconButtonSlot → primaryIconButton (Button solid/lg with NavigationBar-local circular FAB overrides; itemCount=5 only)
+- primaryIconButtonSlot → primaryIconButton (Button solid/lg with NavigationBar-local circular FAB overrides) + primaryLabel (itemCount=5 only)
 
