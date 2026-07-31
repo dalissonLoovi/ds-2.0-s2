@@ -635,9 +635,19 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-07-30T20:45:00.000Z",
-        "storybookRevision": "2026-07-30-navigationbar-audit-apply",
+        "storybookUpdatedAt": "2026-07-31T14:35:18.176Z",
+        "storybookRevision": "2026-07-31-referraldiscountcard-fleet",
         "changelog": [
+            {
+                "date": "2026-07-31",
+                "type": "storybook-referraldiscountcard-fleet",
+                "summary": "ReferralDiscountCard: mode=fleet (fleetTitle/fleetDescription + CTA, no meter); remap remote Spacing/* → local spacing/*; CTA exposed; trackGroup + tick-* layers; AI-READY + storybook."
+            },
+            {
+                "date": "2026-07-30",
+                "type": "storybook-uploadphotos-docs-sync",
+                "summary": "UploadPhotos: docs synced to canvas — pending/rejected Button showLabel=false (chevron-only + a11y label prop); rejected ChipTag danger with warning fill override; AI-READY + statusMap."
+            },
             {
                 "date": "2026-07-30",
                 "type": "storybook-navigationbar-audit-apply",
@@ -6239,7 +6249,7 @@
             },
             "UploadPhotos": {
                 "nodeId": "3581:7597",
-                "description": "AI-READY COMPONENT: UploadPhotos is a single photo or visual-document upload task item used to communicate a required capture and its lifecycle status. Use status=pending when no photo has been submitted, status=in-review after submission while validation is pending, status=approved after validation succeeds, and status=rejected when the photo must be replaced. status is a business lifecycle axis, not an interaction-state axis; hover, focus, pressed and disabled behavior belong to the nested Button action. Compose local DS camera icon, Button and ChipTag only. Do not use UploadPhotos as FileUploaderDropzoneItem/dropzone, FileUploaderItem, FileUploaderList, generic Card, gallery tile, image preview, Banner, Toast or the full uploader composition. Props: label controls the required photo name; description and showDescription control optional supporting guidance. Status controls the trailing affordance structurally: pending uses Button text/sm/primary with visible label and trailing chevron; in-review uses ChipTag system (no leading icon); approved uses ChipTag success; rejected uses ChipTag danger plus Button text/sm/primary with visible label and trailing chevron. Surface tokens are intentional: pending and rejected use color/background-surface/2; in-review and approved use color/background-surface/1. Token rule: use existing DS kebab-case variables — color/background-surface/1|2, text/primary|secondary, spacing/0|050|100|150|200|800, border/radius/300, font-family/base, font-weight/medium|regular, body/medium|small and caption/medium typography tokens, plus nested Button/ChipTag tokens. Accessibility: expose label and status to assistive technologies; pending and rejected actions use visible labels (Adicionar foto / Refazer foto) and must remain keyboard-accessible; in-review and approved are informational and must not receive focus unless a real action is added. React mapping: UploadPhotos(status, label, description, showDescription, onSelectPhoto, onRetakePhoto).",
+                "description": "AI-READY COMPONENT: UploadPhotos is a single photo or visual-document upload task item used to communicate a required capture and its lifecycle status. Use status=pending when no photo has been submitted, status=in-review after submission while validation is pending, status=approved after validation succeeds, and status=rejected when the photo must be replaced. status is a business lifecycle axis, not an interaction-state axis; hover, focus, pressed and disabled behavior belong to the nested Button action. Compose local DS camera-outline icon, Button and ChipTag only. Do not use UploadPhotos as FileUploaderDropzoneItem/dropzone, FileUploaderItem, FileUploaderList, generic Card, gallery tile, image preview, Banner, Toast or the full uploader composition. Props: label controls the required photo name; description and showDescription control optional supporting guidance. Status controls the trailing affordance structurally: pending uses Button text/sm/primary with showLabel=false (chevron-only chrome; label prop remains Adicionar foto for the accessible name) and trailing chevron; in-review uses ChipTag sm/system/hug/strong with no leading icon (Em análise); approved uses ChipTag sm/success/hug/strong with circle-check-outline (Aprovada); rejected uses ChipTag sm/danger/hug/strong with alert-circle-outline (Reprovada) — canvas fill override to color/background-feedback-primary/warning — plus Button text/sm/primary with showLabel=false (chevron-only; label prop Refazer foto) and trailing chevron. Surface tokens are intentional: pending and rejected use color/background-surface/2; in-review and approved use color/background-surface/1. Token rule: use existing DS kebab-case variables — color/background-surface/1|2, text/primary|secondary, spacing/0|050|100|150|200|800, border/radius/300, font-family/base, font-weight/medium|regular, body/medium|small and caption/medium typography tokens, plus nested Button/ChipTag tokens. Accessibility: expose label and status to assistive technologies; pending and rejected keep the Button label prop for the accessible name while chrome is chevron-only (showLabel=false) and must remain keyboard-accessible; in-review and approved are informational and must not receive focus unless a real action is added. React mapping: UploadPhotos(status, label, description, showDescription, onSelectPhoto, onRetakePhoto).",
                 "variants": {
                     "status": [
                         "pending",
@@ -6260,15 +6270,17 @@
                     "vsDropzone": "Do not use as dropzone — use FileUploaderDropzoneItem",
                     "vsItem": "Do not use as uploaded-file row — use FileUploaderItem",
                     "vsList": "Do not use as file list stack — use FileUploaderList",
-                    "surfaceIntentional": "pending|rejected → surface/2; in-review|approved → surface/1"
+                    "surfaceIntentional": "pending|rejected → surface/2; in-review|approved → surface/1",
+                    "actionChrome": "pending|rejected Button: showLabel=false (chevron-only); keep label prop for accessible name",
+                    "rejectedChipFill": "rejected ChipTag intent=danger with canvas fill override to color/background-feedback-primary/warning"
                 },
                 "statusMap": {
-                    "pending": "Button text/sm/primary — label + trailing chevron (Adicionar foto); surface/2",
-                    "in-review": "ChipTag canonical 3653:23220 — sm/system/hug/strong; no leading icon; surface/1",
-                    "approved": "ChipTag canonical — sm/success/hug/strong + circle-check-outline; surface/1",
-                    "rejected": "ChipTag canonical — sm/danger/hug/strong + alert-circle-outline + Button text/sm/primary — label + trailing chevron (Refazer foto); surface/2"
+                    "pending": "Button text/sm/primary — showLabel=false + trailing chevron; label prop \"Adicionar foto\" (a11y name); surface/2",
+                    "in-review": "ChipTag canonical 3653:23220 — sm/system/hug/strong; no leading icon; \"Em análise\"; surface/1",
+                    "approved": "ChipTag canonical — sm/success/hug/strong + circle-check-outline; \"Aprovada\"; surface/1",
+                    "rejected": "ChipTag canonical — sm/danger/hug/strong + alert-circle-outline (\"Reprovada\"); fill override → color/background-feedback-primary/warning; + Button text/sm/primary — showLabel=false + trailing chevron; label prop \"Refazer foto\"; surface/2"
                 },
-                "compositionNote": "statusTag must instance ChipTag 3653:23220 only (not orphan 3291:690).",
+                "compositionNote": "statusTag must instance ChipTag 3653:23220 only (not orphan 3291:690). ChipTag labels use caption/medium/medium.",
                 "tokenRules": [
                     "color/background-surface/1 | 2 (intentional by status)",
                     "text/primary | secondary",
@@ -6276,7 +6288,7 @@
                     "body/medium/medium (label), body/small/regular (description), caption/medium/medium (ChipTag)",
                     "nested Button and ChipTag own their own DS tokens"
                 ],
-                "accessibility": "expose label and status; pending/rejected actions use visible labels and stay keyboard-accessible; in-review/approved are informational (no focus unless an action is added)."
+                "accessibility": "expose label and status; pending/rejected Button chrome is chevron-only (showLabel=false) but label prop supplies the accessible name and must stay keyboard-accessible; in-review/approved are informational (no focus unless an action is added)."
             },
             "VehicleSummaryCard": {
                 "nodeId": "4581:1451",
@@ -6327,19 +6339,22 @@
             },
             "ReferralDiscountCard": {
                 "nodeId": "4594:995",
-                "description": "AI-READY COMPONENT: ReferralDiscountCard — Home/Painel referral discount meter (descontometro). Props: mode=status|simulator; title (TEXT, status heading); promoTitle (TEXT, simulator heading); description (TEXT, simulator); referralCount (TEXT); discountPercent (TEXT, status); savingsAmount + savingsCaption (TEXT, status); simulatorTitle (TEXT, simulator section title); projectedDiscount + discountAmount (TEXT, simulator). Anatomy: surface color/background-surface/2 + border/radius/400; mode=status — meter meta + 10-step track + savings + CTA; mode=simulator — absolute blur ellipses (blurPrimary/Secondary/Tertiary/Light* with LAYER_BLUR) behind content, promo header, simulator meta (simulatorTitle + referralCount), track, projection + CTA. Track: local circle-filled (completed), circle-dot-filled (current), circle-outline (pending), progressFill/progressActive rails bound to color/actions/primary; do NOT replace with ProgressBar, StepProgressIndicator, or StepperPrimary. CTA nests Button solid/md/intent=secondary (label Convidar). simulatorTitle is a non-interactive section title (body/small/semi-bold + text/primary) — not a Link. Tokens: spacing/250 pad; spacing/150 gaps; local text styles body/large/semi-bold (titles), body/small/* (meta), caption/large/regular (tick labels), heading/h2/semi-bold (savingsAmount). Rule: 10 referrals = 100% discount. Interaction: product wires onInvite — no extra Figma hover variants on the card set. Do not use as OfferProductCard, VehicleSummaryCard, Banner, or ProgressBar. Accessibility: expose progress in text (referralCount + percent); track nodes decorative when text equivalent exists; CTA keyboard-focusable; simulatorTitle is informational heading text. React mapping: ReferralDiscountCard(mode, title, promoTitle, description, referralCount, discountPercent, savingsAmount, savingsCaption, simulatorTitle, projectedDiscount, discountAmount, onInvite). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: ReferralDiscountCard — Home/Painel referral discount card. Props: mode=status|simulator|fleet; title (TEXT, status); promoTitle (TEXT, simulator); fleetTitle + fleetDescription (TEXT, fleet); description (TEXT, simulator body); referralCount, discountPercent, savingsAmount, savingsCaption (status); simulatorTitle, projectedDiscount, discountAmount (simulator). Anatomy: surface color/background-surface/2 + border/radius/400. mode=status — meter meta + 10-step track + savings + CTA. mode=simulator — blur ellipses + promo header + simulator meta/track/projection + CTA. mode=fleet — blur ellipses + title + how-it-works description + CTA only (no meter, no referral count, no currency values; for multi-vehicle / frotista profiles). Track: local circle-filled (completed), circle-dot-filled (current), circle-outline (pending); do NOT replace with ProgressBar, StepProgressIndicator, or StepperPrimary. CTA nests Button solid/md/intent=secondary (label Convidar), exposed. Token rule: local kebab spacing/* only — no remote Title Case Spacing/*. Rule: 10 referrals = 100% discount. Do not use as OfferProductCard, VehicleSummaryCard, or Banner. React: ReferralDiscountCard(mode, title, promoTitle, fleetTitle, fleetDescription, description, referralCount, discountPercent, savingsAmount, onInvite).",
                 "variants": {
                     "mode": [
                         "status",
-                        "simulator"
+                        "simulator",
+                        "fleet"
                     ]
                 },
                 "props": {
-                    "mode": "status | simulator",
-                    "title": "TEXT — status heading (default Descontometro)",
+                    "mode": "status | simulator | fleet",
+                    "title": "TEXT — status heading (default Descontômetro)",
                     "promoTitle": "TEXT — simulator heading",
+                    "fleetTitle": "TEXT — fleet heading (default Indique amigos e ganhe desconto)",
+                    "fleetDescription": "TEXT — fleet how-it-works body (no meter / counts / currency)",
                     "description": "TEXT — simulator body copy",
-                    "referralCount": "TEXT — e.g. 2 indicacoes",
+                    "referralCount": "TEXT — e.g. 2 indicações",
                     "discountPercent": "TEXT — status meta percent label",
                     "savingsAmount": "TEXT — status savings hero",
                     "savingsCaption": "TEXT — status savings caption",
@@ -6348,33 +6363,36 @@
                     "discountAmount": "TEXT — simulator amount line"
                 },
                 "rules": {
-                    "composition": "surface/2 + track (10 steps) + CTA Button secondary; simulator adds blur ellipses + simulatorTitle",
+                    "composition": "surface/2 + track (10 steps) + CTA Button secondary; simulator/fleet add blur ellipses; fleet omits meter/track/currency",
                     "track": "circle-filled + circle-dot-filled (current) + circle-outline; progressFill → color/actions/primary — never ProgressBar/StepProgress/StepperPrimary",
                     "simulatorTitle": "non-interactive title text (body/small/semi-bold + text/primary) — do not use Link",
-                    "cta": "Button solid/md/secondary label Convidar",
+                    "cta": "Button solid/md/secondary label Convidar — exposed nested instance",
+                    "fleet": "multi-vehicle / frotista: fleetTitle + fleetDescription + CTA only; no meter, referralCount, or currency",
+                    "spacingLocalOnly": "use local kebab spacing/* — never remote Title Case Spacing/*",
                     "noFigmaInteractionVariants": "onInvite is runtime only",
                     "vsOffer": "Do not use as OfferProductCard",
                     "vsProgress": "Do not replace track with ProgressBar / StepProgressIndicator / StepperPrimary"
                 },
                 "statusMap": {
                     "status": "meter meta + track + savingsAmount/Caption + CTA",
-                    "simulator": "promo header + description + simulatorTitle + track + projection + CTA; decorative blurs"
+                    "simulator": "promo header + description + simulatorTitle + track + projection + CTA; decorative blurs",
+                    "fleet": "fleetTitle + fleetDescription + CTA; decorative blurs; no meter/track/currency"
                 },
                 "tokenRules": [
                     "color/background-surface/2; border/radius/400",
-                    "spacing/250 pad; spacing/150 gaps; spacing/0 where intentional",
+                    "local spacing/250 pad; spacing/150|100|025|0 gaps — no remote Spacing/*",
                     "color/actions/primary on progressFill + circle-dot-filled",
                     "blur ellipses: color/actions/primary|secondary|tertiary + text/on-color",
-                    "body/large/semi-bold (titles); body/small/semi-bold (simulatorTitle); body/small/* (meta); caption/large/regular (ticks); heading/h2/semi-bold (savingsAmount)",
-                    "nested Button secondary owns its tokens"
+                    "body/large/semi-bold (titles); body/small/semi-bold (simulatorTitle); body/small/* (meta/fleetDescription); caption/large/regular (ticks); heading/h2/semi-bold (savingsAmount)",
+                    "nested Button secondary owns its tokens (exposed)"
                 ],
-                "accessibility": "expose progress in text; track decorative when text equivalent exists; CTA keyboard-focusable; simulatorTitle is informational heading text.",
+                "accessibility": "expose progress in text; track decorative when text equivalent exists; CTA keyboard-focusable (exposed nested Button); simulatorTitle / fleetDescription are informational text.",
                 "composition": [
-                    "title | promoTitle",
-                    "meta (referralCount, discountPercent | simulatorTitle)",
-                    "track (circle-filled, progressFill, circle-dot-filled, rails, circle-outline)",
-                    "footer (savings | projection + cta Button)",
-                    "simulator blurs (absolute)"
+                    "title | promoTitle | fleetTitle",
+                    "meta (referralCount, discountPercent | simulatorTitle) — status/simulator only",
+                    "track (circle-filled, progressFill, circle-dot-filled, rails, circle-outline, tick-*) — status/simulator only",
+                    "footer (savings | projection | fleetDescription flow + cta Button exposed)",
+                    "simulator/fleet blurs (absolute)"
                 ]
             },
             "ImageItem": {
@@ -9967,6 +9985,16 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "referraldiscountcard-fleet",
+                "date": "2026-07-31",
+                "summary": "ReferralDiscountCard: fleet mode + local spacing remap + exposed CTA; docs synced."
+            },
+            {
+                "id": "uploadphotos-docs-sync",
+                "date": "2026-07-30",
+                "summary": "UploadPhotos: Button showLabel=false on pending/rejected; rejected ChipTag warning fill override documented; AI-READY + storybook."
+            },
             {
                 "id": "navigationbar-audit-apply",
                 "date": "2026-07-30",
