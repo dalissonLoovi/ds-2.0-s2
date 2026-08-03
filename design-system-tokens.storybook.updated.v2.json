@@ -635,9 +635,19 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-07-31T14:35:18.176Z",
-        "storybookRevision": "2026-07-31-referraldiscountcard-fleet",
+        "storybookUpdatedAt": "2026-08-03T15:50:20.786Z",
+        "storybookRevision": "2026-08-03-sectionheader-polish",
         "changelog": [
+            {
+                "date": "2026-08-03",
+                "type": "storybook-sectionheader-polish",
+                "summary": "SectionHeader: Figma polish — AI-READY default Title without quote entities; showAction=true itemSpacing bound to spacing/0."
+            },
+            {
+                "date": "2026-08-03",
+                "type": "storybook-sectionheader-emphasis-secondary",
+                "summary": "SectionHeader: emphasis=primary|secondary × showAction; secondary uses body/medium/regular + text/secondary (overlays/less prominent sections); secondary action icon text/secondary; fixed broken showAction3/4 names; AI-READY + storybook 4."
+            },
             {
                 "date": "2026-07-31",
                 "type": "storybook-referraldiscountcard-fleet",
@@ -5551,20 +5561,27 @@
             },
             "SectionHeader": {
                 "nodeId": "4235:406",
-                "description": "AI-READY COMPONENT: SectionHeader — section title row that segments content groups on a screen, with an optional trailing action. Props: showAction=false|true; title (TEXT, default Title). Anatomy: title; when showAction=true, trailing action (local Button variant=text size=sm intent=primary, exposed; showLabel=false, showIcon=true, default icon arrow-narrow-right-outline). Use showAction=false when the section content fits the viewport (e.g. quick-access grid). Use showAction=true for overflow / see-more (e.g. offers carousel). Tokens: text/primary; body/large/semi-bold; spacing/0 (pad/gap); root horizontal SPACE_BETWEEN. Product-theme: action chip binds component/section-header/action/background (EV→surface/0; site-loovi|app-cliente→surface/2) and component/section-header/action/radius (EV→component/button/container/radius/sm; site-loovi|app-cliente→border/radius/full). Do not hardcode surface/0|2 or radius on the action. Do not use as AppHeader, OrganizationHeader, SystemHeader, or as a full Section with content slot — body content is composed separately below. Accessibility: title is the section heading; action needs an accessible name (aria-label) when icon-only. React mapping: SectionHeader(title, showAction, onActionPress). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: SectionHeader — section title row that segments content groups on a screen, with an optional trailing action. Props: emphasis=primary|secondary; showAction=false|true; title (TEXT, default Title). Use emphasis=primary for main page sections (body/large/semi-bold + text/primary). Use emphasis=secondary for less prominent sections, nested groups, overlays, sheets, and secondary surfaces (body/medium/regular + text/secondary). Anatomy: title; when showAction=true, trailing action (local Button variant=text size=sm intent=primary, exposed; showLabel=false, showIcon=true, default icon arrow-narrow-right-outline). On emphasis=secondary, action icon stroke uses text/secondary to match the muted title. Use showAction=false when the section content fits the viewport (e.g. quick-access grid). Use showAction=true for overflow / see-more (e.g. offers carousel). Tokens: primary — text/primary + body/large/semi-bold; secondary — text/secondary + body/medium/regular; spacing/0 (pad/gap); root horizontal SPACE_BETWEEN when showAction=true. Product-theme: action chip binds component/section-header/action/background (EV→surface/0; site-loovi|app-cliente→surface/2) and component/section-header/action/radius (EV→component/button/container/radius/sm; site-loovi|app-cliente→border/radius/full). Do not hardcode surface/0|2 or radius on the action. Do not use as AppHeader, OrganizationHeader, SystemHeader, or as a full Section with content slot — body content is composed separately below. Accessibility: title is the section heading (primary often maps to higher heading level than secondary); action needs an accessible name (aria-label) when icon-only. React mapping: SectionHeader(emphasis, title, showAction, onActionPress). Code Connect is not configured.",
                 "variants": {
+                    "emphasis": [
+                        "primary",
+                        "secondary"
+                    ],
                     "showAction": [
                         "false",
                         "true"
                     ]
                 },
                 "props": {
+                    "emphasis": "primary | secondary — primary for main sections; secondary for overlays / less prominent groups",
                     "showAction": "false | true — toggles trailing action Button",
-                    "title": "TEXT — default Title; body/large/semi-bold + text/primary",
-                    "action": "Exposed nested Button text/sm/primary when showAction=true; showLabel=false, showIcon=true; default icon arrow-narrow-right-outline"
+                    "title": "TEXT — default Title; primary: body/large/semi-bold + text/primary; secondary: body/medium/regular + text/secondary",
+                    "action": "Exposed nested Button text/sm/primary when showAction=true; showLabel=false, showIcon=true; default icon arrow-narrow-right-outline; secondary icon stroke text/secondary"
                 },
                 "rules": {
-                    "matrix": "Published 2/2 — showAction",
+                    "matrix": "Published 4/4 — emphasis × showAction",
+                    "emphasisPrimary": "Main page sections — body/large/semi-bold + text/primary",
+                    "emphasisSecondary": "Overlays, sheets, nested/less relevant groups — body/medium/regular + text/secondary; action icon muted",
                     "nestedButton": "action is local Button text/sm/primary (exposed) — not remote Material button",
                     "genericDefaults": "Default title Title (product copy via prop)",
                     "iconLocal": "Default action icon arrow-narrow-right-outline (EV library)",
@@ -5573,14 +5590,15 @@
                     "productTheme": "Action fill/radius bind component/section-header/action/* — EV→surface/0 + button radius/sm; site-loovi|app-cliente→surface/2 + radius/full. Do not hardcode those slots."
                 },
                 "tokenRules": [
-                    "text/primary",
-                    "body/large/semi-bold",
-                    "spacing/0 (pad/gap)",
+                    "emphasis=primary: text/primary + body/large/semi-bold",
+                    "emphasis=secondary: text/secondary + body/medium/regular",
+                    "emphasis=secondary + showAction: action icon stroke text/secondary",
+                    "spacing/0 (pad/gap on all variants, including showAction=true)",
                     "product-theme component/section-header/action/background (EV→surface/0; site-loovi|app-cliente→surface/2)",
                     "product-theme component/section-header/action/radius (EV→button radius/sm; site-loovi|app-cliente→full)",
                     "inherits Button text/sm/primary tokens (action)"
                 ],
-                "accessibility": "Title is the section heading; icon-only action needs an accessible name (aria-label).",
+                "accessibility": "Title is the section heading (primary often higher heading level than secondary); icon-only action needs an accessible name (aria-label).",
                 "composition": [
                     "title (TEXT)",
                     "action (Button text/sm/primary; exposed; showAction=true only)"
@@ -9985,6 +10003,16 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "sectionheader-polish",
+                "date": "2026-08-03",
+                "summary": "SectionHeader: description quotes + spacing/0 gap bind on showAction=true; docs revision bump."
+            },
+            {
+                "id": "sectionheader-emphasis-secondary",
+                "date": "2026-08-03",
+                "summary": "SectionHeader: emphasis primary|secondary matrix; secondary muted typography; docs synced."
+            },
             {
                 "id": "referraldiscountcard-fleet",
                 "date": "2026-07-31",

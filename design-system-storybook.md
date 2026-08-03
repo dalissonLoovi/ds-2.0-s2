@@ -1063,30 +1063,33 @@ Use role=status and aria-live=polite when the spinner is the only loading announ
 
 **Node ID:** `4235:406`
 
-AI-READY COMPONENT: SectionHeader — section title row that segments content groups on a screen, with an optional trailing action. Props: showAction=false|true; title (TEXT, default "Title"). Anatomy: title; when showAction=true, trailing action (local Button variant=text size=sm intent=primary, exposed; showLabel=false, showIcon=true, default icon arrow-narrow-right-outline). Use showAction=false when the section content fits the viewport (e.g. quick-access grid). Use showAction=true for overflow / see-more (e.g. offers carousel). Tokens: text/primary; body/large/semi-bold; spacing/0 (pad/gap); root horizontal SPACE_BETWEEN. Do not use as AppHeader, OrganizationHeader, SystemHeader, or as a full Section with content slot — body content is composed separately below. Accessibility: title is the section heading; action needs an accessible name (aria-label) when icon-only. React mapping: SectionHeader(title, showAction, onActionPress). Code Connect is not configured.
+AI-READY COMPONENT: SectionHeader — section title row that segments content groups on a screen, with an optional trailing action. Props: emphasis=primary|secondary; showAction=false|true; title (TEXT, default "Title"). Use emphasis=primary for main page sections (body/large/semi-bold + text/primary). Use emphasis=secondary for less prominent sections, nested groups, overlays, sheets, and secondary surfaces (body/medium/regular + text/secondary). Anatomy: title; when showAction=true, trailing action (local Button variant=text size=sm intent=primary, exposed; showLabel=false, showIcon=true, default icon arrow-narrow-right-outline). On emphasis=secondary, action icon stroke uses text/secondary to match the muted title. Use showAction=false when the section content fits the viewport (e.g. quick-access grid). Use showAction=true for overflow / see-more (e.g. offers carousel). Tokens: primary — text/primary + body/large/semi-bold; secondary — text/secondary + body/medium/regular; spacing/0 (pad/gap); root horizontal SPACE_BETWEEN when showAction=true. Product-theme: action chip binds component/section-header/action/background + radius. Do not use as AppHeader, OrganizationHeader, SystemHeader, or as a full Section with content slot — body content is composed separately below. Accessibility: title is the section heading (primary often higher heading level than secondary); action needs an accessible name (aria-label) when icon-only. React mapping: SectionHeader(emphasis, title, showAction, onActionPress). Code Connect is not configured.
 
 ### Variants
 
+- **emphasis:** primary | secondary
 - **showAction:** false | true
 
 ### Props
 
 | Prop | Tipo / valores |
 |---|---|
+| `emphasis` | primary \| secondary — primary: seções principais; secondary: overlays / grupos menos relevantes |
 | `title` | TEXT — default `Title` |
 | `showAction` | false \| true |
-| `action` | Exposed Button text/sm/primary (icon-only) when `showAction=true` |
+| `action` | Exposed Button text/sm/primary (icon-only) when `showAction=true`; secondary: ícone `text/secondary` |
 
 ### Token rules
 
-- `text/primary`
-- `body/large/semi-bold`
+- `emphasis=primary`: `text/primary` + `body/large/semi-bold`
+- `emphasis=secondary`: `text/secondary` + `body/medium/regular`
+- `emphasis=secondary` + action: icon stroke `text/secondary`
 - `spacing/0` (pad/gap)
-- Nested Button text/sm/primary tokens
+- Nested Button text/sm/primary tokens (action chrome)
 
 ### Accessibility
 
-Title is the section heading; icon-only action needs an accessible name (aria-label).
+Title is the section heading (primary often higher heading level than secondary); icon-only action needs an accessible name (aria-label).
 
 ---
 
