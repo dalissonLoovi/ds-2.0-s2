@@ -635,9 +635,24 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-04T13:49:27.283Z",
-        "storybookRevision": "2026-08-04-checkbox-border-1",
+        "storybookUpdatedAt": "2026-08-04T21:24:38.204Z",
+        "storybookRevision": "2026-08-04-vehicleconfirmcard-polish",
         "changelog": [
+            {
+                "date": "2026-08-04",
+                "type": "storybook-vehicleconfirmcard-polish",
+                "summary": "VehicleConfirmCard: topo fill text/brand → color/background-surface/brand; bind spacing/0 on unbound pads; AI-READY quotes cleaned; docs synced."
+            },
+            {
+                "date": "2026-08-04",
+                "type": "storybook-vehicleconfirmcard-stroke",
+                "summary": "VehicleConfirmCard: stroke → color/elevation/disabled @ ~32% opacity (weight 2 inside); docs synced to canvas."
+            },
+            {
+                "date": "2026-08-04",
+                "type": "storybook-vehicleconfirmcard-sheet",
+                "summary": "VehicleConfirmCard: sheet-style layout — topo (text/brand + handle) + plate/brandModel; removed illustration SLOT; surface/1 + border/2; AI-READY + storybook."
+            },
             {
                 "date": "2026-08-04",
                 "type": "storybook-checkbox-border-1",
@@ -9861,39 +9876,39 @@
             },
             "VehicleConfirmCard": {
                 "nodeId": "4360:444",
-                "description": "AI-READY COMPONENT: VehicleConfirmCard — onboarding vehicle confirmation card. Shows plate as the hero identifier plus brand/model, with a decorative vehicle illustration that bleeds to the trailing edge. Props: plate (TEXT, default \"ABC1D23\"); brandModel (TEXT, default \"Brand Model\"); illustration (SLOT — product vehicle art; preferredValues vehicle-confirm-car; default soft shadow uses color/background-surface/3). Anatomy: text (plate + brandModel) + illustration (SLOT, end-aligned; nested vehicleArt + artwork). Layout: horizontal Auto Layout, counterAxisAlignItems=CENTER; demo width 342; height Hug (~105); clipsContent true. Padding: spacing/250 top/left/bottom, spacing/0 right (illustration bleed); itemSpacing spacing/0. Tokens: color/background-surface/2; border/radius/400; text/primary + heading/h1/semi-bold (plate); text/secondary + body/medium/regular (brandModel). Product illustration vectors may remain unbound fills (not DS icon *-path). Use to validate/confirm which vehicle is being onboarded. Do not use as VehicleSummaryCard (Home/Painel status+coverages), OfferProductCard, CardHorizontal, CardFilledItem shell alone, or Banner. Confirm CTA lives on the screen, not inside this card. React mapping: VehicleConfirmCard({ plate, brandModel, illustration }).",
+                "description": "AI-READY COMPONENT: VehicleConfirmCard — onboarding vehicle confirmation card in a compact sheet-style surface. Shows plate as the hero identifier plus brand/model under a brand topo bar with centered drag handle. Props: plate (TEXT, default ABC1D23); brandModel (TEXT, default Brand Model). Anatomy: topo (brand bar + handle) + text (plate + brandModel). Layout: vertical Auto Layout; demo width 342; height Hug (~105); clipsContent true. Padding: spacing/0 on root sides/top, spacing/200 bottom; text horizontal pad spacing/250; topo pad top spacing/150 bottom spacing/100. Tokens: color/background-surface/1; color/background-surface/brand (topo fill); color/elevation/inverse-4 (handle); border/radius/400; stroke color/elevation/disabled @ ~32% opacity, weight 2 inside; text/primary + heading/h1/semi-bold (plate); text/secondary + body/medium/regular (brandModel); handle border/radius/full 43×4. No vehicle illustration — distinct from VehicleSummaryCard. Use to validate/confirm which vehicle is being onboarded (plate-first). Do not use as VehicleSummaryCard, OfferProductCard, CardHorizontal, CardFilledItem shell alone, or Banner. Confirm CTA lives on the screen, not inside this card. React mapping: VehicleConfirmCard({ plate, brandModel }). Code Connect is not configured.",
                 "variants": {},
                 "props": {
-                    "plate": "TEXT — vehicle plate / hero identifier (heading/h1/semi-bold + text/primary); master default \"ABC1D23\"",
-                    "brandModel": "TEXT — brand + model supporting line (body/medium/regular + text/secondary); master default \"Brand Model\"",
-                    "illustration": "SLOT — decorative product vehicle art; preferredValues: vehicle-confirm-car (local); nested vehicleArt + artwork; shadow color/background-surface/3"
+                    "plate": "TEXT — vehicle plate / hero identifier (heading/h1/semi-bold + text/primary); master default ABC1D23",
+                    "brandModel": "TEXT — brand + model supporting line (body/medium/regular + text/secondary); master default Brand Model"
                 },
                 "rules": {
                     "job": "Onboarding vehicle validation/confirmation display — not Home status summary",
                     "ctaOutside": "Confirm CTA lives on the screen, not inside this card",
                     "plateHero": "Plate is the primary typographic hierarchy (heading/h1), brandModel is secondary",
-                    "illustrationSlot": "illustration SLOT holds product art via preferredValues (vehicle-confirm-car); not DS outline icons",
-                    "illustrationLayers": "Nested naming: vehicleArt (group) + artwork (frame); product Vector fills may stay unbound (illustration exception, not icon *-path)",
-                    "vsVehicleSummaryCard": "Use VehicleSummaryCard for Home/Painel (status ChipTag + coverages + elevated surface)",
+                    "sheetTopo": "topo bar uses color/background-surface/brand with centered handle (color/elevation/inverse-4, 43×4, radius/full) — sheet chrome, not AppHeader",
+                    "stroke": "Root stroke binds color/elevation/disabled at ~32% opacity (weight 2, inside) — soft blue edge, not color/border/2",
+                    "noIllustration": "Illustration SLOT removed — plate + brandModel only; use VehicleSummaryCard when vehicle art is required",
+                    "vsVehicleSummaryCard": "Use VehicleSummaryCard for Home/Painel (status ChipTag + coverages + elevated surface + illustration)",
                     "vsOfferProductCard": "Use OfferProductCard for add-on offers with price + CTA",
                     "vsCardHorizontal": "Do not force CardHorizontal — Avatar + header/subhead + 80 media does not match plate-hero anatomy",
                     "usage": "Do not use as VehicleSummaryCard, OfferProductCard, CardHorizontal, CardFilledItem alone, or Banner",
-                    "paddingBleed": "spacing/250 top/left/bottom; spacing/0 right so illustration can bleed to the trailing edge",
-                    "illustrationAlign": "illustration SLOT end-aligned (primaryAxisAlignItems=MAX); width FIXED 140 demo, height Hug",
-                    "shadowToken": "Default soft shadow uses color/background-surface/3"
+                    "spacingBound": "All zero paddings/gaps bind spacing/0 (root, topo horizontal, text vertical)"
                 },
                 "tokenRules": [
-                    "color/background-surface/2",
-                    "border/radius/400",
-                    "spacing/250 (pad top/left/bottom); spacing/0 (pad right + gap)",
+                    "color/background-surface/1",
+                    "color/background-surface/brand (topo)",
+                    "color/elevation/inverse-4 (handle)",
+                    "color/elevation/disabled @ ~32% opacity (stroke 2 inside)",
+                    "border/radius/400 (card); border/radius/full (handle)",
+                    "spacing/0 (root pad L/T + topo horizontal + text vertical); spacing/200 (root pad bottom); spacing/250 (text horizontal pad); spacing/150|100 (topo vertical pad)",
                     "text/primary (plate); text/secondary (brandModel)",
-                    "heading/h1/semi-bold (plate); body/medium/regular (brandModel)",
-                    "color/background-surface/3 (default illustration shadow)"
+                    "heading/h1/semi-bold (plate); body/medium/regular (brandModel)"
                 ],
-                "accessibility": "Present plate and brandModel as text; decorative illustration aria-hidden. If the card is pressable, expose accessible name from plate + brandModel. Confirm action is a separate control on the screen.",
+                "accessibility": "Present plate and brandModel as text. If the card is pressable, expose accessible name from plate + brandModel. Handle is decorative. Confirm action is a separate control on the screen.",
                 "composition": [
-                    "text → plate + brandModel",
-                    "illustration (SLOT → vehicle-confirm-car instance: vehicleArt + artwork + shadow)"
+                    "topo → handle",
+                    "text → plate + brandModel"
                 ]
             },
             "ModalCheckItem": {
@@ -10017,6 +10032,21 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "vehicleconfirmcard-polish",
+                "date": "2026-08-04",
+                "summary": "VehicleConfirmCard: topo → background-surface/brand; spacing/0 binds; docs synced."
+            },
+            {
+                "id": "vehicleconfirmcard-stroke",
+                "date": "2026-08-04",
+                "summary": "VehicleConfirmCard: stroke color/elevation/disabled @ ~32% opacity; docs synced."
+            },
+            {
+                "id": "vehicleconfirmcard-sheet",
+                "date": "2026-08-04",
+                "summary": "VehicleConfirmCard: sheet topo+handle; no illustration; surface/1; docs synced."
+            },
             {
                 "id": "checkbox-border-1",
                 "date": "2026-08-04",
