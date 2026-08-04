@@ -635,9 +635,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-03T15:50:20.786Z",
-        "storybookRevision": "2026-08-03-sectionheader-polish",
+        "storybookUpdatedAt": "2026-08-04T13:49:27.283Z",
+        "storybookRevision": "2026-08-04-checkbox-border-1",
         "changelog": [
+            {
+                "date": "2026-08-04",
+                "type": "storybook-checkbox-border-1",
+                "summary": "Checkbox: unchecked default|focus checkboxControl stroke → color/border/1 (was border/2 in docs); nodeId 3667:3812; AI-READY + storybook synced."
+            },
             {
                 "date": "2026-08-03",
                 "type": "storybook-sectionheader-polish",
@@ -5835,8 +5840,8 @@
                 "accessibility": "The trigger must behave as a button, support Enter and Space, expose aria-expanded and reference the panel with aria-controls."
             },
             "Checkbox": {
-                "nodeId": "3193:5027",
-                "description": "AI-READY COMPONENT: Checkbox is a form selection control for binary, multi-select or partially selected choices. Use checked=mixed only when a parent item represents partial selection of child items. Do not use Checkbox as a button, radio, switch, chip, badge, navigation item or visual-only status indicator.",
+                "nodeId": "3667:3812",
+                "description": "AI-READY COMPONENT: Checkbox is a form selection control used for binary, multi-select, or partially selected choices.\n\nUsage rule: use Checkbox when the user can select or deselect an independent option, one or more items in a list, or a preference. Do not use Checkbox as a button, radio, switch, chip, badge, navigation item, or purely visual status indicator.\n\nVariant rule: state=default is the resting interactive state. state=focus is keyboard focus-visible. state=disabled means the checkbox cannot be changed. checked=false is unchecked. checked=true is checked. checked=mixed is indeterminate/partially selected.\n\nMixed state rule: checked=mixed should be used only when a parent item represents a partial selection of child items. It should map to aria-checked=mixed or an indeterminate checkbox implementation in React.\n\nContent rule: label is the primary option text. description is optional supporting text. showLabel, showDescription, and showContent control visibility, but an unlabeled checkbox must receive an accessible label in implementation.\n\nToken rule: Checkbox must use DS semantic tokens only. Text uses text/primary, text/secondary, and text/placeholder for disabled. Unchecked default and focus use color/background-surface/0 and color/border/1 on checkboxControl. Selected and mixed states use color/actions/primary and color/border-feedback/primary. Focus ring uses interactive/focus. Disabled surface uses color/background-surface/1 and color/border/2. Spacing uses spacing/025, spacing/050, spacing/100, and spacing/200. Radius uses border/radius/100 and focus ring may use border/radius/200. Stroke width uses border/width/012.\n\nInternal structure rule: checkboxControl contains checkboxBox, focusRing, and the indicator icon. labelContent contains label and optional description. checkIcon must use the local DS check-outline icon for checked=true. indeterminateIcon must use the local DS minus-outline icon for checked=mixed.\n\nAccessibility rule: Checkbox must map to input type=checkbox or role=checkbox with aria-checked. The label must be associated with the control. The description should map to aria-describedby when present. Space toggles the value. Disabled blocks pointer and keyboard interaction.\n\nReact mapping recommendation: Checkbox(checked=false|true|mixed, disabled when state=disabled, label, description, showLabel, showDescription). Code Connect has not been changed yet.\n\nIcon source rule: Checkbox indicator icons must come from local DS icon components only. checked=true uses checkIcon mapped to check-outline. checked=mixed uses indeterminateIcon mapped to minus-outline. Do not use icons from external libraries or old component libraries.",
                 "variants": {
                     "state": [
                         "default",
@@ -5867,13 +5872,22 @@
                     "text/secondary",
                     "text/placeholder",
                     "color/actions/primary",
-                    "color/border-feedback/primary",
-                    "color/border/2",
-                    "interactive/focus"
+                    "color/border/1 — unchecked checkboxControl stroke (state=default|focus, checked=false)",
+                    "color/border-feedback/primary — checked|mixed control stroke",
+                    "color/border/2 — disabled checkboxControl stroke",
+                    "color/background-surface/0 — unchecked fill; color/background-surface/1 — disabled fill",
+                    "interactive/focus — focusRing"
                 ],
                 "accessibility": "Map to input type=checkbox or role=checkbox with aria-checked. Use aria-checked=mixed for partial selection. Space toggles the value.",
                 "feedbackTokens": {
-                    "border": "color/border-feedback/primary for checked selection accent"
+                    "border": "color/border-feedback/primary for checked|mixed selection accent",
+                    "uncheckedBorder": "color/border/1 for default|focus unchecked",
+                    "disabledBorder": "color/border/2 for disabled"
+                },
+                "rules": {
+                    "uncheckedStroke": "checkboxControl stroke color/border/1 on state=default|focus × checked=false",
+                    "checkedStroke": "checkboxControl stroke color/border-feedback/primary on checked=true|mixed (interactive)",
+                    "disabledStroke": "checkboxControl stroke color/border/2 when state=disabled"
                 }
             },
             "ChipClickable": {
@@ -10003,6 +10017,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "checkbox-border-1",
+                "date": "2026-08-04",
+                "summary": "Checkbox: unchecked default/focus control stroke color/border/1; docs synced."
+            },
             {
                 "id": "sectionheader-polish",
                 "date": "2026-08-03",
