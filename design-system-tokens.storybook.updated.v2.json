@@ -635,9 +635,24 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-04T21:24:38.204Z",
-        "storybookRevision": "2026-08-04-vehicleconfirmcard-polish",
+        "storybookUpdatedAt": "2026-08-07T14:27:07.660Z",
+        "storybookRevision": "2026-08-07-vehiclesummarycard-audit-apply",
         "changelog": [
+            {
+                "date": "2026-08-07",
+                "type": "storybook-vehiclesummarycard-audit-apply",
+                "summary": "VehicleSummaryCard audit apply: wire plate+illustration on secondary; spacer↔showStatus; spacing/0 binds; nameRow rename; document inactive ChipTag dot as warning (ChipTag untouched); docs synced."
+            },
+            {
+                "date": "2026-08-07",
+                "type": "storybook-vehiclesummarycard-secondary-72",
+                "summary": "VehicleSummaryCard secondary: background-surface/brand paint opacity 72% for softer on-screen emphasis; docs synced."
+            },
+            {
+                "date": "2026-08-07",
+                "type": "storybook-vehiclesummarycard-secondary",
+                "summary": "VehicleSummaryCard: appearance=default|secondary; secondary informational brand strip (surface/brand, title+plate, text/on-color, no ChipTag); no new tokens; AI-READY + storybook."
+            },
             {
                 "date": "2026-08-04",
                 "type": "storybook-vehicleconfirmcard-polish",
@@ -6339,49 +6354,58 @@
             },
             "VehicleSummaryCard": {
                 "nodeId": "4581:1451",
-                "description": "AI-READY COMPONENT: VehicleSummaryCard — Home/Painel compact card for a user vehicle: illustration, brand, model, plate, and insurance status ChipTag. Props: status=active|inactive; brandModel (TEXT, default Marca); model (TEXT, default Modelo); plate (TEXT); illustration (INSTANCE_SWAP — local vehicle illustration, default sedan); showStatus (BOOLEAN, default true). Anatomy: leading (illustration + name row brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm). status=active ChipTag label Ativo + local circle-dot-filled (feedback/success); status=inactive label Inativo + local circle-dot-filled (feedback/danger). Tokens: color/background-surface/0; border/radius/400; spacing/100 vertical pad; spacing/200 horizontal pad + root gap; spacing/100 leading gap; text/primary (brand/model); text/secondary + heading/h3/regular (plate); nested ChipTag uses body/small/medium. Interaction: product wires onPress as button/link to vehicle detail — no Figma hover/pressed/disabled variants on this set. Do not use as VehicleConfirmCard (onboarding plate-hero), OfferProductCard, CardHorizontal, or Banner. Accessibility: expose as button/link to vehicle detail; status text must not rely on color alone; illustration decorative when brandModel+model+plate name the vehicle. React mapping: VehicleSummaryCard(status, brandModel, model, plate, illustration, showStatus, onPress). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: VehicleSummaryCard — Home/Painel compact card for a user vehicle. Props: appearance=default|secondary; status=active|inactive (meaningful on default only); brandModel + model (TEXT, default appearance); title (TEXT, secondary — vehicle model/year line, e.g. Palio 1.0 ECONOMY Fiat • 2009); plate (TEXT); illustration (INSTANCE_SWAP — local vehicle illustration, default sedan); showStatus (BOOLEAN, default true — default appearance only; toggles statusChip and spacer together).\n\nappearance=default: leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm). status=active ChipTag Ativo + circle-dot-filled with color/background-feedback-primary/success. status=inactive ChipTag Inativo + circle-dot-filled with color/background-feedback-primary/warning (intentional within this component — not danger; nested ChipTag structure/tokens are owned by ChipTag and must not be remapped here). Surface color/background-surface/0; border/radius/400; spacing/100 vertical pad; spacing/200 horizontal pad + root gap. Text text/primary (brand/model); text/placeholder + heading/h3/regular (plate). Product may wire onPress as button/link to vehicle detail — no Figma hover/pressed variants.\n\nappearance=secondary: informational only (not clickable) — illustration + title + plate; no ChipTag; status axis is unused (publish both status values identical). Surface color/background-surface/brand at 72% opacity; border/radius/300; spacing/150 root/leading gap; title body/large/semi-bold + text/on-color; plate body/medium/regular + text/on-color. Year is composed into title by the product. plate and illustration props apply to secondary as well.\n\nDo not use as VehicleConfirmCard, OfferProductCard, or Banner. React: VehicleSummaryCard({ appearance, status, brandModel, model, title, plate, illustration, showStatus, onPress? }).",
                 "variants": {
+                    "appearance": [
+                        "default",
+                        "secondary"
+                    ],
                     "status": [
                         "active",
                         "inactive"
                     ]
                 },
                 "props": {
-                    "status": "active | inactive",
-                    "brandModel": "TEXT — brand label (default Marca)",
-                    "model": "TEXT — model label (default Modelo)",
-                    "plate": "TEXT — plate string",
-                    "illustration": "INSTANCE_SWAP — local vehicle-icon (sedan|van|suv preferred)",
-                    "showStatus": "boolean — default true; toggles statusChip"
+                    "appearance": "default | secondary — default has status ChipTag; secondary is informational brand strip (no tag, not clickable)",
+                    "status": "active | inactive — used on appearance=default only (secondary publishes both values identical)",
+                    "brandModel": "TEXT — brand label (default appearance; default Marca)",
+                    "model": "TEXT — model label (default appearance; default Modelo)",
+                    "title": "TEXT — secondary title line (model + year composed by product; default Palio 1.0 ECONOMY Fiat • 2009)",
+                    "plate": "TEXT — plate string (wired on default and secondary)",
+                    "illustration": "INSTANCE_SWAP — local vehicle-icon (sedan|van|suv preferred); wired on default and secondary",
+                    "showStatus": "boolean — default true; on appearance=default toggles statusChip + spacer together"
                 },
                 "rules": {
-                    "composition": "leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm)",
-                    "statusChip": "canonical ChipTag 3653:23220 outline/sm/hug/strong + circle-dot-filled; active→feedback/success; inactive→feedback/danger",
-                    "noFigmaInteractionVariants": "onPress is runtime only — do not add hover/pressed/disabled variants to this set",
+                    "compositionDefault": "leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm)",
+                    "compositionSecondary": "leading (illustration + title + plate) — no ChipTag; informational only",
+                    "statusChip": "canonical ChipTag outline/sm/hug/strong + circle-dot-filled; do not restyle ChipTag internals from this card",
+                    "secondarySurface": "color/background-surface/brand at 72% paint opacity + text/on-color — do not use color/elevation/Focus or interactive/focus",
+                    "secondaryStatusIgnored": "status axis unused on secondary; keep matrix complete with identical visuals",
+                    "noFigmaInteractionVariants": "default may wire onPress at runtime; secondary is not clickable — do not add hover/pressed/disabled variants",
                     "vsConfirm": "Do not use as VehicleConfirmCard",
                     "vsOffer": "Do not use as OfferProductCard",
-                    "vsBanner": "Do not use as Banner"
+                    "vsBanner": "Do not use as Banner",
+                    "statusActiveDot": "active → color/background-feedback-primary/success on nested dot",
+                    "statusInactiveDot": "inactive → color/background-feedback-primary/warning on nested dot (intentional for VehicleSummaryCard — document here; do not change ChipTag master to force danger)",
+                    "showStatusSpacer": "showStatus also toggles spacer visibility on appearance=default",
+                    "secondaryProps": "title + plate + illustration props apply on appearance=secondary"
                 },
                 "statusMap": {
-                    "active": "ChipTag outline + circle-dot-filled (feedback/success) label Ativo",
-                    "inactive": "ChipTag outline + circle-dot-filled (feedback/danger) label Inativo"
+                    "default/active": "ChipTag outline + circle-dot-filled (background-feedback-primary/success) label Ativo",
+                    "default/inactive": "ChipTag outline + circle-dot-filled (background-feedback-primary/warning) label Inativo — intentional warning (not danger) in this component",
+                    "secondary/*": "no ChipTag; title + plate on brand surface @ 72% opacity"
                 },
                 "tokenRules": [
-                    "color/background-surface/0",
-                    "border/radius/400",
-                    "spacing/100 (vertical pad, leading gap); spacing/200 (horizontal pad, root gap)",
-                    "text/primary + body/medium/regular|semi-bold (brandModel/model)",
-                    "text/secondary + heading/h3/regular (plate)",
-                    "nested ChipTag: body/small/medium; color/border/2 outline; feedback/success|danger on dot"
+                    "appearance=default: color/background-surface/0; border/radius/400; spacing/100|200; spacing/0 on leading/text/nameRow zero pads",
+                    "appearance=secondary: color/background-surface/brand @ 72% opacity; border/radius/300; spacing/150",
+                    "default text: text/primary (brand/model); text/placeholder + heading/h3/regular (plate)",
+                    "secondary text: text/on-color; body/large/semi-bold (title); body/medium/regular (plate)",
+                    "nested ChipTag (default only): body/small/medium; color/border/2 outline; active dot success; inactive dot warning (component-level intent)"
                 ],
-                "accessibility": "expose as button/link to vehicle detail; status text must not rely on color alone; illustration decorative when brandModel+model+plate name the vehicle.",
+                "accessibility": "default: may expose as button/link to vehicle detail; status text must not rely on color alone. secondary: static informative content (not a control); name from title + plate; illustration decorative.",
                 "composition": [
-                    "leading.illustration",
-                    "leading.text.brandModel",
-                    "leading.text.model",
-                    "leading.text.plate",
-                    "spacer",
-                    "statusChip (ChipTag)"
+                    "default: leading.illustration + nameRow(brandModel + model) + plate + spacer + statusChip",
+                    "secondary: leading.illustration + title + plate"
                 ]
             },
             "ReferralDiscountCard": {
@@ -10032,6 +10056,21 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "vehiclesummarycard-audit-apply",
+                "date": "2026-08-07",
+                "summary": "VehicleSummaryCard: secondary prop wiring + showStatus spacer; inactive warning documented; ChipTag unchanged."
+            },
+            {
+                "id": "vehiclesummarycard-secondary-72",
+                "date": "2026-08-07",
+                "summary": "VehicleSummaryCard secondary brand fill @ 72% opacity; docs synced."
+            },
+            {
+                "id": "vehiclesummarycard-secondary",
+                "date": "2026-08-07",
+                "summary": "VehicleSummaryCard appearance=secondary: brand surface + title/plate informational strip; docs synced."
+            },
             {
                 "id": "vehicleconfirmcard-polish",
                 "date": "2026-08-04",
