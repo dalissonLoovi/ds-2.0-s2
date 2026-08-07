@@ -14,7 +14,7 @@ AI-READY COMPONENT: VehicleSummaryCard — Home/Painel compact card for a user v
 
 appearance=default: leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm). status=active ChipTag Ativo + circle-dot-filled with color/background-feedback-primary/success. status=inactive ChipTag Inativo + circle-dot-filled with color/background-feedback-primary/warning (intentional within this component — not danger; nested ChipTag structure/tokens are owned by ChipTag and must not be remapped here). Surface color/background-surface/0; border/radius/400; spacing/100 vertical pad; spacing/200 horizontal pad + root gap. Text text/primary (brand/model); text/placeholder + heading/h3/regular (plate). Product may wire onPress as button/link to vehicle detail — no Figma hover/pressed variants.
 
-appearance=secondary: informational only (not clickable) — illustration + title + plate; no ChipTag; status axis is unused (publish both status values identical). Surface color/background-surface/brand at 72% opacity; border/radius/300; spacing/150 root/leading gap; title body/large/semi-bold + text/on-color; plate body/medium/regular + text/on-color. Year is composed into title by the product. plate and illustration props apply to secondary as well.
+appearance=secondary: informational only (not clickable) — illustration + title + plate; no ChipTag; status axis is unused (publish both status values identical). Surface color/background-surface/brand-muted (brand-blue at 72% alpha baked into the token — do not use paint opacity on variable-bound fills; library instances drop paint opacity). border/radius/300; spacing/150 root/leading gap; title body/large/semi-bold + text/on-color; plate body/medium/regular + text/on-color. Year is composed into title by the product. plate and illustration props apply to secondary as well.
 
 Do not use as VehicleConfirmCard, OfferProductCard, or Banner. React: VehicleSummaryCard(\{ appearance, status, brandModel, model, title, plate, illustration, showStatus, onPress? \}).
 
@@ -49,7 +49,7 @@ Do not use as VehicleConfirmCard, OfferProductCard, or Banner. React: VehicleSum
 - **compositionDefault:** leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm)
 - **compositionSecondary:** leading (illustration + title + plate) — no ChipTag; informational only
 - **statusChip:** canonical ChipTag outline/sm/hug/strong + circle-dot-filled; do not restyle ChipTag internals from this card
-- **secondarySurface:** color/background-surface/brand at 72% paint opacity + text/on-color — do not use color/elevation/Focus or interactive/focus
+- **secondarySurface:** color/background-surface/brand-muted (primitive-colors/brand-blue-72, alpha 72% in token) + text/on-color — never rely on paint opacity for library sync
 - **secondaryStatusIgnored:** status axis unused on secondary; keep matrix complete with identical visuals
 - **noFigmaInteractionVariants:** default may wire onPress at runtime; secondary is not clickable — do not add hover/pressed/disabled variants
 - **vsConfirm:** Do not use as VehicleConfirmCard
@@ -63,7 +63,7 @@ Do not use as VehicleConfirmCard, OfferProductCard, or Banner. React: VehicleSum
 ## Token rules
 
 - appearance=default: color/background-surface/0; border/radius/400; spacing/100|200; spacing/0 on leading/text/nameRow zero pads
-- appearance=secondary: color/background-surface/brand @ 72% opacity; border/radius/300; spacing/150
+- appearance=secondary: color/background-surface/brand-muted (72% alpha in token); border/radius/300; spacing/150
 - default text: text/primary (brand/model); text/placeholder + heading/h3/regular (plate)
 - secondary text: text/on-color; body/large/semi-bold (title); body/medium/regular (plate)
 - nested ChipTag (default only): body/small/medium; color/border/2 outline; active dot success; inactive dot warning (component-level intent)

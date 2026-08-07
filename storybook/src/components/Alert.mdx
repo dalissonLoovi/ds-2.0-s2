@@ -10,19 +10,21 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Variants: status=system|info|success|danger|warning (same vocabulary as Toast). status=system is intentional-sparse and has no statusIcon; other statuses compose a DS Icons — Escritório Virtual filled statusIcon at 32px (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with content-layer icon fills feedback/info|success|danger|warning on \{icon\}-path layers. Props: title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Composition: statusIcon (when present) + content → text (title + description) + action (local Button outline/sm/primary, label default Action). actionLabel is React-side — in Figma set nested action Button label when showAction=true. Anatomy: vertical stack (icon above content). Tokens: shell fills bottom→top — color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay); text/on-color (title body/medium/semi-bold) + text/on-color-disabled (description body/small/regular); border/radius/400; spacing/100 (root gap, text gap) | spacing/150 (pad top, content gap) | spacing/250 (pad sides/bottom). Action outline stroke/label use text/on-color for contrast on the dark shell. Do not use as Toast, Banner, Modal, or inline field validation. Accessibility: role=status for system|info|success; role=alert for warning|danger when urgent; action needs accessible name; decorative status icons aria-hidden when title conveys status. React mapping: Alert(status, title, description, showDescription, showAction, actionLabel). Code Connect is not configured.
+AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Props: appearance=default|inverse; status=system|info|success|danger|warning (same vocabulary as Toast); title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Prefer appearance=default on light page surfaces; use appearance=inverse on dark/brand chrome when on-color text is required. status=system is intentional-sparse and has no statusIcon; other statuses compose a DS Icons — Escritório Virtual filled statusIcon at 32px (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with content-layer icon fills feedback/info|success|danger|warning on \{icon\}-path layers. appearance=default: shell color/background-surface/3 (single fill); title text/primary + body/medium/semi-bold; description text/secondary + body/small/regular; action local Button outline/sm/primary with default light chrome (stroke color/border/1, label text/primary). appearance=inverse: shell fills bottom→top — color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay); title text/on-color; description text/on-color-disabled; action outline uses on-color stroke/label for contrast on the dark shell. Composition: statusIcon (when present) + content → text (title + description) + action. Anatomy: vertical stack (icon above content). Pad spacing/150 top, spacing/250 sides/bottom; gap spacing/100; border/radius/400. actionLabel is React-side — in Figma set nested action Button label when showAction=true. Do not use as Toast, Banner, Modal, or inline field validation. Accessibility: role=status for system|info|success; role=alert for warning|danger when urgent; action needs accessible name; decorative status icons aria-hidden when title conveys status. React mapping: Alert(appearance, status, title, description, showDescription, showAction, actionLabel). Code Connect is not configured. Note: Figma VARIANT default for appearance remains inverse (API cannot change VARIANT defaultValue); product instances should set appearance=default on light surfaces.
 
 ## Variants
 
+- **appearance:** default | inverse
 - **status:** system | info | success | danger | warning
 
 ## Props
 
 | Prop | Type / values |
 | --- | --- |
+| `appearance` | default \| inverse — prefer default on light surfaces; inverse for dark/brand chrome (Figma VARIANT default still inverse) |
 | `status` | system \| info \| success \| danger \| warning |
-| `title` | TEXT — alert heading (body/medium/semi-bold + text/on-color) |
-| `description` | TEXT — supporting copy (body/small/regular + text/on-color-disabled) |
+| `title` | TEXT — alert heading (default: text/primary; inverse: text/on-color) + body/medium/semi-bold |
+| `description` | TEXT — supporting copy (default: text/secondary; inverse: text/on-color-disabled) + body/small/regular |
 | `showDescription` | boolean — toggles description (default true) |
 | `showAction` | boolean — toggles nested outline Button (default true) |
 | `actionLabel` | React mapping for nested action Button label (Figma: Button.label) |
@@ -40,23 +42,26 @@ AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call at
 ## Rules
 
 - **intentionalSparse:** status=system publishes no statusIcon
+- **appearanceDefault:** Prefer appearance=default on light page surfaces (surface/3 + text/primary|secondary)
+- **appearanceInverse:** Use appearance=inverse on dark/brand chrome when on-color text is required
+- **figmaDefaultVariant:** Figma VARIANT defaultValue for appearance remains inverse (cannot change via API); set instances to default on light surfaces
+- **propWiring:** title / description+showDescription / showAction must be wired on every appearance×status variant (including appearance=default clones)
 - **actionLabel:** actionLabel is React-side / nested Button.label — Figma parent TEXT cannot bind to instance sublayer via API; edit nested action label when showAction=true
 - **vsToast:** Do not use as Toast — Alert is persistent in-flow; Toast is transient
 - **vsBanner:** Do not use as Banner — Banner is full-width page/section feedback on feedback-primary surfaces
 - **vsModal:** Do not use as Modal / AlertDialog — Alert does not block the page
-- **darkOverlay:** Shell fills bottom→top: color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay). Do not reverse the stack.
+- **darkOverlay:** appearance=inverse shell fills bottom→top: color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay). Do not reverse the stack (Figma fills[0]=brand@~48% topmost).
 - **usage:** Do not use as Toast, Banner, Modal, or inline field validation
 - **iconSize:** statusIcon is FIXED 32×32 on info|success|danger|warning
-- **iconFillParity:** Prefer content-layer feedback/\{info|success|danger|warning\} on \{icon\}-path. success already uses feedback/success; info|danger|warning still use background-feedback-primary/* on Vector — align when convenient.
+- **iconFillParity:** statusIcon paths use local content-layer feedback/\{info|success|danger|warning\} on \{icon\}-path layers (no remote background-feedback-primary/*).
 
 ## Token rules
 
-- color/elevation/inverse-3 (base) + color/background-surface/brand @ ~48% opacity (overlay)
-- text/on-color (title body/medium/semi-bold); text/on-color-disabled (description body/small/regular)
+- appearance=default: color/background-surface/3 (single fill); title text/primary; description text/secondary; action outline stroke color/border/1 + label text/primary
+- appearance=inverse: color/elevation/inverse-3 (base) + color/background-surface/brand @ ~48% opacity (overlay); title text/on-color; description text/on-color-disabled; action outline stroke/label text/on-color
 - border/radius/400
 - spacing/100 (root gap, text gap); spacing/150 (pad top, content gap); spacing/250 (pad sides/bottom)
-- statusIcon 32: success → feedback/success; info|danger|warning → color/background-feedback-primary/\{status\} (prefer feedback/*)
-- action Button outline/sm stroke/label text/on-color
+- statusIcon 32: feedback/\{info|success|danger|warning\} on \{icon\}-path
 
 ## Accessibility
 

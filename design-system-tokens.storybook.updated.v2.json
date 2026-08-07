@@ -33,6 +33,18 @@
         },
         "newVariables": [
             {
+                "name": "color/background-surface/brand-muted",
+                "id": "VariableID:4718:3",
+                "resolvedType": "COLOR",
+                "note": "VehicleSummaryCard appearance=secondary surface; FRAME_FILL/SHAPE_FILL; aliases brand-blue-72"
+            },
+            {
+                "name": "primitive-colors/brand-blue-72",
+                "id": "VariableID:4718:2",
+                "resolvedType": "COLOR",
+                "note": "brand-blue RGB @ 72% alpha; aliased by color/background-surface/brand-muted"
+            },
+            {
                 "name": "color/background-surface/promo-1",
                 "id": "VariableID:3942:229",
                 "aliasOf": "primitive-colors/lavender-2"
@@ -635,9 +647,24 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-07T14:27:07.660Z",
-        "storybookRevision": "2026-08-07-vehiclesummarycard-audit-apply",
+        "storybookUpdatedAt": "2026-08-07T17:50:00.000Z",
+        "storybookRevision": "2026-08-07-alert-audit-apply",
         "changelog": [
+            {
+                "date": "2026-08-07",
+                "type": "storybook-alert-audit-apply",
+                "summary": "Alert audit apply: wire title/description/showAction on appearance=default; restore inverse shell brand@48% over inverse-3; statusIcon → local feedback/* + {icon}-path; docs synced."
+            },
+            {
+                "date": "2026-08-07",
+                "type": "storybook-alert-appearance",
+                "summary": "Alert: appearance=default|inverse × status; default = surface/3 + text/primary|secondary + outline border/1; inverse keeps dark brand overlay shell; AI-READY + storybook synced."
+            },
+            {
+                "date": "2026-08-07",
+                "type": "storybook-vehiclesummarycard-brand-muted",
+                "summary": "VehicleSummaryCard secondary: replace paint opacity 72% with color/background-surface/brand-muted (primitive-colors/brand-blue-72) so library instances keep alpha; docs synced."
+            },
             {
                 "date": "2026-08-07",
                 "type": "storybook-vehiclesummarycard-audit-apply",
@@ -2290,6 +2317,9 @@
                     "$type": "color",
                     "$value": "#4967EE",
                     "$description": "export: color-bg-surface-brand | solid brand chrome background. Alias of primitive-colors/brand-blue. Scopes: FRAME_FILL, SHAPE_FILL. Not for text/brand or color/actions/primary."
+                },
+                "brand-muted": {
+                    "": "export: color-bg-surface-brand-muted | brand-blue @ 72% alpha (primitive-colors/brand-blue-72). Use for VehicleSummaryCard appearance=secondary. Prefer this over paint opacity on variable-bound fills (library instances drop paint opacity). Scopes: FRAME_FILL, SHAPE_FILL."
                 }
             },
             "border-feedback": {
@@ -2971,6 +3001,11 @@
                 "$type": "color",
                 "$value": "#4967EE",
                 "$description": "export: primitive-colors-brand-blue | brand blue solid for color/background-surface/brand"
+            },
+            "brand-blue-72": {
+                "$type": "color",
+                "$value": "#4967EEB8",
+                "$description": "export: primitive-colors-brand-blue-72 | brand-blue @ 72% alpha; aliased by color/background-surface/brand-muted"
             },
             "charcoal": {
                 "$type": "color",
@@ -5078,8 +5113,12 @@
             },
             "Alert": {
                 "nodeId": "4406:91",
-                "description": "AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Variants: status=system|info|success|danger|warning (same vocabulary as Toast). status=system is intentional-sparse and has no statusIcon; other statuses compose a DS Icons — Escritório Virtual filled statusIcon at 32px (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with content-layer icon fills feedback/info|success|danger|warning on {icon}-path layers. Props: title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Composition: statusIcon (when present) + content → text (title + description) + action (local Button outline/sm/primary, label default Action). actionLabel is React-side — in Figma set nested action Button label when showAction=true. Anatomy: vertical stack (icon above content). Tokens: shell fills bottom→top — color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay); text/on-color (title body/medium/semi-bold) + text/on-color-disabled (description body/small/regular); border/radius/400; spacing/100 (root gap, text gap) | spacing/150 (pad top, content gap) | spacing/250 (pad sides/bottom). Action outline stroke/label use text/on-color for contrast on the dark shell. Do not use as Toast, Banner, Modal, or inline field validation. Accessibility: role=status for system|info|success; role=alert for warning|danger when urgent; action needs accessible name; decorative status icons aria-hidden when title conveys status. React mapping: Alert(status, title, description, showDescription, showAction, actionLabel). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Props: appearance=default|inverse; status=system|info|success|danger|warning (same vocabulary as Toast); title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Prefer appearance=default on light page surfaces; use appearance=inverse on dark/brand chrome when on-color text is required. status=system is intentional-sparse and has no statusIcon; other statuses compose a DS Icons — Escritório Virtual filled statusIcon at 32px (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with content-layer icon fills feedback/info|success|danger|warning on {icon}-path layers. appearance=default: shell color/background-surface/3 (single fill); title text/primary + body/medium/semi-bold; description text/secondary + body/small/regular; action local Button outline/sm/primary with default light chrome (stroke color/border/1, label text/primary). appearance=inverse: shell fills bottom→top — color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay); title text/on-color; description text/on-color-disabled; action outline uses on-color stroke/label for contrast on the dark shell. Composition: statusIcon (when present) + content → text (title + description) + action. Anatomy: vertical stack (icon above content). Pad spacing/150 top, spacing/250 sides/bottom; gap spacing/100; border/radius/400. actionLabel is React-side — in Figma set nested action Button label when showAction=true. Do not use as Toast, Banner, Modal, or inline field validation. Accessibility: role=status for system|info|success; role=alert for warning|danger when urgent; action needs accessible name; decorative status icons aria-hidden when title conveys status. React mapping: Alert(appearance, status, title, description, showDescription, showAction, actionLabel). Code Connect is not configured. Note: Figma VARIANT default for appearance remains inverse (API cannot change VARIANT defaultValue); product instances should set appearance=default on light surfaces.",
                 "variants": {
+                    "appearance": [
+                        "default",
+                        "inverse"
+                    ],
                     "status": [
                         "system",
                         "info",
@@ -5089,9 +5128,10 @@
                     ]
                 },
                 "props": {
+                    "appearance": "default | inverse — prefer default on light surfaces; inverse for dark/brand chrome (Figma VARIANT default still inverse)",
                     "status": "system | info | success | danger | warning",
-                    "title": "TEXT — alert heading (body/medium/semi-bold + text/on-color)",
-                    "description": "TEXT — supporting copy (body/small/regular + text/on-color-disabled)",
+                    "title": "TEXT — alert heading (default: text/primary; inverse: text/on-color) + body/medium/semi-bold",
+                    "description": "TEXT — supporting copy (default: text/secondary; inverse: text/on-color-disabled) + body/small/regular",
                     "showDescription": "boolean — toggles description (default true)",
                     "showAction": "boolean — toggles nested outline Button (default true)",
                     "actionLabel": "React mapping for nested action Button label (Figma: Button.label)"
@@ -5103,8 +5143,8 @@
                     },
                     "info": {
                         "icon": "info-circle-filled",
-                        "iconPath": "Vector (prefer info-circle-filled-path)",
-                        "iconFillToken": "color/background-feedback-primary/info (prefer feedback/info)",
+                        "iconPath": "info-circle-filled-path",
+                        "iconFillToken": "feedback/info",
                         "iconSize": 32
                     },
                     "success": {
@@ -5115,35 +5155,38 @@
                     },
                     "danger": {
                         "icon": "alert-circle-filled",
-                        "iconPath": "Vector (prefer alert-circle-filled-path)",
-                        "iconFillToken": "color/background-feedback-primary/danger (prefer feedback/danger)",
+                        "iconPath": "alert-circle-filled-path",
+                        "iconFillToken": "feedback/danger",
                         "iconSize": 32
                     },
                     "warning": {
                         "icon": "alert-triangle-filled",
-                        "iconPath": "Vector (prefer alert-triangle-filled-path)",
-                        "iconFillToken": "color/background-feedback-primary/warning (prefer feedback/warning)",
+                        "iconPath": "alert-triangle-filled-path",
+                        "iconFillToken": "feedback/warning",
                         "iconSize": 32
                     }
                 },
                 "rules": {
                     "intentionalSparse": "status=system publishes no statusIcon",
+                    "appearanceDefault": "Prefer appearance=default on light page surfaces (surface/3 + text/primary|secondary)",
+                    "appearanceInverse": "Use appearance=inverse on dark/brand chrome when on-color text is required",
+                    "figmaDefaultVariant": "Figma VARIANT defaultValue for appearance remains inverse (cannot change via API); set instances to default on light surfaces",
+                    "propWiring": "title / description+showDescription / showAction must be wired on every appearance×status variant (including appearance=default clones)",
                     "actionLabel": "actionLabel is React-side / nested Button.label — Figma parent TEXT cannot bind to instance sublayer via API; edit nested action label when showAction=true",
                     "vsToast": "Do not use as Toast — Alert is persistent in-flow; Toast is transient",
                     "vsBanner": "Do not use as Banner — Banner is full-width page/section feedback on feedback-primary surfaces",
                     "vsModal": "Do not use as Modal / AlertDialog — Alert does not block the page",
-                    "darkOverlay": "Shell fills bottom→top: color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay). Do not reverse the stack.",
+                    "darkOverlay": "appearance=inverse shell fills bottom→top: color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay). Do not reverse the stack (Figma fills[0]=brand@~48% topmost).",
                     "usage": "Do not use as Toast, Banner, Modal, or inline field validation",
                     "iconSize": "statusIcon is FIXED 32×32 on info|success|danger|warning",
-                    "iconFillParity": "Prefer content-layer feedback/{info|success|danger|warning} on {icon}-path. success already uses feedback/success; info|danger|warning still use background-feedback-primary/* on Vector — align when convenient."
+                    "iconFillParity": "statusIcon paths use local content-layer feedback/{info|success|danger|warning} on {icon}-path layers (no remote background-feedback-primary/*)."
                 },
                 "tokenRules": [
-                    "color/elevation/inverse-3 (base) + color/background-surface/brand @ ~48% opacity (overlay)",
-                    "text/on-color (title body/medium/semi-bold); text/on-color-disabled (description body/small/regular)",
+                    "appearance=default: color/background-surface/3 (single fill); title text/primary; description text/secondary; action outline stroke color/border/1 + label text/primary",
+                    "appearance=inverse: color/elevation/inverse-3 (base) + color/background-surface/brand @ ~48% opacity (overlay); title text/on-color; description text/on-color-disabled; action outline stroke/label text/on-color",
                     "border/radius/400",
                     "spacing/100 (root gap, text gap); spacing/150 (pad top, content gap); spacing/250 (pad sides/bottom)",
-                    "statusIcon 32: success → feedback/success; info|danger|warning → color/background-feedback-primary/{status} (prefer feedback/*)",
-                    "action Button outline/sm stroke/label text/on-color"
+                    "statusIcon 32: feedback/{info|success|danger|warning} on {icon}-path"
                 ],
                 "accessibility": "role=status for system|info|success; role=alert for urgent warning|danger; action accessible name; decorative statusIcon aria-hidden when title conveys status.",
                 "composition": [
@@ -6354,7 +6397,7 @@
             },
             "VehicleSummaryCard": {
                 "nodeId": "4581:1451",
-                "description": "AI-READY COMPONENT: VehicleSummaryCard — Home/Painel compact card for a user vehicle. Props: appearance=default|secondary; status=active|inactive (meaningful on default only); brandModel + model (TEXT, default appearance); title (TEXT, secondary — vehicle model/year line, e.g. Palio 1.0 ECONOMY Fiat • 2009); plate (TEXT); illustration (INSTANCE_SWAP — local vehicle illustration, default sedan); showStatus (BOOLEAN, default true — default appearance only; toggles statusChip and spacer together).\n\nappearance=default: leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm). status=active ChipTag Ativo + circle-dot-filled with color/background-feedback-primary/success. status=inactive ChipTag Inativo + circle-dot-filled with color/background-feedback-primary/warning (intentional within this component — not danger; nested ChipTag structure/tokens are owned by ChipTag and must not be remapped here). Surface color/background-surface/0; border/radius/400; spacing/100 vertical pad; spacing/200 horizontal pad + root gap. Text text/primary (brand/model); text/placeholder + heading/h3/regular (plate). Product may wire onPress as button/link to vehicle detail — no Figma hover/pressed variants.\n\nappearance=secondary: informational only (not clickable) — illustration + title + plate; no ChipTag; status axis is unused (publish both status values identical). Surface color/background-surface/brand at 72% opacity; border/radius/300; spacing/150 root/leading gap; title body/large/semi-bold + text/on-color; plate body/medium/regular + text/on-color. Year is composed into title by the product. plate and illustration props apply to secondary as well.\n\nDo not use as VehicleConfirmCard, OfferProductCard, or Banner. React: VehicleSummaryCard({ appearance, status, brandModel, model, title, plate, illustration, showStatus, onPress? }).",
+                "description": "AI-READY COMPONENT: VehicleSummaryCard — Home/Painel compact card for a user vehicle. Props: appearance=default|secondary; status=active|inactive (meaningful on default only); brandModel + model (TEXT, default appearance); title (TEXT, secondary — vehicle model/year line, e.g. Palio 1.0 ECONOMY Fiat • 2009); plate (TEXT); illustration (INSTANCE_SWAP — local vehicle illustration, default sedan); showStatus (BOOLEAN, default true — default appearance only; toggles statusChip and spacer together).\n\nappearance=default: leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm). status=active ChipTag Ativo + circle-dot-filled with color/background-feedback-primary/success. status=inactive ChipTag Inativo + circle-dot-filled with color/background-feedback-primary/warning (intentional within this component — not danger; nested ChipTag structure/tokens are owned by ChipTag and must not be remapped here). Surface color/background-surface/0; border/radius/400; spacing/100 vertical pad; spacing/200 horizontal pad + root gap. Text text/primary (brand/model); text/placeholder + heading/h3/regular (plate). Product may wire onPress as button/link to vehicle detail — no Figma hover/pressed variants.\n\nappearance=secondary: informational only (not clickable) — illustration + title + plate; no ChipTag; status axis is unused (publish both status values identical). Surface color/background-surface/brand-muted (brand-blue at 72% alpha baked into the token — do not use paint opacity on variable-bound fills; library instances drop paint opacity). border/radius/300; spacing/150 root/leading gap; title body/large/semi-bold + text/on-color; plate body/medium/regular + text/on-color. Year is composed into title by the product. plate and illustration props apply to secondary as well.\n\nDo not use as VehicleConfirmCard, OfferProductCard, or Banner. React: VehicleSummaryCard({ appearance, status, brandModel, model, title, plate, illustration, showStatus, onPress? }).",
                 "variants": {
                     "appearance": [
                         "default",
@@ -6379,7 +6422,7 @@
                     "compositionDefault": "leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm)",
                     "compositionSecondary": "leading (illustration + title + plate) — no ChipTag; informational only",
                     "statusChip": "canonical ChipTag outline/sm/hug/strong + circle-dot-filled; do not restyle ChipTag internals from this card",
-                    "secondarySurface": "color/background-surface/brand at 72% paint opacity + text/on-color — do not use color/elevation/Focus or interactive/focus",
+                    "secondarySurface": "color/background-surface/brand-muted (primitive-colors/brand-blue-72, alpha 72% in token) + text/on-color — never rely on paint opacity for library sync",
                     "secondaryStatusIgnored": "status axis unused on secondary; keep matrix complete with identical visuals",
                     "noFigmaInteractionVariants": "default may wire onPress at runtime; secondary is not clickable — do not add hover/pressed/disabled variants",
                     "vsConfirm": "Do not use as VehicleConfirmCard",
@@ -6393,11 +6436,11 @@
                 "statusMap": {
                     "default/active": "ChipTag outline + circle-dot-filled (background-feedback-primary/success) label Ativo",
                     "default/inactive": "ChipTag outline + circle-dot-filled (background-feedback-primary/warning) label Inativo — intentional warning (not danger) in this component",
-                    "secondary/*": "no ChipTag; title + plate on brand surface @ 72% opacity"
+                    "secondary/*": "no ChipTag; title + plate on color/background-surface/brand-muted"
                 },
                 "tokenRules": [
                     "appearance=default: color/background-surface/0; border/radius/400; spacing/100|200; spacing/0 on leading/text/nameRow zero pads",
-                    "appearance=secondary: color/background-surface/brand @ 72% opacity; border/radius/300; spacing/150",
+                    "appearance=secondary: color/background-surface/brand-muted (72% alpha in token); border/radius/300; spacing/150",
                     "default text: text/primary (brand/model); text/placeholder + heading/h3/regular (plate)",
                     "secondary text: text/on-color; body/large/semi-bold (title); body/medium/regular (plate)",
                     "nested ChipTag (default only): body/small/medium; color/border/2 outline; active dot success; inactive dot warning (component-level intent)"
@@ -10056,6 +10099,21 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "alert-audit-apply",
+                "date": "2026-08-07",
+                "summary": "Alert: default prop wiring; inverse shell stack restored; statusIcon local feedback/* paths."
+            },
+            {
+                "id": "alert-appearance",
+                "date": "2026-08-07",
+                "summary": "Alert appearance=default|inverse: light surface/3 shell vs dark brand overlay; docs synced."
+            },
+            {
+                "id": "vehiclesummarycard-brand-muted",
+                "date": "2026-08-07",
+                "summary": "VehicleSummaryCard secondary uses brand-muted token (72% alpha baked in) for reliable library sync."
+            },
             {
                 "id": "vehiclesummarycard-audit-apply",
                 "date": "2026-08-07",
