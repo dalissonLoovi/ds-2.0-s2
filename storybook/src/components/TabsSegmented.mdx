@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/TabsSegmented" />
+
+# TabsSegmented
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4738-825) · node `4738:825`
+
+## AI-READY
+
+AI-READY COMPONENT: TabsSegmented is a segmented tab-list (pill track) used for mutually exclusive in-page choices — e.g. App-cliente payment method switchers (Cartão | Pix). Compose only with local TabItem instances using variant=segmented. Do not use TabsSegmented as TabsSecondary (underline), TabsPrimary (loose chips), NavigationBar, ChipGroup, or ButtonGroup. Use itemCount=2–5; platform=web|mobile; alignment=left|center. Wrapper tokens: color/background-surface/0 fill, color/border/2 stroke (border/width/012), border/radius/full, spacing/050 inset padding, spacing/0 item gap. Nested TabItem segmented equal-width (layoutGrow/FILL): selected → color/actions/primary + text/on-color; default → transparent + text/secondary; hover → color/background-surface/2 + text/primary; disabled → text/placeholder. Demo shows tabItem01 selected with showIcon=false. Accessibility: role=tablist; each TabItem role=tab; aria-selected on selected; arrow-key navigation. React mapping: TabsSegmented(itemCount, platform, alignment, children as TabItem segmented). Code Connect is not configured.
+
+## Variants
+
+- **itemCount:** 2 | 3 | 4 | 5
+- **platform:** web | mobile
+- **alignment:** left | center
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `itemCount` | 2 \| 3 \| 4 \| 5 — number of composed TabItem segmented instances |
+| `platform` | web \| mobile — synced to nested TabItem platform |
+| `alignment` | left \| center — horizontal distribution (segments still equal-width FILL) |
+
+## Rules
+
+- **composition:** Compose only local TabItem variant=segmented (tabItem01–tabItem0N)
+- **vsTabsSecondary:** Do not use as TabsSecondary — secondary is underline; segmented is pill track
+- **vsTabsPrimary:** Do not use as TabsPrimary — primary is loose filled chips without a shared track
+- **vsNavigationBar:** Do not use as NavigationBar / bottom navigation
+- **selectionDemo:** Demo shows tabItem01 as selected with showIcon=false; product selection via nested TabItem.state
+- **equalWidth:** Nested segments use layoutGrow=1 / FILL for equal width inside the track
+- **propWiring:** Nested TabItem segmented must keep label + showAttention/attentionIcon + showIcon/leadingIcon wired on every state×platform variant
+- **noSelectedIndicator:** variant=segmented removes selectedIndicator from the tree — selection is the segment fill only
+- **usage:** App-cliente in-page switchers (e.g. Cartão | Pix); not for primary page nav
+
+## Token rules
+
+- track: color/background-surface/0 + color/border/2 + border/radius/full
+- track stroke*Weight bound to border/width/012 (top/right/bottom/left)
+- spacing/050 inset padding; spacing/0 item gap; itemCount=2 demo width 342
+- nested TabItem segmented tokens (actions/primary, text/on-color|secondary|primary|placeholder, surface/2)
+
+## Accessibility
+
+role=tablist; nested TabItem role=tab; aria-selected on active tab; arrow-key navigation; decorative icons aria-hidden when label visible.
+
+## Composition
+
+- TabItem variant=segmented (equal-width segments)
+

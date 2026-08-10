@@ -647,9 +647,24 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-07T17:50:00.000Z",
-        "storybookRevision": "2026-08-07-alert-audit-apply",
+        "storybookUpdatedAt": "2026-08-10T14:30:00.000Z",
+        "storybookRevision": "2026-08-10-toast-docs-sync",
         "changelog": [
+            {
+                "date": "2026-08-10",
+                "type": "storybook-toast-docs-sync",
+                "summary": "Toast docs synced to canvas: AI-READY local DS icons wording; shell inverse-3 + text/on-color; elevation/1; statusMap icon fills (info still background-feedback-primary/info, prefer feedback/info)."
+            },
+            {
+                "date": "2026-08-09",
+                "type": "storybook-tabs-segmented-audit-apply",
+                "summary": "TabsSegmented audit apply: wire label/showAttention on TabItem segmented; remove dead selectedIndicator; bind track stroke*Weight to border/width/012; demo itemCount=2 width 342; docs synced."
+            },
+            {
+                "date": "2026-08-09",
+                "type": "storybook-tabs-segmented",
+                "summary": "TabsSegmented + TabItem variant=segmented (pill track for App-cliente switchers); local kebab tokens; AI-READY + storybook synced. Not product-theme — new anatomy vs TabsSecondary underline."
+            },
             {
                 "date": "2026-08-07",
                 "type": "storybook-alert-audit-apply",
@@ -8705,11 +8720,12 @@
             },
             "TabItem": {
                 "nodeId": "3532:6782",
-                "description": "AI-READY COMPONENT: TabItem is the individual tab control used inside a Tabs/TabList pattern to switch between related views in the same page or section. Use variant=primary for filled/elevated tab treatment and variant=secondary for underline tab treatment. Use state=default, hover, selected or disabled. Focus is intentionally not published on TabItem. Use platform=web or platform=mobile for density. Use appearance=default on standard surfaces and appearance=inverse on inverse/dark/on-color surfaces. Intentional sparse matrix: appearance=inverse is published only for variant=primary + platform=mobile. It is not published for primary+web or for any secondary combination. Use label for the visible tab text. Use showIcon to toggle the leading icon and leadingIcon (INSTANCE_SWAP) to choose the DS Icons — Escritório Virtual outline icons. Use showAttention and attentionIcon for the optional attention/status affordance. Do not use TabItem as a standalone Button, NavigationItem, Chip, segmented control, or page-level route link. Compose TabItem only inside a Tabs/TabList wrapper. Accessibility: wrapper role=tablist; each TabItem role=tab; aria-selected=true only for state=selected; disabled tabs aria-disabled=true; decorative icons aria-hidden when label is visible; keyboard follows Tabs pattern (arrows + Enter/Space). Token rule: prefer DS kebab-case variables (color/actions/primary, color/background-surface/0, text/primary|brand, spacing/100|150, border/radius/0|300). Avoid Title Case legacy aliases; Border/Icon/20 may remain on icon stroke weight when no local kebab equivalent exists. React mapping: TabItem(variant, state, platform, appearance, label, showIcon, leadingIcon?, showAttention, attentionIcon?).",
+                "description": "AI-READY COMPONENT: TabItem is the individual tab control used inside a Tabs/TabList pattern to switch between related views in the same page or section. Use variant=primary for filled/elevated tab treatment, variant=secondary for underline tab treatment, and variant=segmented for pill segments inside TabsSegmented. Use state=default, hover, selected or disabled. Focus is intentionally not published on TabItem. Use platform=web or platform=mobile for density. Use appearance=default on standard surfaces and appearance=inverse on inverse/dark/on-color surfaces. Intentional sparse matrix: appearance=inverse is published only for variant=primary + platform=mobile. It is not published for primary+web, secondary, or segmented. variant=segmented: selected fills color/actions/primary + text/on-color; default transparent + text/secondary; hover surface/2 + text/primary; disabled text/placeholder; selectedIndicator hidden; border/radius/full; compose only inside TabsSegmented. Use label for the visible tab text. Use showIcon to toggle the leading icon and leadingIcon (INSTANCE_SWAP) to choose the DS Icons — Escritório Virtual outline icons. Use showAttention and attentionIcon for the optional attention/status affordance. Do not use TabItem as a standalone Button, NavigationItem, Chip, or page-level route link. Compose TabItem only inside a Tabs/TabList wrapper (TabsPrimary, TabsSecondary, or TabsSegmented). Accessibility: wrapper role=tablist; each TabItem role=tab; aria-selected=true only for state=selected; disabled tabs aria-disabled=true; decorative icons aria-hidden when label is visible; keyboard follows Tabs pattern (arrows + Enter/Space). Token rule: prefer DS kebab-case variables (color/actions/primary, color/background-surface/0|2, text/primary|secondary|on-color|placeholder, spacing/050|100|150, border/radius/0|300|full). Avoid Title Case legacy aliases; Border/Icon/20 may remain on icon stroke weight when no local kebab equivalent exists. React mapping: TabItem(variant, state, platform, appearance, label, showIcon, leadingIcon?, showAttention, attentionIcon?).",
                 "variants": {
                     "variant": [
                         "primary",
-                        "secondary"
+                        "secondary",
+                        "segmented"
                     ],
                     "state": [
                         "default",
@@ -8727,30 +8743,77 @@
                     ]
                 },
                 "props": {
-                    "variant": "primary | secondary",
+                    "variant": "primary | secondary | segmented",
                     "state": "default | hover | selected | disabled",
                     "platform": "web | mobile",
-                    "appearance": "default | inverse",
+                    "appearance": "default | inverse — inverse only on primary+mobile (not secondary/segmented)",
                     "label": "TEXT — visible tab label",
-                    "showIcon": "boolean — toggles leadingIcon visibility",
+                    "showIcon": "boolean — toggles leadingIcon visibility (TabsSegmented demos typically false)",
                     "leadingIcon": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons",
                     "showAttention": "boolean — toggles attentionIcon visibility",
                     "attentionIcon": "INSTANCE_SWAP — optional attention/status icon"
                 },
                 "rules": {
-                    "composition": "Compose only inside Tabs/TabList — not a standalone Button/NavigationItem/Chip",
-                    "intentionalSparse": "appearance=inverse only for variant=primary + platform=mobile",
+                    "composition": "Compose only inside TabsPrimary / TabsSecondary / TabsSegmented — not a standalone Button/NavigationItem/Chip",
+                    "intentionalSparse": "appearance=inverse only for variant=primary + platform=mobile; segmented has no inverse",
                     "noFocus": "Focus is intentionally not published",
                     "secondaryIndicator": "selectedIndicator visible only on state=selected for variant=secondary",
-                    "usage": "Do not use as Button, NavigationItem, Chip, segmented control or page-level route link"
+                    "segmentedIndicator": "variant=segmented removes selectedIndicator from the tree; selection is the segment fill",
+                    "usage": "Do not use as Button, NavigationItem, Chip, or page-level route link; use TabsSegmented (not standalone) for pill switchers"
                 },
                 "tokenRules": [
-                    "color/actions/primary and color/background-surface/0",
-                    "text/primary | text/brand",
-                    "spacing/100 | 150 and border/radius/0 | 300",
+                    "primary/secondary: color/actions/primary, color/background-surface/0|2, text/primary|brand, border/radius/0|300",
+                    "segmented: selected color/actions/primary + text/on-color; default text/secondary; hover surface/2 + text/primary; disabled text/placeholder; border/radius/full; spacing/050 pads",
+                    "spacing/050 | 100 | 150",
                     "Border/Icon/20 may remain on icon strokeWeight when no local kebab equivalent exists"
                 ],
                 "accessibility": "role=tab inside role=tablist; aria-selected only when selected; aria-disabled when disabled; decorative icons aria-hidden when label visible."
+            },
+            "TabsSegmented": {
+                "nodeId": "4738:825",
+                "description": "AI-READY COMPONENT: TabsSegmented is a segmented tab-list (pill track) used for mutually exclusive in-page choices — e.g. App-cliente payment method switchers (Cartão | Pix). Compose only with local TabItem instances using variant=segmented. Do not use TabsSegmented as TabsSecondary (underline), TabsPrimary (loose chips), NavigationBar, ChipGroup, or ButtonGroup. Use itemCount=2–5; platform=web|mobile; alignment=left|center. Wrapper tokens: color/background-surface/0 fill, color/border/2 stroke (border/width/012), border/radius/full, spacing/050 inset padding, spacing/0 item gap. Nested TabItem segmented equal-width (layoutGrow/FILL): selected → color/actions/primary + text/on-color; default → transparent + text/secondary; hover → color/background-surface/2 + text/primary; disabled → text/placeholder. Demo shows tabItem01 selected with showIcon=false. Accessibility: role=tablist; each TabItem role=tab; aria-selected on selected; arrow-key navigation. React mapping: TabsSegmented(itemCount, platform, alignment, children as TabItem segmented). Code Connect is not configured.",
+                "variants": {
+                    "itemCount": [
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+                    "platform": [
+                        "web",
+                        "mobile"
+                    ],
+                    "alignment": [
+                        "left",
+                        "center"
+                    ]
+                },
+                "props": {
+                    "itemCount": "2 | 3 | 4 | 5 — number of composed TabItem segmented instances",
+                    "platform": "web | mobile — synced to nested TabItem platform",
+                    "alignment": "left | center — horizontal distribution (segments still equal-width FILL)"
+                },
+                "rules": {
+                    "composition": "Compose only local TabItem variant=segmented (tabItem01–tabItem0N)",
+                    "vsTabsSecondary": "Do not use as TabsSecondary — secondary is underline; segmented is pill track",
+                    "vsTabsPrimary": "Do not use as TabsPrimary — primary is loose filled chips without a shared track",
+                    "vsNavigationBar": "Do not use as NavigationBar / bottom navigation",
+                    "selectionDemo": "Demo shows tabItem01 as selected with showIcon=false; product selection via nested TabItem.state",
+                    "equalWidth": "Nested segments use layoutGrow=1 / FILL for equal width inside the track",
+                    "propWiring": "Nested TabItem segmented must keep label + showAttention/attentionIcon + showIcon/leadingIcon wired on every state×platform variant",
+                    "noSelectedIndicator": "variant=segmented removes selectedIndicator from the tree — selection is the segment fill only",
+                    "usage": "App-cliente in-page switchers (e.g. Cartão | Pix); not for primary page nav"
+                },
+                "tokenRules": [
+                    "track: color/background-surface/0 + color/border/2 + border/radius/full",
+                    "track stroke*Weight bound to border/width/012 (top/right/bottom/left)",
+                    "spacing/050 inset padding; spacing/0 item gap; itemCount=2 demo width 342",
+                    "nested TabItem segmented tokens (actions/primary, text/on-color|secondary|primary|placeholder, surface/2)"
+                ],
+                "accessibility": "role=tablist; nested TabItem role=tab; aria-selected on active tab; arrow-key navigation; decorative icons aria-hidden when label visible.",
+                "composition": [
+                    "TabItem variant=segmented (equal-width segments)"
+                ]
             },
             "TabsPrimary": {
                 "nodeId": "3532:6900",
@@ -8868,7 +8931,7 @@
             },
             "Toast": {
                 "nodeId": "3550:4107",
-                "description": "AI-READY COMPONENT: Toast is a transient feedback message used to confirm an action, inform system status, or warn about a temporary condition. Use for short, non-blocking messages. Do not use as Modal, Banner, AlertDialog, Snackbar replacement for persistent critical content, or primary navigation. Variants: status=system|info|success|danger|warning. status=danger replaces deprecated error naming. status=system is intentional-sparse and has no statusIcon; other statuses compose an EV library statusIcon. Props: message (TEXT), showAction (BOOLEAN, default false), dismissible (BOOLEAN, default true). When showAction=true, set the nested action Button label (React actionLabel). dismiss controls the dismiss Button (x-outline). Composition: action and dismiss use the local Button component (variant=text). Status icons use DS Icons — Escritório Virtual filled icons only (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled). Accessibility: role=status for system|info|success. role=alert only for urgent warning|danger. Do not move focus automatically. If dismissible=true, expose a clear accessible close label. Decorative status icons should be aria-hidden=true when the message already communicates status. Token rule: use existing DS kebab-case variables (color/background-surface/inverse-3, text/on-color, spacing/0|150|200, border/radius/400, color/elevation/6). Status icon fills: feedback/success|danger|warning; info uses feedback/info (no local feedback/info). React mapping: Toast(status, message, showAction, actionLabel, dismissible, onAction, onDismiss).",
+                "description": "AI-READY COMPONENT: Toast is a transient feedback message used to confirm an action, inform system status, or warn about a temporary condition. Use for short, non-blocking messages. Do not use as Modal, Banner, AlertDialog, Snackbar replacement for persistent critical content, or primary navigation. Variants: status=system|info|success|danger|warning. status=danger replaces deprecated error naming. status=system is intentional-sparse and has no statusIcon; other statuses compose a local DS statusIcon. Props: message (TEXT), showAction (BOOLEAN, default false), dismissible (BOOLEAN, default true). When showAction=true, set the nested action Button label (React actionLabel). dismiss controls the dismiss Button (x-outline). Composition: action and dismiss use the local Button component (variant=text). Status icons use local DS filled icons only (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled). Accessibility: role=status for system|info|success. role=alert only for urgent warning|danger. Do not move focus automatically. If dismissible=true, expose a clear accessible close label. Decorative status icons should be aria-hidden=true when the message already communicates status. Token rule: use existing DS kebab-case variables (color/background-surface/inverse-3, text/on-color, spacing/0|150|200, border/radius/400) and effect style elevation/1. Status icon fills: success → local feedback/success; danger|warning → feedback/danger|warning (prefer local aliases); info → color/background-feedback-primary/info (prefer local feedback/info). React mapping: Toast(status, message, showAction, actionLabel, dismissible, onAction, onDismiss).",
                 "variants": {
                     "status": [
                         "system",
@@ -8886,9 +8949,11 @@
                     "dismissible": "boolean — toggles dismiss Button with x-outline (default true)"
                 },
                 "rules": {
-                    "composition": "Compose local Button for action and dismiss; EV library filled status icons only",
+                    "composition": "Compose local Button for action and dismiss; local DS filled status icons only",
                     "intentionalSparse": "status=system publishes no statusIcon",
                     "actionLabel": "actionLabel is React-side; in Figma set nested action Button label when showAction=true",
+                    "elevation": "Drop shadow uses effect style elevation/1 (not color/elevation/6)",
+                    "iconFillParity": "Prefer local content-layer feedback/{info|success|danger|warning}. success already local; info still on background-feedback-primary/info; danger|warning may resolve via remote aliases with the same feedback/* names.",
                     "usage": "Do not use as Modal, Banner, Alert, AlertDialog or persistent critical content"
                 },
                 "statusMap": {
@@ -8898,25 +8963,34 @@
                     },
                     "info": {
                         "icon": "info-circle-filled",
-                        "iconFillToken": "feedback/info"
+                        "iconPath": "Vector (prefer info-circle-filled-path)",
+                        "iconFillToken": "color/background-feedback-primary/info (prefer feedback/info)",
+                        "iconSize": null
                     },
                     "success": {
                         "icon": "circle-check-filled",
-                        "iconFillToken": "feedback/success"
+                        "iconPath": "circle-check-filled-path",
+                        "iconFillToken": "feedback/success",
+                        "iconSize": null
                     },
                     "danger": {
                         "icon": "alert-circle-filled",
-                        "iconFillToken": "feedback/danger"
+                        "iconPath": "Vector (prefer alert-circle-filled-path)",
+                        "iconFillToken": "feedback/danger",
+                        "iconSize": null
                     },
                     "warning": {
                         "icon": "alert-triangle-filled",
-                        "iconFillToken": "feedback/warning"
+                        "iconPath": "Vector (prefer alert-triangle-filled-path)",
+                        "iconFillToken": "feedback/warning",
+                        "iconSize": null
                     }
                 },
                 "tokenRules": [
                     "color/background-surface/inverse-3, text/on-color",
-                    "spacing/0 | 150 | 200, border/radius/400, color/elevation/6",
-                    "status icon fills: feedback/info|success|danger|warning"
+                    "spacing/0 | 150 | 200, border/radius/400",
+                    "effect style elevation/1",
+                    "status icon fills: success → feedback/success; danger|warning → feedback/danger|warning; info → color/background-feedback-primary/info (prefer feedback/info)"
                 ],
                 "accessibility": "role=status for system|info|success; role=alert only for urgent warning|danger; no automatic focus move; dismiss needs accessible close label; decorative status icons aria-hidden when message conveys status."
             },
@@ -10099,6 +10173,21 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "toast-docs-sync",
+                "date": "2026-08-10",
+                "summary": "Toast docs synced: local DS icons copy; elevation/1; icon fill map matches canvas."
+            },
+            {
+                "id": "tabs-segmented-audit-apply",
+                "date": "2026-08-09",
+                "summary": "TabsSegmented: segmented prop wiring; indicator removed; track stroke bound; demo width 342."
+            },
+            {
+                "id": "tabs-segmented",
+                "date": "2026-08-09",
+                "summary": "TabsSegmented + TabItem segmented: App-cliente pill track switcher; docs synced."
+            },
             {
                 "id": "alert-audit-apply",
                 "date": "2026-08-07",
