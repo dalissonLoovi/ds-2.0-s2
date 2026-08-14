@@ -647,9 +647,94 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-10T14:30:00.000Z",
-        "storybookRevision": "2026-08-10-toast-docs-sync",
+        "storybookUpdatedAt": "2026-08-14T16:00:00.000Z",
+        "storybookRevision": "2026-08-14-animations-feedback-success",
         "changelog": [
+            {
+                "date": "2026-08-14",
+                "type": "storybook-animations-feedback-success",
+                "summary": "Animations: new Foundations/Animations seed; animation/feedback/success (ex Feedback Positivo - V6); section Feedbacks → animation / feedback; AI-READY EN; confetti/badge/circle/check-path layers; docs synced."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-onboarding-scene-referral",
+                "summary": "Illustrations: onboarding-scene/referral (refer-friends) xl 312; AI-READY EN; artwork root; docs synced. Planned illustration backlog cleared (Cred-card leftover noted)."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-onboarding-scene",
+                "summary": "Illustrations: onboarding-scene (ride-together | celebration) xl 312; rename path onboarding/ → onboarding-scene/; AI-READY EN; artwork roots; docs synced."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-vehicle-photo-dashboard",
+                "summary": "Illustrations: vehicle-photo/dashboard — rename mislabeled dashboard-upload-success → dashboard-upload-error; AI-READY EN; artwork/tips/error-badge; docs synced. Vehicle-photo backlog cleared."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-vehicle-photo-chassis",
+                "summary": "Illustrations: vehicle-photo/chassis (chassis-upload | chassis-upload-error) 2xl 520; AI-READY EN; artwork + error-badge; docs synced."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-vehicle-photo-angles",
+                "summary": "Illustrations: vehicle-photo angles (front/rear × left/right) 2xl 520; AI-READY EN; artwork + tips layers; docs synced."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-document-vehicle",
+                "summary": "Illustrations: document/vehicle (vehicle-upload | vehicle-upload-error) lg 260; AI-READY EN; artwork + error-badge; docs synced. Document backlog cleared."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-document-driver",
+                "summary": "Illustrations: document/driver (driver-upload | driver-upload-error) lg 260; AI-READY EN; artwork roots; docs synced."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-person-photo-analysis",
+                "summary": "Illustrations: person/photo-analysis 2xl 520; AI-READY EN; artwork root; docs synced. Person backlog cleared."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-person-photo-upload",
+                "summary": "Illustrations: person (photo-upload | photo-upload-error) md 156; AI-READY EN; artwork + error-badge; docs synced."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-object-search",
+                "summary": "Illustrations: object/search (magnifier + ? badge) sm ~107×104; AI-READY EN; artwork root; docs synced."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-device-onboarding",
+                "summary": "Illustrations: device/onboarding (onboarding-features | onboarding-explore) xl 312; AI-READY EN; artwork roots; docs synced. Device family backlog cleared."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-device-app-usage",
+                "summary": "Illustrations: device/app-usage family (app-usage | discount | insurance-claim) md 156; AI-READY EN; corrected app-usage copy (feature cards not settings); artwork roots; docs synced."
+            },
+            {
+                "date": "2026-08-14",
+                "type": "storybook-illustrations-device-background-location",
+                "summary": "Illustrations: device/background-location — rename -01/-02 → background-location | background-location-shadow; artwork + ground-shadow; AI-READY EN; size xl 312; docs synced."
+            },
+            {
+                "date": "2026-08-10",
+                "type": "storybook-illustrations-device-location-access",
+                "summary": "Illustrations: device/location-access — rename -01/-02 → location-access | location-access-shadow; artwork + ground-shadow layers; AI-READY EN; size xl 312; docs synced."
+            },
+            {
+                "date": "2026-08-10",
+                "type": "storybook-illustrations-vehicle-card",
+                "summary": "Illustrations docs: catalog vehicle-card (hatch, 104×104 sm) with AI-READY EN; distinct from vehicle-icon; Figma description synced."
+            },
+            {
+                "date": "2026-08-10",
+                "type": "storybook-illustrations-vehicle-icon",
+                "summary": "Illustrations docs: catalog vehicle-icon (sedan|van|suv) with AI-READY EN, color-policy exception, Foundations/Illustrations page; Figma descriptions synced."
+            },
             {
                 "date": "2026-08-10",
                 "type": "storybook-toast-docs-sync",
@@ -4071,6 +4156,7 @@
             "componentTokens": "component/[component]/[part]/[property]/[modifier?]",
             "iconLayers": "generic Vector layers should be renamed to {icon-name}-path in source components",
             "iconLibraries": "Library Swap + shared *-outline/*-filled contract; App Cliente uses Hugeicons catalog + DS Semantic Aliases (see meta.governance.iconLibraries)",
+            "illustrations": "Illustrated assets (not DS Icons) live under storybook.illustrations; colors may use a dedicated hardcoded palette — intentional exception to semantic UI token binding",
             "codeConnect": "not configured in this JSON",
             "feedbackUsageTable": {
                 "vocabulary": [
@@ -4509,6 +4595,659 @@
                     }
                 ]
             }
+        },
+        "illustrations": {
+            "summary": "Illustrated assets (not DS Icons). Catalogued by family under page Ilustrações e animações. Colors use a dedicated illustration palette and are intentionally unbound from semantic UI tokens (text/*, color/actions/*, feedback/*).",
+            "colorPolicy": "Hardcoded illustration fills are an intentional exception to the kebab-case semantic token rule for UI components. Do not remap illustration vectors to text/* or color/actions/*. A future illustration/* variable collection is optional and out of scope for current illustration family docs.",
+            "page": {
+                "name": "Ilustrações e animações",
+                "nodeId": "4326:1764"
+            },
+            "naming": "illustration / {family} / {asset}",
+            "families": {
+                "vehicle-icon": {
+                    "sectionNodeId": "4466:784",
+                    "description": "AI-READY ILLUSTRATION FAMILY: vehicle-icon — compact vehicle type marks (sedan|van|suv) at 52×52 for inline and card contexts. Compose via INSTANCE_SWAP (e.g. VehicleSummaryCard.illustration preferredValues). Illustration palette is intentionally unbound from semantic DS tokens. Do not use as DS Icons outline/filled, Button leadingIcon, or NavigationBarItem.",
+                    "size": 52,
+                    "role": "inline / card vehicle type mark",
+                    "members": [
+                        "sedan",
+                        "van",
+                        "suv"
+                    ],
+                    "assets": {
+                        "sedan": {
+                            "nodeId": "4468:121",
+                            "name": "illustration / vehicle-icon / sedan",
+                            "componentKey": "849e974557fa6484191995bcdeeb9169fea68874",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-icon/sedan — illustrated sedan vehicle mark for inline and card contexts. Size: 52×52. Use as INSTANCE_SWAP asset in vehicle lists and summary cards (e.g. VehicleSummaryCard.illustration). Family: vehicle-icon (sedan|van|suv). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled navigation icon, Button leadingIcon, or NavigationBarItem. Decorative by default (aria-hidden when adjacent text names the vehicle). React mapping: swap asset vehicleIconSedan / illustration vehicle-icon sedan."
+                        },
+                        "van": {
+                            "nodeId": "4468:122",
+                            "name": "illustration / vehicle-icon / van",
+                            "componentKey": "bef352a34aae1577cc2d5e5e59fac5ab4d7b08b9",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-icon/van — illustrated van/furgão vehicle mark for inline and card contexts. Size: 52×52. Use as INSTANCE_SWAP asset in vehicle lists and summary cards (e.g. VehicleSummaryCard.illustration). Family: vehicle-icon (sedan|van|suv). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled navigation icon, Button leadingIcon, or NavigationBarItem. Decorative by default (aria-hidden when adjacent text names the vehicle). React mapping: swap asset vehicleIconVan / illustration vehicle-icon van."
+                        },
+                        "suv": {
+                            "nodeId": "4468:123",
+                            "name": "illustration / vehicle-icon / suv",
+                            "componentKey": "aa2b692527148e4d371af96a515b6f72c7ff2ff5",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-icon/suv — illustrated SUV vehicle mark for inline and card contexts. Size: 52×52. Use as INSTANCE_SWAP asset in vehicle lists and summary cards (e.g. VehicleSummaryCard.illustration). Family: vehicle-icon (sedan|van|suv). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled navigation icon, Button leadingIcon, or NavigationBarItem. Decorative by default (aria-hidden when adjacent text names the vehicle). React mapping: swap asset vehicleIconSuv / illustration vehicle-icon suv."
+                        }
+                    },
+                    "consumers": [
+                        "VehicleSummaryCard.illustration (preferredValues sedan|van|suv)"
+                    ],
+                    "rules": {
+                        "composition": "Standalone components per type — not a variant COMPONENT_SET; swap by asset",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled) — different art system and color model",
+                        "layerHygiene": "P2 pending: rename Novo símbolo / Vector / clippath layers to semantic names",
+                        "usage": "Inline vehicle type in lists/cards only"
+                    },
+                    "accessibility": "Decorative when adjacent text names the vehicle (aria-hidden); otherwise provide accessible name from product copy.",
+                    "status": "documented"
+                },
+                "vehicle-card": {
+                    "sectionNodeId": "4466:785",
+                    "description": "AI-READY ILLUSTRATION FAMILY: vehicle-card — larger vehicle illustrations for cards, empty states, and featured media (sm 104×104). Distinct from vehicle-icon (52×52 inline marks). Current inventory: hatch only; additional types may be added later. Illustration palette is intentionally unbound from semantic DS tokens. Do not use as DS Icons outline/filled, Button leadingIcon, NavigationBarItem, or VehicleSummaryCard.illustration.",
+                    "size": 104,
+                    "sizeLabel": "sm",
+                    "role": "card / featured-media vehicle illustration",
+                    "members": [
+                        "hatch"
+                    ],
+                    "assets": {
+                        "hatch": {
+                            "nodeId": "4472:121",
+                            "name": "illustration / vehicle-card / hatch",
+                            "componentKey": "8165d87e4bcace2543d222df85cd191ed08f04e9",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-card/hatch — illustrated hatchback vehicle for card and featured-media contexts. Size: 104×104 (sm). Use as INSTANCE_SWAP or nested illustration in cards, empty states, and promotional surfaces — not as the compact vehicle-icon mark (52×52). Family: vehicle-card (hatch; additional types may be added later). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled navigation icon, Button leadingIcon, NavigationBarItem, or VehicleSummaryCard.illustration (prefer vehicle-icon sedan|van|suv there). Decorative by default (aria-hidden when adjacent text names the vehicle). React mapping: swap asset vehicleCardHatch / illustration vehicle-card hatch."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Standalone component per type — not a variant COMPONENT_SET; swap by asset",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsVehicleIcon": "vehicle-card is 104×104 (sm) for cards/featured media; vehicle-icon is 52×52 for inline/list marks (VehicleSummaryCard)",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled) — different art system and color model",
+                        "layerHygiene": "P2 pending: rename Novo símbolo 4 / Group / Vector / Clip path group layers to semantic names",
+                        "inventory": "Only hatch published today — document as current inventory, not a gap to invent types in docs",
+                        "usage": "Cards, empty states, featured/promo media — not navigation chrome or Button icons"
+                    },
+                    "accessibility": "Decorative when adjacent text names the vehicle (aria-hidden); otherwise provide accessible name from product copy.",
+                    "status": "documented"
+                },
+                "device/location-access": {
+                    "sectionNodeId": "4470:787",
+                    "path": "illustration / device / location-access",
+                    "description": "AI-READY ILLUSTRATION FAMILY: device/location-access — hand + smartphone + location pin for foreground location permission screens. Size: xl (312×312). Members: location-access (no ground shadow) | location-access-shadow (with ground-shadow). Illustration palette is intentionally unbound from semantic DS tokens. Do not use as DS Icons. Distinct from device/background-location (front-facing phone / background GPS).",
+                    "size": 312,
+                    "sizeLabel": "xl",
+                    "role": "location permission / enable location access",
+                    "members": [
+                        "location-access",
+                        "location-access-shadow"
+                    ],
+                    "assets": {
+                        "location-access": {
+                            "nodeId": "4472:122",
+                            "name": "illustration / device / location-access",
+                            "componentKey": "c362f7686e515373f3e83c40a8d643be97aa2e03",
+                            "description": "AI-READY ILLUSTRATION: illustration/device/location-access — hand holding a smartphone with a location pin over a stylized map. Use on screens that request or explain foreground location access permission. Size: xl (312×312 frame). Family: device/location-access (location-access | location-access-shadow). This is the default variant without a ground shadow. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled icon, Button leadingIcon, or NavigationBarItem. Distinct from illustration/device/background-location (front-facing phone / background GPS permission). Decorative by default (aria-hidden when adjacent copy explains the permission). React mapping: swap asset deviceLocationAccess / illustration device location-access."
+                        },
+                        "location-access-shadow": {
+                            "nodeId": "4472:123",
+                            "name": "illustration / device / location-access-shadow",
+                            "componentKey": "c5fa7880ea54821c1cd3063351f6c15346bf4900",
+                            "description": "AI-READY ILLUSTRATION: illustration/device/location-access-shadow — hand holding a smartphone with a location pin over a stylized map, with a soft ground shadow. Use on screens that request or explain foreground location access permission when a grounded/elevated presentation is preferred. Size: xl (312×312 frame). Family: device/location-access (location-access | location-access-shadow). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled icon, Button leadingIcon, or NavigationBarItem. Distinct from illustration/device/background-location (front-facing phone / background GPS permission). Decorative by default (aria-hidden when adjacent copy explains the permission). React mapping: swap asset deviceLocationAccessShadow / illustration device location-access-shadow."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Standalone components per variant — not a COMPONENT_SET; swap by asset",
+                        "naming": "Semantic qualifiers (not -01/-02). Default matches section name; shadow variant uses -shadow suffix — aligned with onboarding-features/explore and app-usage patterns",
+                        "shadow": "location-access-shadow includes layer ground-shadow (#e9effe oval); default has no ground plane",
+                        "sizeScale": "xl = 312×312 frame (art bbox ~240–270). Do not document as lg 260 — that was incorrect legacy copy",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsBackgroundLocation": "background-location = front-facing phone + map for background GPS permission; location-access = hand-held isometric phone + pin for foreground location access",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "layerHygiene": "Root artwork renamed; ground-shadow renamed on shadow variant. Residual Vector/Clip path group names remain P2",
+                        "usage": "Permission / explain location access screens only"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains the permission (aria-hidden); otherwise provide accessible name from product copy.",
+                    "status": "documented"
+                },
+                "device/background-location": {
+                    "sectionNodeId": "4475:170",
+                    "path": "illustration / device / background-location",
+                    "description": "AI-READY ILLUSTRATION FAMILY: device/background-location — front-facing smartphone with navigation map + pin for background / always-on GPS permission screens. Size: xl (312×312). Members: background-location (no ground shadow) | background-location-shadow (with ground-shadow). Illustration palette is intentionally unbound from semantic DS tokens. Do not use as DS Icons. Distinct from device/location-access (hand-held isometric phone for foreground location access).",
+                    "size": 312,
+                    "sizeLabel": "xl",
+                    "role": "background location / always-on GPS permission",
+                    "members": [
+                        "background-location",
+                        "background-location-shadow"
+                    ],
+                    "assets": {
+                        "background-location": {
+                            "nodeId": "4472:124",
+                            "name": "illustration / device / background-location",
+                            "componentKey": "a561ae59160ef45ac547d25acef6c4e9c6d9ded6",
+                            "description": "AI-READY ILLUSTRATION: illustration/device/background-location — front-facing smartphone with a navigation map and location pin. Use on screens that request or explain background location / always-on GPS permission. Size: xl (312×312 frame). Family: device/background-location (background-location | background-location-shadow). This is the default variant without a ground shadow. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled icon, Button leadingIcon, or NavigationBarItem. Distinct from illustration/device/location-access (hand-held isometric phone + pin for foreground location access). Decorative by default (aria-hidden when adjacent copy explains the permission). React mapping: swap asset deviceBackgroundLocation / illustration device background-location."
+                        },
+                        "background-location-shadow": {
+                            "nodeId": "4472:125",
+                            "name": "illustration / device / background-location-shadow",
+                            "componentKey": "8c1235bead9c8f4dabc2e4079eaadcf26c4f258a",
+                            "description": "AI-READY ILLUSTRATION: illustration/device/background-location-shadow — front-facing smartphone with a navigation map and location pin, with a soft ground shadow. Use on screens that request or explain background location / always-on GPS permission when a grounded/elevated presentation is preferred. Size: xl (312×312 frame). Family: device/background-location (background-location | background-location-shadow). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled icon, Button leadingIcon, or NavigationBarItem. Distinct from illustration/device/location-access (hand-held isometric phone + pin for foreground location access). Decorative by default (aria-hidden when adjacent copy explains the permission). React mapping: swap asset deviceBackgroundLocationShadow / illustration device background-location-shadow."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Standalone components per variant — not a COMPONENT_SET; swap by asset",
+                        "naming": "Semantic qualifiers (not -01/-02). Default matches section name; shadow variant uses -shadow suffix — same pattern as device/location-access",
+                        "shadow": "background-location-shadow includes ground-shadow wrapper + vector (#e9effe oval); phone art lives in sibling artwork group",
+                        "sizeScale": "xl = 312×312 frame. Do not document as lg 260 — incorrect legacy copy",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsLocationAccess": "location-access = hand-held isometric phone + pin for foreground location; background-location = front-facing phone + map for background GPS permission",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "layerHygiene": "artwork + ground-shadow renamed. Residual Vector/Group names remain P2",
+                        "usage": "Background location / always-on GPS permission screens only"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains the permission (aria-hidden); otherwise provide accessible name from product copy.",
+                    "status": "documented"
+                },
+                "device/app-usage": {
+                    "sectionNodeId": "4471:167",
+                    "path": "illustration / device / app-usage",
+                    "description": "AI-READY ILLUSTRATION FAMILY: device/app-usage — md (156×156) hand + smartphone scenarios for app feature marketing. Peer members (not shadow variants): app-usage (floating UI cards) | discount (%↔$) | insurance-claim (tap CTA). Section name is historical grouping; assets live at illustration / device / {asset}. Illustration palette unbound from semantic DS tokens. Do not use as DS Icons.",
+                    "size": 156,
+                    "sizeLabel": "md",
+                    "role": "app feature / promo / claim marketing scenes",
+                    "members": [
+                        "app-usage",
+                        "discount",
+                        "insurance-claim"
+                    ],
+                    "assets": {
+                        "app-usage": {
+                            "nodeId": "4472:18176",
+                            "name": "illustration / device / app-usage",
+                            "componentKey": "d0ea81c1027bccb9d6ba8d59ef8cb45365d68578",
+                            "description": "AI-READY ILLUSTRATION: illustration/device/app-usage — hand holding a smartphone with floating UI cards (vehicle card + list tiles). Use on screens that explain or promote everyday app usage, home features, or multi-card vehicle/app content. Size: md (156×156). Family: device/app-usage (app-usage | discount | insurance-claim) — peer scenarios under the same section, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled icon, Button leadingIcon, or NavigationBarItem. Decorative by default (aria-hidden when adjacent copy explains the feature). React mapping: swap asset deviceAppUsage / illustration device app-usage."
+                        },
+                        "discount": {
+                            "nodeId": "4472:18177",
+                            "name": "illustration / device / discount",
+                            "componentKey": "176deccbaf1847fc73d174eaf8b31bcfa869094c",
+                            "description": "AI-READY ILLUSTRATION: illustration/device/discount — hand holding a smartphone showing a % badge linked to a $ mark (savings / discount metaphor). Use on screens for promotions, coupons, cashback, or app benefits. Size: md (156×156). Family: device/app-usage (app-usage | discount | insurance-claim) — peer scenarios under the same section, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled icon, Button leadingIcon, or NavigationBarItem. Decorative by default (aria-hidden when adjacent copy explains the offer). React mapping: swap asset deviceDiscount / illustration device discount."
+                        },
+                        "insurance-claim": {
+                            "nodeId": "4472:18178",
+                            "name": "illustration / device / insurance-claim",
+                            "componentKey": "9ce3ce1a64cc969400b4c0ffd47320558657eab0",
+                            "description": "AI-READY ILLUSTRATION: illustration/device/insurance-claim — hand tapping a circular action button on a smartphone (claim / activate insurance metaphor). Use on screens for insurance claim, acionamento, or related vehicle-insurance CTAs. Size: md (156×156). Family: device/app-usage (app-usage | discount | insurance-claim) — peer scenarios under the same section, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled icon, Button leadingIcon, or NavigationBarItem. Decorative by default (aria-hidden when adjacent copy explains the action). React mapping: swap asset deviceInsuranceClaim / illustration device insurance-claim."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Three standalone peer components — not a COMPONENT_SET and not shadow variants of one motif",
+                        "naming": "Asset names already semantic (app-usage | discount | insurance-claim). Section title app-usage is a grouping label only",
+                        "descriptionFix": "app-usage art is floating feature cards — not a settings gear (legacy PT copy was wrong)",
+                        "sizeScale": "md = 156×156",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "vsLocationFamilies": "Smaller than location-access / background-location (xl 312); different role (feature marketing vs permission)",
+                        "layerHygiene": "Roots renamed to artwork (insurance-claim also has accent Vector). Residual inner Vector/Group names remain P2",
+                        "usage": "Feature marketing, promo, and insurance-claim CTA screens"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains the feature/offer/action (aria-hidden); otherwise provide accessible name from product copy.",
+                    "status": "documented"
+                },
+                "device/onboarding": {
+                    "sectionNodeId": "4480:177",
+                    "path": "illustration / device / onboarding",
+                    "description": "AI-READY ILLUSTRATION FAMILY: device/onboarding — xl (312×312) onboarding scenes. Peer members: onboarding-features (hand + phone + feature tiles) | onboarding-explore (person + large phone). Illustration palette unbound from semantic DS tokens. Do not use as DS Icons. Distinct from device/app-usage (md marketing scenes) and onboarding-scene (full scene compositions).",
+                    "size": 312,
+                    "sizeLabel": "xl",
+                    "role": "onboarding capability / explore scenes",
+                    "members": [
+                        "onboarding-features",
+                        "onboarding-explore"
+                    ],
+                    "assets": {
+                        "onboarding-features": {
+                            "nodeId": "4481:121",
+                            "name": "illustration / device / onboarding-features",
+                            "componentKey": "3517d467ccece7db5fe54091e77f83deebe41ef5",
+                            "description": "AI-READY ILLUSTRATION: illustration/device/onboarding-features — hand holding a smartphone with floating feature tiles (vehicle/assistance, 24h, settings, tools) and brand mark. Use on onboarding screens that introduce app capabilities. Size: xl (312×312). Family: device/onboarding (onboarding-features | onboarding-explore) — peer scenes, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled icon, Button leadingIcon, or NavigationBarItem. Distinct from device/app-usage md feature cards. Decorative by default (aria-hidden when adjacent copy explains onboarding). React mapping: swap asset deviceOnboardingFeatures / illustration device onboarding-features."
+                        },
+                        "onboarding-explore": {
+                            "nodeId": "4481:122",
+                            "name": "illustration / device / onboarding-explore",
+                            "componentKey": "cdde44dc14b880dd86ed4b33846a13ddb4b87a73",
+                            "description": "AI-READY ILLUSTRATION: illustration/device/onboarding-explore — person interacting with a large upright smartphone (explore / first-use metaphor), with soft ground oval. Use on onboarding screens that invite exploring the app. Size: xl (312×312). Family: device/onboarding (onboarding-features | onboarding-explore) — peer scenes, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled icon, Button leadingIcon, or NavigationBarItem. Distinct from device/app-usage md hand+phone scenes. Decorative by default (aria-hidden when adjacent copy explains onboarding). React mapping: swap asset deviceOnboardingExplore / illustration device onboarding-explore."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Two standalone peer components — not a COMPONENT_SET and not shadow variants",
+                        "naming": "Semantic qualifiers already in place (onboarding-features | onboarding-explore)",
+                        "sizeScale": "xl = 312×312",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsAppUsage": "onboarding = xl intro scenes; app-usage = md feature/promo/claim marketing",
+                        "vsOnboardingScene": "device/onboarding = device-focused assets; onboarding-scene = fuller multi-element scenes (separate family)",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "layerHygiene": "Roots renamed to artwork. Residual inner Vector/Group names remain P2",
+                        "usage": "Onboarding capability intro and explore screens"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains onboarding (aria-hidden); otherwise provide accessible name from product copy.",
+                    "status": "documented"
+                },
+                "object": {
+                    "sectionNodeId": "4471:168",
+                    "path": "illustration / object",
+                    "description": "AI-READY ILLUSTRATION FAMILY: object — standalone object marks (not device/hand scenes). Current inventory: search (magnifier + ? badge) at sm (~107×104). Illustration palette unbound from semantic DS tokens. Do not use as DS Icons chrome (e.g. search-outline).",
+                    "size": 107,
+                    "sizeLabel": "sm",
+                    "sizeNote": "Frame ~107×104 (near-square sm); art bbox ~88×88",
+                    "role": "empty-state / search object mark",
+                    "members": [
+                        "search"
+                    ],
+                    "assets": {
+                        "search": {
+                            "nodeId": "4476:121",
+                            "name": "illustration / object / search",
+                            "componentKey": "e4c02d9a398afb6a1c4d9296b8ea6945a93fe3fe",
+                            "description": "AI-READY ILLUSTRATION: illustration/object/search — magnifying glass with a purple ? badge. Use on search, empty results, or vehicle/find flows. Size: sm (~107×104). Family: object (search; additional object assets may be added later). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as a DS Icons outline/filled search icon (e.g. search-outline) or Button leadingIcon — this is an illustrated empty-state mark, not chrome iconography. Decorative by default (aria-hidden when adjacent copy explains the empty/search state). React mapping: swap asset objectSearch / illustration object search."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Standalone component per object — not a COMPONENT_SET",
+                        "naming": "illustration / object / {asset} — search already semantic",
+                        "sizeScale": "sm ≈ 104–107; document actual frame 107×104",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled) — illustrated empty-state mark vs navigation/chrome icons",
+                        "vsVehicleCard": "Both sm-scale; vehicle-card is vehicle artwork; object/search is magnifier empty-state",
+                        "layerHygiene": "Root renamed to artwork. Residual inner Vector names remain P2",
+                        "inventory": "Only search published today",
+                        "usage": "Search empty states, no-results, find/vehicle search marketing"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains the empty/search state (aria-hidden); otherwise provide accessible name from product copy.",
+                    "status": "documented"
+                },
+                "person": {
+                    "sectionNodeId": "4475:169",
+                    "path": "illustration / person",
+                    "description": "AI-READY ILLUSTRATION FAMILY: person — illustrated people for photo/selfie upload guidance. Members: photo-upload (success framing) | photo-upload-error (rejected framing). Size: md (156×156). Illustration palette unbound from semantic DS tokens. Do not use as Avatar or DS Icons. Sibling section person/photo-analysis is documented separately.",
+                    "size": 156,
+                    "sizeLabel": "md",
+                    "role": "selfie / photo-upload success vs error guidance",
+                    "members": [
+                        "photo-upload",
+                        "photo-upload-error"
+                    ],
+                    "assets": {
+                        "photo-upload": {
+                            "nodeId": "4476:122",
+                            "name": "illustration / person / photo-upload",
+                            "componentKey": "db2f93d0c580d18b92ff6aba2eb15719e64516b5",
+                            "description": "AI-READY ILLUSTRATION: illustration/person/photo-upload — illustrated person with blue face-guide oval (validated / success selfie framing). Use on photo or selfie upload flows when framing is accepted. Size: md (156×156). Family: person (photo-upload | photo-upload-error) — status peers, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as Avatar, DS Icons, or Button leadingIcon. Distinct from person/photo-analysis (separate larger analysis scene). Decorative by default (aria-hidden when adjacent copy explains upload status). React mapping: swap asset personPhotoUpload / illustration person photo-upload."
+                        },
+                        "photo-upload-error": {
+                            "nodeId": "4476:123",
+                            "name": "illustration / person / photo-upload-error",
+                            "componentKey": "1b62cf1410d310c7128ec5c607367517117b29e8",
+                            "description": "AI-READY ILLUSTRATION: illustration/person/photo-upload-error — illustrated person with red face-guide oval and X badge (rejected / error selfie framing). Use on photo or selfie upload flows when framing is rejected. Size: md (156×156). Family: person (photo-upload | photo-upload-error) — status peers, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*; error accent aligns visually with danger but stays unbound). Do not use as Avatar, DS Icons, Toast, or Button leadingIcon. Distinct from person/photo-analysis. Decorative by default (aria-hidden when adjacent copy explains the error). React mapping: swap asset personPhotoUploadError / illustration person photo-upload-error."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Two standalone status peers — not a COMPONENT_SET and not shadow variants",
+                        "naming": "photo-upload | photo-upload-error — semantic status suffix (aligned with product feedback danger/success metaphor, tokens unbound)",
+                        "sizeScale": "md = 156×156",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsAvatar": "Illustrated guidance mark — not Avatar / AvatarGroup",
+                        "vsPhotoAnalysis": "person/photo-analysis is a separate larger scene section (4550:407)",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "layerHygiene": "Roots renamed to artwork; error-badge on photo-upload-error. Residual inner Vector names remain P2",
+                        "usage": "Selfie/photo upload framing guidance only"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains upload status (aria-hidden); otherwise provide accessible name from product copy. Pair with live text for success vs error — do not rely on color alone.",
+                    "status": "documented"
+                },
+                "person/photo-analysis": {
+                    "sectionNodeId": "4550:407",
+                    "path": "illustration / person / photo-analysis",
+                    "description": "AI-READY ILLUSTRATION FAMILY: person/photo-analysis — 2xl (520×520) scene of a person reviewing photos on a laptop with floating search / security-or-time / camera badges. Use for photo analysis or verification steps. Distinct from person photo-upload framing pair (md 156). Illustration palette unbound from semantic DS tokens. Do not use as Avatar or DS Icons.",
+                    "size": 520,
+                    "sizeLabel": "2xl",
+                    "role": "photo analysis / verification scene",
+                    "members": [
+                        "photo-analysis"
+                    ],
+                    "assets": {
+                        "photo-analysis": {
+                            "nodeId": "4552:121",
+                            "name": "illustration / person / photo-analysis",
+                            "componentKey": "0da14349b1c16615acbe037a4ef55e34c30102ca",
+                            "description": "AI-READY ILLUSTRATION: illustration/person/photo-analysis — person at a laptop with floating badges (search, security/time, camera) for photo review / verification flows. Use on screens that explain analyzing or checking submitted photos. Size: 2xl (520×520). Family: person/photo-analysis (single asset). Distinct from person/photo-upload | photo-upload-error (md selfie framing guidance). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as Avatar, DS Icons, or Button leadingIcon. Decorative by default (aria-hidden when adjacent copy explains the analysis step). React mapping: swap asset personPhotoAnalysis / illustration person photo-analysis."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Standalone scene component — not a COMPONENT_SET",
+                        "naming": "Section and asset share illustration / person / photo-analysis",
+                        "sizeScale": "2xl = 520×520 (larger than xl 312 device onboarding)",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsPhotoUpload": "photo-upload pair = md framing guidance; photo-analysis = 2xl review/verification scene",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "badges": "Floating badges communicate search / security-or-time / camera — product copy should clarify middle badge if needed",
+                        "layerHygiene": "Root renamed to artwork. Residual inner Vector/Group names remain P2",
+                        "usage": "Photo analysis / verification / review screens"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains the analysis step (aria-hidden); otherwise provide accessible name from product copy.",
+                    "status": "documented"
+                },
+                "document/driver": {
+                    "sectionNodeId": "4475:171",
+                    "path": "illustration / document / driver",
+                    "description": "AI-READY ILLUSTRATION FAMILY: document/driver — lg (260×260) driver ID / CNH upload guidance. Members: driver-upload (validated) | driver-upload-error (rejected + scan corners + X). Illustration palette unbound from semantic DS tokens. Do not use as FileUploaderItem or DS Icons. Sibling: document/vehicle.",
+                    "size": 260,
+                    "sizeLabel": "lg",
+                    "role": "driver document upload success vs error",
+                    "members": [
+                        "driver-upload",
+                        "driver-upload-error"
+                    ],
+                    "assets": {
+                        "driver-upload": {
+                            "nodeId": "4477:121",
+                            "name": "illustration / document / driver-upload",
+                            "componentKey": "d4ff09d0a08c108b4bb8702bb38469c21efc1822",
+                            "description": "AI-READY ILLUSTRATION: illustration/document/driver-upload — illustrated driver ID / CNH document in validated state. Use on driver document upload or verification flows when the document is accepted. Size: lg (260×260). Family: document/driver (driver-upload | driver-upload-error) — status peers, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as FileUploaderItem, DS Icons, or Button leadingIcon. Distinct from document/vehicle-upload. Decorative by default (aria-hidden when adjacent copy explains upload status). React mapping: swap asset documentDriverUpload / illustration document driver-upload."
+                        },
+                        "driver-upload-error": {
+                            "nodeId": "4477:122",
+                            "name": "illustration / document / driver-upload-error",
+                            "componentKey": "fb2119e2cce3246eb14367b97ba0f80f71bb4dda",
+                            "description": "AI-READY ILLUSTRATION: illustration/document/driver-upload-error — illustrated driver ID / CNH with scan corner guides and X error badge (rejected). Use on driver document upload or verification flows when the document is rejected. Size: lg (260×260). Family: document/driver (driver-upload | driver-upload-error) — status peers, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*; error accent aligns visually with danger but stays unbound). Do not use as FileUploaderItem, Toast, DS Icons, or Button leadingIcon. Distinct from document/vehicle-upload-error. Decorative by default (aria-hidden when adjacent copy explains the error). React mapping: swap asset documentDriverUploadError / illustration document driver-upload-error."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Two standalone status peers — not a COMPONENT_SET and not shadow variants",
+                        "naming": "driver-upload | driver-upload-error — semantic status suffix",
+                        "sizeScale": "lg = 260×260 (true lg; distinct from xl 312)",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsVehicleDoc": "document/vehicle = vehicle registration docs; document/driver = driver ID / CNH",
+                        "vsFileUploader": "Illustrated guidance mark — not FileUploader / FileUploaderItem",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "layerHygiene": "Roots renamed to artwork; error-badge when present on error variant. Residual inner Vector names remain P2",
+                        "usage": "Driver document upload / verification screens"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains upload status (aria-hidden); otherwise provide accessible name from product copy. Pair with live text for success vs error — do not rely on color alone.",
+                    "status": "documented"
+                },
+                "document/vehicle": {
+                    "sectionNodeId": "4475:172",
+                    "path": "illustration / document / vehicle",
+                    "description": "AI-READY ILLUSTRATION FAMILY: document/vehicle — lg (260×260) vehicle registration (CRLV) upload guidance. Members: vehicle-upload (validated) | vehicle-upload-error (rejected + scan corners + X). Illustration palette unbound from semantic DS tokens. Do not use as FileUploaderItem or DS Icons. Sibling: document/driver (CNH).",
+                    "size": 260,
+                    "sizeLabel": "lg",
+                    "role": "vehicle document upload success vs error",
+                    "members": [
+                        "vehicle-upload",
+                        "vehicle-upload-error"
+                    ],
+                    "assets": {
+                        "vehicle-upload": {
+                            "nodeId": "4477:123",
+                            "name": "illustration / document / vehicle-upload",
+                            "componentKey": "505696824e5d78d71009623ff41ce1b64b2fef46",
+                            "description": "AI-READY ILLUSTRATION: illustration/document/vehicle-upload — illustrated vehicle registration document (CRLV) in validated state. Use on vehicle document upload or verification flows when the document is accepted. Size: lg (260×260). Family: document/vehicle (vehicle-upload | vehicle-upload-error) — status peers, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as FileUploaderItem, DS Icons, or Button leadingIcon. Distinct from document/driver-upload (CNH / driver ID). Decorative by default (aria-hidden when adjacent copy explains upload status). React mapping: swap asset documentVehicleUpload / illustration document vehicle-upload."
+                        },
+                        "vehicle-upload-error": {
+                            "nodeId": "4477:124",
+                            "name": "illustration / document / vehicle-upload-error",
+                            "componentKey": "e00473372ab3688ed1a59c466a0f556be1753339",
+                            "description": "AI-READY ILLUSTRATION: illustration/document/vehicle-upload-error — illustrated vehicle registration document (CRLV) with scan corner guides and X error badge (rejected). Use on vehicle document upload or verification flows when the document is rejected. Size: lg (260×260). Family: document/vehicle (vehicle-upload | vehicle-upload-error) — status peers, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*; error accent aligns visually with danger but stays unbound). Do not use as FileUploaderItem, Toast, DS Icons, or Button leadingIcon. Distinct from document/driver-upload-error. Decorative by default (aria-hidden when adjacent copy explains the error). React mapping: swap asset documentVehicleUploadError / illustration document vehicle-upload-error."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Two standalone status peers — not a COMPONENT_SET and not shadow variants",
+                        "naming": "vehicle-upload | vehicle-upload-error — semantic status suffix",
+                        "sizeScale": "lg = 260×260",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsDriverDoc": "document/driver = driver ID / CNH; document/vehicle = vehicle registration / CRLV",
+                        "vsFileUploader": "Illustrated guidance mark — not FileUploader / FileUploaderItem",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "layerHygiene": "Roots renamed to artwork; error-badge on error variant. Residual inner Vector names remain P2",
+                        "usage": "Vehicle document upload / verification screens"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains upload status (aria-hidden); otherwise provide accessible name from product copy. Pair with live text for success vs error — do not rely on color alone.",
+                    "status": "documented"
+                },
+                "vehicle-photo": {
+                    "sectionNodeId": "4475:174",
+                    "path": "illustration / vehicle-photo",
+                    "description": "AI-READY ILLUSTRATION FAMILY: vehicle-photo — 2xl (520×520) exterior angle guides for vehicle photo capture. Members: angle-front-left | angle-front-right | angle-rear-left | angle-rear-right. Each includes viewfinder corners and tip callouts (visible plate, closed windows). Illustration palette unbound from semantic DS tokens. Sibling sections: vehicle-photo/chassis, vehicle-photo/dashboard.",
+                    "size": 520,
+                    "sizeLabel": "2xl",
+                    "role": "vehicle exterior photo-capture angle guides",
+                    "members": [
+                        "angle-front-left",
+                        "angle-front-right",
+                        "angle-rear-left",
+                        "angle-rear-right"
+                    ],
+                    "assets": {
+                        "angle-front-left": {
+                            "nodeId": "4478:121",
+                            "name": "illustration / vehicle-photo / angle-front-left",
+                            "componentKey": "929f087c6884504d49662b39ab4f7a407aded5b0",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-photo/angle-front-left — vehicle photo-capture guide from the front-left three-quarter angle, with viewfinder corners and tip callouts (visible plate, closed windows). Use in vehicle photo onboarding / inspection capture flows. Size: 2xl (520×520). Family: vehicle-photo (angle-front-left | angle-front-right | angle-rear-left | angle-rear-right). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as DS Icons, Button leadingIcon, or vehicle-icon/vehicle-card marks. Decorative by default (aria-hidden when adjacent copy explains the capture tip). React mapping: swap asset vehiclePhotoAngleFrontLeft / illustration vehicle-photo angle-front-left."
+                        },
+                        "angle-front-right": {
+                            "nodeId": "4478:122",
+                            "name": "illustration / vehicle-photo / angle-front-right",
+                            "componentKey": "b2799c5c7eef037bb2d51e1209833edfdf509f90",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-photo/angle-front-right — vehicle photo-capture guide from the front-right three-quarter angle, with viewfinder corners and tip callouts (visible plate, closed windows). Use in vehicle photo onboarding / inspection capture flows. Size: 2xl (520×520). Family: vehicle-photo (angle-front-left | angle-front-right | angle-rear-left | angle-rear-right). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as DS Icons, Button leadingIcon, or vehicle-icon/vehicle-card marks. Decorative by default (aria-hidden when adjacent copy explains the capture tip). React mapping: swap asset vehiclePhotoAngleFrontRight / illustration vehicle-photo angle-front-right."
+                        },
+                        "angle-rear-left": {
+                            "nodeId": "4478:123",
+                            "name": "illustration / vehicle-photo / angle-rear-left",
+                            "componentKey": "648f3bd72b3f80bebf674d58f1d4b19d6f7c021f",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-photo/angle-rear-left — vehicle photo-capture guide from the rear-left three-quarter angle, with viewfinder corners and tip callouts (visible plate, closed windows). Use in vehicle photo onboarding / inspection capture flows. Size: 2xl (520×520). Family: vehicle-photo (angle-front-left | angle-front-right | angle-rear-left | angle-rear-right). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as DS Icons, Button leadingIcon, or vehicle-icon/vehicle-card marks. Decorative by default (aria-hidden when adjacent copy explains the capture tip). React mapping: swap asset vehiclePhotoAngleRearLeft / illustration vehicle-photo angle-rear-left."
+                        },
+                        "angle-rear-right": {
+                            "nodeId": "4478:124",
+                            "name": "illustration / vehicle-photo / angle-rear-right",
+                            "componentKey": "a257af8c468db863a0246908a0a41fd2f38822cc",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-photo/angle-rear-right — vehicle photo-capture guide from the rear-right three-quarter angle, with viewfinder corners and tip callouts (visible plate, closed windows). Use in vehicle photo onboarding / inspection capture flows. Size: 2xl (520×520). Family: vehicle-photo (angle-front-left | angle-front-right | angle-rear-left | angle-rear-right). Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as DS Icons, Button leadingIcon, or vehicle-icon/vehicle-card marks. Decorative by default (aria-hidden when adjacent copy explains the capture tip). React mapping: swap asset vehiclePhotoAngleRearRight / illustration vehicle-photo angle-rear-right."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Four standalone angle peers — not a COMPONENT_SET; swap by capture step",
+                        "naming": "angle-{front|rear}-{left|right} — semantic camera positions",
+                        "anatomy": "artwork (vehicle + viewfinder) + tips (callout bubbles)",
+                        "sizeScale": "2xl = 520×520",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsVehicleIconCard": "Not compact vehicle-icon (52) or vehicle-card (104) — full capture guides",
+                        "vsChassisDashboard": "Sibling sections chassis and dashboard cover VIN/plate-area and dashboard capture",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "layerHygiene": "Roots renamed to artwork + tips. Residual inner Vector names remain P2",
+                        "usage": "Vehicle exterior photo capture / inspection guidance"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains the capture tip (aria-hidden); tip text in the illustration is not a substitute for accessible instructions in the product UI.",
+                    "status": "documented"
+                },
+                "vehicle-photo/chassis": {
+                    "sectionNodeId": "4480:175",
+                    "path": "illustration / vehicle-photo / chassis",
+                    "description": "AI-READY ILLUSTRATION FAMILY: vehicle-photo/chassis — 2xl (520×520) chassis/VIN plate capture guides. Members: chassis-upload (tip + purple viewfinder) | chassis-upload-error (red viewfinder + X). Illustration palette unbound from semantic DS tokens. Sibling of vehicle-photo angles and dashboard.",
+                    "size": 520,
+                    "sizeLabel": "2xl",
+                    "role": "chassis / VIN photo-capture guidance",
+                    "members": [
+                        "chassis-upload",
+                        "chassis-upload-error"
+                    ],
+                    "assets": {
+                        "chassis-upload": {
+                            "nodeId": "4479:125",
+                            "name": "illustration / vehicle-photo / chassis-upload",
+                            "componentKey": "d60cb857b05f589a3c5a6fc81174a84906a7a1a6",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-photo/chassis-upload — chassis/VIN plate capture guide with purple viewfinder corners and a tip callout for locating the chassis number. Use in vehicle photo flows when capturing the chassis. Size: 2xl (520×520). Family: vehicle-photo/chassis (chassis-upload | chassis-upload-error) — status peers, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as DS Icons, Button leadingIcon, or exterior vehicle-photo angles. Decorative by default (aria-hidden when adjacent copy explains the tip). React mapping: swap asset vehiclePhotoChassisUpload / illustration vehicle-photo chassis-upload."
+                        },
+                        "chassis-upload-error": {
+                            "nodeId": "4479:126",
+                            "name": "illustration / vehicle-photo / chassis-upload-error",
+                            "componentKey": "5e168986f31b17beb46c45f970471732e38bde34",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-photo/chassis-upload-error — chassis/VIN plate capture with red viewfinder corners and X error badge (rejected). Use in vehicle photo flows when the chassis photo is rejected. Size: 2xl (520×520). Family: vehicle-photo/chassis (chassis-upload | chassis-upload-error) — status peers, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*; error accent aligns visually with danger but stays unbound). Do not use as Toast, DS Icons, or Button leadingIcon. Decorative by default (aria-hidden when adjacent copy explains the error). React mapping: swap asset vehiclePhotoChassisUploadError / illustration vehicle-photo chassis-upload-error."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Two standalone status peers — not a COMPONENT_SET",
+                        "naming": "chassis-upload | chassis-upload-error — semantic status suffix",
+                        "sizeScale": "2xl = 520×520",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsAngles": "Exterior angle guides show the whole car; chassis focuses on VIN/plate detail",
+                        "vsDashboard": "Dashboard section covers instrument cluster / engine-on capture",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "layerHygiene": "Roots renamed to artwork; error-badge on error variant. Residual inner Vector names remain P2",
+                        "usage": "Chassis / VIN photo capture and rejection states"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains the tip or error (aria-hidden); tip text in the illustration is not a substitute for accessible instructions in the product UI. Pair success/error with live text — do not rely on color alone.",
+                    "status": "documented"
+                },
+                "vehicle-photo/dashboard": {
+                    "sectionNodeId": "4480:176",
+                    "path": "illustration / vehicle-photo / dashboard",
+                    "description": "AI-READY ILLUSTRATION FAMILY: vehicle-photo/dashboard — 2xl (~520×561) dashboard / instrument-cluster capture guides. Members: dashboard-upload (start-engine tip) | dashboard-upload-error (X badge). Renamed from mislabeled dashboard-upload-success → dashboard-upload-error. Illustration palette unbound from semantic DS tokens. Completes vehicle-photo sibling set with angles + chassis.",
+                    "size": 520,
+                    "sizeLabel": "2xl",
+                    "sizeNote": "Frame 520×561 (not square)",
+                    "role": "dashboard photo-capture guidance",
+                    "members": [
+                        "dashboard-upload",
+                        "dashboard-upload-error"
+                    ],
+                    "assets": {
+                        "dashboard-upload": {
+                            "nodeId": "4479:128",
+                            "name": "illustration / vehicle-photo / dashboard-upload",
+                            "componentKey": "bcbd3455e3c8d2b22e58eadc86aa25f826f9054e",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-photo/dashboard-upload — vehicle dashboard capture guide with tip callout to start the engine before taking the photo. Use in vehicle photo flows for dashboard / instrument-cluster capture. Size: 2xl (520×561). Family: vehicle-photo/dashboard (dashboard-upload | dashboard-upload-error) — status peers, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as DS Icons, Button leadingIcon, or exterior vehicle-photo angles. Decorative by default (aria-hidden when adjacent copy explains the tip). React mapping: swap asset vehiclePhotoDashboardUpload / illustration vehicle-photo dashboard-upload."
+                        },
+                        "dashboard-upload-error": {
+                            "nodeId": "4479:127",
+                            "name": "illustration / vehicle-photo / dashboard-upload-error",
+                            "componentKey": "0f4f40f81ef0ae52ab0d473f9901991e10f3b464",
+                            "description": "AI-READY ILLUSTRATION: illustration/vehicle-photo/dashboard-upload-error — vehicle dashboard capture with X error badge (rejected). Use in vehicle photo flows when the dashboard photo is rejected. Size: 2xl (520×561). Family: vehicle-photo/dashboard (dashboard-upload | dashboard-upload-error) — status peers, not shadow variants. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*; error accent aligns visually with danger but stays unbound). Do not use as Toast, DS Icons, or Button leadingIcon. Decorative by default (aria-hidden when adjacent copy explains the error). React mapping: swap asset vehiclePhotoDashboardUploadError / illustration vehicle-photo dashboard-upload-error."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Two standalone status peers — not a COMPONENT_SET",
+                        "naming": "dashboard-upload | dashboard-upload-error. Fixed: former dashboard-upload-success was the error art (X badge)",
+                        "anatomy": "dashboard-upload: artwork + tips; dashboard-upload-error: artwork + error-badge",
+                        "sizeScale": "2xl frame ~520×561 (taller than square 520 angles/chassis)",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsChassis": "Chassis = VIN plate detail; dashboard = instrument cluster / engine-on capture",
+                        "vsAngles": "Exterior angles show the whole car; dashboard is interior cluster",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "layerHygiene": "artwork / tips / error-badge renamed. Residual inner Vector names remain P2",
+                        "usage": "Dashboard photo capture and rejection states"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains the tip or error (aria-hidden); tip text in the illustration is not a substitute for accessible instructions in the product UI. Pair success/error with live text — do not rely on color alone.",
+                    "status": "documented"
+                },
+                "onboarding-scene": {
+                    "sectionNodeId": "4480:178",
+                    "path": "illustration / onboarding-scene",
+                    "description": "AI-READY ILLUSTRATION FAMILY: onboarding-scene — xl (312×312) full lifestyle scenes for onboarding storytelling. Members: ride-together | celebration. Asset paths aligned to onboarding-scene / (renamed from onboarding /). Distinct from device/onboarding (hand+phone). Sibling: onboarding-scene/referral. Illustration palette unbound from semantic DS tokens.",
+                    "size": 312,
+                    "sizeLabel": "xl",
+                    "role": "onboarding lifestyle / celebration scenes",
+                    "members": [
+                        "ride-together",
+                        "celebration"
+                    ],
+                    "assets": {
+                        "ride-together": {
+                            "nodeId": "4482:121",
+                            "name": "illustration / onboarding-scene / ride-together",
+                            "componentKey": "9e1b2b2604df8edf1db861d20c1bed1a40d2cf0e",
+                            "description": "AI-READY ILLUSTRATION: illustration/onboarding-scene/ride-together — scene of people (and a dog) riding together in a car, representing the shared trip experience. Use on app onboarding or journey storytelling screens. Size: xl (312×312). Family: onboarding-scene (ride-together | celebration). Distinct from device/onboarding (hand+phone feature scenes) and onboarding-scene/refer-friends. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as DS Icons, Avatar, or Button leadingIcon. Decorative by default (aria-hidden when adjacent copy explains onboarding). React mapping: swap asset onboardingSceneRideTogether / illustration onboarding-scene ride-together."
+                        },
+                        "celebration": {
+                            "nodeId": "4482:122",
+                            "name": "illustration / onboarding-scene / celebration",
+                            "componentKey": "30869f6ba5f37822a029f910ae0174e6f8256805",
+                            "description": "AI-READY ILLUSTRATION: illustration/onboarding-scene/celebration — celebration scene with people and confetti, representing completion / success. Use on onboarding completion or signup success screens. Size: xl (312×312). Family: onboarding-scene (ride-together | celebration). Distinct from device/onboarding and onboarding-scene/refer-friends. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as DS Icons, Toast success, Avatar, or Button leadingIcon. Decorative by default (aria-hidden when adjacent copy explains completion). React mapping: swap asset onboardingSceneCelebration / illustration onboarding-scene celebration."
+                        }
+                    },
+                    "consumers": [],
+                    "rules": {
+                        "composition": "Two standalone peer scenes — not a COMPONENT_SET",
+                        "naming": "Paths use illustration / onboarding-scene / {asset} (aligned with section; fixed former onboarding / prefix)",
+                        "sizeScale": "xl = 312×312 (same frame as device/onboarding)",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsDeviceOnboarding": "device/onboarding = hand+phone capability/explore; onboarding-scene = full lifestyle scenes",
+                        "vsReferral": "onboarding-scene/referral (refer-friends) is a separate section for referral program",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "layerHygiene": "Roots renamed to artwork. Residual inner Vector names remain P2",
+                        "usage": "Onboarding storytelling and completion celebration"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains onboarding (aria-hidden); otherwise provide accessible name from product copy.",
+                    "status": "documented"
+                },
+                "onboarding-scene/referral": {
+                    "sectionNodeId": "4480:179",
+                    "path": "illustration / onboarding-scene / referral",
+                    "description": "AI-READY ILLUSTRATION FAMILY: onboarding-scene/referral — xl (312×312) friend-referral program scene. Member: refer-friends (two drivers high-five + progressive referral scale). Distinct from onboarding-scene ride-together | celebration and from device/discount. Illustration palette unbound from semantic DS tokens.",
+                    "size": 312,
+                    "sizeLabel": "xl",
+                    "role": "referral / progressive benefits scene",
+                    "members": [
+                        "refer-friends"
+                    ],
+                    "assets": {
+                        "refer-friends": {
+                            "nodeId": "4484:121",
+                            "name": "illustration / onboarding-scene / refer-friends",
+                            "componentKey": "648bd31964c49beb2ae64715df5014f8063f52f1",
+                            "description": "AI-READY ILLUSTRATION: illustration/onboarding-scene/refer-friends — two drivers high-fiving between cars with a progressive referral scale (+7…+10 / 70%…100%) and a % badge. Use on friend-referral / benefits program screens. Size: xl (312×312). Family: onboarding-scene/referral (refer-friends). Distinct from onboarding-scene ride-together | celebration and from device/discount. Colors use a dedicated illustration palette (hardcoded fills — intentional exception; do not remap to semantic text/* or color/actions/*). Do not use as DS Icons, Avatar, ReferralDiscountCard chrome, or Button leadingIcon. Decorative by default (aria-hidden when adjacent copy explains the referral program). React mapping: swap asset onboardingSceneReferFriends / illustration onboarding-scene refer-friends."
+                        }
+                    },
+                    "consumers": [
+                        "ReferralDiscountCard (product marketing surfaces — illustration may be composed externally)"
+                    ],
+                    "rules": {
+                        "composition": "Standalone scene component — not a COMPONENT_SET",
+                        "naming": "Section referral; asset refer-friends — semantic and path-aligned",
+                        "sizeScale": "xl = 312×312",
+                        "colorException": "Hardcoded illustration palette OK — do not force semantic UI tokens",
+                        "vsOnboardingScene": "ride-together / celebration = lifestyle onboarding; refer-friends = referral program ladder",
+                        "vsDeviceDiscount": "device/discount = md hand+%↔$ mark; refer-friends = full referral scene",
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "layerHygiene": "Root renamed to artwork (was Clip path group). Residual inner Vector names remain P2",
+                        "usage": "Friend referral / progressive discount program screens"
+                    },
+                    "accessibility": "Decorative when adjacent copy explains the referral program (aria-hidden); scale labels in the art are not a substitute for accessible benefit copy in the product UI.",
+                    "status": "documented"
+                }
+            },
+            "backlog": [
+                "illustration / Cred-card (discovered leftover — naming + docs pending)"
+            ]
         },
         "components": {
             "Autocomplete": {
@@ -10174,6 +10913,91 @@
         },
         "recentUpdates": [
             {
+                "id": "animations-feedback-success",
+                "date": "2026-08-14",
+                "summary": "Foundations/Animations: animation/feedback/success; renamed Feedback Positivo; AI-READY synced."
+            },
+            {
+                "id": "illustrations-onboarding-scene-referral",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: onboarding-scene/refer-friends; AI-READY synced. Planned illustration catalog complete."
+            },
+            {
+                "id": "illustrations-onboarding-scene",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: onboarding-scene ride-together + celebration; path rename; AI-READY synced."
+            },
+            {
+                "id": "illustrations-vehicle-photo-dashboard",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: vehicle-photo/dashboard; fixed success→error rename; AI-READY synced. Vehicle-photo complete."
+            },
+            {
+                "id": "illustrations-vehicle-photo-chassis",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: vehicle-photo/chassis upload success/error pair 2xl; AI-READY synced."
+            },
+            {
+                "id": "illustrations-vehicle-photo-angles",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: vehicle-photo four exterior angles 2xl; AI-READY synced."
+            },
+            {
+                "id": "illustrations-document-vehicle",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: document/vehicle upload success/error pair lg 260; AI-READY synced. Document sections complete."
+            },
+            {
+                "id": "illustrations-document-driver",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: document/driver upload success/error pair lg 260; AI-READY synced."
+            },
+            {
+                "id": "illustrations-person-photo-analysis",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: person/photo-analysis 2xl scene; AI-READY synced. Person sections complete."
+            },
+            {
+                "id": "illustrations-person-photo-upload",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: person photo-upload success/error pair; AI-READY synced."
+            },
+            {
+                "id": "illustrations-object-search",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: object/search empty-state magnifier; AI-READY synced."
+            },
+            {
+                "id": "illustrations-device-onboarding",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: device/onboarding (features | explore) xl 312; AI-READY synced. Device sections complete."
+            },
+            {
+                "id": "illustrations-device-app-usage",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: device/app-usage (app-usage | discount | insurance-claim) md 156; AI-READY synced."
+            },
+            {
+                "id": "illustrations-device-background-location",
+                "date": "2026-08-14",
+                "summary": "Foundations/Illustrations: device/background-location renamed to semantic assets + xl size; AI-READY synced."
+            },
+            {
+                "id": "illustrations-device-location-access",
+                "date": "2026-08-10",
+                "summary": "Foundations/Illustrations: device/location-access renamed to semantic assets + xl size; AI-READY synced."
+            },
+            {
+                "id": "illustrations-vehicle-card",
+                "date": "2026-08-10",
+                "summary": "Foundations/Illustrations: vehicle-card family (hatch 104×104 sm) documented; distinct from vehicle-icon."
+            },
+            {
+                "id": "illustrations-vehicle-icon",
+                "date": "2026-08-10",
+                "summary": "Foundations/Illustrations: vehicle-icon family (sedan|van|suv) documented; color exception noted."
+            },
+            {
                 "id": "toast-docs-sync",
                 "date": "2026-08-10",
                 "summary": "Toast docs synced: local DS icons copy; elevation/1; icon fill map matches canvas."
@@ -11151,6 +11975,49 @@
                     "Need a validation or selection border? → color/border-feedback/{success|danger|primary}"
                 ]
             }
+        },
+        "animations": {
+            "summary": "Motion feedback assets for celebratory/outcome moments. Distinct from Illustrations (static scenes) and DS Icons (*-outline/*-filled). Figma shows the composed end-state; motion is implemented in Lottie or product code.",
+            "naming": "animation / {family} / {asset}",
+            "colorPolicy": "Hardcoded animation palette is an intentional exception — do not remap fills to semantic text/* or color/actions/* tokens.",
+            "motionNote": "Figma component is a static composition (no prototype reactions required). Suggested motion: circle pop-in, then check draw, then confetti. Prefer Lottie/code for the timed sequence; respect prefers-reduced-motion (show end-state only).",
+            "page": {
+                "name": "Ilustrações e animações",
+                "nodeId": "4326:1764"
+            },
+            "families": {
+                "feedback": {
+                    "sectionNodeId": "4788:138",
+                    "path": "animation/feedback",
+                    "size": "320×320",
+                    "sizeLabel": "feedback",
+                    "role": "Outcome / celebratory motion feedback (success first; other statuses may follow)",
+                    "description": "AI-READY ANIMATION FAMILY: animation/feedback — motion feedback for successful outcomes. Vocabulary: success (not positive/Positivo). Do not use as Toast icon, Alert statusIcon, DS Icons, or Button leadingIcon.",
+                    "members": [
+                        "success"
+                    ],
+                    "assets": {
+                        "success": {
+                            "name": "animation / feedback / success",
+                            "nodeId": "4663:572",
+                            "componentKey": "ba6ae158e3e8bf244b7e2207d07193b58de61e66",
+                            "description": "AI-READY ANIMATION: animation/feedback/success — blue circle + white check + confetti. Canvas = composed end-state; implement motion in Lottie/code. Size 320×320. Feedback vocabulary: success. Decorative/celebratory; pair with accessible live text for the outcome."
+                        }
+                    },
+                    "rules": {
+                        "vsIcons": "Not DS Icons (*-outline/*-filled)",
+                        "vsIllustrations": "Not static illustration scenes — this family is motion feedback",
+                        "vocabulary": "Use success (deprecated: positive / Positivo)",
+                        "layerHygiene": "Top groups: confetti, badge; badge children: circle, check-path",
+                        "usage": "Full-screen or modal success moments after a completed flow"
+                    },
+                    "accessibility": "Decorative by default when adjacent copy announces success (aria-hidden + live region text). Honor prefers-reduced-motion by showing the static end-state without particle motion.",
+                    "status": "documented"
+                }
+            },
+            "backlog": [
+                "Additional feedback statuses (warning | danger | info) if product needs matching motion assets"
+            ]
         }
     }
 }

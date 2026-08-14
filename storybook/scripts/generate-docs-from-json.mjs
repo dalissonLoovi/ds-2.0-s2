@@ -259,7 +259,7 @@ ${escapeMdx(storybook.purpose || '')}
 
 ## Sidebar
 
-- **Foundations** — global rules and feedback vocabulary
+- **Foundations** — global rules, feedback vocabulary, illustrations, and animations
 - **Components** — one page per entry in the metadata JSON
 - **Changelog** — recent documentation revisions
 `;
@@ -316,6 +316,7 @@ ${bulletList(libs.doNot)}
 | Icon layers | ${escapeMdx(gr.iconLayers || '')} |
 | Icon scale | sizes \`80/64/40/32/24/20/16\`; stroke from master \`24px\` + \`border/width/025\` |
 | Icon libraries | ${escapeMdx(gr.iconLibraries || libs.summary || 'Library Swap + *-outline/*-filled contract')} |
+| Illustrations | ${escapeMdx(gr.illustrations || 'See Foundations/Illustrations — dedicated palette may be unbound from semantic UI tokens')} |
 | Code Connect | ${escapeMdx(gr.codeConnect || 'not configured')} |
 
 ## Feedback vocabulary
@@ -424,6 +425,182 @@ ${escapeMdx(component.description || '_No description._')}
   return md;
 }
 
+function generateIllustrations(storybook, fileKey) {
+  const ill = storybook.illustrations || {};
+  const families = ill.families || {};
+  const familyEntries = objectEntries(families);
+  const page = ill.page || {};
+  const pageUrl = figmaNodeUrl(fileKey, page.nodeId);
+
+  let md = `import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Illustrations" />
+
+# Illustrations
+
+> **Seed docs** — illustrated assets (not DS Icons). Catalogued from Figma page Ilustrações e animações.
+
+${escapeMdx(ill.summary || '')}
+
+| | |
+| --- | --- |
+| **Figma page** | ${pageUrl ? `[${escapeMdx(page.name || 'Ilustrações e animações')}](${pageUrl})` : escapeMdx(page.name || '—')} |
+| **Naming** | \`${escapeMdx(ill.naming || 'illustration / {family} / {asset}')}\` |
+| **Families documented** | ${familyEntries.length} |
+
+## Color policy
+
+${escapeMdx(ill.colorPolicy || '')}
+
+`;
+
+  if (!familyEntries.length) {
+    md += '_No illustration families in metadata yet._\n';
+    return md;
+  }
+
+  for (const [familyId, family] of familyEntries) {
+    const sectionUrl = figmaNodeUrl(fileKey, family.sectionNodeId);
+    md += `## \`${escapeMdx(familyId)}\`\n\n`;
+    if (sectionUrl) {
+      md += `[Open section in Figma](${sectionUrl}) · node \`${escapeMdx(family.sectionNodeId)}\`\n\n`;
+    }
+    md += `${escapeMdx(family.description || '')}\n\n`;
+    md += `| Field | Value |\n| --- | --- |\n`;
+    md += `| Size | ${escapeMdx(String(family.size ?? '—'))}${family.sizeLabel ? ` (\`${escapeMdx(family.sizeLabel)}\`)` : ''} |\n`;
+    if (family.path) {
+      md += `| Path | \`${escapeMdx(family.path)}\` |\n`;
+    }
+    md += `| Role | ${escapeMdx(family.role || '—')} |\n`;
+    md += `| Members | ${(asList(family.members).length ? asList(family.members) : Object.keys(family.assets || {})).map((m) => `\`${escapeMdx(m)}\``).join(', ') || '—'} |\n`;
+    md += `| Status | ${escapeMdx(family.status || '—')} |\n\n`;
+
+    const assets = family.assets || {};
+    const assetEntries = objectEntries(assets);
+    if (assetEntries.length) {
+      md += '### Assets\n\n| Asset | Node | Component key |\n| --- | --- | --- |\n';
+      for (const [assetId, asset] of assetEntries) {
+        const aUrl = figmaNodeUrl(fileKey, asset.nodeId);
+        const nameCell = aUrl
+          ? `[${escapeTableCell(asset.name || assetId)}](${aUrl})`
+          : `\`${escapeTableCell(asset.name || assetId)}\``;
+        md += `| \`${escapeTableCell(assetId)}\` | ${nameCell} · \`${escapeTableCell(asset.nodeId || '')}\` | \`${escapeTableCell(asset.componentKey || '—')}\` |\n`;
+      }
+      md += '\n';
+
+      for (const [assetId, asset] of assetEntries) {
+        if (!asset.description) continue;
+        md += `#### ${escapeMdx(assetId)}\n\n${escapeMdx(asset.description)}\n\n`;
+      }
+    }
+
+    if (family.consumers) {
+      md += '### Consumers\n\n' + bulletList(family.consumers) + '\n';
+    }
+    md += rulesSection(family.rules);
+    if (family.accessibility) {
+      md += `### Accessibility\n\n${escapeMdx(family.accessibility)}\n\n`;
+    }
+  }
+
+  const backlog = asList(ill.backlog);
+  if (backlog.length) {
+    md += '## Backlog (other families)\n\n' + bulletList(backlog) + '\n';
+  }
+
+  return md;
+}
+
+function generateAnimations(storybook, fileKey) {
+  const anim = storybook.animations || {};
+  const families = anim.families || {};
+  const familyEntries = objectEntries(families);
+  const page = anim.page || {};
+  const pageUrl = figmaNodeUrl(fileKey, page.nodeId);
+
+  let md = `import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Animations" />
+
+# Animations
+
+> **Seed docs** — motion feedback assets (not DS Icons, not Illustrations). Catalogued from Figma page Ilustrações e animações.
+
+${escapeMdx(anim.summary || '')}
+
+| | |
+| --- | --- |
+| **Figma page** | ${pageUrl ? `[${escapeMdx(page.name || 'Ilustrações e animações')}](${pageUrl})` : escapeMdx(page.name || '—')} |
+| **Naming** | \`${escapeMdx(anim.naming || 'animation / {family} / {asset}')}\` |
+| **Families documented** | ${familyEntries.length} |
+
+## Color policy
+
+${escapeMdx(anim.colorPolicy || '')}
+
+## Motion note
+
+${escapeMdx(anim.motionNote || '')}
+
+`;
+
+  if (!familyEntries.length) {
+    md += '_No animation families in metadata yet._\n';
+    return md;
+  }
+
+  for (const [familyId, family] of familyEntries) {
+    const sectionUrl = figmaNodeUrl(fileKey, family.sectionNodeId);
+    md += `## \`${escapeMdx(familyId)}\`\n\n`;
+    if (sectionUrl) {
+      md += `[Open section in Figma](${sectionUrl}) · node \`${escapeMdx(family.sectionNodeId)}\`\n\n`;
+    }
+    md += `${escapeMdx(family.description || '')}\n\n`;
+    md += `| Field | Value |\n| --- | --- |\n`;
+    md += `| Size | ${escapeMdx(String(family.size ?? '—'))}${family.sizeLabel ? ` (\`${escapeMdx(family.sizeLabel)}\`)` : ''} |\n`;
+    if (family.path) {
+      md += `| Path | \`${escapeMdx(family.path)}\` |\n`;
+    }
+    md += `| Role | ${escapeMdx(family.role || '—')} |\n`;
+    md += `| Members | ${(asList(family.members).length ? asList(family.members) : Object.keys(family.assets || {})).map((m) => `\`${escapeMdx(m)}\``).join(', ') || '—'} |\n`;
+    md += `| Status | ${escapeMdx(family.status || '—')} |\n\n`;
+
+    const assets = family.assets || {};
+    const assetEntries = objectEntries(assets);
+    if (assetEntries.length) {
+      md += '### Assets\n\n| Asset | Node | Component key |\n| --- | --- | --- |\n';
+      for (const [assetId, asset] of assetEntries) {
+        const aUrl = figmaNodeUrl(fileKey, asset.nodeId);
+        const nameCell = aUrl
+          ? `[${escapeTableCell(asset.name || assetId)}](${aUrl})`
+          : `\`${escapeTableCell(asset.name || assetId)}\``;
+        md += `| \`${escapeTableCell(assetId)}\` | ${nameCell} · \`${escapeTableCell(asset.nodeId || '')}\` | \`${escapeTableCell(asset.componentKey || '—')}\` |\n`;
+      }
+      md += '\n';
+
+      for (const [assetId, asset] of assetEntries) {
+        if (!asset.description) continue;
+        md += `#### ${escapeMdx(assetId)}\n\n${escapeMdx(asset.description)}\n\n`;
+      }
+    }
+
+    if (family.consumers) {
+      md += '### Consumers\n\n' + bulletList(family.consumers) + '\n';
+    }
+    md += rulesSection(family.rules);
+    if (family.accessibility) {
+      md += `### Accessibility\n\n${escapeMdx(family.accessibility)}\n\n`;
+    }
+  }
+
+  const backlog = asList(anim.backlog);
+  if (backlog.length) {
+    md += '## Backlog (other families)\n\n' + bulletList(backlog) + '\n';
+  }
+
+  return md;
+}
+
 function generateChangelog(meta, storybook) {
   const changelog = asList(meta.changelog);
   const recent = asList(storybook.recentUpdates);
@@ -485,6 +662,16 @@ function main() {
   writeFile(path.join(STORYBOOK_SRC, 'Introduction.mdx'), generateIntroduction(meta, storybook));
   writeFile(path.join(foundationsDir, 'GlobalRules.mdx'), generateGlobalRules(storybook, meta));
   writeFile(path.join(foundationsDir, 'Feedback.mdx'), generateFeedback(storybook));
+  writeFile(
+    path.join(foundationsDir, 'Illustrations.mdx'),
+    generateIllustrations(storybook, fileKey),
+  );
+  if (storybook.animations) {
+    writeFile(
+      path.join(foundationsDir, 'Animations.mdx'),
+      generateAnimations(storybook, fileKey),
+    );
+  }
   writeFile(path.join(STORYBOOK_SRC, 'Changelog.mdx'), generateChangelog(meta, storybook));
 
   const names = Object.keys(components).sort((a, b) => a.localeCompare(b));
@@ -496,9 +683,11 @@ function main() {
     );
   }
 
+  const foundationCount =
+    2 + (storybook.illustrations ? 1 : 0) + (storybook.animations ? 1 : 0);
   console.log(`Generated Storybook docs:`);
   console.log(`  Introduction + Changelog`);
-  console.log(`  Foundations: 2`);
+  console.log(`  Foundations: ${foundationCount}`);
   console.log(`  Components: ${names.length}`);
   console.log(`  Output: ${STORYBOOK_SRC}`);
 }

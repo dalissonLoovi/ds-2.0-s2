@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Animations" />
+
+# Animations
+
+> **Seed docs** — motion feedback assets (not DS Icons, not Illustrations). Catalogued from Figma page Ilustrações e animações.
+
+Motion feedback assets for celebratory/outcome moments. Distinct from Illustrations (static scenes) and DS Icons (*-outline/*-filled). Figma shows the composed end-state; motion is implemented in Lottie or product code.
+
+| | |
+| --- | --- |
+| **Figma page** | [Ilustrações e animações](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4326-1764) |
+| **Naming** | `animation / \{family\} / \{asset\}` |
+| **Families documented** | 1 |
+
+## Color policy
+
+Hardcoded animation palette is an intentional exception — do not remap fills to semantic text/* or color/actions/* tokens.
+
+## Motion note
+
+Figma component is a static composition (no prototype reactions required). Suggested motion: circle pop-in, then check draw, then confetti. Prefer Lottie/code for the timed sequence; respect prefers-reduced-motion (show end-state only).
+
+## `feedback`
+
+[Open section in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4788-138) · node `4788:138`
+
+AI-READY ANIMATION FAMILY: animation/feedback — motion feedback for successful outcomes. Vocabulary: success (not positive/Positivo). Do not use as Toast icon, Alert statusIcon, DS Icons, or Button leadingIcon.
+
+| Field | Value |
+| --- | --- |
+| Size | 320×320 (`feedback`) |
+| Path | `animation/feedback` |
+| Role | Outcome / celebratory motion feedback (success first; other statuses may follow) |
+| Members | `success` |
+| Status | documented |
+
+### Assets
+
+| Asset | Node | Component key |
+| --- | --- | --- |
+| `success` | [animation / feedback / success](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4663-572) · `4663:572` | `ba6ae158e3e8bf244b7e2207d07193b58de61e66` |
+
+#### success
+
+AI-READY ANIMATION: animation/feedback/success — blue circle + white check + confetti. Canvas = composed end-state; implement motion in Lottie/code. Size 320×320. Feedback vocabulary: success. Decorative/celebratory; pair with accessible live text for the outcome.
+
+## Rules
+
+- **vsIcons:** Not DS Icons (*-outline/*-filled)
+- **vsIllustrations:** Not static illustration scenes — this family is motion feedback
+- **vocabulary:** Use success (deprecated: positive / Positivo)
+- **layerHygiene:** Top groups: confetti, badge; badge children: circle, check-path
+- **usage:** Full-screen or modal success moments after a completed flow
+
+### Accessibility
+
+Decorative by default when adjacent copy announces success (aria-hidden + live region text). Honor prefers-reduced-motion by showing the static end-state without particle motion.
+
+## Backlog (other families)
+
+- Additional feedback statuses (warning | danger | info) if product needs matching motion assets
+
