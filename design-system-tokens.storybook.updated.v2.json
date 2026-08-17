@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-17T17:15:00.000Z",
-        "storybookRevision": "2026-08-17-w5-w6-docs-audit",
+        "storybookUpdatedAt": "2026-08-17T18:00:00.000Z",
+        "storybookRevision": "2026-08-17-painel-promo-tokens-seed",
         "changelog": [
+            {
+                "date": "2026-08-17",
+                "type": "painel-tokens-seed-sync",
+                "summary": "Painel gap 01: seed tokens.color.background-surface promo-1|promo-2|promo-accent (Figma aliases lavender-2/azure-2/lavender-1); repair brand-muted $type/$value. Audit queue validated (02–08,10 already in Figma+seed)."
+            },
             {
                 "date": "2026-08-17",
                 "type": "docs-audit-w2-w3-nodeids",
@@ -2439,7 +2444,24 @@
                     "$description": "export: color-bg-surface-brand | solid brand chrome background. Alias of primitive-colors/brand-blue. Scopes: FRAME_FILL, SHAPE_FILL. Not for text/brand or color/actions/primary."
                 },
                 "brand-muted": {
-                    "": "export: color-bg-surface-brand-muted | brand-blue @ 72% alpha (primitive-colors/brand-blue-72). Use for VehicleSummaryCard appearance=secondary. Prefer this over paint opacity on variable-bound fills (library instances drop paint opacity). Scopes: FRAME_FILL, SHAPE_FILL."
+                    "$type": "color",
+                    "$value": "#4967EEB8",
+                    "$description": "export: color-bg-surface-brand-muted | brand-blue @ 72% alpha (primitive-colors/brand-blue-72). Use for VehicleSummaryCard appearance=secondary. Prefer this over paint opacity on variable-bound fills (library instances drop paint opacity). Scopes: FRAME_FILL, SHAPE_FILL."
+                },
+                "promo-1": {
+                    "$type": "color",
+                    "$value": "#EEDEFD",
+                    "$description": "export: color-bg-surface-promo-1 | Painel referral wash. Alias of primitive-colors/lavender-2. Scopes: FRAME_FILL, SHAPE_FILL."
+                },
+                "promo-2": {
+                    "$type": "color",
+                    "$value": "#D9E0FF",
+                    "$description": "export: color-bg-surface-promo-2 | Painel secondary promo wash. Alias of primitive-colors/azure-2. Scopes: FRAME_FILL, SHAPE_FILL."
+                },
+                "promo-accent": {
+                    "$type": "color",
+                    "$value": "#DAADFF",
+                    "$description": "export: color-bg-surface-promo-accent | Painel decorative promo accent. Alias of primitive-colors/lavender-1. Scopes: FRAME_FILL, SHAPE_FILL."
                 }
             },
             "border-feedback": {
@@ -10934,6 +10956,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "painel-tokens-seed-sync",
+                "date": "2026-08-17",
+                "summary": "Seed promo-1/2/accent surfaces + fix brand-muted; Painel audit queue validated."
+            },
             {
                 "id": "docs-audit-w5-w6",
                 "date": "2026-08-17",

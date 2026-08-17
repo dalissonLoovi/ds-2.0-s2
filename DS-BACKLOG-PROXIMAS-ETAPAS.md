@@ -161,6 +161,7 @@ Figma (ajuste)
 | Padrões app-cliente / Painel | 🟢 Fechamento declarado; polish contínuo |
 | Fluxo decisão Reusar/Variante/Novo | 🟢 Página Figma publicada |
 | Docs visuais Figma (humanas) | 🟢 **Completo** — ver `DS-HUMAN-DOCS-REGISTRY.md` (~75 frames) |
+| Painel Home audit queue | 🟢 Validada 2026-08-17 — seed promo tokens; componentes alinhados |
 | Storybook Pages sync | 🟢 Operacional |
 | React / Chromatic / Code Connect | ⬜ Depois |
 
