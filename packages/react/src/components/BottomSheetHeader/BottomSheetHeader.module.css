@@ -1,23 +1,36 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  gap: var(--spacing-100, 8px);
+  min-height: 56px;
+  padding: var(--spacing-100, 8px) var(--spacing-150, 10px);
+  color: var(--text-primary);
+}
+
+.leading,
+.trailing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+}
+
+.titleSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 40px;
 }
 
 .title {
   margin: 0;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

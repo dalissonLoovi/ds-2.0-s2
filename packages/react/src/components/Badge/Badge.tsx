@@ -1,31 +1,50 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
 import styles from './Badge.module.css';
 
-export type BadgeProps = HTMLAttributes<HTMLDivElement> & {
-  size?: 'sm' | 'lg';
-  content?: 'dot' | 'count' | 'overflow';
-  label?: string;
-  children?: ReactNode;
+export type BadgeSize = 'sm' | 'lg';
+export type BadgeContent = 'dot' | 'count' | 'overflow';
+
+export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
+  size?: BadgeSize;
+  content?: BadgeContent;
+  count?: number | string;
+  overflowLabel?: string;
+  /** Hide from AT when adjacent text already explains the badge. */
+  decorative?: boolean;
 };
 
 export function Badge({
   size = 'sm',
-  content = 'dot',
-  label = 'Badge',
-  children,
+  content = 'count',
+  count = 1,
+  overflowLabel = '999+',
+  decorative = false,
   className,
   ...rest
 }: BadgeProps) {
+  const label =
+    content === 'dot'
+      ? 'Notification'
+      : content === 'overflow'
+        ? overflowLabel
+        : String(count);
+
   return (
-    <div
-      className={cx(styles.root, className)}
+    <span
+      className={cx(
+        styles.root,
+        styles[`size-${size}`],
+        styles[`content-${content}`],
+        className,
+      )}
       data-size={size}
       data-content={content}
+      aria-hidden={decorative || undefined}
+      aria-label={decorative ? undefined : label}
       {...rest}
     >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>Badge · DS React</p>
-    </div>
+      {content === 'dot' ? null : content === 'overflow' ? overflowLabel : count}
+    </span>
   );
 }

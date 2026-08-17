@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Badge } from '@ds/react/draft';
+import { Badge } from '@ds/react';
 
 const meta = {
-  title: 'Draft/Badge',
+  title: 'Components/Badge',
   component: Badge,
   tags: ['autodocs'],
-  args: { label: 'Badge' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { content: 'count', count: 3, size: 'sm' },
 } satisfies Meta<typeof Badge>;
 
 export default meta;

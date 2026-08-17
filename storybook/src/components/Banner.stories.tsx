@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Banner } from '@ds/react/draft';
+import { Banner } from '@ds/react';
 
 const meta = {
-  title: 'Draft/Banner',
+  title: 'Components/Banner',
   component: Banner,
   tags: ['autodocs'],
-  args: { label: 'Banner' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { status: 'info', message: 'Saved successfully', showAction: true },
 } satisfies Meta<typeof Banner>;
 
 export default meta;

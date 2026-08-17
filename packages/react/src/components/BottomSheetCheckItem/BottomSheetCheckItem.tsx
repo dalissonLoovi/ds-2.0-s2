@@ -1,28 +1,30 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { cx } from '../../utils/cx';
+import { resolveIcon, type DsIconName, type IconComponent } from '../../icons/dsIcons';
 import styles from './BottomSheetCheckItem.module.css';
 
-export type BottomSheetCheckItemProps = HTMLAttributes<HTMLDivElement> & {
-
-  label?: string;
-  children?: ReactNode;
+export type BottomSheetCheckItemProps = HTMLAttributes<HTMLLIElement> & {
+  description?: ReactNode;
+  leadingIcon?: DsIconName | IconComponent | ReactNode;
 };
 
 export function BottomSheetCheckItem({
-
-  label = 'BottomSheetCheckItem',
-  children,
+  description = 'Guideline description',
+  leadingIcon = 'circle-check-filled',
   className,
   ...rest
 }: BottomSheetCheckItemProps) {
-  return (
-    <div
-      className={cx(styles.root, className)}
+  const Icon =
+    typeof leadingIcon === 'string' || typeof leadingIcon === 'function'
+      ? resolveIcon(leadingIcon as DsIconName | IconComponent)
+      : null;
 
-      {...rest}
-    >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>BottomSheetCheckItem · DS React</p>
-    </div>
+  return (
+    <li className={cx(styles.root, className)} {...rest}>
+      <span className={styles.icon} aria-hidden>
+        {Icon ? <Icon size={20} /> : (leadingIcon as ReactNode)}
+      </span>
+      <span className={styles.description}>{description}</span>
+    </li>
   );
 }

@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-17T20:00:00.000Z",
-        "storybookRevision": "2026-08-17-react-w1-formularios",
+        "storybookUpdatedAt": "2026-08-17T21:00:00.000Z",
+        "storybookRevision": "2026-08-17-react-w2-feedback",
         "changelog": [
+            {
+                "date": "2026-08-17",
+                "type": "react-w2-feedback",
+                "summary": "React W2 Feedback polish: Banner/Badge/Tooltip*/Overlay/LoadingSpinner/ProgressBar/BottomSheet(+Header/CheckItem) DoD."
+            },
             {
                 "date": "2026-08-17",
                 "type": "react-w1-formularios",
@@ -5890,8 +5895,8 @@
                     "size": "sm | md | lg"
                 },
                 "accessibility": "Use role=status and aria-live=polite when the spinner is the only loading announcement. Use aria-hidden=true when visible loading text already exists.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Badge": {
                 "nodeId": "3086:5079",
@@ -5914,8 +5919,8 @@
                     "overflowLabel": "visible overflow label such as 999+"
                 },
                 "accessibility": "If the badge is the only indicator, provide an accessible label on the parent. If adjacent text explains it, the badge can be hidden from assistive technology.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Breadcrumb": {
                 "nodeId": "3681:4674",
@@ -6079,8 +6084,8 @@
                     "pattern": "color/background-feedback-primary/{status}",
                     "textOnFill": "text/primary"
                 },
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "BreadcrumbItem": {
                 "nodeId": "3681:3667",
@@ -6736,8 +6741,8 @@
                     "dragHandle (header=none)",
                     "slot / sheetContent"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Accordion": {
                 "nodeId": "3669:9362",
@@ -9103,8 +9108,8 @@
                     "spacing/100 | 200 | 250 and border/radius/150"
                 ],
                 "accessibility": "role=progressbar with aria-valuemin=0, aria-valuemax=100, aria-valuenow; if showValue=false provide an accessible label.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "QuickAccessTile": {
                 "nodeId": "4203:447",
@@ -10011,8 +10016,8 @@
                     "border/radius/300 surface; border/radius/0 arrow; border/width/012 stroke weight"
                 ],
                 "accessibility": "aria-describedby when visible; open on hover/focus; close on blur/mouseleave/Escape; no automatic focus move; arrow aria-hidden.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TooltipRich": {
                 "nodeId": "3566:10477",
@@ -10051,8 +10056,8 @@
                     "secondaryAction label: text/on-color (intentional)"
                 ],
                 "accessibility": "aria-describedby when informative; popover/dialog focus pattern when actionable; Escape closes and returns focus to trigger; arrow aria-hidden; no auto-focus on hover-only reveal.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TableCell": {
                 "nodeId": "3459:13960",
@@ -10486,8 +10491,8 @@
                 "sparseMatrix": [
                     "no type=bottom-sheet + platform=web"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Pagination": {
                 "nodeId": "3653:5672",
@@ -11048,8 +11053,8 @@
                     "arrow-left-outline",
                     "x-outline"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "VehicleConfirmCard": {
                 "nodeId": "4360:444",
@@ -11155,8 +11160,8 @@
                     "leadingIcon (INSTANCE_SWAP FIXED 20)",
                     "description (TEXT HEIGHT + Hug)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "RadioButtonCard": {
                 "nodeId": "4498:68",
@@ -11217,6 +11222,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "react-w2-feedback",
+                "date": "2026-08-17",
+                "summary": "W2 React polish: feedback + overlay family to @ds/react Autodocs/Code Connect."
+            },
             {
                 "id": "react-w1-formularios",
                 "date": "2026-08-17",

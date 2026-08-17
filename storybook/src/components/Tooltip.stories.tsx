@@ -1,19 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Tooltip } from '@ds/react/draft';
+import { Tooltip, Button } from '@ds/react';
 
 const meta = {
-  title: 'Draft/Tooltip',
+  title: 'Components/Tooltip',
   component: Tooltip,
   tags: ['autodocs'],
-  args: { label: 'Tooltip' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { description: 'Helpful tip', open: true },
+  render: (args) => (
+    <Tooltip {...args}>
+      <Button label="Hover me" />
+    </Tooltip>
+  ),
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;

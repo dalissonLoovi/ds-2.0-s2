@@ -1,19 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { BottomSheet } from '@ds/react/draft';
+import { BottomSheet, BottomSheetCheckItem } from '@ds/react';
 
 const meta = {
-  title: 'Draft/BottomSheet',
+  title: 'Components/BottomSheet',
   component: BottomSheet,
   tags: ['autodocs'],
-  args: { label: 'BottomSheet' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { header: 'sheet-header', title: 'Sheet', open: true },
+  parameters: { layout: 'fullscreen' },
+  render: (args) => (
+    <BottomSheet {...args}>
+      <ul style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <BottomSheetCheckItem description="Guideline one" />
+        <BottomSheetCheckItem description="Guideline two" />
+      </ul>
+    </BottomSheet>
+  ),
 } satisfies Meta<typeof BottomSheet>;
 
 export default meta;

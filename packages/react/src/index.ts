@@ -49,5 +49,27 @@ export type { DatePickerSelectProps } from './components/DatePickerSelect/DatePi
 export { DatePickerSelectItem } from './components/DatePickerSelectItem/DatePickerSelectItem';
 export type { DatePickerSelectItemProps } from './components/DatePickerSelectItem/DatePickerSelectItem';
 
+/** W2 — Feedback & overlay */
+export { LoadingSpinner } from './components/LoadingSpinner/LoadingSpinner';
+export type { LoadingSpinnerProps } from './components/LoadingSpinner/LoadingSpinner';
+export { Badge } from './components/Badge/Badge';
+export type { BadgeProps } from './components/Badge/Badge';
+export { ProgressBar } from './components/ProgressBar/ProgressBar';
+export type { ProgressBarProps } from './components/ProgressBar/ProgressBar';
+export { Banner } from './components/Banner/Banner';
+export type { BannerProps } from './components/Banner/Banner';
+export { Tooltip } from './components/Tooltip/Tooltip';
+export type { TooltipProps } from './components/Tooltip/Tooltip';
+export { TooltipRich } from './components/TooltipRich/TooltipRich';
+export type { TooltipRichProps } from './components/TooltipRich/TooltipRich';
+export { BottomSheetCheckItem } from './components/BottomSheetCheckItem/BottomSheetCheckItem';
+export type { BottomSheetCheckItemProps } from './components/BottomSheetCheckItem/BottomSheetCheckItem';
+export { BottomSheetHeader } from './components/BottomSheetHeader/BottomSheetHeader';
+export type { BottomSheetHeaderProps } from './components/BottomSheetHeader/BottomSheetHeader';
+export { BottomSheet } from './components/BottomSheet/BottomSheet';
+export type { BottomSheetProps } from './components/BottomSheet/BottomSheet';
+export { Overlay } from './components/Overlay/Overlay';
+export type { OverlayProps } from './components/Overlay/Overlay';
+
 export { dsIcons } from './icons/dsIcons';
 export type { DsIconName } from './icons/dsIcons';

@@ -202,7 +202,59 @@ const CHECK = {
       expanded: ['false', 'true'],
     },
   },
+
+  LoadingSpinner: {
+    file: 'packages/react/src/components/LoadingSpinner/LoadingSpinner.tsx',
+    axes: { size: ['sm', 'md', 'lg'] },
+  },
+  Badge: {
+    file: 'packages/react/src/components/Badge/Badge.tsx',
+    axes: {
+      size: ['sm', 'lg'],
+      content: ['dot', 'count', 'overflow'],
+    },
+  },
+  ProgressBar: {
+    file: 'packages/react/src/components/ProgressBar/ProgressBar.tsx',
+    axes: { size: ['md', 'sm'] },
+  },
+  Banner: {
+    file: 'packages/react/src/components/Banner/Banner.tsx',
+    axes: { status: ['success', 'warning', 'info', 'danger'] },
+  },
+  Tooltip: {
+    file: 'packages/react/src/components/Tooltip/Tooltip.tsx',
+    axes: {
+      placement: ['top-center','top-left','top-right','bottom-center','bottom-left','bottom-right'],
+    },
+  },
+  TooltipRich: {
+    file: 'packages/react/src/components/TooltipRich/TooltipRich.tsx',
+    axes: {
+      placement: ['top-center','top-left','top-right','bottom-center','bottom-left','bottom-right'],
+    },
+  },
+  Overlay: {
+    file: 'packages/react/src/components/Overlay/Overlay.tsx',
+    axes: {
+      type: ['modal', 'bottom-sheet'],
+      platform: ['mobile', 'web'],
+    },
+  },
+  BottomSheet: {
+    file: 'packages/react/src/components/BottomSheet/BottomSheet.tsx',
+    axes: { header: ['none', 'sheet-header'] },
+  },
+  BottomSheetHeader: {
+    file: 'packages/react/src/components/BottomSheetHeader/BottomSheetHeader.tsx',
+    axes: { appearance: ['default'] },
+  },
+  BottomSheetCheckItem: {
+    file: 'packages/react/src/components/BottomSheetCheckItem/BottomSheetCheckItem.tsx',
+    axes: {},
+  },
 };
+
 
 function main() {
   const data = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));

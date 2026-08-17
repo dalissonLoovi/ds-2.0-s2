@@ -2,6 +2,8 @@ import type { ComponentType, SVGProps } from 'react';
 import {
   IconAlertCircle,
   IconAlertCircleFilled,
+  IconAlertTriangle,
+  IconArrowLeft,
   IconArrowNarrowRight,
   IconCalendar,
   IconCheck,
@@ -11,6 +13,7 @@ import {
   IconChevronUp,
   IconCircleCheck,
   IconCircleCheckFilled,
+  IconDotsVertical,
   IconEye,
   IconEyeOff,
   IconInfoCircle,
@@ -36,6 +39,7 @@ export const dsIcons = {
   'loader-outline': IconLoader2,
   'alert-circle-outline': IconAlertCircle,
   'alert-circle-filled': IconAlertCircleFilled,
+  'alert-triangle-outline': IconAlertTriangle,
   'info-circle-outline': IconInfoCircle,
   'info-circle-filled': IconInfoCircleFilled,
   'circle-check-outline': IconCircleCheck,
@@ -47,6 +51,8 @@ export const dsIcons = {
   'eye-closed-outline': IconEyeOff,
   'calendar-outline': IconCalendar,
   'arrow-narrow-right-outline': IconArrowNarrowRight,
+  'arrow-left-outline': IconArrowLeft,
+  'dots-vertical-outline': IconDotsVertical,
   'user-outline': IconUser,
 } as const;
 

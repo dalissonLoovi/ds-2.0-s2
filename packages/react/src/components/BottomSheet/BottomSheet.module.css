@@ -1,23 +1,43 @@
-.root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+.scrim {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: color-mix(in srgb, var(--color-overlay-overlay, var(--interactive-overlay, #474747)) 72%, transparent);
+  z-index: 1000;
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+.scrimPassive {
+  pointer-events: none;
+  background: transparent;
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.scrimPassive .sheet {
+  pointer-events: auto;
+}
+
+.sheet {
+  display: flex;
+  flex-direction: column;
+  width: min(480px, 100%);
+  max-height: min(90vh, 720px);
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
+  border-radius: var(--border-radius-400, 16px) var(--border-radius-400, 16px) 0 0;
+  box-shadow: 0 -8px 32px color-mix(in srgb, var(--interactive-overlay, #000) 24%, transparent);
+  overflow: hidden;
+}
+
+.dragHandle {
+  width: 40px;
+  height: 4px;
+  margin: var(--spacing-100, 8px) auto 0;
+  border-radius: 999px;
+  background: var(--color-border-2);
+}
+
+.content {
+  padding: var(--spacing-200, 12px) var(--spacing-250, 16px) var(--spacing-300, 24px);
+  overflow: auto;
 }

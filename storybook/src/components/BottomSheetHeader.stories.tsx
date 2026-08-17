@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { BottomSheetHeader } from '@ds/react/draft';
+import { BottomSheetHeader } from '@ds/react';
 
 const meta = {
-  title: 'Draft/BottomSheetHeader',
+  title: 'Components/BottomSheetHeader',
   component: BottomSheetHeader,
   tags: ['autodocs'],
-  args: { label: 'BottomSheetHeader' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { title: 'Sheet', showCloseAction: true },
 } satisfies Meta<typeof BottomSheetHeader>;
 
 export default meta;

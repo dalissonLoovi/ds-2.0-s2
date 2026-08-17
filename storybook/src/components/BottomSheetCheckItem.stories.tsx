@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { BottomSheetCheckItem } from '@ds/react/draft';
+import { BottomSheetCheckItem } from '@ds/react';
 
 const meta = {
-  title: 'Draft/BottomSheetCheckItem',
+  title: 'Components/BottomSheetCheckItem',
   component: BottomSheetCheckItem,
   tags: ['autodocs'],
-  args: { label: 'BottomSheetCheckItem' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { description: 'Keep your documents ready' },
 } satisfies Meta<typeof BottomSheetCheckItem>;
 
 export default meta;

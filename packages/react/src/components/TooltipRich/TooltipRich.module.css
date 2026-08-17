@@ -1,23 +1,112 @@
-.root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
+.wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.panel {
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-150, 10px);
+  width: max(220px, min(280px, 70vw));
   padding: var(--spacing-200, 12px);
+  border-radius: var(--border-radius-300, 12px);
+  background: var(--color-background-surface-inverse-3, var(--color-elevation-inverse-3, #3a3345));
+  color: var(--text-on-color);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--interactive-overlay, #000) 32%, transparent);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-050, 4px);
 }
 
 .title {
   margin: 0;
-  font-weight: 600;
   font-size: 14px;
   line-height: 20px;
+  font-weight: 600;
 }
 
-.meta {
-  margin: 4px 0 0;
+.description {
+  margin: 0;
   font-size: 12px;
   line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+  opacity: 0.92;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-100, 8px);
+}
+
+.secondary {
+  color: var(--text-on-color) !important;
+}
+
+.arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+.placement-top-center,
+.placement-top-left,
+.placement-top-right {
+  bottom: calc(100% + 12px);
+}
+
+.placement-bottom-center,
+.placement-bottom-left,
+.placement-bottom-right {
+  top: calc(100% + 12px);
+}
+
+.placement-top-center,
+.placement-bottom-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.placement-top-left,
+.placement-bottom-left {
+  left: 0;
+}
+
+.placement-top-right,
+.placement-bottom-right {
+  right: 0;
+}
+
+.placement-top-center .arrow,
+.placement-top-left .arrow,
+.placement-top-right .arrow {
+  bottom: -4px;
+}
+
+.placement-bottom-center .arrow,
+.placement-bottom-left .arrow,
+.placement-bottom-right .arrow {
+  top: -4px;
+}
+
+.placement-top-center .arrow,
+.placement-bottom-center .arrow {
+  left: 50%;
+  margin-left: -5px;
+}
+
+.placement-top-left .arrow,
+.placement-bottom-left .arrow {
+  left: 16px;
+}
+
+.placement-top-right .arrow,
+.placement-bottom-right .arrow {
+  right: 16px;
 }

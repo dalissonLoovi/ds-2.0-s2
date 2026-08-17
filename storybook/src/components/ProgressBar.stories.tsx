@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ProgressBar } from '@ds/react/draft';
+import { ProgressBar } from '@ds/react';
 
 const meta = {
-  title: 'Draft/ProgressBar',
+  title: 'Components/ProgressBar',
   component: ProgressBar,
   tags: ['autodocs'],
-  args: { label: 'ProgressBar' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { progress: 40, showValue: true, size: 'md' },
 } satisfies Meta<typeof ProgressBar>;
 
 export default meta;
