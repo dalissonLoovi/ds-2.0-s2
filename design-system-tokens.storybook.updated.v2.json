@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-17T23:30:00.000Z",
-        "storybookRevision": "2026-08-17-react-w4-dados-display",
+        "storybookUpdatedAt": "2026-08-17T23:50:00.000Z",
+        "storybookRevision": "2026-08-17-react-w5-cards-app-cliente",
         "changelog": [
+            {
+                "date": "2026-08-17",
+                "type": "react-w5-cards-app-cliente",
+                "summary": "React W5 Cards & app-cliente polish: Card*Item/Stacked/Horizontal, Dashboard*, QuickAccessTile, product cards, UploadPhotos, FeatureSteps(+Item) DoD. Figma style→React cardStyle."
+            },
             {
                 "date": "2026-08-17",
                 "type": "react-w4-dados-display",
@@ -5505,8 +5510,8 @@
                     "background (Card*Item; exposed; absolute SCALE)",
                     "content → body (Avatar + text) + media | slot"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "CardStacked": {
                 "nodeId": "4170:4433",
@@ -5570,8 +5575,8 @@
                     "headerRow → leading (Avatar + text) + menuAction",
                     "body → headline (title + subtitle) + supportingText + actions"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "CardElevatedItem": {
                 "nodeId": "4170:4564",
@@ -5619,8 +5624,8 @@
                     "focusIndicator (state=focus)",
                     "Card / Stacked card / Horizontal card (parents)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "CardFilledItem": {
                 "nodeId": "4170:4576",
@@ -5667,8 +5672,8 @@
                     "focusIndicator (state=focus)",
                     "Card / Stacked card / Horizontal card (parents)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "CardOutlinedItem": {
                 "nodeId": "4170:4552",
@@ -5715,8 +5720,8 @@
                     "focusIndicator (state=focus)",
                     "Card / Stacked card / Horizontal card (parents)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "DashboardCardPrimary": {
                 "nodeId": "4181:493",
@@ -5762,8 +5767,8 @@
                     "mobile: mainCol (chartWrap + primaryValue + title) + content (metricItem1|2)",
                     "chart → chartTrack + chartAccent (+ leadingIcon on mobile)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "DashboardCardSecondary": {
                 "nodeId": "4181:528",
@@ -5812,8 +5817,8 @@
                     "valuesRow → value + percentual (percentage + growthIcon + percentageDescription)",
                     "info-circle-outline (showInfo)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Carousel": {
                 "nodeId": "4152:849",
@@ -6504,8 +6509,8 @@
                     "priceRow → price + pricePeriod",
                     "cta (Button solid/sm/primary; exposed)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SectionHeader": {
                 "nodeId": "4235:406",
@@ -7294,8 +7299,8 @@
                     "nested Button and ChipTag own their own DS tokens"
                 ],
                 "accessibility": "expose label and status; pending/rejected Button chrome is chevron-only (showLabel=false) but label prop supplies the accessible name and must stay keyboard-accessible; in-review/approved are informational (no focus unless an action is added).",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "VehicleSummaryCard": {
                 "nodeId": "4581:1451",
@@ -7352,8 +7357,8 @@
                     "default: leading.illustration + nameRow(brandModel + model) + plate + spacer + statusChip",
                     "secondary: leading.illustration + title + plate"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ReferralDiscountCard": {
                 "nodeId": "4594:995",
@@ -7412,8 +7417,8 @@
                     "footer (savings | projection | fleetDescription flow + cta Button exposed)",
                     "simulator/fleet blurs (absolute)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ImageItem": {
                 "nodeId": "3671:2329",
@@ -9164,8 +9169,8 @@
                     "icon (INSTANCE_SWAP 24)",
                     "label (TEXT; left-aligned)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "RadioButton": {
                 "nodeId": "3653:5279",
@@ -9381,8 +9386,8 @@
                     "FeatureStepsItem owns badge/connector/text tokens and vertical rhythm (spacing/300)"
                 ],
                 "accessibility": "List; decorative icons/connectors aria-hidden; meaning via headline and supportingText.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "FeatureStepsItem": {
                 "nodeId": "4343:222",
@@ -9414,8 +9419,8 @@
                     "body/large/semi-bold; body/medium/regular"
                 ],
                 "accessibility": "Decorative icon/connector aria-hidden; meaning via headline and supportingText.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "VerticalStepperItem": {
                 "nodeId": "3437:531",
@@ -11102,8 +11107,8 @@
                     "topo → handle",
                     "text → plate + brandModel"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ModalCheckItem": {
                 "nodeId": "4372:19371",
@@ -11232,6 +11237,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "react-w5-cards-app-cliente",
+                "date": "2026-08-17",
+                "summary": "W5 React polish: cards & app-cliente family to @ds/react Autodocs/Code Connect."
+            },
             {
                 "id": "react-w4-dados-display",
                 "date": "2026-08-17",

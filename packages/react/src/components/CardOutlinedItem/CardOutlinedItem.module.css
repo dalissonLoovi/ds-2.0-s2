@@ -1,23 +1,43 @@
 .root {
+  position: relative;
   box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  background: var(--color-background-surface-0);
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--border-radius-300);
+  overflow: hidden;
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+.state-hover {
+  box-shadow: 0 8px 24px var(--color-elevation-6);
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.state-pressed {
+  background: var(--interactive-pressed);
+}
+
+.state-dragged {
+  box-shadow: 0 8px 16px var(--color-elevation-5);
+}
+
+.stateLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.layerHover {
+  background: var(--interactive-hover);
+}
+
+.layerDragged {
+  background: var(--interactive-selected);
+}
+
+.focusIndicator {
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--color-actions-primary);
+  border-radius: inherit;
+  pointer-events: none;
 }

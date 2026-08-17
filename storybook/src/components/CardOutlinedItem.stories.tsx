@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CardOutlinedItem } from '@ds/react/draft';
+import { CardOutlinedItem } from '@ds/react';
 
 const meta = {
-  title: 'Draft/CardOutlinedItem',
+  title: 'Components/CardOutlinedItem',
   component: CardOutlinedItem,
   tags: ['autodocs'],
-  args: { label: 'CardOutlinedItem' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { state: 'enabled' },
 } satisfies Meta<typeof CardOutlinedItem>;
 
 export default meta;

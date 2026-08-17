@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { UploadPhotos } from '@ds/react/draft';
+import { UploadPhotos } from '@ds/react';
 
 const meta = {
-  title: 'Draft/UploadPhotos',
+  title: 'Components/UploadPhotos',
   component: UploadPhotos,
   tags: ['autodocs'],
-  args: { label: 'UploadPhotos' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { status: 'pending', label: 'Foto do documento' },
 } satisfies Meta<typeof UploadPhotos>;
 
 export default meta;

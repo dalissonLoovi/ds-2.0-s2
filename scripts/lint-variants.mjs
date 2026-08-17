@@ -551,6 +551,78 @@ const CHECK = {
     file: 'packages/react/src/components/Carousel/Carousel.tsx',
     axes: {},
   },
+  CardOutlinedItem: {
+    file: 'packages/react/src/components/CardOutlinedItem/CardOutlinedItem.tsx',
+    axes: { state: ['enabled', 'hover', 'focus', 'pressed', 'dragged'] },
+  },
+  CardElevatedItem: {
+    file: 'packages/react/src/components/CardElevatedItem/CardElevatedItem.tsx',
+    axes: { state: ['enabled', 'hover', 'focus', 'pressed', 'dragged'] },
+  },
+  CardFilledItem: {
+    file: 'packages/react/src/components/CardFilledItem/CardFilledItem.tsx',
+    axes: { state: ['enabled', 'hover', 'focus', 'pressed', 'dragged'] },
+  },
+  CardStacked: {
+    file: 'packages/react/src/components/CardStacked/CardStacked.tsx',
+    axes: {
+      style: ['outlined', 'elevated', 'filled'],
+      layout: ['media-and-text', 'slot'],
+    },
+  },
+  CardHorizontal: {
+    file: 'packages/react/src/components/CardHorizontal/CardHorizontal.tsx',
+    axes: {
+      style: ['outlined', 'elevated', 'filled'],
+      layout: ['media-and-text', 'slot'],
+    },
+  },
+  DashboardCardPrimary: {
+    file: 'packages/react/src/components/DashboardCardPrimary/DashboardCardPrimary.tsx',
+    axes: { type: ['web', 'mobile'] },
+  },
+  DashboardCardSecondary: {
+    file: 'packages/react/src/components/DashboardCardSecondary/DashboardCardSecondary.tsx',
+    axes: {
+      type: ['web', 'mobile'],
+      growth: ['up', 'down'],
+    },
+  },
+  QuickAccessTile: {
+    file: 'packages/react/src/components/QuickAccessTile/QuickAccessTile.tsx',
+    axes: { state: ['default', 'pressed', 'disabled'] },
+  },
+  OfferProductCard: {
+    file: 'packages/react/src/components/OfferProductCard/OfferProductCard.tsx',
+    axes: { state: ['default'] },
+  },
+  ReferralDiscountCard: {
+    file: 'packages/react/src/components/ReferralDiscountCard/ReferralDiscountCard.tsx',
+    axes: { mode: ['status', 'simulator', 'fleet'] },
+  },
+  VehicleSummaryCard: {
+    file: 'packages/react/src/components/VehicleSummaryCard/VehicleSummaryCard.tsx',
+    axes: {
+      appearance: ['default', 'secondary'],
+      status: ['active', 'inactive'],
+    },
+  },
+  VehicleConfirmCard: {
+    file: 'packages/react/src/components/VehicleConfirmCard/VehicleConfirmCard.tsx',
+    axes: {},
+  },
+  UploadPhotos: {
+    file: 'packages/react/src/components/UploadPhotos/UploadPhotos.tsx',
+    axes: { status: ['pending', 'in-review', 'approved', 'rejected'] },
+  },
+  FeatureStepsItem: {
+    file: 'packages/react/src/components/FeatureStepsItem/FeatureStepsItem.tsx',
+    axes: {},
+  },
+  FeatureSteps: {
+    file: 'packages/react/src/components/FeatureSteps/FeatureSteps.tsx',
+    axes: {},
+  },
 };
 
 

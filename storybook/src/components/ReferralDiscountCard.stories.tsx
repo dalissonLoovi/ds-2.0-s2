@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ReferralDiscountCard } from '@ds/react/draft';
+import { ReferralDiscountCard } from '@ds/react';
 
 const meta = {
-  title: 'Draft/ReferralDiscountCard',
+  title: 'Components/ReferralDiscountCard',
   component: ReferralDiscountCard,
   tags: ['autodocs'],
-  args: { label: 'ReferralDiscountCard' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { mode: 'status' },
 } satisfies Meta<typeof ReferralDiscountCard>;
 
 export default meta;

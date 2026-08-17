@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { OfferProductCard } from '@ds/react/draft';
+import { OfferProductCard } from '@ds/react';
 
 const meta = {
-  title: 'Draft/OfferProductCard',
+  title: 'Components/OfferProductCard',
   component: OfferProductCard,
   tags: ['autodocs'],
-  args: { label: 'OfferProductCard' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { title: 'Title', ctaLabel: 'Label' },
 } satisfies Meta<typeof OfferProductCard>;
 
 export default meta;

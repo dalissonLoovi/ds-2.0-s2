@@ -1,28 +1,43 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { cx } from '../../utils/cx';
+import { resolveIcon, type DsIconName, type IconComponent } from '../../icons/dsIcons';
 import styles from './QuickAccessTile.module.css';
 
-export type QuickAccessTileProps = HTMLAttributes<HTMLDivElement> & {
-  state?: 'default' | 'pressed' | 'disabled';
+export type QuickAccessTileState = 'default' | 'pressed' | 'disabled';
+
+export type QuickAccessTileProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> & {
+  state?: QuickAccessTileState;
   label?: string;
-  children?: ReactNode;
+  icon?: DsIconName | IconComponent | ReactNode;
 };
 
 export function QuickAccessTile({
   state = 'default',
-  label = 'QuickAccessTile',
-  children,
+  label = 'Label',
+  icon = 'apps-outline',
+  disabled = false,
   className,
   ...rest
 }: QuickAccessTileProps) {
+  const isDisabled = disabled || state === 'disabled';
+  const Icon =
+    typeof icon === 'string' || typeof icon === 'function'
+      ? resolveIcon(icon as DsIconName | IconComponent)
+      : null;
+
   return (
-    <div
-      className={cx(styles.root, className)}
-      data-state={state}
+    <button
+      type="button"
+      className={cx(styles.root, styles[`state-${state}`], isDisabled && styles.disabled, className)}
+      disabled={isDisabled}
+      data-state={isDisabled ? 'disabled' : state}
       {...rest}
     >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>QuickAccessTile · DS React</p>
-    </div>
+      {state === 'pressed' && !isDisabled ? <span className={styles.stateLayer} aria-hidden /> : null}
+      <span className={styles.icon} aria-hidden>
+        {Icon ? <Icon size={24} /> : (icon as ReactNode)}
+      </span>
+      <span className={styles.label}>{label}</span>
+    </button>
   );
 }

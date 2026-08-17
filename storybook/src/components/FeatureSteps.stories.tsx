@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FeatureSteps } from '@ds/react/draft';
+import { FeatureSteps } from '@ds/react';
 
 const meta = {
-  title: 'Draft/FeatureSteps',
+  title: 'Components/FeatureSteps',
   component: FeatureSteps,
   tags: ['autodocs'],
-  args: { label: 'FeatureSteps' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: {},
 } satisfies Meta<typeof FeatureSteps>;
 
 export default meta;

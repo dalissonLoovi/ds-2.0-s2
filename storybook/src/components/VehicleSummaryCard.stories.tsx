@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { VehicleSummaryCard } from '@ds/react/draft';
+import { VehicleSummaryCard } from '@ds/react';
 
 const meta = {
-  title: 'Draft/VehicleSummaryCard',
+  title: 'Components/VehicleSummaryCard',
   component: VehicleSummaryCard,
   tags: ['autodocs'],
-  args: { label: 'VehicleSummaryCard' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { appearance: 'default', status: 'active' },
 } satisfies Meta<typeof VehicleSummaryCard>;
 
 export default meta;

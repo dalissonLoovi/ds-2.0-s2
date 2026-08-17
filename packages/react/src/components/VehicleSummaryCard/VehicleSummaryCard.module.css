@@ -1,23 +1,85 @@
 .root {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100, 8px);
+  padding: var(--spacing-100, 8px) var(--spacing-200, 12px);
+  border-radius: var(--border-radius-400);
   box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  text-decoration: none;
+  color: inherit;
 }
 
+.appearance-default {
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
+}
+
+.appearance-secondary {
+  background: var(--color-background-surface-brand-muted);
+  color: var(--text-on-color);
+  border-radius: var(--border-radius-300);
+  padding: var(--spacing-150, 10px);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.illustration {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: var(--border-radius-200, 8px);
+  background: var(--color-background-surface-2);
+}
+
+.appearance-secondary .illustration {
+  background: color-mix(in srgb, var(--text-on-color) 16%, transparent);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.nameRow,
 .title {
   margin: 0;
-  font-weight: 600;
   font-size: 14px;
   line-height: 20px;
+  font-weight: 500;
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.appearance-secondary .title {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.plate {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-placeholder, var(--text-secondary));
+}
+
+.appearance-secondary .plate {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-on-color);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.chipActive :global(svg) {
+  color: var(--color-background-feedback-primary-success);
+}
+
+.chipInactive :global(svg) {
+  color: var(--color-background-feedback-primary-warning);
 }

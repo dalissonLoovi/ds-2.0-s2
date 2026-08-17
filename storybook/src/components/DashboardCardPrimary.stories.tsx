@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DashboardCardPrimary } from '@ds/react/draft';
+import { DashboardCardPrimary } from '@ds/react';
 
 const meta = {
-  title: 'Draft/DashboardCardPrimary',
+  title: 'Components/DashboardCardPrimary',
   component: DashboardCardPrimary,
   tags: ['autodocs'],
-  args: { label: 'DashboardCardPrimary' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { type: 'web', title: 'Receita', primaryValue: 'R$ 12.000' },
 } satisfies Meta<typeof DashboardCardPrimary>;
 
 export default meta;

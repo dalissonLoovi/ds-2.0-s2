@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { QuickAccessTile } from '@ds/react/draft';
+import { QuickAccessTile } from '@ds/react';
 
 const meta = {
-  title: 'Draft/QuickAccessTile',
+  title: 'Components/QuickAccessTile',
   component: QuickAccessTile,
   tags: ['autodocs'],
-  args: { label: 'QuickAccessTile' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Label', state: 'default' },
 } satisfies Meta<typeof QuickAccessTile>;
 
 export default meta;

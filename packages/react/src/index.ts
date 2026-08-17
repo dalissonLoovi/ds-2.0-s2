@@ -161,5 +161,37 @@ export type { CarouselPaginationItemProps } from './components/CarouselPaginatio
 export { Carousel } from './components/Carousel/Carousel';
 export type { CarouselProps } from './components/Carousel/Carousel';
 
+/** W5 — Cards & app-cliente */
+export { CardOutlinedItem } from './components/CardOutlinedItem/CardOutlinedItem';
+export type { CardOutlinedItemProps } from './components/CardOutlinedItem/CardOutlinedItem';
+export { CardElevatedItem } from './components/CardElevatedItem/CardElevatedItem';
+export type { CardElevatedItemProps } from './components/CardElevatedItem/CardElevatedItem';
+export { CardFilledItem } from './components/CardFilledItem/CardFilledItem';
+export type { CardFilledItemProps } from './components/CardFilledItem/CardFilledItem';
+export { CardStacked } from './components/CardStacked/CardStacked';
+export type { CardStackedProps } from './components/CardStacked/CardStacked';
+export { CardHorizontal } from './components/CardHorizontal/CardHorizontal';
+export type { CardHorizontalProps } from './components/CardHorizontal/CardHorizontal';
+export { DashboardCardPrimary } from './components/DashboardCardPrimary/DashboardCardPrimary';
+export type { DashboardCardPrimaryProps } from './components/DashboardCardPrimary/DashboardCardPrimary';
+export { DashboardCardSecondary } from './components/DashboardCardSecondary/DashboardCardSecondary';
+export type { DashboardCardSecondaryProps } from './components/DashboardCardSecondary/DashboardCardSecondary';
+export { QuickAccessTile } from './components/QuickAccessTile/QuickAccessTile';
+export type { QuickAccessTileProps } from './components/QuickAccessTile/QuickAccessTile';
+export { OfferProductCard } from './components/OfferProductCard/OfferProductCard';
+export type { OfferProductCardProps } from './components/OfferProductCard/OfferProductCard';
+export { ReferralDiscountCard } from './components/ReferralDiscountCard/ReferralDiscountCard';
+export type { ReferralDiscountCardProps } from './components/ReferralDiscountCard/ReferralDiscountCard';
+export { VehicleSummaryCard } from './components/VehicleSummaryCard/VehicleSummaryCard';
+export type { VehicleSummaryCardProps } from './components/VehicleSummaryCard/VehicleSummaryCard';
+export { VehicleConfirmCard } from './components/VehicleConfirmCard/VehicleConfirmCard';
+export type { VehicleConfirmCardProps } from './components/VehicleConfirmCard/VehicleConfirmCard';
+export { UploadPhotos } from './components/UploadPhotos/UploadPhotos';
+export type { UploadPhotosProps } from './components/UploadPhotos/UploadPhotos';
+export { FeatureStepsItem } from './components/FeatureStepsItem/FeatureStepsItem';
+export type { FeatureStepsItemProps } from './components/FeatureStepsItem/FeatureStepsItem';
+export { FeatureSteps } from './components/FeatureSteps/FeatureSteps';
+export type { FeatureStepsProps } from './components/FeatureSteps/FeatureSteps';
+
 export { dsIcons } from './icons/dsIcons';
 export type { DsIconName } from './icons/dsIcons';

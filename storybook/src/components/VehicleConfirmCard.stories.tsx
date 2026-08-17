@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { VehicleConfirmCard } from '@ds/react/draft';
+import { VehicleConfirmCard } from '@ds/react';
 
 const meta = {
-  title: 'Draft/VehicleConfirmCard',
+  title: 'Components/VehicleConfirmCard',
   component: VehicleConfirmCard,
   tags: ['autodocs'],
-  args: { label: 'VehicleConfirmCard' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { plate: 'ABC1D23', brandModel: 'Brand Model' },
 } satisfies Meta<typeof VehicleConfirmCard>;
 
 export default meta;

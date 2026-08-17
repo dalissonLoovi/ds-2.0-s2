@@ -2,27 +2,37 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import { cx } from '../../utils/cx';
 import styles from './CardFilledItem.module.css';
 
+export type CardFilledItemState = 'enabled' | 'hover' | 'focus' | 'pressed' | 'dragged';
+
 export type CardFilledItemProps = HTMLAttributes<HTMLDivElement> & {
-  state?: 'enabled' | 'hover' | 'focus' | 'pressed' | 'dragged';
-  label?: string;
+  state?: CardFilledItemState;
+  showFocusIndicator?: boolean;
   children?: ReactNode;
 };
 
 export function CardFilledItem({
   state = 'enabled',
-  label = 'CardFilledItem',
-  children,
+  showFocusIndicator = true,
   className,
+  children,
   ...rest
 }: CardFilledItemProps) {
   return (
     <div
-      className={cx(styles.root, className)}
+      className={cx(styles.root, styles[`state-${state}`], className)}
       data-state={state}
       {...rest}
     >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>CardFilledItem · DS React</p>
+      <span
+        className={cx(
+          styles.stateLayer,
+          state === 'hover' && styles.layerHover,
+          state === 'dragged' && styles.layerDragged,
+        )}
+        aria-hidden
+      />
+      {state === 'focus' && showFocusIndicator ? <span className={styles.focusIndicator} aria-hidden /> : null}
+      {children}
     </div>
   );
 }
