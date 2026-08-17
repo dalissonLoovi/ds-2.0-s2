@@ -2,7 +2,9 @@
 
 **Atualizado:** 2026-08-17  
 **Arquivo:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2)  
-**Escopo:** páginas próprias para standalone · `*Item`/`*Block` só na Anatomy · prontas para auditoria
+**Escopo:** páginas próprias para standalone · `*Item`/`*Block` só na Anatomy · prontas para auditoria  
+
+**Auditoria:** W0 Docs humanas **aplicada** 2026-08-17 (Button/Input/Chip*/Alert/Toast/Modal). Próximo: auditar W1.
 
 Frame padrão: `{Name} — Docs humanas` · Overview → A11y
 
