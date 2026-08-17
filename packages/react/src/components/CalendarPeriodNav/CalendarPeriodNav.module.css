@@ -1,23 +1,49 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-100, 8px);
+  width: 100%;
+  color: var(--text-primary);
 }
 
-.title {
+.appearance-inverse {
+  background: var(--color-background-surface-inverse-3);
+  color: var(--text-on-color);
+  border-radius: var(--border-radius-200, 8px);
+  padding: var(--spacing-050, 4px);
+}
+
+.period {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
   margin: 0;
-  font-weight: 600;
+  padding: var(--spacing-050, 4px) var(--spacing-100, 8px);
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
   font-size: 14px;
   line-height: 20px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.period:focus-visible {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 2px;
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.expand {
+  display: inline-flex;
+  color: inherit;
+}
+
+.appearance-inverse :global(button:disabled) {
+  color: var(--text-on-color-disabled);
 }

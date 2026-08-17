@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Slider } from '@ds/react/draft';
+import { Slider } from '@ds/react';
 
 const meta = {
-  title: 'Draft/Slider',
+  title: 'Components/Slider',
   component: Slider,
   tags: ['autodocs'],
-  args: { label: 'Slider' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { status: 'enabled', label: 'Label' },
 } satisfies Meta<typeof Slider>;
 
 export default meta;

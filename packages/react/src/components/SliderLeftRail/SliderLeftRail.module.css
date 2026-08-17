@@ -1,23 +1,23 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  position: relative;
+  display: block;
+  height: var(--spacing-025, 2px);
+  border-radius: var(--border-radius-full, 999px);
+  background: var(--color-actions-primary);
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+.endCap {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--border-radius-full, 999px);
+  background: var(--color-actions-primary);
+  transform: translate(50%, -50%);
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.active .endCap {
+  width: 20px;
+  height: 20px;
 }

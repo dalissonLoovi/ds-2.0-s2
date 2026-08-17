@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SliderRail } from '@ds/react/draft';
+import { SliderRail } from '@ds/react';
 
 const meta = {
-  title: 'Draft/SliderRail',
+  title: 'Components/SliderRail',
   component: SliderRail,
   tags: ['autodocs'],
-  args: { label: 'SliderRail' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: {},
 } satisfies Meta<typeof SliderRail>;
 
 export default meta;

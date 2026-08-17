@@ -623,6 +623,140 @@ const CHECK = {
     file: 'packages/react/src/components/FeatureSteps/FeatureSteps.tsx',
     axes: {},
   },
+  FileUploader: {
+    file: 'packages/react/src/components/FileUploader/FileUploader.tsx',
+    axes: {
+      variant: ['default', 'drag-and-drop'],
+      size: ['lg', 'md', 'sm'],
+      state: ['default', 'disabled', 'skeleton'],
+    },
+  },
+  FileUploaderDropzoneItem: {
+    file: 'packages/react/src/components/FileUploaderDropzoneItem/FileUploaderDropzoneItem.tsx',
+    axes: { state: ['default', 'drag-hover', 'focus', 'disabled'] },
+  },
+  FileUploaderItem: {
+    file: 'packages/react/src/components/FileUploaderItem/FileUploaderItem.tsx',
+    axes: {
+      size: ['sm', 'md', 'lg'],
+      state: ['uploaded', 'loading', 'success', 'focus', 'danger-short', 'danger-long'],
+    },
+  },
+  FileUploaderList: {
+    file: 'packages/react/src/components/FileUploaderList/FileUploaderList.tsx',
+    axes: {},
+  },
+  Calendar: {
+    file: 'packages/react/src/components/Calendar/Calendar.tsx',
+    axes: {
+      mode: ['simple', 'month', 'month-year', 'complete', 'time'],
+      picker: ['default', 'month', 'year'],
+      platform: ['mobile', 'web'],
+    },
+  },
+  CalendarDay: {
+    file: 'packages/react/src/components/CalendarDay/CalendarDay.tsx',
+    axes: {
+      kind: ['default', 'today', 'range-start', 'range-middle', 'range-end', 'outside'],
+      state: ['default', 'hover', 'focus', 'selected', 'disabled'],
+    },
+  },
+  CalendarPeriodNav: {
+    file: 'packages/react/src/components/CalendarPeriodNav/CalendarPeriodNav.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      previousDisabled: ['false', 'true'],
+      nextDisabled: ['false', 'true'],
+    },
+  },
+  Slider: {
+    file: 'packages/react/src/components/Slider/Slider.tsx',
+    axes: {
+      status: [
+        'enabled',
+        'hover',
+        'focus',
+        'active',
+        'error',
+        'warning',
+        'disabled',
+        'read-only',
+        'skeleton',
+      ],
+    },
+  },
+  SliderItem: {
+    file: 'packages/react/src/components/SliderItem/SliderItem.tsx',
+    axes: { active: ['false', 'true'] },
+  },
+  SliderBaseItem: {
+    file: 'packages/react/src/components/SliderBaseItem/SliderBaseItem.tsx',
+    axes: {},
+  },
+  SliderRail: {
+    file: 'packages/react/src/components/SliderRail/SliderRail.tsx',
+    axes: {},
+  },
+  SliderLeftRail: {
+    file: 'packages/react/src/components/SliderLeftRail/SliderLeftRail.tsx',
+    axes: { active: ['false', 'true'] },
+  },
+  SliderRightRail: {
+    file: 'packages/react/src/components/SliderRightRail/SliderRightRail.tsx',
+    axes: {},
+  },
+  SliderSkeletonItem: {
+    file: 'packages/react/src/components/SliderSkeletonItem/SliderSkeletonItem.tsx',
+    axes: {},
+  },
+  StepperPrimary: {
+    file: 'packages/react/src/components/StepperPrimary/StepperPrimary.tsx',
+    axes: {
+      status: ['completed', 'current', 'pending'],
+      trail: ['both', 'left', 'right'],
+      trailState: ['none', 'both', 'left', 'right'],
+    },
+  },
+  VerticalStepper: {
+    file: 'packages/react/src/components/VerticalStepper/VerticalStepper.tsx',
+    axes: {},
+  },
+  VerticalStepperItem: {
+    file: 'packages/react/src/components/VerticalStepperItem/VerticalStepperItem.tsx',
+    axes: { status: ['completed', 'current', 'pending', 'error'] },
+  },
+  StepProgressIndicator: {
+    file: 'packages/react/src/components/StepProgressIndicator/StepProgressIndicator.tsx',
+    axes: {
+      stepCount: ['3', '4', '5', '6', '7', '8'],
+      currentStep: ['1', '2', '3', '4', '5', '6', '7', '8'],
+    },
+  },
+  StepProgressSegment: {
+    file: 'packages/react/src/components/StepProgressSegment/StepProgressSegment.tsx',
+    axes: { status: ['completed', 'current', 'pending', 'error'] },
+  },
+  SearchViewFullscreen: {
+    file: 'packages/react/src/components/SearchViewFullscreen/SearchViewFullscreen.tsx',
+    axes: {
+      content: ['value', 'placeholder'],
+      showResults: ['true', 'false'],
+    },
+  },
+  SearchViewModal: {
+    file: 'packages/react/src/components/SearchViewModal/SearchViewModal.tsx',
+    axes: {
+      content: ['value', 'placeholder'],
+      showResults: ['true', 'false'],
+    },
+  },
+  Keyboard: {
+    file: 'packages/react/src/components/Keyboard/Keyboard.tsx',
+    axes: {
+      configuration: ['base-keyboard', 'alphanumeric', 'keypad', 'numeric-only'],
+      layout: ['portrait', 'landscape', 'floating'],
+    },
+  },
 };
 
 

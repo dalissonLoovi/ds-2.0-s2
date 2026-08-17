@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FileUploaderDropzoneItem } from '@ds/react/draft';
+import { FileUploaderDropzoneItem } from '@ds/react';
 
 const meta = {
-  title: 'Draft/FileUploaderDropzoneItem',
+  title: 'Components/FileUploaderDropzoneItem',
   component: FileUploaderDropzoneItem,
   tags: ['autodocs'],
-  args: { label: 'FileUploaderDropzoneItem' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { helperText: 'Arraste arquivos ou clique para selecionar' },
 } satisfies Meta<typeof FileUploaderDropzoneItem>;
 
 export default meta;

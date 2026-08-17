@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StepProgressIndicator } from '@ds/react/draft';
+import { StepProgressIndicator } from '@ds/react';
 
 const meta = {
-  title: 'Draft/StepProgressIndicator',
+  title: 'Components/StepProgressIndicator',
   component: StepProgressIndicator,
   tags: ['autodocs'],
-  args: { label: 'StepProgressIndicator' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { stepCount: '3', currentStep: '1' },
 } satisfies Meta<typeof StepProgressIndicator>;
 
 export default meta;

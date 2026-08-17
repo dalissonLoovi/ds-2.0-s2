@@ -1,23 +1,94 @@
 .root {
   box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
-}
-
-.title {
+  width: 48px;
+  height: 48px;
   margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+  padding: var(--spacing-050, 4px);
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  position: relative;
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.pill {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-full, 999px);
+}
+
+.kind-outside {
+  color: var(--text-placeholder);
+}
+
+.kind-today .pill {
+  box-shadow: inset 0 0 0 1px var(--color-border-1);
+}
+
+.kind-range-start,
+.kind-range-middle,
+.kind-range-end {
+  background: var(--color-background-surface-2);
+}
+
+.kind-range-start {
+  border-radius: var(--border-radius-full, 999px) 0 0 var(--border-radius-full, 999px);
+}
+
+.kind-range-end {
+  border-radius: 0 var(--border-radius-full, 999px) var(--border-radius-full, 999px) 0;
+}
+
+.kind-range-middle {
+  border-radius: 0;
+}
+
+.selected .pill,
+.kind-range-start .pill,
+.kind-range-end .pill,
+.state-selected .pill {
+  background: var(--color-actions-primary);
+  color: var(--text-on-color);
+  box-shadow: none;
+}
+
+.root:hover:not(:disabled) .pill,
+.state-hover .pill {
+  background: var(--interactive-hover);
+}
+
+.selected:hover:not(:disabled) .pill,
+.kind-range-start:hover:not(:disabled) .pill,
+.kind-range-end:hover:not(:disabled) .pill,
+.state-hover.selected .pill {
+  background: var(--interactive-pressed);
+  color: var(--text-on-color);
+}
+
+.root:focus-visible .pill,
+.state-focus .pill {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.disabled,
+.root:disabled {
+  color: var(--text-placeholder);
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.disabled .pill,
+.root:disabled .pill {
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
 }

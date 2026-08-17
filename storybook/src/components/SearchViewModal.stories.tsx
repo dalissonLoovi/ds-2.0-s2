@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SearchViewModal } from '@ds/react/draft';
+import { SearchViewModal } from '@ds/react';
 
 const meta = {
-  title: 'Draft/SearchViewModal',
+  title: 'Components/SearchViewModal',
   component: SearchViewModal,
   tags: ['autodocs'],
-  args: { label: 'SearchViewModal' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { content: 'placeholder', showResults: true },
 } satisfies Meta<typeof SearchViewModal>;
 
 export default meta;

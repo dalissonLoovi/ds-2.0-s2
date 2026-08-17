@@ -1,23 +1,24 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  display: block;
+  height: var(--spacing-050, 4px);
+  flex: 1;
+  min-width: 0;
+  border-radius: var(--border-radius-full, 999px);
+  background: var(--color-background-surface-2);
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+.status-completed {
+  background: var(--interactive-selected);
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.status-current {
+  background: var(--color-actions-primary);
+}
+
+.status-pending {
+  background: var(--color-background-surface-2);
+}
+
+.status-error {
+  background: var(--feedback-danger, var(--color-actions-danger));
 }

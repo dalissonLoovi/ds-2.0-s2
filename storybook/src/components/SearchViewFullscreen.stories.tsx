@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SearchViewFullscreen } from '@ds/react/draft';
+import { SearchViewFullscreen } from '@ds/react';
 
 const meta = {
-  title: 'Draft/SearchViewFullscreen',
+  title: 'Components/SearchViewFullscreen',
   component: SearchViewFullscreen,
   tags: ['autodocs'],
-  args: { label: 'SearchViewFullscreen' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { content: 'placeholder', showResults: true },
 } satisfies Meta<typeof SearchViewFullscreen>;
 
 export default meta;

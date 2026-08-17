@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Calendar } from '@ds/react/draft';
+import { Calendar } from '@ds/react';
 
 const meta = {
-  title: 'Draft/Calendar',
+  title: 'Components/Calendar',
   component: Calendar,
   tags: ['autodocs'],
-  args: { label: 'Calendar' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { mode: 'simple', platform: 'mobile' },
 } satisfies Meta<typeof Calendar>;
 
 export default meta;

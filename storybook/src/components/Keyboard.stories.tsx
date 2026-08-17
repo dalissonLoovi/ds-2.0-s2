@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Keyboard } from '@ds/react/draft';
+import { Keyboard } from '@ds/react';
 
 const meta = {
-  title: 'Draft/Keyboard',
+  title: 'Components/Keyboard',
   component: Keyboard,
   tags: ['autodocs'],
-  args: { label: 'Keyboard' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { configuration: 'base-keyboard', layout: 'portrait' },
 } satisfies Meta<typeof Keyboard>;
 
 export default meta;

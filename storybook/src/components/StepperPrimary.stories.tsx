@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StepperPrimary } from '@ds/react/draft';
+import { StepperPrimary } from '@ds/react';
 
 const meta = {
-  title: 'Draft/StepperPrimary',
+  title: 'Components/StepperPrimary',
   component: StepperPrimary,
   tags: ['autodocs'],
-  args: { label: 'StepperPrimary' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { status: 'current', label: 'Step', trail: 'both', trailState: 'left' },
 } satisfies Meta<typeof StepperPrimary>;
 
 export default meta;

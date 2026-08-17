@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FileUploaderList } from '@ds/react/draft';
+import { FileUploaderList } from '@ds/react';
 
 const meta = {
-  title: 'Draft/FileUploaderList',
+  title: 'Components/FileUploaderList',
   component: FileUploaderList,
   tags: ['autodocs'],
-  args: { label: 'FileUploaderList' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: {},
 } satisfies Meta<typeof FileUploaderList>;
 
 export default meta;

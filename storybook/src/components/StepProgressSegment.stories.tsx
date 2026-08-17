@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StepProgressSegment } from '@ds/react/draft';
+import { StepProgressSegment } from '@ds/react';
 
 const meta = {
-  title: 'Draft/StepProgressSegment',
+  title: 'Components/StepProgressSegment',
   component: StepProgressSegment,
   tags: ['autodocs'],
-  args: { label: 'StepProgressSegment' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { status: 'completed' },
 } satisfies Meta<typeof StepProgressSegment>;
 
 export default meta;

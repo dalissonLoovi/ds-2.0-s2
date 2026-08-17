@@ -1,28 +1,24 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
 import styles from './StepProgressSegment.module.css';
 
-export type StepProgressSegmentProps = HTMLAttributes<HTMLDivElement> & {
-  status?: 'completed' | 'current' | 'pending' | 'error';
-  label?: string;
-  children?: ReactNode;
+export type StepProgressSegmentStatus = 'completed' | 'current' | 'pending' | 'error';
+
+export type StepProgressSegmentProps = HTMLAttributes<HTMLSpanElement> & {
+  status?: StepProgressSegmentStatus;
 };
 
 export function StepProgressSegment({
   status = 'completed',
-  label = 'StepProgressSegment',
-  children,
   className,
   ...rest
 }: StepProgressSegmentProps) {
   return (
-    <div
-      className={cx(styles.root, className)}
+    <span
+      className={cx(styles.root, styles[`status-${status}`], className)}
       data-status={status}
+      aria-hidden
       {...rest}
-    >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>StepProgressSegment · DS React</p>
-    </div>
+    />
   );
 }

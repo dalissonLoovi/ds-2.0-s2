@@ -7,6 +7,7 @@ import {
   IconArchive,
   IconArrowBarRight,
   IconArrowLeft,
+  IconArrowNarrowLeft,
   IconArrowNarrowRight,
   IconCalendar,
   IconCamera,
@@ -24,6 +25,7 @@ import {
   IconCircleCheckFilled,
   IconCircleDotFilled,
   IconCircleFilled,
+  IconCircleXFilled,
   IconCopy,
   IconCurrencyDollar,
   IconDots,
@@ -42,6 +44,7 @@ import {
   IconMenu2,
   IconMinus,
   IconPackage,
+  IconPhoto,
   IconPlayerPlay,
   IconPlus,
   IconSearch,
@@ -49,6 +52,7 @@ import {
   IconSquareCheck,
   IconTrash,
   IconTrophy,
+  IconUpload,
   IconUser,
   IconX,
 } from '@tabler/icons-react';
@@ -77,6 +81,7 @@ export const dsIcons = {
   'eye-closed-outline': IconEyeOff,
   'calendar-outline': IconCalendar,
   'arrow-narrow-right-outline': IconArrowNarrowRight,
+  'arrow-narrow-left-outline': IconArrowNarrowLeft,
   'arrow-left-outline': IconArrowLeft,
   'dots-vertical-outline': IconDotsVertical,
   'menu-2-outline': IconMenu2,
@@ -94,6 +99,8 @@ export const dsIcons = {
   'apps-outline': IconApps,
   'package-outline': IconPackage,
   'camera-outline': IconCamera,
+  'photo-outline': IconPhoto,
+  'upload-outline': IconUpload,
   'currency-dollar-outline': IconCurrencyDollar,
   'file-description-outline': IconFileDescription,
   'file-outline': IconFile,
@@ -106,6 +113,7 @@ export const dsIcons = {
   'circle-dot-filled': IconCircleDotFilled,
   'circle-arrow-up-right-filled': IconCircleArrowUpRightFilled,
   'circle-arrow-down-right-filled': IconCircleArrowDownRightFilled,
+  'circle-x-filled': IconCircleXFilled,
 } as const;
 
 export type DsIconName = keyof typeof dsIcons;

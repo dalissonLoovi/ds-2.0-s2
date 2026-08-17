@@ -37,6 +37,7 @@ export type ListItemProps = HTMLAttributes<HTMLLIElement> & {
   showDivider?: boolean;
   stateLayer?: ListItemStateLayerState;
   href?: string;
+  as?: 'li' | 'div';
   children?: ReactNode;
 };
 
@@ -92,6 +93,7 @@ export function ListItem({
   showDivider = false,
   stateLayer = 'default',
   href,
+  as = 'li',
   className,
   children,
   ...rest
@@ -113,14 +115,9 @@ export function ListItem({
     </>
   );
 
-  return (
-    <li
-      className={cx(styles.root, styles[`condition-${condition}`], className)}
-      data-condition={condition}
-      data-leading={leading}
-      data-trailing={trailing}
-      {...rest}
-    >
+  const rootClass = cx(styles.root, styles[`condition-${condition}`], className);
+  const content = (
+    <>
       {href ? (
         <a className={styles.row} href={href}>
           {inner}
@@ -129,6 +126,31 @@ export function ListItem({
         <div className={styles.row}>{inner}</div>
       )}
       {showDivider && <DividerHorizontal variant="inset" />}
+    </>
+  );
+
+  if (as === 'div') {
+    return (
+      <div
+        className={rootClass}
+        data-condition={condition}
+        data-leading={leading}
+        data-trailing={trailing}
+      >
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <li
+      className={rootClass}
+      data-condition={condition}
+      data-leading={leading}
+      data-trailing={trailing}
+      {...rest}
+    >
+      {content}
     </li>
   );
 }

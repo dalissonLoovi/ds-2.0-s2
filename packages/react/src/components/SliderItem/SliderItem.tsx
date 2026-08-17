@@ -1,28 +1,23 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
+import { SliderRail } from '../SliderRail/SliderRail';
 import styles from './SliderItem.module.css';
 
 export type SliderItemProps = HTMLAttributes<HTMLDivElement> & {
-  active?: 'false' | 'true';
-  label?: string;
-  children?: ReactNode;
+  active?: boolean;
+  fillPercent?: number;
 };
 
 export function SliderItem({
-  active = 'false',
-  label = 'SliderItem',
-  children,
+  active = false,
+  fillPercent = 40,
   className,
   ...rest
 }: SliderItemProps) {
   return (
-    <div
-      className={cx(styles.root, className)}
-      data-active={active}
-      {...rest}
-    >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>SliderItem · DS React</p>
+    <div className={cx(styles.root, className)} data-active={active} aria-hidden {...rest}>
+      <span className={styles.tick} />
+      <SliderRail active={active} fillPercent={fillPercent} />
     </div>
   );
 }

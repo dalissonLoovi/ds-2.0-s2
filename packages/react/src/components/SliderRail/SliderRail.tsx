@@ -1,28 +1,26 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
+import { SliderLeftRail } from '../SliderLeftRail/SliderLeftRail';
+import { SliderRightRail } from '../SliderRightRail/SliderRightRail';
 import styles from './SliderRail.module.css';
 
-export type SliderRailProps = HTMLAttributes<HTMLDivElement> & {
-
-  label?: string;
-  children?: ReactNode;
+export type SliderRailProps = HTMLAttributes<HTMLSpanElement> & {
+  active?: boolean;
+  fillPercent?: number;
 };
 
 export function SliderRail({
-
-  label = 'SliderRail',
-  children,
+  active = false,
+  fillPercent = 40,
   className,
   ...rest
 }: SliderRailProps) {
-  return (
-    <div
-      className={cx(styles.root, className)}
+  const fill = Math.max(0, Math.min(100, fillPercent));
 
-      {...rest}
-    >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>SliderRail · DS React</p>
-    </div>
+  return (
+    <span className={cx(styles.root, className)} aria-hidden {...rest}>
+      <SliderRightRail className={styles.right} />
+      <SliderLeftRail active={active} className={styles.left} style={{ width: `${fill}%` }} />
+    </span>
   );
 }

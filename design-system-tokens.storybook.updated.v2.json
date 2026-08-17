@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-17T23:50:00.000Z",
-        "storybookRevision": "2026-08-17-react-w5-cards-app-cliente",
+        "storybookUpdatedAt": "2026-08-18T00:20:00.000Z",
+        "storybookRevision": "2026-08-17-react-w6-complexos",
         "changelog": [
+            {
+                "date": "2026-08-17",
+                "type": "react-w6-complexos",
+                "summary": "React W6 Complexos polish: FileUploader*, Calendar*, Slider*, StepperPrimary, VerticalStepper*, StepProgress*, SearchView*, Keyboard DoD."
+            },
             {
                 "date": "2026-08-17",
                 "type": "react-w5-cards-app-cliente",
@@ -7129,8 +7134,8 @@
                     "nested Button, FileUploaderDropzoneItem, FileUploaderList, FileUploaderItem own their tokens"
                 ],
                 "accessibility": "native input type=file; uploadAction/dropzone open picker; Enter/Space; associate label/description; disabled blocks select/drop/remove; skeleton non-interactive.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "FileUploaderDropzoneItem": {
                 "nodeId": "3581:5628",
@@ -7186,8 +7191,8 @@
                     "dashPattern [4,3] hardcoded leftover on default|disabled (no local dash token)"
                 ],
                 "accessibility": "button-like or label/input with Enter/Space; visible focus; hidden file input; drag-hover on drag-over; disabled not focusable (aria-disabled); associate helperText with input/dropzone.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "FileUploaderItem": {
                 "nodeId": "3581:5641",
@@ -7227,8 +7232,8 @@
                     "spacing/*, border/radius/*, border/width/*"
                 ],
                 "accessibility": "announce fileName; loading/success aria-live=polite; danger role=alert or aria-live; removeAction accessible label; decorative status icons aria-hidden when text conveys state.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "FileUploaderList": {
                 "nodeId": "3581:3887",
@@ -7254,8 +7259,8 @@
                     "nested FileUploaderItem owns its own DS tokens"
                 ],
                 "accessibility": "list/group with accessible name; each FileUploaderItem owns file name, status, and remove semantics.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "UploadPhotos": {
                 "nodeId": "3581:7597",
@@ -7941,8 +7946,8 @@
                     "railStartSpacer + endCapSlot + endCap",
                     "SliderRightRail (sibling residual track)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SliderRightRail": {
                 "nodeId": "4073:2224",
@@ -7968,8 +7973,8 @@
                     "railLeadSpacer + railTrailSpacer",
                     "SliderLeftRail (sibling filled track)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SliderRail": {
                 "nodeId": "4073:2228",
@@ -7996,8 +8001,8 @@
                     "SliderLeftRail (exposed)",
                     "SliderItem / Slider (parents)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SliderItem": {
                 "nodeId": "4073:2232",
@@ -8031,8 +8036,8 @@
                     "SliderRail (exposed)",
                     "Slider / SliderSkeletonItem (parents)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SliderSkeletonItem": {
                 "nodeId": "4092:4005",
@@ -8062,8 +8067,8 @@
                     "sliderRow (minValueBone + SliderItem + maxValueBone)",
                     "Slider Status=Skeleton (parent)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SliderBaseItem": {
                 "nodeId": "3950:7416",
@@ -8096,8 +8101,8 @@
                     "sliderRow (railRow: minValue + SliderItem + maxValue + Input)",
                     "Slider (parent)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Slider": {
                 "nodeId": "3950:7327",
@@ -8145,8 +8150,8 @@
                     "errorText / warningText (status=error|warning)",
                     "SliderSkeletonItem (status=skeleton; exposed)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Calendar": {
                 "nodeId": "3982:5542",
@@ -8210,8 +8215,8 @@
                     "DividerVertical / DividerHorizontal",
                     "InputDatePicker (external trigger)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "CalendarDay": {
                 "nodeId": "3950:12809",
@@ -8262,8 +8267,8 @@
                     "Calendar (parent month panel)",
                     "InputDatePicker (external trigger)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "CalendarPeriodNav": {
                 "nodeId": "3995:5664",
@@ -8307,8 +8312,8 @@
                     "chevron-left-outline / chevron-down-outline / chevron-right-outline",
                     "Calendar + CalendarDay (parent surface)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "DatePickerSelectItem": {
                 "nodeId": "3982:5083",
@@ -8575,8 +8580,8 @@
                     "MobileGestureNavigation",
                     "decorative key rows"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Link": {
                 "nodeId": "3820:13913",
@@ -9263,8 +9268,8 @@
                 "sparseMatrix": [
                     "no currentStep > stepCount"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "StepProgressSegment": {
                 "nodeId": "3807:31",
@@ -9294,8 +9299,8 @@
                 "accessibility": "Non-interactive; no focus; parent owns accessible step text.",
                 "composition": [],
                 "internal": true,
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "StepperPrimary": {
                 "nodeId": "3653:4985",
@@ -9337,8 +9342,8 @@
                     "spacing/0 | 050 | 100 | 300 and border/radius/full | 0, border/width/012 | 025"
                 ],
                 "accessibility": "Expose stepper as ordered list or navigation group; current step aria-current=step; status available to assistive technologies.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "VerticalStepper": {
                 "nodeId": "3833:118",
@@ -9362,8 +9367,8 @@
                     "VerticalStepperItem and nested ListItem own item/content tokens"
                 ],
                 "accessibility": "Ordered list; aria-current=step on active item; status in accessible text; decorative icons/connectors aria-hidden on items.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "FeatureSteps": {
                 "nodeId": "4344:224",
@@ -9467,8 +9472,8 @@
                     "ListItem owns content spacing/text tokens"
                 ],
                 "accessibility": "Parent ordered list; aria-current=step on active item; status in accessible text; statusIcon/connector aria-hidden; color not sole cue; non-interactive rows receive no focus; actionable rows follow ListItem semantics.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SearchBar": {
                 "nodeId": "3881:6002",
@@ -9569,8 +9574,8 @@
                     "ListItem",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SearchViewModal": {
                 "nodeId": "3887:507",
@@ -9618,8 +9623,8 @@
                     "ListItem",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SelectCountry": {
                 "nodeId": "3935:5522",
@@ -11237,6 +11242,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "react-w6-complexos",
+                "date": "2026-08-17",
+                "summary": "W6 React polish: complex controls family to @ds/react Autodocs/Code Connect."
+            },
             {
                 "id": "react-w5-cards-app-cliente",
                 "date": "2026-08-17",

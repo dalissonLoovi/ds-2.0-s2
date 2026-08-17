@@ -1,23 +1,62 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: var(--spacing-050, 4px);
+  row-gap: var(--spacing-100, 8px);
+  min-width: 96px;
+  color: var(--text-primary);
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+.icon {
+  grid-column: 2;
+  grid-row: 1;
+  display: inline-flex;
+  color: var(--color-actions-primary);
 }
 
-.meta {
-  margin: 4px 0 0;
+.trail {
+  height: 2px;
+  width: 100%;
+  grid-row: 1;
+  background: var(--color-border-2);
+}
+
+.left {
+  grid-column: 1;
+}
+
+.right {
+  grid-column: 3;
+}
+
+.active {
+  background: var(--color-actions-primary);
+}
+
+.inactive {
+  background: var(--color-border-2);
+}
+
+.label {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  text-align: center;
   font-size: 12px;
   line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+}
+
+.status-completed .label,
+.status-current .label {
+  color: var(--text-primary);
+}
+
+.status-completed .icon {
+  color: var(--color-actions-primary);
+}
+
+.status-pending .icon,
+.status-pending .label {
+  color: var(--text-placeholder);
 }
