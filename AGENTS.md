@@ -125,3 +125,11 @@ Não commitar `storybook/node_modules` nem `storybook/storybook-static`.
 - [ ] Atualizar `design-system-storybook.md` se for o padrão da sessão
 - [ ] `cd storybook && npm run docs:generate`
 - [ ] Commit/push só se o usuário pedir
+
+## Cursor Cloud specific instructions
+
+- **Todo o tooling vive em `storybook/`.** A raiz do repo **não tem `package.json`**; sempre rode os comandos npm a partir de `/workspace/storybook`. O update script já roda `npm ci` lá.
+- **Não há lint nem testes automatizados.** O `storybook/package.json` só define `docs:generate`, `storybook`, `build-storybook` e `build-storybook:pages` (ver o arquivo para os comandos canônicos). As verificações significativas são: gerar os MDX (`npm run docs:generate`), buildar estático (`npm run build-storybook`) e subir o dev server (`npm run storybook`, porta 6006).
+- **MDX é gerado, não versionado como fonte.** `prestorybook`/`prebuild-storybook` rodam `docs:generate` automaticamente, regenerando `src/foundations/` e `src/components/` a partir do JSON seed da raiz a cada `storybook`/`build`. Edite o JSON seed (ou o gerador), nunca os MDX.
+- **Avisos esperados ao subir o dev server:** `No story files found for the specified pattern` (catálogo é docs-only, sem `*.stories.*`) e um 404 de `favicon.svg` no console — ambos são inofensivos.
+- Node 20+ / npm 10+ (a VM usa Node 22, compatível).
