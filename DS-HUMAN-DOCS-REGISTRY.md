@@ -4,7 +4,7 @@
 **Arquivo:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2)  
 **Escopo:** páginas próprias para standalone · `*Item`/`*Block` só na Anatomy · prontas para auditoria  
 
-**Auditoria:** W0 Docs humanas **aplicada** 2026-08-17 (Button/Input/Chip*/Alert/Toast/Modal). Próximo: auditar W1.
+**Auditoria:** W0 aplicada · W1 OK · W2 aplicada (Banner + ProgressBar nodeId) · W3 aplicada (OrganizationHeader docs `4887:1141` + Rail live nodeIds). Próximo: auditar W4.
 
 Frame padrão: `{Name} — Docs humanas` · Overview → A11y
 
@@ -63,7 +63,7 @@ Frame padrão: `{Name} — Docs humanas` · Overview → A11y
 | TextHeader | `4847:852` |
 | SectionHeader | `4847:964` |
 | SystemHeader | `4847:1103` |
-| OrganizationHeader | `4847:1505` |
+| OrganizationHeader | [4887-1141](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4887-1141) |
 | NavigationBar | `4847:24384` |
 | NavigationDrawer | `4847:23788` |
 | NavigationRailCompact | `4847:25494` |

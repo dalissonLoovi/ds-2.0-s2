@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-17T14:30:00.000Z",
-        "storybookRevision": "2026-08-17-button-secondary-w0-docs-audit",
+        "storybookUpdatedAt": "2026-08-17T17:00:00.000Z",
+        "storybookRevision": "2026-08-17-w2-w3-docs-audit-nodeids",
         "changelog": [
+            {
+                "date": "2026-08-17",
+                "type": "docs-audit-w2-w3-nodeids",
+                "summary": "W2/W3 Docs humanas audit apply: ProgressBar nodeId→3653:5393; NavigationRail Compact/Expanded/Tree live nodeIds; Banner vs Alert copy; OrganizationHeader Docs humanas created (4887:1141)."
+            },
             {
                 "date": "2026-08-17",
                 "type": "button-intent-secondary-docs-audit",
@@ -8881,7 +8886,7 @@
                 }
             },
             "ProgressBar": {
-                "nodeId": "3407:3492",
+                "nodeId": "3653:5393",
                 "description": "AI-READY COMPONENT: ProgressBar is a linear progress indicator used to communicate completion percentage for determinate processes. Use value to display the current progress percentage label and showValue to show or hide that visible label. Use size=md for default layouts and size=sm for compact layouts. The track represents the total amount and the indicator represents the completed amount — in Figma the indicator width is layout-controlled for design mocks; value is the visible label only and does not drive fill mathematically. Do not use ProgressBar as a loading spinner, slider, stepper, chart, timeline, badge or decorative divider. Accessibility: expose progress with role=progressbar, aria-valuemin=0, aria-valuemax=100 and aria-valuenow matching the current numeric value. If the visible value is hidden, provide an accessible label. Token rule: use existing DS variables only (color/actions/primary for indicator, color/background-surface/2 for track, text/primary for value, spacing/100|200|250, border/radius/150). React mapping: ProgressBar(value, showValue, size, progress?).",
                 "variants": {
                     "size": [
@@ -10293,7 +10298,7 @@
                 "accessibility": "Number items expose page number as accessible name; selected maps to aria-current=page; overflow decorative or clearly labeled; preserve keyboard focus."
             },
             "NavigationRailExpanded": {
-                "nodeId": "3327:4894",
+                "nodeId": "3653:8288",
                 "description": "AI-READY COMPONENT: NavigationRailExpanded is a persistent or collapsible expanded side navigation container used on tablet, desktop or wide layouts to provide access to primary app destinations, nested navigation trees and key app actions. It composes NavigationRailExpandedItem and NavigationRailExpandedTree. Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation surfaces. Use alignment=top when destinations should start near the top of the rail and alignment=middle when destinations should be vertically centered. Use itemCount to control the number of primary visible destinations. Use showMenu and showButton to toggle menuAction (Button text) and primaryAction (Button solid). Use showTree01 through showTree05 only with alignment=top to reveal nested NavigationRailExpandedTree groups — alignment=middle is peer destinations only and does not include tree slots. itemCount=6 introduces section01 and section02 groupings with section labels. Nested item/tree appearance must match the rail appearance. Do not use NavigationRailExpanded as a drawer, bottom navigation bar, tab list, toolbar, modal, page content container or generic sidebar. Accessibility: implement as a nav region; each item represents a route or destination; selected items should map to aria-current=page; trees must preserve hierarchy; menuAction and primaryAction need accessible names; preserve visible focus and keyboard navigation. Token rule: use existing DS variables only (color/background-surface/0 | inverse-3, spacing/050|100|250|600|1000, nested NavigationRailExpandedItem/Tree/Button/logo tokens). React mapping: NavigationRailExpanded(appearance, alignment, itemCount, showMenu, showButton, showTree01?, showTree02?, showTree03?, showTree04?, showTree05?, items, trees?, menuAction?, primaryAction?, logo?).",
                 "variants": {
                     "appearance": [
@@ -10339,7 +10344,7 @@
                 "accessibility": "Implement as a nav region; selected items map to aria-current=page; trees preserve hierarchy; menuAction and primaryAction need accessible names; preserve visible focus and keyboard navigation."
             },
             "NavigationRailExpandedTree": {
-                "nodeId": "3327:6048",
+                "nodeId": "3653:10112",
                 "description": "AI-READY COMPONENT: NavigationRailExpandedTree is a grouped navigation tree used inside NavigationRail expanded layouts to display a set of related navigation destinations. It composes NavigationRailExpandedItem instances and controls which item is active through selectedItem. Use level=default for a flat group of four peer destinations (selectedItem=none|item-01|item-02|item-03|item-04). Use level=second-level for a nested group: a parent NavigationRailExpandedItem (hierarchy=nav-tree) that stays selected=true as the expanded group header, plus a navTree of three child items; selectedItem=none|item-01|item-02|item-03 maps to the active child — selectedItem=item-04 is intentionally unavailable at second-level (sparse matrix). Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation rail surfaces. Nested item appearance must match the tree appearance. Do not use NavigationRailExpandedTree as a standalone sidebar, drawer, menu, tab list, accordion, list item, button group or generic content container. Accessibility: implement inside a nav region, preserve logical keyboard order, map the active destination to aria-current=page, and ensure level=second-level reflects both visual and semantic hierarchy (parent group + nested children). Token rule: use existing DS variables only (color/background-surface/2 | inverse-1, color/border/2, spacing/0|100|300|600, border/radius/050, nested NavigationRailExpandedItem tokens). React mapping: NavigationRailExpandedTree(appearance, level, selectedItem, items, parentItem?).",
                 "variants": {
                     "selectedItem": [
@@ -10436,7 +10441,7 @@
                 "accessibility": "Link or button depending on navigation behavior; selected=true maps to aria-current=page for routes; decorative icons aria-hidden when label visible; badge count needs accessible notification label when meaningful."
             },
             "NavigationRailCompact": {
-                "nodeId": "3327:5125",
+                "nodeId": "3653:12381",
                 "description": "AI-READY COMPONENT: NavigationRailCompact is a compact side navigation container used on tablet, desktop or wider layouts to provide access to three to six primary app destinations. It composes NavigationRailCompactItem for each destination and may include an optional menu action and primary action button. Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation surfaces. Use alignment=top when destinations should start near the top of the rail and alignment=middle when destinations should be vertically centered. Use itemCount=3, 4, 5 or 6 to control the number of destinations. Use showMenu and showButton to toggle menuAction (Button text/lg) and primaryAction (Button solid/md). NavigationRailCompactItem appearance must match the rail appearance. Do not use NavigationRailCompact as a drawer, sidebar menu, bottom navigation bar, toolbar, tab list, content container or generic action group. Accessibility: implement with nav semantics, map selected destination to aria-current=page, provide aria-label for menuAction and primaryAction, preserve visible focus and keyboard navigation, and mark decorative icons as aria-hidden when labels are visible. Token rule: use existing DS variables only (color/background-surface/0 | inverse-3, spacing/1000 paddings, spacing/600 action sizes, nested NavigationRailCompactItem/Button/logo tokens). React mapping: NavigationRailCompact(appearance, alignment, itemCount, showMenu, showButton, items, menuAction?, primaryAction?, logo?).",
                 "variants": {
                     "appearance": [
@@ -10919,6 +10924,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "docs-audit-w2-w3-nodeids",
+                "date": "2026-08-17",
+                "summary": "ProgressBar + NavigationRail* live nodeIds; Banner vs Alert docs; OrganizationHeader Docs humanas."
+            },
             {
                 "id": "button-intent-secondary-w0-docs",
                 "date": "2026-08-17",
