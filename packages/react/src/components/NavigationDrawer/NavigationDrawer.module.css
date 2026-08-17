@@ -1,23 +1,41 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-100, 8px);
+  width: 280px;
   padding: var(--spacing-200, 12px);
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
 }
 
-.title {
+.appearance-inverse {
+  background: var(--color-background-surface-inverse-3, #3a3345);
+  color: var(--text-on-color);
+}
+
+.heading {
   margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.meta {
-  margin: 4px 0 0;
+  padding: 0 var(--spacing-200, 12px);
   font-size: 12px;
   line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.appearance-inverse .heading {
+  color: color-mix(in srgb, var(--text-on-color) 72%, transparent);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.divider {
+  height: 1px;
+  margin: var(--spacing-100, 8px) var(--spacing-200, 12px);
+  background: var(--color-border-2);
 }

@@ -18,8 +18,11 @@ import {
   IconEyeOff,
   IconInfoCircle,
   IconInfoCircleFilled,
+  IconBell,
+  IconHome,
   IconLoader2,
   IconLock,
+  IconMenu2,
   IconMinus,
   IconPlus,
   IconSearch,
@@ -53,6 +56,9 @@ export const dsIcons = {
   'arrow-narrow-right-outline': IconArrowNarrowRight,
   'arrow-left-outline': IconArrowLeft,
   'dots-vertical-outline': IconDotsVertical,
+  'menu-2-outline': IconMenu2,
+  'bell-outline': IconBell,
+  'home-outline': IconHome,
   'user-outline': IconUser,
 } as const;
 

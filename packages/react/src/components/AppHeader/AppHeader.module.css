@@ -1,23 +1,58 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-150, 10px);
+  width: 100%;
+  min-height: 56px;
+  padding: var(--spacing-100, 8px) var(--spacing-200, 12px);
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
 }
 
-.title {
+.inverse {
+  background: var(--color-background-surface-inverse-3, #3a3345);
+  color: var(--text-on-color);
+}
+
+.leading {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100, 8px);
+  min-width: 0;
+  flex: 1;
+}
+
+.trailing {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+  flex-shrink: 0;
+}
+
+.greeting {
   margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.avatarButton {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.avatarFallback {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--color-background-surface-3, #d0d9e8);
+}
+
+.layout-large {
+  min-height: 88px;
+  align-items: flex-start;
 }

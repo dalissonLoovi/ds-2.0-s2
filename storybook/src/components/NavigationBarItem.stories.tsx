@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { NavigationBarItem } from '@ds/react/draft';
+import { NavigationBarItem } from '@ds/react';
 
 const meta = {
-  title: 'Draft/NavigationBarItem',
+  title: 'Components/NavigationBarItem',
   component: NavigationBarItem,
   tags: ['autodocs'],
-  args: { label: 'NavigationBarItem' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Home', selected: true },
 } satisfies Meta<typeof NavigationBarItem>;
 
 export default meta;

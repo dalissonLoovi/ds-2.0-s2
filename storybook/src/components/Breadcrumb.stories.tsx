@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Breadcrumb } from '@ds/react/draft';
+import { Breadcrumb } from '@ds/react';
 
 const meta = {
-  title: 'Draft/Breadcrumb',
+  title: 'Components/Breadcrumb',
   component: Breadcrumb,
   tags: ['autodocs'],
-  args: { label: 'Breadcrumb' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { size: 'md', showIcon: true },
 } satisfies Meta<typeof Breadcrumb>;
 
 export default meta;

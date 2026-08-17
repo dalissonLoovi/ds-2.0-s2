@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { NavigationRailExpandedTree } from '@ds/react/draft';
+import { NavigationRailExpandedTree } from '@ds/react';
 
 const meta = {
-  title: 'Draft/NavigationRailExpandedTree',
+  title: 'Components/NavigationRailExpandedTree',
   component: NavigationRailExpandedTree,
   tags: ['autodocs'],
-  args: { label: 'NavigationRailExpandedTree' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { selectedItem: 'item-01', level: 'second-level' },
 } satisfies Meta<typeof NavigationRailExpandedTree>;
 
 export default meta;

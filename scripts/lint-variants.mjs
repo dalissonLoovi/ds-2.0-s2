@@ -253,6 +253,162 @@ const CHECK = {
     file: 'packages/react/src/components/BottomSheetCheckItem/BottomSheetCheckItem.tsx',
     axes: {},
   },
+  TextHeader: {
+    file: 'packages/react/src/components/TextHeader/TextHeader.tsx',
+    axes: {
+      size: ['large', 'medium', 'small'],
+      alignment: ['left', 'center'],
+    },
+  },
+  SectionHeader: {
+    file: 'packages/react/src/components/SectionHeader/SectionHeader.tsx',
+    axes: {
+      emphasis: ['primary', 'secondary'],
+      showAction: ['false', 'true'],
+    },
+  },
+  OrganizationHeader: {
+    file: 'packages/react/src/components/OrganizationHeader/OrganizationHeader.tsx',
+    axes: {},
+  },
+  TabItem: {
+    file: 'packages/react/src/components/TabItem/TabItem.tsx',
+    axes: {
+      variant: ['primary', 'secondary', 'segmented'],
+      state: ['default', 'hover', 'selected', 'disabled'],
+      platform: ['web', 'mobile'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  NavigationBarItem: {
+    file: 'packages/react/src/components/NavigationBarItem/NavigationBarItem.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      state: ['default', 'hover', 'focus', 'pressed'],
+      badge: ['none', 'count', 'dot'],
+      selected: ['false', 'true'],
+      showLabel: ['true', 'false'],
+    },
+  },
+  NavigationDrawerItem: {
+    file: 'packages/react/src/components/NavigationDrawerItem/NavigationDrawerItem.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      state: ['default', 'hover', 'focus', 'pressed'],
+      selected: ['false', 'true'],
+    },
+  },
+  NavigationRailCompactItem: {
+    file: 'packages/react/src/components/NavigationRailCompactItem/NavigationRailCompactItem.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      state: ['default', 'hover', 'focus', 'pressed'],
+      badge: ['none', 'count', 'dot'],
+      selected: ['false', 'true'],
+      showLabel: ['true', 'false'],
+    },
+  },
+  NavigationRailExpandedItem: {
+    file: 'packages/react/src/components/NavigationRailExpandedItem/NavigationRailExpandedItem.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      state: ['default', 'hover', 'focus', 'pressed'],
+      hierarchy: ['default', 'nav-tree'],
+      badge: ['none', 'count', 'dot'],
+      selected: ['false', 'true'],
+    },
+  },
+  BreadcrumbItem: {
+    file: 'packages/react/src/components/BreadcrumbItem/BreadcrumbItem.tsx',
+    axes: {
+      size: ['sm', 'md'],
+      type: ['link', 'overflow'],
+      state: ['default', 'hover', 'focus', 'pressed', 'current', 'skeleton', 'open'],
+    },
+  },
+  TabsPrimary: {
+    file: 'packages/react/src/components/TabsPrimary/TabsPrimary.tsx',
+    axes: {
+      itemCount: ['2', '3', '4', '5'],
+      platform: ['web', 'mobile'],
+      alignment: ['left', 'center'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  TabsSecondary: {
+    file: 'packages/react/src/components/TabsSecondary/TabsSecondary.tsx',
+    axes: {
+      itemCount: ['2', '3', '4', '5'],
+      platform: ['web', 'mobile'],
+      alignment: ['left', 'center'],
+    },
+  },
+  TabsSegmented: {
+    file: 'packages/react/src/components/TabsSegmented/TabsSegmented.tsx',
+    axes: {
+      itemCount: ['2', '3', '4', '5'],
+      platform: ['web', 'mobile'],
+      alignment: ['left', 'center'],
+    },
+  },
+  Breadcrumb: {
+    file: 'packages/react/src/components/Breadcrumb/Breadcrumb.tsx',
+    axes: { size: ['md', 'sm'] },
+  },
+  NavigationBar: {
+    file: 'packages/react/src/components/NavigationBar/NavigationBar.tsx',
+    axes: {
+      itemCount: ['3', '4', '5'],
+      appearance: ['default', 'inverse'],
+      layout: ['flush', 'floating'],
+    },
+  },
+  NavigationDrawer: {
+    file: 'packages/react/src/components/NavigationDrawer/NavigationDrawer.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      itemCount: ['3', '4', '5', '6'],
+    },
+  },
+  NavigationRailCompact: {
+    file: 'packages/react/src/components/NavigationRailCompact/NavigationRailCompact.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      alignment: ['top', 'middle'],
+      itemCount: ['3', '4', '5', '6'],
+    },
+  },
+  NavigationRailExpanded: {
+    file: 'packages/react/src/components/NavigationRailExpanded/NavigationRailExpanded.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      alignment: ['top', 'middle'],
+      itemCount: ['3', '4', '5', '6'],
+    },
+  },
+  NavigationRailExpandedTree: {
+    file: 'packages/react/src/components/NavigationRailExpandedTree/NavigationRailExpandedTree.tsx',
+    axes: {
+      selectedItem: ['none', 'item-01', 'item-02', 'item-03', 'item-04'],
+      level: ['default', 'second-level'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  AppHeader: {
+    file: 'packages/react/src/components/AppHeader/AppHeader.tsx',
+    axes: {
+      layout: ['small-centered', 'small', 'medium', 'large'],
+      appearance: ['default', 'inverse'],
+      hierarchy: ['global', 'specific', 'super-app'],
+    },
+  },
+  SystemHeader: {
+    file: 'packages/react/src/components/SystemHeader/SystemHeader.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      variant: ['default', 'simple'],
+    },
+  },
 };
 
 

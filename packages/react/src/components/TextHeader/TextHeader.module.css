@@ -1,23 +1,52 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-050, 4px);
+  color: var(--text-primary);
+}
+
+.alignment-left {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.alignment-center {
+  text-align: center;
+  align-items: center;
 }
 
 .title {
   margin: 0;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.size-large .title {
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.size-medium .title {
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.size-small .title {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-secondary);
+}
+
+.inverse,
+.inverse .description {
+  color: var(--text-on-color);
+}
+
+.inverse .description {
+  opacity: 0.84;
 }

@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { NavigationRailCompactItem } from '@ds/react/draft';
+import { NavigationRailCompactItem } from '@ds/react';
 
 const meta = {
-  title: 'Draft/NavigationRailCompactItem',
+  title: 'Components/NavigationRailCompactItem',
   component: NavigationRailCompactItem,
   tags: ['autodocs'],
-  args: { label: 'NavigationRailCompactItem' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Home', selected: true },
 } satisfies Meta<typeof NavigationRailCompactItem>;
 
 export default meta;

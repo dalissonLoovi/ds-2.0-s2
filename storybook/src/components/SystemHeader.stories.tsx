@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SystemHeader } from '@ds/react/draft';
+import { SystemHeader } from '@ds/react';
 
 const meta = {
-  title: 'Draft/SystemHeader',
+  title: 'Components/SystemHeader',
   component: SystemHeader,
   tags: ['autodocs'],
-  args: { label: 'SystemHeader' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { title: 'Dashboard', variant: 'default' },
 } satisfies Meta<typeof SystemHeader>;
 
 export default meta;

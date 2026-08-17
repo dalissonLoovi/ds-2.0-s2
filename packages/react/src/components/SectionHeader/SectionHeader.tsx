@@ -1,31 +1,49 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
+import { Button } from '../Button/Button';
 import styles from './SectionHeader.module.css';
 
-export type SectionHeaderProps = HTMLAttributes<HTMLDivElement> & {
-  emphasis?: 'primary' | 'secondary';
-  showAction?: 'false' | 'true';
-  label?: string;
-  children?: ReactNode;
+export type SectionHeaderEmphasis = 'primary' | 'secondary';
+
+export type SectionHeaderProps = HTMLAttributes<HTMLElement> & {
+  emphasis?: SectionHeaderEmphasis;
+  showAction?: boolean;
+  title?: string;
+  actionLabel?: string;
+  onAction?: () => void;
 };
 
 export function SectionHeader({
   emphasis = 'primary',
-  showAction = 'false',
-  label = 'SectionHeader',
-  children,
+  showAction = false,
+  title = 'Section',
+  actionLabel = 'See all',
+  onAction,
   className,
   ...rest
 }: SectionHeaderProps) {
+  const TitleTag = emphasis === 'primary' ? 'h2' : 'h3';
+
   return (
-    <div
-      className={cx(styles.root, className)}
+    <header
+      className={cx(styles.root, styles[`emphasis-${emphasis}`], className)}
       data-emphasis={emphasis}
-      data-showAction={showAction}
+      data-show-action={showAction}
       {...rest}
     >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>SectionHeader · DS React</p>
-    </div>
+      <TitleTag className={styles.title}>{title}</TitleTag>
+      {showAction && (
+        <Button
+          variant="text"
+          size="sm"
+          intent="primary"
+          showLabel={false}
+          showIcon
+          icon="arrow-narrow-right-outline"
+          aria-label={actionLabel}
+          onClick={onAction}
+        />
+      )}
+    </header>
   );
 }

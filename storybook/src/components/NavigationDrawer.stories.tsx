@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { NavigationDrawer } from '@ds/react/draft';
+import { NavigationDrawer } from '@ds/react';
 
 const meta = {
-  title: 'Draft/NavigationDrawer',
+  title: 'Components/NavigationDrawer',
   component: NavigationDrawer,
   tags: ['autodocs'],
-  args: { label: 'NavigationDrawer' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { heading: 'Menu', itemCount: '4' },
 } satisfies Meta<typeof NavigationDrawer>;
 
 export default meta;

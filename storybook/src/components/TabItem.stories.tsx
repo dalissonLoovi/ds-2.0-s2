@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TabItem } from '@ds/react/draft';
+import { TabItem } from '@ds/react';
 
 const meta = {
-  title: 'Draft/TabItem',
+  title: 'Components/TabItem',
   component: TabItem,
   tags: ['autodocs'],
-  args: { label: 'TabItem' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Tab', variant: 'primary', state: 'selected' },
 } satisfies Meta<typeof TabItem>;
 
 export default meta;

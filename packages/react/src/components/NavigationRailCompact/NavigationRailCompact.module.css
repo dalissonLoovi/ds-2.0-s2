@@ -1,23 +1,26 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-150, 10px);
+  width: 80px;
+  min-height: 480px;
+  padding: var(--spacing-200, 12px) var(--spacing-100, 8px);
+  background: var(--color-background-surface-0);
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+.alignment-middle .items {
+  margin-block: auto;
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.appearance-inverse {
+  background: var(--color-background-surface-inverse-3, #3a3345);
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+  width: 100%;
 }

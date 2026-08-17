@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AppHeader } from '@ds/react/draft';
+import { AppHeader } from '@ds/react';
 
 const meta = {
-  title: 'Draft/AppHeader',
+  title: 'Components/AppHeader',
   component: AppHeader,
   tags: ['autodocs'],
-  args: { label: 'AppHeader' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { hierarchy: 'global', greeting: 'Olá, Maria', layout: 'small-centered' },
 } satisfies Meta<typeof AppHeader>;
 
 export default meta;

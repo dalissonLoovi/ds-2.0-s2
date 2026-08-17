@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-17T21:00:00.000Z",
-        "storybookRevision": "2026-08-17-react-w2-feedback",
+        "storybookUpdatedAt": "2026-08-17T22:00:00.000Z",
+        "storybookRevision": "2026-08-17-react-w3-nav-headers",
         "changelog": [
+            {
+                "date": "2026-08-17",
+                "type": "react-w3-nav-headers",
+                "summary": "React W3 Nav/headers polish: App/System/Org/Text/Section headers, nav bars/rails/drawer, tabs, breadcrumb (+ Items) DoD."
+            },
             {
                 "date": "2026-08-17",
                 "type": "react-w2-feedback",
@@ -5954,8 +5959,8 @@
                     "BreadcrumbItem",
                     "home-outline"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Alert": {
                 "nodeId": "4406:91",
@@ -6134,8 +6139,8 @@
                     "nested ListActionDropdown tokens including elevation/2"
                 ],
                 "accessibility": "Parent Breadcrumb: nav aria-label=Breadcrumb + ordered list; link items as anchors; current → aria-current=page; overflow → button with aria-expanded when open; slash aria-hidden; skeleton non-interactive.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Button": {
                 "nodeId": "3104:3723",
@@ -6449,8 +6454,8 @@
                         }
                     ]
                 },
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "OfferProductCard": {
                 "nodeId": "4227:418",
@@ -6569,8 +6574,8 @@
                         }
                     ]
                 },
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SystemHeader": {
                 "nodeId": "3143:8933",
@@ -6624,8 +6629,8 @@
                     "Profile menu (exposed) + Avatar",
                     "plus-outline / bell-outline"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "OrganizationHeader": {
                 "nodeId": "3644:2",
@@ -6658,8 +6663,8 @@
                 ],
                 "iconRules": "Use DS Icons — Escritório Virtual outline icons only inside labelTag; do not use remote/external icon libraries.",
                 "accessibility": "title maps to page h1 when identifying the artifact; project is a link only with a real destination; type/description/ChipTag informational (no focus).",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "CommentItem": {
                 "nodeId": "3653:340",
@@ -9747,8 +9752,8 @@
                     "Border/Icon/20 may remain on icon strokeWeight when no local kebab equivalent exists"
                 ],
                 "accessibility": "role=tab inside role=tablist; aria-selected only when selected; aria-disabled when disabled; decorative icons aria-hidden when label visible.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TabsSegmented": {
                 "nodeId": "4738:825",
@@ -9795,8 +9800,8 @@
                 "composition": [
                     "TabItem variant=segmented (equal-width segments)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TabsPrimary": {
                 "nodeId": "3532:6900",
@@ -9839,8 +9844,8 @@
                     "Border/Icon/* may remain on nested icon strokeWeight when no local kebab equivalent exists"
                 ],
                 "accessibility": "role=tablist; nested TabItem role=tab; aria-selected on active tab; arrow-key navigation; decorative icons aria-hidden when label visible.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TabsSecondary": {
                 "nodeId": "3532:7346",
@@ -9878,8 +9883,8 @@
                     "Border/Icon/* may remain on nested icon strokeWeight when no local kebab equivalent exists"
                 ],
                 "accessibility": "role=tablist; nested TabItem role=tab; aria-selected on active tab; ArrowLeft/ArrowRight and Home/End when applicable; decorative icons aria-hidden when label visible.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TextHeader": {
                 "nodeId": "3667:4129",
@@ -9915,8 +9920,8 @@
                     "text/primary on title; text/secondary on description"
                 ],
                 "accessibility": "Title provides the accessible name for the header region when nested; supporting description is supplementary.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Toast": {
                 "nodeId": "3550:4107",
@@ -10612,8 +10617,8 @@
                     "Nested NavigationRailExpandedItem, NavigationRailExpandedTree, Button and logo use their own DS tokens"
                 ],
                 "accessibility": "Implement as a nav region; selected items map to aria-current=page; trees preserve hierarchy; menuAction and primaryAction need accessible names; preserve visible focus and keyboard navigation.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "NavigationRailExpandedTree": {
                 "nodeId": "3653:10112",
@@ -10655,8 +10660,8 @@
                     "Nested NavigationRailExpandedItem uses its own DS tokens"
                 ],
                 "accessibility": "Implement inside a nav region; map active destination to aria-current=page; second-level must reflect parent group + nested children hierarchy; preserve keyboard order.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "NavigationRailExpandedItem": {
                 "nodeId": "3327:5795",
@@ -10713,8 +10718,8 @@
                     "spacing/0 | 150 | 200 | 600 and border/radius/0 | 300 | full"
                 ],
                 "accessibility": "Link or button depending on navigation behavior; selected=true maps to aria-current=page for routes; decorative icons aria-hidden when label visible; badge count needs accessible notification label when meaningful.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "NavigationRailCompact": {
                 "nodeId": "3653:12381",
@@ -10754,8 +10759,8 @@
                     "Nested NavigationRailCompactItem, Button and logo use their own DS tokens"
                 ],
                 "accessibility": "Use nav semantics; selected destination maps to aria-current=page; aria-label for menuAction and primaryAction; decorative icons aria-hidden when labels visible; preserve visible focus and keyboard navigation.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "NavigationRailCompactItem": {
                 "nodeId": "3327:5296",
@@ -10811,8 +10816,8 @@
                     "spacing/0 | 050 | 100 | 200 | 250 | 800 and border/radius/0 | 300 | 400 | full"
                 ],
                 "accessibility": "Link for routes; selected=true maps to aria-current=page; icon-only requires aria-label; badge count needs accessible notification label when meaningful.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "NavigationBar": {
                 "nodeId": "3653:14851",
@@ -10866,8 +10871,8 @@
                     "navItem01..N (NavigationBarItem, exposed)",
                     "primaryIconButtonSlot → primaryIconButton (Button solid/lg with NavigationBar-local circular FAB overrides) + primaryLabel (itemCount=5 only)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "NavigationBarItem": {
                 "nodeId": "3327:2878",
@@ -10923,8 +10928,8 @@
                     "border/width/012 | 025 where used"
                 ],
                 "accessibility": "Link for routes or button for actions; selected=true maps to aria-current=page when route-based; icon-only requires aria-label; badge count needs accessible notification label when meaningful.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "NavigationDrawerItem": {
                 "nodeId": "3327:1178",
@@ -10970,8 +10975,8 @@
                     "spacing/100 | 150 | 200 | 600 and border/radius/200 | 400"
                 ],
                 "accessibility": "Link for routes or button for in-place navigation; visible focus; selected=true maps to aria-current=page or aria-selected=true; badge counts need accessible labels when meaningful.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "NavigationDrawer": {
                 "nodeId": "3327:1091",
@@ -11006,8 +11011,8 @@
                     "Nested NavigationDrawerItem and DividerHorizontal use their own DS tokens"
                 ],
                 "accessibility": "Use nav semantics or aria-label; items as links for routes; selected maps to aria-current=page; visible focus and keyboard navigation; badge counts need accessible labels when meaningful.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "BottomSheetHeader": {
                 "nodeId": "4307:3760",
@@ -11222,6 +11227,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "react-w3-nav-headers",
+                "date": "2026-08-17",
+                "summary": "W3 React polish: navigation + headers family to @ds/react Autodocs/Code Connect."
+            },
             {
                 "id": "react-w2-feedback",
                 "date": "2026-08-17",

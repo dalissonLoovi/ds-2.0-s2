@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SectionHeader } from '@ds/react/draft';
+import { SectionHeader } from '@ds/react';
 
 const meta = {
-  title: 'Draft/SectionHeader',
+  title: 'Components/SectionHeader',
   component: SectionHeader,
   tags: ['autodocs'],
-  args: { label: 'SectionHeader' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { title: 'Section', emphasis: 'primary', showAction: true },
 } satisfies Meta<typeof SectionHeader>;
 
 export default meta;

@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TextHeader } from '@ds/react/draft';
+import { TextHeader } from '@ds/react';
 
 const meta = {
-  title: 'Draft/TextHeader',
+  title: 'Components/TextHeader',
   component: TextHeader,
   tags: ['autodocs'],
-  args: { label: 'TextHeader' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { title: 'Title', description: 'Description', size: 'large', alignment: 'left' },
 } satisfies Meta<typeof TextHeader>;
 
 export default meta;

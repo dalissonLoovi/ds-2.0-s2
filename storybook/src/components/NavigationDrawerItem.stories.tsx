@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { NavigationDrawerItem } from '@ds/react/draft';
+import { NavigationDrawerItem } from '@ds/react';
 
 const meta = {
-  title: 'Draft/NavigationDrawerItem',
+  title: 'Components/NavigationDrawerItem',
   component: NavigationDrawerItem,
   tags: ['autodocs'],
-  args: { label: 'NavigationDrawerItem' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Inbox', selected: true },
 } satisfies Meta<typeof NavigationDrawerItem>;
 
 export default meta;

@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TabsPrimary } from '@ds/react/draft';
+import { TabsPrimary } from '@ds/react';
 
 const meta = {
-  title: 'Draft/TabsPrimary',
+  title: 'Components/TabsPrimary',
   component: TabsPrimary,
   tags: ['autodocs'],
-  args: { label: 'TabsPrimary' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { itemCount: '3', platform: 'web' },
 } satisfies Meta<typeof TabsPrimary>;
 
 export default meta;

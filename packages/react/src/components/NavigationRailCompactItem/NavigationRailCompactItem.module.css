@@ -1,23 +1,52 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 56px;
+  padding: var(--spacing-100, 8px) 4px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 500;
   border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+.selected {
+  color: var(--color-actions-primary);
+  background: var(--interactive-selected);
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.appearance-inverse {
+  color: color-mix(in srgb, var(--text-on-color) 72%, transparent);
+}
+
+.appearance-inverse.selected {
+  color: var(--text-on-color);
+  background: color-mix(in srgb, var(--text-on-color) 12%, transparent);
+}
+
+.root:focus-visible,
+.state-focus {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 2px;
+}
+
+.iconWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+}
+
+.label {
+  text-align: center;
+  max-width: 64px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -1,23 +1,97 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
-}
-
-.title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-050, 4px);
   margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.platform-web {
+  min-height: 40px;
+  padding: 0 var(--spacing-200, 12px);
+  font-size: 14px;
+}
+
+.platform-mobile {
+  min-height: 48px;
+  padding: 0 var(--spacing-150, 10px);
+  font-size: 14px;
+}
+
+.selected {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.variant-primary.selected::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-actions-primary);
+}
+
+.variant-secondary.selected::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 16px;
+  height: 3px;
+  margin-left: -8px;
+  border-radius: 999px;
+  background: var(--color-actions-primary);
+}
+
+.variant-segmented {
+  flex: 1;
+  border-radius: 999px;
+}
+
+.variant-segmented.selected {
+  background: var(--color-actions-primary);
+  color: var(--text-on-color);
+}
+
+.inverse {
+  color: color-mix(in srgb, var(--text-on-color) 72%, transparent);
+}
+
+.inverse.selected {
+  color: var(--text-on-color);
+}
+
+.inverse.variant-primary.selected::after {
+  background: var(--text-on-color);
+}
+
+.disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.root:focus-visible {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 2px;
+}
+
+.icon,
+.attention {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
