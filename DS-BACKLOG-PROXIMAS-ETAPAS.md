@@ -1,12 +1,13 @@
 # Backlog DS 2.0 — Próximas etapas (humano)
 
-**Atualizado:** 2026-08-14  
+**Atualizado:** 2026-08-17  
 **Arquivo:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2)  
 **Storybook:** https://dalissonloovi.github.io/ds-2.0-s2/  
-**Seed:** `design-system-tokens.storybook.updated.v2.json` (~124 componentes · 23 vars `product-theme`)
+**Seed:** `design-system-tokens.storybook.updated.v2.json` (~124 componentes · 23 vars `product-theme`)  
+**Revision recente:** `2026-08-17-painel-promo-tokens-seed`
 
-**Estado:** fundação + temas core + padrões app-cliente/Painel **já avançados**.  
-**Modo atual:** melhoria contínua (não reabrir matriz de temas sem necessidade).
+**Estado:** fundação + temas core + Docs humanas + fila Painel Home **fechados**.  
+**Modo atual:** melhoria contínua (gap de produto → decisão → Figma → seed → Pages).
 
 ---
 
@@ -75,6 +76,8 @@ Usar **sempre** que surgir pedido de tela/produto ou gap.
 > Links Figma: […]  
 > Pergunta: qual caminho e por quê?
 
+Página Figma: [Como evoluir o DS](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4807-72)
+
 ---
 
 ## Frente B — Documentação visual no Figma (humano)
@@ -93,19 +96,15 @@ Objetivo: páginas **para pessoas** (não só metadata AI).
 | **Do / Don’t** | 2–4 exemplos |
 | **A11y** | Nome acessível, foco, estados |
 
-### Por família / produto (recomendado)
+### Por família / produto
 
-- Página **“Como evoluir o DS”** — ✅ criada (`node-id=4807-72`)  
-  [Abrir no Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4807-72)  
-- Página **App-cliente / Painel** com composições oficiais (só instâncias)  
+- Página **“Como evoluir o DS”** — ✅ (`node-id=4807-72`)
+- ~~Docs humanas W0–W6~~ ✅ — [`DS-HUMAN-DOCS-REGISTRY.md`](./DS-HUMAN-DOCS-REGISTRY.md)
+- ~~Auditoria W0–W6 + orphans W4~~ ✅ (2026-08-17)
+- **Próximo (opcional):** página **App-cliente / Painel** com composições oficiais (só instâncias)
 - Página **Temas** (quando necessário): trocar mode, não fork
 
-### Ordem sugerida de docs Figma
-
-1. ~~Fluxo de decisão~~ ✅  
-2. ~~W0–W6 docs humanas~~ ✅ — [`DS-HUMAN-DOCS-REGISTRY.md`](./DS-HUMAN-DOCS-REGISTRY.md)  
-3. **Próximo:** auditoria dos frames (tokens, props, copy, Do/Don’t) — reportar; aplicar só com confirmação  
-4. *Item / *Block: sem página própria (só Anatomy do pai)
+### Ondas Docs humanas
 
 | Onda | Status | Qtd |
 |---|---|---|
@@ -116,6 +115,8 @@ Objetivo: páginas **para pessoas** (não só metadata AI).
 | W4 Dados | ✅ | 11 |
 | W5 Cards app | ✅ | 11 |
 | W6 Complexos | ✅ | 9 |
+
+`*Item` / `*Block`: sem página própria (só Anatomy do pai).
 
 ---
 
@@ -131,7 +132,7 @@ Figma (ajuste)
  → GitHub Pages
 ```
 
-### Melhorias do catálogo (próximas)
+### Melhorias do catálogo
 
 | Prioridade | Item | Notas |
 |---|---|---|
@@ -158,24 +159,29 @@ Figma (ajuste)
 |---|---|
 | Fundação + catálogo seed (~124) | 🟢 Avançado |
 | `product-theme` core (23 vars) | 🟢 Feito — só sob demanda |
-| Padrões app-cliente / Painel | 🟢 Fechamento declarado; polish contínuo |
 | Fluxo decisão Reusar/Variante/Novo | 🟢 Página Figma publicada |
-| Docs visuais Figma (humanas) | 🟢 **Completo** — ver `DS-HUMAN-DOCS-REGISTRY.md` (~75 frames) |
-| Painel Home audit queue | 🟢 Validada 2026-08-17 — seed promo tokens; componentes alinhados |
+| Docs visuais Figma (humanas) W0–W6 | 🟢 Completo + auditadas |
+| Orphans W4 (DividerHorizontal / PaginationItem) | 🟢 Removidos após rewire |
+| Painel Home audit queue | 🟢 Validada — [`ds-painel-audit/`](./ds-painel-audit/00-INDICE-AUDITORIA.md); promo tokens no seed |
+| Limpeza untracked legado | 🟢 Feita (scripts/patches/JSON legado); audit versionado |
 | Storybook Pages sync | 🟢 Operacional |
-| React / Chromatic / Code Connect | ⬜ Depois |
+| Página composições App-cliente / Painel | ⬜ Opcional |
+| React / Chromatic / Code Connect | ⬜ Depois (pedido explícito do time) |
 
 ---
 
 ## Próximos passos (ordem recomendada)
 
-1. ~~Publicar no Figma a página “Como evoluir o DS”~~ ✅  
-2. ~~Docs humanas W0–W6~~ ✅ → [`DS-HUMAN-DOCS-REGISTRY.md`](./DS-HUMAN-DOCS-REGISTRY.md)  
-3. ~~**Auditar** frames no Figma~~ ✅ W0–W6 aplicadas (2026-08-17)  
-4. ~~Limpar orphans W4~~ ✅ DividerHorizontal `3298:1409` + PaginationItem `3382:9339` removidos após rewire  
-5. **Manter** sync Storybook a cada ajuste de metadata  
-6. **Opcional:** limpar untracked legado  
-7. **Só quando o time pedir:** React → Autodocs → Code Connect
+1. ~~Publicar “Como evoluir o DS”~~ ✅  
+2. ~~Docs humanas W0–W6~~ ✅  
+3. ~~Auditar frames Docs humanas~~ ✅  
+4. ~~Limpar orphans W4~~ ✅  
+5. ~~Validar fila Painel Home + sync promo tokens~~ ✅ (`b3b7189`)  
+6. ~~Limpar untracked legado~~ ✅  
+7. **Próximo:** gap / tela de produto nova (link Figma → reusar / variante / novo → seed → Pages)  
+8. **Opcional:** página Figma de composições App-cliente / Painel (só instâncias)  
+9. **Opcional:** polish copy Introduction / Changelog no Storybook  
+10. **Só quando o time pedir:** React → Autodocs → Code Connect → Chromatic
 
 ---
 
