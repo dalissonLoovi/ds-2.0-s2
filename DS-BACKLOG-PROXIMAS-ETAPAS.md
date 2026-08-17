@@ -170,10 +170,11 @@ Figma (ajuste)
 
 1. ~~Publicar no Figma a página “Como evoluir o DS”~~ ✅  
 2. ~~Docs humanas W0–W6~~ ✅ → [`DS-HUMAN-DOCS-REGISTRY.md`](./DS-HUMAN-DOCS-REGISTRY.md)  
-3. **Auditar** frames no Figma (outra IA / humano) — reportar P1/P2/P3; aplicar só com confirmação  
-4. **Manter** sync Storybook a cada ajuste de metadata  
-5. **Opcional:** limpar untracked legado  
-6. **Só quando o time pedir:** React → Autodocs → Code Connect
+3. ~~**Auditar** frames no Figma~~ ✅ W0–W6 aplicadas (2026-08-17)  
+4. ~~Limpar orphans W4~~ ✅ DividerHorizontal `3298:1409` + PaginationItem `3382:9339` removidos após rewire  
+5. **Manter** sync Storybook a cada ajuste de metadata  
+6. **Opcional:** limpar untracked legado  
+7. **Só quando o time pedir:** React → Autodocs → Code Connect
 
 ---
 

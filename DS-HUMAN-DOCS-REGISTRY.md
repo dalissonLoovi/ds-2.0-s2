@@ -4,7 +4,7 @@
 **Arquivo:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2)  
 **Escopo:** páginas próprias para standalone · `*Item`/`*Block` só na Anatomy · prontas para auditoria  
 
-**Auditoria:** W0–**W6 aplicadas**. W5 noop · W6 P2 StepperPrimary nodeId → `3653:4985`. Orphans W4 **não** deletados.
+**Auditoria:** W0–**W6 aplicadas**. Orphans W4 **limpos**: rewire file-wide + delete `3298:1409` (DividerHorizontal) e `3382:9339` (PaginationItem). Live: `3653:22914` / `3653:6248`.
 
 Frame padrão: `{Name} — Docs humanas` · Overview → A11y
 
@@ -129,6 +129,5 @@ Frame padrão: `{Name} — Docs humanas` · Overview → A11y
 
 ## Próximo passo
 
-Ciclo Docs humanas W0–W6 **fechado** (estrutura + seed nodeIds).  
-Orphans W4 (masters órfãos DividerHorizontal / PaginationItem): consolidar/deletar só com OK explícito.  
-Commit/push JSON + MDX + registry quando pedir.
+Ciclo Docs humanas W0–W6 **fechado**. Orphans W4 removidos.  
+Commit/push do registry quando pedir. Melhoria contínua / gaps de produto a seguir.
