@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SearchBar } from '@ds/react/draft';
+import { SearchBar } from '@ds/react';
 
 const meta = {
-  title: 'Draft/SearchBar',
+  title: 'Components/SearchBar',
   component: SearchBar,
   tags: ['autodocs'],
-  args: { label: 'SearchBar' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { placeholder: 'Search' },
 } satisfies Meta<typeof SearchBar>;
 
 export default meta;

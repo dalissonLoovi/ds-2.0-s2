@@ -19,6 +19,23 @@ const HANDWRITTEN = new Set([
   'Alert',
   'Toast',
   'Modal',
+  'Autocomplete',
+  'Checkbox',
+  'DatePickerSelect',
+  'DatePickerSelectItem',
+  'InputDatePicker',
+  'InputNumber',
+  'InputPassword',
+  'InputSelect',
+  'InputTextArea',
+  'Link',
+  'RadioButton',
+  'RadioButtonCard',
+  'SearchBar',
+  'SelectCountry',
+  'Switch',
+  'VerificationCodeInput',
+  'VerificationCodeInputItem',
 ]);
 
 function story(name) {
@@ -55,6 +72,7 @@ function main() {
   let count = 0;
   for (const name of names) {
     if (HANDWRITTEN.has(name)) continue;
+    if (name.startsWith('_')) continue;
     fs.writeFileSync(path.join(OUT_DIR, `${name}.stories.tsx`), story(name));
     count += 1;
   }

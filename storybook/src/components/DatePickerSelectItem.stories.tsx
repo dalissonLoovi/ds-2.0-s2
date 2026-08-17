@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DatePickerSelectItem } from '@ds/react/draft';
+import { DatePickerSelectItem } from '@ds/react';
 
 const meta = {
-  title: 'Draft/DatePickerSelectItem',
+  title: 'Components/DatePickerSelectItem',
   component: DatePickerSelectItem,
   tags: ['autodocs'],
-  args: { label: 'DatePickerSelectItem' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { unit: 'day', value: '01' },
 } satisfies Meta<typeof DatePickerSelectItem>;
 
 export default meta;

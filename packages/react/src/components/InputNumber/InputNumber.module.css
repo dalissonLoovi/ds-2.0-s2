@@ -1,23 +1,32 @@
-.root {
-  box-sizing: border-box;
+.withCountry {
+  padding-left: var(--spacing-050, 4px);
+}
+
+.control {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
   font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  font-size: 16px;
+  line-height: 24px;
+  color: inherit;
+  outline: none;
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+.control::placeholder {
+  color: var(--text-placeholder);
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.icon {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.divider {
+  width: 1px;
+  align-self: stretch;
+  margin: var(--spacing-100, 8px) 0;
+  background: var(--color-border-2);
+  flex-shrink: 0;
 }

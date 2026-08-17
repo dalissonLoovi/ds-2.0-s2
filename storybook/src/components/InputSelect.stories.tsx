@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { InputSelect } from '@ds/react/draft';
+import { InputSelect } from '@ds/react';
 
 const meta = {
-  title: 'Draft/InputSelect',
+  title: 'Components/InputSelect',
   component: InputSelect,
   tags: ['autodocs'],
-  args: { label: 'InputSelect' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'City', content: 'placeholder' },
 } satisfies Meta<typeof InputSelect>;
 
 export default meta;

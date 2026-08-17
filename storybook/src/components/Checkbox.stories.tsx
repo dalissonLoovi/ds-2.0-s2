@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from '@ds/react/draft';
+import { Checkbox } from '@ds/react';
 
 const meta = {
-  title: 'Draft/Checkbox',
+  title: 'Components/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
-  args: { label: 'Checkbox' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Accept', showDescription: true, description: 'Optional detail' },
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;

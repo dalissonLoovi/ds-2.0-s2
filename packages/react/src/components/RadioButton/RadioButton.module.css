@@ -1,23 +1,87 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--spacing-100, 8px);
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
 }
 
-.title {
+.disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.controlWrap {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
   margin: 0;
-  font-weight: 600;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--color-border-1);
+  border-radius: 999px;
+  background: var(--color-background-surface-0);
+  pointer-events: none;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--color-actions-primary);
+  transform: scale(0);
+  transition: transform 120ms ease;
+}
+
+.input:checked + .radio {
+  border-color: var(--color-actions-primary);
+}
+
+.input:checked + .radio .dot {
+  transform: scale(1);
+}
+
+.input:focus-visible + .radio,
+.state-focus .radio {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 2px;
+}
+
+.root:hover:not(.disabled) .radio,
+.state-hover .radio {
+  border-color: var(--color-border-feedback-primary);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-050, 4px);
+  min-width: 0;
+}
+
+.label {
   font-size: 14px;
   line-height: 20px;
+  font-weight: 500;
 }
 
-.meta {
-  margin: 4px 0 0;
+.description {
   font-size: 12px;
   line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+  color: var(--text-secondary);
 }

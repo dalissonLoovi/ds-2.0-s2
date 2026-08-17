@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { InputTextArea } from '@ds/react/draft';
+import { InputTextArea } from '@ds/react';
 
 const meta = {
-  title: 'Draft/InputTextArea',
+  title: 'Components/InputTextArea',
   component: InputTextArea,
   tags: ['autodocs'],
-  args: { label: 'InputTextArea' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Message', showCount: true },
 } satisfies Meta<typeof InputTextArea>;
 
 export default meta;

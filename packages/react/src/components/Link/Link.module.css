@@ -1,23 +1,71 @@
 .root {
-  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+  color: var(--text-link, var(--text-brand));
   font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
+.root:hover,
+.state-hover {
+  text-decoration: underline;
+}
+
+.root:focus-visible,
+.state-focus {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.state-active {
+  color: color-mix(in srgb, var(--text-link, var(--text-brand)) 80%, black);
+}
+
+.state-visited {
+  color: color-mix(in srgb, var(--text-link, var(--text-brand)) 70%, #5b2d8e);
+}
+
+.inline {
+  text-decoration: underline;
+}
+
+.inline .icon {
+  display: none;
+}
+
+.disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.appearance-inverse {
+  color: var(--text-on-color);
+}
+
+.size-sm {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.size-md {
   font-size: 14px;
   line-height: 20px;
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.size-lg {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.label {
+  display: inline;
+}
+
+.icon {
+  flex-shrink: 0;
 }

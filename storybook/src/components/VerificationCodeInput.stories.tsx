@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { VerificationCodeInput } from '@ds/react/draft';
+import { VerificationCodeInput } from '@ds/react';
 
 const meta = {
-  title: 'Draft/VerificationCodeInput',
+  title: 'Components/VerificationCodeInput',
   component: VerificationCodeInput,
   tags: ['autodocs'],
-  args: { label: 'VerificationCodeInput' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Code', digit1: '1', digit2: '2' },
 } satisfies Meta<typeof VerificationCodeInput>;
 
 export default meta;

@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { InputDatePicker } from '@ds/react/draft';
+import { InputDatePicker } from '@ds/react';
 
 const meta = {
-  title: 'Draft/InputDatePicker',
+  title: 'Components/InputDatePicker',
   component: InputDatePicker,
   tags: ['autodocs'],
-  args: { label: 'InputDatePicker' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Date' },
 } satisfies Meta<typeof InputDatePicker>;
 
 export default meta;

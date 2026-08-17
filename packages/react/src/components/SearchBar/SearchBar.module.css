@@ -1,23 +1,61 @@
 .root {
-  box-sizing: border-box;
+  width: 100%;
+  max-width: 480px;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+  min-height: 48px;
+  padding: 0 var(--spacing-100, 8px);
+  border-radius: 999px;
+  background: var(--color-background-surface-2);
+  color: var(--text-primary);
+}
+
+.state-focus .pill,
+.pill:focus-within {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 1px;
+}
+
+.state-hover .pill {
+  background: color-mix(in srgb, var(--color-background-surface-2) 88%, var(--interactive-hover));
+}
+
+.disabled {
+  opacity: 0.48;
+  pointer-events: none;
+}
+
+.control {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
   font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  font-size: 16px;
+  line-height: 24px;
+  color: inherit;
+  outline: none;
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+.control::placeholder {
+  color: var(--text-placeholder);
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.profile {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.avatarFallback {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--color-background-surface-3);
 }

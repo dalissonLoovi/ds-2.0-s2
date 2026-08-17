@@ -66,6 +66,142 @@ const CHECK = {
       platform: ['web', 'mobile', 'mobile-landscape'],
     },
   },
+  Link: {
+    file: 'packages/react/src/components/Link/Link.tsx',
+    axes: {
+      size: ['lg', 'md', 'sm'],
+      state: ['default', 'hover', 'focus', 'active', 'visited', 'disabled'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  Checkbox: {
+    file: 'packages/react/src/components/Checkbox/Checkbox.tsx',
+    axes: {
+      state: ['default', 'focus', 'disabled'],
+      checked: ['false', 'true', 'mixed'],
+    },
+  },
+  RadioButton: {
+    file: 'packages/react/src/components/RadioButton/RadioButton.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'disabled'],
+      checked: ['false', 'true'],
+    },
+  },
+  RadioButtonCard: {
+    file: 'packages/react/src/components/RadioButtonCard/RadioButtonCard.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'disabled'],
+      checked: ['false', 'true'],
+    },
+  },
+  Switch: {
+    file: 'packages/react/src/components/Switch/Switch.tsx',
+    axes: {
+      size: ['md', 'sm'],
+      state: ['default', 'focus', 'disabled'],
+      checked: ['false', 'true'],
+    },
+  },
+  InputTextArea: {
+    file: 'packages/react/src/components/InputTextArea/InputTextArea.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['value', 'placeholder', 'label'],
+      leadingIcon: ['false', 'true'],
+      trailingIcon: ['false', 'true'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  InputPassword: {
+    file: 'packages/react/src/components/InputPassword/InputPassword.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['value', 'placeholder', 'label'],
+      leadingIcon: ['true', 'false'],
+      visibility: ['hidden', 'visible'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  InputNumber: {
+    file: 'packages/react/src/components/InputNumber/InputNumber.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['value', 'placeholder', 'label'],
+      leadingIcon: ['true', 'false'],
+      trailingIcon: ['true', 'false'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  InputSelect: {
+    file: 'packages/react/src/components/InputSelect/InputSelect.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['value', 'placeholder', 'label'],
+      leadingIcon: ['true', 'false'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  InputDatePicker: {
+    file: 'packages/react/src/components/InputDatePicker/InputDatePicker.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['value', 'placeholder', 'label'],
+      leadingIcon: ['true', 'false'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  SelectCountry: {
+    file: 'packages/react/src/components/SelectCountry/SelectCountry.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'disabled'],
+      size: ['sm', 'md'],
+      expanded: ['false', 'true'],
+    },
+  },
+  SearchBar: {
+    file: 'packages/react/src/components/SearchBar/SearchBar.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'pressed', 'disabled'],
+      content: ['placeholder', 'value'],
+    },
+  },
+  Autocomplete: {
+    file: 'packages/react/src/components/Autocomplete/Autocomplete.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['empty', 'query', 'selected'],
+      expanded: ['false', 'true'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  VerificationCodeInput: {
+    file: 'packages/react/src/components/VerificationCodeInput/VerificationCodeInput.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+    },
+  },
+  VerificationCodeInputItem: {
+    file: 'packages/react/src/components/VerificationCodeInputItem/VerificationCodeInputItem.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+    },
+  },
+  DatePickerSelect: {
+    file: 'packages/react/src/components/DatePickerSelect/DatePickerSelect.tsx',
+    axes: {
+      format: ['day-month-year', 'day-month', 'month-year', 'year'],
+      state: ['default', 'hover', 'focus', 'disabled'],
+    },
+  },
+  DatePickerSelectItem: {
+    file: 'packages/react/src/components/DatePickerSelectItem/DatePickerSelectItem.tsx',
+    axes: {
+      unit: ['day', 'month', 'year'],
+      state: ['default', 'hover', 'focus', 'disabled'],
+      expanded: ['false', 'true'],
+    },
+  },
 };
 
 function main() {

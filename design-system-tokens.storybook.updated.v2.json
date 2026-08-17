@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-17T19:00:00.000Z",
-        "storybookRevision": "2026-08-17-react-audit-apply-p1-p2",
+        "storybookUpdatedAt": "2026-08-17T20:00:00.000Z",
+        "storybookRevision": "2026-08-17-react-w1-formularios",
         "changelog": [
+            {
+                "date": "2026-08-17",
+                "type": "react-w1-formularios",
+                "summary": "React W1 Formulários polish: 15 fields + VerificationCodeInputItem + DatePickerSelectItem DoD (Autodocs, Code Connect, @ds/react)."
+            },
             {
                 "date": "2026-08-17",
                 "type": "react-audit-apply-p1-p2",
@@ -5367,8 +5372,8 @@
                     "ListActionDropdown (external)",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Avatar": {
                 "nodeId": "3669:8605",
@@ -6822,8 +6827,8 @@
                     "checkedStroke": "checkboxControl stroke color/border-feedback/primary on checked=true|mixed (interactive)",
                     "disabledStroke": "checkboxControl stroke color/border/2 when state=disabled"
                 },
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ChipClickable": {
                 "nodeId": "3653:23577",
@@ -7658,8 +7663,8 @@
                         }
                     ]
                 },
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "InputNumber": {
                 "nodeId": "3935:684",
@@ -7727,8 +7732,8 @@
                     "DividerVertical",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "InputPassword": {
                 "nodeId": "3950:1701",
@@ -7796,8 +7801,8 @@
                     "lock-outline (leading default)",
                     "alert-circle-outline (error)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "VerificationCodeInput": {
                 "nodeId": "4029:835",
@@ -7840,8 +7845,8 @@
                     "VerificationCodeInputItem (codeCell1…codeCell5, exposed)",
                     "labelRow / codeRow / supportingRow (error)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "VerificationCodeInputItem": {
                 "nodeId": "4028:773",
@@ -7882,8 +7887,8 @@
                     "VerificationCodeInput (parent field)",
                     "digit TEXT (prop)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SliderLeftRail": {
                 "nodeId": "4073:2214",
@@ -8330,8 +8335,8 @@
                     "ListActionDropdown (external menu)",
                     "DatePicker / Calendar surfaces (parent)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "DatePickerSelect": {
                 "nodeId": "4004:2227",
@@ -8375,8 +8380,8 @@
                     "ListActionDropdown (external menu per unit)",
                     "DatePicker / mobile period surfaces (parent)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "InputDatePicker": {
                 "nodeId": "3985:1386",
@@ -8439,8 +8444,8 @@
                     "calendar-outline / alert-circle-outline",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "InputSelect": {
                 "nodeId": "3898:2755",
@@ -8505,8 +8510,8 @@
                     "ListActionDropdownItem",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Keyboard": {
                 "nodeId": "3745:4228",
@@ -8597,8 +8602,8 @@
                     "body/large|medium|small/regular by size"
                 ],
                 "accessibility": "a / role=link; visible focus; communicate visited; color not sole cue; trailingIcon aria-hidden when label present.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "List": {
                 "nodeId": "3745:10921",
@@ -9184,8 +9189,8 @@
                     "border/radius/full | border/radius/0 and spacing/025 | 050 | 200 | 250 | 300"
                 ],
                 "accessibility": "role=radio; aria-checked reflects checked; aria-disabled when disabled; visible focus; related options in RadioGroup with role=radiogroup.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "StepProgressIndicator": {
                 "nodeId": "3809:765",
@@ -9497,8 +9502,8 @@
                     "Avatar",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "SearchViewFullscreen": {
                 "nodeId": "3883:16492",
@@ -9643,8 +9648,8 @@
                     "chevron-down-outline / chevron-up-outline (local)",
                     "external country list (screen-level)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Switch": {
                 "nodeId": "3444:318",
@@ -9684,8 +9689,8 @@
                     "spacing/0 | 200 | 250 | 300 | 400 | 500 | 700 and border/radius/full | 0, border/width/012 | 025"
                 ],
                 "accessibility": "role=switch; aria-checked reflects checked; aria-disabled when disabled; visible focus; accessible label from form field or aria-label.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TabItem": {
                 "nodeId": "3532:6782",
@@ -11207,11 +11212,16 @@
                     "stateLayer absolute on hover (interactive/hover)"
                 ],
                 "reactMapping": "RadioButtonCard(state, checked, label, description, showDescription)",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             }
         },
         "recentUpdates": [
+            {
+                "id": "react-w1-formularios",
+                "date": "2026-08-17",
+                "summary": "W1 React polish: Link/selection controls + Input* family + Search/Autocomplete + OTP + DatePickerSelect."
+            },
             {
                 "id": "react-audit-apply-p1-p2",
                 "date": "2026-08-17",

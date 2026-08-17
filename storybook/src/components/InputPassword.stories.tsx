@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { InputPassword } from '@ds/react/draft';
+import { InputPassword } from '@ds/react';
 
 const meta = {
-  title: 'Draft/InputPassword',
+  title: 'Components/InputPassword',
   component: InputPassword,
   tags: ['autodocs'],
-  args: { label: 'InputPassword' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Password' },
 } satisfies Meta<typeof InputPassword>;
 
 export default meta;

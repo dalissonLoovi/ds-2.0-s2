@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SelectCountry } from '@ds/react/draft';
+import { SelectCountry } from '@ds/react';
 
 const meta = {
-  title: 'Draft/SelectCountry',
+  title: 'Components/SelectCountry',
   component: SelectCountry,
   tags: ['autodocs'],
-  args: { label: 'SelectCountry' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { countryCode: 'BR', 'aria-label': 'Country BR' },
 } satisfies Meta<typeof SelectCountry>;
 
 export default meta;
