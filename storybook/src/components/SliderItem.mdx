@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/SliderItem" />
+
+# SliderItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4073-2232) · node `4073:2232`
+
+## AI-READY
+
+AI-READY COMPONENT: SliderItem is the Design System 2.0 track cell used inside Slider compositions. It combines an optional middle tick mark with a nested SliderRail (SliderRightRail + SliderLeftRail). It is not a standalone control — compose only as a Slider track cell; do not use as SliderRail alone, Slider handle, ProgressBar, or a free-standing bar. Variants: active (2). active: false | true — maps to nested SliderLeftRail.active (endCap 14 when false, 20 when true). Anatomy: middleIndicatorOverflow → middleIndicator + SliderRail (exposed). Visual rules: middleIndicator fill color/border/2 size spacing/025×spacing/025; rail colors from child rails. Shell fill empty; vertical sizing HUG. middleIndicatorOverflow may keep a 1px bottom pad for optical tick alignment (intentional). No appearance/inverse axis (intentional). Accessibility: decorative track cell; value/interaction semantics belong to the parent Slider. React mapping: SliderItem(active). Code Connect is not configured.
+
+## Variants
+
+- **active:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `active` | false \| true — maps to nested SliderLeftRail.active |
+| `sliderRail` | Exposed nested SliderRail |
+
+## Rules
+
+- **composeOnly:** Compose inside Slider — not a standalone control
+- **activeMapsLeftRail:** active=false → LeftRail active=false (endCap 14); active=true → LeftRail active=true (endCap 20)
+- **exposedRail:** SliderRail is exposed for nested editing
+- **middleTick:** middleIndicator color/border/2; size spacing/025; overflow may use 1px bottom pad
+- **shellHug:** Shell layoutSizingVertical HUG
+- **noInverse:** No appearance/inverse axis (intentional)
+
+## Token rules
+
+- color/border/2 (middleIndicator)
+- spacing/025 (middleIndicator width/height)
+- inherits SliderRail / SliderLeftRail / SliderRightRail tokens
+
+## Accessibility
+
+Decorative track cell; value/interaction semantics belong to parent Slider.
+
+## Composition
+
+- middleIndicatorOverflow / middleIndicator
+- SliderRail (exposed)
+- Slider / SliderSkeletonItem (parents)
+

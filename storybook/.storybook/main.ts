@@ -33,11 +33,21 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       ...(base ? { base } : {}),
       resolve: {
-        alias: {
-          '@docs': path.resolve(dirname, '../src'),
-          '@ds/react': path.resolve(dirname, '../../packages/react/src/index.ts'),
-          '@ds/tokens': path.resolve(dirname, '../../packages/tokens/dist/tokens.css'),
-        },
+        alias: [
+          { find: '@docs', replacement: path.resolve(dirname, '../src') },
+          {
+            find: '@ds/react/draft',
+            replacement: path.resolve(dirname, '../../packages/react/src/draft.ts'),
+          },
+          {
+            find: '@ds/react',
+            replacement: path.resolve(dirname, '../../packages/react/src/index.ts'),
+          },
+          {
+            find: '@ds/tokens',
+            replacement: path.resolve(dirname, '../../packages/tokens/dist/tokens.css'),
+          },
+        ],
       },
     });
   },

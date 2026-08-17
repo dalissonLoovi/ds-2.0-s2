@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CalendarPeriodNav } from '@ds/react';
+import { CalendarPeriodNav } from '@ds/react/draft';
 
 const meta = {
-  title: 'Components/CalendarPeriodNav',
+  title: 'Draft/CalendarPeriodNav',
   component: CalendarPeriodNav,
   tags: ['autodocs'],
   args: { label: 'CalendarPeriodNav' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
+      },
+    },
+  },
 } satisfies Meta<typeof CalendarPeriodNav>;
 
 export default meta;

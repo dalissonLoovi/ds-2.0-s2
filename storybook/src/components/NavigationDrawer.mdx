@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/NavigationDrawer" />
+
+# NavigationDrawer
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3327-1091) · node `3327:1091`
+
+## AI-READY
+
+AI-READY COMPONENT: NavigationDrawer is a vertical navigation container used to expose primary and secondary destinations in app, dashboard or system layouts. Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation surfaces. Use itemCount=3, 4, 5 or 6 to control the number of visible primary navigation items. itemCount=6 is the layout that also includes a secondary section separated by DividerHorizontal (primary + secondary items). NavigationDrawer composes NavigationDrawerItem for each destination. Do not use NavigationDrawer as a modal, side sheet, generic card, list, menu popover, content container or page layout wrapper. Accessibility: use nav semantics or aria-label for primary navigation; each item should behave as a link when representing a route; selected/current items should map to aria-current=page; preserve visible focus and keyboard navigation; badge counts need accessible labels when they communicate important information. Token rule: use existing DS variables only. React mapping: NavigationDrawer(heading, appearance, itemCount, items, secondaryItems).
+
+## Variants
+
+- **appearance:** default | inverse
+- **itemCount:** 3 | 4 | 5 | 6
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `heading` | section/navigation heading text |
+| `appearance` | default \| inverse |
+| `itemCount` | 3 \| 4 \| 5 \| 6 |
+
+## Rules
+
+- **composition:** Composes NavigationDrawerItem; item appearance must match drawer appearance
+- **itemCount6:** itemCount=6 includes primarySection + DividerHorizontal (middle-inset) + secondarySection; total items exceed 6
+- **usage:** Do not use as modal, side sheet, card, list, menu popover or page layout wrapper
+
+## Token rules
+
+- color/background-surface/1 or inverse-3 for drawer surface
+- text/primary | text/on-color for heading
+- spacing/100 | 150 | 200 | 250 | 300 | 600
+- border/radius/0 | 200 | 400 | full
+- Nested NavigationDrawerItem and DividerHorizontal use their own DS tokens
+
+## Accessibility
+
+Use nav semantics or aria-label; items as links for routes; selected maps to aria-current=page; visible focus and keyboard navigation; badge counts need accessible labels when meaningful.
+

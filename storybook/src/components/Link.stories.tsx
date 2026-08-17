@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Link } from '@ds/react';
+import { Link } from '@ds/react/draft';
 
 const meta = {
-  title: 'Components/Link',
+  title: 'Draft/Link',
   component: Link,
   tags: ['autodocs'],
   args: { label: 'Link' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
+      },
+    },
+  },
 } satisfies Meta<typeof Link>;
 
 export default meta;

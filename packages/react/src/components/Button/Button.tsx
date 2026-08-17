@@ -68,10 +68,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   },
   ref,
 ) {
-  const isDisabled = disabled || state === 'loading' ? disabled : disabled;
   const isLoading = loading || state === 'loading';
-  const busy = isLoading;
-  const effectivelyDisabled = isDisabled || isLoading;
+  const effectivelyDisabled = disabled || isLoading;
 
   const iconSize = size === 'sm' ? 16 : size === 'lg' ? 24 : 20;
 
@@ -84,11 +82,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
         styles[`variant-${variant}`],
         styles[`size-${size}`],
         styles[`intent-${intent}`],
-        state !== 'default' && styles[`state-${state}`],
+        state !== 'default' && !isLoading && styles[`state-${state}`],
         className,
       )}
       disabled={effectivelyDisabled}
-      aria-busy={busy || undefined}
+      aria-busy={isLoading || undefined}
       aria-disabled={effectivelyDisabled || undefined}
       data-variant={variant}
       data-size={size}
@@ -96,11 +94,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       data-state={isLoading ? 'loading' : state}
       {...rest}
     >
-      {isLoading ? (
-        renderIconSlot('loader-outline', iconSize, cx(styles.icon, styles.spinner))
-      ) : (
-        showIcon && renderIconSlot(icon, iconSize, styles.icon)
-      )}
+      {isLoading
+        ? renderIconSlot('loader-outline', iconSize, cx(styles.icon, styles.spinner))
+        : showIcon && renderIconSlot(icon, iconSize, styles.icon)}
       {showLabel && <span className={styles.label}>{children ?? label}</span>}
       {!isLoading && showTrailingIcon && renderIconSlot(trailingIcon, iconSize, styles.icon)}
     </button>

@@ -1,5 +1,6 @@
 /**
- * Generate CSF3 autodocs stories for scaffolded @ds/react components.
+ * Generate CSF3 autodocs stories for scaffolded draft components.
+ * Polished W0 stories are handwritten and import from @ds/react.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -22,13 +23,21 @@ const HANDWRITTEN = new Set([
 
 function story(name) {
   return `import type { Meta, StoryObj } from '@storybook/react';
-import { ${name} } from '@ds/react';
+import { ${name} } from '@ds/react/draft';
 
 const meta = {
-  title: 'Components/${name}',
+  title: 'Draft/${name}',
   component: ${name},
   tags: ['autodocs'],
   args: { label: '${name}' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from \`@ds/react/draft\`.',
+      },
+    },
+  },
 } satisfies Meta<typeof ${name}>;
 
 export default meta;
@@ -46,11 +55,10 @@ function main() {
   let count = 0;
   for (const name of names) {
     if (HANDWRITTEN.has(name)) continue;
-    const out = path.join(OUT_DIR, `${name}.stories.tsx`);
-    fs.writeFileSync(out, story(name));
+    fs.writeFileSync(path.join(OUT_DIR, `${name}.stories.tsx`), story(name));
     count += 1;
   }
-  console.log(`Wrote ${count} story files`);
+  console.log(`Wrote ${count} draft story files`);
 }
 
 main();

@@ -51,4 +51,17 @@ describe('Modal', () => {
     );
     expect(screen.getByRole('dialog')).toHaveAccessibleName('Confirm');
   });
+
+  it('calls onClose on Escape and locks body scroll', async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    render(
+      <Modal open title="Confirm" onClose={onClose}>
+        Body
+      </Modal>,
+    );
+    expect(document.body.style.overflow).toBe('hidden');
+    await user.keyboard('{Escape}');
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
 });

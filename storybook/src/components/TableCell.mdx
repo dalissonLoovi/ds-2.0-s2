@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/TableCell" />
+
+# TableCell
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3459-13960) · node `3459:13960`
+
+## AI-READY
+
+AI-READY COMPONENT: TableCell is a reusable table cell used inside a Table row to display header text, primary content, secondary content, tertiary content with description, or slot-based custom content. Use type=header for column headers, type=primary for main cell content, type=secondary for supporting cell content, type=tertiary when label and description are needed, and type=slot for custom slot content. Use state=default, hover, pressed or selected to represent interaction state — there is no focus state on TableCell. type=header is intentional-sparse and publishes only state=default. Use header, label and description text properties for visible content, and slot for type=slot custom content. Do not use TableCell as a full Table, Card, ListItem, Button, NavigationItem or standalone layout container. Accessibility: use inside a semantic table structure; header cells map to columnheader/th, body cells to cell/td; actionable content inside type=slot must expose buttons/links with clear accessible labels. Token rule: use existing DS variables only (color/background-surface/0|2, interactive/hover|pressed|selected, color/border/1|2, text/primary|secondary, spacing/0|150|200|500|800, border/radius/0, border/width/012). React mapping: TableCell(type, state, header, label, description, slot?).
+
+## Variants
+
+- **type:** header | primary | secondary | tertiary | slot
+- **state:** default | hover | pressed | selected
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `header` | column header text (type=header) |
+| `label` | primary cell text (primary\|secondary\|tertiary) |
+| `description` | supporting text (type=tertiary) |
+| `slot` | custom content slot (type=slot) |
+| `type` | header \| primary \| secondary \| tertiary \| slot |
+| `state` | default \| hover \| pressed \| selected |
+
+## Rules
+
+- **sparseHeader:** type=header publishes only state=default (intentional-sparse)
+- **noFocus:** No state=focus published
+- **noShowAction:** showAction axis removed; cells do not publish a trailing action Button
+- **slotType:** type=slot uses the slot property for custom/actionable content
+- **usage:** Do not use as full Table, Card, ListItem, Button, NavigationItem or standalone layout container
+
+## Token rules
+
+- color/background-surface/0 for body cells; color/background-surface/2 for header
+- interactive/hover | pressed | selected for interaction fills
+- text/primary for labels; text/secondary for header and description
+- spacing/0 | 150 | 200 | 500 | 800
+- border/radius/0, border/width/012
+
+## Accessibility
+
+Use inside semantic table; header → columnheader/th; body → cell/td; actionable content in type=slot must expose button/link with clear accessible label.
+

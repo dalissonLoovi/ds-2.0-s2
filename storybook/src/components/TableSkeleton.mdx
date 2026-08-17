@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/TableSkeleton" />
+
+# TableSkeleton
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3459-9331) · node `3459:9331`
+
+## AI-READY
+
+AI-READY COMPONENT: TableSkeleton is a non-interactive loading placeholder used while table data is being fetched. Use empty=false for the normal loading table skeleton (header and body skeletonBars visible) and empty=true for the empty-state loading layout (header skeletonBars remain visible; body skeletonBars are hidden). empty is published as a variant axis (false|true), not a BOOLEAN prop. Density is fixed in Figma: 5 columns and 6 visible body rows (bodyRow01–bodyRow06). bodyRow07–bodyRow10 exist as intentional leftover layers and stay hidden in both empty variants — they are not a published rowCount axis. Structure uses headerRow with headerSkeletonCell01–05 and body rows with skeletonCell01–05 containing skeletonBar. Do not use TableSkeleton as a data table, TableRow, TableCell, ProgressBar, LoadingSpinner, card or decorative illustration. Accessibility: hide visual skeleton bars from assistive technologies with aria-hidden=true and expose the real loading state from the parent table region with aria-busy=true or a nearby status message. Token rule: use existing DS variables only (color/background-surface/0|2|3, color/border/1|2, spacing/0|100|200|250, border/radius/0|full, border/width/012). React mapping: TableSkeleton(empty).
+
+## Variants
+
+- **empty:** false | true
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `empty` | false \| true — variant axis; empty=true hides body skeletonBars |
+
+## Rules
+
+- **emptyAxis:** empty is a VARIANT axis (false|true), not a BOOLEAN prop
+- **emptyTrue:** empty=true keeps header skeletonBars; hides body skeletonBars
+- **fixedDensity:** Fixed 5 columns and 6 visible body rows (bodyRow01–06)
+- **leftoverRows:** bodyRow07–10 are intentional leftovers and remain hidden in both variants
+- **usage:** Do not use as data table, TableRow, TableCell, ProgressBar, LoadingSpinner, card or decorative illustration
+
+## Token rules
+
+- color/background-surface/0 for table/body surfaces
+- color/background-surface/2 for header row and body skeletonBars
+- color/background-surface/3 for header skeletonBars
+- color/border/1 | color/border/2 for borders
+- spacing/0 | 100 | 200 | 250 and border/radius/0 | full, border/width/012
+
+## Accessibility
+
+Skeleton bars aria-hidden=true; parent table region aria-busy=true or nearby status message.
+

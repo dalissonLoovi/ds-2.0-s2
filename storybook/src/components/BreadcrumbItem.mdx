@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/BreadcrumbItem" />
+
+# BreadcrumbItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3681-3667) · node `3681:3667`
+
+## AI-READY
+
+AI-READY COMPONENT: BreadcrumbItem is the internal item used to compose the Breadcrumb navigation pattern. Use size=sm|md for density, type=link for navigable crumbs and type=overflow for the collapsed menu trigger, and state=default|hover|focus|pressed|current|skeleton|open for interaction and loading. Props: label controls the visible crumb text on type=link. Composition: always keep the leading decorative slash layer named slash with visible text "/ "; linkItem (type=link) or overflowButton (type=overflow); state=open on type=overflow nests a local ListActionDropdown as an absolute overlay under the trigger (root hugs the trigger row only). Open demo width follows the menu content hug — do not force a fixed 240px panel in the component set demo. Do not remove the slash. Do not use underline for any visual state — hover/pressed use interactive fills and text color; focus uses an outside stroke with interactive/focus on linkItem/overflowButton (no separate focusRing layer on BreadcrumbItem); open uses interactive/selected on the overflow trigger. Intentional sparse matrix: no link+open; no overflow+current; no overflow+skeleton. Do not use remote menu kits — nest local ListActionDropdown + ListActionDropdownItem only. Do not use BreadcrumbItem as a standalone Button, Tab, Chip, Menu or page title. Token rule: use existing DS kebab-case variables only — text/primary|secondary|brand, interactive/hover|pressed|selected|focus, color/background-surface/0, plus nested ListActionDropdown tokens (including elevation/2). Accessibility: parent Breadcrumb maps to nav aria-label="Breadcrumb" + ordered list; link items map to anchors when navigable; state=current maps to aria-current="page"; type=overflow maps to a button with aria-expanded true when state=open; slash is decorative (aria-hidden="true"); state=skeleton is non-interactive and must not receive focus. React mapping: BreadcrumbItem(size, type, state, label, children?) where open overflow children map to ListActionDropdown content.
+
+## Variants
+
+- **size:** sm | md
+- **type:** link | overflow
+- **state:** default | hover | focus | pressed | current | skeleton | open
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `label` | breadcrumb item text (wired on type=link) |
+| `size` | sm \| md |
+| `type` | link \| overflow |
+| `state` | default \| hover \| focus \| pressed \| current \| skeleton \| open |
+
+## Rules
+
+- **internalOnly:** Use inside Breadcrumb only
+- **keepSlash:** Always preserve decorative slash layer with text "/ "
+- **noUnderline:** Never use underline for hover/pressed/focus
+- **focusStroke:** Focus uses outside stroke interactive/focus on linkItem/overflowButton — no separate focusRing layer
+- **openOverlay:** state=open nests local ListActionDropdown as absolute overlay; root hugs trigger row
+- **openShowDivider:** Demo open variants use showDivider=false unless a DividerHorizontal is present in the slot
+- **sparseMatrix:** Intentional sparse: no link+open; no overflow+current; no overflow+skeleton
+- **vsStandalone:** Do not use as Button, Tab, Chip, Menu or page title
+- **localMenuOnly:** Nest local ListActionDropdown + ListActionDropdownItem only — no remote menu kits
+- **openWidthHug:** Open demo panel width follows menu content hug — do not force fixed 240px in the component-set demo
+
+## Token rules
+
+- text/primary | secondary | brand
+- interactive/hover | pressed | selected | focus
+- color/background-surface/0
+- nested ListActionDropdown tokens including elevation/2
+
+## Accessibility
+
+Parent Breadcrumb: nav aria-label=Breadcrumb + ordered list; link items as anchors; current → aria-current=page; overflow → button with aria-expanded when open; slash aria-hidden; skeleton non-interactive.
+

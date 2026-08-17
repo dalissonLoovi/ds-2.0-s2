@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { InputNumber } from '@ds/react';
+import { InputNumber } from '@ds/react/draft';
 
 const meta = {
-  title: 'Components/InputNumber',
+  title: 'Draft/InputNumber',
   component: InputNumber,
   tags: ['autodocs'],
   args: { label: 'InputNumber' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
+      },
+    },
+  },
 } satisfies Meta<typeof InputNumber>;
 
 export default meta;

@@ -4,14 +4,14 @@
   gap: var(--spacing-100, 8px);
   width: 100%;
   max-width: 360px;
-  color: var(--color-text-primary, #1a1a1a);
+  color: var(--text-primary);
 }
 
 .label {
   font-size: 12px;
   line-height: 16px;
   font-weight: 500;
-  color: var(--color-text-secondary, #5d6a80);
+  color: var(--text-secondary);
 }
 
 .field {
@@ -20,9 +20,9 @@
   gap: var(--spacing-100, 8px);
   min-height: 48px;
   padding: 0 var(--spacing-200, 12px);
-  border: 1px solid var(--color-border-1, #727688);
+  border: 1px solid var(--color-border-1);
   border-radius: var(--border-radius-200, 8px);
-  background: var(--color-background-surface-0, #fff);
+  background: var(--color-background-surface-0);
 }
 
 .control {
@@ -38,52 +38,58 @@
 }
 
 .control::placeholder {
-  color: var(--color-text-placeholder, #8b93a7);
+  color: var(--text-placeholder);
 }
 
 .state-focus .field,
 .field:focus-within {
-  border-color: var(--color-border-feedback-primary, #516ce7);
-  outline: 2px solid var(--color-border-feedback-primary, #516ce7);
+  border-color: var(--color-border-feedback-primary);
+  outline: 2px solid var(--interactive-focus, var(--color-border-feedback-primary));
   outline-offset: 1px;
 }
 
 .state-error .field {
-  border-color: var(--color-border-feedback-danger, #d81c1a);
+  border-color: var(--color-border-feedback-danger);
+  background: var(--interactive-error-surface, transparent);
 }
 
 .state-disabled .field,
 .state-disabled .control {
   opacity: 0.48;
   cursor: not-allowed;
+  background: var(--interactive-disabled-surface, var(--color-background-surface-0));
 }
 
 .appearance-inverse {
-  color: var(--color-text-on-color, #fff);
+  color: var(--text-on-color);
 }
 
 .appearance-inverse .field {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: color-mix(in srgb, var(--text-on-color) 40%, transparent);
 }
 
 .appearance-inverse .label,
 .appearance-inverse .support {
-  color: rgba(255, 255, 255, 0.8);
+  color: color-mix(in srgb, var(--text-on-color) 80%, transparent);
+}
+
+.appearance-inverse .control::placeholder {
+  color: var(--text-placeholder-inverse);
 }
 
 .support {
   margin: 0;
   font-size: 12px;
   line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+  color: var(--text-secondary);
 }
 
 .supportError {
-  color: var(--color-actions-danger, #f54444);
+  color: var(--feedback-danger, var(--color-actions-danger));
 }
 
 .icon {
   flex-shrink: 0;
-  color: var(--color-text-secondary, #5d6a80);
+  color: var(--text-secondary);
 }

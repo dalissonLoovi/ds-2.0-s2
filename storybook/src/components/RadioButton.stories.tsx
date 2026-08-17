@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { RadioButton } from '@ds/react';
+import { RadioButton } from '@ds/react/draft';
 
 const meta = {
-  title: 'Components/RadioButton',
+  title: 'Draft/RadioButton',
   component: RadioButton,
   tags: ['autodocs'],
   args: { label: 'RadioButton' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
+      },
+    },
+  },
 } satisfies Meta<typeof RadioButton>;
 
 export default meta;

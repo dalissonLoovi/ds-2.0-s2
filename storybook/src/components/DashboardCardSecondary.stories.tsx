@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DashboardCardSecondary } from '@ds/react';
+import { DashboardCardSecondary } from '@ds/react/draft';
 
 const meta = {
-  title: 'Components/DashboardCardSecondary',
+  title: 'Draft/DashboardCardSecondary',
   component: DashboardCardSecondary,
   tags: ['autodocs'],
   args: { label: 'DashboardCardSecondary' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
+      },
+    },
+  },
 } satisfies Meta<typeof DashboardCardSecondary>;
 
 export default meta;

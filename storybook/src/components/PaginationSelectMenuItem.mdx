@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/PaginationSelectMenuItem" />
+
+# PaginationSelectMenuItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3841-22500) · node `3841:22500`
+
+## AI-READY
+
+AI-READY COMPONENT: PaginationSelectMenuItem is a numeric option row used inside PaginationSelectMenu to choose a page number or items-per-page value. Use state=default|hover|pressed|selected|focus|disabled. Props: label is the visible numeric (or short) value. Do not add leading icons — this item is numeric-only. Do not use it as ListActionDropdownItem, Button, PaginationItem or MenuItem outside pagination select menus. Composition pattern mirrors ListActionDropdownItem interaction states without icon slots. Accessibility: option role inside a listbox/menu; selected maps to aria-selected=true; disabled uses aria-disabled; focusRing is decorative for the focus state. Token rule: local S2 kebab-case only — color/background-surface/0, interactive/hover|pressed|selected|disabled-surface|focus, text/primary|placeholder, spacing/0|200, border/radius/100, border/width/025, body/medium/regular. React mapping: PaginationSelectMenuItem(state, label). Code Connect is not configured.
+
+## Variants
+
+- **state:** default | hover | pressed | selected | disabled | focus
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| pressed \| selected \| disabled \| focus |
+| `label` | TEXT — numeric (or short) option value |
+
+## Rules
+
+- **numericOnly:** No leading icon — label only
+- **vsListActionDropdownItem:** Same interaction states as ListActionDropdownItem without icon slots
+- **usage:** Use only inside PaginationSelectMenu
+
+## Token rules
+
+- color/background-surface/0; interactive/hover|pressed|selected|disabled-surface
+- interactive/focus on focusRing
+- text/primary | text/placeholder
+- spacing/0 | 200, border/radius/100, border/width/025, body/medium/regular
+
+## Accessibility
+
+option; aria-selected when selected; aria-disabled when disabled; focusRing decorative.
+

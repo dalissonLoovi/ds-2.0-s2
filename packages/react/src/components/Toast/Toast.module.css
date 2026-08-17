@@ -6,9 +6,9 @@
   max-width: 420px;
   padding: var(--spacing-150, 10px) var(--spacing-200, 12px);
   border-radius: var(--border-radius-200, 8px);
-  background: var(--color-background-surface-0, #fff);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  color: var(--color-text-primary, #1a1a1a);
+  background: var(--color-background-surface-0);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--interactive-overlay, #000) 24%, transparent);
+  color: var(--text-primary);
 }
 
 .message {
@@ -30,18 +30,18 @@
 }
 
 .status-success .icon {
-  color: var(--color-actions-success, #00723e);
+  color: var(--feedback-success, var(--color-actions-success));
 }
 
 .status-danger .icon {
-  color: var(--color-actions-danger, #f54444);
+  color: var(--feedback-danger, var(--color-actions-danger));
 }
 
 .status-warning .icon {
-  color: #c58a00;
+  color: var(--feedback-warning);
 }
 
 .status-info .icon,
 .status-system .icon {
-  color: var(--color-actions-primary, #4c6bf8);
+  color: var(--color-actions-primary);
 }

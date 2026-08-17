@@ -1,6 +1,6 @@
 .root {
   --btn-bg: var(--color-actions-primary);
-  --btn-fg: var(--color-text-on-color, #ffffff);
+  --btn-fg: var(--text-on-color);
   --btn-border: transparent;
   --btn-radius: var(--border-radius-200, 8px);
   --btn-pad-x: var(--spacing-200, 12px);
@@ -37,11 +37,12 @@
 .root[aria-disabled='true'] {
   cursor: not-allowed;
   opacity: 0.48;
+  background: var(--interactive-disabled-surface, var(--btn-bg));
 }
 
 .root:focus-visible,
 .state-focus {
-  outline: 2px solid var(--color-border-feedback-primary, #516ce7);
+  outline: 2px solid var(--interactive-focus, var(--color-border-feedback-primary));
   outline-offset: 2px;
 }
 
@@ -69,22 +70,22 @@
 
 .intent-primary {
   --btn-bg: var(--color-actions-primary);
-  --btn-fg: #ffffff;
+  --btn-fg: var(--text-on-color);
 }
 
 .intent-success {
   --btn-bg: var(--color-actions-success);
-  --btn-fg: #ffffff;
+  --btn-fg: var(--text-on-color);
 }
 
 .intent-danger {
   --btn-bg: var(--color-actions-danger);
-  --btn-fg: #ffffff;
+  --btn-fg: var(--text-on-color);
 }
 
 .intent-secondary {
   --btn-bg: var(--color-actions-secondary);
-  --btn-fg: var(--color-text-primary, #1a1a1a);
+  --btn-fg: var(--text-primary);
 }
 
 .variant-outline {
@@ -114,6 +115,10 @@
   --btn-fg: var(--color-actions-primary);
 }
 
+.variant-text.intent-primary {
+  --btn-fg: var(--text-primary);
+}
+
 .variant-text.intent-success {
   --btn-fg: var(--color-actions-success);
 }
@@ -126,22 +131,25 @@
   --btn-fg: var(--color-actions-secondary);
 }
 
-.variant-text.intent-primary {
-  --btn-fg: var(--color-text-primary, #1a1a1a);
-}
-
 .root:hover:not(:disabled):not([aria-disabled='true']),
 .state-hover {
-  filter: brightness(0.96);
+  background: color-mix(in srgb, var(--btn-bg) 88%, var(--interactive-hover, #000) 12%);
+}
+
+.variant-outline:hover:not(:disabled):not([aria-disabled='true']),
+.variant-text:hover:not(:disabled):not([aria-disabled='true']),
+.variant-outline.state-hover,
+.variant-text.state-hover {
+  background: var(--interactive-hover, color-mix(in srgb, var(--btn-fg) 8%, transparent));
 }
 
 .state-pressed,
 .root:active:not(:disabled):not([aria-disabled='true']) {
-  filter: brightness(0.9);
+  background: color-mix(in srgb, var(--btn-bg) 80%, var(--interactive-pressed, #000) 20%);
 }
 
 .state-selected {
-  box-shadow: inset 0 0 0 2px var(--color-border-feedback-primary, #516ce7);
+  box-shadow: inset 0 0 0 2px var(--interactive-selected, var(--color-border-feedback-primary));
 }
 
 .label {

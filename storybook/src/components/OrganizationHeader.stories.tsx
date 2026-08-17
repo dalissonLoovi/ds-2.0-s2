@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { OrganizationHeader } from '@ds/react';
+import { OrganizationHeader } from '@ds/react/draft';
 
 const meta = {
-  title: 'Components/OrganizationHeader',
+  title: 'Draft/OrganizationHeader',
   component: OrganizationHeader,
   tags: ['autodocs'],
   args: { label: 'OrganizationHeader' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
+      },
+    },
+  },
 } satisfies Meta<typeof OrganizationHeader>;
 
 export default meta;

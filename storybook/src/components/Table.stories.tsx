@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Table } from '@ds/react';
+import { Table } from '@ds/react/draft';
 
 const meta = {
-  title: 'Components/Table',
+  title: 'Draft/Table',
   component: Table,
   tags: ['autodocs'],
   args: { label: 'Table' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
+      },
+    },
+  },
 } satisfies Meta<typeof Table>;
 
 export default meta;

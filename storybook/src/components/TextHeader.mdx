@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/TextHeader" />
+
+# TextHeader
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3667-4129) · node `3667:4129`
+
+## AI-READY
+
+AI-READY COMPONENT: TextHeader is the compact title + optional supporting text block used inside AppHeader, SystemHeader, and similar chrome. Props: size=large|medium|small; alignment=left|center; title (TEXT); description (TEXT); showDescription (BOOLEAN, default true). Typography: size=large → heading/h1/medium + body/large/regular; size=medium → heading/h2/medium + body/medium/regular; size=small → heading/h3/medium + body/small/regular. Do not use TextHeader as AppHeader itself, as a Button label, Chip, Banner, or page hero. Prefer nesting TextHeader via exposed headingContent in parent headers. Note: AppHeader hierarchy=global does not use TextHeader — it keeps greeting TEXT body/large/medium as a characteristic. Token rule: local S2 text styles and text/primary|secondary only. React mapping: TextHeader(size, alignment, title, description, showDescription). Code Connect is not configured.
+
+## Variants
+
+- **size:** large | medium | small
+- **alignment:** left | center
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `size` | large \| medium \| small |
+| `alignment` | left \| center |
+| `title` | TEXT — headline label |
+| `description` | TEXT — supporting text |
+| `showDescription` | boolean — default true |
+
+## Rules
+
+- **matrix:** Published 6/6 — size × alignment
+- **appHeaderUsage:** AppHeader hierarchy=specific|super-app nests TextHeader as headingContent; hierarchy=global uses greeting body/large/medium instead
+- **kebab:** Variant keys/values are kebab-case (size/alignment; large|medium|small; left|center)
+- **inverseOverride:** When nested in appearance=inverse chrome (e.g. AppHeader), override title → text/on-color and description → text/on-color-disabled
+
+## Token rules
+
+- size=large: heading/h1/medium + body/large/regular
+- size=medium: heading/h2/medium + body/medium/regular
+- size=small: heading/h3/medium + body/small/regular
+- text/primary on title; text/secondary on description
+
+## Accessibility
+
+Title provides the accessible name for the header region when nested; supporting description is supplementary.
+

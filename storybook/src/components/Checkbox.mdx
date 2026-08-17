@@ -1,0 +1,71 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Checkbox" />
+
+# Checkbox
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3667-3812) · node `3667:3812`
+
+## AI-READY
+
+AI-READY COMPONENT: Checkbox is a form selection control used for binary, multi-select, or partially selected choices.
+
+Usage rule: use Checkbox when the user can select or deselect an independent option, one or more items in a list, or a preference. Do not use Checkbox as a button, radio, switch, chip, badge, navigation item, or purely visual status indicator.
+
+Variant rule: state=default is the resting interactive state. state=focus is keyboard focus-visible. state=disabled means the checkbox cannot be changed. checked=false is unchecked. checked=true is checked. checked=mixed is indeterminate/partially selected.
+
+Mixed state rule: checked=mixed should be used only when a parent item represents a partial selection of child items. It should map to aria-checked=mixed or an indeterminate checkbox implementation in React.
+
+Content rule: label is the primary option text. description is optional supporting text. showLabel, showDescription, and showContent control visibility, but an unlabeled checkbox must receive an accessible label in implementation.
+
+Token rule: Checkbox must use DS semantic tokens only. Text uses text/primary, text/secondary, and text/placeholder for disabled. Unchecked default and focus use color/background-surface/0 and color/border/1 on checkboxControl. Selected and mixed states use color/actions/primary and color/border-feedback/primary. Focus ring uses interactive/focus. Disabled surface uses color/background-surface/1 and color/border/2. Spacing uses spacing/025, spacing/050, spacing/100, and spacing/200. Radius uses border/radius/100 and focus ring may use border/radius/200. Stroke width uses border/width/012.
+
+Internal structure rule: checkboxControl contains checkboxBox, focusRing, and the indicator icon. labelContent contains label and optional description. checkIcon must use the local DS check-outline icon for checked=true. indeterminateIcon must use the local DS minus-outline icon for checked=mixed.
+
+Accessibility rule: Checkbox must map to input type=checkbox or role=checkbox with aria-checked. The label must be associated with the control. The description should map to aria-describedby when present. Space toggles the value. Disabled blocks pointer and keyboard interaction.
+
+React mapping recommendation: Checkbox(checked=false|true|mixed, disabled when state=disabled, label, description, showLabel, showDescription). Code Connect has not been changed yet.
+
+Icon source rule: Checkbox indicator icons must come from local DS icon components only. checked=true uses checkIcon mapped to check-outline. checked=mixed uses indeterminateIcon mapped to minus-outline. Do not use icons from external libraries or old component libraries.
+
+## Variants
+
+- **state:** default | focus | disabled
+- **checked:** false | true | mixed
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `label` | primary option text |
+| `showLabel` | boolean |
+| `description` | supporting text |
+| `showDescription` | boolean |
+| `showContent` | boolean |
+| `state` | default \| focus \| disabled |
+| `checked` | false \| true \| mixed |
+
+## Rules
+
+- **uncheckedStroke:** checkboxControl stroke color/border/1 on state=default|focus × checked=false
+- **checkedStroke:** checkboxControl stroke color/border-feedback/primary on checked=true|mixed (interactive)
+- **disabledStroke:** checkboxControl stroke color/border/2 when state=disabled
+
+## Token rules
+
+- text/primary
+- text/secondary
+- text/placeholder
+- color/actions/primary
+- color/border/1 — unchecked checkboxControl stroke (state=default|focus, checked=false)
+- color/border-feedback/primary — checked|mixed control stroke
+- color/border/2 — disabled checkboxControl stroke
+- color/background-surface/0 — unchecked fill; color/background-surface/1 — disabled fill
+- interactive/focus — focusRing
+
+## Accessibility
+
+Map to input type=checkbox or role=checkbox with aria-checked. Use aria-checked=mixed for partial selection. Space toggles the value.
+

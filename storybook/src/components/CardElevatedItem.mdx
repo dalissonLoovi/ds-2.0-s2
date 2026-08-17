@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/CardElevatedItem" />
+
+# CardElevatedItem
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4170-4564) · node `4170:4564`
+
+## AI-READY
+
+AI-READY INTERNAL COMPONENT: CardElevatedItem — elevated Card surface building block (state shell). Props: state=enabled|hover|focus|pressed|dragged; showFocusIndicator (BOOLEAN, default true — meaningful on state=focus). Anatomy: stateLayer (+ focusIndicator on focus, outside stroke). Content is composed by parent Card over this surface. Tokens: color/background-surface/1 (root fill); border/radius/300; no outline stroke (intentional for elevated). Interaction fills: hover uses stateLayer interactive/hover; pressed uses root fill interactive/pressed over surface (stateLayer empty); dragged uses stateLayer interactive/selected; enabled/focus stateLayer empty; stateLayer padding/gap spacing/100; focusIndicator: outside stroke color/actions/primary (toggled by showFocusIndicator); elevation: resting DROP_SHADOW color/elevation/2 (enabled/focus/pressed); color/elevation/6 on hover; color/elevation/5 on dragged. No disabled state on this surface item (intentional — disabled belongs to parent Card/actions). No appearance/inverse variant (intentional). Do not use as Card, CardOutlinedItem, or a content layout. React mapping: CardElevatedItem(state, showFocusIndicator). Code Connect is not configured.
+
+## Variants
+
+- **state:** enabled | hover | focus | pressed | dragged
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | enabled \| hover \| focus \| pressed \| dragged |
+| `showFocusIndicator` | boolean — default true; toggles focusIndicator on state=focus |
+
+## Rules
+
+- **surfaceOnly:** State shell — content composed by parent Card
+- **interactionFills:** hover = stateLayer interactive/hover; pressed = root interactive/pressed over surface (stateLayer empty); dragged = stateLayer interactive/selected; enabled/focus stateLayer empty
+- **focusRing:** focusIndicator outside stroke color/actions/primary; showFocusIndicator default true
+- **spacing:** stateLayer padding/gap spacing/100
+- **noDisabled:** No disabled on this surface — belongs to parent Card/actions
+- **noInverse:** No appearance/inverse (intentional)
+- **naming:** Renamed from Material .Building Blocks/Card states/*
+- **noOutline:** No outline stroke — elevated surface uses shadow for separation
+- **elevation:** resting color/elevation/2; hover color/elevation/6; dragged color/elevation/5
+- **surface:** color/background-surface/1
+
+## Token rules
+
+- color/background-surface/1
+- border/radius/300
+- interactive/hover (stateLayer)
+- interactive/pressed (root, pressed)
+- interactive/selected (stateLayer, dragged)
+- color/actions/primary (focusIndicator)
+- color/elevation/2 (resting)
+- color/elevation/6 (hover)
+- color/elevation/5 (dragged)
+- spacing/100 (stateLayer padding/gap)
+
+## Accessibility
+
+Focus ring via showFocusIndicator on state=focus; disabled semantics belong to parent Card.
+
+## Composition
+
+- stateLayer
+- focusIndicator (state=focus)
+- Card / Stacked card / Horizontal card (parents)
+

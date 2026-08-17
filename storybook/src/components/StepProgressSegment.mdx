@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/StepProgressSegment" />
+
+# StepProgressSegment
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3807-31) · node `3807:31`
+
+## AI-READY
+
+AI-READY INTERNAL COMPONENT: StepProgressSegment is the internal visual segment used only inside StepProgressIndicator. Variants: status=completed|current|pending|error. Default published demo uses status=completed. current uses color/actions/primary and must be the most visually prominent state. completed uses interactive/selected to remain visible with lower emphasis. pending uses color/background-surface/2 and must not appear disabled. error uses feedback/danger and must only be used when the current step contains a real validation error accompanied by explanatory text. Structure: segmentSurface fills the component, uses border/radius/full, and stretches horizontally when its instance is placed inside the StepProgressIndicator segments Auto Layout. This component is non-interactive, receives no focus, and must not be used as a ProgressBar, Button, Slider, TimelineItem or standalone navigation control. Token rule: use existing DS kebab-case variables only - color/actions/primary, interactive/selected, color/background-surface/2, feedback/danger, border/radius/full. No Code Connect mapping is configured. Do not publish StepProgressSegment as a standalone product Storybook component; document it as composition of StepProgressIndicator.
+
+## Variants
+
+- **status:** completed | current | pending | error
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `status` | completed \| current \| pending \| error |
+
+## Rules
+
+- **internalOnly:** Use only inside StepProgressIndicator — not a product standalone component
+- **surface:** segmentSurface FILL + border/radius/full
+
+## Token rules
+
+- color/actions/primary
+- interactive/selected
+- color/background-surface/2
+- feedback/danger
+- border/radius/full
+
+## Accessibility
+
+Non-interactive; no focus; parent owns accessible step text.
+

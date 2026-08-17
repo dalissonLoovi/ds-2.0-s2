@@ -25,4 +25,14 @@ describe('Button', () => {
     await user.click(btn);
     expect(onClick).not.toHaveBeenCalled();
   });
+
+  it('blocks activation when disabled', async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
+    render(<Button label="Save" disabled onClick={onClick} />);
+    const btn = screen.getByRole('button', { name: 'Save' });
+    expect(btn).toBeDisabled();
+    await user.click(btn);
+    expect(onClick).not.toHaveBeenCalled();
+  });
 });

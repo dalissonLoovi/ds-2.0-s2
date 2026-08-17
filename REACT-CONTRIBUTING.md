@@ -3,21 +3,31 @@
 ## Layout
 
 ```text
-packages/tokens/     # CSS vars from seed JSON
+packages/tokens/     # CSS vars from seed JSON (`text/*`, `feedback/*`, `interactive/*`, `color/*`, …)
 packages/react/      # React components + Code Connect (*.figma.tsx)
 storybook/           # Hybrid catalog: Autodocs CSF3 + seed MDX
 ```
+
+## Public API vs draft
+
+| Import | Meaning |
+| --- | --- |
+| `@ds/react` | Polished DoD components only (`reactImplemented: true`) |
+| `@ds/react/draft` | Scaffolds (`reactScaffold: true`) — not DoD; Storybook under `Draft/*` |
+
+Do not re-export scaffolds from the package root. Prefer seed MDX until a component is polished.
 
 ## Definition of Done (per component)
 
 1. Props/variants match seed (`design-system-tokens.storybook.updated.v2.json`)
 2. Styles use CSS vars from `@ds/tokens` only (no stray hex for brand/feedback)
-3. CSF3 story with `tags: ['autodocs']`
+3. CSF3 story with `tags: ['autodocs']` under the polished title (not `Draft/`)
 4. Smoke test (render + one interaction)
-5. Mark seed entry: `"reactImplemented": true`, `"reactPackage": "@ds/react"`
-6. Code Connect file `Component.figma.tsx` with seed `nodeId`
-7. `npm run lint:variants` + `npm test` + Storybook build green
-8. Seed MDX for that name is skipped by `docs:generate`
+5. Seed: `"reactImplemented": true`, `"reactPackage": "@ds/react"`; remove `reactScaffold`
+6. Move export from `draft.ts` → `index.ts`
+7. Code Connect file `Component.figma.tsx` with seed `nodeId`
+8. `npm run lint:variants` + `npm test` + Storybook build green
+9. Seed MDX for that name is skipped by `docs:generate`
 
 ## Commands
 

@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DividerVertical } from '@ds/react';
+import { DividerVertical } from '@ds/react/draft';
 
 const meta = {
-  title: 'Components/DividerVertical',
+  title: 'Draft/DividerVertical',
   component: DividerVertical,
   tags: ['autodocs'],
   args: { label: 'DividerVertical' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
+      },
+    },
+  },
 } satisfies Meta<typeof DividerVertical>;
 
 export default meta;

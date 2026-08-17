@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/DashboardCardSecondary" />
+
+# DashboardCardSecondary
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4181-528) · node `4181:528`
+
+## AI-READY
+
+AI-READY COMPONENT: DashboardCardSecondary — secondary dashboard metric card with optional leading icon, primary value, and growth indicator. Props: type=web|mobile; growth=up|down; icon (INSTANCE_SWAP, web); showIcon (BOOLEAN, web-only — intentional sparse; mobile has no icon slot); title; value; showInfo; showDescription; percentage; percentageDescription. Anatomy: card (titleRow/title + valuesRow) + info. valuesRow contains value + percentual (percentage + growthIcon + percentageDescription). growth=up uses circle-arrow-up-right-filled + color/actions/success; growth=down uses circle-arrow-down-right-filled + color/actions/danger. Tokens: web pad spacing/300 + surface/0; mobile pad spacing/150 + surface/1; border/radius/400; card gap spacing/100 (web) / spacing/050 (mobile); titleRow gap spacing/050; valuesRow gap spacing/025 (web); percentual/percentageRow gap spacing/050; web icon chip: wrapper fill text/brand + size spacing/400 + radius/full, path stroke text/on-color; info stroke text/placeholder; text/primary + text/secondary; caption/large/regular + display/large/bold + body/small/regular. Demo sizes: web FIXED ~210×192; mobile FIXED width ~116 × HUG. No appearance/inverse and no hover/focus/disabled card states (intentional — static metric). Accessibility: expose accessible name from title + value; convey growth direction in text (not color alone); info is supplementary. React mapping: DashboardCardSecondary(type, growth, icon, showIcon, title, value, showInfo, showDescription, percentage, percentageDescription). Code Connect is not configured.
+
+## Variants
+
+- **type:** web | mobile
+- **growth:** up | down
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `type` | web \| mobile |
+| `growth` | up \| down — maps growth icon + success\|danger color |
+| `icon` | INSTANCE_SWAP — EV library outline icon (web; default file-description-outline) |
+| `showIcon` | boolean — default true; web-only (intentional sparse) |
+| `title` | TEXT — metric title; text/primary |
+| `value` | TEXT — primary value; text/primary |
+| `showInfo` | boolean — default true; toggles info-circle-outline |
+| `showDescription` | boolean — default true; toggles percentageDescription |
+| `percentage` | TEXT — growth percentage |
+| `percentageDescription` | TEXT — growth supporting copy |
+
+## Rules
+
+- **matrix:** Published 4/4 — type × growth
+- **growthMap:** up→circle-arrow-up-right-filled + color/actions/success; down→circle-arrow-down-right-filled + color/actions/danger
+- **showIconSparse:** showIcon applies on web only — mobile has no leading icon slot (intentional)
+- **surfaces:** web color/background-surface/0; mobile color/background-surface/1
+- **noInverse:** No appearance/inverse axis (intentional — light metric card)
+- **noInteractiveStates:** No hover/focus/disabled card states (intentional — static metric)
+
+## Token rules
+
+- color/background-surface/0 (web); color/background-surface/1 (mobile)
+- color/actions/success | color/actions/danger (growth)
+- text/primary | text/secondary | text/brand | text/on-color | text/placeholder
+- border/radius/400 | border/radius/full (icon chip)
+- spacing/300 | 150 | 100 | 050 | 025 | 400
+- caption/large/regular; display/large/bold; body/small/regular
+
+## Accessibility
+
+Accessible name from title + value; convey growth direction in text (not color alone); info is supplementary.
+
+## Composition
+
+- card → titleRow + valuesRow
+- valuesRow → value + percentual (percentage + growthIcon + percentageDescription)
+- info-circle-outline (showInfo)
+

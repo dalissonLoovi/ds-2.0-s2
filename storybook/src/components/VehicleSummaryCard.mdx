@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/VehicleSummaryCard" />
+
+# VehicleSummaryCard
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=4581-1451) · node `4581:1451`
+
+## AI-READY
+
+AI-READY COMPONENT: VehicleSummaryCard — Home/Painel compact card for a user vehicle. Props: appearance=default|secondary; status=active|inactive (meaningful on default only); brandModel + model (TEXT, default appearance); title (TEXT, secondary — vehicle model/year line, e.g. Palio 1.0 ECONOMY Fiat • 2009); plate (TEXT); illustration (INSTANCE_SWAP — local vehicle illustration, default sedan); showStatus (BOOLEAN, default true — default appearance only; toggles statusChip and spacer together).
+
+appearance=default: leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm). status=active ChipTag Ativo + circle-dot-filled with color/background-feedback-primary/success. status=inactive ChipTag Inativo + circle-dot-filled with color/background-feedback-primary/warning (intentional within this component — not danger; nested ChipTag structure/tokens are owned by ChipTag and must not be remapped here). Surface color/background-surface/0; border/radius/400; spacing/100 vertical pad; spacing/200 horizontal pad + root gap. Text text/primary (brand/model); text/placeholder + heading/h3/regular (plate). Product may wire onPress as button/link to vehicle detail — no Figma hover/pressed variants.
+
+appearance=secondary: informational only (not clickable) — illustration + title + plate; no ChipTag; status axis is unused (publish both status values identical). Surface color/background-surface/brand-muted (brand-blue at 72% alpha baked into the token — do not use paint opacity on variable-bound fills; library instances drop paint opacity). border/radius/300; spacing/150 root/leading gap; title body/large/semi-bold + text/on-color; plate body/medium/regular + text/on-color. Year is composed into title by the product. plate and illustration props apply to secondary as well.
+
+Do not use as VehicleConfirmCard, OfferProductCard, or Banner. React: VehicleSummaryCard(\{ appearance, status, brandModel, model, title, plate, illustration, showStatus, onPress? \}).
+
+## Variants
+
+- **appearance:** default | secondary
+- **status:** active | inactive
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `appearance` | default \| secondary — default has status ChipTag; secondary is informational brand strip (no tag, not clickable) |
+| `status` | active \| inactive — used on appearance=default only (secondary publishes both values identical) |
+| `brandModel` | TEXT — brand label (default appearance; default Marca) |
+| `model` | TEXT — model label (default appearance; default Modelo) |
+| `title` | TEXT — secondary title line (model + year composed by product; default Palio 1.0 ECONOMY Fiat • 2009) |
+| `plate` | TEXT — plate string (wired on default and secondary) |
+| `illustration` | INSTANCE_SWAP — local vehicle-icon (sedan\|van\|suv preferred); wired on default and secondary |
+| `showStatus` | boolean — default true; on appearance=default toggles statusChip + spacer together |
+
+## Status map
+
+| Status | Icon | Background token |
+| --- | --- | --- |
+| default/active | `—` | `—` |
+| default/inactive | `—` | `—` |
+| secondary/* | `—` | `—` |
+
+## Rules
+
+- **compositionDefault:** leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm)
+- **compositionSecondary:** leading (illustration + title + plate) — no ChipTag; informational only
+- **statusChip:** canonical ChipTag outline/sm/hug/strong + circle-dot-filled; do not restyle ChipTag internals from this card
+- **secondarySurface:** color/background-surface/brand-muted (primitive-colors/brand-blue-72, alpha 72% in token) + text/on-color — never rely on paint opacity for library sync
+- **secondaryStatusIgnored:** status axis unused on secondary; keep matrix complete with identical visuals
+- **noFigmaInteractionVariants:** default may wire onPress at runtime; secondary is not clickable — do not add hover/pressed/disabled variants
+- **vsConfirm:** Do not use as VehicleConfirmCard
+- **vsOffer:** Do not use as OfferProductCard
+- **vsBanner:** Do not use as Banner
+- **statusActiveDot:** active → color/background-feedback-primary/success on nested dot
+- **statusInactiveDot:** inactive → color/background-feedback-primary/warning on nested dot (intentional for VehicleSummaryCard — document here; do not change ChipTag master to force danger)
+- **showStatusSpacer:** showStatus also toggles spacer visibility on appearance=default
+- **secondaryProps:** title + plate + illustration props apply on appearance=secondary
+
+## Token rules
+
+- appearance=default: color/background-surface/0; border/radius/400; spacing/100|200; spacing/0 on leading/text/nameRow zero pads
+- appearance=secondary: color/background-surface/brand-muted (72% alpha in token); border/radius/300; spacing/150
+- default text: text/primary (brand/model); text/placeholder + heading/h3/regular (plate)
+- secondary text: text/on-color; body/large/semi-bold (title); body/medium/regular (plate)
+- nested ChipTag (default only): body/small/medium; color/border/2 outline; active dot success; inactive dot warning (component-level intent)
+
+## Accessibility
+
+default: may expose as button/link to vehicle detail; status text must not rely on color alone. secondary: static informative content (not a control); name from title + plate; illustration decorative.
+
+## Composition
+
+- default: leading.illustration + nameRow(brandModel + model) + plate + spacer + statusChip
+- secondary: leading.illustration + title + plate
+

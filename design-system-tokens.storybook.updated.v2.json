@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-17T18:30:00.000Z",
-        "storybookRevision": "2026-08-17-react-csf3-foundation",
+        "storybookUpdatedAt": "2026-08-17T19:00:00.000Z",
+        "storybookRevision": "2026-08-17-react-audit-apply-p1-p2",
         "changelog": [
+            {
+                "date": "2026-08-17",
+                "type": "react-audit-apply-p1-p2",
+                "summary": "Audit apply: reactImplemented only W0 (7); stubs → reactScaffold + @ds/react/draft; tokens generator adds text/feedback/interactive; W0 hardening (Button/ChipTag/Modal/Alert/CSS vars)."
+            },
             {
                 "date": "2026-08-17",
                 "type": "react-csf3-foundation",
@@ -5362,8 +5367,8 @@
                     "ListActionDropdown (external)",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Avatar": {
                 "nodeId": "3669:8605",
@@ -5410,8 +5415,8 @@
                     "local text styles only — no remote typography variables on initials"
                 ],
                 "accessibility": "Non-interactive Avatar should be decorative or described by surrounding content. Interactive wrappers must provide aria-label and visible focus.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "AvatarGroup": {
                 "nodeId": "3669:8404",
@@ -5430,8 +5435,8 @@
                     "size": "micro | xs | sm | md | lg | xl"
                 },
                 "accessibility": "Expose a group-level accessible label when the grouped identities are meaningful. The overflow indicator should not receive focus unless a real interaction is added by a wrapper.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "CardHorizontal": {
                 "nodeId": "4170:4506",
@@ -5480,8 +5485,8 @@
                     "background (Card*Item; exposed; absolute SCALE)",
                     "content → body (Avatar + text) + media | slot"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "CardStacked": {
                 "nodeId": "4170:4433",
@@ -5545,8 +5550,8 @@
                     "headerRow → leading (Avatar + text) + menuAction",
                     "body → headline (title + subtitle) + supportingText + actions"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "CardElevatedItem": {
                 "nodeId": "4170:4564",
@@ -5594,8 +5599,8 @@
                     "focusIndicator (state=focus)",
                     "Card / Stacked card / Horizontal card (parents)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "CardFilledItem": {
                 "nodeId": "4170:4576",
@@ -5642,8 +5647,8 @@
                     "focusIndicator (state=focus)",
                     "Card / Stacked card / Horizontal card (parents)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "CardOutlinedItem": {
                 "nodeId": "4170:4552",
@@ -5690,8 +5695,8 @@
                     "focusIndicator (state=focus)",
                     "Card / Stacked card / Horizontal card (parents)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "DashboardCardPrimary": {
                 "nodeId": "4181:493",
@@ -5737,8 +5742,8 @@
                     "mobile: mainCol (chartWrap + primaryValue + title) + content (metricItem1|2)",
                     "chart → chartTrack + chartAccent (+ leadingIcon on mobile)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "DashboardCardSecondary": {
                 "nodeId": "4181:528",
@@ -5787,8 +5792,8 @@
                     "valuesRow → value + percentual (percentage + growthIcon + percentageDescription)",
                     "info-circle-outline (showInfo)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Carousel": {
                 "nodeId": "4152:849",
@@ -5818,8 +5823,8 @@
                     "slot (slides; demo slide1–slide4)",
                     "CarouselPaginationItem (exposed; toggled by showPaginationItem)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "CarouselPaginationItem": {
                 "nodeId": "4152:495",
@@ -5863,8 +5868,8 @@
                     "dots (dot1…dotN)",
                     "Carousel (parent; exposed)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "LoadingSpinner": {
                 "nodeId": "3062:745",
@@ -5880,8 +5885,8 @@
                     "size": "sm | md | lg"
                 },
                 "accessibility": "Use role=status and aria-live=polite when the spinner is the only loading announcement. Use aria-hidden=true when visible loading text already exists.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Badge": {
                 "nodeId": "3086:5079",
@@ -5904,8 +5909,8 @@
                     "overflowLabel": "visible overflow label such as 999+"
                 },
                 "accessibility": "If the badge is the only indicator, provide an accessible label on the parent. If adjacent text explains it, the badge can be hidden from assistive technology.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Breadcrumb": {
                 "nodeId": "3681:4674",
@@ -5939,8 +5944,8 @@
                     "BreadcrumbItem",
                     "home-outline"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Alert": {
                 "nodeId": "4406:91",
@@ -6069,8 +6074,8 @@
                     "pattern": "color/background-feedback-primary/{status}",
                     "textOnFill": "text/primary"
                 },
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "BreadcrumbItem": {
                 "nodeId": "3681:3667",
@@ -6119,8 +6124,8 @@
                     "nested ListActionDropdown tokens including elevation/2"
                 ],
                 "accessibility": "Parent Breadcrumb: nav aria-label=Breadcrumb + ordered list; link items as anchors; current → aria-current=page; overflow → button with aria-expanded when open; slash aria-hidden; skeleton non-interactive.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Button": {
                 "nodeId": "3104:3723",
@@ -6434,8 +6439,8 @@
                         }
                     ]
                 },
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "OfferProductCard": {
                 "nodeId": "4227:418",
@@ -6479,8 +6484,8 @@
                     "priceRow → price + pricePeriod",
                     "cta (Button solid/sm/primary; exposed)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SectionHeader": {
                 "nodeId": "4235:406",
@@ -6554,8 +6559,8 @@
                         }
                     ]
                 },
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SystemHeader": {
                 "nodeId": "3143:8933",
@@ -6609,8 +6614,8 @@
                     "Profile menu (exposed) + Avatar",
                     "plus-outline / bell-outline"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "OrganizationHeader": {
                 "nodeId": "3644:2",
@@ -6643,8 +6648,8 @@
                 ],
                 "iconRules": "Use DS Icons — Escritório Virtual outline icons only inside labelTag; do not use remote/external icon libraries.",
                 "accessibility": "title maps to page h1 when identifying the artifact; project is a link only with a real destination; type/description/ChipTag informational (no focus).",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "CommentItem": {
                 "nodeId": "3653:340",
@@ -6726,8 +6731,8 @@
                     "dragHandle (header=none)",
                     "slot / sheetContent"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Accordion": {
                 "nodeId": "3669:9362",
@@ -6764,8 +6769,8 @@
                     "slot": "slot is the only scalable content area and maps to children in React"
                 },
                 "accessibility": "The trigger must behave as a button, support Enter and Space, expose aria-expanded and reference the panel with aria-controls.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Checkbox": {
                 "nodeId": "3667:3812",
@@ -6817,8 +6822,8 @@
                     "checkedStroke": "checkboxControl stroke color/border-feedback/primary on checked=true|mixed (interactive)",
                     "disabledStroke": "checkboxControl stroke color/border/2 when state=disabled"
                 },
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ChipClickable": {
                 "nodeId": "3653:23577",
@@ -6917,8 +6922,8 @@
                     "nested ChipClickable owns outline intent surface/border tokens"
                 ],
                 "accessibility": "accessible group label; chips keyboard reachable; Enter/Space activate/toggle; selected filters expose selected state.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ChipTag": {
                 "nodeId": "3653:23220",
@@ -7015,8 +7020,8 @@
                     "spacing/050 for with-subhead gap"
                 ],
                 "accessibility": "If purely visual, hide from assistive technology. If it separates meaningful regions, expose separator semantics. When variant=with-subhead is used, the label should be contextual text, not an interactive control.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "DividerVertical": {
                 "nodeId": "3653:22924",
@@ -7042,8 +7047,8 @@
                     "spacing/0 for full-width padding"
                 ],
                 "accessibility": "If purely visual, hide with aria-hidden=true. If it separates meaningful regions, expose role=separator with aria-orientation=vertical.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "FileUploader": {
                 "nodeId": "3581:4454",
@@ -7099,8 +7104,8 @@
                     "nested Button, FileUploaderDropzoneItem, FileUploaderList, FileUploaderItem own their tokens"
                 ],
                 "accessibility": "native input type=file; uploadAction/dropzone open picker; Enter/Space; associate label/description; disabled blocks select/drop/remove; skeleton non-interactive.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "FileUploaderDropzoneItem": {
                 "nodeId": "3581:5628",
@@ -7156,8 +7161,8 @@
                     "dashPattern [4,3] hardcoded leftover on default|disabled (no local dash token)"
                 ],
                 "accessibility": "button-like or label/input with Enter/Space; visible focus; hidden file input; drag-hover on drag-over; disabled not focusable (aria-disabled); associate helperText with input/dropzone.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "FileUploaderItem": {
                 "nodeId": "3581:5641",
@@ -7197,8 +7202,8 @@
                     "spacing/*, border/radius/*, border/width/*"
                 ],
                 "accessibility": "announce fileName; loading/success aria-live=polite; danger role=alert or aria-live; removeAction accessible label; decorative status icons aria-hidden when text conveys state.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "FileUploaderList": {
                 "nodeId": "3581:3887",
@@ -7224,8 +7229,8 @@
                     "nested FileUploaderItem owns its own DS tokens"
                 ],
                 "accessibility": "list/group with accessible name; each FileUploaderItem owns file name, status, and remove semantics.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "UploadPhotos": {
                 "nodeId": "3581:7597",
@@ -7269,8 +7274,8 @@
                     "nested Button and ChipTag own their own DS tokens"
                 ],
                 "accessibility": "expose label and status; pending/rejected Button chrome is chevron-only (showLabel=false) but label prop supplies the accessible name and must stay keyboard-accessible; in-review/approved are informational (no focus unless an action is added).",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "VehicleSummaryCard": {
                 "nodeId": "4581:1451",
@@ -7327,8 +7332,8 @@
                     "default: leading.illustration + nameRow(brandModel + model) + plate + spacer + statusChip",
                     "secondary: leading.illustration + title + plate"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ReferralDiscountCard": {
                 "nodeId": "4594:995",
@@ -7387,8 +7392,8 @@
                     "footer (savings | projection | fleetDescription flow + cta Button exposed)",
                     "simulator/fleet blurs (absolute)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ImageItem": {
                 "nodeId": "3671:2329",
@@ -7439,8 +7444,8 @@
                     "photoTextOverlay (PhotoTextItem; exposed)",
                     "orientationOverlay (ImageOrientationItem)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "PhotoTextItem": {
                 "nodeId": "4149:479",
@@ -7475,8 +7480,8 @@
                     "content (label + optional supportingText)",
                     "ImageItem.photoTextOverlay (parent)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Input": {
                 "nodeId": "3873:334",
@@ -7653,8 +7658,8 @@
                         }
                     ]
                 },
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "InputNumber": {
                 "nodeId": "3935:684",
@@ -7722,8 +7727,8 @@
                     "DividerVertical",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "InputPassword": {
                 "nodeId": "3950:1701",
@@ -7791,8 +7796,8 @@
                     "lock-outline (leading default)",
                     "alert-circle-outline (error)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "VerificationCodeInput": {
                 "nodeId": "4029:835",
@@ -7835,8 +7840,8 @@
                     "VerificationCodeInputItem (codeCell1…codeCell5, exposed)",
                     "labelRow / codeRow / supportingRow (error)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "VerificationCodeInputItem": {
                 "nodeId": "4028:773",
@@ -7877,8 +7882,8 @@
                     "VerificationCodeInput (parent field)",
                     "digit TEXT (prop)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SliderLeftRail": {
                 "nodeId": "4073:2214",
@@ -7911,8 +7916,8 @@
                     "railStartSpacer + endCapSlot + endCap",
                     "SliderRightRail (sibling residual track)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SliderRightRail": {
                 "nodeId": "4073:2224",
@@ -7938,8 +7943,8 @@
                     "railLeadSpacer + railTrailSpacer",
                     "SliderLeftRail (sibling filled track)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SliderRail": {
                 "nodeId": "4073:2228",
@@ -7966,8 +7971,8 @@
                     "SliderLeftRail (exposed)",
                     "SliderItem / Slider (parents)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SliderItem": {
                 "nodeId": "4073:2232",
@@ -8001,8 +8006,8 @@
                     "SliderRail (exposed)",
                     "Slider / SliderSkeletonItem (parents)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SliderSkeletonItem": {
                 "nodeId": "4092:4005",
@@ -8032,8 +8037,8 @@
                     "sliderRow (minValueBone + SliderItem + maxValueBone)",
                     "Slider Status=Skeleton (parent)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SliderBaseItem": {
                 "nodeId": "3950:7416",
@@ -8066,8 +8071,8 @@
                     "sliderRow (railRow: minValue + SliderItem + maxValue + Input)",
                     "Slider (parent)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Slider": {
                 "nodeId": "3950:7327",
@@ -8115,8 +8120,8 @@
                     "errorText / warningText (status=error|warning)",
                     "SliderSkeletonItem (status=skeleton; exposed)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Calendar": {
                 "nodeId": "3982:5542",
@@ -8180,8 +8185,8 @@
                     "DividerVertical / DividerHorizontal",
                     "InputDatePicker (external trigger)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "CalendarDay": {
                 "nodeId": "3950:12809",
@@ -8232,8 +8237,8 @@
                     "Calendar (parent month panel)",
                     "InputDatePicker (external trigger)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "CalendarPeriodNav": {
                 "nodeId": "3995:5664",
@@ -8277,8 +8282,8 @@
                     "chevron-left-outline / chevron-down-outline / chevron-right-outline",
                     "Calendar + CalendarDay (parent surface)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "DatePickerSelectItem": {
                 "nodeId": "3982:5083",
@@ -8325,8 +8330,8 @@
                     "ListActionDropdown (external menu)",
                     "DatePicker / Calendar surfaces (parent)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "DatePickerSelect": {
                 "nodeId": "4004:2227",
@@ -8370,8 +8375,8 @@
                     "ListActionDropdown (external menu per unit)",
                     "DatePicker / mobile period surfaces (parent)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "InputDatePicker": {
                 "nodeId": "3985:1386",
@@ -8434,8 +8439,8 @@
                     "calendar-outline / alert-circle-outline",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "InputSelect": {
                 "nodeId": "3898:2755",
@@ -8500,8 +8505,8 @@
                     "ListActionDropdownItem",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Keyboard": {
                 "nodeId": "3745:4228",
@@ -8545,8 +8550,8 @@
                     "MobileGestureNavigation",
                     "decorative key rows"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Link": {
                 "nodeId": "3820:13913",
@@ -8592,8 +8597,8 @@
                     "body/large|medium|small/regular by size"
                 ],
                 "accessibility": "a / role=link; visible focus; communicate visited; color not sole cue; trailingIcon aria-hidden when label present.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "List": {
                 "nodeId": "3745:10921",
@@ -8650,8 +8655,8 @@
                         }
                     ]
                 },
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ListItem": {
                 "nodeId": "3735:7716",
@@ -8734,8 +8739,8 @@
                     "Switch",
                     "DividerHorizontal"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ListActionDropdownItem": {
                 "nodeId": "3681:11151",
@@ -8776,8 +8781,8 @@
                     "body/medium/regular + nested local icon tokens"
                 ],
                 "accessibility": "role=menuitem in action menus; disabled → aria-disabled and not focusable; selected only for selectable parents; decorative icons aria-hidden; keyboard handled by parent menu.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ListActionDropdown": {
                 "nodeId": "3694:1501",
@@ -8825,8 +8830,8 @@
                         }
                     ]
                 },
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ListItemLeadingMonogram": {
                 "nodeId": "3694:16194",
@@ -8846,8 +8851,8 @@
                     "body/large/medium"
                 ],
                 "accessibility": "decorative when parent text identifies the entity; otherwise expose via parent ListItem label.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ListItemStateLayer": {
                 "nodeId": "3720:28",
@@ -8879,8 +8884,8 @@
                     "elevation/1 for dragged"
                 ],
                 "accessibility": "no runtime role; parent ListItem owns focus, keyboard and semantics.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ListItemImageThumbnail": {
                 "nodeId": "3694:16209",
@@ -8896,8 +8901,8 @@
                     "border/radius/100"
                 ],
                 "accessibility": "alt from parent ListItem when informative; decorative may be hidden from AT.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ListItemVideoThumbnail": {
                 "nodeId": "3694:16211",
@@ -8916,8 +8921,8 @@
                     "icon scale 20px (stroke ≈ 1.67)"
                 ],
                 "accessibility": "parent exposes video when meaningful; playIcon decorative if label already conveys playback.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Modal": {
                 "nodeId": "3306:4278",
@@ -9065,8 +9070,8 @@
                         }
                     ]
                 },
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ProgressBar": {
                 "nodeId": "3653:5393",
@@ -9093,8 +9098,8 @@
                     "spacing/100 | 200 | 250 and border/radius/150"
                 ],
                 "accessibility": "role=progressbar with aria-valuemin=0, aria-valuemax=100, aria-valuenow; if showValue=false provide an accessible label.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "QuickAccessTile": {
                 "nodeId": "4203:447",
@@ -9139,8 +9144,8 @@
                     "icon (INSTANCE_SWAP 24)",
                     "label (TEXT; left-aligned)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "RadioButton": {
                 "nodeId": "3653:5279",
@@ -9179,8 +9184,8 @@
                     "border/radius/full | border/radius/0 and spacing/025 | 050 | 200 | 250 | 300"
                 ],
                 "accessibility": "role=radio; aria-checked reflects checked; aria-disabled when disabled; visible focus; related options in RadioGroup with role=radiogroup.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "StepProgressIndicator": {
                 "nodeId": "3809:765",
@@ -9233,8 +9238,8 @@
                 "sparseMatrix": [
                     "no currentStep > stepCount"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "StepProgressSegment": {
                 "nodeId": "3807:31",
@@ -9264,8 +9269,8 @@
                 "accessibility": "Non-interactive; no focus; parent owns accessible step text.",
                 "composition": [],
                 "internal": true,
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "StepperPrimary": {
                 "nodeId": "3653:4985",
@@ -9307,8 +9312,8 @@
                     "spacing/0 | 050 | 100 | 300 and border/radius/full | 0, border/width/012 | 025"
                 ],
                 "accessibility": "Expose stepper as ordered list or navigation group; current step aria-current=step; status available to assistive technologies.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "VerticalStepper": {
                 "nodeId": "3833:118",
@@ -9332,8 +9337,8 @@
                     "VerticalStepperItem and nested ListItem own item/content tokens"
                 ],
                 "accessibility": "Ordered list; aria-current=step on active item; status in accessible text; decorative icons/connectors aria-hidden on items.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "FeatureSteps": {
                 "nodeId": "4344:224",
@@ -9356,8 +9361,8 @@
                     "FeatureStepsItem owns badge/connector/text tokens and vertical rhythm (spacing/300)"
                 ],
                 "accessibility": "List; decorative icons/connectors aria-hidden; meaning via headline and supportingText.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "FeatureStepsItem": {
                 "nodeId": "4343:222",
@@ -9389,8 +9394,8 @@
                     "body/large/semi-bold; body/medium/regular"
                 ],
                 "accessibility": "Decorative icon/connector aria-hidden; meaning via headline and supportingText.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "VerticalStepperItem": {
                 "nodeId": "3437:531",
@@ -9437,8 +9442,8 @@
                     "ListItem owns content spacing/text tokens"
                 ],
                 "accessibility": "Parent ordered list; aria-current=step on active item; status in accessible text; statusIcon/connector aria-hidden; color not sole cue; non-interactive rows receive no focus; actionable rows follow ListItem semantics.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SearchBar": {
                 "nodeId": "3881:6002",
@@ -9492,8 +9497,8 @@
                     "Avatar",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SearchViewFullscreen": {
                 "nodeId": "3883:16492",
@@ -9539,8 +9544,8 @@
                     "ListItem",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SearchViewModal": {
                 "nodeId": "3887:507",
@@ -9588,8 +9593,8 @@
                     "ListItem",
                     "DS Icons — Escritório Virtual outline icons"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "SelectCountry": {
                 "nodeId": "3935:5522",
@@ -9638,8 +9643,8 @@
                     "chevron-down-outline / chevron-up-outline (local)",
                     "external country list (screen-level)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Switch": {
                 "nodeId": "3444:318",
@@ -9679,8 +9684,8 @@
                     "spacing/0 | 200 | 250 | 300 | 400 | 500 | 700 and border/radius/full | 0, border/width/012 | 025"
                 ],
                 "accessibility": "role=switch; aria-checked reflects checked; aria-disabled when disabled; visible focus; accessible label from form field or aria-label.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TabItem": {
                 "nodeId": "3532:6782",
@@ -9732,8 +9737,8 @@
                     "Border/Icon/20 may remain on icon strokeWeight when no local kebab equivalent exists"
                 ],
                 "accessibility": "role=tab inside role=tablist; aria-selected only when selected; aria-disabled when disabled; decorative icons aria-hidden when label visible.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TabsSegmented": {
                 "nodeId": "4738:825",
@@ -9780,8 +9785,8 @@
                 "composition": [
                     "TabItem variant=segmented (equal-width segments)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TabsPrimary": {
                 "nodeId": "3532:6900",
@@ -9824,8 +9829,8 @@
                     "Border/Icon/* may remain on nested icon strokeWeight when no local kebab equivalent exists"
                 ],
                 "accessibility": "role=tablist; nested TabItem role=tab; aria-selected on active tab; arrow-key navigation; decorative icons aria-hidden when label visible.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TabsSecondary": {
                 "nodeId": "3532:7346",
@@ -9863,8 +9868,8 @@
                     "Border/Icon/* may remain on nested icon strokeWeight when no local kebab equivalent exists"
                 ],
                 "accessibility": "role=tablist; nested TabItem role=tab; aria-selected on active tab; ArrowLeft/ArrowRight and Home/End when applicable; decorative icons aria-hidden when label visible.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TextHeader": {
                 "nodeId": "3667:4129",
@@ -9900,8 +9905,8 @@
                     "text/primary on title; text/secondary on description"
                 ],
                 "accessibility": "Title provides the accessible name for the header region when nested; supporting description is supplementary.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Toast": {
                 "nodeId": "3550:4107",
@@ -10001,8 +10006,8 @@
                     "border/radius/300 surface; border/radius/0 arrow; border/width/012 stroke weight"
                 ],
                 "accessibility": "aria-describedby when visible; open on hover/focus; close on blur/mouseleave/Escape; no automatic focus move; arrow aria-hidden.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TooltipRich": {
                 "nodeId": "3566:10477",
@@ -10041,8 +10046,8 @@
                     "secondaryAction label: text/on-color (intentional)"
                 ],
                 "accessibility": "aria-describedby when informative; popover/dialog focus pattern when actionable; Escape closes and returns focus to trigger; arrow aria-hidden; no auto-focus on hover-only reveal.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TableCell": {
                 "nodeId": "3459:13960",
@@ -10085,8 +10090,8 @@
                     "border/radius/0, border/width/012"
                 ],
                 "accessibility": "Use inside semantic table; header → columnheader/th; body → cell/td; actionable content in type=slot must expose button/link with clear accessible label.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TableExpandCell": {
                 "nodeId": "3459:8530",
@@ -10130,8 +10135,8 @@
                     "spacing/0 | 200 | 800 and border/radius/0 | 100, border/width/0 | 025"
                 ],
                 "accessibility": "Button when interactive (showChevron=true); Expand/Collapse label; aria-expanded maps selected→true; spacer header (showChevron=false) should be presentational/aria-hidden.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TableMobile": {
                 "nodeId": "3452:2722",
@@ -10177,8 +10182,8 @@
                     "border/width/0 | 012 and border/radius/0"
                 ],
                 "accessibility": "Interactive blocks map to button/link/listitem; clear accessible name; aria-expanded when expanding; decorative icons aria-hidden.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TableMobileCell": {
                 "nodeId": "3452:2656",
@@ -10219,8 +10224,8 @@
                     "spacing/0 | 100 | 800 and border/radius/0"
                 ],
                 "accessibility": "Tappable row/action → button/link + clear label; selected via parent semantics; icon-only needs aria-label; decorative icons aria-hidden.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TableRow": {
                 "nodeId": "3459:12787",
@@ -10267,8 +10272,8 @@
                     "Nested TableCell and TableExpandCell use their own DS tokens"
                 ],
                 "accessibility": "Header rows → thead/columnheader; body rows → tr/td; preserve visible focus; expose selected when selection is meaningful; expandCell needs Expand/Collapse label and aria-expanded when shown.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "TableSkeleton": {
                 "nodeId": "3459:9331",
@@ -10297,8 +10302,8 @@
                     "spacing/0 | 100 | 200 | 250 and border/radius/0 | full, border/width/012"
                 ],
                 "accessibility": "Skeleton bars aria-hidden=true; parent table region aria-busy=true or nearby status message.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Table": {
                 "nodeId": "3480:6228",
@@ -10331,8 +10336,8 @@
                     "Do not invent tokens on the Table shell"
                 ],
                 "accessibility": "Semantic table structure; headerRow → column headers; rows slot → data rows; preserve nested focus/selection/expand semantics.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "PaginationSelectMenu": {
                 "nodeId": "3841:22501",
@@ -10358,8 +10363,8 @@
                 "composition": [
                     "PaginationSelectMenuItem"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "PaginationSelectMenuItem": {
                 "nodeId": "3841:22500",
@@ -10390,8 +10395,8 @@
                     "spacing/0 | 200, border/radius/100, border/width/025, body/medium/regular"
                 ],
                 "accessibility": "option; aria-selected when selected; aria-disabled when disabled; focusRing decorative.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "PaginationSelectInput": {
                 "nodeId": "3653:5902",
@@ -10434,8 +10439,8 @@
                 "composition": [
                     "PaginationSelectMenu"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Overlay": {
                 "nodeId": "3768:3886",
@@ -10476,8 +10481,8 @@
                 "sparseMatrix": [
                     "no type=bottom-sheet + platform=web"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "Pagination": {
                 "nodeId": "3653:5672",
@@ -10507,8 +10512,8 @@
                     "Nested PaginationItem and Button use their own DS tokens"
                 ],
                 "accessibility": "Wrapper as nav with aria-label=Pagination; active page aria-current=page; previous/next need aria-label and disabled when unavailable.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "PaginationItem": {
                 "nodeId": "3653:6248",
@@ -10549,8 +10554,8 @@
                     "spacing/0 | 050 | 500 and border/radius/full"
                 ],
                 "accessibility": "Number items expose page number as accessible name; selected maps to aria-current=page; overflow decorative or clearly labeled; preserve keyboard focus.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "NavigationRailExpanded": {
                 "nodeId": "3653:8288",
@@ -10597,8 +10602,8 @@
                     "Nested NavigationRailExpandedItem, NavigationRailExpandedTree, Button and logo use their own DS tokens"
                 ],
                 "accessibility": "Implement as a nav region; selected items map to aria-current=page; trees preserve hierarchy; menuAction and primaryAction need accessible names; preserve visible focus and keyboard navigation.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "NavigationRailExpandedTree": {
                 "nodeId": "3653:10112",
@@ -10640,8 +10645,8 @@
                     "Nested NavigationRailExpandedItem uses its own DS tokens"
                 ],
                 "accessibility": "Implement inside a nav region; map active destination to aria-current=page; second-level must reflect parent group + nested children hierarchy; preserve keyboard order.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "NavigationRailExpandedItem": {
                 "nodeId": "3327:5795",
@@ -10698,8 +10703,8 @@
                     "spacing/0 | 150 | 200 | 600 and border/radius/0 | 300 | full"
                 ],
                 "accessibility": "Link or button depending on navigation behavior; selected=true maps to aria-current=page for routes; decorative icons aria-hidden when label visible; badge count needs accessible notification label when meaningful.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "NavigationRailCompact": {
                 "nodeId": "3653:12381",
@@ -10739,8 +10744,8 @@
                     "Nested NavigationRailCompactItem, Button and logo use their own DS tokens"
                 ],
                 "accessibility": "Use nav semantics; selected destination maps to aria-current=page; aria-label for menuAction and primaryAction; decorative icons aria-hidden when labels visible; preserve visible focus and keyboard navigation.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "NavigationRailCompactItem": {
                 "nodeId": "3327:5296",
@@ -10796,8 +10801,8 @@
                     "spacing/0 | 050 | 100 | 200 | 250 | 800 and border/radius/0 | 300 | 400 | full"
                 ],
                 "accessibility": "Link for routes; selected=true maps to aria-current=page; icon-only requires aria-label; badge count needs accessible notification label when meaningful.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "NavigationBar": {
                 "nodeId": "3653:14851",
@@ -10851,8 +10856,8 @@
                     "navItem01..N (NavigationBarItem, exposed)",
                     "primaryIconButtonSlot → primaryIconButton (Button solid/lg with NavigationBar-local circular FAB overrides) + primaryLabel (itemCount=5 only)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "NavigationBarItem": {
                 "nodeId": "3327:2878",
@@ -10908,8 +10913,8 @@
                     "border/width/012 | 025 where used"
                 ],
                 "accessibility": "Link for routes or button for actions; selected=true maps to aria-current=page when route-based; icon-only requires aria-label; badge count needs accessible notification label when meaningful.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "NavigationDrawerItem": {
                 "nodeId": "3327:1178",
@@ -10955,8 +10960,8 @@
                     "spacing/100 | 150 | 200 | 600 and border/radius/200 | 400"
                 ],
                 "accessibility": "Link for routes or button for in-place navigation; visible focus; selected=true maps to aria-current=page or aria-selected=true; badge counts need accessible labels when meaningful.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "NavigationDrawer": {
                 "nodeId": "3327:1091",
@@ -10991,8 +10996,8 @@
                     "Nested NavigationDrawerItem and DividerHorizontal use their own DS tokens"
                 ],
                 "accessibility": "Use nav semantics or aria-label; items as links for routes; selected maps to aria-current=page; visible focus and keyboard navigation; badge counts need accessible labels when meaningful.",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "BottomSheetHeader": {
                 "nodeId": "4307:3760",
@@ -11038,8 +11043,8 @@
                     "arrow-left-outline",
                     "x-outline"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "VehicleConfirmCard": {
                 "nodeId": "4360:444",
@@ -11077,8 +11082,8 @@
                     "topo → handle",
                     "text → plate + brandModel"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "ModalCheckItem": {
                 "nodeId": "4372:19371",
@@ -11111,8 +11116,8 @@
                     "leadingIcon (INSTANCE_SWAP FIXED 20)",
                     "description (TEXT HEIGHT + Hug)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "BottomSheetCheckItem": {
                 "nodeId": "4389:80",
@@ -11145,8 +11150,8 @@
                     "leadingIcon (INSTANCE_SWAP FIXED 20)",
                     "description (TEXT HEIGHT + Hug)"
                 ],
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             },
             "RadioButtonCard": {
                 "nodeId": "4498:68",
@@ -11202,11 +11207,16 @@
                     "stateLayer absolute on hover (interactive/hover)"
                 ],
                 "reactMapping": "RadioButtonCard(state, checked, label, description, showDescription)",
-                "reactImplemented": true,
-                "reactPackage": "@ds/react"
+                "reactPackage": "@ds/react/draft",
+                "reactScaffold": true
             }
         },
         "recentUpdates": [
+            {
+                "id": "react-audit-apply-p1-p2",
+                "date": "2026-08-17",
+                "summary": "P1/P2 React audit: metadata+exports, text tokens, W0 hardening."
+            },
             {
                 "id": "react-csf3-foundation",
                 "date": "2026-08-17",

@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/BottomSheet" />
+
+# BottomSheet
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3181-8289) · node `3181:8289`
+
+## AI-READY
+
+AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobile or responsive experiences. Use it for contextual content that supports a task without navigating away. Do not use it as a centered modal, side drawer, toast, tooltip, card, full page or permanent layout container. Variant rule: header=none shows dragHandle + slot only; header=sheet-header nests local BottomSheetHeader (compact headingContent title, optional leading options/action, optional close) above sheetContent/slot. Compose guideline/checklist rows with BottomSheetCheckItem in slot / sheetContent (preferredValues) — not Checkbox, not ModalCheckItem. Do not nest AppHeader or ModalHeader inside BottomSheet. React mapping: BottomSheet(header, children). Code Connect is not configured.
+
+## Variants
+
+- **header:** none | sheet-header
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `slot` | SLOT — main content; preferredValues include BottomSheetCheckItem for guideline rows |
+| `header` | none \| sheet-header |
+
+## Rules
+
+- **headerComposition:** header=sheet-header nests BottomSheetHeader — not AppHeader
+- **vsAppHeader:** Do not nest AppHeader in BottomSheet
+- **slotCheckItems:** Optional guideline stacks in slot / sheetContent compose BottomSheetCheckItem rows (not Checkbox, not ModalCheckItem)
+
+## Accessibility
+
+Modal usage should block background interaction, trap focus, support Escape to close and restore focus to the trigger. Non-modal usage should use an appropriate region semantic when needed.
+
+## Composition
+
+- BottomSheetHeader (when header=sheet-header)
+- BottomSheetCheckItem (optional guideline rows in slot / sheetContent)
+- dragHandle (header=none)
+- slot / sheetContent
+

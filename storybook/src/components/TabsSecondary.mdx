@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/TabsSecondary" />
+
+# TabsSecondary
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3532-7346) · node `3532:7346`
+
+## AI-READY
+
+AI-READY COMPONENT: TabsSecondary is the secondary tab-list wrapper used for nested or secondary navigation inside a page, section or panel. Compose only with local TabItem instances using variant=secondary. Do not use TabsSecondary as a standalone TabItem, SegmentedControl, ButtonGroup, NavigationBar or primary page navigation (use TabsPrimary for that). Use itemCount=2–5 to control how many TabItem instances are composed. Use platform=web or platform=mobile to match TabItem density. Use alignment=left or alignment=center for horizontal distribution. There is no appearance axis on TabsSecondary — TabItem secondary does not publish appearance=inverse, so inverse combinations are intentionally absent. The wrapper does not publish state, focus, selected or disabled; interaction states live on nested TabItem. Demo variants show tabItem01 as state=selected; product selection is controlled via nested TabItem state. Accessibility: map the wrapper to role=tablist; each TabItem to role=tab; active tab aria-selected=true; support ArrowLeft/ArrowRight and Home/End when applicable; decorative icons aria-hidden when a visible label is present. Token rule: use existing DS kebab-case variables on the wrapper (spacing/0|050|100|150|200, border/radius/0|full, border/width/012, color/background-surface/0). Nested TabItem/icon may retain Border/Icon/* strokeWeight leftovers when no local kebab equivalent exists. React mapping: TabsSecondary(itemCount, platform, alignment, children as TabItem secondary).
+
+## Variants
+
+- **itemCount:** 2 | 3 | 4 | 5
+- **platform:** web | mobile
+- **alignment:** left | center
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `itemCount` | 2 \| 3 \| 4 \| 5 — number of composed TabItem instances |
+| `platform` | web \| mobile — synced to nested TabItem platform |
+| `alignment` | left \| center — horizontal distribution |
+
+## Rules
+
+- **composition:** Compose only local TabItem variant=secondary (tabItem01–tabItem0N)
+- **noAppearance:** No appearance axis — TabItem secondary does not publish inverse; inverse combinations are intentionally absent
+- **selectionDemo:** Demo shows tabItem01 as selected; product selection via nested TabItem.state
+- **usage:** Do not use as standalone TabItem, SegmentedControl, ButtonGroup, NavigationBar or primary page navigation (use TabsPrimary)
+
+## Token rules
+
+- spacing/0 | 050 | 100 | 150 | 200 on the wrapper
+- border/radius/0 | full, border/width/012, color/background-surface/0
+- Border/Icon/* may remain on nested icon strokeWeight when no local kebab equivalent exists
+
+## Accessibility
+
+role=tablist; nested TabItem role=tab; aria-selected on active tab; ArrowLeft/ArrowRight and Home/End when applicable; decorative icons aria-hidden when label visible.
+

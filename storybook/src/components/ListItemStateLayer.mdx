@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ListItemStateLayer" />
+
+# ListItemStateLayer
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3720-28) · node `3720:28`
+
+## AI-READY
+
+AI-READY COMPONENT: ListItemStateLayer is a visual-only internal interaction surface used inside ListItem as stateLayer. Variants: state=default|hover|focus|pressed|dragged. default has no fill; hover uses interactive/hover; focus is ring-only (focusRing visible, no wash fill); pressed uses interactive/pressed plus optional pressedRipple with interactive/overlay; dragged uses interactive/selected plus local effect style elevation/1 (do not use remote M3 elevation). focusRing must stay absolute/STRETCH and cover the parent bounds. Do not expose as a product component, Button, Card, Chip or standalone surface. Token rule: use existing DS kebab-case variables only — interactive/hover|pressed|selected|focus|overlay, border/radius/0|200, border/width/025, elevation/1 for dragged. Accessibility: no runtime role; parent ListItem owns focus, keyboard and semantics. React mapping: internal only — ListItem(state) drives this layer.
+
+## Variants
+
+- **state:** default | hover | focus | pressed | dragged
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `state` | default \| hover \| focus \| pressed \| dragged |
+
+## Rules
+
+- **internalOnly:** Use only inside ListItem as stateLayer
+- **focusRing:** absolute STRETCH; visible only on state=focus
+- **focusRingOnly:** state=focus has no wash fill — ring only
+- **pressedRippleLocal:** pressedRipple uses interactive/overlay — no remote State Layers tokens
+- **draggedElevation:** state=dragged uses local elevation/1 — no remote M3 elevation
+- **vsProduct:** Do not expose as Button, Card, Chip or standalone surface
+
+## Token rules
+
+- interactive/hover | pressed | selected | focus | overlay
+- border/radius/0 | 200
+- border/width/025 (focusRing)
+- elevation/1 for dragged
+
+## Accessibility
+
+no runtime role; parent ListItem owns focus, keyboard and semantics.
+

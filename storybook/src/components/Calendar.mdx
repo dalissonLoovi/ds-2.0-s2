@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Calendar" />
+
+# Calendar
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3982-5542) · node `3982:5542`
+
+## AI-READY
+
+AI-READY COMPONENT: Calendar is the Design System 2.0 date-selection panel used with InputDatePicker (compose the panel externally — never nest Calendar inside the field). It renders the month grid, optional period navigation, month/year unit strip, local actions, and (on complete/web) preset select lists. Variants use an intentional sparse matrix (8 published): mode × picker × platform. mode: simple | month | month-year | complete | time. picker: default | month | year (meaningful mainly with mode=month-year). platform: mobile | web (complete publishes both; other modes publish mobile demos). Anatomy by mode: simple = monthTitle TEXT + weekday headers + CalendarDay grid + local actions; month = selectionRow with CalendarPeriodNav (periodNav, exposed) + grid + actions; month-year = selectionRow with DatePickerSelect (datePickerSelect, exposed) + optional month/year ListActionDropdownItem lists when picker=month|year; complete/web = Select presets column (showSelectItems) + CalendarPeriodNav + single/dual grid + feedback + actions; complete/mobile = intentional dual-month range (two periodNav + two CalendarDay grids) + feedback range summary + actions; time = DatePickerSelect (month-year) + timePicker columns built from ListActionDropdownItem rows (placeholder hour/minute lists — not a dedicated TimePicker atom). Props: monthTitle (TEXT) — visible month heading on mode=simple; showSelectItems (BOOLEAN) — toggles the auxiliary select/preset list column on mode=complete + platform=web only (wired to Select). Nested periodNav (CalendarPeriodNav) and datePickerSelect (DatePickerSelect, including nested month/year blocks) are exposed for parent-panel editing. Local actions clearAction / cancelAction / confirmAction are NOT exposed — edit labels via nested Button instance overrides when needed. Demo grids include representative CalendarDay kinds/states (today, hover, focus, selected, range-*, disabled). Do not use Calendar as InputDatePicker, CalendarDay alone, DatePickerSelect alone, or a remote day-cell library. Token rule: local S2 kebab-case only — color/background-surface/0|2, text/primary, color/border/2, spacing/*, border/radius/*, font-family/base, font/size/*, font/line-height/*, letter-spacing/default, color/elevation/5 for shadow; body/* text styles on cells. Local DividerVertical / DividerHorizontal only. Accessibility: role=dialog or complementary for the panel; grid uses CalendarDay gridcell semantics; announce selection changes. React mapping: Calendar(mode, picker, platform, monthTitle, showSelectItems, …exposed nested props). Code Connect is not configured.
+
+## Variants
+
+- **mode:** simple | month | month-year | complete | time
+- **picker:** default | month | year
+- **platform:** mobile | web
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `mode` | simple \| month \| month-year \| complete \| time |
+| `picker` | default \| month \| year — meaningful mainly with mode=month-year |
+| `platform` | mobile \| web — complete publishes both; other modes publish mobile demos |
+| `monthTitle` | TEXT — month heading on mode=simple (e.g. Setembro de 2025); body/medium/medium |
+| `showSelectItems` | BOOLEAN — show auxiliary select/preset list column (mode=complete, platform=web; wired to Select frame) |
+| `periodNav` | Exposed nested CalendarPeriodNav (periodLabel etc.) on mode=month\|complete |
+| `datePickerSelect` | Exposed nested DatePickerSelect on mode=month-year\|time |
+
+## Rules
+
+- **externalPanel:** Compose Calendar externally with InputDatePicker — never nest inside the field
+- **sparseMatrix:** Intentional sparse 8/30 published variants (mode × picker × platform)
+- **showSelectItemsScope:** showSelectItems only applies to mode=complete + platform=web
+- **exposedNested:** Only periodNav and datePickerSelect (incl. nested month/year) are exposed — local actions are not
+- **localActions:** clearAction / cancelAction / confirmAction — not exposed; demo enabled
+- **completeMobileDual:** complete/mobile is an intentional dual-month range layout
+- **timePlaceholder:** time mode hour/minute columns use ListActionDropdownItem placeholders — not a TimePicker atom
+- **demoStates:** simple/month demos include today, hover, focus, selected, range-*, disabled CalendarDay cells
+- **localDividersOnly:** Use local DividerVertical / DividerHorizontal — no remote Vertical/Horizontal
+- **vsFieldOrCell:** Not InputDatePicker, not standalone CalendarDay, not DatePickerSelect alone
+
+## Token rules
+
+- color/background-surface/0|2
+- text/primary
+- color/border/2
+- spacing/*; border/radius/*
+- font-family/base; font/size/*; font/line-height/*; letter-spacing/default
+- body/medium/medium (monthTitle); body/large/* (CalendarDay cells)
+- color/elevation/5 (drop shadow)
+- local DividerVertical / DividerHorizontal (middle-inset)
+
+## Accessibility
+
+role=dialog or complementary for the panel; CalendarDay gridcell semantics in the grid; announce selection changes.
+
+## Composition
+
+- CalendarDay (month grid cells)
+- CalendarPeriodNav (periodNav, exposed)
+- DatePickerSelect (datePickerSelect, exposed)
+- Button (clearAction / cancelAction / confirmAction — not exposed)
+- ListActionDropdownItem (presets / month-year / time placeholder lists)
+- DividerVertical / DividerHorizontal
+- InputDatePicker (external trigger)
+

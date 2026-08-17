@@ -98,7 +98,8 @@ Não commitar `storybook/node_modules` nem `storybook/storybook-static`.
 | --- | --- | --- |
 | Metadata / foundations | Figma + JSON metadata | Seed MDX (gerado) |
 | Temas por produto | Tokens/themes + Foundations | Modes / foundations pages |
-| Componente em React | `@ds/react` + CSF3 | Autodocs; seed MDX **skipped** quando `reactImplemented: true` |
+| Componente em React (DoD) | `@ds/react` + CSF3 | Autodocs; seed MDX **skipped** quando `reactImplemented: true` |
+| Scaffold React | `@ds/react/draft` + `Draft/*` stories | Seed MDX permanece até polish (`reactScaffold: true`) |
 
 - Pacotes: `packages/tokens`, `packages/react` — ver [`REACT-CONTRIBUTING.md`](./REACT-CONTRIBUTING.md)
 - **Não esperar** “todos os componentes + temas” para documentar: documentar / implementar por fatia.

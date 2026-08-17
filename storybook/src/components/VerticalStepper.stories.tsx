@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { VerticalStepper } from '@ds/react';
+import { VerticalStepper } from '@ds/react/draft';
 
 const meta = {
-  title: 'Components/VerticalStepper',
+  title: 'Draft/VerticalStepper',
   component: VerticalStepper,
   tags: ['autodocs'],
   args: { label: 'VerticalStepper' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
+      },
+    },
+  },
 } satisfies Meta<typeof VerticalStepper>;
 
 export default meta;

@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Overlay } from '@ds/react';
+import { Overlay } from '@ds/react/draft';
 
 const meta = {
-  title: 'Components/Overlay',
+  title: 'Draft/Overlay',
   component: Overlay,
   tags: ['autodocs'],
   args: { label: 'Overlay' },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
+      },
+    },
+  },
 } satisfies Meta<typeof Overlay>;
 
 export default meta;
