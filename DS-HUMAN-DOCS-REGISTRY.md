@@ -4,7 +4,7 @@
 **Arquivo:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2)  
 **Escopo:** páginas próprias para standalone · `*Item`/`*Block` só na Anatomy · prontas para auditoria  
 
-**Auditoria:** W0 aplicada · W1 OK · W2 aplicada (Banner + ProgressBar nodeId) · W3 aplicada (OrganizationHeader docs `4887:1141` + Rail live nodeIds). Próximo: auditar W4.
+**Auditoria:** W0–**W6 aplicadas**. W5 noop · W6 P2 StepperPrimary nodeId → `3653:4985`. Orphans W4 **não** deletados.
 
 Frame padrão: `{Name} — Docs humanas` · Overview → A11y
 
@@ -127,7 +127,8 @@ Frame padrão: `{Name} — Docs humanas` · Overview → A11y
 - 28 `*Item` / `*Block`
 - Internals documentados só na Anatomy do pai (ModalHeader, TableCell, SliderRail, etc.)
 
-## Próximo passo (auditoria)
+## Próximo passo
 
-Revisar cada frame contra tokens kebab-case, props, variants, AI-Ready e template (textos, instâncias, Do/Don’t).  
-**Não aplicar** correções no Figma sem confirmação explícita.
+Ciclo Docs humanas W0–W6 **fechado** (estrutura + seed nodeIds).  
+Orphans W4 (masters órfãos DividerHorizontal / PaginationItem): consolidar/deletar só com OK explícito.  
+Commit/push JSON + MDX + registry quando pedir.
