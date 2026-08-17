@@ -757,6 +757,58 @@ const CHECK = {
       layout: ['portrait', 'landscape', 'floating'],
     },
   },
+  ChipGroup: {
+    file: 'packages/react/src/components/ChipGroup/ChipGroup.tsx',
+    axes: {
+      type: ['input', 'assistive', 'filter', 'suggestion'],
+      layout: ['single-row-scrollable', 'multi-row-wrap'],
+    },
+  },
+  ImageItem: {
+    file: 'packages/react/src/components/ImageItem/ImageItem.tsx',
+    axes: {
+      aspectRatio: ['1-1', '4-3', '3-2', '16-9', '2-1'],
+      orientation: ['portrait', 'landscape'],
+      verticalResize: ['false', 'true'],
+    },
+  },
+  PhotoTextItem: {
+    file: 'packages/react/src/components/PhotoTextItem/PhotoTextItem.tsx',
+    axes: { showSupportingText: ['false', 'true'] },
+  },
+  PaginationSelectInput: {
+    file: 'packages/react/src/components/PaginationSelectInput/PaginationSelectInput.tsx',
+    axes: {
+      size: ['sm', 'md', 'lg'],
+      state: ['default', 'hover'],
+      expanded: ['false', 'true'],
+    },
+  },
+  PaginationSelectMenu: {
+    file: 'packages/react/src/components/PaginationSelectMenu/PaginationSelectMenu.tsx',
+    axes: {},
+  },
+  PaginationSelectMenuItem: {
+    file: 'packages/react/src/components/PaginationSelectMenuItem/PaginationSelectMenuItem.tsx',
+    axes: {
+      state: ['default', 'hover', 'pressed', 'selected', 'disabled', 'focus'],
+    },
+  },
+  TableSkeleton: {
+    file: 'packages/react/src/components/TableSkeleton/TableSkeleton.tsx',
+    axes: { empty: ['false', 'true'] },
+  },
+  ModalHeader: {
+    file: 'packages/react/src/components/ModalHeader/ModalHeader.tsx',
+    axes: {
+      layout: ['desktop', 'mobile'],
+      alignment: ['start', 'center'],
+    },
+  },
+  ModalCheckItem: {
+    file: 'packages/react/src/components/ModalCheckItem/ModalCheckItem.tsx',
+    axes: {},
+  },
 };
 
 

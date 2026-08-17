@@ -1,23 +1,39 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  min-height: 120px;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--interactive-overlay) 72%, transparent) 0%,
+    transparent 56%
+  );
 }
 
-.title {
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-050, 4px);
+  padding: var(--spacing-200, 16px);
+  width: 100%;
+}
+
+.label,
+.supporting {
   margin: 0;
-  font-weight: 600;
+  color: var(--text-on-color);
+}
+
+.label {
   font-size: 14px;
   line-height: 20px;
+  font-weight: 500;
 }
 
-.meta {
-  margin: 4px 0 0;
+.supporting {
   font-size: 12px;
   line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+  font-weight: 400;
 }

@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-18T00:20:00.000Z",
-        "storybookRevision": "2026-08-17-react-w6-complexos",
+        "storybookUpdatedAt": "2026-08-18T00:40:00.000Z",
+        "storybookRevision": "2026-08-17-react-w7-internals-leftovers",
         "changelog": [
+            {
+                "date": "2026-08-17",
+                "type": "react-w7-internals-leftovers",
+                "summary": "React W7 leftovers polish: ChipGroup, ImageItem/PhotoTextItem, PaginationSelect*, TableSkeleton, ModalHeader/ModalCheckItem DoD; Modal composes ModalHeader."
+            },
             {
                 "date": "2026-08-17",
                 "type": "react-w6-complexos",
@@ -6952,8 +6957,8 @@
                     "nested ChipClickable owns outline intent surface/border tokens"
                 ],
                 "accessibility": "accessible group label; chips keyboard reachable; Enter/Space activate/toggle; selected filters expose selected state.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ChipTag": {
                 "nodeId": "3653:23220",
@@ -7474,8 +7479,8 @@
                     "photoTextOverlay (PhotoTextItem; exposed)",
                     "orientationOverlay (ImageOrientationItem)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "PhotoTextItem": {
                 "nodeId": "4149:479",
@@ -7510,8 +7515,8 @@
                     "content (label + optional supportingText)",
                     "ImageItem.photoTextOverlay (parent)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Input": {
                 "nodeId": "3873:334",
@@ -9100,8 +9105,8 @@
                         }
                     ]
                 },
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ProgressBar": {
                 "nodeId": "3653:5393",
@@ -10332,8 +10337,8 @@
                     "spacing/0 | 100 | 200 | 250 and border/radius/0 | full, border/width/012"
                 ],
                 "accessibility": "Skeleton bars aria-hidden=true; parent table region aria-busy=true or nearby status message.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Table": {
                 "nodeId": "3480:6228",
@@ -10393,8 +10398,8 @@
                 "composition": [
                     "PaginationSelectMenuItem"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "PaginationSelectMenuItem": {
                 "nodeId": "3841:22500",
@@ -10425,8 +10430,8 @@
                     "spacing/0 | 200, border/radius/100, border/width/025, body/medium/regular"
                 ],
                 "accessibility": "option; aria-selected when selected; aria-disabled when disabled; focusRing decorative.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "PaginationSelectInput": {
                 "nodeId": "3653:5902",
@@ -10469,8 +10474,8 @@
                 "composition": [
                     "PaginationSelectMenu"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Overlay": {
                 "nodeId": "3768:3886",
@@ -11146,8 +11151,8 @@
                     "leadingIcon (INSTANCE_SWAP FIXED 20)",
                     "description (TEXT HEIGHT + Hug)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "BottomSheetCheckItem": {
                 "nodeId": "4389:80",
@@ -11242,6 +11247,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "react-w7-internals-leftovers",
+                "date": "2026-08-17",
+                "summary": "W7 React polish: leftover internals to @ds/react Autodocs/Code Connect."
+            },
             {
                 "id": "react-w6-complexos",
                 "date": "2026-08-17",

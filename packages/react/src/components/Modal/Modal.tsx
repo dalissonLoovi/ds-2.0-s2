@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from 'react';
 import { cx } from '../../utils/cx';
-import { Button } from '../Button/Button';
+import { ModalHeader } from '../ModalHeader/ModalHeader';
 import styles from './Modal.module.css';
 
 export type ModalPlatform = 'web' | 'mobile' | 'mobile-landscape';
@@ -110,26 +110,15 @@ export function Modal({
         tabIndex={-1}
         {...rest}
       >
-        <header className={styles.header}>
-          <div className={styles.heading}>
-            <h2 id={titleId} className={styles.title}>
-              {title}
-            </h2>
-            {showLabel && <p className={styles.label}>{label}</p>}
-          </div>
-          {showCloseAction && (
-            <Button
-              variant="text"
-              size="sm"
-              intent="primary"
-              showLabel={false}
-              showIcon
-              icon="x-outline"
-              aria-label="Close"
-              onClick={onClose}
-            />
-          )}
-        </header>
+        <ModalHeader
+          layout={platform === 'web' ? 'desktop' : 'mobile'}
+          title={title}
+          label={label}
+          showLabel={showLabel}
+          showCloseAction={showCloseAction}
+          onClose={onClose}
+          titleId={titleId}
+        />
         <div className={styles.body}>{children}</div>
         {footer && <footer className={styles.footer}>{footer}</footer>}
       </div>

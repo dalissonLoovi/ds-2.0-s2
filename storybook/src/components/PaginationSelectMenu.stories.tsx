@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { PaginationSelectMenu } from '@ds/react/draft';
+import { PaginationSelectMenu } from '@ds/react';
 
 const meta = {
-  title: 'Draft/PaginationSelectMenu',
+  title: 'Components/PaginationSelectMenu',
   component: PaginationSelectMenu,
   tags: ['autodocs'],
-  args: { label: 'PaginationSelectMenu' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: {},
 } satisfies Meta<typeof PaginationSelectMenu>;
 
 export default meta;

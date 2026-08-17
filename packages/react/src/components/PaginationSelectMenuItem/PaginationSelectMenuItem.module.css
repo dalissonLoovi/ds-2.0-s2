@@ -1,23 +1,43 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
-}
-
-.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px;
   margin: 0;
-  font-weight: 600;
+  padding: 0 var(--spacing-200, 16px);
+  border: 0;
+  border-radius: var(--border-radius-100, 4px);
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
+  font: inherit;
   font-size: 14px;
   line-height: 20px;
+  cursor: pointer;
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.root:hover,
+.state-hover {
+  background: var(--interactive-hover);
+}
+
+.state-pressed {
+  background: var(--interactive-pressed);
+}
+
+.state-selected {
+  background: var(--interactive-selected);
+}
+
+.root:focus-visible,
+.state-focus {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: -2px;
+}
+
+.disabled,
+.root:disabled {
+  color: var(--text-placeholder);
+  background: var(--interactive-disabled-surface);
+  cursor: not-allowed;
 }

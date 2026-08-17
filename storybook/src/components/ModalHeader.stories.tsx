@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ModalHeader } from '@ds/react/draft';
+import { ModalHeader } from '@ds/react';
 
 const meta = {
-  title: 'Draft/ModalHeader',
+  title: 'Components/ModalHeader',
   component: ModalHeader,
   tags: ['autodocs'],
-  args: { label: 'ModalHeader' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { layout: 'desktop', title: 'Title' },
 } satisfies Meta<typeof ModalHeader>;
 
 export default meta;

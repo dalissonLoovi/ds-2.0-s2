@@ -1,28 +1,30 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
 import styles from './PhotoTextItem.module.css';
 
 export type PhotoTextItemProps = HTMLAttributes<HTMLDivElement> & {
-  showSupportingText?: 'false' | 'true';
+  showSupportingText?: boolean;
   label?: string;
-  children?: ReactNode;
+  supportingText?: string;
 };
 
 export function PhotoTextItem({
-  showSupportingText = 'false',
-  label = 'PhotoTextItem',
-  children,
+  showSupportingText = false,
+  label = 'Label',
+  supportingText = 'Supporting text',
   className,
   ...rest
 }: PhotoTextItemProps) {
   return (
     <div
       className={cx(styles.root, className)}
-      data-showSupportingText={showSupportingText}
+      data-show-supporting-text={showSupportingText}
       {...rest}
     >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>PhotoTextItem · DS React</p>
+      <div className={styles.content}>
+        <p className={styles.label}>{label}</p>
+        {showSupportingText && <p className={styles.supporting}>{supportingText}</p>}
+      </div>
     </div>
   );
 }

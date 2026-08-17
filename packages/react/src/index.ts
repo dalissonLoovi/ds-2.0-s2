@@ -239,5 +239,25 @@ export type { SearchViewModalProps } from './components/SearchViewModal/SearchVi
 export { Keyboard } from './components/Keyboard/Keyboard';
 export type { KeyboardProps } from './components/Keyboard/Keyboard';
 
+/** W7 — Internals & leftovers */
+export { ChipGroup } from './components/ChipGroup/ChipGroup';
+export type { ChipGroupProps } from './components/ChipGroup/ChipGroup';
+export { ImageItem } from './components/ImageItem/ImageItem';
+export type { ImageItemProps } from './components/ImageItem/ImageItem';
+export { PhotoTextItem } from './components/PhotoTextItem/PhotoTextItem';
+export type { PhotoTextItemProps } from './components/PhotoTextItem/PhotoTextItem';
+export { PaginationSelectInput } from './components/PaginationSelectInput/PaginationSelectInput';
+export type { PaginationSelectInputProps } from './components/PaginationSelectInput/PaginationSelectInput';
+export { PaginationSelectMenu } from './components/PaginationSelectMenu/PaginationSelectMenu';
+export type { PaginationSelectMenuProps } from './components/PaginationSelectMenu/PaginationSelectMenu';
+export { PaginationSelectMenuItem } from './components/PaginationSelectMenuItem/PaginationSelectMenuItem';
+export type { PaginationSelectMenuItemProps } from './components/PaginationSelectMenuItem/PaginationSelectMenuItem';
+export { TableSkeleton } from './components/TableSkeleton/TableSkeleton';
+export type { TableSkeletonProps } from './components/TableSkeleton/TableSkeleton';
+export { ModalHeader } from './components/ModalHeader/ModalHeader';
+export type { ModalHeaderProps } from './components/ModalHeader/ModalHeader';
+export { ModalCheckItem } from './components/ModalCheckItem/ModalCheckItem';
+export type { ModalCheckItemProps } from './components/ModalCheckItem/ModalCheckItem';
+
 export { dsIcons } from './icons/dsIcons';
 export type { DsIconName } from './icons/dsIcons';

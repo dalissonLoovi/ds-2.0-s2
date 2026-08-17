@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { PhotoTextItem } from '@ds/react/draft';
+import { PhotoTextItem } from '@ds/react';
 
 const meta = {
-  title: 'Draft/PhotoTextItem',
+  title: 'Components/PhotoTextItem',
   component: PhotoTextItem,
   tags: ['autodocs'],
-  args: { label: 'PhotoTextItem' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Label', showSupportingText: true },
 } satisfies Meta<typeof PhotoTextItem>;
 
 export default meta;

@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ChipGroup } from '@ds/react/draft';
+import { ChipGroup } from '@ds/react';
 
 const meta = {
-  title: 'Draft/ChipGroup',
+  title: 'Components/ChipGroup',
   component: ChipGroup,
   tags: ['autodocs'],
-  args: { label: 'ChipGroup' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { type: 'filter', layout: 'single-row-scrollable' },
 } satisfies Meta<typeof ChipGroup>;
 
 export default meta;

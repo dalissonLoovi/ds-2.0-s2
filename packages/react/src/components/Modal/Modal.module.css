@@ -32,36 +32,6 @@
   width: min(640px, 100%);
 }
 
-.header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--spacing-200, 12px);
-  padding: var(--spacing-200, 12px) var(--spacing-250, 16px);
-  border-bottom: 1px solid var(--color-border-2);
-}
-
-.heading {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-050, 4px);
-  min-width: 0;
-}
-
-.title {
-  margin: 0;
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: 600;
-}
-
-.label {
-  margin: 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--text-secondary);
-}
-
 .body {
   padding: var(--spacing-250, 16px);
   overflow: auto;
