@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Avatar } from '@ds/react/draft';
+import { Avatar } from '@ds/react';
 
 const meta = {
-  title: 'Draft/Avatar',
+  title: 'Components/Avatar',
   component: Avatar,
   tags: ['autodocs'],
-  args: { label: 'Avatar' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { content: 'initials', size: 'md', initials: 'AL' },
 } satisfies Meta<typeof Avatar>;
 
 export default meta;

@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ListItemVideoThumbnail } from '@ds/react/draft';
+import { ListItemVideoThumbnail } from '@ds/react';
 
 const meta = {
-  title: 'Draft/ListItemVideoThumbnail',
+  title: 'Components/ListItemVideoThumbnail',
   component: ListItemVideoThumbnail,
   tags: ['autodocs'],
-  args: { label: 'ListItemVideoThumbnail' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: {},
 } satisfies Meta<typeof ListItemVideoThumbnail>;
 
 export default meta;

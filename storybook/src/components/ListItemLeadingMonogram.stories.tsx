@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ListItemLeadingMonogram } from '@ds/react/draft';
+import { ListItemLeadingMonogram } from '@ds/react';
 
 const meta = {
-  title: 'Draft/ListItemLeadingMonogram',
+  title: 'Components/ListItemLeadingMonogram',
   component: ListItemLeadingMonogram,
   tags: ['autodocs'],
-  args: { label: 'ListItemLeadingMonogram' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { initial: 'A' },
 } satisfies Meta<typeof ListItemLeadingMonogram>;
 
 export default meta;

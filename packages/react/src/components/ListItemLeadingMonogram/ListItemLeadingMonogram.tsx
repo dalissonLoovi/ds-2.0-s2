@@ -1,28 +1,19 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
 import styles from './ListItemLeadingMonogram.module.css';
 
-export type ListItemLeadingMonogramProps = HTMLAttributes<HTMLDivElement> & {
-
-  label?: string;
-  children?: ReactNode;
+export type ListItemLeadingMonogramProps = HTMLAttributes<HTMLSpanElement> & {
+  initial?: string;
 };
 
 export function ListItemLeadingMonogram({
-
-  label = 'ListItemLeadingMonogram',
-  children,
+  initial = 'A',
   className,
   ...rest
 }: ListItemLeadingMonogramProps) {
   return (
-    <div
-      className={cx(styles.root, className)}
-
-      {...rest}
-    >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>ListItemLeadingMonogram · DS React</p>
-    </div>
+    <span className={cx(styles.root, className)} aria-hidden {...rest}>
+      {initial.slice(0, 1)}
+    </span>
   );
 }

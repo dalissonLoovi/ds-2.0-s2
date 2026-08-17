@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CarouselPaginationItem } from '@ds/react/draft';
+import { CarouselPaginationItem } from '@ds/react';
 
 const meta = {
-  title: 'Draft/CarouselPaginationItem',
+  title: 'Components/CarouselPaginationItem',
   component: CarouselPaginationItem,
   tags: ['autodocs'],
-  args: { label: 'CarouselPaginationItem' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { itemCount: '3', itemView: '1' },
 } satisfies Meta<typeof CarouselPaginationItem>;
 
 export default meta;

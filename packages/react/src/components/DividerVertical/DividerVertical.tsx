@@ -1,28 +1,28 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
 import styles from './DividerVertical.module.css';
 
+export type DividerVerticalVariant = 'full-width' | 'inset' | 'middle-inset';
+
 export type DividerVerticalProps = HTMLAttributes<HTMLDivElement> & {
-  variant?: 'full-width' | 'inset' | 'middle-inset';
-  label?: string;
-  children?: ReactNode;
+  variant?: DividerVerticalVariant;
+  decorative?: boolean;
 };
 
 export function DividerVertical({
   variant = 'full-width',
-  label = 'DividerVertical',
-  children,
+  decorative = true,
   className,
   ...rest
 }: DividerVerticalProps) {
   return (
     <div
-      className={cx(styles.root, className)}
+      className={cx(styles.root, styles[`variant-${variant}`], className)}
+      role={decorative ? 'none' : 'separator'}
+      aria-orientation={decorative ? undefined : 'vertical'}
+      aria-hidden={decorative || undefined}
       data-variant={variant}
       {...rest}
-    >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>DividerVertical · DS React</p>
-    </div>
+    />
   );
 }

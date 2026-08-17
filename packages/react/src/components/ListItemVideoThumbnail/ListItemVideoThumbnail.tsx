@@ -1,28 +1,24 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
+import { resolveIcon } from '../../icons/dsIcons';
 import styles from './ListItemVideoThumbnail.module.css';
 
-export type ListItemVideoThumbnailProps = HTMLAttributes<HTMLDivElement> & {
-
-  label?: string;
-  children?: ReactNode;
+export type ListItemVideoThumbnailProps = HTMLAttributes<HTMLSpanElement> & {
+  src?: string;
+  alt?: string;
 };
 
 export function ListItemVideoThumbnail({
-
-  label = 'ListItemVideoThumbnail',
-  children,
+  src,
+  alt = '',
   className,
   ...rest
 }: ListItemVideoThumbnailProps) {
+  const Play = resolveIcon('player-play-outline');
   return (
-    <div
-      className={cx(styles.root, className)}
-
-      {...rest}
-    >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>ListItemVideoThumbnail · DS React</p>
-    </div>
+    <span className={cx(styles.root, className)} {...rest}>
+      {src ? <img className={styles.image} src={src} alt={alt} /> : <span className={styles.fallback} aria-hidden />}
+      {Play && <Play size={16} aria-hidden className={styles.play} />}
+    </span>
   );
 }

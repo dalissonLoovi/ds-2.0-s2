@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Accordion } from '@ds/react/draft';
+import { Accordion } from '@ds/react';
 
 const meta = {
-  title: 'Draft/Accordion',
+  title: 'Components/Accordion',
   component: Accordion,
   tags: ['autodocs'],
-  args: { label: 'Accordion' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { label: 'Section' },
 } satisfies Meta<typeof Accordion>;
 
 export default meta;

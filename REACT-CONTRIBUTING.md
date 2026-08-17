@@ -12,7 +12,7 @@ storybook/           # Hybrid catalog: Autodocs CSF3 + seed MDX
 
 | Import | Meaning |
 | --- | --- |
-| `@ds/react` | Polished DoD components (`reactImplemented: true`) — W0–W3 (Core, Formulários, Feedback, Nav/headers) |
+| `@ds/react` | Polished DoD components (`reactImplemented: true`) — W0–W4 (Core, Formulários, Feedback, Nav/headers, Dados & display) |
 | `@ds/react/draft` | Remaining scaffolds (`reactScaffold: true`) — Storybook under `Draft/*` |
 
 Do not re-export scaffolds from the package root. Prefer seed MDX until a component is polished.

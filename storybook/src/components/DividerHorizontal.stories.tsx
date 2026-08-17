@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DividerHorizontal } from '@ds/react/draft';
+import { DividerHorizontal } from '@ds/react';
 
 const meta = {
-  title: 'Draft/DividerHorizontal',
+  title: 'Components/DividerHorizontal',
   component: DividerHorizontal,
   tags: ['autodocs'],
-  args: { label: 'DividerHorizontal' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { variant: 'full-width' },
 } satisfies Meta<typeof DividerHorizontal>;
 
 export default meta;

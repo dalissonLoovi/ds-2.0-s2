@@ -1,31 +1,49 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode, TdHTMLAttributes, ThHTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
 import styles from './TableCell.module.css';
 
-export type TableCellProps = HTMLAttributes<HTMLDivElement> & {
-  type?: 'header' | 'primary' | 'secondary' | 'tertiary' | 'slot';
-  state?: 'default' | 'hover' | 'pressed' | 'selected';
+export type TableCellType = 'header' | 'primary' | 'secondary' | 'tertiary' | 'slot';
+export type TableCellState = 'default' | 'hover' | 'pressed' | 'selected';
+
+export type TableCellProps = HTMLAttributes<HTMLTableCellElement> & {
+  type?: TableCellType;
+  state?: TableCellState;
+  header?: string;
   label?: string;
+  description?: string;
   children?: ReactNode;
 };
 
 export function TableCell({
-  type = 'header',
+  type = 'primary',
   state = 'default',
-  label = 'TableCell',
+  header,
+  label = 'Cell',
+  description,
   children,
   className,
   ...rest
 }: TableCellProps) {
+  const isHeader = type === 'header';
+  const Tag = isHeader ? 'th' : 'td';
+  const text = isHeader ? (header ?? label) : label;
+
   return (
-    <div
-      className={cx(styles.root, className)}
+    <Tag
+      className={cx(styles.root, styles[`type-${type}`], styles[`state-${state}`], className)}
+      scope={isHeader ? 'col' : undefined}
       data-type={type}
       data-state={state}
-      {...rest}
+      {...(rest as TdHTMLAttributes<HTMLTableCellElement> & ThHTMLAttributes<HTMLTableCellElement>)}
     >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>TableCell · DS React</p>
-    </div>
+      {type === 'slot' ? (
+        children
+      ) : (
+        <>
+          <span className={styles.label}>{text}</span>
+          {description && !isHeader && <span className={styles.description}>{description}</span>}
+        </>
+      )}
+    </Tag>
   );
 }

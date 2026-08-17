@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Pagination } from '@ds/react/draft';
+import { Pagination } from '@ds/react';
 
 const meta = {
-  title: 'Draft/Pagination',
+  title: 'Components/Pagination',
   component: Pagination,
   tags: ['autodocs'],
-  args: { label: 'Pagination' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { position: 'start', size: 'lg' },
 } satisfies Meta<typeof Pagination>;
 
 export default meta;

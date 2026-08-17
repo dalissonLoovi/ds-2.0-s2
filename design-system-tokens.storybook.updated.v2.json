@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-17T22:00:00.000Z",
-        "storybookRevision": "2026-08-17-react-w3-nav-headers",
+        "storybookUpdatedAt": "2026-08-17T23:30:00.000Z",
+        "storybookRevision": "2026-08-17-react-w4-dados-display",
         "changelog": [
+            {
+                "date": "2026-08-17",
+                "type": "react-w4-dados-display",
+                "summary": "React W4 Dados & display polish: Divider*/Avatar*/Accordion, List family, Table*/TableMobile, Pagination, Carousel (+ Items) DoD."
+            },
             {
                 "date": "2026-08-17",
                 "type": "react-w3-nav-headers",
@@ -5430,8 +5435,8 @@
                     "local text styles only — no remote typography variables on initials"
                 ],
                 "accessibility": "Non-interactive Avatar should be decorative or described by surrounding content. Interactive wrappers must provide aria-label and visible focus.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "AvatarGroup": {
                 "nodeId": "3669:8404",
@@ -5450,8 +5455,8 @@
                     "size": "micro | xs | sm | md | lg | xl"
                 },
                 "accessibility": "Expose a group-level accessible label when the grouped identities are meaningful. The overflow indicator should not receive focus unless a real interaction is added by a wrapper.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "CardHorizontal": {
                 "nodeId": "4170:4506",
@@ -5838,8 +5843,8 @@
                     "slot (slides; demo slide1–slide4)",
                     "CarouselPaginationItem (exposed; toggled by showPaginationItem)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "CarouselPaginationItem": {
                 "nodeId": "4152:495",
@@ -5883,8 +5888,8 @@
                     "dots (dot1…dotN)",
                     "Carousel (parent; exposed)"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "LoadingSpinner": {
                 "nodeId": "3062:745",
@@ -6784,8 +6789,8 @@
                     "slot": "slot is the only scalable content area and maps to children in React"
                 },
                 "accessibility": "The trigger must behave as a button, support Enter and Space, expose aria-expanded and reference the panel with aria-controls.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Checkbox": {
                 "nodeId": "3667:3812",
@@ -7035,8 +7040,8 @@
                     "spacing/050 for with-subhead gap"
                 ],
                 "accessibility": "If purely visual, hide from assistive technology. If it separates meaningful regions, expose separator semantics. When variant=with-subhead is used, the label should be contextual text, not an interactive control.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "DividerVertical": {
                 "nodeId": "3653:22924",
@@ -7062,8 +7067,8 @@
                     "spacing/0 for full-width padding"
                 ],
                 "accessibility": "If purely visual, hide with aria-hidden=true. If it separates meaningful regions, expose role=separator with aria-orientation=vertical.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "FileUploader": {
                 "nodeId": "3581:4454",
@@ -8670,8 +8675,8 @@
                         }
                     ]
                 },
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ListItem": {
                 "nodeId": "3735:7716",
@@ -8754,8 +8759,8 @@
                     "Switch",
                     "DividerHorizontal"
                 ],
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ListActionDropdownItem": {
                 "nodeId": "3681:11151",
@@ -8796,8 +8801,8 @@
                     "body/medium/regular + nested local icon tokens"
                 ],
                 "accessibility": "role=menuitem in action menus; disabled → aria-disabled and not focusable; selected only for selectable parents; decorative icons aria-hidden; keyboard handled by parent menu.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ListActionDropdown": {
                 "nodeId": "3694:1501",
@@ -8845,8 +8850,8 @@
                         }
                     ]
                 },
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ListItemLeadingMonogram": {
                 "nodeId": "3694:16194",
@@ -8866,8 +8871,8 @@
                     "body/large/medium"
                 ],
                 "accessibility": "decorative when parent text identifies the entity; otherwise expose via parent ListItem label.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ListItemStateLayer": {
                 "nodeId": "3720:28",
@@ -8899,8 +8904,8 @@
                     "elevation/1 for dragged"
                 ],
                 "accessibility": "no runtime role; parent ListItem owns focus, keyboard and semantics.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ListItemImageThumbnail": {
                 "nodeId": "3694:16209",
@@ -8916,8 +8921,8 @@
                     "border/radius/100"
                 ],
                 "accessibility": "alt from parent ListItem when informative; decorative may be hidden from AT.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "ListItemVideoThumbnail": {
                 "nodeId": "3694:16211",
@@ -8936,8 +8941,8 @@
                     "icon scale 20px (stroke ≈ 1.67)"
                 ],
                 "accessibility": "parent exposes video when meaningful; playIcon decorative if label already conveys playback.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "Modal": {
                 "nodeId": "3306:4278",
@@ -10105,8 +10110,8 @@
                     "border/radius/0, border/width/012"
                 ],
                 "accessibility": "Use inside semantic table; header → columnheader/th; body → cell/td; actionable content in type=slot must expose button/link with clear accessible label.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TableExpandCell": {
                 "nodeId": "3459:8530",
@@ -10150,8 +10155,8 @@
                     "spacing/0 | 200 | 800 and border/radius/0 | 100, border/width/0 | 025"
                 ],
                 "accessibility": "Button when interactive (showChevron=true); Expand/Collapse label; aria-expanded maps selected→true; spacer header (showChevron=false) should be presentational/aria-hidden.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TableMobile": {
                 "nodeId": "3452:2722",
@@ -10197,8 +10202,8 @@
                     "border/width/0 | 012 and border/radius/0"
                 ],
                 "accessibility": "Interactive blocks map to button/link/listitem; clear accessible name; aria-expanded when expanding; decorative icons aria-hidden.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TableMobileCell": {
                 "nodeId": "3452:2656",
@@ -10239,8 +10244,8 @@
                     "spacing/0 | 100 | 800 and border/radius/0"
                 ],
                 "accessibility": "Tappable row/action → button/link + clear label; selected via parent semantics; icon-only needs aria-label; decorative icons aria-hidden.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TableRow": {
                 "nodeId": "3459:12787",
@@ -10287,8 +10292,8 @@
                     "Nested TableCell and TableExpandCell use their own DS tokens"
                 ],
                 "accessibility": "Header rows → thead/columnheader; body rows → tr/td; preserve visible focus; expose selected when selection is meaningful; expandCell needs Expand/Collapse label and aria-expanded when shown.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "TableSkeleton": {
                 "nodeId": "3459:9331",
@@ -10351,8 +10356,8 @@
                     "Do not invent tokens on the Table shell"
                 ],
                 "accessibility": "Semantic table structure; headerRow → column headers; rows slot → data rows; preserve nested focus/selection/expand semantics.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "PaginationSelectMenu": {
                 "nodeId": "3841:22501",
@@ -10527,8 +10532,8 @@
                     "Nested PaginationItem and Button use their own DS tokens"
                 ],
                 "accessibility": "Wrapper as nav with aria-label=Pagination; active page aria-current=page; previous/next need aria-label and disabled when unavailable.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "PaginationItem": {
                 "nodeId": "3653:6248",
@@ -10569,8 +10574,8 @@
                     "spacing/0 | 050 | 500 and border/radius/full"
                 ],
                 "accessibility": "Number items expose page number as accessible name; selected maps to aria-current=page; overflow decorative or clearly labeled; preserve keyboard focus.",
-                "reactPackage": "@ds/react/draft",
-                "reactScaffold": true
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             },
             "NavigationRailExpanded": {
                 "nodeId": "3653:8288",
@@ -11227,6 +11232,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "react-w4-dados-display",
+                "date": "2026-08-17",
+                "summary": "W4 React polish: data & display family to @ds/react Autodocs/Code Connect."
+            },
             {
                 "id": "react-w3-nav-headers",
                 "date": "2026-08-17",

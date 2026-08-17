@@ -1,23 +1,21 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  min-width: 0;
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
+.type-primary .primary {
   font-size: 14px;
   line-height: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
-.meta {
-  margin: 4px 0 0;
+.type-secondary .secondary {
   font-size: 12px;
   line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+  color: var(--text-secondary);
+}
+
+.icon {
+  display: inline-flex;
+  color: var(--text-secondary);
 }

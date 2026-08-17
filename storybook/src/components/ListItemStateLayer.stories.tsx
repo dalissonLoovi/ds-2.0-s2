@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ListItemStateLayer } from '@ds/react/draft';
+import { ListItemStateLayer } from '@ds/react';
 
 const meta = {
-  title: 'Draft/ListItemStateLayer',
+  title: 'Components/ListItemStateLayer',
   component: ListItemStateLayer,
   tags: ['autodocs'],
-  args: { label: 'ListItemStateLayer' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { state: 'hover' },
 } satisfies Meta<typeof ListItemStateLayer>;
 
 export default meta;

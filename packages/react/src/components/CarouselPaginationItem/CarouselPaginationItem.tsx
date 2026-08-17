@@ -1,31 +1,38 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
 import styles from './CarouselPaginationItem.module.css';
 
+export type CarouselPaginationItemCount = '2' | '3' | '4' | '5';
+export type CarouselPaginationItemView = '1' | '2' | '3' | '4' | '5';
+
 export type CarouselPaginationItemProps = HTMLAttributes<HTMLDivElement> & {
-  itemCount?: '2' | '3' | '4' | '5';
-  itemView?: '1' | '2' | '3' | '4' | '5';
-  label?: string;
-  children?: ReactNode;
+  itemCount?: CarouselPaginationItemCount;
+  itemView?: CarouselPaginationItemView;
 };
 
 export function CarouselPaginationItem({
-  itemCount = '2',
+  itemCount = '3',
   itemView = '1',
-  label = 'CarouselPaginationItem',
-  children,
   className,
   ...rest
 }: CarouselPaginationItemProps) {
+  const count = Number(itemCount);
+  const view = Math.min(Math.max(Number(itemView), 1), count);
+
   return (
     <div
       className={cx(styles.root, className)}
-      data-itemCount={itemCount}
-      data-itemView={itemView}
+      data-item-count={itemCount}
+      data-item-view={String(view)}
+      aria-hidden
       {...rest}
     >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>CarouselPaginationItem · DS React</p>
+      {Array.from({ length: count }, (_, index) => (
+        <span
+          key={index}
+          className={cx(styles.dot, index + 1 === view && styles.active)}
+        />
+      ))}
     </div>
   );
 }

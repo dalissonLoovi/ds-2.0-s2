@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TableExpandCell } from '@ds/react/draft';
+import { TableExpandCell } from '@ds/react';
 
 const meta = {
-  title: 'Draft/TableExpandCell',
+  title: 'Components/TableExpandCell',
   component: TableExpandCell,
   tags: ['autodocs'],
-  args: { label: 'TableExpandCell' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { type: 'body' },
 } satisfies Meta<typeof TableExpandCell>;
 
 export default meta;

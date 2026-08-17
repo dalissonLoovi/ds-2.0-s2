@@ -1,23 +1,34 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-150, 10px);
+  width: 100%;
+  padding: var(--spacing-150, 10px) var(--spacing-200, 12px);
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--color-border-2);
+  text-align: left;
 }
 
-.title {
+.interactive {
   margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font: inherit;
 }
 
-.meta {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+.state-hover,
+.interactive:hover {
+  background: var(--interactive-hover);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
 }

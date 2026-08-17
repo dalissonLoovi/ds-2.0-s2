@@ -1,23 +1,70 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-150, 10px);
+  min-height: 56px;
+  padding: var(--spacing-100, 8px) var(--spacing-200, 12px);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.condition-3-line .row {
+  min-height: 72px;
+  align-items: flex-start;
+}
+
+.leading,
+.trailing {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.leadIcon {
+  color: var(--text-secondary);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.overline {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.headline {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.supporting {
   font-size: 14px;
   line-height: 20px;
+  color: var(--text-secondary);
+}
+
+.condition-1-line .supporting {
+  display: none;
 }
 
 .meta {
-  margin: 4px 0 0;
   font-size: 12px;
   line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+  color: var(--text-secondary);
+  flex-shrink: 0;
 }

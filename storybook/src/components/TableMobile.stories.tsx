@@ -1,19 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TableMobile } from '@ds/react/draft';
+import { TableMobile } from '@ds/react';
 
 const meta = {
-  title: 'Draft/TableMobile',
+  title: 'Components/TableMobile',
   component: TableMobile,
   tags: ['autodocs'],
-  args: { label: 'TableMobile' },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Scaffold only (reactScaffold). Not DoD — use seed docs until polished. Import from `@ds/react/draft`.',
-      },
-    },
-  },
+  args: { columnCount: '4' },
 } satisfies Meta<typeof TableMobile>;
 
 export default meta;

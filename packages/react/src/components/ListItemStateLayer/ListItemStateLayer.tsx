@@ -1,28 +1,24 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
 import styles from './ListItemStateLayer.module.css';
 
-export type ListItemStateLayerProps = HTMLAttributes<HTMLDivElement> & {
-  state?: 'default' | 'hover' | 'focus' | 'pressed' | 'dragged';
-  label?: string;
-  children?: ReactNode;
+export type ListItemStateLayerState = 'default' | 'hover' | 'focus' | 'pressed' | 'dragged';
+
+export type ListItemStateLayerProps = HTMLAttributes<HTMLSpanElement> & {
+  state?: ListItemStateLayerState;
 };
 
 export function ListItemStateLayer({
   state = 'default',
-  label = 'ListItemStateLayer',
-  children,
   className,
   ...rest
 }: ListItemStateLayerProps) {
   return (
-    <div
-      className={cx(styles.root, className)}
+    <span
+      className={cx(styles.root, styles[`state-${state}`], className)}
       data-state={state}
+      aria-hidden
       {...rest}
-    >
-      <p className={styles.title}>{children ?? label}</p>
-      <p className={styles.meta}>ListItemStateLayer · DS React</p>
-    </div>
+    />
   );
 }

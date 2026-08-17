@@ -1,23 +1,32 @@
 .root {
-  box-sizing: border-box;
-  font: inherit;
-  color: var(--color-text-primary, #1a1a1a);
-  background: var(--color-background-surface-0, #fff);
-  border: 1px solid var(--color-border-2, #ebebeb);
-  border-radius: var(--border-radius-200, 8px);
-  padding: var(--spacing-200, 12px);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: var(--spacing-100, 8px);
 }
 
-.title {
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+.line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-2);
 }
 
-.meta {
-  margin: 4px 0 0;
+.variant-full-width {
+  padding-inline: 0;
+}
+
+.variant-inset {
+  padding-inline: var(--spacing-200, 12px);
+}
+
+.variant-middle-inset {
+  padding-inline: var(--spacing-400, 32px);
+}
+
+.label {
   font-size: 12px;
   line-height: 16px;
-  color: var(--color-text-secondary, #5d6a80);
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
 }

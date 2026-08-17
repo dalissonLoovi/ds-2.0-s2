@@ -409,6 +409,148 @@ const CHECK = {
       variant: ['default', 'simple'],
     },
   },
+  DividerHorizontal: {
+    file: 'packages/react/src/components/DividerHorizontal/DividerHorizontal.tsx',
+    axes: {
+      variant: ['full-width', 'inset', 'middle-inset', 'with-subhead'],
+    },
+  },
+  DividerVertical: {
+    file: 'packages/react/src/components/DividerVertical/DividerVertical.tsx',
+    axes: {
+      variant: ['full-width', 'inset', 'middle-inset'],
+    },
+  },
+  Avatar: {
+    file: 'packages/react/src/components/Avatar/Avatar.tsx',
+    axes: {
+      content: ['image', 'initials', 'placeholder'],
+      size: ['micro', 'xs', 'sm', 'md', 'lg', 'xl'],
+      state: ['default', 'hover', 'focus', 'disabled', 'loading'],
+    },
+  },
+  AvatarGroup: {
+    file: 'packages/react/src/components/AvatarGroup/AvatarGroup.tsx',
+    axes: { size: ['micro', 'xs', 'sm', 'md', 'lg', 'xl'] },
+  },
+  Accordion: {
+    file: 'packages/react/src/components/Accordion/Accordion.tsx',
+    axes: {
+      expanded: ['false', 'true'],
+      state: ['default', 'disabled'],
+      size: ['sm', 'md'],
+      padding: ['padded', 'flush'],
+    },
+  },
+  ListItemStateLayer: {
+    file: 'packages/react/src/components/ListItemStateLayer/ListItemStateLayer.tsx',
+    axes: { state: ['default', 'hover', 'focus', 'pressed', 'dragged'] },
+  },
+  ListItemLeadingMonogram: {
+    file: 'packages/react/src/components/ListItemLeadingMonogram/ListItemLeadingMonogram.tsx',
+    axes: {},
+  },
+  ListItemImageThumbnail: {
+    file: 'packages/react/src/components/ListItemImageThumbnail/ListItemImageThumbnail.tsx',
+    axes: {},
+  },
+  ListItemVideoThumbnail: {
+    file: 'packages/react/src/components/ListItemVideoThumbnail/ListItemVideoThumbnail.tsx',
+    axes: {},
+  },
+  ListItem: {
+    file: 'packages/react/src/components/ListItem/ListItem.tsx',
+    axes: {
+      condition: ['1-line', '2-line', '3-line'],
+      leading: ['none', 'monogram', 'icon', 'image', 'video', 'checkbox', 'radio', 'switch'],
+      trailing: ['none', 'icon', 'checkbox', 'radio', 'switch'],
+      showOverline: ['false', 'true'],
+      showSupportingText: ['false', 'true'],
+    },
+  },
+  List: {
+    file: 'packages/react/src/components/List/List.tsx',
+    axes: { type: ['plain', 'dropdown'] },
+  },
+  ListActionDropdownItem: {
+    file: 'packages/react/src/components/ListActionDropdownItem/ListActionDropdownItem.tsx',
+    axes: {
+      state: ['default', 'hover', 'pressed', 'selected', 'focus', 'disabled'],
+    },
+  },
+  ListActionDropdown: {
+    file: 'packages/react/src/components/ListActionDropdown/ListActionDropdown.tsx',
+    axes: {},
+  },
+  TableCell: {
+    file: 'packages/react/src/components/TableCell/TableCell.tsx',
+    axes: {
+      type: ['header', 'primary', 'secondary', 'tertiary', 'slot'],
+      state: ['default', 'hover', 'pressed', 'selected'],
+    },
+  },
+  TableExpandCell: {
+    file: 'packages/react/src/components/TableExpandCell/TableExpandCell.tsx',
+    axes: {
+      type: ['body', 'header'],
+      state: ['default', 'hover', 'pressed', 'selected', 'focus', 'disabled'],
+      showChevron: ['true', 'false'],
+    },
+  },
+  TableRow: {
+    file: 'packages/react/src/components/TableRow/TableRow.tsx',
+    axes: {
+      type: ['header', 'body'],
+      cellCount: ['3', '4', '5', '6', '7', '8', '9'],
+      state: ['default', 'hover', 'pressed', 'selected', 'focus'],
+    },
+  },
+  Table: {
+    file: 'packages/react/src/components/Table/Table.tsx',
+    axes: { columns: ['3', '4', '5', '6', '7', '8', '9'] },
+  },
+  TableMobileCell: {
+    file: 'packages/react/src/components/TableMobileCell/TableMobileCell.tsx',
+    axes: {
+      type: ['primary', 'secondary', 'tag', 'action', 'icon'],
+      state: ['default', 'hover', 'pressed', 'selected'],
+    },
+  },
+  TableMobile: {
+    file: 'packages/react/src/components/TableMobile/TableMobile.tsx',
+    axes: {
+      state: ['default', 'hover', 'pressed'],
+      interactive: ['false', 'true'],
+      showTag: ['true', 'false'],
+      columnCount: ['2', '3', '4', '5', '6'],
+    },
+  },
+  PaginationItem: {
+    file: 'packages/react/src/components/PaginationItem/PaginationItem.tsx',
+    axes: {
+      content: ['number', 'overflow'],
+      state: ['default', 'hover', 'focus', 'disabled'],
+      selected: ['false', 'true'],
+    },
+  },
+  Pagination: {
+    file: 'packages/react/src/components/Pagination/Pagination.tsx',
+    axes: {
+      position: ['start', 'middle', 'end'],
+      size: ['lg', 'sm'],
+    },
+  },
+  CarouselPaginationItem: {
+    file: 'packages/react/src/components/CarouselPaginationItem/CarouselPaginationItem.tsx',
+    axes: {
+      itemCount: ['2', '3', '4', '5'],
+      itemView: ['1', '2', '3', '4', '5'],
+    },
+  },
+  Carousel: {
+    file: 'packages/react/src/components/Carousel/Carousel.tsx',
+    axes: {},
+  },
 };
 
 
