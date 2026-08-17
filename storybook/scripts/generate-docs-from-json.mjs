@@ -1,14 +1,16 @@
 /**
  * Generate Storybook MDX docs from design-system-tokens.storybook.updated.v2.json
  *
- * Source of seed metadata (until React components exist):
+ * Source of seed metadata:
  *   ../design-system-tokens.storybook.updated.v2.json
  *
  * Output:
  *   src/Introduction.mdx
  *   src/foundations/*.mdx
- *   src/components/*.mdx
+ *   src/components/*.mdx (skipped when reactImplemented)
  *   src/Changelog.mdx
+ *
+ * Implemented React components use CSF3 Autodocs instead of seed MDX.
  */
 
 import fs from 'node:fs';
@@ -19,6 +21,27 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const STORYBOOK_SRC = path.resolve(__dirname, '../src');
 const JSON_PATH = path.join(ROOT, 'design-system-tokens.storybook.updated.v2.json');
+
+/** Truncate Changelog.mdx; full history stays in the seed JSON. */
+const RECENT_UPDATES_LIMIT = 20;
+const META_CHANGELOG_LIMIT = 40;
+
+function catalogStats(components) {
+  const names = Object.keys(components || {});
+  const implemented = names.filter((n) => components[n]?.reactImplemented === true);
+  const seed = names
+    .filter((n) => components[n]?.reactImplemented !== true)
+    .sort((a, b) => a.localeCompare(b));
+  return {
+    total: names.length,
+    implementedCount: implemented.length,
+    seedNames: seed,
+  };
+}
+
+function formatSeedNames(names) {
+  return names.map((n) => `\`${escapeMdx(n)}\``).join(', ');
+}
 
 function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
@@ -226,43 +249,56 @@ function writeFile(filePath, contents) {
   fs.writeFileSync(filePath, contents, 'utf8');
 }
 
-function generateIntroduction(meta, storybook) {
+function generateIntroduction(meta, storybook, components = {}) {
   const revision = meta.storybookRevision || meta.revision || '—';
   const updated =
     meta.storybookUpdatedAt || storybook.updatedAt || meta.exportedAt || '—';
+  const stats = catalogStats(components);
+  const seedLine = stats.seedNames.length
+    ? `- Seed MDX remains for: ${formatSeedNames(stats.seedNames)} — Figma-only annotation, not product UI.`
+    : '- All catalog components ship as Autodocs.';
   return `import { Meta } from '@storybook/blocks';
 
 <Meta title="Introduction" />
 
 # Design System 2.0 — Storybook
 
-Seed documentation catalog generated from Figma metadata JSON.
+Live catalog for DS 2.0 S2: React Autodocs for implemented components, Foundations, and seed docs for Figma-only entries.
 
 | | |
 | --- | --- |
 | **Figma file** | [${escapeMdx(meta.fileName || '[DS] 2.0 - S2')}](${meta.figmaUrl || '#'}) |
 | **File key** | \`${escapeMdx(meta.fileKey || '')}\` |
+| **Package** | \`@ds/react\` |
+| **Tokens** | \`@ds/tokens\` |
 | **Schema** | \`${escapeMdx(storybook.schemaVersion || 'ds-storybook-metadata/v2')}\` |
 | **Updated** | ${escapeMdx(updated)} |
 | **Revision** | \`${escapeMdx(revision)}\` |
 
 ${escapeMdx(storybook.purpose || '')}
 
+## Status
+
+- **${stats.implementedCount} / ${stats.total}** components ship as CSF3 Autodocs from \`@ds/react\` (Code Connect uses seed nodeIds).
+${seedLine}
+
+## How to use React
+
+Import components from \`@ds/react\`. Styles use CSS variables from \`@ds/tokens\`. Do not invent Figma variants in code.
+
 ## How this catalog works
 
 1. Audit / finalize a component in Figma.
 2. Update \`design-system-tokens.storybook.updated.v2.json\` (repo root).
-3. Run \`npm run docs:generate\` (also runs automatically before \`storybook\` / \`build-storybook\`).
-4. Review locally, open a PR, merge — GitHub Pages publishes the build.
-
-> **Status:** Docs-only seed. Pages marked *Seed docs* are not yet backed by React stories.
-> When a component is implemented in code, replace its seed page with CSF3 + Autodocs.
+3. When the component is code, polish it in \`@ds/react\` (CSF3 + Autodocs + Code Connect). \`docs:generate\` then skips its seed MDX.
+4. Run \`npm run docs:generate\` (also runs automatically before \`storybook\` / \`build-storybook\`).
+5. Review locally, open a PR, merge — GitHub Pages publishes the build.
 
 ## Sidebar
 
 - **Foundations** — global rules, feedback vocabulary, illustrations, and animations
-- **Components** — one page per entry in the metadata JSON
-- **Changelog** — recent documentation revisions
+- **Components** — Autodocs for implemented components; seed MDX only for Figma-only entries
+- **Changelog** — recent revisions (full history stays in the seed JSON)
 `;
 }
 
@@ -602,9 +638,15 @@ ${escapeMdx(anim.motionNote || '')}
   return md;
 }
 
-function generateChangelog(meta, storybook) {
+function generateChangelog(meta, storybook, components = {}) {
   const changelog = asList(meta.changelog);
   const recent = asList(storybook.recentUpdates);
+  const stats = catalogStats(components);
+  const recentShown = recent.slice(0, RECENT_UPDATES_LIMIT);
+  const historyShown = changelog.slice(0, META_CHANGELOG_LIMIT);
+  const seedClause = stats.seedNames.length
+    ? ` ${formatSeedNames(stats.seedNames)} ${stats.seedNames.length === 1 ? 'remains' : 'remain'} Figma-only.`
+    : ' All catalog components are implemented.';
 
   let md = `import { Meta } from '@storybook/blocks';
 
@@ -612,7 +654,11 @@ function generateChangelog(meta, storybook) {
 
 # Changelog
 
-Documentation revisions for the Design System 2.0 Storybook seed.
+Revisions for Design System 2.0 Storybook — React Autodocs, Foundations, and seed metadata.
+
+**Catalog:** ${stats.implementedCount}/${stats.total} components on \`@ds/react\` Autodocs (W0–W7).${seedClause}
+
+The lists below are truncated for readability. Full history lives in \`design-system-tokens.storybook.updated.v2.json\` (\`storybook.recentUpdates\` and \`meta.changelog\`).
 
 ## Recent updates
 
@@ -621,18 +667,27 @@ Documentation revisions for the Design System 2.0 Storybook seed.
   if (!recent.length) {
     md += '_No recentUpdates in metadata._\n\n';
   } else {
-    for (const item of recent) {
+    md += `_Showing ${recentShown.length} of ${recent.length}._\n\n`;
+    for (const item of recentShown) {
       md += `- **${escapeMdx(item.id || 'update')}:** ${escapeMdx(item.summary || '')}\n`;
     }
     md += '\n';
   }
 
-  md += '## Meta changelog\n\n';
+  md += '## History\n\n';
   if (!changelog.length) {
     md += '_No changelog entries._\n';
   } else {
-    for (const item of changelog) {
-      md += `- **${escapeMdx(item.date || '—')}** [${escapeMdx(item.type || 'update')}]: ${escapeMdx(item.summary || '')}\n`;
+    md += `_Showing ${historyShown.length} of ${changelog.length}, grouped by date._\n\n`;
+    let currentDate = null;
+    for (const item of historyShown) {
+      const date = item.date || '—';
+      if (date !== currentDate) {
+        if (currentDate !== null) md += '\n';
+        md += `### ${escapeMdx(date)}\n\n`;
+        currentDate = date;
+      }
+      md += `- **${escapeMdx(item.type || 'update')}:** ${escapeMdx(item.summary || '')}\n`;
     }
   }
 
@@ -660,7 +715,10 @@ function main() {
   ensureDir(foundationsDir);
   ensureDir(componentsDir);
 
-  writeFile(path.join(STORYBOOK_SRC, 'Introduction.mdx'), generateIntroduction(meta, storybook));
+  writeFile(
+    path.join(STORYBOOK_SRC, 'Introduction.mdx'),
+    generateIntroduction(meta, storybook, components),
+  );
   writeFile(path.join(foundationsDir, 'GlobalRules.mdx'), generateGlobalRules(storybook, meta));
   writeFile(path.join(foundationsDir, 'Feedback.mdx'), generateFeedback(storybook));
   writeFile(
@@ -673,7 +731,10 @@ function main() {
       generateAnimations(storybook, fileKey),
     );
   }
-  writeFile(path.join(STORYBOOK_SRC, 'Changelog.mdx'), generateChangelog(meta, storybook));
+  writeFile(
+    path.join(STORYBOOK_SRC, 'Changelog.mdx'),
+    generateChangelog(meta, storybook, components),
+  );
 
   const names = Object.keys(components).sort((a, b) => a.localeCompare(b));
   let skippedReact = 0;

@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-18T00:40:00.000Z",
-        "storybookRevision": "2026-08-17-react-w7-internals-leftovers",
+        "storybookUpdatedAt": "2026-08-18T01:20:00.000Z",
+        "storybookRevision": "2026-08-17-storybook-intro-changelog-copy",
         "changelog": [
+            {
+                "date": "2026-08-17",
+                "type": "storybook-intro-changelog-copy",
+                "summary": "Storybook Introduction/Changelog copy polish: Autodocs catalog status (123/124), truncated human changelog; CommentItem remains Figma-only."
+            },
             {
                 "date": "2026-08-17",
                 "type": "react-w7-internals-leftovers",
@@ -4223,7 +4228,7 @@
     "storybook": {
         "schemaVersion": "ds-storybook-metadata/v2",
         "updatedAt": "2026-07-27T18:50:00-03:00",
-        "purpose": "Component documentation, controls, variant options and AI-Ready rules for Storybook docs. Token values remain under tokens.",
+        "purpose": "Hybrid Storybook catalog: CSF3 Autodocs and Code Connect for implemented React components (@ds/react); seed MDX for Figma-only entries. Token values remain under @ds/tokens.",
         "globalRules": {
             "variantNaming": "variant keys use lower camelCase; values use lowercase or kebab-case where possible",
             "tokens": "use local DS variables only; do not create tokens from Storybook docs",
@@ -11247,6 +11252,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "storybook-intro-changelog-copy",
+                "date": "2026-08-17",
+                "summary": "Storybook Introduction/Changelog copy polish: live Autodocs catalog status; truncated human changelog."
+            },
             {
                 "id": "react-w7-internals-leftovers",
                 "date": "2026-08-17",

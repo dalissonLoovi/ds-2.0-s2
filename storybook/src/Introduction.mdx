@@ -4,30 +4,39 @@ import { Meta } from '@storybook/blocks';
 
 # Design System 2.0 — Storybook
 
-Seed documentation catalog generated from Figma metadata JSON.
+Live catalog for DS 2.0 S2: React Autodocs for implemented components, Foundations, and seed docs for Figma-only entries.
 
 | | |
 | --- | --- |
 | **Figma file** | [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940) |
 | **File key** | `mHm12Zu9tgNmaSYnooihE5` |
+| **Package** | `@ds/react` |
+| **Tokens** | `@ds/tokens` |
 | **Schema** | `ds-storybook-metadata/v2` |
-| **Updated** | 2026-08-18T00:40:00.000Z |
-| **Revision** | `2026-08-17-react-w7-internals-leftovers` |
+| **Updated** | 2026-08-18T01:20:00.000Z |
+| **Revision** | `2026-08-17-storybook-intro-changelog-copy` |
 
-Component documentation, controls, variant options and AI-Ready rules for Storybook docs. Token values remain under tokens.
+Hybrid Storybook catalog: CSF3 Autodocs and Code Connect for implemented React components (@ds/react); seed MDX for Figma-only entries. Token values remain under @ds/tokens.
+
+## Status
+
+- **123 / 124** components ship as CSF3 Autodocs from `@ds/react` (Code Connect uses seed nodeIds).
+- Seed MDX remains for: `CommentItem` — Figma-only annotation, not product UI.
+
+## How to use React
+
+Import components from `@ds/react`. Styles use CSS variables from `@ds/tokens`. Do not invent Figma variants in code.
 
 ## How this catalog works
 
 1. Audit / finalize a component in Figma.
 2. Update `design-system-tokens.storybook.updated.v2.json` (repo root).
-3. Run `npm run docs:generate` (also runs automatically before `storybook` / `build-storybook`).
-4. Review locally, open a PR, merge — GitHub Pages publishes the build.
-
-> **Status:** Docs-only seed. Pages marked *Seed docs* are not yet backed by React stories.
-> When a component is implemented in code, replace its seed page with CSF3 + Autodocs.
+3. When the component is code, polish it in `@ds/react` (CSF3 + Autodocs + Code Connect). `docs:generate` then skips its seed MDX.
+4. Run `npm run docs:generate` (also runs automatically before `storybook` / `build-storybook`).
+5. Review locally, open a PR, merge — GitHub Pages publishes the build.
 
 ## Sidebar
 
 - **Foundations** — global rules, feedback vocabulary, illustrations, and animations
-- **Components** — one page per entry in the metadata JSON
-- **Changelog** — recent documentation revisions
+- **Components** — Autodocs for implemented components; seed MDX only for Figma-only entries
+- **Changelog** — recent revisions (full history stays in the seed JSON)
