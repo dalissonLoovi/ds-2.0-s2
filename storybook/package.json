@@ -2,7 +2,7 @@
   "name": "@ds/storybook",
   "version": "0.1.0",
   "private": true,
-  "description": "Design System 2.0 — Storybook docs catalog (seed from Figma metadata JSON)",
+  "description": "Design System 2.0 — Storybook docs catalog (seed + React Autodocs)",
   "type": "module",
   "scripts": {
     "docs:generate": "node ./scripts/generate-docs-from-json.mjs",
@@ -11,6 +11,10 @@
     "prebuild-storybook": "npm run docs:generate",
     "build-storybook": "storybook build -o storybook-static",
     "build-storybook:pages": "cross-env GITHUB_PAGES=true npm run build-storybook"
+  },
+  "dependencies": {
+    "@ds/react": "0.1.0",
+    "@ds/tokens": "0.1.0"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^8.6.14",

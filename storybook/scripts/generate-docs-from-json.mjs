@@ -24,9 +24,10 @@ function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
-function wipeGenerated(dir) {
+function wipeGeneratedMdx(dir) {
   if (!fs.existsSync(dir)) return;
   for (const entry of fs.readdirSync(dir)) {
+    if (!entry.endsWith('.mdx')) continue;
     fs.rmSync(path.join(dir, entry), { recursive: true, force: true });
   }
 }
@@ -654,8 +655,8 @@ function main() {
   const componentsDir = path.join(STORYBOOK_SRC, 'components');
 
   ensureDir(STORYBOOK_SRC);
-  wipeGenerated(foundationsDir);
-  wipeGenerated(componentsDir);
+  wipeGeneratedMdx(foundationsDir);
+  wipeGeneratedMdx(componentsDir);
   ensureDir(foundationsDir);
   ensureDir(componentsDir);
 
@@ -675,7 +676,12 @@ function main() {
   writeFile(path.join(STORYBOOK_SRC, 'Changelog.mdx'), generateChangelog(meta, storybook));
 
   const names = Object.keys(components).sort((a, b) => a.localeCompare(b));
+  let skippedReact = 0;
   for (const name of names) {
+    if (components[name]?.reactImplemented === true) {
+      skippedReact += 1;
+      continue;
+    }
     const safe = name.replace(/[^\w.-]+/g, '_');
     writeFile(
       path.join(componentsDir, `${safe}.mdx`),
@@ -688,7 +694,7 @@ function main() {
   console.log(`Generated Storybook docs:`);
   console.log(`  Introduction + Changelog`);
   console.log(`  Foundations: ${foundationCount}`);
-  console.log(`  Components: ${names.length}`);
+  console.log(`  Components MDX: ${names.length - skippedReact} (skipped reactImplemented: ${skippedReact})`);
   console.log(`  Output: ${STORYBOOK_SRC}`);
 }
 

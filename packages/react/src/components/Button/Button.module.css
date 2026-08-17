@@ -1,0 +1,163 @@
+.root {
+  --btn-bg: var(--color-actions-primary);
+  --btn-fg: var(--color-text-on-color, #ffffff);
+  --btn-border: transparent;
+  --btn-radius: var(--border-radius-200, 8px);
+  --btn-pad-x: var(--spacing-200, 12px);
+  --btn-pad-y: var(--spacing-100, 8px);
+  --btn-gap: var(--spacing-100, 8px);
+  --btn-font-size: 14px;
+  --btn-line-height: 20px;
+  --btn-min-height: 40px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap);
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  min-height: var(--btn-min-height);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--btn-radius);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font: inherit;
+  font-size: var(--btn-font-size);
+  font-weight: 500;
+  line-height: var(--btn-line-height);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease,
+    box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.root:disabled,
+.root[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.root:focus-visible,
+.state-focus {
+  outline: 2px solid var(--color-border-feedback-primary, #516ce7);
+  outline-offset: 2px;
+}
+
+.size-sm {
+  --btn-pad-x: var(--spacing-150, 10px);
+  --btn-pad-y: var(--spacing-050, 4px);
+  --btn-min-height: 32px;
+  --btn-font-size: 12px;
+  --btn-line-height: 16px;
+  --btn-radius: var(--border-radius-150, 6px);
+}
+
+.size-md {
+  --btn-min-height: 40px;
+}
+
+.size-lg {
+  --btn-pad-x: var(--spacing-250, 16px);
+  --btn-pad-y: var(--spacing-150, 10px);
+  --btn-min-height: 48px;
+  --btn-font-size: 16px;
+  --btn-line-height: 24px;
+  --btn-radius: var(--border-radius-200, 8px);
+}
+
+.intent-primary {
+  --btn-bg: var(--color-actions-primary);
+  --btn-fg: #ffffff;
+}
+
+.intent-success {
+  --btn-bg: var(--color-actions-success);
+  --btn-fg: #ffffff;
+}
+
+.intent-danger {
+  --btn-bg: var(--color-actions-danger);
+  --btn-fg: #ffffff;
+}
+
+.intent-secondary {
+  --btn-bg: var(--color-actions-secondary);
+  --btn-fg: var(--color-text-primary, #1a1a1a);
+}
+
+.variant-outline {
+  --btn-bg: transparent;
+  --btn-border: var(--color-actions-primary);
+  --btn-fg: var(--color-actions-primary);
+}
+
+.variant-outline.intent-success {
+  --btn-border: var(--color-actions-success);
+  --btn-fg: var(--color-actions-success);
+}
+
+.variant-outline.intent-danger {
+  --btn-border: var(--color-actions-danger);
+  --btn-fg: var(--color-actions-danger);
+}
+
+.variant-outline.intent-secondary {
+  --btn-border: var(--color-actions-secondary);
+  --btn-fg: var(--color-actions-secondary);
+}
+
+.variant-text {
+  --btn-bg: transparent;
+  --btn-border: transparent;
+  --btn-fg: var(--color-actions-primary);
+}
+
+.variant-text.intent-success {
+  --btn-fg: var(--color-actions-success);
+}
+
+.variant-text.intent-danger {
+  --btn-fg: var(--color-actions-danger);
+}
+
+.variant-text.intent-secondary {
+  --btn-fg: var(--color-actions-secondary);
+}
+
+.variant-text.intent-primary {
+  --btn-fg: var(--color-text-primary, #1a1a1a);
+}
+
+.root:hover:not(:disabled):not([aria-disabled='true']),
+.state-hover {
+  filter: brightness(0.96);
+}
+
+.state-pressed,
+.root:active:not(:disabled):not([aria-disabled='true']) {
+  filter: brightness(0.9);
+}
+
+.state-selected {
+  box-shadow: inset 0 0 0 2px var(--color-border-feedback-primary, #516ce7);
+}
+
+.label {
+  display: inline-flex;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.spinner {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

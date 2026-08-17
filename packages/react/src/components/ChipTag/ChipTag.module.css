@@ -1,0 +1,95 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+  box-sizing: border-box;
+  border-radius: var(--border-radius-full, 999px);
+  border: 1px solid transparent;
+  font-weight: 500;
+  line-height: 1;
+  max-width: 100%;
+}
+
+.width-hug {
+  width: fit-content;
+}
+
+.width-fill {
+  width: 100%;
+  justify-content: center;
+}
+
+.size-sm {
+  min-height: 24px;
+  padding: 0 var(--spacing-100, 8px);
+  font-size: 12px;
+}
+
+.size-md {
+  min-height: 32px;
+  padding: 0 var(--spacing-150, 10px);
+  font-size: 14px;
+}
+
+.emphasis-strong.intent-info,
+.emphasis-strong.intent-system {
+  background: var(--color-background-feedback-primary-info, #e7effc);
+  color: var(--color-text-primary, #1a1a1a);
+}
+
+.emphasis-strong.intent-success {
+  background: var(--color-background-feedback-primary-success, #d8f3e4);
+  color: var(--color-actions-success, #00723e);
+}
+
+.emphasis-strong.intent-warning {
+  background: var(--color-background-feedback-primary-warning, #fff3cd);
+  color: #8a6d00;
+}
+
+.emphasis-strong.intent-danger {
+  background: var(--color-background-feedback-primary-danger, #fde2e2);
+  color: var(--color-actions-danger, #f54444);
+}
+
+.emphasis-strong.intent-outline,
+.emphasis-soft.intent-outline {
+  background: transparent;
+  border-color: var(--color-border-2, #ebebeb);
+  color: var(--color-text-primary, #1a1a1a);
+}
+
+.emphasis-soft.intent-success {
+  background: var(--color-background-feedback-secondary-success, #eefaf3);
+  color: var(--color-actions-success, #00723e);
+}
+
+.emphasis-soft.intent-info,
+.emphasis-soft.intent-system,
+.emphasis-soft.intent-warning,
+.emphasis-soft.intent-danger {
+  background: var(--color-background-surface-2, #e7effc);
+  color: var(--color-text-primary, #1a1a1a);
+}
+
+.disabled {
+  opacity: 0.48;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-background-surface-3, #d0d9e8);
+  flex-shrink: 0;
+}

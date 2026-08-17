@@ -166,7 +166,9 @@ Figma (ajuste)
 | Limpeza untracked legado | 🟢 Feita (scripts/patches/JSON legado); audit versionado |
 | Storybook Pages sync | 🟢 Operacional |
 | Página composições App-cliente / Painel | ⬜ Opcional |
-| React / Chromatic / Code Connect | ⬜ Depois (pedido explícito do time) |
+| React `@ds/react` + CSF3 Autodocs | 🟢 Fundação + W0 polish + catalog scaffolds (2026-08-17) |
+| Code Connect (W0) | 🟢 `*.figma.tsx` no piloto |
+| Chromatic / npm público | ⬜ Depois (pedido explícito) |
 
 ---
 
@@ -176,12 +178,13 @@ Figma (ajuste)
 2. ~~Docs humanas W0–W6~~ ✅  
 3. ~~Auditar frames Docs humanas~~ ✅  
 4. ~~Limpar orphans W4~~ ✅  
-5. ~~Validar fila Painel Home + sync promo tokens~~ ✅ (`b3b7189`)  
+5. ~~Validar fila Painel Home + sync promo tokens~~ ✅  
 6. ~~Limpar untracked legado~~ ✅  
-7. **Próximo:** gap / tela de produto nova (link Figma → reusar / variante / novo → seed → Pages)  
-8. **Opcional:** página Figma de composições App-cliente / Painel (só instâncias)  
-9. **Opcional:** polish copy Introduction / Changelog no Storybook  
-10. **Só quando o time pedir:** React → Autodocs → Code Connect → Chromatic
+7. ~~React foundation + W0 Autodocs/Code Connect~~ ✅ — ver [`REACT-CONTRIBUTING.md`](./REACT-CONTRIBUTING.md)  
+8. **Próximo:** polish scaffolds W1–W6 (substituir stubs por implementação DoD completa, onda a onda)  
+9. **Opcional:** página Figma de composições App-cliente / Painel  
+10. **Opcional:** polish copy Introduction / Changelog  
+11. **Só quando o time pedir:** Chromatic / publish npm / product-theme React provider
 
 ---
 

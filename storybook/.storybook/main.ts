@@ -26,7 +26,7 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {
-    autodocs: false,
+    autodocs: 'tag',
   },
   async viteFinal(config) {
     const base = pagesBase();
@@ -35,6 +35,8 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           '@docs': path.resolve(dirname, '../src'),
+          '@ds/react': path.resolve(dirname, '../../packages/react/src/index.ts'),
+          '@ds/tokens': path.resolve(dirname, '../../packages/tokens/dist/tokens.css'),
         },
       },
     });
