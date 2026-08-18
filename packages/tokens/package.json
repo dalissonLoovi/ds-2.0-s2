@@ -16,5 +16,8 @@
   "scripts": {
     "build": "node ./scripts/generate-tokens.mjs",
     "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@fontsource/poppins": "^5.2.6"
   }
 }

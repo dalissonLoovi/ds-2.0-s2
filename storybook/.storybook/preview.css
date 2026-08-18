@@ -1,0 +1,6 @@
+/* Canvas / Docs iframe: inherit DS typeface from @ds/tokens. */
+html,
+body,
+#storybook-root {
+  font-family: var(--font-family-base, 'Poppins', sans-serif);
+}
