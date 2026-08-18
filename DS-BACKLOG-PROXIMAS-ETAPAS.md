@@ -4,7 +4,7 @@
 **Arquivo:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2)  
 **Storybook:** https://dalissonloovi.github.io/ds-2.0-s2/  
 **Seed:** `design-system-tokens.storybook.updated.v2.json` (~124 componentes · 23 vars `product-theme`)  
-**Revision recente:** `2026-08-17-storybook-intro-changelog-copy`
+**Revision recente:** `2026-08-18-poppins-typography-tokens`
 
 **Estado:** fundação + temas core + Docs humanas + fila Painel Home + React W0–W7 **fechados**.  
 **Modo atual:** melhoria contínua (gap de produto → decisão → Figma → seed → Pages).
@@ -169,6 +169,7 @@ Figma (ajuste)
 | React `@ds/react` + CSF3 Autodocs | 🟢 W0–**W7** polish (2026-08-17); 123/124 Autodocs |
 | Code Connect (W0–W7) | 🟢 `*.figma.tsx` no piloto + ondas |
 | Introduction / Changelog copy | 🟢 Polish 2026-08-17 — gerador, não MDX à mão |
+| Tipografia Poppins no React/Storybook | 🟢 P1 2026-08-18 — `--font-family-base` + woff2; escala px→token ainda P2 |
 | Chromatic / npm público | ⬜ Depois (pedido explícito) |
 
 ---

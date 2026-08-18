@@ -20,7 +20,7 @@ Do not re-export scaffolds from the package root. Prefer seed MDX until a compon
 ## Definition of Done (per component)
 
 1. Props/variants match seed (`design-system-tokens.storybook.updated.v2.json`)
-2. Styles use CSS vars from `@ds/tokens` only (no stray hex for brand/feedback)
+2. Styles use CSS vars from `@ds/tokens` only (no stray hex for brand/feedback). Typeface is **Poppins** via `--font-family-base` (import `@ds/tokens`).
 3. CSF3 story with `tags: ['autodocs']` under the polished title (not `Draft/`)
 4. Smoke test (render + one interaction)
 5. Seed: `"reactImplemented": true`, `"reactPackage": "@ds/react"`; remove `reactScaffold`

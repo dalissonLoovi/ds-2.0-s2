@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-18T01:20:00.000Z",
-        "storybookRevision": "2026-08-17-storybook-intro-changelog-copy",
+        "storybookUpdatedAt": "2026-08-18T14:40:00.000Z",
+        "storybookRevision": "2026-08-18-poppins-typography-tokens",
         "changelog": [
+            {
+                "date": "2026-08-18",
+                "type": "poppins-typography-tokens",
+                "summary": "Global Poppins: emit font-family/font-weight/typography CSS vars; bundle latin+latin-ext woff2; Storybook canvas inherits --font-family-base."
+            },
             {
                 "date": "2026-08-17",
                 "type": "storybook-intro-changelog-copy",
@@ -11252,6 +11257,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "poppins-typography-tokens",
+                "date": "2026-08-18",
+                "summary": "Global Poppins typeface: token generator emits typography + bundled @font-face; canvas uses --font-family-base."
+            },
             {
                 "id": "storybook-intro-changelog-copy",
                 "date": "2026-08-17",
