@@ -1,0 +1,30 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-100, 8px);
+  color: var(--text-primary);
+  width: fit-content;
+}
+
+.label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.row {
+  display: flex;
+  gap: var(--spacing-100, 8px);
+}
+
+.support {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-secondary);
+}
+
+.supportError {
+  color: var(--feedback-danger, var(--color-actions-danger));
+}

@@ -1,0 +1,19 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 160px;
+}
+
+.tick {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: var(--spacing-025, 2px);
+  height: var(--spacing-025, 2px);
+  background: var(--color-border-2);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}

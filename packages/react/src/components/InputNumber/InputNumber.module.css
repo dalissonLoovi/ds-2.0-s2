@@ -1,0 +1,32 @@
+.withCountry {
+  padding-left: var(--spacing-050, 4px);
+}
+
+.control {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  line-height: 24px;
+  color: inherit;
+  outline: none;
+}
+
+.control::placeholder {
+  color: var(--text-placeholder);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.divider {
+  width: 1px;
+  align-self: stretch;
+  margin: var(--spacing-100, 8px) 0;
+  background: var(--color-border-2);
+  flex-shrink: 0;
+}

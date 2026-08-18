@@ -1,0 +1,77 @@
+.root {
+  --component-modal-header-close-action-background: var(--color-background-surface-0);
+  --component-modal-header-close-action-radius: var(--border-radius-200, 8px);
+  --component-modal-header-close-action-size-mobile: 40px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-100, 8px);
+  padding: var(--spacing-200, 16px) var(--spacing-250, 20px);
+  color: var(--text-primary);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-050, 4px);
+  min-width: 0;
+  flex: 1;
+}
+
+.alignment-center .heading {
+  text-align: center;
+}
+
+.alignment-center .title,
+.alignment-center .label {
+  text-align: center;
+}
+
+.label {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-secondary);
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.layout-desktop .title {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.layout-mobile .title {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.trailing {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.leadingSpacer,
+.closeWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-500, 40px);
+  height: var(--spacing-500, 40px);
+  flex-shrink: 0;
+}
+
+.layout-mobile .leadingSpacer,
+.layout-mobile .closeWrap {
+  width: var(--component-modal-header-close-action-size-mobile);
+  height: var(--component-modal-header-close-action-size-mobile);
+}
+
+.closeWrap {
+  background: var(--component-modal-header-close-action-background);
+  border-radius: var(--component-modal-header-close-action-radius);
+}

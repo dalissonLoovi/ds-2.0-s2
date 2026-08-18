@@ -1,0 +1,44 @@
+.root {
+  box-sizing: border-box;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 var(--spacing-100, 8px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-200, 8px);
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.overflow {
+  color: var(--text-secondary);
+  cursor: default;
+}
+
+.selected {
+  background: var(--color-background-surface-2);
+  font-weight: 600;
+}
+
+.number:hover:not(:disabled),
+.state-hover {
+  background: var(--interactive-hover);
+}
+
+.number:focus-visible,
+.state-focus {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 2px;
+}
+
+.disabled,
+.root:disabled {
+  color: var(--text-disabled, var(--text-secondary));
+  cursor: not-allowed;
+  opacity: 0.48;
+}

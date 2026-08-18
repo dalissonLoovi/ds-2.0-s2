@@ -1,0 +1,38 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-100, 8px);
+  width: 100%;
+}
+
+.sliderRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100, 8px);
+  padding: var(--spacing-200, 12px) 0;
+}
+
+.bone {
+  display: block;
+  border-radius: var(--border-radius-100, 4px);
+  background: var(--color-border-2);
+}
+
+.labelBone {
+  width: 72px;
+  height: 12px;
+}
+
+.valueBone {
+  width: 24px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.item {
+  flex: 1;
+}
+
+.item :global(span) {
+  background: var(--color-border-2) !important;
+}

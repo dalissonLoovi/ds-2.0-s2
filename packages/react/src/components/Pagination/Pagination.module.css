@@ -1,0 +1,13 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+}
+
+.size-sm {
+  gap: 2px;
+}
+
+.size-lg {
+  gap: var(--spacing-100, 8px);
+}

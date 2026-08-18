@@ -1,0 +1,47 @@
+.root {
+  display: flex;
+  align-items: stretch;
+  gap: var(--spacing-100, 8px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;
+  flex-shrink: 0;
+  padding-top: 18px;
+}
+
+.icon {
+  display: inline-flex;
+  color: var(--color-actions-primary);
+}
+
+.connector {
+  width: 2px;
+  flex: 1;
+  min-height: 16px;
+  margin-top: var(--spacing-050, 4px);
+  background: var(--color-border-2);
+}
+
+.status-completed .connector {
+  background: var(--color-actions-primary);
+}
+
+.status-pending .icon {
+  color: var(--text-placeholder);
+}
+
+.status-error .icon {
+  color: var(--feedback-danger, var(--color-actions-danger));
+}
+
+.item {
+  flex: 1;
+  min-width: 0;
+}

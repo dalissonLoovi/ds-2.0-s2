@@ -1,0 +1,78 @@
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-150, 10px);
+  padding: var(--spacing-250, 20px);
+  background: var(--color-background-surface-2);
+  border-radius: var(--border-radius-400);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.blur {
+  position: absolute;
+  inset: auto -24px -24px auto;
+  width: 96px;
+  height: 96px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-actions-primary) 28%, transparent);
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+.heading {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.meta,
+.caption,
+.description {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-secondary);
+}
+
+.simulatorTitle {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-025, 2px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tick {
+  display: inline-flex;
+  color: var(--text-placeholder, var(--text-secondary));
+}
+
+.tickActive {
+  color: var(--color-actions-primary);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-100, 8px);
+}
+
+.savings {
+  margin: 0;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}

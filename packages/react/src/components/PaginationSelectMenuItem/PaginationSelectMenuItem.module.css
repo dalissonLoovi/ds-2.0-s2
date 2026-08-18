@@ -1,0 +1,43 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px;
+  margin: 0;
+  padding: 0 var(--spacing-200, 16px);
+  border: 0;
+  border-radius: var(--border-radius-100, 4px);
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.root:hover,
+.state-hover {
+  background: var(--interactive-hover);
+}
+
+.state-pressed {
+  background: var(--interactive-pressed);
+}
+
+.state-selected {
+  background: var(--interactive-selected);
+}
+
+.root:focus-visible,
+.state-focus {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: -2px;
+}
+
+.disabled,
+.root:disabled {
+  color: var(--text-placeholder);
+  background: var(--interactive-disabled-surface);
+  cursor: not-allowed;
+}

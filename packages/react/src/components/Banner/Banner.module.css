@@ -1,0 +1,69 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-200, 12px);
+  width: 100%;
+  padding: var(--spacing-150, 10px) var(--spacing-200, 12px);
+  border-radius: var(--border-radius-200, 8px);
+  color: var(--text-primary);
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100, 8px);
+  min-width: 0;
+}
+
+.message {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.actions {
+  flex-shrink: 0;
+}
+
+.status-success {
+  background: var(--color-background-feedback-primary-success);
+}
+
+.status-success .icon {
+  color: var(--feedback-success, var(--color-actions-success));
+}
+
+.status-warning {
+  background: var(--color-background-feedback-primary-warning);
+}
+
+.status-warning .icon {
+  color: var(--feedback-warning);
+}
+
+.status-info {
+  background: var(--color-background-feedback-primary-info);
+}
+
+.status-info .icon {
+  color: var(--color-actions-primary);
+}
+
+.status-danger {
+  background: var(--color-background-feedback-primary-danger);
+  color: var(--text-on-color);
+}
+
+.status-danger .icon {
+  color: var(--text-on-color);
+}
+
+.status-danger .message {
+  color: var(--text-on-color);
+}

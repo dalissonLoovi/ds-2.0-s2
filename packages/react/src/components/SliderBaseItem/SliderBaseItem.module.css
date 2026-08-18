@@ -1,0 +1,48 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-100, 8px);
+  width: 100%;
+}
+
+.label {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.sliderRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200, 12px);
+}
+
+.railRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100, 8px);
+  flex: 1;
+  min-width: 0;
+}
+
+.bound {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.input {
+  max-width: 96px;
+  flex-shrink: 0;
+}
+
+.input :global(label) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}

@@ -26,16 +26,28 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {
-    autodocs: false,
+    autodocs: 'tag',
   },
   async viteFinal(config) {
     const base = pagesBase();
     return mergeConfig(config, {
       ...(base ? { base } : {}),
       resolve: {
-        alias: {
-          '@docs': path.resolve(dirname, '../src'),
-        },
+        alias: [
+          { find: '@docs', replacement: path.resolve(dirname, '../src') },
+          {
+            find: '@ds/react/draft',
+            replacement: path.resolve(dirname, '../../packages/react/src/draft.ts'),
+          },
+          {
+            find: '@ds/react',
+            replacement: path.resolve(dirname, '../../packages/react/src/index.ts'),
+          },
+          {
+            find: '@ds/tokens',
+            replacement: path.resolve(dirname, '../../packages/tokens/dist/tokens.css'),
+          },
+        ],
       },
     });
   },

@@ -1,0 +1,42 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 999px;
+  background: var(--color-actions-danger);
+  color: var(--text-on-color);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.content-dot {
+  padding: 0;
+}
+
+.size-sm.content-dot {
+  width: 8px;
+  height: 8px;
+}
+
+.size-lg.content-dot {
+  width: 10px;
+  height: 10px;
+}
+
+.size-sm.content-count,
+.size-sm.content-overflow {
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  font-size: 10px;
+}
+
+.size-lg.content-count,
+.size-lg.content-overflow {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  font-size: 12px;
+}

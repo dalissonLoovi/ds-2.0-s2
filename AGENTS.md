@@ -96,26 +96,28 @@ Não commitar `storybook/node_modules` nem `storybook/storybook-static`.
 
 | Fase | Fonte da verdade | Storybook |
 | --- | --- | --- |
-| Agora (construção Figma) | Figma + JSON metadata | Docs-only (seed MDX) |
-| Temas por produto (depois) | Tokens/themes + Foundations | Modes / foundations pages |
-| Componente em React | Código + CSF3 stories | Autodocs; remover seed daquele componente |
+| Metadata / foundations | Figma + JSON metadata | Seed MDX (gerado) |
+| Temas por produto | Tokens/themes + Foundations | Modes / foundations pages |
+| Componente em React (DoD) | `@ds/react` + CSF3 | Autodocs; seed MDX **skipped** quando `reactImplemented: true` |
+| Scaffold React | `@ds/react/draft` + `Draft/*` stories | Seed MDX permanece até polish (`reactScaffold: true`) |
 
-- **Não esperar** “todos os componentes + temas” para documentar: documentar por fatia (componente fechado na auditoria).
+- Pacotes: `packages/tokens`, `packages/react` — ver [`REACT-CONTRIBUTING.md`](./REACT-CONTRIBUTING.md)
+- **Não esperar** “todos os componentes + temas” para documentar: documentar / implementar por fatia.
 - **Chromatic:** ainda não; só quando o time pedir review visual.
 
 ## Git / publish
 
 - Branch de publish: `main`.
-- Workflow: `.github/workflows/storybook.yml` (build + GitHub Pages).
+- Workflow: `.github/workflows/storybook.yml` (verify + build + GitHub Pages).
 - Repo público (Pages no plano atual exige public).
 - Não usar `git push --force` em `main` sem pedido explícito.
 - Só criar commit quando o usuário pedir.
 
 ## O que está fora deste fluxo
 
-- Implementar React dos componentes (outro passo, por componente).
 - Editar o site storybook.js.org (é documentação da ferramenta, não o nosso catálogo).
 - Tratar o Markdown legado como destino final — o publish canônico do catálogo é o Storybook gerado + Pages.
+- Chromatic / npm público — só sob pedido.
 
 ## Checklist rápido — auditoria de um componente
 
@@ -123,5 +125,12 @@ Não commitar `storybook/node_modules` nem `storybook/storybook-static`.
 - [ ] Com “aplicar”: corrigir Figma conforme combinado
 - [ ] Atualizar JSON v2 (+ changelog/recentUpdates)
 - [ ] Atualizar `design-system-storybook.md` se for o padrão da sessão
-- [ ] `cd storybook && npm run docs:generate`
+- [ ] `npm run docs:generate` (workspace root ou `storybook/`)
 - [ ] Commit/push só se o usuário pedir
+
+## Checklist React (quando implementar)
+
+- [ ] Props/variants = seed; tokens via `@ds/tokens`
+- [ ] CSF3 + `tags: ['autodocs']` + smoke test
+- [ ] `reactImplemented: true` no JSON; Code Connect `*.figma.tsx`
+- [ ] `npm test` + `npm run lint:variants`

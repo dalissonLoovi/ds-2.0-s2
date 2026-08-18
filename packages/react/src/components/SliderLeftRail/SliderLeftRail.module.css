@@ -1,0 +1,23 @@
+.root {
+  position: relative;
+  display: block;
+  height: var(--spacing-025, 2px);
+  border-radius: var(--border-radius-full, 999px);
+  background: var(--color-actions-primary);
+}
+
+.endCap {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--border-radius-full, 999px);
+  background: var(--color-actions-primary);
+  transform: translate(50%, -50%);
+}
+
+.active .endCap {
+  width: 20px;
+  height: 20px;
+}

@@ -5,8 +5,18 @@ on:
     branches: [main, master]
     paths:
       - 'storybook/**'
+      - 'packages/**'
       - 'design-system-tokens.storybook.updated.v2.json'
+      - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/storybook.yml'
+  pull_request:
+    paths:
+      - 'storybook/**'
+      - 'packages/**'
+      - 'design-system-tokens.storybook.updated.v2.json'
+      - 'package.json'
+      - 'scripts/**'
   workflow_dispatch:
 
 permissions:
@@ -19,39 +29,46 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  verify:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: storybook
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: npm
-          cache-dependency-path: storybook/package-lock.json
+          cache-dependency-path: package-lock.json
+      - run: npm install
+      - run: npm run tokens:build
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run lint:variants
 
-      - name: Install
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
-
-      - name: Generate docs + build
+  build:
+    needs: verify
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm install
+      - run: npm run tokens:build
+      - name: Generate docs + build Storybook
         env:
           GITHUB_PAGES: 'true'
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: npm run build-storybook
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        run: npm run build-storybook -w @ds/storybook
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: storybook/storybook-static
 
   deploy:
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

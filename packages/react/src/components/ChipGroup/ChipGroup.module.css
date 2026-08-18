@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  gap: var(--spacing-100, 8px);
+}
+
+.layout-single-row-scrollable {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: var(--spacing-050, 4px);
+}
+
+.layout-multi-row-wrap {
+  flex-wrap: wrap;
+}

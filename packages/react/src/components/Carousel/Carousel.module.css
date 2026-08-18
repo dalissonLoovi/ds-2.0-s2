@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200, 12px);
+}
+
+.viewport {
+  display: flex;
+  gap: var(--spacing-200, 12px);
+  overflow: hidden;
+}
+
+.slide {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.placeholder {
+  min-height: 160px;
+  border-radius: var(--border-radius-200, 8px);
+  background: var(--color-background-surface-2);
+}

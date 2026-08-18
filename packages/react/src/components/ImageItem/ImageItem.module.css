@@ -1,0 +1,58 @@
+.root {
+  position: relative;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-background-surface-1);
+  border-radius: var(--border-radius-200, 8px);
+}
+
+.lockWidth {
+  width: 240px;
+  height: auto;
+}
+
+.verticalResize {
+  height: 240px;
+  width: auto;
+}
+
+.imageSurface {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.imageSurface img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-background-surface-1);
+}
+
+.photoTextSlot {
+  position: absolute;
+  inset: 0;
+}
+
+.orientation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: var(--spacing-050, 4px) var(--spacing-100, 8px);
+  border-radius: var(--border-radius-100, 4px);
+  background: color-mix(in srgb, var(--interactive-overlay) 64%, transparent);
+  color: var(--text-on-color);
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: capitalize;
+  pointer-events: none;
+}

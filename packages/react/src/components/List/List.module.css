@@ -1,0 +1,20 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
+}
+
+.dropdown {
+  border-radius: var(--border-radius-200, 8px);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--interactive-overlay, #000) 12%, transparent);
+  overflow: hidden;
+}
+
+.scroll {
+  max-height: 280px;
+  overflow: auto;
+}

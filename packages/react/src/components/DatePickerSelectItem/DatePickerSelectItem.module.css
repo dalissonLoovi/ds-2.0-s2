@@ -1,0 +1,39 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+  min-height: 40px;
+  padding: 0 var(--spacing-150, 10px);
+  border: 1px solid var(--color-border-1);
+  border-radius: var(--border-radius-200, 8px);
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.root:hover:not(:disabled),
+.state-hover {
+  border-color: var(--color-border-feedback-primary);
+}
+
+.root:focus-visible,
+.state-focus {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 1px;
+}
+
+.disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.value {
+  min-width: 2ch;
+}
+
+.chevron {
+  color: var(--text-secondary);
+}

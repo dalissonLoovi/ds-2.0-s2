@@ -1,0 +1,52 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 56px;
+  min-height: 48px;
+  padding: var(--spacing-050, 4px);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 500;
+}
+
+.selected {
+  color: var(--color-actions-primary);
+}
+
+.appearance-inverse {
+  color: color-mix(in srgb, var(--text-on-color) 72%, transparent);
+}
+
+.appearance-inverse.selected {
+  color: var(--text-on-color);
+}
+
+.root:focus-visible,
+.state-focus {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.iconWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 72px;
+  text-align: center;
+}

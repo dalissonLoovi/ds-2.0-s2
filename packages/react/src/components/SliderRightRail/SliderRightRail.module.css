@@ -1,0 +1,7 @@
+.root {
+  display: block;
+  width: 100%;
+  height: var(--spacing-025, 2px);
+  border-radius: var(--border-radius-full, 999px);
+  background: var(--color-border-2);
+}

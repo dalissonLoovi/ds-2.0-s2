@@ -1,0 +1,30 @@
+.root {
+  display: inline-flex;
+  max-width: 100%;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: var(--spacing-050, 4px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.home {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+}
+
+.home a {
+  display: inline-flex;
+  color: var(--text-link, var(--text-brand));
+}
+
+.slash {
+  color: var(--text-secondary);
+}

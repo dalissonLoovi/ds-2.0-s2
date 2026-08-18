@@ -1,0 +1,20 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-100, 8px);
+  width: 100%;
+}
+
+.counter {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-secondary);
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100, 8px);
+  height: var(--spacing-050, 4px);
+}
