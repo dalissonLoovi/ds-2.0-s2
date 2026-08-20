@@ -36,7 +36,7 @@ Component documentation, controls, variant options and AI-Ready rules for Storyb
 - **Camadas de Ã­cone:** Inner vector layers in icons should use `{icon-name}-path` instead of generic Vector.
 - **Escala de Ã­cone:** ver seÃ§Ã£o [Iconografia — escala de tamanho e stroke](#iconografia--escala-de-tamanho-e-stroke)
 - **Libs de Ã­cone (multi-produto):** ver seÃ§Ã£o [Iconografia — libs e Library Swap](#iconografia--libs-e-library-swap)
-- **Brand surface:** `color/background-surface/brand` (`#4967EE` via `primitive-colors/brand-blue`) — fills de chrome brand (`FRAME_FILL`|`SHAPE_FILL`). Não usar para texto (`text/brand` = sapphire `#516CE7`) nem ação primária / paleta brand (`color/actions/primary` e `color/palette/brand` = azure-wave `#4C6BF8`).
+- **Brand surface:** `color/background-surface/brand` (`#5A78FF` via `primitive-colors/brand-blue`) — fills de chrome brand (`FRAME_FILL`|`SHAPE_FILL`). `color/palette/brand` também aliasa `brand-blue` (`#5A78FF`). Não usar para texto (`text/brand` = sapphire `#516CE7`) nem ação primária (`color/actions/primary` = azure-wave `#4C6BF8`).
 - **Product theme:** ver seÃ§Ã£o [Product theme (`product-theme`)](#product-theme-product-theme)
 
 ---

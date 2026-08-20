@@ -42,7 +42,7 @@
                 "name": "primitive-colors/brand-blue-72",
                 "id": "VariableID:4718:2",
                 "resolvedType": "COLOR",
-                "note": "brand-blue RGB @ 72% alpha; aliased by color/background-surface/brand-muted"
+                "note": "brand-blue RGB @ 72% alpha (#5A78FFB8); aliased by color/background-surface/brand-muted"
             },
             {
                 "name": "color/background-surface/promo-1",
@@ -62,7 +62,7 @@
             {
                 "name": "primitive-colors/brand-blue",
                 "id": "VariableID:4300:23",
-                "hex": "#4967EE"
+                "hex": "#5A78FF"
             },
             {
                 "name": "color/background-surface/brand",
@@ -639,7 +639,7 @@
                     "Need a validation or selection border? → color/border-feedback/{success|danger|primary}"
                 ]
             },
-            "brandSurface": "color/background-surface/brand (#4967EE via primitive-colors/brand-blue) for solid brand chrome backgrounds (FRAME_FILL|SHAPE_FILL). Do not use for text (text/brand = sapphire #516CE7) or primary actions / brand palette (color/actions/primary and color/palette/brand = azure-wave #4C6BF8)."
+            "brandSurface": "color/background-surface/brand (#5A78FF via primitive-colors/brand-blue) for solid brand chrome backgrounds (FRAME_FILL|SHAPE_FILL). color/palette/brand also aliases brand-blue (#5A78FF). Do not use for text (text/brand = sapphire #516CE7) or primary actions (color/actions/primary = azure-wave #4C6BF8)."
         },
         "previousCollections": [
             "Colors",
@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-20T19:15:00.000Z",
-        "storybookRevision": "2026-08-20-palette-brand-azure-wave",
+        "storybookUpdatedAt": "2026-08-20T20:25:00.000Z",
+        "storybookRevision": "2026-08-20-brand-blue-5a78ff",
         "changelog": [
+            {
+                "date": "2026-08-20",
+                "type": "tokens-brand-blue-correct-hex",
+                "summary": "Tokens: primitive-colors/brand-blue #4967EE → #5A78FF; brand-blue-72 → #5A78FFB8; background-surface/brand|brand-muted + color/palette/brand synced (palette/brand aliases brand-blue). text/brand stays sapphire; actions/primary stays azure-wave. Docs + Figma descriptions synced."
+            },
             {
                 "date": "2026-08-20",
                 "type": "tokens-palette-brand-azure-wave",
@@ -2501,13 +2506,13 @@
                 },
                 "brand": {
                     "$type": "color",
-                    "$value": "#4967EE",
-                    "$description": "export: color-bg-surface-brand | solid brand chrome background. Alias of primitive-colors/brand-blue. Scopes: FRAME_FILL, SHAPE_FILL. Not for text/brand or color/actions/primary."
+                    "$value": "#5A78FF",
+                    "$description": "export: color-bg-surface-brand | solid brand chrome background (#5A78FF). Alias of primitive-colors/brand-blue. Scopes: FRAME_FILL, SHAPE_FILL. Not for text/brand or color/actions/primary."
                 },
                 "brand-muted": {
                     "$type": "color",
-                    "$value": "#4967EEB8",
-                    "$description": "export: color-bg-surface-brand-muted | brand-blue @ 72% alpha (primitive-colors/brand-blue-72). Use for VehicleSummaryCard appearance=secondary. Prefer this over paint opacity on variable-bound fills (library instances drop paint opacity). Scopes: FRAME_FILL, SHAPE_FILL."
+                    "$value": "#5A78FFB8",
+                    "$description": "export: color-bg-surface-brand-muted | brand-blue @ 72% alpha (#5A78FFB8 / primitive-colors/brand-blue-72). Use for VehicleSummaryCard appearance=secondary. Prefer this over paint opacity on variable-bound fills (library instances drop paint opacity). Scopes: FRAME_FILL, SHAPE_FILL."
                 },
                 "promo-1": {
                     "$type": "color",
@@ -2644,8 +2649,8 @@
                 },
                 "brand": {
                     "$type": "color",
-                    "$value": "#4C6BF8",
-                    "$description": "export: color-palette-brand | Alias of primitive-colors/azure-wave (#4C6BF8). Brand palette reference aligned with color/actions/primary. Distinct from text/brand (sapphire #516CE7, WCAG) and color/background-surface/brand (brand-blue #4967EE)."
+                    "$value": "#5A78FF",
+                    "$description": "export: color-palette-brand | Alias of primitive-colors/brand-blue (#5A78FF). Distinct from text/brand (sapphire #516CE7, WCAG) and color/actions/primary (azure-wave #4C6BF8)."
                 },
                 "breeze": {
                     "$type": "color",
@@ -2798,8 +2803,8 @@
                         "$type": "color",
                         "$value": {
                             "escritorio-virtual": "#3A3345",
-                            "site-loovi": "#4967EE",
-                            "app-cliente": "#4967EE"
+                            "site-loovi": "#5A78FF",
+                            "app-cliente": "#5A78FF"
                         },
                         "$description": "product-theme component/app-header/inverse/background — bound on appearance=inverse root fills. EV→surface/inverse-3; site-loovi|app-cliente→surface/brand."
                     }
@@ -3203,13 +3208,13 @@
             },
             "brand-blue": {
                 "$type": "color",
-                "$value": "#4967EE",
-                "$description": "export: primitive-colors-brand-blue | brand blue solid for color/background-surface/brand"
+                "$value": "#5A78FF",
+                "$description": "export: primitive-colors-brand-blue | brand blue solid #5A78FF for color/background-surface/brand and color/palette/brand"
             },
             "brand-blue-72": {
                 "$type": "color",
-                "$value": "#4967EEB8",
-                "$description": "export: primitive-colors-brand-blue-72 | brand-blue @ 72% alpha; aliased by color/background-surface/brand-muted"
+                "$value": "#5A78FFB8",
+                "$description": "export: primitive-colors-brand-blue-72 | brand-blue @ 72% alpha (#5A78FFB8); aliased by color/background-surface/brand-muted"
             },
             "charcoal": {
                 "$type": "color",
@@ -11264,6 +11269,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "brand-blue-5a78ff",
+                "date": "2026-08-20",
+                "summary": "primitive-colors/brand-blue → #5A78FF; brand surfaces + palette/brand synced; brandSurface guidance updated."
+            },
             {
                 "id": "palette-brand-azure-wave",
                 "date": "2026-08-20",
