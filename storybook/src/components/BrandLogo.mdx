@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/BrandLogo" />
+
+# BrandLogo
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=56-6090) · node `56:6090`
+
+## AI-READY
+
+AI-READY COMPONENT: BrandLogo is the Loovi brand lockup for product chrome, marketing, and app identity. Props: type=default|extended|icon|app; showTrademark=true|false (VARIANT — intentional sparse: type=app only publishes showTrademark=false). type=default = mark + Loovi wordmark; type=extended = mark + "Seguro inteligente" tagline lockup; type=icon = compact mark (optional TM); type=app = 40×40 brand tile (palette/brand fill + on-color glyph). Tokens: logo artwork fills bind color/palette/brand (#5A78FF via brand-blue); type=app glyph uses text/on-color. Do not use as Button leadingIcon, Toast/Alert statusIcon, or DS Icons (*-outline/*-filled) — this is brand identity, not chrome iconography. Accessibility: treat as decorative when adjacent product/brand name is present (aria-hidden); otherwise provide accessible name (e.g. Loovi). React mapping: BrandLogo(type, showTrademark). Code Connect is not configured.
+
+## Variants
+
+- **type:** default | extended | icon | app
+- **showTrademark:** true | false
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `type` | default \| extended \| icon \| app — default=mark+Loovi wordmark; extended=mark+tagline lockup; icon=compact mark; app=40×40 tile |
+| `showTrademark` | true \| false — toggles ™ mark (intentional sparse: type=app only publishes false) |
+
+## Rules
+
+- **sparseMatrix:** type=app × showTrademark=true is not published (app tile has no TM)
+- **brandTokens:** Artwork fills bind color/palette/brand (#5A78FF via brand-blue); app glyph uses text/on-color
+- **vsIcons:** Not DS Icons (*-outline/*-filled) and not Button/Toast/Alert icon slots — brand identity only
+- **naming:** Renamed from logo; Tipo→type (Style→extended); With TM→showTrademark (On/Off→true/false)
+- **layerHygiene:** artwork / lockup / mark / wordmark-* / trademark / app-glyph
+- **wrapper:** Docs frame renamed Frame 735 → brand / logo
+
+## Token rules
+
+- color/palette/brand (lockup fills; resolves brand-blue #5A78FF)
+- text/on-color (type=app glyph)
+
+## Accessibility
+
+Decorative when adjacent product/brand name is present (aria-hidden); otherwise provide accessible name (e.g. aria-label=Loovi). Trademark glyph is not required for accessible naming.
+
+## Composition
+
+- artwork
+- lockup (mark + wordmark-*)
+- trademark?
+- app-glyph (type=app)
+
+## React mapping
+
+`BrandLogo(type, showTrademark)`
+

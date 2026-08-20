@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-20T20:25:00.000Z",
-        "storybookRevision": "2026-08-20-brand-blue-5a78ff",
+        "storybookUpdatedAt": "2026-08-20T20:40:00.000Z",
+        "storybookRevision": "2026-08-20-brandlogo-audit-apply",
         "changelog": [
+            {
+                "date": "2026-08-20",
+                "type": "storybook-brandlogo-audit-apply",
+                "summary": "BrandLogo audit apply: rename logo→BrandLogo; Tipo→type (Style→extended); With TM→showTrademark (true|false); AI-READY EN; layer hygiene; brand/logo frame; seed docs synced. Sparse: app×showTrademark=true unpublished."
+            },
             {
                 "date": "2026-08-20",
                 "type": "tokens-brand-blue-correct-hex",
@@ -11266,9 +11271,55 @@
                 "reactMapping": "RadioButtonCard(state, checked, label, description, showDescription)",
                 "reactPackage": "@ds/react",
                 "reactImplemented": true
+            },
+            "BrandLogo": {
+                "nodeId": "56:6090",
+                "componentKey": "49d08c66b1cfa2eaab6ad0f192fdd54c4accd269",
+                "description": "AI-READY COMPONENT: BrandLogo is the Loovi brand lockup for product chrome, marketing, and app identity. Props: type=default|extended|icon|app; showTrademark=true|false (VARIANT — intentional sparse: type=app only publishes showTrademark=false). type=default = mark + Loovi wordmark; type=extended = mark + \"Seguro inteligente\" tagline lockup; type=icon = compact mark (optional TM); type=app = 40×40 brand tile (palette/brand fill + on-color glyph). Tokens: logo artwork fills bind color/palette/brand (#5A78FF via brand-blue); type=app glyph uses text/on-color. Do not use as Button leadingIcon, Toast/Alert statusIcon, or DS Icons (*-outline/*-filled) — this is brand identity, not chrome iconography. Accessibility: treat as decorative when adjacent product/brand name is present (aria-hidden); otherwise provide accessible name (e.g. Loovi). React mapping: BrandLogo(type, showTrademark). Code Connect is not configured.",
+                "variants": {
+                    "type": [
+                        "default",
+                        "extended",
+                        "icon",
+                        "app"
+                    ],
+                    "showTrademark": [
+                        "true",
+                        "false"
+                    ]
+                },
+                "props": {
+                    "type": "default | extended | icon | app — default=mark+Loovi wordmark; extended=mark+tagline lockup; icon=compact mark; app=40×40 tile",
+                    "showTrademark": "true | false — toggles ™ mark (intentional sparse: type=app only publishes false)"
+                },
+                "rules": {
+                    "sparseMatrix": "type=app × showTrademark=true is not published (app tile has no TM)",
+                    "brandTokens": "Artwork fills bind color/palette/brand (#5A78FF via brand-blue); app glyph uses text/on-color",
+                    "vsIcons": "Not DS Icons (*-outline/*-filled) and not Button/Toast/Alert icon slots — brand identity only",
+                    "naming": "Renamed from logo; Tipo→type (Style→extended); With TM→showTrademark (On/Off→true/false)",
+                    "layerHygiene": "artwork / lockup / mark / wordmark-* / trademark / app-glyph",
+                    "wrapper": "Docs frame renamed Frame 735 → brand / logo"
+                },
+                "tokenRules": [
+                    "color/palette/brand (lockup fills; resolves brand-blue #5A78FF)",
+                    "text/on-color (type=app glyph)"
+                ],
+                "accessibility": "Decorative when adjacent product/brand name is present (aria-hidden); otherwise provide accessible name (e.g. aria-label=Loovi). Trademark glyph is not required for accessible naming.",
+                "composition": [
+                    "artwork",
+                    "lockup (mark + wordmark-*)",
+                    "trademark?",
+                    "app-glyph (type=app)"
+                ],
+                "reactMapping": "BrandLogo(type, showTrademark)"
             }
         },
         "recentUpdates": [
+            {
+                "id": "brandlogo-audit-apply",
+                "date": "2026-08-20",
+                "summary": "BrandLogo: Figma rename + AI-READY; seed entry added (Figma-only); palette/brand fills documented."
+            },
             {
                 "id": "brand-blue-5a78ff",
                 "date": "2026-08-20",
