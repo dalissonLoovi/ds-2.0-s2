@@ -639,7 +639,7 @@
                     "Need a validation or selection border? → color/border-feedback/{success|danger|primary}"
                 ]
             },
-            "brandSurface": "color/background-surface/brand (#4967EE via primitive-colors/brand-blue) for solid brand chrome backgrounds (FRAME_FILL|SHAPE_FILL). Do not use for text (text/brand / color/palette/brand = sapphire #516CE7) or primary actions (color/actions/primary = azure-wave #4C6BF8)."
+            "brandSurface": "color/background-surface/brand (#4967EE via primitive-colors/brand-blue) for solid brand chrome backgrounds (FRAME_FILL|SHAPE_FILL). Do not use for text (text/brand = sapphire #516CE7) or primary actions / brand palette (color/actions/primary and color/palette/brand = azure-wave #4C6BF8)."
         },
         "previousCollections": [
             "Colors",
@@ -647,9 +647,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-17T18:00:00.000Z",
-        "storybookRevision": "2026-08-17-painel-promo-tokens-seed",
+        "storybookUpdatedAt": "2026-08-20T19:15:00.000Z",
+        "storybookRevision": "2026-08-20-palette-brand-azure-wave",
         "changelog": [
+            {
+                "date": "2026-08-20",
+                "type": "tokens-palette-brand-azure-wave",
+                "summary": "Tokens: color/palette/brand remapped sapphire #516CE7 → azure-wave #4C6BF8 (aligned with color/actions/primary). text/brand stays sapphire (WCAG); background-surface/brand stays brand-blue. Docs + brandSurface note synced."
+            },
             {
                 "date": "2026-08-17",
                 "type": "painel-tokens-seed-sync",
@@ -2323,7 +2328,8 @@
             "actions": {
                 "primary": {
                     "$type": "color",
-                    "$value": "#4C6BF8"
+                    "$value": "#4C6BF8",
+                    "$description": "export: color-actions-primary | Alias of primitive-colors/azure-wave (#4C6BF8)."
                 },
                 "secondary": {
                     "$type": "color",
@@ -2583,7 +2589,8 @@
                 },
                 "brand": {
                     "$type": "color",
-                    "$value": "#516CE7"
+                    "$value": "#4C6BF8",
+                    "$description": "export: color-palette-brand | Alias of primitive-colors/azure-wave (#4C6BF8). Brand palette reference aligned with color/actions/primary. Distinct from text/brand (sapphire #516CE7, WCAG) and color/background-surface/brand (brand-blue #4967EE)."
                 },
                 "breeze": {
                     "$type": "color",
@@ -10956,6 +10963,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "palette-brand-azure-wave",
+                "date": "2026-08-20",
+                "summary": "color/palette/brand → azure-wave #4C6BF8; brandSurface guidance updated; Storybook seed synced."
+            },
             {
                 "id": "painel-tokens-seed-sync",
                 "date": "2026-08-17",
