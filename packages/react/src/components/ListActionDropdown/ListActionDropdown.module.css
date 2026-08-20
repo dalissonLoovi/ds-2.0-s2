@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  padding: var(--spacing-050, 4px) 0;
+  background: var(--color-background-surface-0);
+  border-radius: var(--border-radius-200, 8px);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--interactive-overlay, #000) 16%, transparent);
+  overflow: hidden;
+}
+
+.scroll {
+  max-height: 280px;
+  overflow: auto;
+}

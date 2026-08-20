@@ -1,0 +1,108 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+  box-sizing: border-box;
+  border-radius: var(--border-radius-full, 999px);
+  border: 1px solid transparent;
+  font-weight: 500;
+  line-height: 1;
+  max-width: 100%;
+  color: var(--text-primary);
+}
+
+.width-hug {
+  width: fit-content;
+}
+
+.width-fill {
+  width: 100%;
+  justify-content: center;
+}
+
+.size-sm {
+  min-height: 24px;
+  padding: 0 var(--spacing-100, 8px);
+  font-size: 12px;
+}
+
+.size-md {
+  min-height: 32px;
+  padding: 0 var(--spacing-150, 10px);
+  font-size: 14px;
+}
+
+.emphasis-strong.intent-info,
+.emphasis-strong.intent-system {
+  background: var(--color-background-feedback-primary-info);
+  color: var(--text-primary);
+}
+
+.emphasis-strong.intent-success {
+  background: var(--color-background-feedback-primary-success);
+  color: var(--feedback-success, var(--color-actions-success));
+}
+
+.emphasis-strong.intent-warning {
+  background: var(--color-background-feedback-primary-warning);
+  color: var(--feedback-warning);
+}
+
+.emphasis-strong.intent-danger {
+  background: var(--color-background-feedback-primary-danger);
+  color: var(--text-on-color);
+}
+
+.emphasis-strong.intent-outline,
+.emphasis-soft.intent-outline {
+  background: transparent;
+  border-color: var(--color-border-2);
+  color: var(--text-primary);
+}
+
+.emphasis-soft.intent-info {
+  background: color-mix(in srgb, var(--color-background-feedback-primary-info) 22%, white);
+  color: var(--text-primary);
+}
+
+.emphasis-soft.intent-system {
+  background: color-mix(in srgb, var(--color-background-feedback-primary-system) 42%, white);
+  color: var(--text-secondary);
+}
+
+.emphasis-soft.intent-success {
+  background: var(--color-background-feedback-secondary-success);
+  color: var(--feedback-success, var(--color-actions-success));
+}
+
+.emphasis-soft.intent-warning {
+  background: var(--color-background-feedback-secondary-warning);
+  color: var(--feedback-warning);
+}
+
+.emphasis-soft.intent-danger {
+  background: var(--color-background-feedback-secondary-danger);
+  color: var(--feedback-danger, var(--color-actions-danger));
+}
+
+.disabled {
+  opacity: 0.48;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-background-surface-3);
+  flex-shrink: 0;
+}

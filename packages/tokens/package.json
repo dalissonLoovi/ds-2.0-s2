@@ -1,0 +1,23 @@
+{
+  "name": "@ds/tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Design System 2.0 CSS custom properties generated from seed JSON",
+  "main": "./dist/tokens.css",
+  "exports": {
+    ".": "./dist/tokens.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens.json": "./dist/tokens.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node ./scripts/generate-tokens.mjs",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@fontsource/poppins": "^5.2.6"
+  }
+}

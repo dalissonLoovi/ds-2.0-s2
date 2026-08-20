@@ -1,0 +1,71 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+  color: var(--text-link, var(--text-brand));
+  font: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.root:hover,
+.state-hover {
+  text-decoration: underline;
+}
+
+.root:focus-visible,
+.state-focus {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.state-active {
+  color: color-mix(in srgb, var(--text-link, var(--text-brand)) 80%, black);
+}
+
+.state-visited {
+  color: color-mix(in srgb, var(--text-link, var(--text-brand)) 70%, #5b2d8e);
+}
+
+.inline {
+  text-decoration: underline;
+}
+
+.inline .icon {
+  display: none;
+}
+
+.disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.appearance-inverse {
+  color: var(--text-on-color);
+}
+
+.size-sm {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.size-md {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.size-lg {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.label {
+  display: inline;
+}
+
+.icon {
+  flex-shrink: 0;
+}

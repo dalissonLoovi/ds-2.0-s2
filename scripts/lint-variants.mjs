@@ -1,0 +1,849 @@
+/**
+ * Fail CI when React variant unions diverge from seed JSON variants.
+ * Handwritten W0 components are checked; scaffolds are skipped until polished.
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.resolve(__dirname, '..');
+const JSON_PATH = path.join(ROOT, 'design-system-tokens.storybook.updated.v2.json');
+
+const CHECK = {
+  Button: {
+    file: 'packages/react/src/components/Button/Button.tsx',
+    axes: {
+      variant: ['solid', 'outline', 'text'],
+      size: ['sm', 'md', 'lg'],
+      intent: ['primary', 'success', 'danger', 'secondary'],
+      state: ['default', 'hover', 'focus', 'pressed', 'selected', 'loading'],
+    },
+  },
+  Input: {
+    file: 'packages/react/src/components/Input/Input.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['value', 'placeholder', 'label'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  ChipTag: {
+    file: 'packages/react/src/components/ChipTag/ChipTag.tsx',
+    axes: {
+      size: ['sm', 'md'],
+      intent: ['info', 'system', 'success', 'warning', 'danger', 'outline'],
+      width: ['hug', 'fill'],
+      state: ['default', 'disabled'],
+      emphasis: ['strong', 'soft'],
+    },
+  },
+  ChipClickable: {
+    file: 'packages/react/src/components/ChipClickable/ChipClickable.tsx',
+    axes: {
+      size: ['sm', 'md'],
+      state: ['default', 'hover', 'pressed', 'selected', 'disabled'],
+      intent: ['info', 'system', 'success', 'warning', 'danger', 'outline', 'soft'],
+      width: ['hug', 'fill'],
+    },
+  },
+  Alert: {
+    file: 'packages/react/src/components/Alert/Alert.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      status: ['system', 'info', 'success', 'danger', 'warning'],
+    },
+  },
+  Toast: {
+    file: 'packages/react/src/components/Toast/Toast.tsx',
+    axes: {
+      status: ['system', 'info', 'success', 'danger', 'warning'],
+    },
+  },
+  Modal: {
+    file: 'packages/react/src/components/Modal/Modal.tsx',
+    axes: {
+      platform: ['web', 'mobile', 'mobile-landscape'],
+    },
+  },
+  Link: {
+    file: 'packages/react/src/components/Link/Link.tsx',
+    axes: {
+      size: ['lg', 'md', 'sm'],
+      state: ['default', 'hover', 'focus', 'active', 'visited', 'disabled'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  Checkbox: {
+    file: 'packages/react/src/components/Checkbox/Checkbox.tsx',
+    axes: {
+      state: ['default', 'focus', 'disabled'],
+      checked: ['false', 'true', 'mixed'],
+    },
+  },
+  RadioButton: {
+    file: 'packages/react/src/components/RadioButton/RadioButton.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'disabled'],
+      checked: ['false', 'true'],
+    },
+  },
+  RadioButtonCard: {
+    file: 'packages/react/src/components/RadioButtonCard/RadioButtonCard.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'disabled'],
+      checked: ['false', 'true'],
+    },
+  },
+  Switch: {
+    file: 'packages/react/src/components/Switch/Switch.tsx',
+    axes: {
+      size: ['md', 'sm'],
+      state: ['default', 'focus', 'disabled'],
+      checked: ['false', 'true'],
+    },
+  },
+  InputTextArea: {
+    file: 'packages/react/src/components/InputTextArea/InputTextArea.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['value', 'placeholder', 'label'],
+      leadingIcon: ['false', 'true'],
+      trailingIcon: ['false', 'true'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  InputPassword: {
+    file: 'packages/react/src/components/InputPassword/InputPassword.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['value', 'placeholder', 'label'],
+      leadingIcon: ['true', 'false'],
+      visibility: ['hidden', 'visible'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  InputNumber: {
+    file: 'packages/react/src/components/InputNumber/InputNumber.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['value', 'placeholder', 'label'],
+      leadingIcon: ['true', 'false'],
+      trailingIcon: ['true', 'false'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  InputSelect: {
+    file: 'packages/react/src/components/InputSelect/InputSelect.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['value', 'placeholder', 'label'],
+      leadingIcon: ['true', 'false'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  InputDatePicker: {
+    file: 'packages/react/src/components/InputDatePicker/InputDatePicker.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['value', 'placeholder', 'label'],
+      leadingIcon: ['true', 'false'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  SelectCountry: {
+    file: 'packages/react/src/components/SelectCountry/SelectCountry.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'disabled'],
+      size: ['sm', 'md'],
+      expanded: ['false', 'true'],
+    },
+  },
+  SearchBar: {
+    file: 'packages/react/src/components/SearchBar/SearchBar.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'pressed', 'disabled'],
+      content: ['placeholder', 'value'],
+    },
+  },
+  Autocomplete: {
+    file: 'packages/react/src/components/Autocomplete/Autocomplete.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+      content: ['empty', 'query', 'selected'],
+      expanded: ['false', 'true'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  VerificationCodeInput: {
+    file: 'packages/react/src/components/VerificationCodeInput/VerificationCodeInput.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+    },
+  },
+  VerificationCodeInputItem: {
+    file: 'packages/react/src/components/VerificationCodeInputItem/VerificationCodeInputItem.tsx',
+    axes: {
+      state: ['default', 'hover', 'focus', 'error', 'disabled'],
+    },
+  },
+  DatePickerSelect: {
+    file: 'packages/react/src/components/DatePickerSelect/DatePickerSelect.tsx',
+    axes: {
+      format: ['day-month-year', 'day-month', 'month-year', 'year'],
+      state: ['default', 'hover', 'focus', 'disabled'],
+    },
+  },
+  DatePickerSelectItem: {
+    file: 'packages/react/src/components/DatePickerSelectItem/DatePickerSelectItem.tsx',
+    axes: {
+      unit: ['day', 'month', 'year'],
+      state: ['default', 'hover', 'focus', 'disabled'],
+      expanded: ['false', 'true'],
+    },
+  },
+
+  LoadingSpinner: {
+    file: 'packages/react/src/components/LoadingSpinner/LoadingSpinner.tsx',
+    axes: { size: ['sm', 'md', 'lg'] },
+  },
+  Badge: {
+    file: 'packages/react/src/components/Badge/Badge.tsx',
+    axes: {
+      size: ['sm', 'lg'],
+      content: ['dot', 'count', 'overflow'],
+    },
+  },
+  ProgressBar: {
+    file: 'packages/react/src/components/ProgressBar/ProgressBar.tsx',
+    axes: { size: ['md', 'sm'] },
+  },
+  Banner: {
+    file: 'packages/react/src/components/Banner/Banner.tsx',
+    axes: { status: ['success', 'warning', 'info', 'danger'] },
+  },
+  Tooltip: {
+    file: 'packages/react/src/components/Tooltip/Tooltip.tsx',
+    axes: {
+      placement: ['top-center','top-left','top-right','bottom-center','bottom-left','bottom-right'],
+    },
+  },
+  TooltipRich: {
+    file: 'packages/react/src/components/TooltipRich/TooltipRich.tsx',
+    axes: {
+      placement: ['top-center','top-left','top-right','bottom-center','bottom-left','bottom-right'],
+    },
+  },
+  Overlay: {
+    file: 'packages/react/src/components/Overlay/Overlay.tsx',
+    axes: {
+      type: ['modal', 'bottom-sheet'],
+      platform: ['mobile', 'web'],
+    },
+  },
+  BottomSheet: {
+    file: 'packages/react/src/components/BottomSheet/BottomSheet.tsx',
+    axes: { header: ['none', 'sheet-header'] },
+  },
+  BottomSheetHeader: {
+    file: 'packages/react/src/components/BottomSheetHeader/BottomSheetHeader.tsx',
+    axes: { appearance: ['default'] },
+  },
+  BottomSheetCheckItem: {
+    file: 'packages/react/src/components/BottomSheetCheckItem/BottomSheetCheckItem.tsx',
+    axes: {},
+  },
+  TextHeader: {
+    file: 'packages/react/src/components/TextHeader/TextHeader.tsx',
+    axes: {
+      size: ['large', 'medium', 'small'],
+      alignment: ['left', 'center'],
+    },
+  },
+  SectionHeader: {
+    file: 'packages/react/src/components/SectionHeader/SectionHeader.tsx',
+    axes: {
+      emphasis: ['primary', 'secondary'],
+      showAction: ['false', 'true'],
+    },
+  },
+  OrganizationHeader: {
+    file: 'packages/react/src/components/OrganizationHeader/OrganizationHeader.tsx',
+    axes: {},
+  },
+  TabItem: {
+    file: 'packages/react/src/components/TabItem/TabItem.tsx',
+    axes: {
+      variant: ['primary', 'secondary', 'segmented'],
+      state: ['default', 'hover', 'selected', 'disabled'],
+      platform: ['web', 'mobile'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  NavigationBarItem: {
+    file: 'packages/react/src/components/NavigationBarItem/NavigationBarItem.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      state: ['default', 'hover', 'focus', 'pressed'],
+      badge: ['none', 'count', 'dot'],
+      selected: ['false', 'true'],
+      showLabel: ['true', 'false'],
+    },
+  },
+  NavigationDrawerItem: {
+    file: 'packages/react/src/components/NavigationDrawerItem/NavigationDrawerItem.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      state: ['default', 'hover', 'focus', 'pressed'],
+      selected: ['false', 'true'],
+    },
+  },
+  NavigationRailCompactItem: {
+    file: 'packages/react/src/components/NavigationRailCompactItem/NavigationRailCompactItem.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      state: ['default', 'hover', 'focus', 'pressed'],
+      badge: ['none', 'count', 'dot'],
+      selected: ['false', 'true'],
+      showLabel: ['true', 'false'],
+    },
+  },
+  NavigationRailExpandedItem: {
+    file: 'packages/react/src/components/NavigationRailExpandedItem/NavigationRailExpandedItem.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      state: ['default', 'hover', 'focus', 'pressed'],
+      hierarchy: ['default', 'nav-tree'],
+      badge: ['none', 'count', 'dot'],
+      selected: ['false', 'true'],
+    },
+  },
+  BreadcrumbItem: {
+    file: 'packages/react/src/components/BreadcrumbItem/BreadcrumbItem.tsx',
+    axes: {
+      size: ['sm', 'md'],
+      type: ['link', 'overflow'],
+      state: ['default', 'hover', 'focus', 'pressed', 'current', 'skeleton', 'open'],
+    },
+  },
+  TabsPrimary: {
+    file: 'packages/react/src/components/TabsPrimary/TabsPrimary.tsx',
+    axes: {
+      itemCount: ['2', '3', '4', '5'],
+      platform: ['web', 'mobile'],
+      alignment: ['left', 'center'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  TabsSecondary: {
+    file: 'packages/react/src/components/TabsSecondary/TabsSecondary.tsx',
+    axes: {
+      itemCount: ['2', '3', '4', '5'],
+      platform: ['web', 'mobile'],
+      alignment: ['left', 'center'],
+    },
+  },
+  TabsSegmented: {
+    file: 'packages/react/src/components/TabsSegmented/TabsSegmented.tsx',
+    axes: {
+      itemCount: ['2', '3', '4', '5'],
+      platform: ['web', 'mobile'],
+      alignment: ['left', 'center'],
+    },
+  },
+  Breadcrumb: {
+    file: 'packages/react/src/components/Breadcrumb/Breadcrumb.tsx',
+    axes: { size: ['md', 'sm'] },
+  },
+  NavigationBar: {
+    file: 'packages/react/src/components/NavigationBar/NavigationBar.tsx',
+    axes: {
+      itemCount: ['3', '4', '5'],
+      appearance: ['default', 'inverse'],
+      layout: ['flush', 'floating'],
+    },
+  },
+  NavigationDrawer: {
+    file: 'packages/react/src/components/NavigationDrawer/NavigationDrawer.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      itemCount: ['3', '4', '5', '6'],
+    },
+  },
+  NavigationRailCompact: {
+    file: 'packages/react/src/components/NavigationRailCompact/NavigationRailCompact.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      alignment: ['top', 'middle'],
+      itemCount: ['3', '4', '5', '6'],
+    },
+  },
+  NavigationRailExpanded: {
+    file: 'packages/react/src/components/NavigationRailExpanded/NavigationRailExpanded.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      alignment: ['top', 'middle'],
+      itemCount: ['3', '4', '5', '6'],
+    },
+  },
+  NavigationRailExpandedTree: {
+    file: 'packages/react/src/components/NavigationRailExpandedTree/NavigationRailExpandedTree.tsx',
+    axes: {
+      selectedItem: ['none', 'item-01', 'item-02', 'item-03', 'item-04'],
+      level: ['default', 'second-level'],
+      appearance: ['default', 'inverse'],
+    },
+  },
+  AppHeader: {
+    file: 'packages/react/src/components/AppHeader/AppHeader.tsx',
+    axes: {
+      layout: ['small-centered', 'small', 'medium', 'large'],
+      appearance: ['default', 'inverse'],
+      hierarchy: ['global', 'specific', 'super-app'],
+    },
+  },
+  SystemHeader: {
+    file: 'packages/react/src/components/SystemHeader/SystemHeader.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      variant: ['default', 'simple'],
+    },
+  },
+  DividerHorizontal: {
+    file: 'packages/react/src/components/DividerHorizontal/DividerHorizontal.tsx',
+    axes: {
+      variant: ['full-width', 'inset', 'middle-inset', 'with-subhead'],
+    },
+  },
+  DividerVertical: {
+    file: 'packages/react/src/components/DividerVertical/DividerVertical.tsx',
+    axes: {
+      variant: ['full-width', 'inset', 'middle-inset'],
+    },
+  },
+  Avatar: {
+    file: 'packages/react/src/components/Avatar/Avatar.tsx',
+    axes: {
+      content: ['image', 'initials', 'placeholder'],
+      size: ['micro', 'xs', 'sm', 'md', 'lg', 'xl'],
+      state: ['default', 'hover', 'focus', 'disabled', 'loading'],
+    },
+  },
+  AvatarGroup: {
+    file: 'packages/react/src/components/AvatarGroup/AvatarGroup.tsx',
+    axes: { size: ['micro', 'xs', 'sm', 'md', 'lg', 'xl'] },
+  },
+  Accordion: {
+    file: 'packages/react/src/components/Accordion/Accordion.tsx',
+    axes: {
+      expanded: ['false', 'true'],
+      state: ['default', 'disabled'],
+      size: ['sm', 'md'],
+      padding: ['padded', 'flush'],
+    },
+  },
+  ListItemStateLayer: {
+    file: 'packages/react/src/components/ListItemStateLayer/ListItemStateLayer.tsx',
+    axes: { state: ['default', 'hover', 'focus', 'pressed', 'dragged'] },
+  },
+  ListItemLeadingMonogram: {
+    file: 'packages/react/src/components/ListItemLeadingMonogram/ListItemLeadingMonogram.tsx',
+    axes: {},
+  },
+  ListItemImageThumbnail: {
+    file: 'packages/react/src/components/ListItemImageThumbnail/ListItemImageThumbnail.tsx',
+    axes: {},
+  },
+  ListItemVideoThumbnail: {
+    file: 'packages/react/src/components/ListItemVideoThumbnail/ListItemVideoThumbnail.tsx',
+    axes: {},
+  },
+  ListItem: {
+    file: 'packages/react/src/components/ListItem/ListItem.tsx',
+    axes: {
+      condition: ['1-line', '2-line', '3-line'],
+      leading: ['none', 'monogram', 'icon', 'image', 'video', 'checkbox', 'radio', 'switch'],
+      trailing: ['none', 'icon', 'checkbox', 'radio', 'switch'],
+      showOverline: ['false', 'true'],
+      showSupportingText: ['false', 'true'],
+    },
+  },
+  List: {
+    file: 'packages/react/src/components/List/List.tsx',
+    axes: { type: ['plain', 'dropdown'] },
+  },
+  ListActionDropdownItem: {
+    file: 'packages/react/src/components/ListActionDropdownItem/ListActionDropdownItem.tsx',
+    axes: {
+      state: ['default', 'hover', 'pressed', 'selected', 'focus', 'disabled'],
+    },
+  },
+  ListActionDropdown: {
+    file: 'packages/react/src/components/ListActionDropdown/ListActionDropdown.tsx',
+    axes: {},
+  },
+  TableCell: {
+    file: 'packages/react/src/components/TableCell/TableCell.tsx',
+    axes: {
+      type: ['header', 'primary', 'secondary', 'tertiary', 'slot'],
+      state: ['default', 'hover', 'pressed', 'selected'],
+    },
+  },
+  TableExpandCell: {
+    file: 'packages/react/src/components/TableExpandCell/TableExpandCell.tsx',
+    axes: {
+      type: ['body', 'header'],
+      state: ['default', 'hover', 'pressed', 'selected', 'focus', 'disabled'],
+      showChevron: ['true', 'false'],
+    },
+  },
+  TableRow: {
+    file: 'packages/react/src/components/TableRow/TableRow.tsx',
+    axes: {
+      type: ['header', 'body'],
+      cellCount: ['3', '4', '5', '6', '7', '8', '9'],
+      state: ['default', 'hover', 'pressed', 'selected', 'focus'],
+    },
+  },
+  Table: {
+    file: 'packages/react/src/components/Table/Table.tsx',
+    axes: { columns: ['3', '4', '5', '6', '7', '8', '9'] },
+  },
+  TableMobileCell: {
+    file: 'packages/react/src/components/TableMobileCell/TableMobileCell.tsx',
+    axes: {
+      type: ['primary', 'secondary', 'tag', 'action', 'icon'],
+      state: ['default', 'hover', 'pressed', 'selected'],
+    },
+  },
+  TableMobile: {
+    file: 'packages/react/src/components/TableMobile/TableMobile.tsx',
+    axes: {
+      state: ['default', 'hover', 'pressed'],
+      interactive: ['false', 'true'],
+      showTag: ['true', 'false'],
+      columnCount: ['2', '3', '4', '5', '6'],
+    },
+  },
+  PaginationItem: {
+    file: 'packages/react/src/components/PaginationItem/PaginationItem.tsx',
+    axes: {
+      content: ['number', 'overflow'],
+      state: ['default', 'hover', 'focus', 'disabled'],
+      selected: ['false', 'true'],
+    },
+  },
+  Pagination: {
+    file: 'packages/react/src/components/Pagination/Pagination.tsx',
+    axes: {
+      position: ['start', 'middle', 'end'],
+      size: ['lg', 'sm'],
+    },
+  },
+  CarouselPaginationItem: {
+    file: 'packages/react/src/components/CarouselPaginationItem/CarouselPaginationItem.tsx',
+    axes: {
+      itemCount: ['2', '3', '4', '5'],
+      itemView: ['1', '2', '3', '4', '5'],
+    },
+  },
+  Carousel: {
+    file: 'packages/react/src/components/Carousel/Carousel.tsx',
+    axes: {},
+  },
+  CardOutlinedItem: {
+    file: 'packages/react/src/components/CardOutlinedItem/CardOutlinedItem.tsx',
+    axes: { state: ['enabled', 'hover', 'focus', 'pressed', 'dragged'] },
+  },
+  CardElevatedItem: {
+    file: 'packages/react/src/components/CardElevatedItem/CardElevatedItem.tsx',
+    axes: { state: ['enabled', 'hover', 'focus', 'pressed', 'dragged'] },
+  },
+  CardFilledItem: {
+    file: 'packages/react/src/components/CardFilledItem/CardFilledItem.tsx',
+    axes: { state: ['enabled', 'hover', 'focus', 'pressed', 'dragged'] },
+  },
+  CardStacked: {
+    file: 'packages/react/src/components/CardStacked/CardStacked.tsx',
+    axes: {
+      style: ['outlined', 'elevated', 'filled'],
+      layout: ['media-and-text', 'slot'],
+    },
+  },
+  CardHorizontal: {
+    file: 'packages/react/src/components/CardHorizontal/CardHorizontal.tsx',
+    axes: {
+      style: ['outlined', 'elevated', 'filled'],
+      layout: ['media-and-text', 'slot'],
+    },
+  },
+  DashboardCardPrimary: {
+    file: 'packages/react/src/components/DashboardCardPrimary/DashboardCardPrimary.tsx',
+    axes: { type: ['web', 'mobile'] },
+  },
+  DashboardCardSecondary: {
+    file: 'packages/react/src/components/DashboardCardSecondary/DashboardCardSecondary.tsx',
+    axes: {
+      type: ['web', 'mobile'],
+      growth: ['up', 'down'],
+    },
+  },
+  QuickAccessTile: {
+    file: 'packages/react/src/components/QuickAccessTile/QuickAccessTile.tsx',
+    axes: { state: ['default', 'pressed', 'disabled'] },
+  },
+  OfferProductCard: {
+    file: 'packages/react/src/components/OfferProductCard/OfferProductCard.tsx',
+    axes: { state: ['default'] },
+  },
+  ReferralDiscountCard: {
+    file: 'packages/react/src/components/ReferralDiscountCard/ReferralDiscountCard.tsx',
+    axes: { mode: ['status', 'simulator', 'fleet'] },
+  },
+  VehicleSummaryCard: {
+    file: 'packages/react/src/components/VehicleSummaryCard/VehicleSummaryCard.tsx',
+    axes: {
+      appearance: ['default', 'secondary'],
+      status: ['active', 'inactive'],
+    },
+  },
+  VehicleConfirmCard: {
+    file: 'packages/react/src/components/VehicleConfirmCard/VehicleConfirmCard.tsx',
+    axes: {},
+  },
+  UploadPhotos: {
+    file: 'packages/react/src/components/UploadPhotos/UploadPhotos.tsx',
+    axes: { status: ['pending', 'in-review', 'approved', 'rejected'] },
+  },
+  FeatureStepsItem: {
+    file: 'packages/react/src/components/FeatureStepsItem/FeatureStepsItem.tsx',
+    axes: {},
+  },
+  FeatureSteps: {
+    file: 'packages/react/src/components/FeatureSteps/FeatureSteps.tsx',
+    axes: {},
+  },
+  FileUploader: {
+    file: 'packages/react/src/components/FileUploader/FileUploader.tsx',
+    axes: {
+      variant: ['default', 'drag-and-drop'],
+      size: ['lg', 'md', 'sm'],
+      state: ['default', 'disabled', 'skeleton'],
+    },
+  },
+  FileUploaderDropzoneItem: {
+    file: 'packages/react/src/components/FileUploaderDropzoneItem/FileUploaderDropzoneItem.tsx',
+    axes: { state: ['default', 'drag-hover', 'focus', 'disabled'] },
+  },
+  FileUploaderItem: {
+    file: 'packages/react/src/components/FileUploaderItem/FileUploaderItem.tsx',
+    axes: {
+      size: ['sm', 'md', 'lg'],
+      state: ['uploaded', 'loading', 'success', 'focus', 'danger-short', 'danger-long'],
+    },
+  },
+  FileUploaderList: {
+    file: 'packages/react/src/components/FileUploaderList/FileUploaderList.tsx',
+    axes: {},
+  },
+  Calendar: {
+    file: 'packages/react/src/components/Calendar/Calendar.tsx',
+    axes: {
+      mode: ['simple', 'month', 'month-year', 'complete', 'time'],
+      picker: ['default', 'month', 'year'],
+      platform: ['mobile', 'web'],
+    },
+  },
+  CalendarDay: {
+    file: 'packages/react/src/components/CalendarDay/CalendarDay.tsx',
+    axes: {
+      kind: ['default', 'today', 'range-start', 'range-middle', 'range-end', 'outside'],
+      state: ['default', 'hover', 'focus', 'selected', 'disabled'],
+    },
+  },
+  CalendarPeriodNav: {
+    file: 'packages/react/src/components/CalendarPeriodNav/CalendarPeriodNav.tsx',
+    axes: {
+      appearance: ['default', 'inverse'],
+      previousDisabled: ['false', 'true'],
+      nextDisabled: ['false', 'true'],
+    },
+  },
+  Slider: {
+    file: 'packages/react/src/components/Slider/Slider.tsx',
+    axes: {
+      status: [
+        'enabled',
+        'hover',
+        'focus',
+        'active',
+        'error',
+        'warning',
+        'disabled',
+        'read-only',
+        'skeleton',
+      ],
+    },
+  },
+  SliderItem: {
+    file: 'packages/react/src/components/SliderItem/SliderItem.tsx',
+    axes: { active: ['false', 'true'] },
+  },
+  SliderBaseItem: {
+    file: 'packages/react/src/components/SliderBaseItem/SliderBaseItem.tsx',
+    axes: {},
+  },
+  SliderRail: {
+    file: 'packages/react/src/components/SliderRail/SliderRail.tsx',
+    axes: {},
+  },
+  SliderLeftRail: {
+    file: 'packages/react/src/components/SliderLeftRail/SliderLeftRail.tsx',
+    axes: { active: ['false', 'true'] },
+  },
+  SliderRightRail: {
+    file: 'packages/react/src/components/SliderRightRail/SliderRightRail.tsx',
+    axes: {},
+  },
+  SliderSkeletonItem: {
+    file: 'packages/react/src/components/SliderSkeletonItem/SliderSkeletonItem.tsx',
+    axes: {},
+  },
+  StepperPrimary: {
+    file: 'packages/react/src/components/StepperPrimary/StepperPrimary.tsx',
+    axes: {
+      status: ['completed', 'current', 'pending'],
+      trail: ['both', 'left', 'right'],
+      trailState: ['none', 'both', 'left', 'right'],
+    },
+  },
+  VerticalStepper: {
+    file: 'packages/react/src/components/VerticalStepper/VerticalStepper.tsx',
+    axes: {},
+  },
+  VerticalStepperItem: {
+    file: 'packages/react/src/components/VerticalStepperItem/VerticalStepperItem.tsx',
+    axes: { status: ['completed', 'current', 'pending', 'error'] },
+  },
+  StepProgressIndicator: {
+    file: 'packages/react/src/components/StepProgressIndicator/StepProgressIndicator.tsx',
+    axes: {
+      stepCount: ['3', '4', '5', '6', '7', '8'],
+      currentStep: ['1', '2', '3', '4', '5', '6', '7', '8'],
+    },
+  },
+  StepProgressSegment: {
+    file: 'packages/react/src/components/StepProgressSegment/StepProgressSegment.tsx',
+    axes: { status: ['completed', 'current', 'pending', 'error'] },
+  },
+  SearchViewFullscreen: {
+    file: 'packages/react/src/components/SearchViewFullscreen/SearchViewFullscreen.tsx',
+    axes: {
+      content: ['value', 'placeholder'],
+      showResults: ['true', 'false'],
+    },
+  },
+  SearchViewModal: {
+    file: 'packages/react/src/components/SearchViewModal/SearchViewModal.tsx',
+    axes: {
+      content: ['value', 'placeholder'],
+      showResults: ['true', 'false'],
+    },
+  },
+  Keyboard: {
+    file: 'packages/react/src/components/Keyboard/Keyboard.tsx',
+    axes: {
+      configuration: ['base-keyboard', 'alphanumeric', 'keypad', 'numeric-only'],
+      layout: ['portrait', 'landscape', 'floating'],
+    },
+  },
+  ChipGroup: {
+    file: 'packages/react/src/components/ChipGroup/ChipGroup.tsx',
+    axes: {
+      type: ['input', 'assistive', 'filter', 'suggestion'],
+      layout: ['single-row-scrollable', 'multi-row-wrap'],
+    },
+  },
+  ImageItem: {
+    file: 'packages/react/src/components/ImageItem/ImageItem.tsx',
+    axes: {
+      aspectRatio: ['1-1', '4-3', '3-2', '16-9', '2-1'],
+      orientation: ['portrait', 'landscape'],
+      verticalResize: ['false', 'true'],
+    },
+  },
+  PhotoTextItem: {
+    file: 'packages/react/src/components/PhotoTextItem/PhotoTextItem.tsx',
+    axes: { showSupportingText: ['false', 'true'] },
+  },
+  PaginationSelectInput: {
+    file: 'packages/react/src/components/PaginationSelectInput/PaginationSelectInput.tsx',
+    axes: {
+      size: ['sm', 'md', 'lg'],
+      state: ['default', 'hover'],
+      expanded: ['false', 'true'],
+    },
+  },
+  PaginationSelectMenu: {
+    file: 'packages/react/src/components/PaginationSelectMenu/PaginationSelectMenu.tsx',
+    axes: {},
+  },
+  PaginationSelectMenuItem: {
+    file: 'packages/react/src/components/PaginationSelectMenuItem/PaginationSelectMenuItem.tsx',
+    axes: {
+      state: ['default', 'hover', 'pressed', 'selected', 'disabled', 'focus'],
+    },
+  },
+  TableSkeleton: {
+    file: 'packages/react/src/components/TableSkeleton/TableSkeleton.tsx',
+    axes: { empty: ['false', 'true'] },
+  },
+  ModalHeader: {
+    file: 'packages/react/src/components/ModalHeader/ModalHeader.tsx',
+    axes: {
+      layout: ['desktop', 'mobile'],
+      alignment: ['start', 'center'],
+    },
+  },
+  ModalCheckItem: {
+    file: 'packages/react/src/components/ModalCheckItem/ModalCheckItem.tsx',
+    axes: {},
+  },
+};
+
+
+function main() {
+  const data = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
+  const components = data.storybook?.components || {};
+  const errors = [];
+
+  for (const [name, cfg] of Object.entries(CHECK)) {
+    const seed = components[name];
+    if (!seed) {
+      errors.push(`${name}: missing from seed JSON`);
+      continue;
+    }
+    if (!fs.existsSync(path.join(ROOT, cfg.file))) {
+      errors.push(`${name}: missing source ${cfg.file}`);
+      continue;
+    }
+    for (const [axis, expected] of Object.entries(cfg.axes)) {
+      const actual = seed.variants?.[axis] || [];
+      const missing = expected.filter((v) => !actual.includes(v));
+      const extra = actual.filter((v) => !expected.includes(v));
+      if (missing.length || extra.length) {
+        errors.push(
+          `${name}.${axis}: react=[${expected}] seed=[${actual}] missing=${missing} extra=${extra}`,
+        );
+      }
+    }
+  }
+
+  if (errors.length) {
+    console.error('lint-variants failed:\n' + errors.map((e) => ` - ${e}`).join('\n'));
+    process.exit(1);
+  }
+  console.log(`lint-variants: ok (${Object.keys(CHECK).length} components)`);
+}
+
+main();

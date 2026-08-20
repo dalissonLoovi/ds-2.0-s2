@@ -1,0 +1,97 @@
+.root {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-100, 8px);
+  width: 100%;
+  padding: var(--spacing-100, 8px) var(--spacing-150, 10px);
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--border-radius-200, 8px);
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
+}
+
+.size-sm {
+  min-height: 40px;
+}
+
+.size-md {
+  min-height: 48px;
+  padding: var(--spacing-150, 10px) var(--spacing-200, 12px);
+}
+
+.size-lg {
+  min-height: 56px;
+  padding: var(--spacing-200, 12px);
+}
+
+.state-success {
+  background: var(--color-background-surface-1);
+}
+
+.state-danger-short,
+.state-danger-long {
+  border-color: var(--color-border-feedback-danger);
+}
+
+.leading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.success {
+  color: var(--feedback-success, var(--color-actions-success));
+}
+
+.danger {
+  color: var(--feedback-danger, var(--color-actions-danger));
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fileName {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.short {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--feedback-danger, var(--color-actions-danger));
+}
+
+.long {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-secondary);
+}
+
+.remove {
+  flex-shrink: 0;
+  margin-top: -4px;
+}
+
+.removeFocus,
+.remove:focus-visible {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 2px;
+}

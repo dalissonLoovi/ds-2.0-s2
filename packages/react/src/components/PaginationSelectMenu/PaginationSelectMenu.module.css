@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  min-width: 48px;
+  padding: var(--spacing-050, 4px) 0;
+  background: var(--color-background-surface-0);
+  border-radius: var(--border-radius-200, 8px);
+  box-shadow: 0 8px 24px var(--color-elevation-5);
+  overflow: hidden;
+}
+
+.scroll {
+  max-height: 240px;
+  overflow: auto;
+}

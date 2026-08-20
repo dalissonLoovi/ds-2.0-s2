@@ -1,0 +1,45 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 342px;
+  overflow: hidden;
+  background: var(--color-background-surface-1);
+  border-radius: var(--border-radius-400);
+  box-shadow: inset 0 0 0 2px var(--color-elevation-disabled);
+}
+
+.topo {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-150, 10px) 0 var(--spacing-100, 8px);
+  background: var(--color-background-surface-brand);
+}
+
+.handle {
+  width: 43px;
+  height: 4px;
+  border-radius: var(--border-radius-full, 999px);
+  background: var(--color-elevation-inverse-4);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--spacing-250, 20px) var(--spacing-200, 12px);
+}
+
+.plate {
+  margin: 0;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.brandModel {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-secondary);
+}

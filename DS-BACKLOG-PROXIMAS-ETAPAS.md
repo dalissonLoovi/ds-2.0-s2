@@ -4,9 +4,9 @@
 **Arquivo:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2)  
 **Storybook:** https://dalissonloovi.github.io/ds-2.0-s2/  
 **Seed:** `design-system-tokens.storybook.updated.v2.json` (~124 componentes · 23 vars `product-theme`)  
-**Revision recente:** `2026-08-17-painel-promo-tokens-seed`
+**Revision recente:** `2026-08-18-poppins-typography-tokens`
 
-**Estado:** fundação + temas core + Docs humanas + fila Painel Home **fechados**.  
+**Estado:** fundação + temas core + Docs humanas + fila Painel Home + React W0–W7 **fechados**.  
 **Modo atual:** melhoria contínua (gap de produto → decisão → Figma → seed → Pages).
 
 ---
@@ -138,7 +138,7 @@ Figma (ajuste)
 |---|---|---|
 | P0 | Manter sync por fatia | JSON + MDX + push após cada fechamento |
 | P1 | Foundations no Storybook | Global rules, feedback, product-theme (já parcial) |
-| P1 | Introduction / Changelog legíveis | Revisar copy humana (não só seed técnico) |
+| P1 | Introduction / Changelog legíveis | ✅ Copy humana (2026-08-17): status Autodocs 123/124; changelog truncado |
 | P2 | Chromatic | Só se o time pedir review visual |
 | P2 | React + CSF3 | Por componente; Autodocs substitui seed daquele item |
 | P3 | Code Connect | Depois do React estabilizar |
@@ -166,7 +166,11 @@ Figma (ajuste)
 | Limpeza untracked legado | 🟢 Feita (scripts/patches/JSON legado); audit versionado |
 | Storybook Pages sync | 🟢 Operacional |
 | Página composições App-cliente / Painel | ⬜ Opcional |
-| React / Chromatic / Code Connect | ⬜ Depois (pedido explícito do time) |
+| React `@ds/react` + CSF3 Autodocs | 🟢 W0–**W7** polish (2026-08-17); 123/124 Autodocs |
+| Code Connect (W0–W7) | 🟢 `*.figma.tsx` no piloto + ondas |
+| Introduction / Changelog copy | 🟢 Polish 2026-08-17 — gerador, não MDX à mão |
+| Tipografia Poppins no React/Storybook | 🟢 P1 2026-08-18 — `--font-family-base` + woff2; escala px→token ainda P2 |
+| Chromatic / npm público | ⬜ Depois (pedido explícito) |
 
 ---
 
@@ -176,12 +180,20 @@ Figma (ajuste)
 2. ~~Docs humanas W0–W6~~ ✅  
 3. ~~Auditar frames Docs humanas~~ ✅  
 4. ~~Limpar orphans W4~~ ✅  
-5. ~~Validar fila Painel Home + sync promo tokens~~ ✅ (`b3b7189`)  
+5. ~~Validar fila Painel Home + sync promo tokens~~ ✅  
 6. ~~Limpar untracked legado~~ ✅  
-7. **Próximo:** gap / tela de produto nova (link Figma → reusar / variante / novo → seed → Pages)  
-8. **Opcional:** página Figma de composições App-cliente / Painel (só instâncias)  
-9. **Opcional:** polish copy Introduction / Changelog no Storybook  
-10. **Só quando o time pedir:** React → Autodocs → Code Connect → Chromatic
+7. ~~React foundation + W0 Autodocs/Code Connect~~ ✅ — ver [`REACT-CONTRIBUTING.md`](./REACT-CONTRIBUTING.md)  
+8. ~~React leftovers draft~~ ✅ W7 (ChipGroup, ImageItem/PhotoTextItem, PaginationSelect*, TableSkeleton, ModalHeader/ModalCheckItem)  
+   - ~~W1 Formulários~~ ✅ React DoD (2026-08-17)
+   - ~~W2 Feedback~~ ✅ React DoD (2026-08-17)
+   - ~~W3 Nav/headers~~ ✅ React DoD (2026-08-17)
+   - ~~W4 Dados & display~~ ✅ React DoD (2026-08-17)
+   - ~~W5 Cards & app-cliente~~ ✅ React DoD (2026-08-17)
+   - ~~W6 Complexos~~ ✅ React DoD (2026-08-17)
+   - ~~W7 Internals & leftovers~~ ✅ React DoD (2026-08-17)
+9. **Opcional:** página Figma de composições App-cliente / Painel  
+10. ~~Polish copy Introduction / Changelog~~ ✅ (2026-08-17) — gerador; Autodocs 123/124; CommentItem seed  
+11. **Só quando o time pedir:** Chromatic / publish npm / product-theme React provider
 
 ---
 

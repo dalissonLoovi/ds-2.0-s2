@@ -1,0 +1,78 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200, 12px);
+  padding: var(--spacing-200, 12px);
+  border-radius: var(--border-radius-300, 12px);
+  background: var(--color-background-surface-2);
+  color: var(--text-primary);
+}
+
+.appearance-inverse {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-background-surface-brand) 48%, transparent),
+    var(--color-elevation-inverse-3)
+  );
+  color: var(--text-on-color);
+}
+
+.body {
+  display: flex;
+  gap: var(--spacing-200, 12px);
+  align-items: flex-start;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-050, 4px);
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.description {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  opacity: 0.9;
+}
+
+.icon {
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.status-success .icon {
+  color: var(--feedback-success, var(--color-actions-success));
+}
+
+.status-danger .icon {
+  color: var(--feedback-danger, var(--color-actions-danger));
+}
+
+.status-warning .icon {
+  color: var(--feedback-warning);
+}
+
+.status-info .icon,
+.status-system .icon {
+  color: var(--color-actions-primary);
+}
+
+.appearance-inverse .icon,
+.appearance-inverse .title,
+.appearance-inverse .description {
+  color: inherit;
+}

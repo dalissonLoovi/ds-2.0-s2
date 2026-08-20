@@ -1,0 +1,40 @@
+.root {
+  padding: var(--spacing-150, 10px) var(--spacing-200, 12px);
+  text-align: left;
+  vertical-align: middle;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--color-border-2);
+}
+
+.type-header {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.type-primary .label {
+  font-weight: 500;
+}
+
+.type-secondary,
+.type-tertiary {
+  color: var(--text-secondary);
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.description {
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-secondary);
+}
+
+.state-selected {
+  background: var(--interactive-selected);
+}

@@ -1,0 +1,20 @@
+.root {
+  background: transparent;
+}
+
+.type-header {
+  background: var(--color-background-surface-0);
+}
+
+.state-hover {
+  background: var(--interactive-hover);
+}
+
+.state-selected {
+  background: var(--interactive-selected);
+}
+
+.state-focus {
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: -2px;
+}

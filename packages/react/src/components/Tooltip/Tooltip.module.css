@@ -1,0 +1,86 @@
+.wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 20;
+  max-width: 240px;
+  padding: var(--spacing-100, 8px) var(--spacing-150, 10px);
+  border-radius: var(--border-radius-200, 8px);
+  background: var(--color-background-surface-inverse-3, var(--color-elevation-inverse-3, #3a3345));
+  color: var(--text-on-color);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--interactive-overlay, #000) 28%, transparent);
+  pointer-events: none;
+}
+
+.description {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+.placement-top-center,
+.placement-top-left,
+.placement-top-right {
+  bottom: calc(100% + 10px);
+}
+
+.placement-bottom-center,
+.placement-bottom-left,
+.placement-bottom-right {
+  top: calc(100% + 10px);
+}
+
+.placement-top-center,
+.placement-bottom-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.placement-top-left,
+.placement-bottom-left {
+  left: 0;
+}
+
+.placement-top-right,
+.placement-bottom-right {
+  right: 0;
+}
+
+.placement-top-center .arrow,
+.placement-top-left .arrow,
+.placement-top-right .arrow {
+  bottom: -4px;
+}
+
+.placement-bottom-center .arrow,
+.placement-bottom-left .arrow,
+.placement-bottom-right .arrow {
+  top: -4px;
+}
+
+.placement-top-center .arrow,
+.placement-bottom-center .arrow {
+  left: 50%;
+  margin-left: -5px;
+}
+
+.placement-top-left .arrow,
+.placement-bottom-left .arrow {
+  left: 12px;
+}
+
+.placement-top-right .arrow,
+.placement-bottom-right .arrow {
+  right: 12px;
+}

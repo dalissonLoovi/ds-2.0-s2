@@ -1,0 +1,41 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-100, 8px);
+  width: 280px;
+  padding: var(--spacing-200, 12px);
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
+}
+
+.appearance-inverse {
+  background: var(--color-background-surface-inverse-3, #3a3345);
+  color: var(--text-on-color);
+}
+
+.heading {
+  margin: 0;
+  padding: 0 var(--spacing-200, 12px);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.appearance-inverse .heading {
+  color: color-mix(in srgb, var(--text-on-color) 72%, transparent);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.divider {
+  height: 1px;
+  margin: var(--spacing-100, 8px) var(--spacing-200, 12px);
+  background: var(--color-border-2);
+}

@@ -1,0 +1,24 @@
+.root {
+  display: block;
+  height: var(--spacing-050, 4px);
+  flex: 1;
+  min-width: 0;
+  border-radius: var(--border-radius-full, 999px);
+  background: var(--color-background-surface-2);
+}
+
+.status-completed {
+  background: var(--interactive-selected);
+}
+
+.status-current {
+  background: var(--color-actions-primary);
+}
+
+.status-pending {
+  background: var(--color-background-surface-2);
+}
+
+.status-error {
+  background: var(--feedback-danger, var(--color-actions-danger));
+}

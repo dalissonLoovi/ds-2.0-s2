@@ -1,0 +1,49 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: flex;
+  pointer-events: none;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--color-overlay-overlay, color-mix(in srgb, var(--interactive-overlay, #474747) 72%, transparent));
+  pointer-events: none;
+}
+
+.slot {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.slot > * {
+  pointer-events: auto;
+}
+
+.type-modal.platform-web .slot,
+.type-modal.platform-mobile .slot {
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-400, 32px);
+}
+
+.type-modal.platform-mobile .slot {
+  padding: var(--spacing-250, 16px);
+}
+
+.type-bottom-sheet .slot {
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+
+.sparseInvalid {
+  outline: 2px dashed var(--feedback-warning);
+  outline-offset: -2px;
+}

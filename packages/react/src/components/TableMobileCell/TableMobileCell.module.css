@@ -1,0 +1,21 @@
+.root {
+  min-width: 0;
+}
+
+.type-primary .primary {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.type-secondary .secondary {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-secondary);
+}
+
+.icon {
+  display: inline-flex;
+  color: var(--text-secondary);
+}

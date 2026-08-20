@@ -1,0 +1,18 @@
+.root {
+  display: flex;
+  width: 100%;
+  max-width: 480px;
+  padding: 4px;
+  border: 1px solid var(--color-border-2);
+  border-radius: 999px;
+  background: var(--color-background-surface-0);
+  gap: 2px;
+}
+
+.alignment-left {
+  margin-right: auto;
+}
+
+.alignment-center {
+  margin-inline: auto;
+}

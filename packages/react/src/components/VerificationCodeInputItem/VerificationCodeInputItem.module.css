@@ -1,0 +1,37 @@
+.root {
+  box-sizing: border-box;
+  width: 48px;
+  height: 56px;
+  border: 1px solid var(--color-border-1);
+  border-radius: var(--border-radius-200, 8px);
+  background: var(--color-background-surface-0);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+  outline: none;
+}
+
+.root:focus,
+.state-focus {
+  border-color: var(--color-border-feedback-primary);
+  outline: 2px solid var(--interactive-focus);
+  outline-offset: 1px;
+}
+
+.state-hover {
+  border-color: var(--color-border-feedback-primary);
+}
+
+.state-error,
+.root[aria-invalid='true'] {
+  border-color: var(--color-border-feedback-danger);
+}
+
+.disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+  background: var(--interactive-disabled-surface);
+}

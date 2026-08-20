@@ -4,11 +4,28 @@ import { Meta } from '@storybook/blocks';
 
 # Changelog
 
-Documentation revisions for the Design System 2.0 Storybook seed.
+Revisions for Design System 2.0 Storybook — React Autodocs, Foundations, and seed metadata.
+
+**Catalog:** 123/124 components on `@ds/react` Autodocs (W0–W7). `CommentItem` remains Figma-only.
+
+The lists below are truncated for readability. Full history lives in `design-system-tokens.storybook.updated.v2.json` (`storybook.recentUpdates` and `meta.changelog`).
 
 ## Recent updates
 
+_Showing 20 of 249._
+
 - **palette-brand-azure-wave:** color/palette/brand → azure-wave #4C6BF8; brandSurface guidance updated; Storybook seed synced.
+- **poppins-typography-tokens:** Global Poppins typeface: token generator emits typography + bundled @font-face; canvas uses --font-family-base.
+- **storybook-intro-changelog-copy:** Storybook Introduction/Changelog copy polish: live Autodocs catalog status; truncated human changelog.
+- **react-w7-internals-leftovers:** W7 React polish: leftover internals to @ds/react Autodocs/Code Connect.
+- **react-w6-complexos:** W6 React polish: complex controls family to @ds/react Autodocs/Code Connect.
+- **react-w5-cards-app-cliente:** W5 React polish: cards & app-cliente family to @ds/react Autodocs/Code Connect.
+- **react-w4-dados-display:** W4 React polish: data & display family to @ds/react Autodocs/Code Connect.
+- **react-w3-nav-headers:** W3 React polish: navigation + headers family to @ds/react Autodocs/Code Connect.
+- **react-w2-feedback:** W2 React polish: feedback + overlay family to @ds/react Autodocs/Code Connect.
+- **react-w1-formularios:** W1 React polish: Link/selection controls + Input* family + Search/Autocomplete + OTP + DatePickerSelect.
+- **react-audit-apply-p1-p2:** P1/P2 React audit: metadata+exports, text tokens, W0 hardening.
+- **react-csf3-foundation:** @ds/react foundation: W0 Autodocs+Code Connect; catalog scaffolds; hybrid Storybook.
 - **painel-tokens-seed-sync:** Seed promo-1/2/accent surfaces + fix brand-muted; Painel audit queue validated.
 - **docs-audit-w5-w6:** W5 human docs OK (noop); W6 StepperPrimary nodeId → live 3653:4985.
 - **docs-audit-w4-live-nodeids:** W4: Accordion/AvatarGroup/Divider*/Pagination/PaginationItem nodeIds → live; docs instances rewired; orphan masters deferred.
@@ -17,470 +34,68 @@ Documentation revisions for the Design System 2.0 Storybook seed.
 - **animations-feedback-success:** Foundations/Animations: animation/feedback/success; renamed Feedback Positivo; AI-READY synced.
 - **illustrations-onboarding-scene-referral:** Foundations/Illustrations: onboarding-scene/refer-friends; AI-READY synced. Planned illustration catalog complete.
 - **illustrations-onboarding-scene:** Foundations/Illustrations: onboarding-scene ride-together + celebration; path rename; AI-READY synced.
-- **illustrations-vehicle-photo-dashboard:** Foundations/Illustrations: vehicle-photo/dashboard; fixed success→error rename; AI-READY synced. Vehicle-photo complete.
-- **illustrations-vehicle-photo-chassis:** Foundations/Illustrations: vehicle-photo/chassis upload success/error pair 2xl; AI-READY synced.
-- **illustrations-vehicle-photo-angles:** Foundations/Illustrations: vehicle-photo four exterior angles 2xl; AI-READY synced.
-- **illustrations-document-vehicle:** Foundations/Illustrations: document/vehicle upload success/error pair lg 260; AI-READY synced. Document sections complete.
-- **illustrations-document-driver:** Foundations/Illustrations: document/driver upload success/error pair lg 260; AI-READY synced.
-- **illustrations-person-photo-analysis:** Foundations/Illustrations: person/photo-analysis 2xl scene; AI-READY synced. Person sections complete.
-- **illustrations-person-photo-upload:** Foundations/Illustrations: person photo-upload success/error pair; AI-READY synced.
-- **illustrations-object-search:** Foundations/Illustrations: object/search empty-state magnifier; AI-READY synced.
-- **illustrations-device-onboarding:** Foundations/Illustrations: device/onboarding (features | explore) xl 312; AI-READY synced. Device sections complete.
-- **illustrations-device-app-usage:** Foundations/Illustrations: device/app-usage (app-usage | discount | insurance-claim) md 156; AI-READY synced.
-- **illustrations-device-background-location:** Foundations/Illustrations: device/background-location renamed to semantic assets + xl size; AI-READY synced.
-- **illustrations-device-location-access:** Foundations/Illustrations: device/location-access renamed to semantic assets + xl size; AI-READY synced.
-- **illustrations-vehicle-card:** Foundations/Illustrations: vehicle-card family (hatch 104×104 sm) documented; distinct from vehicle-icon.
-- **illustrations-vehicle-icon:** Foundations/Illustrations: vehicle-icon family (sedan|van|suv) documented; color exception noted.
-- **toast-docs-sync:** Toast docs synced: local DS icons copy; elevation/1; icon fill map matches canvas.
-- **tabs-segmented-audit-apply:** TabsSegmented: segmented prop wiring; indicator removed; track stroke bound; demo width 342.
-- **tabs-segmented:** TabsSegmented + TabItem segmented: App-cliente pill track switcher; docs synced.
-- **alert-audit-apply:** Alert: default prop wiring; inverse shell stack restored; statusIcon local feedback/* paths.
-- **alert-appearance:** Alert appearance=default|inverse: light surface/3 shell vs dark brand overlay; docs synced.
-- **vehiclesummarycard-brand-muted:** VehicleSummaryCard secondary uses brand-muted token (72% alpha baked in) for reliable library sync.
-- **vehiclesummarycard-audit-apply:** VehicleSummaryCard: secondary prop wiring + showStatus spacer; inactive warning documented; ChipTag unchanged.
-- **vehiclesummarycard-secondary-72:** VehicleSummaryCard secondary brand fill @ 72% opacity; docs synced.
-- **vehiclesummarycard-secondary:** VehicleSummaryCard appearance=secondary: brand surface + title/plate informational strip; docs synced.
-- **vehicleconfirmcard-polish:** VehicleConfirmCard: topo → background-surface/brand; spacing/0 binds; docs synced.
-- **vehicleconfirmcard-stroke:** VehicleConfirmCard: stroke color/elevation/disabled @ ~32% opacity; docs synced.
-- **vehicleconfirmcard-sheet:** VehicleConfirmCard: sheet topo+handle; no illustration; surface/1; docs synced.
-- **checkbox-border-1:** Checkbox: unchecked default/focus control stroke color/border/1; docs synced.
-- **sectionheader-polish:** SectionHeader: description quotes + spacing/0 gap bind on showAction=true; docs revision bump.
-- **sectionheader-emphasis-secondary:** SectionHeader: emphasis primary|secondary matrix; secondary muted typography; docs synced.
-- **referraldiscountcard-fleet:** ReferralDiscountCard: fleet mode + local spacing remap + exposed CTA; docs synced.
-- **uploadphotos-docs-sync:** UploadPhotos: Button showLabel=false on pending/rejected; rejected ChipTag warning fill override documented; AI-READY + storybook.
-- **navigationbar-audit-apply:** NavigationBar: primaryLabel caption style; FAB slot docs synced; AI-READY + storybook.
-- **sectionheader-product-theme:** SectionHeader: product-theme action background/radius for site-loovi|app-cliente; catalog 23 vars; AI-READY + storybook.
-- **referraldiscountcard-simulator-title:** ReferralDiscountCard: simulatorTitle text replaces Link; docs synced.
-- **referraldiscountcard-audit-apply:** ReferralDiscountCard: local typography/tokens; track primary; Link simulator; circle-dot marker; AI-READY + storybook.
-- **vehiclesummarycard-audit-apply:** VehicleSummaryCard seeded; ChipTag local body typography; outline+dot status docs; AI-READY + storybook.
-- **uploadphotos-chiptag-canonical:** UploadPhotos: statusTag → canonical ChipTag (3653:23220); ChipTag nodeId/emphasis docs synced.
-- **modal-container-radius:** Modal: product-theme shell radius for app-cliente (800); AI-READY + storybook.
-- **modalheader-app-cliente:** ModalHeader: app-cliente close-action matrix refined (mobile 32 vs desktop 40); AI-READY + storybook.
-- **alert-fill-stack:** Alert: shell fill stack inverse-3 + brand overlay; icon 32 docs; AI-READY + storybook.
-- **list-product-theme:** List: product-theme shell radius shared with ListActionDropdown; AI-READY + storybook.
-- **list-action-dropdown-product-theme:** ListActionDropdown: product-theme shell radius for site-loovi|app-cliente; AI-READY + storybook.
-- **radiobuttoncard-description:** RadioButtonCard: description helper text + showDescription; AI-READY + storybook.
-- **radiobuttoncard-audit-apply:** RadioButtonCard: card/row radio; hover stateLayer; token binds; docs seeded.
-- **app-header-pad-200:** AppHeader: lateral padding → spacing/200 across global|small|medium|large; docs synced.
-- **product-theme-catalog:** product-theme docs: complete mode matrix for AppHeader (8), Button (6), ModalHeader (3), Input (1), InputTextArea (1). Switch mode to preview; no per-product component forks.
-- **update:** AppHeader structure fix: trailingActions/leadingActions/keepers 40×40 matching text/sm icon buttons; medium|large SPACE_BETWEEN restored.
-- **update:** Pre-delete cleanup: Photo/ImageOrientationItem + Tokens + Illustrations icon leftovers swapped to [DS] Icons / Escritório Virtual.
-- **update:** Library Swap: S2 component icon instances now bind to [DS] Icons / Escritório Virtual (ThZ5XtMuDWUWXiSLbRyEXL). Local page 4. Icons marked deprecated for removal after publish cleanup.
-- **alert-feedback-info:** feedback/info token created; Alert+Toast info icon fills use content-layer feedback/info; docs synced.
-- **alert-overlay-token:** Alert: overlay paint → color/elevation/inverse-3 @ ~48% opacity; docs synced.
-- **alert-audit-apply:** Alert: seed docs; icon *-path; clear icon fills; AI-READY + actionLabel; dark overlay characteristic; docs synced.
-- **modal-audit-apply:** Modal audit apply: mobile-landscape docs; spacing/050 + sheetContent spacing/0 binds; elevation tokenRules; nested ModalHeader props; docs synced.
-- **bottom-sheet-check-item-audit-apply:** BottomSheetCheckItem + ModalCheckItem audit apply: font-weight/semi-bold on emphasis; Modal SLOT preferredValues; docs synced.
-- **bottom-sheet-check-item:** BottomSheetCheckItem: ModalCheckItem sibling for BottomSheet slot; preferredValues wired; docs synced.
-- **bottom-sheet-header-layout-fix:** BottomSheetHeader layout fix: text/sm icon-only 40×40; leadingSlotKeeper; SPACE_BETWEEN; matches MENU sheet reference; docs synced.
-- **modal-check-item-audit-apply:** ModalCheckItem audit apply: local body/medium typography (no remote Font/*); root Hug; outline *-path; EN demo emphasis; docs synced.
-- **modal-check-item:** ModalCheckItem: guideline check row for Modal slot (local circle-check-filled, description TEXT); docs synced.
-- **vehicle-confirm-card-audit-apply:** VehicleConfirmCard audit apply: vehicleArt/artwork naming; SLOT preferredValues vehicle-confirm-car; ABC1D23/Brand Model; docs synced.
-- **vehicle-confirm-card-visual-fix:** VehicleConfirmCard: asymmetric pad (0 right) for car bleed; shadow surface/3; SLOT end-aligned; docs synced.
-- **vehicle-confirm-card:** VehicleConfirmCard: onboarding vehicle confirmation (plate hero, brand/model, illustration SLOT); docs synced.
-- **feature-steps-item-audit-apply:** FeatureStepsItem audit apply: local preferred icons, *-path + stroke token, spacing/0|100, supportingText Hug, Label/Description master; docs synced.
-- **feature-steps-visual-fix:** FeatureSteps: spacing/0 container; Item rhythm via spacing/300 content pad + connector stretch; docs synced.
-- **feature-steps:** FeatureSteps + FeatureStepsItem: illustrative vertical steps (icon badge, soft connector); not VerticalStepper progress feedback; docs synced.
-- **app-header-title-theme-typo:** AppHeader title product-theme typography (app-cliente→body/medium/regular); UPPER via impl text-transform; docs synced.
-- **app-header-product-theme:** AppHeader product-theme tokens (inverse bg, leading-action bg/radius, avatar bg/icon-color); docs synced.
-- **app-header-audit-apply:** AppHeader audit apply: super-app anatomy, spacing binds, keepers, icon paths; docs synced.
-- **bottom-sheet-header-audit-apply:** BottomSheetHeader audit apply: type style, descriptions, icon paths, spacing/0; docs synced.
-- **bottom-sheet-header-close-edge:** BottomSheetHeader: close stays trailing when only showCloseAction; docs synced.
-- **bottom-sheet-header-leading:** BottomSheetHeader: default-only; left options/action; showLabel; docs synced.
-- **bottom-sheet-header:** BottomSheetHeader + BottomSheet header=sheet-header (no AppHeader nest); docs synced.
-- **app-header-leading-optical-center:** AppHeader small|small-centered: leadingSlotKeeper mirrors trailing — showAction off keeps optical center; docs synced.
-- **app-header-textheader-small:** AppHeader small|small-centered specific: headingContent TextHeader size=small; docs synced.
-- **background-surface-brand:** Token color/background-surface/brand (#4967EE via brand-blue); FRAME_FILL|SHAPE_FILL; docs synced.
-- **app-header-optical-center:** AppHeader: trailing slot stays when showSecondTrailingAction off; optical center fixed; docs synced.
-- **app-header-optical-center:** AppHeader: trailing slot stays when showSecondTrailingAction off; optical center fixed; docs synced.
-- **app-header-trailing-layout:** AppHeader small/small-centered: fix leading recenter when trailing hidden; docs synced.
-- **app-header-inverse-text:** AppHeader inverse: TextHeader title text/on-color; docs synced.
-- **text-header-normalize:** TextHeader: kebab size/alignment; AppHeader nests TextHeader (non-global); global greeting body/large/medium characteristic; docs synced.
-- **icon-libraries-swap:** Icon libs: Library Swap + *-outline/*-filled contract; EV Tabler / App Hugeicons aliases; foundations docs.
-- **avatar-surface-3:** Avatar: default fill color/background-surface/3 for initials|placeholder all sizes; nodeId 3669:8605; docs synced.
-- **card-stacked-tokens:** CardStacked: media FILL; radius/300 binds; Avatar initials local type; docs synced.
-- **chip-clickable-label-tokens:** ChipClickable: soft label prop wired; local body/small/medium; danger gaps spacing/100; docs synced.
-- **chip-clickable-soft:** ChipClickable intent=soft: soft surface chip matrix 16; docs synced.
-- **navigation-bar-fab-local:** NavigationBar FAB: local circular Button overrides only in this component; docs synced.
-- **navigation-bar-floating-docs:** NavigationBar: layout floating matrix 12/12; pill + soft shadow; nodeId 3653:14851; AI-READY + storybook.
-- **app-header-global-icon-stroke:** AppHeader global trailing icons: stroke text/primary|on-color (manual); docs synced.
-- **app-header-global-docs:** AppHeader global: Avatar+greeting; local Button/icons; bell visible / search hidden; inverse-3; AI-READY + storybook.
-- **section-header-docs:** SectionHeader (4235:406): local Button text/sm; Title default; S2 tokens; AI-READY + storybook 2.
-- **offer-product-card-docs:** OfferProductCard (4227:418): local Button sm; package-outline; generic defaults; S2 tokens; AI-READY + storybook 1.
-- **dashboard-card-primary-apply:** DashboardCardPrimary: clear remotes; local type; chartTrack/Accent; inverse-4; docs synced.
-- **dashboard-card-primary-docs:** DashboardCardPrimary (4181:493): dark inverse-* S2; local icons; type=web|mobile; AI-READY + storybook 2.
-- **dashboard-card-secondary-docs:** DashboardCardSecondary (4181:528): S2 surfaces; growth success|danger; type×growth 4; AI-READY + storybook.
-- **quick-access-tile-icon-brand:** QuickAccessTile icon: stroke text/brand (disabled text/placeholder); docs synced.
-- **quick-access-tile-generic:** QuickAccessTile: generic defaults Label + apps-outline; docs synced.
-- **quick-access-tile-label-left:** QuickAccessTile: label textAlign LEFT; docs synced.
-- **quick-access-tile-docs:** QuickAccessTile (4203:447): S2 kebab tokens; local icon; caption/medium/medium; text/primary; storybook state×3.
-- **card-stacked-docs:** CardStacked: S2 spacing; slot 100/200; media FILL; expose Avatar/actions; AI-READY + storybook 6.
-- **card-horizontal-slot-pad:** CardHorizontal layout=slot: pad vertical spacing/100 + horizontal spacing/200; docs synced.
-- **card-horizontal-docs:** CardHorizontal: drop slotSwap; slot + spacing/radius tokens; expose Avatar; media FILL; storybook 6.
-- **card-elevated-filled-items-docs:** CardElevatedItem + CardFilledItem: S2 parity with CardOutlinedItem; AI-READY + storybook state×5.
-- **card-outlined-pressed-sync:** CardOutlinedItem pressed: root interactive/pressed; stateLayer empty; docs synced.
-- **card-outlined-item-docs:** CardOutlinedItem: focus ring default on; spacing/100; fill/elevation sync; AI-READY + storybook state×5.
-- **carousel-shell-docs:** Carousel: showPaginationItem toggle; slot demos + ImageItem preferredValues; AI-READY + storybook sync.
-- **carousel-pagination-gap-100:** CarouselPaginationItem dots gap → spacing/100 (8px); docs synced.
-- **carousel-pagination-item-docs:** CarouselPaginationItem (ex-CarouselItem): local spacing; expose on Carousel; AI-READY + storybook sparse 14.
-- **photo-text-item-docs:** PhotoTextItem + ImageItem showPhotoTextItem: full-bleed text scrim; S2 tokens; storybook entries.
-- **slider-docs:** Slider + SliderBaseItem: AI-READY; feedback typography; spacing gaps; expose nested; Base TEXT props; storybook entries.
-- **slider-skeleton-item-docs:** SliderSkeletonItem: AI-READY; spacing + bone radius; expose SliderItem; rewired Status=Skeleton; storybook entry.
-- **slider-item-docs:** SliderItem: AI-READY; active→LeftRail; expose SliderRail; middleIndicator tokens; rewired 12 instances; storybook active×2.
-- **slider-rail-docs:** SliderRail: AI-READY; Right→Left order (intentional); expose leftRail; rewired 14 instances; storybook entry; shell HUG kept.
-- **slider-right-rail-docs:** SliderRightRail: AI-READY EN; height spacing/025 FIXED; storybook entry; LeftRail sibling refs synced.
-- **image-orientation-item-rename:** ImageOrientationBlock→ImageOrientationItem + showOrientationItem prop; FileUploader vsBlock→vsDropzone; completes Block→Item pass.
-- **block-to-item-rename:** Subcomponents: Block→Item naming; FileUploaderDropzoneItem for dropzone; Figma + storybook seed synced.
-- **slider-left-rail-recreate:** SliderLeftRail recreate 4073:2214: AI-READY + tokens; wired _Slider rail/Slider; storybook nodeId sync.
-- **slider-left-rail-docs:** SliderLeftRail: primary fill both actives (size-only); gap/height tokens; AI-READY EN + storybook active×2; page Slider trim.
-- **input-text-area-focus-stroke:** InputTextArea: focus stroke 2px via border/width/025 (manual + docs).
-- **input-text-area-docs:** InputTextArea: token binds + text styles; supporting wired on error; minHeight exposed; AI-READY + storybook sparse 42.
-- **verification-code-input-docs:** VerificationCodeInput: exposed codeCell1–5; gaps + text styles; AI-READY EN; storybook state×5.
-- **verification-code-input-block-focus-ring:** VerificationCodeInputItem: focus ring effect uses color/elevation/Focus (docs synced).
-- **verification-code-input-block-docs:** VerificationCodeInputItem: token binds + body/large/regular; AI-READY EN; storybook state×5.
-- **calendar-audit-fixes:** Calendar audit fixes: actions unexposed/renamed; monthTitle; weekday naming; CalendarDay demos; layer renames; AI-READY sync.
-- **calendar-docs:** Calendar: kebab tokens + local dividers; exposed periodNav/datePickerSelect; showSelectItems wired; AI-READY + storybook sparse 8.
-- **app-header-docs:** AppHeader: local Text header; showProfileMenu; search/bell trailing binds; Painel Home; storybook sync.
-- **system-header-docs:** SystemHeader: showPrimaryAction wired; datePickerSelect exposed; slot desc; storybook full AI-READY sync.
-- **date-picker-select-docs:** DatePickerSelect: nested day/month/year exposed; AI-READY + storybook format×state 16.
-- **date-picker-select-block-docs:** DatePickerSelectItem: value TEXT wired 21/21; chevron-up path rename; storybook entry unit×state×expanded.
-- **calendar-period-nav-docs:** CalendarPeriodNav: periodAction FRAME docs; chevron icon path rename; storybook entry 8 variants + inverse.
-- **calendar-day-docs:** CalendarDay: spacing kebab-case remap; storybook entry for kind×state 30 day cell.
-- **input-date-picker-docs:** InputDatePicker: 60 variants + appearance inverse; disabled default transparent + border/1; storybook entry added.
-- **autocomplete-appearance-docs:** Autocomplete: appearance default|inverse (54); hover border-feedback/primary; error label danger; AI-READY desc synced.
-- **input-inverse-floating-cutout-docs:** Input family inverse: floatingLabel cutout color/background-surface/inverse-3 including focus; InputPassword docs synced.
-- **input-number-appearance-docs:** InputNumber: appearance default|inverse (120); inverse focus label text/brand; disabled texts text/placeholder-inverse.
-- **input-select-appearance-docs:** InputSelect: appearance default|inverse (60); inverse focus label text/brand; disabled texts text/placeholder-inverse.
-- **input-appearance-placeholder-inverse-docs:** Input + InputPassword: appearance inverse docs; disabled texts text/placeholder-inverse; inverse focus label text/brand.
-- **input-password-appearance-docs:** InputPassword: appearance default|inverse (120); inverse on-color + transparent field; docs synced.
-- **input-password-docs:** InputPassword: visibility hidden|visible + eye toggle; Ghost remapped; storybook docs.
-- **input-number-docs:** InputNumber: Input matrix + showSelectCountry boolean; SelectCountry sm + DividerVertical in field.
-- **select-country-docs:** SelectCountry: local Flags + chevrons; no remote Border/Icon; building block for InputNumber phone.
-- **autocomplete-docs:** Autocomplete: combobox state×content×expanded (27); disabled no field fill; loading bound on empty; ListActionDropdown external.
-- **search-bar-buttons-default-docs:** SearchBar: nested Buttons stay state=default on all variants; feedback on stateLayer.
-- **search-bar-docs:** SearchBar: state×content (10); Ghost→text/secondary; Avatar initials S2 styles; AI-Ready + storybook.
-- **input-hover-border-primary-docs:** Input + InputSelect: hover border = color/border-feedback/primary; Input placeholder hover variants aligned; docs updated.
-- **input-select-focus-chevron-up-docs:** InputSelect: focus trailing = chevron-up-outline; other states = chevron-down-outline.
-- **input-select-trailing-always-docs:** InputSelect: removed trailingIcon=false variants; chevron always on; matrix is state×content×leadingIcon (30).
-- **input-select-docs:** InputSelect: select trigger with floating-label; caret removed; chevron-down trailing; ListActionDropdown documented as floating on click (not embedded).
-- **search-bar-removed-docs:** Removed SearchBar S2 from Figma and cleared SearchBar storybook/AI-Ready docs.
-- **search-view-modal-docs:** Added SearchViewModal (content×showResults, radius/800); Material remapped to S2; ListItem+DividerHorizontal; SLOT items→ListItem; AI-Ready and storybook docs.
-- **search-view-fullscreen-docs:** Added SearchViewFullscreen (content×showResults); S2 tokens; ListItem+DividerHorizontal; SLOT items→ListItem; AI-Ready and storybook docs.
-- **input-focus-caret-error-icon-docs:** Input: added focus caret (Material pattern) and always-on trailingIconError (alert-circle) for error a11y; docs updated.
-- **input-docs:** Added Input (outlined floating-label, h=56, radius/200) from Material Text field matrix + target visual identity; S2 tokens; AI-Ready and storybook docs.
-- **input-removed-docs:** Removed Input component from Figma and cleared Input storybook/AI-Ready docs to restart from scratch.
-- **pagination-select-menu-docs:** Added PaginationSelectMenu + PaginationSelectMenuItem (ListActionDropdown pattern); nested under PaginationSelectInput expanded; deprecated Carbon draft.
-- **link-docs:** Link: modernized from Carbon to S2 — kebab props/variants, local tokens/typography/icons, AI-Ready and storybook docs.
-- **tooltip-sync-docs:** Tooltip: synced AI-Ready/token rules to manual specs — border/width/012, arrow constraints horizontal, body/small/regular, elevation/spacing detail.
-- **vertical-stepper-docs:** VerticalStepper: items SLOT for VerticalStepperItem; preferredValues; default completed/current/pending composition; AI-Ready and storybook added.
-- **vertical-stepper-item-docs:** VerticalStepperItem: kept nested ListItem; exposed ListItem props; unified counter alignment; cleaned AI-Ready; storybook added.
-- **step-progress-docs:** StepProgressIndicator: HUG root, spacing/050 track, AI-Ready cleaned; Segment documented as internal; storybook added.
-- **modal-header-alignment-docs:** ModalHeader: alignment=start|center; centered title with leadingSpacer; docs updated.
-- **modal-header-docs:** ModalHeader integrated into Modal; AppHeader removed from Modal; AI-Ready and storybook docs updated.
-- **mobile-gesture-navigation-docs:** MobileGestureNavigation: INTERNAL AI-Ready; appearance default|inverse; Keyboard composition updated.
-- **overlay-docs:** Overlay: type/platform kebab; slot composes Modal/BottomSheet; spacing bound; AI-Ready and storybook docs added.
-- **keyboard-polish-docs:** Keyboard polish: remotes removed; radius/spacing bound; body text styles; local modifier icons; enter on-color; docs synced.
-- **keyboard-docs:** Keyboard: Option A placement utility; configuration/layout kebab; Schemes remapped; Poppins + local icons; AI-Ready and storybook docs added.
-- **breadcrumb-docs:** Breadcrumb: cleaned AI-Ready entities; hid currentItem slash; fixed leadingIcon 16px alignment; page renamed; storybook docs added.
-- **list-manual-sync-docs:** List docs synced after manual edits: canonical nodeId 3745:10921; default type=dropdown documented.
-- **list-docs:** List: type=plain|dropdown container with items SLOT for ListItem; showScroll; preferredValues ListItem+DividerHorizontal; AI-Ready and storybook docs added.
-- **list-item-manual-sync-docs:** ListItem docs synced after manual refinements: Switch size=md; Checkbox/Radio control-only; icon defaults; contentRow layout; component defaults documented.
-- **list-item-docs:** ListItem: replaced remote M3 building blocks/controls with local S2; Schemes/Static remapped; props camelCase; state via ListItemStateLayer; AI-Ready and storybook docs added.
-- **breadcrumb-item-docs:** BreadcrumbItem: open overflow ListActionDropdown absolute overlay with content-hug width (manual demo); showDivider=false; Contente→Content; label wired; focus stroke documented; canonical AI-Ready and storybook docs added.
-- **list-item-building-blocks-docs:** ListItem building blocks: focusRing STRETCH; ring-only focus; local pressedRipple; video FILL + playIcon; AI-Ready and storybook docs added.
-- **icon-scale-docs:** Formalized icon size scale 80/64/40/32/24/20/16 with proportional stroke from master 24px + border/width/025; Scale/unbind rules and INSTANCE_SWAP caveat documented.
-- **list-action-dropdown-docs:** ListActionDropdown: remapped Spacing/* to local spacing; wired showDivider/showScroll; added local scroll affordance; slot preferredValues; canonical AI-Ready and storybook docs added.
-- **list-action-dropdown-item-no-country-docs:** ListActionDropdownItem: removed showCountry prop and countryFlag layer; docs updated.
-- **list-action-dropdown-item-docs:** ListActionDropdownItem: fixed focusRing STRETCH; added state=focus; local icon preferredValues; canonical AI-Ready and storybook docs added.
-- **image-block-docs:** ImageItem: restored verticalResize keepers from Aspect ratio base; local color/background-surface/1; kept imageSurface; canonical AI-Ready and storybook docs added.
-- **chip-group-docs:** ChipGroup: recomposed nested chips on ChipClickable intent=outline size=sm; reset broken overrides; filter uses selected; AI-Ready and storybook docs added.
-- **comment-block-docs:** CommentItem: remapped elevation/spacing tokens; local category icons; unified leadingIcon/showIcon; intentional generic vs categoryTag composition; AI-Ready and storybook docs added.
-- **organization-header-docs:** OrganizationHeader: descriptionSlot FILL wrap; local ChipTag circle-check-outline; cleaned AI-Ready React mapping; storybook docs added.
-- **file-uploader-skeleton-bones-docs:** FileUploader: restored uploadAction/uploadDropzone/fileList names and showFiles bind; skeleton bones-only (no nested components); docs updated.
-- **file-uploader-docs:** FileUploader: Button size/icon/label aligned to matrix; skeleton cleaned; showFiles intentional on default-only; AI-Ready and storybook docs added.
-- **upload-photos-docs:** UploadPhotos: local text styles; local chevron + visible Button labels; renamed camera path; intentional surface/1|2 by status; AI-Ready and storybook docs added.
-- **file-uploader-list-docs:** FileUploaderList: recomposed on FileUploaderItem; showFileItem02–07; deprecated legacy file item set; AI-Ready and storybook docs added.
-- **file-uploader-item-docs:** FileUploaderItem: removed orphan longFileName/showLongFileName; renamed layers; aligned danger-long text tokens; AI-Ready and storybook docs added.
-- **file-uploader-block-docs:** FileUploaderDropzoneItem: unified focus padding; cleaned dropzone dash/root fills; documented stroke width tokens and dashPattern leftover; AI-Ready and storybook docs added.
-- **tooltip-docs:** Tooltip: remapped Title Case elevation/spacing tokens; fixed bottom-center arrow constraint; AI-Ready (EN) and storybook docs added.
-- **tooltip-rich-docs:** TooltipRich: remapped Title Case tokens; documented intentional secondaryAction text/on-color; unified layer order; AI-Ready and storybook docs added.
-- **toast-docs:** Toast: published showAction and dismissible; split action/dismiss Buttons; unified statusIcon fills; AI-Ready and storybook docs added.
-- **tabs-secondary-docs:** TabsSecondary: remapped Spacing/050|100|200 and Color/Content/Disabled; no appearance/inverse documented; AI-Ready and storybook docs added.
-- **tabs-primary-docs:** TabsPrimary: remapped Spacing/200 and Color/Content/Disabled; intentional-sparse inverse×web documented; AI-Ready and storybook docs added.
-- **tab-item-docs:** TabItem: selectedIcon→leadingIcon; intentional-sparse inverse documented; secondary selectedIndicator only when selected; Color/Content/Brand→text/brand; storybook docs added.
-- **table-mobile-docs:** TableMobile: relinked orphan TableMobileCell instances; remapped Title Case tokens; intentional-sparse interactive×columnCount documented; storybook docs added.
-- **table-mobile-cell-docs:** TableMobileCell: removed interactive axis; Instance→icon; Spacing/800→spacing/800; slot preferred chip clickable; storybook docs added.
-- **table-expand-chevron-docs:** TableExpandCell: added intentional-sparse type=header showChevron=false spacer (56×40, no chevron); docs updated.
-- **table-docs:** Table: renamed from Table Web; recomposed on TableRow; AI-Ready and storybook docs updated.
-- **table-web-docs:** TableWeb: modernized props (columns, showHeader, rows slot with default body lines); AI-Ready description and storybook docs added.
-- **table-skeleton-docs:** TableSkeleton: AI-Ready description cleaned (fixed density, empty false vs true, intentional leftover bodyRow07–10); storybook docs added.
-- **table-row-expand-docs:** TableRow: added showExpandCell boolean with trailing TableExpandCell on all variants; AI-Ready description and storybook docs updated.
-- **table-row-tokens-docs:** TableRow: repaired 60 detached TableCell instances; Border/Radius legacy remapped; row-level focus documented; storybook docs added.
-- **table-cell-slot-docs:** TableCell: docs and AI-Ready description aligned to type=slot; spacing token rule refreshed to used tokens.
-- **table-expand-cell-docs:** TableExpandCell: AI-Ready description cleaned (no size axis; selected=expanded with structural chevron-up); selected path layers renamed; storybook docs added.
-- **table-cell-remove-show-action:** TableCell: removed showAction variant axis (kept non-action variants); AI-Ready description and storybook docs updated.
-- **table-cell-tokens-docs:** TableCell: Spacing/800|100|500 remapped to kebab-case; AI-Ready description updated with sparse header and showAction variant axis; storybook docs added.
-- **button-text-icon-docs:** Button: showIcon (leadingIcon) on variant=text + intent=primary (enabled) documented as text/primary across states; token rules clarified.
-- **switch-tokens-docs:** Switch: Spacing/0 and Border/Radius/0 remapped; parent Loovi renamed to Switch; checked icon to color/actions/primary; showIcon documented as md-only; storybook docs added.
-- **stepper-primary-tokens-docs:** StepperPrimary: inactive trails unified to color/border/2; AI-Ready description cleaned with React mapping, token rule and intentional sparse trailState matrix; storybook docs added.
-- **radio-button-tokens-docs:** RadioButton: Border/Radius/0 remapped to border/radius/0; AI-Ready description cleaned with React mapping and token rule; storybook docs added.
-- **progress-bar-docs:** ProgressBar: parent frame name trimmed; AI-Ready description cleaned; value-as-label vs layout-controlled fill documented; storybook docs added.
-- **pagination-select-input-tokens-docs:** PaginationSelectInput: expanded border remapped from color/border-feedback/primary to interactive/focus; default|hover-only states documented; storybook docs added.
-- **pagination-tokens-docs:** Pagination: Spacing/500 and Color/Content/Ghost remapped; size=lg prev/next disabled fixed by position; actions and pageItems exposed; parent page name trimmed; storybook docs added.
-- **pagination-item-docs:** PaginationItem: removed pressed from documented states; intentional sparse selected×focus/disabled matrix documented; storybook docs added.
-- **navigation-rail-expanded-tokens-docs:** NavigationRailExpanded: legacy Spacing/Border/Content tokens remapped; showMenu wired on all variants; nested trees exposed; Section 1/2 renamed to section01/02; top-only trees and itemCount=6 documented; storybook docs added.
-- **navigation-rail-expanded-tree-tokens-docs:** NavigationRailExpandedTree: legacy Spacing/Color/Border tokens remapped; layers renamed (marker/navTree/treeRail); nested navItem01 exposed; second-level sparse selectedItem documented; storybook docs added.
-- **navigation-rail-expanded-item-tokens-docs:** NavigationRailExpandedItem: hierarchy=nav-tree documented as intentional sparse axis; nested Badge exposed; storybook docs added with intentional color model.
-- **navigation-rail-compact-tokens-docs:** NavigationRailCompact: Spacing/600, Spacing/1000 and Color/Content/Default Inverse remapped; parent frame typo fixed; storybook docs added.
-- **navigation-rail-compact-item-tokens-docs:** NavigationRailCompactItem: Color/Interactive/* and Color/Background Surface/2 remapped; Label text renamed to label; nested Badge exposed; storybook docs added with intentional color model.
-- **navigation-bar-tokens-docs:** NavigationBar: Spacing/700 remapped on FAB; itemCount=5 documented as 4 items + primaryIconButtonSlot; plus-outline Vector renamed; storybook docs added.
-- **navigation-bar-item-tokens-docs:** NavigationBarItem: Spacing/800 and Color/Interactive/Focus remapped to kebab-case; nested Badge exposed for count/overflowLabel; storybook docs added with intentional color model.
-- **navigation-drawer-docs:** NavigationDrawer storybook docs added; documents composition with NavigationDrawerItem/DividerHorizontal and itemCount=6 secondary section.
-- **navigation-drawer-item-token-icons:** NavigationDrawerItem tokens kebab-case; remote info-circle-outline replaced with local DS icon; storybook docs added.
-- **modal-token-fix:** Modal tokens kebab-case; storybook docs added. AppHeader internal layout left as designed (header override reverted).
-- **appheader-icons-tokens:** AppHeader profileMenu Color/Border/2 remapped; Profile menu spacing/radius kebab-case; remote icons replaced with local DS outline icons.
-- **divider-vertical-token-fix:** DividerVertical bindings migrated to color/border/2; storybook metadata added.
-- **divider-horizontal-token-fix:** DividerHorizontal bindings migrated to color/border/2 and text/on-color-disabled; Text prop renamed to label.
-- **chiptag-token-remap:** ChipTag bindings migrated to kebab-case semantic tokens; danger uses bg-primary/danger; Ghost mapped to text/secondary.
-- **feedback-usage-table:** Documented feedback token layers: content, bg-primary, bg-secondary, interactive/*-surface and border-feedback with unified vocabulary and decision guide.
-- **ai-ready-descriptions:** 12 component descriptions aligned to current variables, semantic tokens, props and kebab-case variants.
-- **banner-danger:** Banner supports status=danger with alert-circle-outline and color/background-feedback-primary/danger.
-- **icon-vector-layers:** Icon source layers should use semantic path names such as check-outline-path instead of Vector.
 
-## Meta changelog
+## History
 
-- **2026-08-20** [tokens-palette-brand-azure-wave]: Tokens: color/palette/brand remapped sapphire #516CE7 → azure-wave #4C6BF8 (aligned with color/actions/primary). text/brand stays sapphire (WCAG); background-surface/brand stays brand-blue. Docs + brandSurface note synced.
-- **2026-08-17** [painel-tokens-seed-sync]: Painel gap 01: seed tokens.color.background-surface promo-1|promo-2|promo-accent (Figma aliases lavender-2/azure-2/lavender-1); repair brand-muted $type/$value. Audit queue validated (02–08,10 already in Figma+seed).
-- **2026-08-17** [docs-audit-w2-w3-nodeids]: W2/W3 Docs humanas audit apply: ProgressBar nodeId→3653:5393; NavigationRail Compact/Expanded/Tree live nodeIds; Banner vs Alert copy; OrganizationHeader Docs humanas created (4887:1141).
-- **2026-08-17** [docs-audit-w5-w6]: W5 Docs humanas: 11/11 OK (noop). W6: StepperPrimary nodeId 3437:396 (missing) → live 3653:4985; remaining W6 frames OK.
-- **2026-08-17** [docs-audit-w4-live-nodeids]: W4 Docs humanas audit: Accordion/AvatarGroup/DividerHorizontal/DividerVertical/Pagination/PaginationItem nodeIds → live Figma sets; DividerHorizontal + PaginationItem docs instances rewired. Orphan masters remain (no delete).
-- **2026-08-17** [button-intent-secondary-docs-audit]: Button: document intent=secondary (intentional sparse, mainly size=md); align seed with Figma. W0 Docs humanas audit apply (Button/Input/Chip*/Alert/Toast/Modal frames).
-- **2026-08-14** [storybook-animations-feedback-success]: Animations: new Foundations/Animations seed; animation/feedback/success (ex Feedback Positivo - V6); section Feedbacks → animation / feedback; AI-READY EN; confetti/badge/circle/check-path layers; docs synced.
-- **2026-08-14** [storybook-illustrations-onboarding-scene-referral]: Illustrations: onboarding-scene/referral (refer-friends) xl 312; AI-READY EN; artwork root; docs synced. Planned illustration backlog cleared (Cred-card leftover noted).
-- **2026-08-14** [storybook-illustrations-onboarding-scene]: Illustrations: onboarding-scene (ride-together | celebration) xl 312; rename path onboarding/ → onboarding-scene/; AI-READY EN; artwork roots; docs synced.
-- **2026-08-14** [storybook-illustrations-vehicle-photo-dashboard]: Illustrations: vehicle-photo/dashboard — rename mislabeled dashboard-upload-success → dashboard-upload-error; AI-READY EN; artwork/tips/error-badge; docs synced. Vehicle-photo backlog cleared.
-- **2026-08-14** [storybook-illustrations-vehicle-photo-chassis]: Illustrations: vehicle-photo/chassis (chassis-upload | chassis-upload-error) 2xl 520; AI-READY EN; artwork + error-badge; docs synced.
-- **2026-08-14** [storybook-illustrations-vehicle-photo-angles]: Illustrations: vehicle-photo angles (front/rear × left/right) 2xl 520; AI-READY EN; artwork + tips layers; docs synced.
-- **2026-08-14** [storybook-illustrations-document-vehicle]: Illustrations: document/vehicle (vehicle-upload | vehicle-upload-error) lg 260; AI-READY EN; artwork + error-badge; docs synced. Document backlog cleared.
-- **2026-08-14** [storybook-illustrations-document-driver]: Illustrations: document/driver (driver-upload | driver-upload-error) lg 260; AI-READY EN; artwork roots; docs synced.
-- **2026-08-14** [storybook-illustrations-person-photo-analysis]: Illustrations: person/photo-analysis 2xl 520; AI-READY EN; artwork root; docs synced. Person backlog cleared.
-- **2026-08-14** [storybook-illustrations-person-photo-upload]: Illustrations: person (photo-upload | photo-upload-error) md 156; AI-READY EN; artwork + error-badge; docs synced.
-- **2026-08-14** [storybook-illustrations-object-search]: Illustrations: object/search (magnifier + ? badge) sm ~107×104; AI-READY EN; artwork root; docs synced.
-- **2026-08-14** [storybook-illustrations-device-onboarding]: Illustrations: device/onboarding (onboarding-features | onboarding-explore) xl 312; AI-READY EN; artwork roots; docs synced. Device family backlog cleared.
-- **2026-08-14** [storybook-illustrations-device-app-usage]: Illustrations: device/app-usage family (app-usage | discount | insurance-claim) md 156; AI-READY EN; corrected app-usage copy (feature cards not settings); artwork roots; docs synced.
-- **2026-08-14** [storybook-illustrations-device-background-location]: Illustrations: device/background-location — rename -01/-02 → background-location | background-location-shadow; artwork + ground-shadow; AI-READY EN; size xl 312; docs synced.
-- **2026-08-10** [storybook-illustrations-device-location-access]: Illustrations: device/location-access — rename -01/-02 → location-access | location-access-shadow; artwork + ground-shadow layers; AI-READY EN; size xl 312; docs synced.
-- **2026-08-10** [storybook-illustrations-vehicle-card]: Illustrations docs: catalog vehicle-card (hatch, 104×104 sm) with AI-READY EN; distinct from vehicle-icon; Figma description synced.
-- **2026-08-10** [storybook-illustrations-vehicle-icon]: Illustrations docs: catalog vehicle-icon (sedan|van|suv) with AI-READY EN, color-policy exception, Foundations/Illustrations page; Figma descriptions synced.
-- **2026-08-10** [storybook-toast-docs-sync]: Toast docs synced to canvas: AI-READY local DS icons wording; shell inverse-3 + text/on-color; elevation/1; statusMap icon fills (info still background-feedback-primary/info, prefer feedback/info).
-- **2026-08-09** [storybook-tabs-segmented-audit-apply]: TabsSegmented audit apply: wire label/showAttention on TabItem segmented; remove dead selectedIndicator; bind track stroke*Weight to border/width/012; demo itemCount=2 width 342; docs synced.
-- **2026-08-09** [storybook-tabs-segmented]: TabsSegmented + TabItem variant=segmented (pill track for App-cliente switchers); local kebab tokens; AI-READY + storybook synced. Not product-theme — new anatomy vs TabsSecondary underline.
-- **2026-08-07** [storybook-alert-audit-apply]: Alert audit apply: wire title/description/showAction on appearance=default; restore inverse shell brand@48% over inverse-3; statusIcon → local feedback/* + \{icon\}-path; docs synced.
-- **2026-08-07** [storybook-alert-appearance]: Alert: appearance=default|inverse × status; default = surface/3 + text/primary|secondary + outline border/1; inverse keeps dark brand overlay shell; AI-READY + storybook synced.
-- **2026-08-07** [storybook-vehiclesummarycard-brand-muted]: VehicleSummaryCard secondary: replace paint opacity 72% with color/background-surface/brand-muted (primitive-colors/brand-blue-72) so library instances keep alpha; docs synced.
-- **2026-08-07** [storybook-vehiclesummarycard-audit-apply]: VehicleSummaryCard audit apply: wire plate+illustration on secondary; spacer↔showStatus; spacing/0 binds; nameRow rename; document inactive ChipTag dot as warning (ChipTag untouched); docs synced.
-- **2026-08-07** [storybook-vehiclesummarycard-secondary-72]: VehicleSummaryCard secondary: background-surface/brand paint opacity 72% for softer on-screen emphasis; docs synced.
-- **2026-08-07** [storybook-vehiclesummarycard-secondary]: VehicleSummaryCard: appearance=default|secondary; secondary informational brand strip (surface/brand, title+plate, text/on-color, no ChipTag); no new tokens; AI-READY + storybook.
-- **2026-08-04** [storybook-vehicleconfirmcard-polish]: VehicleConfirmCard: topo fill text/brand → color/background-surface/brand; bind spacing/0 on unbound pads; AI-READY quotes cleaned; docs synced.
-- **2026-08-04** [storybook-vehicleconfirmcard-stroke]: VehicleConfirmCard: stroke → color/elevation/disabled @ ~32% opacity (weight 2 inside); docs synced to canvas.
-- **2026-08-04** [storybook-vehicleconfirmcard-sheet]: VehicleConfirmCard: sheet-style layout — topo (text/brand + handle) + plate/brandModel; removed illustration SLOT; surface/1 + border/2; AI-READY + storybook.
-- **2026-08-04** [storybook-checkbox-border-1]: Checkbox: unchecked default|focus checkboxControl stroke → color/border/1 (was border/2 in docs); nodeId 3667:3812; AI-READY + storybook synced.
-- **2026-08-03** [storybook-sectionheader-polish]: SectionHeader: Figma polish — AI-READY default Title without quote entities; showAction=true itemSpacing bound to spacing/0.
-- **2026-08-03** [storybook-sectionheader-emphasis-secondary]: SectionHeader: emphasis=primary|secondary × showAction; secondary uses body/medium/regular + text/secondary (overlays/less prominent sections); secondary action icon text/secondary; fixed broken showAction3/4 names; AI-READY + storybook 4.
-- **2026-07-31** [storybook-referraldiscountcard-fleet]: ReferralDiscountCard: mode=fleet (fleetTitle/fleetDescription + CTA, no meter); remap remote Spacing/* → local spacing/*; CTA exposed; trackGroup + tick-* layers; AI-READY + storybook.
-- **2026-07-30** [storybook-uploadphotos-docs-sync]: UploadPhotos: docs synced to canvas — pending/rejected Button showLabel=false (chevron-only + a11y label prop); rejected ChipTag danger with warning fill override; AI-READY + statusMap.
-- **2026-07-30** [storybook-navigationbar-audit-apply]: NavigationBar: primaryLabel → caption/medium/medium; slot docs synced (gap 050, padBottom 150, height 800); primaryLabel in props; AI-READY cleaned.
-- **2026-07-30** [storybook-sectionheader-product-theme]: SectionHeader product-theme: action binds component/section-header/action/background + radius (EV→surface/0 + button radius/sm; site-loovi|app-cliente→surface/2 + full); catalog 23 vars; docs synced.
-- **2026-07-30** [storybook-referraldiscountcard-simulator-title]: ReferralDiscountCard: simulator meta uses simulatorTitle text (body/small/semi-bold + text/primary) — not Link.
-- **2026-07-30** [storybook-referraldiscountcard-audit-apply]: ReferralDiscountCard (4594:995): local text styles; track fills→actions/primary; radius/400 both modes; local spacing; circle-dot current marker; Link sm for simulator; layers renamed; AI-READY + storybook seed.
-- **2026-07-30** [storybook-vehiclesummarycard-audit-apply]: VehicleSummaryCard (4581:1451) seeded; ChipTag labels → local body/small|medium (was remote $fs-*); description plate→heading/h3/regular; illustration preferredValues sedan|van|suv; outline+dot status kept.
-- **2026-07-29** [storybook-uploadphotos-chiptag-canonical]: UploadPhotos: statusTag instances swapped from orphan ChipTag 3291:690 → canonical ChipTag 3653:23220 (sm/hug/strong; system|success|danger); ChipTag docs nodeId + emphasis axis synced.
-- **2026-07-29** [storybook-modal-container-radius]: Modal product-theme: component/modal/container/radius (EV|site-loovi→600; app-cliente→800); catalog 21 vars; shell radius docs synced.
-- **2026-07-29** [storybook-modalheader-app-cliente]: ModalHeader app-cliente docs: close chip surface/2 + radius/full + size-mobile 32 on layout=mobile; desktop close stays spacing/500 (40); leadingSpacer/centerOptical scope clarified.
-- **2026-07-29** [storybook-alert-fill-stack]: Alert: docs synced to inverted shell fills (elevation/inverse-3 base + brand @~48% overlay); statusIcon 32; noted icon fill/path parity leftovers on info|danger|warning.
-- **2026-07-29** [storybook-list-product-theme]: List product-theme: shell corners bind component/list-action/container/radius (shared with ListActionDropdown; EV→200; site-loovi|app-cliente→500) on plain|dropdown; elevation/5 on dropdown; docs synced.
-- **2026-07-29** [storybook-list-action-dropdown-product-theme]: ListActionDropdown product-theme: component/list-action/container/radius (EV→200; site-loovi|app-cliente→500); catalog now 20 vars; docs synced.
-- **2026-07-28** [storybook-radiobuttoncard-description]: RadioButtonCard: added description + showDescription (parity with RadioButton helper text); labelContent anatomy; docs synced.
-- **2026-07-28** [storybook-radiobuttoncard-audit-apply]: RadioButtonCard (4498:68) audit apply: hover stateLayer interactive/hover; radio radius/full; stroke side weights border/width/012|025|050; disabled+checked stroke 025; AI-READY + storybook seed.
-- **2026-07-28** [storybook-app-header-horizontal-pad]: AppHeader horizontal pad unified to spacing/200 on all layouts (was global spacing/300, small spacing/050); vertical pads unchanged; docs synced.
-- **2026-07-28** [storybook-product-theme-catalog]: Documented full product-theme collection (19 vars, modes escritorio-virtual|site-loovi|app-cliente) for AppHeader, Button, ModalHeader, Input, InputTextArea — Foundations Global rules + component productTheme blocks.
-- **2026-07-28** [update]: AppHeader: aligned leading/trailing slots + keepers to Button size=sm (40) after md→sm; cleared trailingActions minWidth=48; restored medium/large headerControls SPACE_BETWEEN; inverse icons remain text/on-color.
-- **2026-07-28** [update]: Cleared leftover local icon instances on Tokens, Illustrations, and Photo (ImageOrientationItem crop icons) — all now EV library. Docs icon wording tightened.
-- **2026-07-28** [update]: Icon instances across S2 components swapped from local page 4. Icons to published library [DS] Icons / Escritório Virtual (Library Swap). Docs: prefer EV remote icons over local masters.
-- **2026-07-28** [storybook-alert-feedback-info]: Created feedback/info (alias aqua-gleam); Alert+Toast status=info icon fills → feedback/info (content layer). actionLabel stays nested Button.label (Figma API cannot bind parent TEXT to instance sublayer). Docs synced.
-- **2026-07-28** [storybook-alert-overlay-token]: Alert: overlay paint bound to color/elevation/inverse-3 @ ~48% opacity (was unbound black); AI-READY + docs synced.
-- **2026-07-28** [storybook-alert-audit-apply]: Alert (4406:91): seed docs; icon paths *-path; clear icon root fills; AI-READY icon-fill accuracy + actionLabel; dark overlay documented as characteristic; docs synced.
-- **2026-07-28** [storybook-modal-audit-apply]: Modal audit apply: document platform mobile-landscape; bind itemSpacing spacing/050 (mobile|landscape) + sheetContent spacing/0; AI-READY + ModalCheckItem preferredValues; elevation tokenRules; header props via nested ModalHeader; docs synced.
-- **2026-07-28** [storybook-bottom-sheet-check-item-audit-apply]: BottomSheetCheckItem + ModalCheckItem audit apply: emphasis span binds font-weight/semi-bold; Modal AI-READY mentions sibling; Modal SLOT preferredValues→ModalCheckItem; docs synced.
-- **2026-07-28** [storybook-bottom-sheet-check-item]: BottomSheetCheckItem (4389:80): ModalCheckItem sibling for BottomSheet slot/sheetContent; preferredValues on BottomSheet slot; docs synced.
-- **2026-07-28** [storybook-bottom-sheet-header-layout-fix]: BottomSheetHeader layout fix: Button text/sm icon-only 40×40 (was md 208); leadingSlotKeeper + absolute actions; SPACE_BETWEEN; height 40; matches MENU sheet reference; docs synced.
-- **2026-07-28** [storybook-modal-check-item-audit-apply]: ModalCheckItem audit apply: replace remote Font/* with local body/medium typography; root height Hug; circle-check-outline-path + border/width/025; generic EN demo with text/brand emphasis; icon stays FIXED 20; docs synced.
-- **2026-07-28** [storybook-modal-check-item]: ModalCheckItem: Modal body checklist/guideline row (leadingIcon circle-check-filled + description); not Checkbox/ListItem; docs synced.
-- **2026-07-28** [storybook-vehicle-confirm-card-audit-apply]: VehicleConfirmCard audit apply: rename vehicleArt/artwork; illustration SLOT description + preferredValues vehicle-confirm-car; master demo ABC1D23/Brand Model; SLOT height Hug; product vectors documented as unbound exception; docs synced.
-- **2026-07-28** [storybook-vehicle-confirm-card-visual-fix]: VehicleConfirmCard visual polish sync: padding spacing/250 L/T/B + spacing/0 right (illustration bleed); SLOT end-aligned; default shadow color/background-surface/3; docs + AI-Ready description updated.
-- **2026-07-28** [storybook-vehicle-confirm-card]: VehicleConfirmCard: onboarding plate-hero confirmation card (plate + brandModel + illustration SLOT); distinct from VehicleSummaryCard/OfferProductCard/CardHorizontal; docs synced.
-- **2026-07-28** [storybook-feature-steps-item-audit-apply]: FeatureStepsItem audit apply: preferredValues local DS outlines confirmed; icon paths *-path + border/width/025 stroke; spacing/0 on columns; supportingText HUG/HEIGHT; connector width spacing/100; master demo Label/Description; docs synced.
-- **2026-07-28** [storybook-feature-steps-visual-fix]: FeatureSteps visual polish sync: container spacing/0 (rhythm via Item content padding-bottom spacing/300 + FILL connector); Item ~86h demo; docs + AI-Ready descriptions updated.
-- **2026-07-28** [storybook-feature-steps]: FeatureSteps + FeatureStepsItem: illustrative sibling of VerticalStepper (thematic icon badge + soft connector + headline/supportingText; no progress status). Default onboarding copy from app prototype; docs synced.
-- **2026-07-28** [storybook-app-header-title-theme-typo]: AppHeader product-theme title typography: component/app-header/title/font-size|line-height|font-weight — EV|site-loovi→heading/h3+medium; app-cliente→body/medium+regular on small|small-centered × default × specific; UPPER via text-transform in app-cliente impl (Figma textCase ORIGINAL); docs synced.
-- **2026-07-28** [storybook-app-header-product-theme]: AppHeader product-theme tokens (5): inverse/background, leading-action/background|radius, avatar/background|icon-color — modes escritorio-virtual|site-loovi|app-cliente; docs synced.
-- **2026-07-27** [storybook-app-header-audit-apply]: AppHeader audit apply: super-app anatomy fixed (leading|heading|trailing + center TextHeader); spacing binds; legacy action removed; medium/large keepers; icon *-path; profileMenu=super-app only; AI-READY desc; docs synced.
-- **2026-07-27** [storybook-bottom-sheet-header-audit-apply]: BottomSheetHeader audit apply: body/medium/medium + text/primary; AI-READY descriptions; icon *-path renames; spacing/0 gap; Button instances refreshed; BottomSheet nest swapped; docs synced.
-- **2026-07-27** [storybook-bottom-sheet-header-close-edge]: BottomSheetHeader: headingContent FILL slot — showLabel off / only close keeps X on the trailing edge; docs synced.
-- **2026-07-27** [storybook-bottom-sheet-header-leading]: BottomSheetHeader: no inverse; leading optionsAction + leadingAction; showLabel toggles title; docs synced.
-- **2026-07-27** [storybook-bottom-sheet-header]: BottomSheetHeader (4307:3760): dedicated sheet header (appearance default|inverse, title, showCloseAction); BottomSheet header=app-header→sheet-header nests BottomSheetHeader (not AppHeader); docs synced.
-- **2026-07-27** [storybook-app-header-leading-optical-center]: AppHeader small|small-centered specific default|inverse: leadingActions FIXED 48 + leadingSlotKeeper — showAction off keeps optical center with trailing visible; docs synced.
-- **2026-07-27** [storybook-app-header-textheader-small]: AppHeader specific small|small-centered default: headingContent = local TextHeader size=small (left|center), showDescription=false; docs synced.
-- **2026-07-27** [storybook-background-surface-brand]: Tokens: primitive-colors/brand-blue (#4967EE) + color/background-surface/brand (FRAME_FILL|SHAPE_FILL alias); docs synced.
-- **2026-07-27** [storybook-app-header-optical-center]: AppHeader small|small-centered: unbind trailingActions.visible from showSecondTrailingAction; fixed 48 slot + keeper — optical center holds when trailing off; docs synced.
-- **2026-07-27** [storybook-app-header-optical-center]: AppHeader small|small-centered: unbind trailingActions.visible from showSecondTrailingAction; fixed 48 slot + keeper — optical center holds when trailing off; docs synced.
-- **2026-07-27** [storybook-app-header-trailing-layout]: AppHeader small|small-centered specific: headingContent auto-layout (not absolute); trailingActions minWidth 48 — hiding trailing no longer recenters leadingAction; AI-READY + docs.
-- **2026-07-27** [storybook-app-header-inverse-text]: AppHeader appearance=inverse: TextHeader title → text/on-color (overrides); docs synced.
-- **2026-07-27** [storybook-text-header-normalize]: TextHeader (3667:4129): rename from Text header; kebab size/alignment; title/description/showDescription; AppHeader non-global → TextHeader; global greeting body/large/medium kept as characteristic; orphan set removed; AI-READY + storybook.
-- **2026-07-27** [storybook-icon-libraries-swap]: Documented multi-product icon architecture: Library Swap + DS name contract (*-outline/*-filled); EV Tabler vs App Cliente Hugeicons + Semantic Aliases; alias publish rules; foundations/GlobalRules + storybook MD.
-- **2026-07-27** [storybook-avatar-surface-3]: Avatar (3669:8605): default fill color/background-surface/3 for initials|placeholder across all sizes; nodeId synced; AI-READY + storybook.
-- **2026-07-27** [storybook-card-stacked-tokens]: CardStacked (4170:4433): mediaImage scaleMode FILL; corner radius binds border/radius/300 (+ slotContent 200); unify slot content clip; Avatar initials local type styles (clear remotes); dots-vertical-outline path rename; AI-READY + storybook.
-- **2026-07-27** [storybook-chip-clickable-label-tokens]: ChipClickable (3653:23577): soft label TEXT prop re-wired (16); label typography local body/small/medium (cleared remotes on 116); danger itemSpacing→spacing/100; AI-READY + storybook.
-- **2026-07-24** [storybook-chip-clickable-soft]: ChipClickable (3653:23577): new intent=soft (16 variants) — surface/2 + border/2; Painel Adicionar veículo; AI-READY + storybook.
-- **2026-07-24** [storybook-navigation-bar-fab-local]: NavigationBar itemCount=5: document NavigationBar-local Button FAB overrides (circular lg 56, radius/full, plus-outline, text/on-color) — not Button master; AI-READY + docs.
-- **2026-07-24** [storybook-navigation-bar-floating]: NavigationBar (3653:14851): full matrix layout flush|floating × itemCount 3|4|5 × appearance; floating pill radius/full + soft shadow; spacing/100 slot gap; AI-READY + storybook 12.
-- **2026-07-24** [storybook-app-header-global-icon-stroke]: AppHeader global: manual sync — trailing Button icon stroke text/primary (default) / text/on-color (inverse); AI-READY + docs.
-- **2026-07-24** [storybook-app-header-global]: AppHeader global (3143:8822): default+inverse small-centered; local Button text/md; local icons; greeting prop + body/large/medium; Avatar exposed; bell-only trailing; inverse-3 AI-READY + docs.
-- **2026-07-24** [storybook-section-header]: SectionHeader (4235:406): clear remotes; body/large/semi-bold + text/primary; local Button text/sm icon-only; generic Title; AI-READY + storybook showAction×2.
-- **2026-07-24** [storybook-offer-product-card]: OfferProductCard (4227:418): clear remotes; local Button solid/sm; package-outline + generic copy; surface/2|3; radius/500; AI-READY + storybook state×1.
-- **2026-07-24** [storybook-dashboard-card-primary-apply]: DashboardCardPrimary (4181:493): clear remotes; local typography; icon strokes on-color*; rename chartTrack/Accent + metricItem1|2; inverse-4 AI-READY + docs sync.
-- **2026-07-24** [storybook-dashboard-card-primary]: DashboardCardPrimary (4181:493): rename from Dash-card-primary; type=web|mobile kebab; camelCase props; local inverse-* dark surface + text/on-color*; local icons; AI-READY + storybook type×2.
-- **2026-07-24** [storybook-dashboard-card-secondary]: DashboardCardSecondary (4181:528): S2 spacing/surface; icon chip text/brand+on-color; info placeholder; rename percentual/percentageRow; AI-READY + storybook type×growth 4.
-- **2026-07-24** [storybook-quick-access-tile-icon-brand]: QuickAccessTile icon: manual sync — outline stroke text/brand (disabled text/placeholder); AI-READY + docs.
-- **2026-07-24** [storybook-quick-access-tile-generic]: QuickAccessTile: generic defaults — label "Label" + icon apps-outline; preferredValues mix; AI-READY + docs.
-- **2026-07-24** [storybook-quick-access-tile-label-left]: QuickAccessTile: manual sync — label textAlign LEFT; AI-READY + docs.
-- **2026-07-24** [storybook-quick-access-tile]: QuickAccessTile (4203:447): remap remotes→S2 kebab; local credit-card-outline + preferredValues; caption/medium/medium; text/primary + actions/primary; AI-READY + storybook state×3.
-- **2026-07-24** [storybook-card-stacked]: CardStacked (4170:4433): S2 spacing binds; slot 100vert/200horiz + content wrapper; media FILL; layer renames; expose Avatar/actions; demos + ImageItem preferredValues; AI-READY + storybook style×layout 6.
-- **2026-07-24** [storybook-card-horizontal-slot-pad]: CardHorizontal layout=slot: manual pad sync — vertical spacing/100 + horizontal spacing/200 (filled aligned); AI-READY + docs.
-- **2026-07-24** [storybook-card-horizontal]: CardHorizontal (4170:4506): removed slotSwap; slot kept + demos; spacing/200|050 + radius/300; expose Avatar; media FILL; AI-READY + storybook style×layout 6.
-- **2026-07-23** [storybook-card-elevated-filled-items]: CardElevatedItem (4170:4564) + CardFilledItem (4170:4576): rename from Material Card states; kebab state; showFocusIndicator default true; S2 surfaces/interactive/elevation; spacing/100; pressed root fill; AI-READY + storybook state×5.
-- **2026-07-23** [storybook-card-outlined-pressed]: CardOutlinedItem pressed: manual sync — root interactive/pressed over surface/0; stateLayer empty; AI-READY + docs.
-- **2026-07-23** [storybook-card-outlined-item]: CardOutlinedItem (4170:4552): showFocusIndicator default true; border/2 on focus; stateLayer spacing/100; dedupe hover/pressed fills; elevation/6|/5 AI-READY; storybook state×5.
-- **2026-07-23** [storybook-carousel]: Carousel (4152:849): showPaginationItem BOOLEAN; slot demos×4 + ImageItem preferredValues; stretchChildOnInsert; AI-READY EN + storybook sync (no chevrons intentional).
-- **2026-07-23** [storybook-carousel-pagination-gap]: CarouselPaginationItem: dots gap spacing/050→spacing/100 (8px); AI-READY + docs sync.
-- **2026-07-23** [storybook-carousel-pagination-item]: CarouselItem→CarouselPaginationItem (4152:495): local spacing/*; dot size spacing/100; rename dots; expose on Carousel; AI-READY EN; Carousel shell docs; storybook sparse 14.
-- **2026-07-23** [storybook-photo-text-item]: PhotoTextItem (4149:479): AI-READY INTERNAL; S2 typography/tokens; showSupportingText; nested in ImageItem 20/20 via showPhotoTextItem BOOLEAN (STRETCH fill); ImageItem AI-READY sync; storybook entries.
-- **2026-07-23** [storybook-slider]: Slider (3950:7327) + SliderBaseItem (3950:7416): AI-READY EN; feedback body/small/regular; spacing/100 gaps; expose Base/Skeleton (+ Base Item/Input); Base TEXT label/min/max + Input content=value; storybook entries; read-only→Input default documented.
-- **2026-07-23** [storybook-slider-skeleton-item]: SliderSkeletonItem (4092:4005): AI-READY EN; spacing/100|200 + bone radius/100; expose SliderItem; rewired Status=Skeleton off legacy; storybook entry.
-- **2026-07-22** [storybook-slider-item]: SliderItem (4073:2232): AI-READY EN; active wired to nested SliderLeftRail; expose SliderRail; middleIndicator spacing/025; rewired 12 legacy _Slider item instances; storybook entry active×2.
-- **2026-07-22** [storybook-slider-rail]: SliderRail (4073:2228): AI-READY EN; child order Right→Left (intentional); expose SliderLeftRail; rewired 14 instances off legacy _Slider rail; shell HUG kept; storybook entry.
-- **2026-07-22** [storybook-slider-right-rail]: SliderRightRail (4073:2224): AI-READY EN; spacing/250 gap + spacing/025 height FIXED parity with LeftRail; storybook entry; LeftRail composition refs synced to SliderRightRail.
-- **2026-07-22** [storybook-image-orientation-item-rename]: ImageOrientationBlock→ImageOrientationItem (3671:2318) + prop showOrientationBlock→showOrientationItem; FileUploader rule keys vsBlock→vsDropzone and Button/Block prose → FileUploaderDropzoneItem. Completes Block→Item naming pass. Figma + docs synced.
-- **2026-07-22** [storybook-block-to-item-rename]: Renamed subcomponent suffix Block→Item: VerificationCodeInputItem, DatePickerSelectItem, CommentItem, ImageItem; FileUploaderBlock→FileUploaderDropzoneItem (collision with FileUploaderItem). Figma + docs synced.
-- **2026-07-22** [storybook-slider-left-rail-recreate]: SliderLeftRail recreate 4073:2214: AI-READY EN; spacing/250|025 binds; wired into _Slider rail + Slider overrides; storybook nodeId sync.
-- **2026-07-22** [storybook-slider-left-rail]: SliderLeftRail: both active fills color/actions/primary (size-only diff); AI-READY EN; spacing/250 gap + spacing/025 height binds; page Slider trim; storybook entry active×2.
-- **2026-07-22** [storybook-input-text-area-focus-stroke]: InputTextArea: state=focus stroke 2px (border/width/025) aligned with manual edit; docs synced for focus+error.
-- **2026-07-22** [storybook-input-text-area]: InputTextArea: AI-READY EN; geometry/stroke binds; text styles; showSupportingText on error; exposed minHeight; storybook sparse 42; countRow/minHeight ABSOLUTE documented.
-- **2026-07-22** [storybook-verification-code-input]: VerificationCodeInput: exposed codeCell1–5; removed orphan digit1–5; spacing/100|150 gaps; label/supporting text styles; AI-READY EN + storybook entry.
-- **2026-07-22** [storybook-verification-code-input-block-focus-ring]: VerificationCodeInputItem: focus ring effect color documented as color/elevation/Focus (manual Figma bind).
-- **2026-07-22** [storybook-verification-code-input-block]: VerificationCodeInputItem: geometry/focus ring token binds; digit body/large/regular; AI-READY EN; storybook entry state×5; page Input Password trim.
-- **2026-07-21** [storybook-calendar-audit-fixes]: Calendar audit fixes: unexpose/rename actions; enable Limpar/Ok; monthTitle TEXT+body/medium/medium; weekday naming; demo CalendarDay states; rename presets/feedback layers; complete/mobile padding; AI-READY+storybook sync.
-- **2026-07-21** [storybook-calendar]: Calendar: local dividers; remapped legacy Title Case + remote Font/effect tokens to kebab; exposed periodNav + datePickerSelect; wired showSelectItems (complete/web); AI-READY EN + storybook entry (sparse 8).
-- **2026-07-21** [storybook-app-header]: AppHeader: swapped remote App bar text→local Text header; showProfileMenu; first/second trailing=search/bell; showAction wired; Painel Home search+greeting title; storybook sync.
-- **2026-07-21** [storybook-system-header]: SystemHeader: wired showPrimaryAction; exposed datePickerSelect; slot description; AI-READY + storybook sync (simple sparse trailing).
-- **2026-07-21** [storybook-date-picker-select]: DatePickerSelect: exposed nested day/month/year DatePickerSelectItem instances; AI-READY desc (value via nested); storybook entry format×state 16.
-- **2026-07-21** [storybook-date-picker-select-block]: DatePickerSelectItem: wired value TEXT on all 21 variants; renamed chevron-up-outline Vector→*-path; storybook entry (unit×state×expanded).
-- **2026-07-21** [storybook-calendar-period-nav]: CalendarPeriodNav: description aligned to periodAction FRAME; renamed chevron-left/down/right-outline Vector→*-path; storybook entry (8 variants + inverse).
-- **2026-07-21** [storybook-calendar-day]: CalendarDay: remapped Spacing/0|050 → spacing/0|050 (150 bindings); added storybook entry (kind×state 30); prop day documented in storybook.
-- **2026-07-21** [storybook-input-date-picker]: InputDatePicker: added component docs (60 variants + appearance inverse); disabled default no fill + border/1 aligned; storybook entry created.
-- **2026-07-21** [storybook-autocomplete-appearance]: Autocomplete: appearance=default|inverse (54); hover inverse border-feedback/primary; error inverse label feedback/danger; AI-READY English desc; storybook synced.
-- **2026-07-21** [storybook-input-inverse-floating-cutout]: Verified Input/InputSelect/InputNumber/InputPassword inverse floatingLabel cutout (inverse-3 + raised position including focus). InputPassword docs now mention cutout; others already documented.
-- **2026-07-21** [storybook-input-number-appearance]: InputNumber: appearance=default|inverse (120); inverse focus label text/brand; disabled inverse texts text/placeholder-inverse; storybook synced.
-- **2026-07-21** [storybook-input-select-appearance]: InputSelect: appearance=default|inverse (60); inverse focus label text/brand; disabled inverse texts text/placeholder-inverse; storybook synced.
-- **2026-07-21** [storybook-input-appearance-placeholder-inverse]: Input: appearance=default|inverse (120); inverse focus label text/brand; disabled inverse texts text/placeholder-inverse. InputPassword: same disabled text token + focus label brand. Storybook synced.
-- **2026-07-21** [storybook-input-password-appearance]: InputPassword: added appearance=default|inverse (120 variants); inverse uses on-color tokens + transparent field; storybook synced to manual Figma updates.
-- **2026-07-21** [storybook-input-password]: InputPassword: audited password field (visibility axis); Ghost→text/secondary; AI-Ready + storybook docs.
-- **2026-07-21** [storybook-input-number]: InputNumber: Input pattern + showSelectCountry boolean (SelectCountry sm + DividerVertical); AI-Ready + storybook docs.
-- **2026-07-21** [storybook-select-country]: SelectCountry: local Flags + local chevrons; removed remote Border/Icon/20; disabled via opacity; AI-Ready + storybook docs.
-- **2026-07-21** [storybook-autocomplete]: Autocomplete: audited S2 combobox (27 variants after removing disabled×expanded=true); disabled field has no fill; loading bound on empty; AI-Ready + storybook docs.
-- **2026-07-21** [storybook-search-bar-buttons-default]: SearchBar: nested actionSurface Buttons stay state=default on all variants; feedback remains on stateLayer.
-- **2026-07-21** [storybook-search-bar]: SearchBar: audited S2 entry (state×content); fixed broken state= variant names; remapped Color/Content/Ghost→text/secondary; Avatar initials legacy $fs-* → S2 text styles; AI-Ready + storybook docs.
-- **2026-07-20** [storybook-input-hover-border-primary]: Input + InputSelect: hover field border uses color/border-feedback/primary; aligned remaining Input placeholder hover variants; docs updated.
-- **2026-07-20** [storybook-input-select-focus-chevron-up]: InputSelect: state=focus trailing uses chevron-up-outline; other states keep chevron-down-outline; docs updated.
-- **2026-07-20** [storybook-input-select-trailing-always]: InputSelect: removed trailingIcon variant axis; chevron-down always present on all 30 variants; docs updated.
-- **2026-07-20** [storybook-input-select]: InputSelect: remapped from Input clone to select trigger — removed caret; trailing chevron-down; floating ListActionDropdown documented (not embedded); AI-Ready and storybook docs.
-- **2026-07-20** [storybook-search-bar-removed]: Removed SearchBar S2 from Figma and cleared SearchBar storybook/AI-Ready docs.
-- **2026-07-20** [storybook-search-view-modal]: Added SearchViewModal (content×showResults, radius/800); remapped Material Search view modal to S2; ListItem+DividerHorizontal; AI-Ready and storybook docs.
-- **2026-07-20** [storybook-search-view-fullscreen]: Added SearchViewFullscreen (content×showResults); S2 tokens; ListItem+DividerHorizontal; props query/placeholder/showBack/showClear/backIcon/clearIcon/items; AI-Ready and storybook docs.
-- **2026-07-20** [storybook-input-focus-caret-error-icon]: Input: added focus caret (Material pattern) and always-on trailingIconError (alert-circle) for error a11y; docs updated.
-- **2026-07-20** [storybook-input]: Added Input (outlined floating-label, h=56, radius/200) from Material Text field matrix + target visual identity; S2 tokens; AI-Ready and storybook docs.
-- **2026-07-20** [storybook-input-removed]: Removed Input component from Figma and cleared Input storybook/AI-Ready docs to restart from scratch.
-- **2026-07-20** [storybook-pagination-select-menu]: Added PaginationSelectMenu + PaginationSelectMenuItem (ListActionDropdown pattern); nested under PaginationSelectInput expanded; deprecated Carbon draft.
-- **2026-07-20** [storybook-link]: Link: modernized from Carbon to S2 — kebab props/variants, local tokens/typography/icons, AI-Ready and storybook docs.
-- **2026-07-20** [storybook-tooltip-sync]: Tooltip: synced AI-Ready/token rules to manual specs — border/width/012, arrow constraints horizontal, body/small/regular, elevation/spacing detail.
-- **2026-07-20** [storybook-vertical-stepper]: Added VerticalStepper container with items SLOT for VerticalStepperItem; preferredValues; AI-Ready and storybook docs.
-- **2026-07-20** [storybook-vertical-stepper-item]: VerticalStepperItem: kept nested ListItem; exposed ListItem props; unified alignment; cleaned AI-Ready; storybook docs added.
-- **2026-07-20** [storybook-step-progress]: Added StepProgressIndicator/Segment; remapped Spacing/050 to HUG+spacing/050 track; cleaned AI-Ready entities; storybook docs added.
-- **2026-07-20** [storybook-modal-header-alignment]: ModalHeader: added alignment=start|center with optical center leadingSpacer; AI-Ready and storybook docs updated.
-- **2026-07-20** [storybook-modal-header]: Added ModalHeader; replaced Modal AppHeader with ModalHeader; cleaned AI-Ready entities/typography docs; storybook synced.
-- **2026-07-20** [storybook-mobile-gesture-navigation]: MobileGestureNavigation: INTERNAL prefix; appearance default|inverse; Keyboard nests component instead of gestureBar; docs synced.
-- **2026-07-20** [storybook-overlay]: Added Overlay; renamed type/platform kebab; composed Modal/BottomSheet in slot; bound spacing; cleared set stroke; AI-Ready and storybook docs.
-- **2026-07-20** [storybook-keyboard-polish]: Keyboard polish: removed remotes/GIF/BB; bound radius/spacing; DS text styles; local shift/backspace; enter text/on-color; docs synced.
-- **2026-07-20** [storybook-keyboard]: Added Keyboard placement utility; renamed configuration/layout kebab variants; remapped Schemes to local tokens; Poppins + local icons; AI-Ready and storybook docs.
-- **2026-07-20** [storybook-breadcrumb]: Added Breadcrumb; cleaned AI-Ready entities; hid currentItem slash; fixed leadingIcon alignment; renamed page; canonical AI-Ready and storybook docs added.
-- **2026-07-17** [storybook-list-manual-sync]: List documentation synced to manual Figma refinements (nodeId 3745:10921, default type=dropdown).
-- **2026-07-17** [storybook-list]: Added List (type=plain|dropdown) with items SLOT for ListItem; showScroll; elevation/2 on dropdown; canonical AI-Ready and storybook docs added.
-- **2026-07-17** [storybook-list-item-manual-sync]: ListItem documentation synced to manual Figma refinements (Switch md, control-only Checkbox/Radio, icon defaults, contentRow layout).
-- **2026-07-17** [storybook-list-item]: Added ListItem; migrated from M3 kit to local ListItemBuildingBlocks + Checkbox/RadioButton/Switch/DividerHorizontal/icons; remapped Schemes/Static tokens; camelCase props; canonical AI-Ready and storybook docs added.
-- **2026-07-17** [storybook-breadcrumb-item]: Added BreadcrumbItem; fixed overflow open overlay layout (absolute ListActionDropdown, content-hug width, showDivider=false); wired label; Contente→Content; canonical AI-Ready and storybook docs added.
-- **2026-07-17** [storybook-list-item-building-blocks]: Added ListItemLeadingMonogram, ListItemStateLayer, ListItemImageThumbnail, ListItemVideoThumbnail; fixed focusRing STRETCH, ring-only focus, local pressedRipple; video FILL + playIcon; canonical AI-Ready and storybook docs added.
-- **2026-07-17** [storybook-icon-scale]: Formalized icon size scale 80/64/40/32/24/20/16 with proportional stroke from master 24px + border/width/025 (2px); documented Figma Scale/unbind rules and INSTANCE_SWAP caveat.
-- **2026-07-17** [storybook-list-action-dropdown]: Added ListActionDropdown; remapped Spacing/* to local spacing; wired showDivider/showScroll; added local scroll affordance; slot preferredValues; canonical AI-Ready and storybook docs added.
-- **2026-07-17** [storybook-list-action-dropdown-item-no-country]: ListActionDropdownItem: removed showCountry prop and countryFlag layer; docs updated.
-- **2026-07-17** [storybook-list-action-dropdown-item]: Added ListActionDropdownItem; fixed focusRing STRETCH; added state=focus; local icon preferredValues; canonical AI-Ready and storybook docs added.
-- **2026-07-17** [storybook-image-block]: Added ImageItem; restored verticalResize keepers (FIXED×HUG / HUG×FIXED) from Aspect ratio base; local color/background-surface/1; kept imageSurface; canonical AI-Ready and storybook docs added.
-- **2026-07-16** [storybook-chip-group]: Added ChipGroup; recomposed all nested chips on ChipClickable intent=outline size=sm; reset broken overrides; filter uses selected; AI-Ready and storybook docs added.
-- **2026-07-16** [storybook-comment-block]: Added CommentItem (Figma-only annotation); remapped elevation/spacing tokens; local category icons; unified leadingIcon/showIcon; intentional generic vs categoryTag composition documented.
-- **2026-07-16** [storybook-organization-header]: Added OrganizationHeader (Figma docs header); descriptionSlot FILL wrap; local ChipTag icon; cleaned AI-Ready React mapping; storybook docs added.
-- **2026-07-16** [storybook-file-uploader-skeleton-bones]: FileUploader: restored semantic layer names and showFiles bind; skeleton bones-only (no nested components); docs updated.
-- **2026-07-16** [storybook-file-uploader]: Added FileUploader; Button size/icon/label aligned to matrix; skeleton cleaned (bones, DnD dropzone); AI-Ready and storybook docs added; showFiles intentional on default-only.
-- **2026-07-16** [storybook-upload-photos]: Added UploadPhotos metadata; applied local text styles; local chevron + visible Button labels; renamed camera path; AI-Ready and storybook docs added.
-- **2026-07-16** [storybook-file-uploader-list]: Added FileUploaderList; recomposed on FileUploaderItem; showFileItem02–07 props; deprecated legacy _File uploader file item; AI-Ready and storybook docs added.
-- **2026-07-16** [storybook-file-uploader-item]: Added FileUploaderItem metadata; removed orphan longFileName/showLongFileName; renamed layers; aligned danger-long text tokens; AI-Ready and storybook docs added.
-- **2026-07-16** [storybook-file-uploader-block]: Added FileUploaderDropzoneItem metadata; unified focus padding; cleaned dropzone dash/root fills; documented stroke width tokens and dashPattern leftover; AI-Ready and storybook docs added.
-- **2026-07-16** [storybook-tooltip]: Added Tooltip metadata; remapped Title Case elevation/spacing tokens; fixed bottom-center arrow constraint; AI-Ready (EN) and storybook docs added.
-- **2026-07-16** [storybook-tooltip-rich]: Added TooltipRich metadata; remapped Title Case tokens to kebab; documented intentional secondaryAction text/on-color; unified layer order; AI-Ready and storybook docs added.
-- **2026-07-15** [storybook-toast]: Added Toast metadata; published showAction and dismissible; split action/dismiss Buttons; unified statusIcon fills; AI-Ready and storybook docs added.
-- **2026-07-15** [storybook-tabs-secondary]: Added TabsSecondary metadata; remapped Spacing/050|100|200 and Color/Content/Disabled; documented no appearance/inverse axis; AI-Ready and storybook docs added.
-- **2026-07-15** [storybook-tabs-primary]: Added TabsPrimary metadata; remapped Spacing/200 and Color/Content/Disabled; documented intentional-sparse inverse×web; AI-Ready and storybook docs added.
-- **2026-07-15** [storybook-tab-item]: Added TabItem metadata; renamed selectedIcon→leadingIcon; documented intentional-sparse inverse matrix; hid secondary selectedIndicator except selected; remapped Color/Content/Brand→text/brand; AI-Ready and storybook docs added.
-- **2026-07-15** [storybook-table-mobile]: Added TableMobile metadata; relinked orphan TableMobileCell instances; remapped Title Case tokens; documented intentional-sparse interactive×columnCount; AI-Ready and storybook docs added.
-- **2026-07-15** [storybook-table-mobile-cell]: Added TableMobileCell metadata; removed interactive axis; renamed Instance→icon; remapped Spacing/800→spacing/800; slot preferred chip clickable; AI-Ready and storybook docs added.
-- **2026-07-15** [storybook-table-expand-chevron]: TableExpandCell: added intentional-sparse type=header showChevron=false spacer (keeps 56×40, no chevron); docs updated.
-- **2026-07-15** [storybook-table]: Renamed Table Web → Table; recomposed header/body on TableRow; docs key Table; AI-Ready and storybook updated.
-- **2026-07-15** [storybook-table-web]: Added TableWeb metadata; modernized props (columns, showHeader, rows slot with default body lines); AI-Ready description and storybook docs added.
-- **2026-07-14** [storybook-table-skeleton]: Added TableSkeleton metadata; cleaned AI-Ready description (fixed density, empty false vs true, intentional leftover bodyRow07–10); storybook docs added.
-- **2026-07-14** [storybook-table-row-expand]: TableRow: added showExpandCell boolean with trailing TableExpandCell on all variants; AI-Ready description and storybook docs updated.
-- **2026-07-14** [storybook-table-row]: Added TableRow metadata; repaired 60 detached TableCell instances after showAction removal; remapped Border/Radius legacy tokens; documented row-level focus; storybook docs added.
-- **2026-07-14** [storybook-table-cell-slot]: TableCell: aligned docs and AI-Ready description to type=slot (renamed from action); refreshed spacing token rule to used tokens.
-- **2026-07-14** [storybook-table-expand-cell]: Added TableExpandCell metadata; cleaned AI-Ready description (no size axis; selected=expanded with structural chevron-up); renamed selected path layers; storybook docs added.
-- **2026-07-14** [storybook-table-cell-remove-show-action]: TableCell: removed showAction variant axis (kept non-action variants); updated AI-Ready description and storybook docs.
-- **2026-07-14** [storybook-table-cell]: Added TableCell metadata; remapped Spacing/800|100|500 to kebab-case; documented intentional-sparse header and showAction variant axis; storybook docs added.
-- **2026-07-14** [storybook-button-text-icon]: Button: documented showIcon (leadingIcon) on variant=text + intent=primary (enabled) using text/primary across states; token rules clarified.
-- **2026-07-14** [storybook-switch]: Added Switch metadata; remapped Spacing/0 and Border/Radius/0; renamed parent Loovi to Switch; checked icon to color/actions/primary; documented showIcon md-only; storybook docs added.
-- **2026-07-14** [storybook-stepper-primary]: Added StepperPrimary metadata; inactive trails unified to color/border/2; cleaned AI-Ready description; documented intentional sparse trailState matrix; storybook docs added.
-- **2026-07-14** [storybook-radio-button]: Added RadioButton metadata; remapped Border/Radius/0 to border/radius/0; cleaned AI-Ready description entities; added React mapping and token rule.
-- **2026-07-14** [storybook-progress-bar]: Added ProgressBar metadata; trimmed parent frame name; cleaned AI-Ready description entities; documented value-as-label vs layout-controlled indicator fill.
-- **2026-07-13** [storybook-pagination-select-input]: Added PaginationSelectInput metadata; remapped expanded border from color/border-feedback/primary to interactive/focus; documented default|hover-only states; storybook docs added.
-- **2026-07-13** [storybook-pagination]: Added Pagination metadata; remapped Spacing/500 and Color/Content/Ghost; fixed size=lg prev/next disabled by position; exposed actions and pageItems; trimmed parent page name; storybook docs added.
-- **2026-07-13** [storybook-pagination-item]: Added PaginationItem metadata; removed pressed from interaction states; documented intentional sparse selected×focus/disabled matrix; storybook docs added.
-- **2026-07-13** [storybook-navigation-rail-expanded]: Added NavigationRailExpanded metadata; remapped legacy Spacing/Border/Content tokens; wired showMenu on all variants; exposed nested trees; renamed Section 1/2 to section01/02; documented top-only trees and itemCount=6 sections.
-- **2026-07-13** [storybook-navigation-rail-expanded-tree]: Added NavigationRailExpandedTree metadata; remapped legacy Spacing/Color/Border tokens to kebab-case; renamed marcador/Nav tree/Vertical layers; exposed nested navItem01; documented second-level sparse selectedItem matrix.
-- **2026-07-13** [storybook-navigation-rail-expanded-item]: Added NavigationRailExpandedItem metadata; documented hierarchy=nav-tree as intentional sparse axis; exposed nested Badge; intentional color model documented.
-- **2026-07-13** [storybook-navigation-rail-compact]: Added NavigationRailCompact metadata; remapped Spacing/600, Spacing/1000 and Color/Content/Default Inverse to kebab-case; renamed parent frame Navegation Rail to Navigation Rail.
-- **2026-07-13** [storybook-navigation-rail-compact-item]: Added NavigationRailCompactItem metadata; remapped Color/Interactive/* and Color/Background Surface/2 to kebab-case; renamed Label text to label; exposed nested Badge; intentional color model documented.
-- **2026-07-13** [storybook-navigation-bar]: Added NavigationBar metadata; remapped Spacing/700 to spacing/700 on FAB; documented itemCount=5 as 4 items + primaryIconButtonSlot; renamed plus-outline Vector to plus-outline-path.
-- **2026-07-13** [storybook-navigation-bar-item]: Added NavigationBarItem metadata; remapped Spacing/800 and Color/Interactive/Focus to kebab-case; exposed nested Badge for count/overflowLabel; intentional color model documented.
-- **2026-07-13** [storybook-navigation-drawer]: Added NavigationDrawer metadata including composition rules and itemCount=6 secondary-section note.
-- **2026-07-13** [storybook-navigation-drawer-item]: Added NavigationDrawerItem metadata; remapped legacy Color/Spacing tokens to kebab-case; swapped remote info-circle-outline to local DS icon.
-- **2026-07-10** [storybook-modal]: Added Modal metadata; remapped legacy surface/spacing tokens; cleaned React description entities. AppHeader internal override discarded.
-- **2026-07-10** [storybook-appheader]: AppHeader: remapped Color/Border/2 and Profile menu Spacing/Border tokens; swapped remote icons to local DS library; synced AI-Ready description.
-- **2026-07-10** [storybook-divider-vertical]: Added DividerVertical metadata; remapped Color/Border/2 to color/border/2.
-- **2026-07-10** [storybook-divider-horizontal]: Added DividerHorizontal metadata; remapped Color/Border/2 and Color/Content/Disabled to kebab-case; renamed Text prop to label.
-- **2026-07-10** [storybook-chiptag]: Added ChipTag metadata; remapped legacy token bindings to kebab-case including danger to color/background-feedback-primary/danger and Ghost to text/secondary.
-- **2026-07-10** [storybook-feedback-governance]: Added feedback usage table mapping content vs bg-primary vs bg-secondary vs interactive/*-surface vs border-feedback; fixed border-feedback success/danger naming.
+_Showing 40 of 246, grouped by date._
+
+### 2026-08-20
+
+- **tokens-palette-brand-azure-wave:** Tokens: color/palette/brand remapped sapphire #516CE7 → azure-wave #4C6BF8 (aligned with color/actions/primary). text/brand stays sapphire (WCAG); background-surface/brand stays brand-blue. Docs + brandSurface note synced.
+
+### 2026-08-18
+
+- **poppins-typography-tokens:** Global Poppins: emit font-family/font-weight/typography CSS vars; bundle latin+latin-ext woff2; Storybook canvas inherits --font-family-base.
+
+### 2026-08-17
+
+- **storybook-intro-changelog-copy:** Storybook Introduction/Changelog copy polish: Autodocs catalog status (123/124), truncated human changelog; CommentItem remains Figma-only.
+- **react-w7-internals-leftovers:** React W7 leftovers polish: ChipGroup, ImageItem/PhotoTextItem, PaginationSelect*, TableSkeleton, ModalHeader/ModalCheckItem DoD; Modal composes ModalHeader.
+- **react-w6-complexos:** React W6 Complexos polish: FileUploader*, Calendar*, Slider*, StepperPrimary, VerticalStepper*, StepProgress*, SearchView*, Keyboard DoD.
+- **react-w5-cards-app-cliente:** React W5 Cards & app-cliente polish: Card*Item/Stacked/Horizontal, Dashboard*, QuickAccessTile, product cards, UploadPhotos, FeatureSteps(+Item) DoD. Figma style→React cardStyle.
+- **react-w4-dados-display:** React W4 Dados & display polish: Divider*/Avatar*/Accordion, List family, Table*/TableMobile, Pagination, Carousel (+ Items) DoD.
+- **react-w3-nav-headers:** React W3 Nav/headers polish: App/System/Org/Text/Section headers, nav bars/rails/drawer, tabs, breadcrumb (+ Items) DoD.
+- **react-w2-feedback:** React W2 Feedback polish: Banner/Badge/Tooltip*/Overlay/LoadingSpinner/ProgressBar/BottomSheet(+Header/CheckItem) DoD.
+- **react-w1-formularios:** React W1 Formulários polish: 15 fields + VerificationCodeInputItem + DatePickerSelectItem DoD (Autodocs, Code Connect, @ds/react).
+- **react-audit-apply-p1-p2:** Audit apply: reactImplemented only W0 (7); stubs → reactScaffold + @ds/react/draft; tokens generator adds text/feedback/interactive; W0 hardening (Button/ChipTag/Modal/Alert/CSS vars).
+- **react-csf3-foundation:** Introduce @ds/react + @ds/tokens monorepo; W0 polished (Button/Input/Chip*/Alert/Toast/Modal) with CSF3 Autodocs + Code Connect; remaining catalog scaffolded with Autodocs; generator skips reactImplemented MDX.
+- **painel-tokens-seed-sync:** Painel gap 01: seed tokens.color.background-surface promo-1|promo-2|promo-accent (Figma aliases lavender-2/azure-2/lavender-1); repair brand-muted $type/$value. Audit queue validated (02–08,10 already in Figma+seed).
+- **docs-audit-w2-w3-nodeids:** W2/W3 Docs humanas audit apply: ProgressBar nodeId→3653:5393; NavigationRail Compact/Expanded/Tree live nodeIds; Banner vs Alert copy; OrganizationHeader Docs humanas created (4887:1141).
+- **docs-audit-w5-w6:** W5 Docs humanas: 11/11 OK (noop). W6: StepperPrimary nodeId 3437:396 (missing) → live 3653:4985; remaining W6 frames OK.
+- **docs-audit-w4-live-nodeids:** W4 Docs humanas audit: Accordion/AvatarGroup/DividerHorizontal/DividerVertical/Pagination/PaginationItem nodeIds → live Figma sets; DividerHorizontal + PaginationItem docs instances rewired. Orphan masters remain (no delete).
+- **button-intent-secondary-docs-audit:** Button: document intent=secondary (intentional sparse, mainly size=md); align seed with Figma. W0 Docs humanas audit apply (Button/Input/Chip*/Alert/Toast/Modal frames).
+
+### 2026-08-14
+
+- **storybook-animations-feedback-success:** Animations: new Foundations/Animations seed; animation/feedback/success (ex Feedback Positivo - V6); section Feedbacks → animation / feedback; AI-READY EN; confetti/badge/circle/check-path layers; docs synced.
+- **storybook-illustrations-onboarding-scene-referral:** Illustrations: onboarding-scene/referral (refer-friends) xl 312; AI-READY EN; artwork root; docs synced. Planned illustration backlog cleared (Cred-card leftover noted).
+- **storybook-illustrations-onboarding-scene:** Illustrations: onboarding-scene (ride-together | celebration) xl 312; rename path onboarding/ → onboarding-scene/; AI-READY EN; artwork roots; docs synced.
+- **storybook-illustrations-vehicle-photo-dashboard:** Illustrations: vehicle-photo/dashboard — rename mislabeled dashboard-upload-success → dashboard-upload-error; AI-READY EN; artwork/tips/error-badge; docs synced. Vehicle-photo backlog cleared.
+- **storybook-illustrations-vehicle-photo-chassis:** Illustrations: vehicle-photo/chassis (chassis-upload | chassis-upload-error) 2xl 520; AI-READY EN; artwork + error-badge; docs synced.
+- **storybook-illustrations-vehicle-photo-angles:** Illustrations: vehicle-photo angles (front/rear × left/right) 2xl 520; AI-READY EN; artwork + tips layers; docs synced.
+- **storybook-illustrations-document-vehicle:** Illustrations: document/vehicle (vehicle-upload | vehicle-upload-error) lg 260; AI-READY EN; artwork + error-badge; docs synced. Document backlog cleared.
+- **storybook-illustrations-document-driver:** Illustrations: document/driver (driver-upload | driver-upload-error) lg 260; AI-READY EN; artwork roots; docs synced.
+- **storybook-illustrations-person-photo-analysis:** Illustrations: person/photo-analysis 2xl 520; AI-READY EN; artwork root; docs synced. Person backlog cleared.
+- **storybook-illustrations-person-photo-upload:** Illustrations: person (photo-upload | photo-upload-error) md 156; AI-READY EN; artwork + error-badge; docs synced.
+- **storybook-illustrations-object-search:** Illustrations: object/search (magnifier + ? badge) sm ~107×104; AI-READY EN; artwork root; docs synced.
+- **storybook-illustrations-device-onboarding:** Illustrations: device/onboarding (onboarding-features | onboarding-explore) xl 312; AI-READY EN; artwork roots; docs synced. Device family backlog cleared.
+- **storybook-illustrations-device-app-usage:** Illustrations: device/app-usage family (app-usage | discount | insurance-claim) md 156; AI-READY EN; corrected app-usage copy (feature cards not settings); artwork roots; docs synced.
+- **storybook-illustrations-device-background-location:** Illustrations: device/background-location — rename -01/-02 → background-location | background-location-shadow; artwork + ground-shadow; AI-READY EN; size xl 312; docs synced.
+
+### 2026-08-10
+
+- **storybook-illustrations-device-location-access:** Illustrations: device/location-access — rename -01/-02 → location-access | location-access-shadow; artwork + ground-shadow layers; AI-READY EN; size xl 312; docs synced.
+- **storybook-illustrations-vehicle-card:** Illustrations docs: catalog vehicle-card (hatch, 104×104 sm) with AI-READY EN; distinct from vehicle-icon; Figma description synced.
+- **storybook-illustrations-vehicle-icon:** Illustrations docs: catalog vehicle-icon (sedan|van|suv) with AI-READY EN, color-policy exception, Foundations/Illustrations page; Figma descriptions synced.
+- **storybook-toast-docs-sync:** Toast docs synced to canvas: AI-READY local DS icons wording; shell inverse-3 + text/on-color; elevation/1; statusMap icon fills (info still background-feedback-primary/info, prefer feedback/info).
+
+### 2026-08-09
+
+- **storybook-tabs-segmented-audit-apply:** TabsSegmented audit apply: wire label/showAttention on TabItem segmented; remove dead selectedIndicator; bind track stroke*Weight to border/width/012; demo itemCount=2 width 342; docs synced.
+- **storybook-tabs-segmented:** TabsSegmented + TabItem variant=segmented (pill track for App-cliente switchers); local kebab tokens; AI-READY + storybook synced. Not product-theme — new anatomy vs TabsSecondary underline.
+
+### 2026-08-07
+
+- **storybook-alert-audit-apply:** Alert audit apply: wire title/description/showAction on appearance=default; restore inverse shell brand@48% over inverse-3; statusIcon → local feedback/* + \{icon\}-path; docs synced.
+- **storybook-alert-appearance:** Alert: appearance=default|inverse × status; default = surface/3 + text/primary|secondary + outline border/1; inverse keeps dark brand overlay shell; AI-READY + storybook synced.
+- **storybook-vehiclesummarycard-brand-muted:** VehicleSummaryCard secondary: replace paint opacity 72% with color/background-surface/brand-muted (primitive-colors/brand-blue-72) so library instances keep alpha; docs synced.

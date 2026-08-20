@@ -1,0 +1,26 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-100, 8px);
+  width: 100%;
+  color: var(--text-primary);
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+  min-width: 0;
+}
+
+.emphasis-primary .title {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.emphasis-secondary .title {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}

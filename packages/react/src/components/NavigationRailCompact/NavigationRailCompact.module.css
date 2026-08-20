@@ -1,0 +1,26 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-150, 10px);
+  width: 80px;
+  min-height: 480px;
+  padding: var(--spacing-200, 12px) var(--spacing-100, 8px);
+  background: var(--color-background-surface-0);
+}
+
+.alignment-middle .items {
+  margin-block: auto;
+}
+
+.appearance-inverse {
+  background: var(--color-background-surface-inverse-3, #3a3345);
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+  width: 100%;
+}

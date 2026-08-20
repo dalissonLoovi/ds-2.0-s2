@@ -1,0 +1,24 @@
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-100, 8px);
+  color: var(--text-secondary);
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--color-actions-primary);
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.description strong,
+.description b {
+  color: var(--text-brand);
+  font-weight: 600;
+}

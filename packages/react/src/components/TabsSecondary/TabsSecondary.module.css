@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  width: 100%;
+}
+
+.alignment-left {
+  justify-content: flex-start;
+}
+
+.alignment-center {
+  justify-content: center;
+}

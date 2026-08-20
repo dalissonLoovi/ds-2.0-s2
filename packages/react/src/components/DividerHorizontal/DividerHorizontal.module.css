@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: var(--spacing-100, 8px);
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-2);
+}
+
+.variant-full-width {
+  padding-inline: 0;
+}
+
+.variant-inset {
+  padding-inline: var(--spacing-200, 12px);
+}
+
+.variant-middle-inset {
+  padding-inline: var(--spacing-400, 32px);
+}
+
+.label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}

@@ -1,0 +1,44 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-100, 8px);
+  width: 100%;
+  max-width: 480px;
+}
+
+.control {
+  position: relative;
+}
+
+.range {
+  position: absolute;
+  left: 28px;
+  right: 112px;
+  top: 28px;
+  height: 24px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.status-disabled .range,
+.status-read-only .range,
+.status-skeleton .range {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.error,
+.warning {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.error {
+  color: var(--feedback-danger, var(--color-actions-danger));
+}
+
+.warning {
+  color: var(--feedback-warning);
+}

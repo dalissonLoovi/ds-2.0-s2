@@ -1,0 +1,101 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-050, 4px);
+  box-sizing: border-box;
+  margin: 0;
+  border-radius: var(--border-radius-full, 999px);
+  border: 1px solid var(--color-border-2, #ebebeb);
+  background: var(--color-background-surface-0, #fff);
+  color: var(--text-primary);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.root:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.root:focus-visible {
+  outline: 2px solid var(--interactive-focus, var(--color-border-feedback-primary));
+  outline-offset: 2px;
+}
+
+.width-hug {
+  width: fit-content;
+}
+
+.width-fill {
+  width: 100%;
+  justify-content: center;
+}
+
+.size-sm {
+  min-height: 24px;
+  padding: 0 var(--spacing-100, 8px);
+  font-size: 12px;
+}
+
+.size-md {
+  min-height: 32px;
+  padding: 0 var(--spacing-150, 10px);
+  font-size: 14px;
+}
+
+.intent-soft {
+  background: var(--color-background-surface-2, #e7effc);
+  border-color: var(--color-border-2, #ebebeb);
+}
+
+.intent-outline {
+  background: transparent;
+}
+
+.intent-success {
+  background: var(--color-background-feedback-secondary-success, #eefaf3);
+  border-color: transparent;
+  color: var(--color-actions-success, #00723e);
+}
+
+.intent-danger {
+  background: var(--color-background-feedback-secondary-danger, #fdeCEC);
+  border-color: transparent;
+  color: var(--color-actions-danger, #f54444);
+}
+
+.intent-warning {
+  background: var(--color-background-feedback-secondary-warning);
+  border-color: transparent;
+  color: var(--feedback-warning);
+}
+
+.intent-info,
+.intent-system {
+  background: var(--color-background-surface-2, #e7effc);
+  border-color: transparent;
+}
+
+.selected {
+  box-shadow: inset 0 0 0 1px var(--color-border-feedback-primary, #516ce7);
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon,
+.delete {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-background-surface-3, #d0d9e8);
+}

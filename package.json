@@ -1,0 +1,24 @@
+{
+  "name": "ds-2.0-s2",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Design System 2.0 (S2) — tokens, React package, Storybook",
+  "workspaces": [
+    "packages/*",
+    "storybook"
+  ],
+  "scripts": {
+    "tokens:build": "npm run build -w @ds/tokens",
+    "react:build": "npm run build -w @ds/react",
+    "typecheck": "npm run typecheck -w @ds/react",
+    "test": "npm run test -w @ds/react",
+    "lint:variants": "node scripts/lint-variants.mjs",
+    "docs:generate": "npm run docs:generate -w @ds/storybook",
+    "storybook": "npm run storybook -w @ds/storybook",
+    "build-storybook": "npm run build-storybook -w @ds/storybook",
+    "build": "npm run tokens:build && npm run react:build && npm run docs:generate"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

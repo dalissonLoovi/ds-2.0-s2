@@ -1,0 +1,37 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--color-background-surface-0);
+  border: 1px solid var(--color-border-2);
+  overflow: hidden;
+}
+
+.header,
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--spacing-200, 16px);
+  padding: var(--spacing-200, 16px);
+  align-items: center;
+}
+
+.header {
+  background: var(--color-background-surface-2);
+  border-bottom: 1px solid var(--color-border-1);
+}
+
+.row {
+  border-bottom: 1px solid var(--color-border-2);
+}
+
+.bar {
+  display: block;
+  height: 12px;
+  border-radius: var(--border-radius-full, 999px);
+  background: var(--color-background-surface-2);
+}
+
+.headerBar {
+  background: var(--color-background-surface-3);
+}
