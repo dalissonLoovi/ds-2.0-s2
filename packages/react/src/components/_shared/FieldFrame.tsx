@@ -54,7 +54,6 @@ export function FieldFrame({
     <div
       className={cx(
         styles.root,
-        floated && styles.rootFloated,
         styles[`appearance-${appearance}`],
         styles[`state-${state}`],
         className,
@@ -63,7 +62,7 @@ export function FieldFrame({
       data-appearance={appearance}
       data-content={content}
     >
-      <div
+      <fieldset
         className={cx(
           styles.field,
           fieldLayout === 'multiline' && styles.fieldMultiline,
@@ -73,6 +72,15 @@ export function FieldFrame({
           fieldClassName,
         )}
       >
+        {label != null && htmlFor != null && (
+          <legend className={cx(styles.legend, floated && styles.legendOpen)}>
+            {floated ? (
+              <label htmlFor={htmlFor} className={styles.legendLabel}>
+                {label}
+              </label>
+            ) : null}
+          </legend>
+        )}
         <div className={styles.fieldInner}>
           {leading != null && <span className={styles.leading}>{leading}</span>}
           <div className={styles.controlSlot}>{children}</div>
@@ -83,27 +91,7 @@ export function FieldFrame({
             </label>
           )}
         </div>
-
-        {label != null && (
-          <fieldset className={styles.notchedOutline} aria-hidden="true">
-            <legend className={cx(styles.notchedLegend, floated && styles.notchedLegendOpen)}>
-              {floated ? (
-                <span className={styles.notchedLegendMeasure}>{label}</span>
-              ) : (
-                <span className={styles.notchedLegendMeasure} aria-hidden="true">
-                  {'\u00a0'}
-                </span>
-              )}
-            </legend>
-          </fieldset>
-        )}
-
-        {floated && label != null && htmlFor != null && (
-          <label htmlFor={htmlFor} className={styles.floatedLabel}>
-            {label}
-          </label>
-        )}
-      </div>
+      </fieldset>
 
       {(showSupportingText || trailingMeta) && (
         <div className={styles.metaRow}>
