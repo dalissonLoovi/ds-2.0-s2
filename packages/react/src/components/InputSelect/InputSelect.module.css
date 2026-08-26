@@ -5,16 +5,13 @@
 .trigger {
   display: flex;
   align-items: center;
-  gap: var(--spacing-100, 8px);
   width: 100%;
-  min-height: 48px;
+  height: 56px;
   padding: 0 var(--spacing-200, 12px);
   border: 0;
   background: transparent;
   color: inherit;
   font: inherit;
-  font-size: 16px;
-  line-height: 24px;
   text-align: left;
   cursor: pointer;
 }
@@ -29,13 +26,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding: 0;
 }
 
 .placeholder {
-  color: var(--text-placeholder);
-}
-
-.icon {
-  flex-shrink: 0;
-  color: var(--text-secondary);
+  color: var(--field-placeholder-color, var(--text-placeholder));
 }

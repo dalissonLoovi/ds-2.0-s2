@@ -17,7 +17,25 @@ figma.connect(
         error: 'error',
         disabled: 'disabled',
       }),
+      content: figma.enum('content', {
+        value: 'value',
+        placeholder: 'placeholder',
+        label: 'label',
+      }),
+      leadingIcon: figma.boolean('leadingIcon'),
+      trailingIcon: figma.boolean('trailingIcon'),
     },
-    example: (props) => <Input {...props} />,
+    example: (props) => (
+      <Input
+        label={props.label as string}
+        supportingText={props.supportingText as string}
+        showSupportingText={props.showSupportingText !== false}
+        appearance={props.appearance as 'default' | 'inverse'}
+        state={props.state as 'default' | 'hover' | 'focus' | 'error' | 'disabled'}
+        content={props.content as 'value' | 'placeholder' | 'label'}
+        leadingIcon={Boolean(props.leadingIcon)}
+        trailingIcon={Boolean(props.trailingIcon)}
+      />
+    ),
   },
 );

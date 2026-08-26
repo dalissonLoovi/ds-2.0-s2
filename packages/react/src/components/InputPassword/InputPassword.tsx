@@ -2,7 +2,7 @@ import { forwardRef, useId, useState, type InputHTMLAttributes, type ReactNode }
 import { cx } from '../../utils/cx';
 import { resolveIcon, type DsIconName, type IconComponent } from '../../icons/dsIcons';
 import { Button } from '../Button/Button';
-import { FieldFrame } from '../_shared/FieldFrame';
+import { FieldFrame, fieldFrameStyles } from '../_shared/FieldFrame';
 import styles from './InputPassword.module.css';
 
 export type InputPasswordState = 'default' | 'hover' | 'focus' | 'error' | 'disabled';
@@ -28,7 +28,7 @@ function slotIcon(icon: InputPasswordProps['leading'], fallback: DsIconName) {
   const resolved = icon ?? fallback;
   if (typeof resolved === 'string' || typeof resolved === 'function') {
     const Comp = resolveIcon(resolved as DsIconName | IconComponent);
-    return Comp ? <Comp size={20} aria-hidden className={styles.icon} /> : null;
+    return Comp ? <Comp size={20} aria-hidden className={fieldFrameStyles.icon} /> : null;
   }
   return resolved;
 }
@@ -65,6 +65,9 @@ export const InputPassword = forwardRef<HTMLInputElement, InputPasswordProps>(
       useState<InputPasswordVisibility>('hidden');
     const visibility = visibilityProp ?? uncontrolledVisibility;
     const visible = visibility === 'visible';
+    const labelFloated =
+      content === 'value' || content === 'placeholder' || state === 'focus';
+    const restingControl = content === 'label' && !labelFloated;
 
     const toggleVisibility = () => {
       const next: InputPasswordVisibility = visible ? 'hidden' : 'visible';
@@ -76,22 +79,49 @@ export const InputPassword = forwardRef<HTMLInputElement, InputPasswordProps>(
       <FieldFrame
         appearance={appearance}
         state={state}
+        content={content}
+        labelFloated={labelFloated}
         label={label}
         htmlFor={inputId}
         supportingText={supportingText}
         showSupportingText={showSupportingText}
         supportId={supportId}
         className={className}
+        leading={leadingIcon ? slotIcon(leading, 'lock-outline') : undefined}
+        trailing={
+          <>
+            {isError && slotIcon('alert-circle-outline', 'alert-circle-outline')}
+            <Button
+              variant="text"
+              size="sm"
+              intent="primary"
+              showLabel={false}
+              showIcon
+              icon={visible ? 'eye-outline' : 'eye-closed-outline'}
+              aria-label={visible ? 'Ocultar senha' : 'Mostrar senha'}
+              disabled={isDisabled}
+              onClick={toggleVisibility}
+              className={styles.visibility}
+            />
+          </>
+        }
       >
-        {leadingIcon && slotIcon(leading, 'lock-outline')}
         <input
           ref={ref}
           id={inputId}
-          className={styles.control}
+          className={cx(
+            fieldFrameStyles.controlBase,
+            restingControl && fieldFrameStyles.controlResting,
+            styles.control,
+          )}
           type={visible ? 'text' : 'password'}
           disabled={isDisabled}
           placeholder={
-            content === 'placeholder' ? (placeholder ?? 'Placeholder') : placeholder
+            labelFloated
+              ? content === 'placeholder'
+                ? (placeholder ?? 'Placeholder')
+                : placeholder
+              : undefined
           }
           value={value}
           defaultValue={
@@ -101,19 +131,6 @@ export const InputPassword = forwardRef<HTMLInputElement, InputPasswordProps>(
           aria-describedby={showSupportingText ? supportId : undefined}
           autoComplete="current-password"
           {...rest}
-        />
-        {isError && slotIcon('alert-circle-outline', 'alert-circle-outline')}
-        <Button
-          variant="text"
-          size="sm"
-          intent="primary"
-          showLabel={false}
-          showIcon
-          icon={visible ? 'eye-outline' : 'eye-closed-outline'}
-          aria-label={visible ? 'Ocultar senha' : 'Mostrar senha'}
-          disabled={isDisabled}
-          onClick={toggleVisibility}
-          className={styles.visibility}
         />
       </FieldFrame>
     );

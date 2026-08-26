@@ -1,7 +1,7 @@
 import { forwardRef, useId, type InputHTMLAttributes, type ReactNode } from 'react';
 import { cx } from '../../utils/cx';
 import { resolveIcon, type DsIconName, type IconComponent } from '../../icons/dsIcons';
-import { FieldFrame } from '../_shared/FieldFrame';
+import { FieldFrame, fieldFrameStyles } from '../_shared/FieldFrame';
 import { SelectCountry } from '../SelectCountry/SelectCountry';
 import styles from './InputNumber.module.css';
 
@@ -22,7 +22,6 @@ export type InputNumberProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type
   trailing?: DsIconName | IconComponent | ReactNode;
   showSelectCountry?: boolean;
   showPaymentMethodMark?: boolean;
-  /** kebab-case slug matching payment-method/{brand}; hidden when null/undefined */
   paymentMethodBrand?: string | null;
   paymentMethodMark?: ReactNode;
   countryFlag?: ReactNode;
@@ -35,7 +34,7 @@ function slotIcon(icon: InputNumberProps['leading'], fallback: DsIconName) {
   const resolved = icon ?? fallback;
   if (typeof resolved === 'string' || typeof resolved === 'function') {
     const Comp = resolveIcon(resolved as DsIconName | IconComponent);
-    return Comp ? <Comp size={20} aria-hidden className={styles.icon} /> : null;
+    return Comp ? <Comp size={20} aria-hidden className={fieldFrameStyles.icon} /> : null;
   }
   return resolved;
 }
@@ -77,12 +76,37 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(functi
   const isError = state === 'error';
   const showCountry = showSelectCountry && !showPaymentMethodMark;
   const showMark =
-    showPaymentMethodMark && !showSelectCountry && (paymentMethodMark != null || paymentMethodBrand != null);
+    showPaymentMethodMark &&
+    !showSelectCountry &&
+    (paymentMethodMark != null || paymentMethodBrand != null);
+  const labelFloated =
+    content === 'value' || content === 'placeholder' || state === 'focus';
+  const restingControl = content === 'label' && !labelFloated;
+  const inputPlaceholder =
+    content === 'placeholder' ? (placeholder ?? 'Placeholder') : placeholder;
+
+  const trailingSlot =
+    isError || trailingIcon || showMark ? (
+      <>
+        {showMark &&
+          (paymentMethodMark ?? (
+            <span
+              className={styles.paymentMark}
+              data-brand={paymentMethodBrand ?? undefined}
+              aria-hidden
+            />
+          ))}
+        {isError && slotIcon('alert-circle-outline', 'alert-circle-outline')}
+        {!isError && trailingIcon && slotIcon(trailing, 'x-outline')}
+      </>
+    ) : undefined;
 
   return (
     <FieldFrame
       appearance={appearance}
       state={state}
+      content={content}
+      labelFloated={labelFloated}
       label={label}
       htmlFor={inputId}
       supportingText={supportingText}
@@ -90,30 +114,38 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(functi
       supportId={supportId}
       className={className}
       fieldClassName={showCountry ? styles.withCountry : undefined}
+      leading={
+        showCountry ? (
+          <>
+            <SelectCountry
+              size="sm"
+              state={isDisabled ? 'disabled' : state === 'focus' ? 'focus' : 'default'}
+              countryFlag={countryFlag}
+              countryCode={countryCode}
+              disabled={isDisabled}
+              onClick={onCountryClick}
+            />
+            <span className={styles.divider} aria-hidden />
+          </>
+        ) : leadingIcon ? (
+          slotIcon(leading, 'search-outline')
+        ) : undefined
+      }
+      trailing={trailingSlot}
     >
-      {showCountry && (
-        <>
-          <SelectCountry
-            size="sm"
-            state={isDisabled ? 'disabled' : state === 'focus' ? 'focus' : 'default'}
-            countryFlag={countryFlag}
-            countryCode={countryCode}
-            disabled={isDisabled}
-            onClick={onCountryClick}
-          />
-          <span className={styles.divider} aria-hidden />
-        </>
-      )}
-      {!showCountry && leadingIcon && slotIcon(leading, 'search-outline')}
       <input
         ref={ref}
         id={inputId}
-        className={styles.control}
+        className={cx(
+          fieldFrameStyles.controlBase,
+          restingControl && fieldFrameStyles.controlResting,
+          styles.control,
+        )}
         type="text"
         inputMode="numeric"
         autoComplete={autoComplete ?? (showPaymentMethodMark ? 'cc-number' : undefined)}
         disabled={isDisabled}
-        placeholder={content === 'placeholder' ? (placeholder ?? 'Placeholder') : placeholder}
+        placeholder={labelFloated ? inputPlaceholder : undefined}
         value={value}
         defaultValue={
           defaultValue ?? (content === 'value' && value === undefined ? 'Value' : undefined)
@@ -122,16 +154,6 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(functi
         aria-describedby={showSupportingText ? supportId : undefined}
         {...rest}
       />
-      {showMark &&
-        (paymentMethodMark ?? (
-          <span
-            className={styles.paymentMark}
-            data-brand={paymentMethodBrand ?? undefined}
-            aria-hidden
-          />
-        ))}
-      {trailingIcon && slotIcon(trailing, isError ? 'alert-circle-outline' : 'x-outline')}
-      {!trailingIcon && isError && slotIcon('alert-circle-outline', 'alert-circle-outline')}
     </FieldFrame>
   );
 });

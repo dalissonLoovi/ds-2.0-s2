@@ -1,6 +1,7 @@
 import { forwardRef, type InputHTMLAttributes, type ReactNode } from 'react';
 import { cx } from '../../utils/cx';
 import { resolveIcon, type DsIconName, type IconComponent } from '../../icons/dsIcons';
+import { FieldFrame, fieldFrameStyles } from '../_shared/FieldFrame';
 import styles from './Input.module.css';
 
 export type InputState = 'default' | 'hover' | 'focus' | 'error' | 'disabled';
@@ -24,13 +25,16 @@ export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'd
 function slotIcon(
   icon: InputProps['leading'],
   fallback: DsIconName,
+  className?: string,
 ): ReactNode {
   const resolved = icon ?? fallback;
   if (typeof resolved === 'string' || typeof resolved === 'function') {
     const Comp = resolveIcon(resolved as DsIconName | IconComponent);
-    return Comp ? <Comp size={20} aria-hidden className={styles.icon} /> : null;
+    return Comp ? (
+      <Comp size={20} aria-hidden className={cx(fieldFrameStyles.icon, className)} />
+    ) : null;
   }
-  return resolved;
+  return resolved as ReactNode;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
@@ -59,48 +63,55 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   const isError = state === 'error';
   const inputId = id ?? 'ds-input';
   const supportId = `${inputId}-support`;
+  const labelFloated =
+    content === 'value' || content === 'placeholder' || state === 'focus';
+  const restingControl = content === 'label' && !labelFloated;
 
-  const showValue = content === 'value' || value != null || defaultValue != null;
   const inputPlaceholder =
     content === 'placeholder' ? (placeholder ?? 'Placeholder') : placeholder;
 
+  const trailingSlot =
+    isError || trailingIcon ? (
+      <>
+        {isError && slotIcon('alert-circle-outline', 'alert-circle-outline')}
+        {!isError && trailingIcon && slotIcon(trailing, 'x-outline')}
+      </>
+    ) : undefined;
+
   return (
-    <div
-      className={cx(
-        styles.root,
-        styles[`appearance-${appearance}`],
-        styles[`state-${state}`],
-        className,
-      )}
-      data-state={state}
-      data-appearance={appearance}
+    <FieldFrame
+      appearance={appearance}
+      state={state}
+      content={content}
+      labelFloated={labelFloated}
+      label={label}
+      htmlFor={inputId}
+      supportingText={supportingText}
+      showSupportingText={showSupportingText}
+      supportId={supportId}
+      className={className}
+      leading={leadingIcon ? slotIcon(leading, 'search-outline') : undefined}
+      trailing={trailingSlot}
     >
-      <label className={styles.label} htmlFor={inputId}>
-        {label}
-      </label>
-      <div className={styles.field}>
-        {leadingIcon && slotIcon(leading, 'search-outline')}
-        <input
-          ref={ref}
-          id={inputId}
-          className={styles.control}
-          disabled={isDisabled}
-          placeholder={inputPlaceholder}
-          value={showValue && value !== undefined ? value : value}
-          defaultValue={defaultValue ?? (content === 'value' && value === undefined ? 'Value' : undefined)}
-          {...rest}
-          aria-invalid={isError ? true : undefined}
-          aria-describedby={showSupportingText ? supportId : undefined}
-        />
-        {trailingIcon &&
-          slotIcon(trailing, isError ? 'alert-circle-outline' : 'x-outline')}
-      </div>
-      {showSupportingText && (
-        <p id={supportId} className={cx(styles.support, isError && styles.supportError)}>
-          {supportingText}
-        </p>
-      )}
-    </div>
+      <input
+        ref={ref}
+        id={inputId}
+        className={cx(
+          fieldFrameStyles.controlBase,
+          restingControl && fieldFrameStyles.controlResting,
+          styles.control,
+        )}
+        disabled={isDisabled}
+        placeholder={labelFloated ? inputPlaceholder : undefined}
+        value={value}
+        defaultValue={
+          defaultValue ?? (content === 'value' && value === undefined ? 'Value' : undefined)
+        }
+        aria-invalid={isError || undefined}
+        aria-describedby={showSupportingText ? supportId : undefined}
+        {...rest}
+      />
+    </FieldFrame>
   );
 });
 

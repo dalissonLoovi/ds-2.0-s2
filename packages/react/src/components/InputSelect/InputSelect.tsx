@@ -1,7 +1,7 @@
 import { forwardRef, useId, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { cx } from '../../utils/cx';
 import { resolveIcon, type DsIconName, type IconComponent } from '../../icons/dsIcons';
-import { FieldFrame } from '../_shared/FieldFrame';
+import { FieldFrame, fieldFrameStyles } from '../_shared/FieldFrame';
 import styles from './InputSelect.module.css';
 
 export type InputSelectState = 'default' | 'hover' | 'focus' | 'error' | 'disabled';
@@ -29,7 +29,7 @@ function slotIcon(icon: InputSelectProps['leading'], fallback: DsIconName) {
   const resolved = icon ?? fallback;
   if (typeof resolved === 'string' || typeof resolved === 'function') {
     const Comp = resolveIcon(resolved as DsIconName | IconComponent);
-    return Comp ? <Comp size={20} aria-hidden className={styles.icon} /> : null;
+    return Comp ? <Comp size={20} aria-hidden className={fieldFrameStyles.icon} /> : null;
   }
   return resolved;
 }
@@ -62,17 +62,21 @@ export const InputSelect = forwardRef<HTMLButtonElement, InputSelectProps>(funct
   const isDisabled = disabled || state === 'disabled';
   const isError = state === 'error';
   const isFocus = state === 'focus' || expanded;
-  const display =
+  const labelFloated =
+    content === 'value' || content === 'placeholder' || state === 'focus' || expanded;
+  const displayText =
     content === 'value' || value
       ? (value ?? 'Value')
-      : content === 'label'
-        ? label
-        : placeholder;
+      : content === 'placeholder'
+        ? placeholder
+        : null;
 
   return (
     <FieldFrame
       appearance={appearance}
       state={state}
+      content={content}
+      labelFloated={labelFloated}
       label={label}
       htmlFor={inputId}
       supportingText={supportingText}
@@ -80,6 +84,13 @@ export const InputSelect = forwardRef<HTMLButtonElement, InputSelectProps>(funct
       supportId={supportId}
       className={className}
       fieldClassName={styles.fieldPad}
+      leading={leadingIcon ? slotIcon(leading, 'search-outline') : undefined}
+      trailing={
+        <>
+          {isError && slotIcon('alert-circle-outline', 'alert-circle-outline')}
+          {slotIcon(trailing, isFocus ? 'chevron-up-outline' : 'chevron-down-outline')}
+        </>
+      }
     >
       <button
         ref={ref}
@@ -95,14 +106,16 @@ export const InputSelect = forwardRef<HTMLButtonElement, InputSelectProps>(funct
         data-content={content}
         {...rest}
       >
-        {leadingIcon && slotIcon(leading, 'search-outline')}
-        <span className={cx(styles.value, content !== 'value' && !value && styles.placeholder)}>
-          {display}
-        </span>
-        {isError && slotIcon('alert-circle-outline', 'alert-circle-outline')}
-        {slotIcon(
-          trailing,
-          isFocus ? 'chevron-up-outline' : 'chevron-down-outline',
+        {displayText != null && (
+          <span
+            className={cx(
+              fieldFrameStyles.controlBase,
+              styles.value,
+              content === 'placeholder' && styles.placeholder,
+            )}
+          >
+            {displayText}
+          </span>
         )}
       </button>
     </FieldFrame>

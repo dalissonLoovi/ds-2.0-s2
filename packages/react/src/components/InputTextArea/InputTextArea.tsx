@@ -1,7 +1,7 @@
 import { forwardRef, useId, type ReactNode, type TextareaHTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
 import { resolveIcon, type DsIconName, type IconComponent } from '../../icons/dsIcons';
-import { FieldFrame } from '../_shared/FieldFrame';
+import { FieldFrame, fieldFrameStyles } from '../_shared/FieldFrame';
 import styles from './InputTextArea.module.css';
 
 export type InputTextAreaState = 'default' | 'hover' | 'focus' | 'error' | 'disabled';
@@ -29,7 +29,7 @@ function slotIcon(icon: InputTextAreaProps['leading'], fallback: DsIconName) {
   const resolved = icon ?? fallback;
   if (typeof resolved === 'string' || typeof resolved === 'function') {
     const Comp = resolveIcon(resolved as DsIconName | IconComponent);
-    return Comp ? <Comp size={20} aria-hidden className={styles.icon} /> : null;
+    return Comp ? <Comp size={20} aria-hidden className={fieldFrameStyles.icon} /> : null;
   }
   return resolved;
 }
@@ -65,29 +65,49 @@ export const InputTextArea = forwardRef<HTMLTextAreaElement, InputTextAreaProps>
     const supportId = `${inputId}-support`;
     const isDisabled = disabled || state === 'disabled';
     const isError = state === 'error';
+    const labelFloated =
+      content === 'value' || content === 'placeholder' || state === 'focus';
+    const restingControl = content === 'label' && !labelFloated;
     const inputPlaceholder =
       content === 'placeholder' ? (placeholder ?? 'Placeholder') : placeholder;
+
+    const trailingSlot =
+      isError || trailingIcon ? (
+        <>
+          {isError && slotIcon('alert-circle-outline', 'alert-circle-outline')}
+          {!isError && trailingIcon && slotIcon(trailing, 'x-outline')}
+        </>
+      ) : undefined;
 
     return (
       <FieldFrame
         appearance={appearance}
         state={state}
+        content={content}
+        labelFloated={labelFloated}
         label={label}
         htmlFor={inputId}
         supportingText={supportingText}
         showSupportingText={showSupportingText}
         supportId={supportId}
         className={className}
-        fieldClassName={cx(styles.field, showResizeHandle && styles.resizable)}
+        fieldLayout="multiline"
+        radiusVariant="textarea"
+        fieldClassName={cx(showResizeHandle && styles.resizable)}
+        leading={leadingIcon ? slotIcon(leading, 'search-outline') : undefined}
+        trailing={trailingSlot}
         trailingMeta={showCount ? <span className={styles.count}>{countText}</span> : null}
       >
-        {leadingIcon && slotIcon(leading, 'search-outline')}
         <textarea
           ref={ref}
           id={inputId}
-          className={styles.control}
+          className={cx(
+            fieldFrameStyles.controlBase,
+            restingControl && fieldFrameStyles.controlResting,
+            styles.control,
+          )}
           disabled={isDisabled}
-          placeholder={inputPlaceholder}
+          placeholder={labelFloated ? inputPlaceholder : undefined}
           value={value}
           defaultValue={
             defaultValue ?? (content === 'value' && value === undefined ? 'Value' : undefined)
@@ -96,8 +116,6 @@ export const InputTextArea = forwardRef<HTMLTextAreaElement, InputTextAreaProps>
           aria-describedby={showSupportingText || showCount ? supportId : undefined}
           {...rest}
         />
-        {trailingIcon &&
-          slotIcon(trailing, isError ? 'alert-circle-outline' : 'x-outline')}
       </FieldFrame>
     );
   },

@@ -664,9 +664,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-26T22:45:00.000Z",
-        "storybookRevision": "2026-08-26-button-visual-react-audit",
+        "storybookUpdatedAt": "2026-08-26T23:15:00.000Z",
+        "storybookRevision": "2026-08-26-input-visual-react-audit",
         "changelog": [
+            {
+                "date": "2026-08-26",
+                "type": "storybook-input-visual-react-audit",
+                "summary": "Input visual audit apply: FieldFrame outlined shell (floating label + cutout, h=56, content modes, error icon always, state/appearance tokens, product-theme radius vars); propagated to InputSelect/Number/Password/TextArea/DatePicker/Autocomplete; Storybook product-theme toolbar."
+            },
             {
                 "date": "2026-08-26",
                 "type": "storybook-button-visual-react-audit",
@@ -11468,6 +11473,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "input-visual-react-audit",
+                "date": "2026-08-26",
+                "summary": "Input React visual audit: FieldFrame floating label, h=56, content modes, error trailing always, inverse + product-theme radius; family fields updated."
+            },
             {
                 "id": "button-visual-react-audit",
                 "date": "2026-08-26",

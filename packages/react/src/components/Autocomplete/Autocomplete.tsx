@@ -2,7 +2,7 @@ import { forwardRef, useId, type InputHTMLAttributes, type ReactNode } from 'rea
 import { cx } from '../../utils/cx';
 import { resolveIcon, type DsIconName, type IconComponent } from '../../icons/dsIcons';
 import { Button } from '../Button/Button';
-import { FieldFrame } from '../_shared/FieldFrame';
+import { FieldFrame, fieldFrameStyles } from '../_shared/FieldFrame';
 import styles from './Autocomplete.module.css';
 
 export type AutocompleteState = 'default' | 'hover' | 'focus' | 'error' | 'disabled';
@@ -32,7 +32,7 @@ function slotIcon(icon: AutocompleteProps['leadingIcon'], fallback: DsIconName) 
   const resolved = icon ?? fallback;
   if (typeof resolved === 'string' || typeof resolved === 'function') {
     const Comp = resolveIcon(resolved as DsIconName | IconComponent);
-    return Comp ? <Comp size={20} aria-hidden className={styles.icon} /> : null;
+    return Comp ? <Comp size={20} aria-hidden className={fieldFrameStyles.icon} /> : null;
   }
   return resolved;
 }
@@ -70,6 +70,8 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(func
   const isDisabled = disabled || state === 'disabled';
   const isError = state === 'error';
   const isExpanded = expanded && !isDisabled;
+  const labelFloated = content !== 'empty' || state === 'focus' || expanded;
+  const restingControl = content === 'empty' && !labelFloated;
   const Loader = resolveIcon('loader-outline');
 
   const resolvedValue =
@@ -84,21 +86,58 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(func
     <FieldFrame
       appearance={appearance}
       state={state}
+      content="placeholder"
+      labelFloated={labelFloated}
       label={label}
       htmlFor={inputId}
       supportingText={supportingText}
       showSupportingText={showSupportingText}
       supportId={supportId}
       className={className}
+      leading={showLeadingIcon ? slotIcon(leadingIcon, 'search-outline') : undefined}
+      trailing={
+        isError || loading || (showClearAction && content !== 'empty') ? (
+          <>
+            {isError && slotIcon('alert-circle-outline', 'alert-circle-outline')}
+            {loading ? (
+              Loader && (
+                <Loader
+                  size={20}
+                  aria-hidden
+                  className={cx(fieldFrameStyles.icon, styles.spinner)}
+                />
+              )
+            ) : (
+              showClearAction &&
+              content !== 'empty' && (
+                <Button
+                  variant="text"
+                  size="sm"
+                  intent="primary"
+                  showLabel={false}
+                  showIcon
+                  icon="x-outline"
+                  aria-label="Clear"
+                  disabled={isDisabled}
+                  onClick={onClear}
+                />
+              )
+            )}
+          </>
+        ) : undefined
+      }
     >
-      {showLeadingIcon && slotIcon(leadingIcon, 'search-outline')}
       <input
         ref={ref}
         id={inputId}
-        className={styles.control}
+        className={cx(
+          fieldFrameStyles.controlBase,
+          restingControl && fieldFrameStyles.controlResting,
+          styles.control,
+        )}
         role="combobox"
         disabled={isDisabled}
-        placeholder={content === 'empty' ? placeholder : placeholder}
+        placeholder={labelFloated ? placeholder : undefined}
         value={resolvedValue}
         defaultValue={defaultValue}
         aria-autocomplete="list"
@@ -108,22 +147,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(func
         aria-describedby={showSupportingText ? supportId : undefined}
         {...rest}
       />
-      {loading
-        ? Loader && <Loader size={20} aria-hidden className={cx(styles.icon, styles.spinner)} />
-        : showClearAction &&
-          content !== 'empty' && (
-            <Button
-              variant="text"
-              size="sm"
-              intent="primary"
-              showLabel={false}
-              showIcon
-              icon="x-outline"
-              aria-label="Clear"
-              disabled={isDisabled}
-              onClick={onClear}
-            />
-          )}
     </FieldFrame>
   );
 });

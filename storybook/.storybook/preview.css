@@ -4,3 +4,20 @@ body,
 #storybook-root {
   font-family: var(--font-family-base, 'Poppins', sans-serif);
 }
+
+/* Product-theme — outlined field radius (Input vs InputTextArea). */
+:root {
+  --component-input-field-radius: var(--border-radius-200, 8px);
+  --component-input-textarea-field-radius: var(--border-radius-200, 8px);
+}
+
+[data-product-theme='escritorio-virtual'] {
+  --component-input-field-radius: var(--border-radius-200, 8px);
+  --component-input-textarea-field-radius: var(--border-radius-200, 8px);
+}
+
+[data-product-theme='site-loovi'],
+[data-product-theme='app-cliente'] {
+  --component-input-field-radius: var(--border-radius-full, 9999px);
+  --component-input-textarea-field-radius: var(--border-radius-500, 20px);
+}

@@ -25,4 +25,23 @@ describe('Input', () => {
       'true',
     );
   });
+
+  it('always shows error trailing icon regardless of trailingIcon', () => {
+    render(<Input id="err" label="Field" state="error" trailingIcon={false} />);
+    const field = screen.getByRole('textbox', { name: 'Field' }).closest('[data-state]');
+    expect(field).toHaveAttribute('data-state', 'error');
+    expect(document.querySelector('svg')).toBeTruthy();
+  });
+
+  it('uses floated label for content=placeholder', () => {
+    render(<Input id="ph" label="Email" content="placeholder" placeholder="Type here" />);
+    const field = screen.getByRole('textbox').closest('[class*="fieldFloated"]');
+    expect(field).toBeTruthy();
+  });
+
+  it('uses resting label for content=label', () => {
+    render(<Input id="rest" label="Email" content="label" state="default" />);
+    const field = screen.getByRole('textbox').closest('[class*="fieldResting"]');
+    expect(field).toBeTruthy();
+  });
 });
