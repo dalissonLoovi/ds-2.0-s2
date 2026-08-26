@@ -100,7 +100,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       {...rest}
     >
       {isLoading ? (
-        renderIconSlot('loader-outline', iconSize, cx(styles.icon, styles.spinner))
+        <span className={styles.spinnerSlot} aria-hidden data-testid="button-spinner">
+          {renderIconSlot('loader-outline', iconSize, styles.spinnerIcon)}
+        </span>
       ) : (
         <>
           {showIcon && renderIconSlot(icon, iconSize, styles.icon)}
