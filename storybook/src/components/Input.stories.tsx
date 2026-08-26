@@ -35,7 +35,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Placeholder: Story = {};
-export const WithValue: Story = { args: { content: 'value', defaultValue: 'Value' } };
+export const WithValue: Story = {
+  args: { content: 'value', defaultValue: 'Value' },
+  name: 'With Value',
+};
 export const RestingLabel: Story = { args: { content: 'label' } };
 export const FocusEmpty: Story = { args: { content: 'label', state: 'focus' } };
 export const Hover: Story = { args: { state: 'hover' } };
