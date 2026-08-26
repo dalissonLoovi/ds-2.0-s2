@@ -24,7 +24,7 @@
   color: var(--btn-fg);
   font: inherit;
   font-size: var(--btn-font-size);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium, 500);
   line-height: var(--btn-line-height);
   cursor: pointer;
   text-decoration: none;
@@ -33,11 +33,30 @@
     box-shadow 120ms ease, opacity 120ms ease;
 }
 
-.root:disabled,
-.root[aria-disabled='true'] {
+.root:disabled:not([data-state='loading']),
+.root[aria-disabled='true']:not([data-state='loading']) {
   cursor: not-allowed;
   opacity: 0.48;
   background: var(--interactive-disabled-surface, var(--btn-bg));
+}
+
+.root[data-state='loading'],
+.stateLoading {
+  cursor: wait;
+  opacity: 1;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border-color: var(--btn-border);
+}
+
+.variant-outline[data-state='loading'],
+.variant-outline.stateLoading {
+  background: transparent;
+}
+
+.variant-text[data-state='loading'],
+.variant-text.stateLoading {
+  background: transparent;
 }
 
 .root:focus-visible,
@@ -50,21 +69,23 @@
   --btn-pad-x: var(--spacing-150, 10px);
   --btn-pad-y: var(--spacing-050, 4px);
   --btn-min-height: 32px;
-  --btn-font-size: 12px;
-  --btn-line-height: 16px;
+  --btn-font-size: var(--typography-body-small-medium-font-size, 12px);
+  --btn-line-height: var(--typography-body-small-medium-line-height, 17px);
   --btn-radius: var(--border-radius-150, 6px);
 }
 
 .size-md {
   --btn-min-height: 40px;
+  --btn-font-size: var(--typography-body-medium-medium-font-size, 14px);
+  --btn-line-height: var(--typography-body-medium-medium-line-height, 20px);
 }
 
 .size-lg {
   --btn-pad-x: var(--spacing-250, 16px);
   --btn-pad-y: var(--spacing-150, 10px);
   --btn-min-height: 48px;
-  --btn-font-size: 16px;
-  --btn-line-height: 24px;
+  --btn-font-size: var(--typography-body-large-medium-font-size, 16px);
+  --btn-line-height: var(--typography-body-large-medium-line-height, 22px);
   --btn-radius: var(--border-radius-200, 8px);
 }
 

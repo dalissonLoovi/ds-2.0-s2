@@ -15,15 +15,24 @@ describe('Button', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('exposes busy and blocks activation while loading', async () => {
+  it('exposes busy, hides label, and blocks activation while loading', async () => {
     const user = userEvent.setup();
     const onClick = vi.fn();
     render(<Button label="Uploading" loading onClick={onClick} />);
     const btn = screen.getByRole('button', { name: 'Uploading' });
     expect(btn).toHaveAttribute('aria-busy', 'true');
+    expect(btn).toHaveAttribute('data-state', 'loading');
     expect(btn).toBeDisabled();
+    expect(screen.queryByText('Uploading')).not.toBeInTheDocument();
     await user.click(btn);
     expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it('uses chevron-right as the default trailing icon', () => {
+    render(<Button label="Next" showTrailingIcon data-testid="btn" />);
+    const btn = screen.getByTestId('btn');
+    expect(btn.querySelector('svg')).toBeTruthy();
+    expect(btn.innerHTML).not.toContain('chevron-down');
   });
 
   it('blocks activation when disabled', async () => {
@@ -31,6 +40,7 @@ describe('Button', () => {
     const onClick = vi.fn();
     render(<Button label="Save" disabled onClick={onClick} />);
     const btn = screen.getByRole('button', { name: 'Save' });
+    expect(btn).toHaveAttribute('aria-disabled', 'true');
     expect(btn).toBeDisabled();
     await user.click(btn);
     expect(onClick).not.toHaveBeenCalled();

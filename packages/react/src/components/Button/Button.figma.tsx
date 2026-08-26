@@ -24,6 +24,7 @@ figma.connect(
         secondary: 'secondary',
       }),
       disabled: figma.boolean('disabled'),
+      loading: figma.boolean('loading'),
       showIcon: figma.boolean('showIcon'),
       showLabel: figma.boolean('showLabel'),
       showTrailingIcon: figma.boolean('showTrailingIcon'),
@@ -35,6 +36,7 @@ figma.connect(
         size={props.size as 'sm' | 'md' | 'lg'}
         intent={props.intent as 'primary' | 'success' | 'danger' | 'secondary'}
         disabled={Boolean(props.disabled)}
+        loading={Boolean(props.loading)}
         showIcon={Boolean(props.showIcon)}
         showLabel={props.showLabel !== false}
         showTrailingIcon={Boolean(props.showTrailingIcon)}

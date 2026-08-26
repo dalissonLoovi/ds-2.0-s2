@@ -60,16 +60,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     showIcon = false,
     showTrailingIcon = false,
     icon = 'plus-outline',
-    trailingIcon = 'chevron-down-outline',
+    trailingIcon = 'chevron-right-outline',
     className,
     type = 'button',
     children,
+    'aria-label': ariaLabel,
     ...rest
   },
   ref,
 ) {
   const isLoading = loading || state === 'loading';
-  const effectivelyDisabled = disabled || isLoading;
+  const visibleLabel = showLabel && !isLoading;
+  const labelText = children ?? label;
+  const resolvedAriaLabel = ariaLabel ?? (isLoading || !showLabel ? String(labelText) : undefined);
 
   const iconSize = size === 'sm' ? 16 : size === 'lg' ? 24 : 20;
 
@@ -82,23 +85,29 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
         styles[`variant-${variant}`],
         styles[`size-${size}`],
         styles[`intent-${intent}`],
+        isLoading && styles.stateLoading,
         state !== 'default' && !isLoading && styles[`state-${state}`],
         className,
       )}
-      disabled={effectivelyDisabled}
+      disabled={disabled || isLoading}
       aria-busy={isLoading || undefined}
-      aria-disabled={effectivelyDisabled || undefined}
+      aria-disabled={disabled || undefined}
+      aria-label={resolvedAriaLabel}
       data-variant={variant}
       data-size={size}
       data-intent={intent}
       data-state={isLoading ? 'loading' : state}
       {...rest}
     >
-      {isLoading
-        ? renderIconSlot('loader-outline', iconSize, cx(styles.icon, styles.spinner))
-        : showIcon && renderIconSlot(icon, iconSize, styles.icon)}
-      {showLabel && <span className={styles.label}>{children ?? label}</span>}
-      {!isLoading && showTrailingIcon && renderIconSlot(trailingIcon, iconSize, styles.icon)}
+      {isLoading ? (
+        renderIconSlot('loader-outline', iconSize, cx(styles.icon, styles.spinner))
+      ) : (
+        <>
+          {showIcon && renderIconSlot(icon, iconSize, styles.icon)}
+          {visibleLabel && <span className={styles.label}>{labelText}</span>}
+          {showTrailingIcon && renderIconSlot(trailingIcon, iconSize, styles.icon)}
+        </>
+      )}
     </button>
   );
 });

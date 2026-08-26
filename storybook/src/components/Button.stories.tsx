@@ -34,7 +34,12 @@ export const Primary: Story = {};
 export const Secondary: Story = { args: { intent: 'secondary' } };
 export const Outline: Story = { args: { variant: 'outline' } };
 export const Text: Story = { args: { variant: 'text' } };
-export const Loading: Story = { args: { loading: true } };
+export const Loading: Story = {
+  args: { loading: true, label: 'Saving', showIcon: true, showTrailingIcon: true },
+};
+export const TrailingIcon: Story = {
+  args: { showTrailingIcon: true, label: 'Continue' },
+};
 export const IconOnly: Story = {
   args: { showLabel: false, showIcon: true, 'aria-label': 'Add' },
 };
