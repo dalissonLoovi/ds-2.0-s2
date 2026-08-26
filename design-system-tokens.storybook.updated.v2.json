@@ -663,9 +663,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-26T17:20:00.000Z",
-        "storybookRevision": "2026-08-26-payment-method-marks-docs",
+        "storybookUpdatedAt": "2026-08-26T20:00:00.000Z",
+        "storybookRevision": "2026-08-26-payment-method-marks-audit-apply",
         "changelog": [
+            {
+                "date": "2026-08-26",
+                "type": "storybook-payment-method-marks-audit-apply",
+                "summary": "Payment Method Marks audit apply: fixed 11 logo variant prop errors; showBackground=true = brand-colored badge (not white tile); layer hygiene; ListItem leading=payment-mark + ListItemLeadingPaymentMark INSTANCE_SWAP; figmaNodeUrl slug fix."
+            },
             {
                 "date": "2026-08-26",
                 "type": "storybook-payment-method-marks",
@@ -4270,7 +4275,7 @@
     },
     "storybook": {
         "schemaVersion": "ds-storybook-metadata/v2",
-        "updatedAt": "2026-08-26T17:20:00-03:00",
+        "updatedAt": "2026-08-26T20:00:00-03:00",
         "purpose": "Hybrid Storybook catalog: CSF3 Autodocs and Code Connect for implemented React components (@ds/react); seed MDX for Figma-only entries. Token values remain under @ds/tokens.",
         "globalRules": {
             "variantNaming": "variant keys use lower camelCase; values use lowercase or kebab-case where possible",
@@ -8744,7 +8749,7 @@
             },
             "ListItem": {
                 "nodeId": "3735:7716",
-                "description": "AI-READY COMPONENT: ListItem is a selectable or navigable row used inside lists to present a primary headline with optional overline, supporting text, trailing supporting text, leading media/controls and trailing actions. Use condition=1-line|2-line|3-line for vertical content density. Use leading=none|monogram|icon|image|video|checkbox|radio|switch and trailing=none|icon|checkbox|radio|switch for slot composition. Use showOverline and showSupportingText to toggle secondary text. Props: headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, stateLayer (ListItemStateLayer INSTANCE_SWAP), divider (DividerHorizontal INSTANCE_SWAP). Defaults in the component set: condition=3-line, leading=none, trailing=none, showOverline=false, showSupportingText=true. Composition must use local S2 building blocks only: ListItemStateLayer as stateLayer overlay; ListItemLeadingMonogram for leading=monogram; ListItemImageThumbnail for leading=image; ListItemVideoThumbnail for leading=video; local Checkbox, RadioButton and Switch for selection controls; DS Icons — Escritório Virtual outline icons for leading=icon (user-outline) and trailing=icon (chevron-right-outline); DividerHorizontal for the optional divider. Nested Checkbox and RadioButton must stay control-only inside ListItem: showLabel=false, showDescription=false, showContent=false (about 20×20). Do not nest the full labeled Checkbox/Radio composition or row height will break. Nested Switch uses size=md (showIcon as designed). Interaction visuals are owned by nested ListItemStateLayer (state=default|hover|focus|pressed|dragged) via the stateLayer swap — ListItem itself does not publish a separate state variant axis. contentRow uses padding 12/16 and gap 16 with vertical CENTER alignment between leadingSlot, Content and trailingSlot. Do not use remote Material list kits, remote state-layers, remote monogram/image/video thumbnails, remote checkboxes/radios/switches or remote icons. Do not use ListItem as a Button, Menu item (ListActionDropdownItem), NavigationDrawerItem, TableRow or Card. Token rule: use existing DS kebab-case variables and text styles only — text/primary|secondary, color/background-surface/0, plus nested building-block and control tokens; typography via body/large/medium (headline) and body/medium/regular (overline/supporting/trailingSupportingText). Accessibility: map to role=listitem inside a list; navigable rows may be links; checkbox/radio/switch keep their control roles; stateLayer focus must remain visible; decorative leading media may be aria-hidden when the headline already names the entity. React mapping: ListItem(condition, leading, trailing, showOverline, showSupportingText, headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, state, onPress) where state drives ListItemStateLayer.",
+                "description": "AI-READY COMPONENT: ListItem is a selectable or navigable row used inside lists to present a primary headline with optional overline, supporting text, trailing supporting text, leading media/controls and trailing actions. Use condition=1-line|2-line|3-line for vertical content density. Use leading=none|monogram|icon|image|video|payment-mark|checkbox|radio|switch and trailing=none|icon|checkbox|radio|switch for slot composition. Use showOverline and showSupportingText to toggle secondary text. Props: headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, stateLayer (ListItemStateLayer INSTANCE_SWAP), divider (DividerHorizontal INSTANCE_SWAP). Defaults in the component set: condition=3-line, leading=none, trailing=none, showOverline=false, showSupportingText=true. Composition must use local S2 building blocks only: ListItemStateLayer as stateLayer overlay; ListItemLeadingMonogram for leading=monogram; ListItemImageThumbnail for leading=image; ListItemVideoThumbnail for leading=video; ListItemLeadingPaymentMark (paymentMethodMark INSTANCE_SWAP → payment-method/*) for leading=payment-mark; local Checkbox, RadioButton and Switch for selection controls; DS Icons — Escritório Virtual outline icons for leading=icon (user-outline) and trailing=icon (chevron-right-outline); DividerHorizontal for the optional divider. Nested Checkbox and RadioButton must stay control-only inside ListItem: showLabel=false, showDescription=false, showContent=false (about 20×20). Do not nest the full labeled Checkbox/Radio composition or row height will break. Nested Switch uses size=md (showIcon as designed). Interaction visuals are owned by nested ListItemStateLayer (state=default|hover|focus|pressed|dragged) via the stateLayer swap — ListItem itself does not publish a separate state variant axis. contentRow uses padding 12/16 and gap 16 with vertical CENTER alignment between leadingSlot, Content and trailingSlot. Do not use remote Material list kits, remote state-layers, remote monogram/image/video thumbnails, remote checkboxes/radios/switches or remote icons. Do not use ListItem as a Button, Menu item (ListActionDropdownItem), NavigationDrawerItem, TableRow or Card. Token rule: use existing DS kebab-case variables and text styles only — text/primary|secondary, color/background-surface/0, plus nested building-block and control tokens; typography via body/large/medium (headline) and body/medium/regular (overline/supporting/trailingSupportingText). Accessibility: map to role=listitem inside a list; navigable rows may be links; checkbox/radio/switch keep their control roles; stateLayer focus must remain visible; decorative leading media may be aria-hidden when the headline already names the entity. React mapping: ListItem(condition, leading, trailing, showOverline, showSupportingText, headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, state, onPress) where state drives ListItemStateLayer.",
                 "variants": {
                     "condition": [
                         "1-line",
@@ -8756,6 +8761,7 @@
                         "monogram",
                         "icon",
                         "image",
+                        "payment-mark",
                         "video",
                         "checkbox",
                         "radio",
@@ -8787,13 +8793,13 @@
                     "stateLayer": "INSTANCE_SWAP → ListItemStateLayer",
                     "divider": "INSTANCE_SWAP → DividerHorizontal",
                     "condition": "1-line | 2-line | 3-line",
-                    "leading": "none | monogram | icon | image | video | checkbox | radio | switch",
+                    "leading": "none | monogram | icon | image | video | payment-mark | checkbox | radio | switch",
                     "trailing": "none | icon | checkbox | radio | switch",
                     "showOverline": "false | true",
                     "showSupportingText": "false | true"
                 },
                 "rules": {
-                    "localBuildingBlocksOnly": "Use ListItemStateLayer, ListItemLeadingMonogram, ListItemImageThumbnail, ListItemVideoThumbnail only",
+                    "localBuildingBlocksOnly": "Use ListItemStateLayer, ListItemLeadingMonogram, ListItemImageThumbnail, ListItemVideoThumbnail, ListItemLeadingPaymentMark only",
                     "localControlsOnly": "Use local Checkbox, RadioButton, Switch and DS outline icons",
                     "stateViaStateLayer": "Interaction states come from nested ListItemStateLayer — no ListItem state variant axis",
                     "noRemoteM3": "Do not use remote Material list kits or building blocks",
@@ -8803,7 +8809,8 @@
                     "switchSizeMd": "Nested Switch uses size=md",
                     "iconDefaults": "leading=icon → user-outline; trailing=icon → chevron-right-outline",
                     "contentRowLayout": "contentRow padding 12/16, gap 16, counterAxisAlignItems CENTER",
-                    "defaults": "condition=3-line, leading=none, trailing=none, showOverline=false, showSupportingText=true"
+                    "defaults": "condition=3-line, leading=none, trailing=none, showOverline=false, showSupportingText=true",
+                    "paymentMarkLeading": "leading=payment-mark → ListItemLeadingPaymentMark with paymentMethodMark INSTANCE_SWAP (payment-method/* only)"
                 },
                 "tokenRules": [
                     "text/primary | secondary",
@@ -8821,7 +8828,8 @@
                     "Checkbox",
                     "RadioButton",
                     "Switch",
-                    "DividerHorizontal"
+                    "DividerHorizontal",
+                    "ListItemLeadingPaymentMark"
                 ],
                 "reactPackage": "@ds/react",
                 "reactImplemented": true
@@ -11339,7 +11347,7 @@
                 "nodeId": "7:18",
                 "figmaFileKey": "f7HDa2A0uqtcVEOJ1YhPx6",
                 "figmaUrl": "https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-18",
-                "description": "AI-READY COMPONENT: PaymentMethodMark is the contract for third-party payment network and wallet brand marks published in library [DS] Payment Method Marks. Each brand is a separate COMPONENT_SET named payment-method/{brand}. Props: type=logo|icon; showBackground=true|false (sparse matrix per brand — some omit type=logo; type=logo has no showBackground axis when published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=true adds white tile behind icon mark. Brand fills are fixed — do not remap to text/* or color/* tokens. Not DS Icons (*-outline/*-filled) and not BrandLogo. Consume in [DS] 2.0 - S2 via INSTANCE_SWAP only among payment-method/* marks. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label with brand name. React mapping: PaymentMethodMark(brand, type, showBackground). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: PaymentMethodMark is the contract for third-party payment network and wallet brand marks published in library [DS] Payment Method Marks. Each brand is a separate COMPONENT_SET named payment-method/{brand}. Props: type=logo|icon; showBackground=true|false (sparse matrix per brand — some omit type=logo; when type=logo is published it uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile). Brand fills are fixed — do not remap to text/* or color/* tokens. Not DS Icons (*-outline/*-filled) and not BrandLogo. Consume in [DS] 2.0 - S2 via INSTANCE_SWAP only among payment-method/* marks (e.g. ListItem leading=payment-mark). Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label with brand name. React mapping: PaymentMethodMark(brand, type, showBackground). Code Connect is not configured.",
                 "variants": {
                     "type": [
                         "logo",
@@ -11353,10 +11361,10 @@
                 "props": {
                     "brand": "kebab-case slug matching payment-method/{brand} set name (e.g. visa, mastercard, pix)",
                     "type": "logo | icon — logo = horizontal lockup; icon = square badge",
-                    "showBackground": "true | false — white tile behind icon mark (icon type only; sparse when type=logo)"
+                    "showBackground": "true | false — true = brand-colored 40×40 badge fill on root; false = transparent root (mark only). Sparse when type=logo (logo publishes showBackground=false only)."
                 },
                 "rules": {
-                    "sparseMatrix": "Per-brand sparse: e.g. visa publishes icon only (no type=logo); mastercard publishes logo + icon × showBackground",
+                    "sparseMatrix": "Per-brand sparse: e.g. visa publishes icon only (no type=logo); mastercard publishes logo + icon × showBackground; type=logo always showBackground=false when published",
                     "brandTokens": "No semantic token binding — fixed trademark fills",
                     "vsIcons": "Not DS Icons (*-outline/*-filled) — do not mix libraries",
                     "vsBrandLogo": "BrandLogo = Loovi identity; PaymentMethodMark = third-party payment marks",
@@ -11369,7 +11377,7 @@
                 "composition": [
                     "payment-method/{brand} COMPONENT_SET",
                     "type=logo|icon variants",
-                    "showBackground tile (icon only)"
+                    "showBackground brand-colored badge (icon) or transparent (logo/false)"
                 ],
                 "reactMapping": "PaymentMethodMark(brand, type, showBackground)",
                 "catalog": [
@@ -11399,9 +11407,33 @@
                     "visa",
                     "vr"
                 ]
+            },
+            "ListItemLeadingPaymentMark": {
+                "nodeId": "4990:38559",
+                "description": "AI-READY INTERNAL COMPONENT: ListItemLeadingPaymentMark wraps a payment-method/* brand mark (40×40 canonical height) for ListItem leading=payment-mark rows. Props: paymentMethodMark (INSTANCE_SWAP — swap only among payment-method/* marks from published [DS] Payment Method Marks f7HDa2A0uqtcVEOJ1YhPx6). Do not use as standalone checkout badge, Button icon, or DS Icons slot. Accessibility: decorative when ListItem headline names the payment method (aria-hidden); parent owns label. React mapping: internal only — ListItemLeadingPaymentMark(brand, type, showBackground).",
+                "props": {
+                    "paymentMethodMark": "INSTANCE_SWAP → payment-method/* from [DS] Payment Method Marks (type=icon recommended for list rows; h=40px)"
+                },
+                "rules": {
+                    "internalOnly": "Use inside ListItem leading=payment-mark only",
+                    "swapScope": "INSTANCE_SWAP among payment-method/* only — never DS Icons or BrandLogo",
+                    "libraryRequired": "Enable [DS] Payment Method Marks library in S2 for production swaps"
+                },
+                "tokenRules": [],
+                "accessibility": "Decorative when headline names the method; parent ListItem owns accessible name.",
+                "composition": [
+                    "payment-method/{brand} instance"
+                ],
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             }
         },
         "recentUpdates": [
+            {
+                "id": "payment-method-marks-audit-apply",
+                "date": "2026-08-26",
+                "summary": "Payment Method Marks audit apply: logo variant prop fix, showBackground semantics, layer hygiene, ListItem leading=payment-mark consumer, figmaNodeUrl slug fix."
+            },
             {
                 "id": "payment-method-marks-docs",
                 "date": "2026-08-26",
@@ -12611,7 +12643,7 @@
         },
         "paymentMethodMarks": {
             "summary": "Payment network and wallet brand marks (not DS Icons). Published from file [DS] Payment Method Marks. Naming: payment-method/{brand}. All variants canonical height=40px. Brand fills are fixed — intentional exception to semantic UI token binding (parallel to BrandLogo vs Icons).",
-            "colorPolicy": "Brand/trademark fills are fixed official colors — do not remap to text/*, color/*, or feedback/* tokens. showBackground=true uses a white tile behind icon marks only.",
+            "colorPolicy": "Brand/trademark fills are fixed official colors — do not remap to text/*, color/*, or feedback/* tokens. showBackground=true applies the official brand color as a 40×40 badge fill on the component root (not a white tile). showBackground=false keeps the root transparent (mark artwork only).",
             "fileKey": "f7HDa2A0uqtcVEOJ1YhPx6",
             "figmaUrl": "https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks",
             "page": {
@@ -12633,7 +12665,7 @@
                     "true",
                     "false"
                 ],
-                "notes": "type=logo = horizontal lockup (~86×40); type=icon = 40×40 badge; sparse matrix per brand (some omit type=logo). type=logo has no showBackground axis when published."
+                "notes": "type=logo = horizontal lockup (~86×40); type=icon = 40×40 badge; sparse matrix per brand (some omit type=logo). When type=logo is published it uses showBackground=false only."
             },
             "families": {
                 "cards": {
@@ -12673,6 +12705,7 @@
                             "nodeId": "7:592",
                             "name": "payment-method/alelo",
                             "componentKey": "0d6cec85b12b0d27d70aebb76409ae9e2c11ca83",
+                            "description": "AI-READY COMPONENT: Alelo payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Alelo\". React mapping: PaymentMethodMark(brand=\"alelo\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -12687,6 +12720,7 @@
                             "nodeId": "7:301",
                             "name": "payment-method/amazon-pay",
                             "componentKey": "7edb3097df30a1bc85bc5fc5da3baaa9d0723a39",
+                            "description": "AI-READY COMPONENT: Amazon Pay payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Amazon Pay\". React mapping: PaymentMethodMark(brand=\"amazon-pay\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "logo",
@@ -12702,6 +12736,7 @@
                             "nodeId": "7:64",
                             "name": "payment-method/amex",
                             "componentKey": "3148ce6413e3080f58aaac1086cea565242470f1",
+                            "description": "AI-READY COMPONENT: American Express payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"American Express\". React mapping: PaymentMethodMark(brand=\"amex\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "logo",
@@ -12717,6 +12752,7 @@
                             "nodeId": "7:270",
                             "name": "payment-method/apple-pay",
                             "componentKey": "caa9089a22b5a38576f80b1b9d731eebb2c2958f",
+                            "description": "AI-READY COMPONENT: Apple Pay payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Apple Pay\". React mapping: PaymentMethodMark(brand=\"apple-pay\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -12731,6 +12767,7 @@
                             "nodeId": "7:569",
                             "name": "payment-method/ben",
                             "componentKey": "8b86b51fbae89f06347c632513f5dda88b8eba3f",
+                            "description": "AI-READY COMPONENT: Ben payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Ben\". React mapping: PaymentMethodMark(brand=\"ben\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -12745,6 +12782,7 @@
                             "nodeId": "7:352",
                             "name": "payment-method/bitcoin",
                             "componentKey": "9509eb84e3a09e47cbdbeda5e6a23ea5c4178086",
+                            "description": "AI-READY COMPONENT: Bitcoin payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Bitcoin\". React mapping: PaymentMethodMark(brand=\"bitcoin\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "logo",
@@ -12760,6 +12798,7 @@
                             "nodeId": "7:386",
                             "name": "payment-method/bitcoin-cash",
                             "componentKey": "a10f9118dbbce7cedd956e5b2eb7f1b2ab7b34bc",
+                            "description": "AI-READY COMPONENT: Bitcoin Cash payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Bitcoin Cash\". React mapping: PaymentMethodMark(brand=\"bitcoin-cash\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "logo",
@@ -12775,6 +12814,7 @@
                             "nodeId": "7:438",
                             "name": "payment-method/cartao-luiza",
                             "componentKey": "4a3f41c68e4e8753a66c56501203634aa7e7a268",
+                            "description": "AI-READY COMPONENT: Cartão Luiza payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Cartão Luiza\". React mapping: PaymentMethodMark(brand=\"cartao-luiza\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -12789,6 +12829,7 @@
                             "nodeId": "7:108",
                             "name": "payment-method/diners-club",
                             "componentKey": "fa8d8d3389f8526354f6d6e9f00728e6aa434e3b",
+                            "description": "AI-READY COMPONENT: Diners Club payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Diners Club\". React mapping: PaymentMethodMark(brand=\"diners-club\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "logo",
@@ -12804,6 +12845,7 @@
                             "nodeId": "7:101",
                             "name": "payment-method/elo",
                             "componentKey": "5ce8e03f428a01dee09edc525eaf358f569dbe22",
+                            "description": "AI-READY COMPONENT: Elo payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Elo\". React mapping: PaymentMethodMark(brand=\"elo\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -12818,6 +12860,7 @@
                             "nodeId": "7:237",
                             "name": "payment-method/google-pay",
                             "componentKey": "4bda8077e0f93e78083461d5146aaef9e07da8f0",
+                            "description": "AI-READY COMPONENT: Google Pay payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Google Pay\". React mapping: PaymentMethodMark(brand=\"google-pay\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -12832,6 +12875,7 @@
                             "nodeId": "7:423",
                             "name": "payment-method/hiper",
                             "componentKey": "9158838743eb0dce496c624fff83e865fe487565",
+                            "description": "AI-READY COMPONENT: Hiper payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Hiper\". React mapping: PaymentMethodMark(brand=\"hiper\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -12846,6 +12890,7 @@
                             "nodeId": "7:19",
                             "name": "payment-method/hipercard",
                             "componentKey": "137471d8a539856f82bf6391841b533a3cb2fc17",
+                            "description": "AI-READY COMPONENT: Hipercard payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Hipercard\". React mapping: PaymentMethodMark(brand=\"hipercard\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -12860,6 +12905,7 @@
                             "nodeId": "7:618",
                             "name": "payment-method/ifood-beneficios",
                             "componentKey": "48be936b9918a470a49e00ed88ea81297dd2ecab",
+                            "description": "AI-READY COMPONENT: iFood Benefícios payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"iFood Benefícios\". React mapping: PaymentMethodMark(brand=\"ifood-beneficios\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -12874,6 +12920,7 @@
                             "nodeId": "7:24",
                             "name": "payment-method/mastercard",
                             "componentKey": "c3973308d88458ad2a74717cdfcafded352befde",
+                            "description": "AI-READY COMPONENT: Mastercard payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Mastercard\". React mapping: PaymentMethodMark(brand=\"mastercard\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "logo",
@@ -12889,6 +12936,7 @@
                             "nodeId": "7:334",
                             "name": "payment-method/paypal",
                             "componentKey": "2be38fe8e1e48d871bfa536905d688cb2737a241",
+                            "description": "AI-READY COMPONENT: PayPal payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"PayPal\". React mapping: PaymentMethodMark(brand=\"paypal\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "logo",
@@ -12904,6 +12952,7 @@
                             "nodeId": "7:195",
                             "name": "payment-method/pix",
                             "componentKey": "1c59134779e03e7ac6a90c5c6e6c2408a4e9df02",
+                            "description": "AI-READY COMPONENT: Pix payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Pix\". React mapping: PaymentMethodMark(brand=\"pix\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "logo",
@@ -12919,6 +12968,7 @@
                             "nodeId": "7:578",
                             "name": "payment-method/pluxee",
                             "componentKey": "4bbbcbbd5096d44df5e2eb0f2d64443382d85705",
+                            "description": "AI-READY COMPONENT: Pluxee payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Pluxee\". React mapping: PaymentMethodMark(brand=\"pluxee\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "logo",
@@ -12934,6 +12984,7 @@
                             "nodeId": "7:289",
                             "name": "payment-method/samsung-pay",
                             "componentKey": "78f4a19e5d5e6e71a4d6008012f115f206fc394c",
+                            "description": "AI-READY COMPONENT: Samsung Pay payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Samsung Pay\". React mapping: PaymentMethodMark(brand=\"samsung-pay\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "logo",
@@ -12949,6 +13000,7 @@
                             "nodeId": "7:413",
                             "name": "payment-method/shopee-pay",
                             "componentKey": "bd8c57b14212a797f221e2a7b4216214a3253334",
+                            "description": "AI-READY COMPONENT: Shopee Pay payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Shopee Pay\". React mapping: PaymentMethodMark(brand=\"shopee-pay\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "logo",
@@ -12964,6 +13016,7 @@
                             "nodeId": "7:645",
                             "name": "payment-method/sodexo",
                             "componentKey": "1991b41240a703e0da974f64a3f19eb21f5f6c36",
+                            "description": "AI-READY COMPONENT: Sodexo payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Sodexo\". React mapping: PaymentMethodMark(brand=\"sodexo\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -12978,6 +13031,7 @@
                             "nodeId": "7:609",
                             "name": "payment-method/ticket",
                             "componentKey": "4d7df376353d23ad0b90da846b34b8f9adc9614e",
+                            "description": "AI-READY COMPONENT: Ticket payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Ticket\". React mapping: PaymentMethodMark(brand=\"ticket\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -12992,6 +13046,7 @@
                             "nodeId": "7:457",
                             "name": "payment-method/verde-card",
                             "componentKey": "d7bedfe4476348241ba4fdb4d0185a055b8a90e2",
+                            "description": "AI-READY COMPONENT: VerdeCard payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"VerdeCard\". React mapping: PaymentMethodMark(brand=\"verde-card\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -13006,6 +13061,7 @@
                             "nodeId": "7:49",
                             "name": "payment-method/visa",
                             "componentKey": "4e06974a46a6a3284b0eb257b19be8fff88aef0a",
+                            "description": "AI-READY COMPONENT: Visa payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"Visa\". React mapping: PaymentMethodMark(brand=\"visa\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -13020,6 +13076,7 @@
                             "nodeId": "7:628",
                             "name": "payment-method/vr",
                             "componentKey": "c82cbe8e9b32c26cd54039a5185f3954aa1b9946",
+                            "description": "AI-READY COMPONENT: VR payment method brand mark for checkout, saved cards, wallets, and payment history. Props: type=logo|icon; showBackground=true|false (sparse: type=logo not published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*). Not DS Icons. INSTANCE_SWAP among payment-method/* only. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label=\"VR\". React mapping: PaymentMethodMark(brand=\"vr\", type, showBackground).",
                             "variantsPublished": {
                                 "type": [
                                     "icon"
@@ -13032,8 +13089,8 @@
                         }
                     },
                     "consumers": [
-                        "S2 payment-method INSTANCE_SWAP slots (checkout, saved cards, payment history)",
-                        "ListItem leading media for payment rows (when product wires slot)"
+                        "ListItem leading=payment-mark via ListItemLeadingPaymentMark (paymentMethodMark INSTANCE_SWAP → payment-method/*)",
+                        "S2 payment-method INSTANCE_SWAP slots (checkout, saved cards, payment history)"
                     ],
                     "rules": {
                         "composition": "One COMPONENT_SET per brand; swap by brand + type + showBackground",

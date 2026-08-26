@@ -6,14 +6,15 @@ import { Meta } from '@storybook/blocks';
 
 Revisions for Design System 2.0 Storybook — React Autodocs, Foundations, and seed metadata.
 
-**Catalog:** 123/126 components on `@ds/react` Autodocs (W0–W7). `BrandLogo`, `CommentItem`, `PaymentMethodMark` remain Figma-only.
+**Catalog:** 124/127 components on `@ds/react` Autodocs (W0–W7). `BrandLogo`, `CommentItem`, `PaymentMethodMark` remain Figma-only.
 
 The lists below are truncated for readability. Full history lives in `design-system-tokens.storybook.updated.v2.json` (`storybook.recentUpdates` and `meta.changelog`).
 
 ## Recent updates
 
-_Showing 20 of 252._
+_Showing 20 of 253._
 
+- **payment-method-marks-audit-apply:** Payment Method Marks audit apply: logo variant prop fix, showBackground semantics, layer hygiene, ListItem leading=payment-mark consumer, figmaNodeUrl slug fix.
 - **payment-method-marks-docs:** Payment Method Marks library: DS naming (payment-method/\{brand\}), type|showBackground props, h=40px; 25 marks in seed + Foundations page; governance vs Icons/BrandLogo.
 - **brandlogo-audit-apply:** BrandLogo: Figma rename + AI-READY; seed entry added (Figma-only); palette/brand fills documented.
 - **brand-blue-5a78ff:** primitive-colors/brand-blue → #5A78FF; brand surfaces + palette/brand synced; brandSurface guidance updated.
@@ -33,14 +34,14 @@ _Showing 20 of 252._
 - **docs-audit-w5-w6:** W5 human docs OK (noop); W6 StepperPrimary nodeId → live 3653:4985.
 - **docs-audit-w4-live-nodeids:** W4: Accordion/AvatarGroup/Divider*/Pagination/PaginationItem nodeIds → live; docs instances rewired; orphan masters deferred.
 - **docs-audit-w2-w3-nodeids:** ProgressBar + NavigationRail* live nodeIds; Banner vs Alert docs; OrganizationHeader Docs humanas.
-- **button-intent-secondary-w0-docs:** Button intent=secondary (sparse md); W0 human docs audit apply on Figma Docs humanas frames.
 
 ## History
 
-_Showing 40 of 249, grouped by date._
+_Showing 40 of 250, grouped by date._
 
 ### 2026-08-26
 
+- **storybook-payment-method-marks-audit-apply:** Payment Method Marks audit apply: fixed 11 logo variant prop errors; showBackground=true = brand-colored badge (not white tile); layer hygiene; ListItem leading=payment-mark + ListItemLeadingPaymentMark INSTANCE_SWAP; figmaNodeUrl slug fix.
 - **storybook-payment-method-marks:** Payment Method Marks: [DS] library documented (payment-method/\{brand\}, type|showBackground, h=40px); 25 BR/card marks catalogued; governance + Foundations seed; PaymentMethodMark component entry (Figma-only).
 
 ### 2026-08-20
@@ -98,4 +99,3 @@ _Showing 40 of 249, grouped by date._
 ### 2026-08-09
 
 - **storybook-tabs-segmented-audit-apply:** TabsSegmented audit apply: wire label/showAttention on TabItem segmented; remove dead selectedIndicator; bind track stroke*Weight to border/width/012; demo itemCount=2 width 342; docs synced.
-- **storybook-tabs-segmented:** TabsSegmented + TabItem variant=segmented (pill track for App-cliente switchers); local kebab tokens; AI-READY + storybook synced. Not product-theme — new anatomy vs TabsSecondary underline.

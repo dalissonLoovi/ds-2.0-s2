@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks';
 
 ## AI-READY
 
-AI-READY COMPONENT: PaymentMethodMark is the contract for third-party payment network and wallet brand marks published in library [DS] Payment Method Marks. Each brand is a separate COMPONENT_SET named payment-method/\{brand\}. Props: type=logo|icon; showBackground=true|false (sparse matrix per brand — some omit type=logo; type=logo has no showBackground axis when published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=true adds white tile behind icon mark. Brand fills are fixed — do not remap to text/* or color/* tokens. Not DS Icons (*-outline/*-filled) and not BrandLogo. Consume in [DS] 2.0 - S2 via INSTANCE_SWAP only among payment-method/* marks. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label with brand name. React mapping: PaymentMethodMark(brand, type, showBackground). Code Connect is not configured.
+AI-READY COMPONENT: PaymentMethodMark is the contract for third-party payment network and wallet brand marks published in library [DS] Payment Method Marks. Each brand is a separate COMPONENT_SET named payment-method/\{brand\}. Props: type=logo|icon; showBackground=true|false (sparse matrix per brand — some omit type=logo; when type=logo is published it uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile). Brand fills are fixed — do not remap to text/* or color/* tokens. Not DS Icons (*-outline/*-filled) and not BrandLogo. Consume in [DS] 2.0 - S2 via INSTANCE_SWAP only among payment-method/* marks (e.g. ListItem leading=payment-mark). Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label with brand name. React mapping: PaymentMethodMark(brand, type, showBackground). Code Connect is not configured.
 
 ## Variants
 
@@ -23,11 +23,11 @@ AI-READY COMPONENT: PaymentMethodMark is the contract for third-party payment ne
 | --- | --- |
 | `brand` | kebab-case slug matching payment-method/\{brand\} set name (e.g. visa, mastercard, pix) |
 | `type` | logo \| icon — logo = horizontal lockup; icon = square badge |
-| `showBackground` | true \| false — white tile behind icon mark (icon type only; sparse when type=logo) |
+| `showBackground` | true \| false — true = brand-colored 40×40 badge fill on root; false = transparent root (mark only). Sparse when type=logo (logo publishes showBackground=false only). |
 
 ## Rules
 
-- **sparseMatrix:** Per-brand sparse: e.g. visa publishes icon only (no type=logo); mastercard publishes logo + icon × showBackground
+- **sparseMatrix:** Per-brand sparse: e.g. visa publishes icon only (no type=logo); mastercard publishes logo + icon × showBackground; type=logo always showBackground=false when published
 - **brandTokens:** No semantic token binding — fixed trademark fills
 - **vsIcons:** Not DS Icons (*-outline/*-filled) — do not mix libraries
 - **vsBrandLogo:** BrandLogo = Loovi identity; PaymentMethodMark = third-party payment marks
@@ -43,7 +43,7 @@ Decorative when adjacent label names the payment method (aria-hidden); otherwise
 
 - payment-method/\{brand\} COMPONENT_SET
 - type=logo|icon variants
-- showBackground tile (icon only)
+- showBackground brand-colored badge (icon) or transparent (logo/false)
 
 ## React mapping
 

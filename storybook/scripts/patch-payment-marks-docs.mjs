@@ -34,18 +34,17 @@ const sets = [
 ];
 
 function sparseFor(hasLogo) {
-  const sparse = ['type=logo has no showBackground axis when published'];
-  if (!hasLogo) sparse.unshift('type=logo not published');
-  return sparse;
+  if (!hasLogo) return 'type=logo not published';
+  return 'type=logo uses showBackground=false only';
 }
 
 function assetDesc(label, slug, hasLogo) {
   const sparse = sparseFor(hasLogo);
   return [
     `AI-READY COMPONENT: ${label} payment method brand mark for checkout, saved cards, wallets, and payment history.`,
-    `Props: type=logo|icon; showBackground=true|false (sparse: ${sparse.join('; ')}).`,
-    'Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=true adds white tile behind icon mark.',
-    'Brand fills fixed — not DS Icons. INSTANCE_SWAP among payment-method/* only.',
+    `Props: type=logo|icon; showBackground=true|false (sparse: ${sparse}).`,
+    'Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile; fixed fills, do not remap to text/* or color/*).',
+    'Not DS Icons. INSTANCE_SWAP among payment-method/* only.',
     `Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label="${label}".`,
     `React mapping: PaymentMethodMark(brand="${slug}", type, showBackground).`,
   ].join(' ');
@@ -89,16 +88,16 @@ data.meta.governance.paymentMethodMarks = {
   ],
 };
 
-data.meta.storybookUpdatedAt = '2026-08-26T17:20:00.000Z';
-data.meta.storybookRevision = '2026-08-26-payment-method-marks-docs';
+data.meta.storybookUpdatedAt = '2026-08-26T20:00:00.000Z';
+data.meta.storybookRevision = '2026-08-26-payment-method-marks-audit-apply';
 data.meta.changelog.unshift({
   date: '2026-08-26',
-  type: 'storybook-payment-method-marks',
+  type: 'storybook-payment-method-marks-audit-apply',
   summary:
-    'Payment Method Marks: [DS] library documented (payment-method/{brand}, type|showBackground, h=40px); 25 BR/card marks catalogued; governance + Foundations seed; PaymentMethodMark component entry (Figma-only).',
+    'Payment Method Marks audit apply: fixed 11 logo variant prop errors; showBackground=true = brand-colored badge (not white tile); layer hygiene; ListItem leading=payment-mark + ListItemLeadingPaymentMark INSTANCE_SWAP; figmaNodeUrl slug fix.',
 });
 
-data.storybook.updatedAt = '2026-08-26T17:20:00-03:00';
+data.storybook.updatedAt = '2026-08-26T20:00:00-03:00';
 data.storybook.globalRules.paymentMethodMarks =
   'Third-party payment marks live in published library [DS] Payment Method Marks (see Foundations/Payment method marks and meta.governance.paymentMethodMarks) — not DS Icons and not BrandLogo.';
 
@@ -106,7 +105,7 @@ data.storybook.paymentMethodMarks = {
   summary:
     'Payment network and wallet brand marks (not DS Icons). Published from file [DS] Payment Method Marks. Naming: payment-method/{brand}. All variants canonical height=40px. Brand fills are fixed — intentional exception to semantic UI token binding (parallel to BrandLogo vs Icons).',
   colorPolicy:
-    'Brand/trademark fills are fixed official colors — do not remap to text/*, color/*, or feedback/* tokens. showBackground=true uses a white tile behind icon marks only.',
+    'Brand/trademark fills are fixed official colors — do not remap to text/*, color/*, or feedback/* tokens. showBackground=true applies the official brand color as a 40×40 badge fill on the component root (not a white tile). showBackground=false keeps the root transparent (mark artwork only).',
   fileKey: 'f7HDa2A0uqtcVEOJ1YhPx6',
   figmaUrl: 'https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks',
   page: { name: 'Components', nodeId: '0:1' },
@@ -117,7 +116,7 @@ data.storybook.paymentMethodMarks = {
     type: ['logo', 'icon'],
     showBackground: ['true', 'false'],
     notes:
-      'type=logo = horizontal lockup (~86×40); type=icon = 40×40 badge; sparse matrix per brand (some omit type=logo). type=logo has no showBackground axis when published.',
+      'type=logo = horizontal lockup (~86×40); type=icon = 40×40 badge; sparse matrix per brand (some omit type=logo). When type=logo is published it uses showBackground=false only.',
   },
   families: {
     cards: {
@@ -129,8 +128,8 @@ data.storybook.paymentMethodMarks = {
       members: sets.map((b) => b.slug),
       assets,
       consumers: [
+        'ListItem leading=payment-mark via ListItemLeadingPaymentMark (paymentMethodMark INSTANCE_SWAP → payment-method/*)',
         'S2 payment-method INSTANCE_SWAP slots (checkout, saved cards, payment history)',
-        'ListItem leading media for payment rows (when product wires slot)',
       ],
       rules: {
         composition: 'One COMPONENT_SET per brand; swap by brand + type + showBackground',
@@ -153,7 +152,7 @@ data.storybook.components.PaymentMethodMark = {
   figmaUrl:
     'https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-18',
   description:
-    'AI-READY COMPONENT: PaymentMethodMark is the contract for third-party payment network and wallet brand marks published in library [DS] Payment Method Marks. Each brand is a separate COMPONENT_SET named payment-method/{brand}. Props: type=logo|icon; showBackground=true|false (sparse matrix per brand — some omit type=logo; type=logo has no showBackground axis when published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=true adds white tile behind icon mark. Brand fills are fixed — do not remap to text/* or color/* tokens. Not DS Icons (*-outline/*-filled) and not BrandLogo. Consume in [DS] 2.0 - S2 via INSTANCE_SWAP only among payment-method/* marks. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label with brand name. React mapping: PaymentMethodMark(brand, type, showBackground). Code Connect is not configured.',
+    'AI-READY COMPONENT: PaymentMethodMark is the contract for third-party payment network and wallet brand marks published in library [DS] Payment Method Marks. Each brand is a separate COMPONENT_SET named payment-method/{brand}. Props: type=logo|icon; showBackground=true|false (sparse matrix per brand — some omit type=logo; when type=logo is published it uses showBackground=false only). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=false = transparent root (mark only); showBackground=true = brand-colored 40×40 badge fill on root (official brand color — not a white tile). Brand fills are fixed — do not remap to text/* or color/* tokens. Not DS Icons (*-outline/*-filled) and not BrandLogo. Consume in [DS] 2.0 - S2 via INSTANCE_SWAP only among payment-method/* marks (e.g. ListItem leading=payment-mark). Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label with brand name. React mapping: PaymentMethodMark(brand, type, showBackground). Code Connect is not configured.',
   variants: {
     type: ['logo', 'icon'],
     showBackground: ['true', 'false'],
@@ -161,11 +160,12 @@ data.storybook.components.PaymentMethodMark = {
   props: {
     brand: 'kebab-case slug matching payment-method/{brand} set name (e.g. visa, mastercard, pix)',
     type: 'logo | icon — logo = horizontal lockup; icon = square badge',
-    showBackground: 'true | false — white tile behind icon mark (icon type only; sparse when type=logo)',
+    showBackground:
+      'true | false — true = brand-colored 40×40 badge fill on root; false = transparent root (mark only). Sparse when type=logo (logo publishes showBackground=false only).',
   },
   rules: {
     sparseMatrix:
-      'Per-brand sparse: e.g. visa publishes icon only (no type=logo); mastercard publishes logo + icon × showBackground',
+      'Per-brand sparse: e.g. visa publishes icon only (no type=logo); mastercard publishes logo + icon × showBackground; type=logo always showBackground=false when published',
     brandTokens: 'No semantic token binding — fixed trademark fills',
     vsIcons: 'Not DS Icons (*-outline/*-filled) — do not mix libraries',
     vsBrandLogo: 'BrandLogo = Loovi identity; PaymentMethodMark = third-party payment marks',
@@ -176,16 +176,59 @@ data.storybook.components.PaymentMethodMark = {
   tokenRules: [],
   accessibility:
     'Decorative when adjacent label names the payment method (aria-hidden); otherwise aria-label with brand name (e.g. Visa, Pix).',
-  composition: ['payment-method/{brand} COMPONENT_SET', 'type=logo|icon variants', 'showBackground tile (icon only)'],
+  composition: [
+    'payment-method/{brand} COMPONENT_SET',
+    'type=logo|icon variants',
+    'showBackground brand-colored badge (icon) or transparent (logo/false)',
+  ],
   reactMapping: 'PaymentMethodMark(brand, type, showBackground)',
   catalog: sets.map((b) => b.slug),
 };
 
+data.storybook.components.ListItemLeadingPaymentMark = {
+  nodeId: '4990:38559',
+  description:
+    'AI-READY INTERNAL COMPONENT: ListItemLeadingPaymentMark wraps a payment-method/* brand mark (40×40 canonical height) for ListItem leading=payment-mark rows. Props: paymentMethodMark (INSTANCE_SWAP — swap only among payment-method/* marks from published [DS] Payment Method Marks f7HDa2A0uqtcVEOJ1YhPx6). Do not use as standalone checkout badge, Button icon, or DS Icons slot. Accessibility: decorative when ListItem headline names the payment method (aria-hidden); parent owns label. React mapping: internal only — ListItemLeadingPaymentMark(brand, type, showBackground).',
+  props: {
+    paymentMethodMark:
+      'INSTANCE_SWAP → payment-method/* from [DS] Payment Method Marks (type=icon recommended for list rows; h=40px)',
+  },
+  rules: {
+    internalOnly: 'Use inside ListItem leading=payment-mark only',
+    swapScope: 'INSTANCE_SWAP among payment-method/* only — never DS Icons or BrandLogo',
+    libraryRequired: 'Enable [DS] Payment Method Marks library in S2 for production swaps',
+  },
+  tokenRules: [],
+  accessibility: 'Decorative when headline names the method; parent ListItem owns accessible name.',
+  composition: ['payment-method/{brand} instance'],
+  reactPackage: '@ds/react',
+  reactImplemented: true,
+};
+
+const listItem = data.storybook.components.ListItem;
+if (listItem) {
+  listItem.description = listItem.description
+    .replace(
+      'Use leading=none|monogram|icon|image|video|checkbox|radio|switch',
+      'Use leading=none|monogram|icon|image|video|payment-mark|checkbox|radio|switch',
+    )
+    .replace(
+      'ListItemVideoThumbnail for leading=video;',
+      'ListItemVideoThumbnail for leading=video; ListItemLeadingPaymentMark (paymentMethodMark INSTANCE_SWAP → payment-method/*) for leading=payment-mark;',
+    );
+  listItem.variants.leading.splice(4, 0, 'payment-mark');
+  listItem.props.leading =
+    'none | monogram | icon | image | video | payment-mark | checkbox | radio | switch';
+  listItem.rules.paymentMarkLeading =
+    'leading=payment-mark → ListItemLeadingPaymentMark with paymentMethodMark INSTANCE_SWAP (payment-method/* only)';
+  listItem.composition.push('ListItemLeadingPaymentMark');
+}
+
 data.storybook.recentUpdates.unshift({
-  id: 'payment-method-marks-docs',
+  id: 'payment-method-marks-audit-apply',
   date: '2026-08-26',
   summary:
-    'Payment Method Marks library: DS naming (payment-method/{brand}), type|showBackground props, h=40px; 25 marks in seed + Foundations page; governance vs Icons/BrandLogo.',
+    'Payment Method Marks audit apply: logo variant prop fix, showBackground semantics, layer hygiene, ListItem leading=payment-mark consumer, figmaNodeUrl slug fix.',
 });
 
 fs.writeFileSync(JSON_PATH, `${JSON.stringify(data, null, 4)}\n`);

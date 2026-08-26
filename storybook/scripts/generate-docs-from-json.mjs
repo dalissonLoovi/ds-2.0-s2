@@ -70,10 +70,20 @@ function escapeTableCell(text) {
   return escapeMdx(text).replace(/\|/g, '\\|');
 }
 
-function figmaNodeUrl(fileKey, nodeId) {
+function figmaFileSlugFromUrl(figmaUrl) {
+  if (!figmaUrl || typeof figmaUrl !== 'string') return null;
+  const match = figmaUrl.match(/figma\.com\/design\/[^/]+\/([^/?#]+)/);
+  return match?.[1] ?? null;
+}
+
+function figmaNodeUrl(fileKey, nodeId, figmaUrl) {
   if (!fileKey || !nodeId) return null;
   const nodeParam = String(nodeId).replace(':', '-');
-  return `https://www.figma.com/design/${fileKey}/-DS--2.0---S2?node-id=${nodeParam}`;
+  const slug = figmaFileSlugFromUrl(figmaUrl);
+  if (slug) {
+    return `https://www.figma.com/design/${fileKey}/${slug}?node-id=${nodeParam}`;
+  }
+  return `https://www.figma.com/design/${fileKey}?node-id=${nodeParam}`;
 }
 
 function asList(value) {
@@ -450,7 +460,7 @@ ${escapeMdx(ft.summary || '')}
 function generateComponentPage(name, component, fileKey) {
   const nodeId = component.nodeId || '';
   const componentFileKey = component.figmaFileKey || fileKey;
-  const url = component.figmaUrl || figmaNodeUrl(componentFileKey, nodeId);
+  const url = component.figmaUrl || figmaNodeUrl(componentFileKey, nodeId, component.figmaUrl);
   const figmaLink = url
     ? `[Open in Figma](${url}) · node \`${escapeMdx(nodeId)}\``
     : `node \`${escapeMdx(nodeId)}\``;
@@ -589,8 +599,8 @@ function generatePaymentMethodMarks(storybook) {
   const familyEntries = objectEntries(families);
   const fileKey = pmm.fileKey || '';
   const fileUrl = pmm.figmaUrl || (fileKey ? `https://www.figma.com/design/${fileKey}` : '');
-  const pageUrl = figmaNodeUrl(fileKey, pmm.page?.nodeId);
-  const sectionUrl = figmaNodeUrl(fileKey, pmm.section?.nodeId);
+  const pageUrl = figmaNodeUrl(fileKey, pmm.page?.nodeId, pmm.figmaUrl);
+  const sectionUrl = figmaNodeUrl(fileKey, pmm.section?.nodeId, pmm.figmaUrl);
 
   let md = `import { Meta } from '@storybook/blocks';
 
@@ -630,7 +640,7 @@ ${escapeMdx(pmm.summary || '')}
   }
 
   for (const [familyId, family] of familyEntries) {
-    const sectionNodeUrl = figmaNodeUrl(fileKey, family.sectionNodeId);
+    const sectionNodeUrl = figmaNodeUrl(fileKey, family.sectionNodeId, pmm.figmaUrl);
     md += `\n## \`${escapeMdx(familyId)}\`\n\n`;
     if (sectionNodeUrl) {
       md += `[Open section in Figma](${sectionNodeUrl}) · node \`${escapeMdx(family.sectionNodeId)}\`\n\n`;
@@ -647,7 +657,7 @@ ${escapeMdx(pmm.summary || '')}
     if (assetEntries.length) {
       md += '### Brands\n\n| Brand | Node | Component key |\n| --- | --- | --- |\n';
       for (const [assetId, asset] of assetEntries) {
-        const aUrl = figmaNodeUrl(fileKey, asset.nodeId);
+        const aUrl = figmaNodeUrl(fileKey, asset.nodeId, pmm.figmaUrl);
         const nameCell = aUrl
           ? `[${escapeTableCell(asset.name || assetId)}](${aUrl})`
           : `\`${escapeTableCell(asset.name || assetId)}\``;

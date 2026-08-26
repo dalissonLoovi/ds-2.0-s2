@@ -11,8 +11,8 @@ Payment network and wallet brand marks (not DS Icons). Published from file [DS] 
 | | |
 | --- | --- |
 | **Figma file** | [[DS] Payment Method Marks](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks) |
-| **Page** | [Components](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=0-1) |
-| **Section** | [payment-method / cards](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-18) |
+| **Page** | [Components](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=0-1) |
+| **Section** | [payment-method / cards](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-18) |
 | **Naming** | `payment-method/\{brand\}` |
 | **Canonical height** | 40px |
 | **Families documented** | 1 |
@@ -22,15 +22,15 @@ Payment network and wallet brand marks (not DS Icons). Published from file [DS] 
 - **type:** `logo` | `icon`
 - **showBackground:** `true` | `false`
 
-type=logo = horizontal lockup (~86×40); type=icon = 40×40 badge; sparse matrix per brand (some omit type=logo). type=logo has no showBackground axis when published.
+type=logo = horizontal lockup (~86×40); type=icon = 40×40 badge; sparse matrix per brand (some omit type=logo). When type=logo is published it uses showBackground=false only.
 
 ## Color policy
 
-Brand/trademark fills are fixed official colors — do not remap to text/*, color/*, or feedback/* tokens. showBackground=true uses a white tile behind icon marks only.
+Brand/trademark fills are fixed official colors — do not remap to text/*, color/*, or feedback/* tokens. showBackground=true applies the official brand color as a 40×40 badge fill on the component root (not a white tile). showBackground=false keeps the root transparent (mark artwork only).
 
 ## `cards`
 
-[Open section in Figma](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-18) · node `7:18`
+[Open section in Figma](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-18) · node `7:18`
 
 AI-READY MARK FAMILY: payment-method/* — card networks, digital wallets, meal/voucher cards curated for BR checkout and payment history. Each brand is a COMPONENT_SET with type and showBackground variants. Consume via INSTANCE_SWAP in S2 payment slots. Not DS Icons (*-outline/*-filled).
 
@@ -45,36 +45,36 @@ AI-READY MARK FAMILY: payment-method/* — card networks, digital wallets, meal/
 
 | Brand | Node | Component key |
 | --- | --- | --- |
-| `alelo` | [payment-method/alelo](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-592) · `7:592` | `0d6cec85b12b0d27d70aebb76409ae9e2c11ca83` |
-| `amazon-pay` | [payment-method/amazon-pay](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-301) · `7:301` | `7edb3097df30a1bc85bc5fc5da3baaa9d0723a39` |
-| `amex` | [payment-method/amex](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-64) · `7:64` | `3148ce6413e3080f58aaac1086cea565242470f1` |
-| `apple-pay` | [payment-method/apple-pay](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-270) · `7:270` | `caa9089a22b5a38576f80b1b9d731eebb2c2958f` |
-| `ben` | [payment-method/ben](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-569) · `7:569` | `8b86b51fbae89f06347c632513f5dda88b8eba3f` |
-| `bitcoin` | [payment-method/bitcoin](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-352) · `7:352` | `9509eb84e3a09e47cbdbeda5e6a23ea5c4178086` |
-| `bitcoin-cash` | [payment-method/bitcoin-cash](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-386) · `7:386` | `a10f9118dbbce7cedd956e5b2eb7f1b2ab7b34bc` |
-| `cartao-luiza` | [payment-method/cartao-luiza](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-438) · `7:438` | `4a3f41c68e4e8753a66c56501203634aa7e7a268` |
-| `diners-club` | [payment-method/diners-club](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-108) · `7:108` | `fa8d8d3389f8526354f6d6e9f00728e6aa434e3b` |
-| `elo` | [payment-method/elo](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-101) · `7:101` | `5ce8e03f428a01dee09edc525eaf358f569dbe22` |
-| `google-pay` | [payment-method/google-pay](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-237) · `7:237` | `4bda8077e0f93e78083461d5146aaef9e07da8f0` |
-| `hiper` | [payment-method/hiper](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-423) · `7:423` | `9158838743eb0dce496c624fff83e865fe487565` |
-| `hipercard` | [payment-method/hipercard](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-19) · `7:19` | `137471d8a539856f82bf6391841b533a3cb2fc17` |
-| `ifood-beneficios` | [payment-method/ifood-beneficios](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-618) · `7:618` | `48be936b9918a470a49e00ed88ea81297dd2ecab` |
-| `mastercard` | [payment-method/mastercard](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-24) · `7:24` | `c3973308d88458ad2a74717cdfcafded352befde` |
-| `paypal` | [payment-method/paypal](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-334) · `7:334` | `2be38fe8e1e48d871bfa536905d688cb2737a241` |
-| `pix` | [payment-method/pix](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-195) · `7:195` | `1c59134779e03e7ac6a90c5c6e6c2408a4e9df02` |
-| `pluxee` | [payment-method/pluxee](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-578) · `7:578` | `4bbbcbbd5096d44df5e2eb0f2d64443382d85705` |
-| `samsung-pay` | [payment-method/samsung-pay](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-289) · `7:289` | `78f4a19e5d5e6e71a4d6008012f115f206fc394c` |
-| `shopee-pay` | [payment-method/shopee-pay](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-413) · `7:413` | `bd8c57b14212a797f221e2a7b4216214a3253334` |
-| `sodexo` | [payment-method/sodexo](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-645) · `7:645` | `1991b41240a703e0da974f64a3f19eb21f5f6c36` |
-| `ticket` | [payment-method/ticket](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-609) · `7:609` | `4d7df376353d23ad0b90da846b34b8f9adc9614e` |
-| `verde-card` | [payment-method/verde-card](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-457) · `7:457` | `d7bedfe4476348241ba4fdb4d0185a055b8a90e2` |
-| `visa` | [payment-method/visa](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-49) · `7:49` | `4e06974a46a6a3284b0eb257b19be8fff88aef0a` |
-| `vr` | [payment-method/vr](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--2.0---S2?node-id=7-628) · `7:628` | `c82cbe8e9b32c26cd54039a5185f3954aa1b9946` |
+| `alelo` | [payment-method/alelo](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-592) · `7:592` | `0d6cec85b12b0d27d70aebb76409ae9e2c11ca83` |
+| `amazon-pay` | [payment-method/amazon-pay](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-301) · `7:301` | `7edb3097df30a1bc85bc5fc5da3baaa9d0723a39` |
+| `amex` | [payment-method/amex](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-64) · `7:64` | `3148ce6413e3080f58aaac1086cea565242470f1` |
+| `apple-pay` | [payment-method/apple-pay](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-270) · `7:270` | `caa9089a22b5a38576f80b1b9d731eebb2c2958f` |
+| `ben` | [payment-method/ben](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-569) · `7:569` | `8b86b51fbae89f06347c632513f5dda88b8eba3f` |
+| `bitcoin` | [payment-method/bitcoin](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-352) · `7:352` | `9509eb84e3a09e47cbdbeda5e6a23ea5c4178086` |
+| `bitcoin-cash` | [payment-method/bitcoin-cash](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-386) · `7:386` | `a10f9118dbbce7cedd956e5b2eb7f1b2ab7b34bc` |
+| `cartao-luiza` | [payment-method/cartao-luiza](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-438) · `7:438` | `4a3f41c68e4e8753a66c56501203634aa7e7a268` |
+| `diners-club` | [payment-method/diners-club](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-108) · `7:108` | `fa8d8d3389f8526354f6d6e9f00728e6aa434e3b` |
+| `elo` | [payment-method/elo](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-101) · `7:101` | `5ce8e03f428a01dee09edc525eaf358f569dbe22` |
+| `google-pay` | [payment-method/google-pay](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-237) · `7:237` | `4bda8077e0f93e78083461d5146aaef9e07da8f0` |
+| `hiper` | [payment-method/hiper](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-423) · `7:423` | `9158838743eb0dce496c624fff83e865fe487565` |
+| `hipercard` | [payment-method/hipercard](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-19) · `7:19` | `137471d8a539856f82bf6391841b533a3cb2fc17` |
+| `ifood-beneficios` | [payment-method/ifood-beneficios](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-618) · `7:618` | `48be936b9918a470a49e00ed88ea81297dd2ecab` |
+| `mastercard` | [payment-method/mastercard](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-24) · `7:24` | `c3973308d88458ad2a74717cdfcafded352befde` |
+| `paypal` | [payment-method/paypal](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-334) · `7:334` | `2be38fe8e1e48d871bfa536905d688cb2737a241` |
+| `pix` | [payment-method/pix](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-195) · `7:195` | `1c59134779e03e7ac6a90c5c6e6c2408a4e9df02` |
+| `pluxee` | [payment-method/pluxee](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-578) · `7:578` | `4bbbcbbd5096d44df5e2eb0f2d64443382d85705` |
+| `samsung-pay` | [payment-method/samsung-pay](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-289) · `7:289` | `78f4a19e5d5e6e71a4d6008012f115f206fc394c` |
+| `shopee-pay` | [payment-method/shopee-pay](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-413) · `7:413` | `bd8c57b14212a797f221e2a7b4216214a3253334` |
+| `sodexo` | [payment-method/sodexo](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-645) · `7:645` | `1991b41240a703e0da974f64a3f19eb21f5f6c36` |
+| `ticket` | [payment-method/ticket](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-609) · `7:609` | `4d7df376353d23ad0b90da846b34b8f9adc9614e` |
+| `verde-card` | [payment-method/verde-card](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-457) · `7:457` | `d7bedfe4476348241ba4fdb4d0185a055b8a90e2` |
+| `visa` | [payment-method/visa](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-49) · `7:49` | `4e06974a46a6a3284b0eb257b19be8fff88aef0a` |
+| `vr` | [payment-method/vr](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-628) · `7:628` | `c82cbe8e9b32c26cd54039a5185f3954aa1b9946` |
 
 ### Consumers
 
+- ListItem leading=payment-mark via ListItemLeadingPaymentMark (paymentMethodMark INSTANCE_SWAP → payment-method/*)
 - S2 payment-method INSTANCE_SWAP slots (checkout, saved cards, payment history)
-- ListItem leading media for payment rows (when product wires slot)
 
 ## Rules
 
