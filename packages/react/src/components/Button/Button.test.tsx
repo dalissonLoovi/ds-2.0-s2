@@ -24,6 +24,7 @@ describe('Button', () => {
     expect(btn).toHaveAttribute('data-state', 'loading');
     expect(btn).toBeDisabled();
     expect(screen.queryByText('Uploading')).not.toBeInTheDocument();
+    expect(screen.getByTestId('button-spinner')).toBeInTheDocument();
     await user.click(btn);
     expect(onClick).not.toHaveBeenCalled();
   });
