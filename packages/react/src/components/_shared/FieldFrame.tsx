@@ -54,6 +54,7 @@ export function FieldFrame({
     <div
       className={cx(
         styles.root,
+        floated && styles.rootFloated,
         styles[`appearance-${appearance}`],
         styles[`state-${state}`],
         className,
@@ -72,15 +73,38 @@ export function FieldFrame({
           fieldClassName,
         )}
       >
-        {leading != null && <span className={styles.leading}>{leading}</span>}
-        <div className={styles.controlSlot}>{children}</div>
-        {trailing != null && <span className={styles.trailing}>{trailing}</span>}
-        {label != null && htmlFor != null && (
-          <label className={styles.floatLabel} htmlFor={htmlFor}>
+        <div className={styles.fieldInner}>
+          {leading != null && <span className={styles.leading}>{leading}</span>}
+          <div className={styles.controlSlot}>{children}</div>
+          {trailing != null && <span className={styles.trailing}>{trailing}</span>}
+          {!floated && label != null && htmlFor != null && (
+            <label htmlFor={htmlFor} className={styles.restingLabel}>
+              {label}
+            </label>
+          )}
+        </div>
+
+        {label != null && (
+          <fieldset className={styles.notchedOutline} aria-hidden="true">
+            <legend className={cx(styles.notchedLegend, floated && styles.notchedLegendOpen)}>
+              {floated ? (
+                <span className={styles.notchedLegendMeasure}>{label}</span>
+              ) : (
+                <span className={styles.notchedLegendMeasure} aria-hidden="true">
+                  {'\u00a0'}
+                </span>
+              )}
+            </legend>
+          </fieldset>
+        )}
+
+        {floated && label != null && htmlFor != null && (
+          <label htmlFor={htmlFor} className={styles.floatedLabel}>
             {label}
           </label>
         )}
       </div>
+
       {(showSupportingText || trailingMeta) && (
         <div className={styles.metaRow}>
           {showSupportingText && (

@@ -18,41 +18,55 @@
   color: var(--field-text-color);
 }
 
+.rootFloated {
+  padding-top: calc(var(--spacing-100, 8px) + 1px);
+}
+
 .field {
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--field-bg);
+}
+
+.fieldInner {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: var(--spacing-100, 8px);
   box-sizing: border-box;
   height: 56px;
-  padding: 0 var(--spacing-200, 12px);
-  border: var(--field-border-width) solid var(--field-border);
-  border-radius: var(--outlined-field-radius);
-  background: var(--field-bg);
-  transition: border-color 120ms ease, border-width 120ms ease;
+  padding: 0 var(--spacing-200, 16px);
 }
 
-.fieldMultiline {
+.fieldFloated .fieldInner {
+  align-items: flex-end;
+  padding-bottom: var(--spacing-100, 8px);
+}
+
+.fieldMultiline .fieldInner {
   align-items: flex-start;
   height: auto;
   min-height: 160px;
-  padding-top: var(--spacing-150, 10px);
-  padding-bottom: var(--spacing-200, 12px);
+  padding-top: var(--spacing-150, 12px);
+  padding-bottom: var(--spacing-200, 16px);
+}
+
+.fieldMultiline.fieldFloated .fieldInner {
+  padding-bottom: var(--spacing-200, 16px);
 }
 
 .controlSlot {
   display: flex;
-  align-items: center;
+  align-items: inherit;
   flex: 1;
   min-width: 0;
   gap: var(--spacing-100, 8px);
-  height: 100%;
 }
 
-.fieldMultiline .controlSlot {
-  align-items: flex-start;
-  height: auto;
-  min-height: 120px;
+.fieldFloated .controlSlot {
+  min-height: 22px;
 }
 
 .leading,
@@ -63,68 +77,108 @@
   color: var(--field-icon-color);
 }
 
+.fieldFloated .leading,
+.fieldFloated .trailing {
+  align-self: flex-end;
+  margin-bottom: 1px;
+}
+
 .trailing {
   gap: var(--spacing-050, 4px);
 }
 
-.floatLabel {
+.notchedOutline {
   position: absolute;
-  left: var(--spacing-200, 12px);
-  max-width: calc(100% - var(--spacing-400, 24px));
+  inset: 0;
+  margin: 0;
+  padding: 0 var(--spacing-150, 12px);
+  min-inline-size: 0;
+  border: var(--field-border-width) solid var(--field-border);
+  border-radius: var(--outlined-field-radius);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.notchedLegend {
+  float: unset;
+  width: auto;
+  max-width: 0.01px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  margin-inline-start: calc(var(--spacing-050, 4px));
+  transition: max-width 120ms ease;
+}
+
+.notchedLegendOpen {
+  max-width: 100%;
+}
+
+.notchedLegendMeasure {
+  display: inline-block;
+  padding: 0 var(--spacing-050, 4px);
+  visibility: hidden;
+  white-space: nowrap;
+  font-size: var(--typography-body-small-regular-font-size, 12px);
+  line-height: var(--typography-body-small-regular-line-height, 17px);
+}
+
+.floatedLabel {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: var(--spacing-200, 16px);
+  max-width: calc(100% - var(--spacing-500, 32px));
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  pointer-events: none;
-  color: var(--field-label-color);
-  background: var(--field-cutout);
-  padding: 0 var(--spacing-050, 4px);
-  font-size: var(--typography-body-large-regular-font-size, 16px);
-  line-height: var(--typography-body-large-regular-line-height, 22px);
-  font-weight: var(--typography-body-large-regular-font-weight, 400);
-  transition:
-    top 120ms ease,
-    transform 120ms ease,
-    font-size 120ms ease,
-    line-height 120ms ease,
-    color 120ms ease;
-}
-
-.fieldFloated .floatLabel,
-.field:focus-within .floatLabel {
-  top: 0;
   transform: translateY(-50%);
+  padding: 0 var(--spacing-050, 4px);
+  background: var(--field-cutout);
+  color: var(--field-label-color);
   font-size: var(--typography-body-small-regular-font-size, 12px);
   line-height: var(--typography-body-small-regular-line-height, 17px);
   font-weight: var(--typography-body-small-regular-font-weight, 400);
 }
 
-.fieldResting .floatLabel {
+.fieldHasLeading.fieldFloated .floatedLabel,
+.fieldHasLeading:focus-within .floatedLabel {
+  left: calc(var(--spacing-200, 16px) - var(--spacing-050, 4px));
+}
+
+.restingLabel {
+  position: absolute;
+  left: 0;
   top: 50%;
+  max-width: calc(100% - var(--spacing-500, 32px));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
   transform: translateY(-50%);
+  color: var(--field-label-color);
+  font-size: var(--typography-body-large-regular-font-size, 16px);
+  line-height: var(--typography-body-large-regular-line-height, 22px);
+  font-weight: var(--typography-body-large-regular-font-weight, 400);
 }
 
-.fieldHasLeading.fieldResting .floatLabel {
-  left: calc(var(--spacing-200, 12px) + 20px + var(--spacing-100, 8px));
+.fieldHasLeading .restingLabel {
+  left: calc(20px + var(--spacing-100, 8px));
 }
 
-.fieldHasLeading.fieldFloated .floatLabel,
-.fieldHasLeading:focus-within .floatLabel {
-  left: var(--spacing-200, 12px);
-}
-
-.state-hover .field {
+.state-hover .notchedOutline {
   --field-border: var(--color-border-feedback-primary);
 }
 
-.state-focus .field,
-.field:focus-within {
+.state-focus .notchedOutline,
+.field:focus-within .notchedOutline {
   --field-border-width: var(--border-width-025, 2px);
   --field-border: var(--interactive-focus, var(--color-border-feedback-primary));
   --field-label-color: var(--text-brand);
   --field-icon-color: var(--text-brand);
 }
 
-.state-error .field {
+.state-error .notchedOutline {
   --field-border-width: var(--border-width-025, 2px);
   --field-border: var(--color-border-feedback-danger);
   --field-label-color: var(--feedback-danger);
@@ -132,7 +186,7 @@
   --field-support-color: var(--feedback-danger);
 }
 
-.state-disabled .field {
+.state-disabled .fieldInner {
   cursor: not-allowed;
   --field-label-color: var(--text-placeholder);
   --field-text-color: var(--text-placeholder);
@@ -152,7 +206,7 @@
   --field-support-color: var(--text-on-color-disabled);
 }
 
-.appearance-inverse.state-disabled .field {
+.appearance-inverse.state-disabled .fieldInner {
   --field-label-color: var(--text-placeholder-inverse);
   --field-text-color: var(--text-placeholder-inverse);
   --field-icon-color: var(--text-on-color-disabled);
@@ -160,13 +214,13 @@
   --field-support-color: var(--text-placeholder-inverse);
 }
 
-.appearance-inverse.state-focus .field,
-.appearance-inverse .field:focus-within {
+.appearance-inverse.state-focus .notchedOutline,
+.appearance-inverse .field:focus-within .notchedOutline {
   --field-label-color: var(--text-brand);
   --field-icon-color: var(--text-brand);
 }
 
-.appearance-inverse.state-error .field {
+.appearance-inverse.state-error .notchedOutline {
   --field-label-color: var(--feedback-danger);
   --field-icon-color: var(--feedback-danger);
   --field-support-color: var(--feedback-danger);
@@ -201,6 +255,7 @@
 .controlBase {
   flex: 1;
   min-width: 0;
+  width: 100%;
   border: 0;
   background: transparent;
   color: inherit;

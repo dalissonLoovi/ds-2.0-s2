@@ -35,13 +35,15 @@ describe('Input', () => {
 
   it('uses floated label for content=placeholder', () => {
     render(<Input id="ph" label="Email" content="placeholder" placeholder="Type here" />);
-    const field = screen.getByRole('textbox').closest('[class*="fieldFloated"]');
-    expect(field).toBeTruthy();
+    const root = screen.getByRole('textbox').closest('[data-content="placeholder"]');
+    expect(root).toBeTruthy();
+    expect(screen.getByText('Email', { selector: 'label' })).toBeInTheDocument();
   });
 
   it('uses resting label for content=label', () => {
     render(<Input id="rest" label="Email" content="label" state="default" />);
-    const field = screen.getByRole('textbox').closest('[class*="fieldResting"]');
-    expect(field).toBeTruthy();
+    const root = screen.getByRole('textbox').closest('[data-content="label"]');
+    expect(root).toBeTruthy();
+    expect(screen.getAllByText('Email')).toHaveLength(1);
   });
 });
