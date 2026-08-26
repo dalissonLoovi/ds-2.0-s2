@@ -1,0 +1,17 @@
+{
+  "name": "Design System 2.0 (S2)",
+  "install": "npm install && npm run tokens:build && npm run react:build && npm run docs:generate",
+  "terminals": [
+    {
+      "name": "storybook",
+      "command": "npm run storybook",
+      "description": "Storybook dev server (docs catalog) on http://localhost:6006"
+    }
+  ],
+  "ports": [
+    {
+      "name": "Storybook",
+      "port": 6006
+    }
+  ]
+}
