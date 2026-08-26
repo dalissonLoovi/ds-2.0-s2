@@ -296,7 +296,7 @@ Import components from \`@ds/react\`. Styles use CSS variables from \`@ds/tokens
 
 ## Sidebar
 
-- **Foundations** — global rules, feedback vocabulary, illustrations, and animations
+- **Foundations** — global rules, feedback vocabulary, payment method marks, illustrations, and animations
 - **Components** — Autodocs for implemented components; seed MDX only for Figma-only entries
 - **Changelog** — recent revisions (full history stays in the seed JSON)
 `;
@@ -313,6 +313,32 @@ function generateGlobalRules(storybook, meta) {
       return `| ${url} | \`${escapeMdx(lib.fileKey || '')}\` | ${escapeMdx(lib.sourcePack || '')} | ${escapeMdx(lib.naming || '')} | \`${escapeMdx(lib.productTheme || '')}\` |`;
     })
     .join('\n');
+
+  const pmm = gov.paymentMethodMarks || {};
+  let paymentMethodMarksSection = '';
+  if (pmm.summary) {
+    const pmmUrl = pmm.figmaUrl ? `[${escapeMdx('[DS] Payment Method Marks')}](${pmm.figmaUrl})` : escapeMdx('[DS] Payment Method Marks');
+    paymentMethodMarksSection = `
+## Payment method marks
+
+${escapeMdx(pmm.summary)}
+
+| Field | Value |
+| --- | --- |
+| Library | ${pmmUrl} |
+| File key | \`${escapeMdx(pmm.fileKey || '')}\` |
+| Name contract | \`${escapeMdx(pmm.nameContract || 'payment-method/{brand}')}\` |
+| Canonical height | ${escapeMdx(String(pmm.canonicalHeightPx ?? 40))}px |
+| Strategy | ${escapeMdx(pmm.strategy || '')} |
+
+- **vs BrandLogo:** ${escapeMdx(pmm.vsBrandLogo || '')}
+- **vs DS Icons:** ${escapeMdx(pmm.vsIcons || '')}
+
+### Do not
+
+${bulletList(pmm.doNot)}
+`;
+  }
 
   let iconLibrariesSection = '';
   if (libs.summary || libraryRows) {
@@ -353,6 +379,7 @@ ${bulletList(libs.doNot)}
 | Icon layers | ${escapeMdx(gr.iconLayers || '')} |
 | Icon scale | sizes \`80/64/40/32/24/20/16\`; stroke from master \`24px\` + \`border/width/025\` |
 | Icon libraries | ${escapeMdx(gr.iconLibraries || libs.summary || 'Library Swap + *-outline/*-filled contract')} |
+| Payment method marks | ${escapeMdx(gr.paymentMethodMarks || 'See Foundations/Payment method marks — published library, not DS Icons')} |
 | Illustrations | ${escapeMdx(gr.illustrations || 'See Foundations/Illustrations — dedicated palette may be unbound from semantic UI tokens')} |
 | Code Connect | ${escapeMdx(gr.codeConnect || 'not configured')} |
 
@@ -369,6 +396,7 @@ ${bulletList(libs.doNot)}
 - **Component descriptions:** ${escapeMdx(gov.componentDescriptions || 'AI-Ready aligned with variables and kebab-case variants')}
 - **Icon layer naming:** ${escapeMdx(gov.iconLayerNaming || '{icon-name}-path instead of Vector')}
 ${iconLibrariesSection}
+${paymentMethodMarksSection}
 ${productThemeGlobalSection(gr.productTheme, meta.productTheme)}`;
 }
 
@@ -421,7 +449,8 @@ ${escapeMdx(ft.summary || '')}
 
 function generateComponentPage(name, component, fileKey) {
   const nodeId = component.nodeId || '';
-  const url = figmaNodeUrl(fileKey, nodeId);
+  const componentFileKey = component.figmaFileKey || fileKey;
+  const url = component.figmaUrl || figmaNodeUrl(componentFileKey, nodeId);
   const figmaLink = url
     ? `[Open in Figma](${url}) · node \`${escapeMdx(nodeId)}\``
     : `node \`${escapeMdx(nodeId)}\``;
@@ -457,6 +486,12 @@ ${escapeMdx(component.description || '_No description._')}
 
   if (component.reactMapping) {
     md += `## React mapping\n\n\`${escapeMdx(component.reactMapping)}\`\n\n`;
+  }
+
+  const catalog = asList(component.catalog);
+  if (catalog.length) {
+    md += `## Published brands (${catalog.length})\n\n`;
+    md += catalog.map((b) => `\`${escapeMdx(b)}\``).join(', ') + '\n\n';
   }
 
   return md;
@@ -543,6 +578,91 @@ ${escapeMdx(ill.colorPolicy || '')}
   const backlog = asList(ill.backlog);
   if (backlog.length) {
     md += '## Backlog (other families)\n\n' + bulletList(backlog) + '\n';
+  }
+
+  return md;
+}
+
+function generatePaymentMethodMarks(storybook) {
+  const pmm = storybook.paymentMethodMarks || {};
+  const families = pmm.families || {};
+  const familyEntries = objectEntries(families);
+  const fileKey = pmm.fileKey || '';
+  const fileUrl = pmm.figmaUrl || (fileKey ? `https://www.figma.com/design/${fileKey}` : '');
+  const pageUrl = figmaNodeUrl(fileKey, pmm.page?.nodeId);
+  const sectionUrl = figmaNodeUrl(fileKey, pmm.section?.nodeId);
+
+  let md = `import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Payment method marks" />
+
+# Payment method marks
+
+> **Seed docs** — third-party payment network and wallet brand marks (not DS Icons, not BrandLogo). Published from [DS] Payment Method Marks.
+
+${escapeMdx(pmm.summary || '')}
+
+| | |
+| --- | --- |
+| **Figma file** | ${fileUrl ? `[${escapeMdx('[DS] Payment Method Marks')}](${fileUrl})` : '—'} |
+| **Page** | ${pageUrl ? `[${escapeMdx(pmm.page?.name || 'Components')}](${pageUrl})` : escapeMdx(pmm.page?.name || '—')} |
+| **Section** | ${sectionUrl ? `[${escapeMdx(pmm.section?.name || 'payment-method / cards')}](${sectionUrl})` : escapeMdx(pmm.section?.name || '—')} |
+| **Naming** | \`${escapeMdx(pmm.naming || 'payment-method/{brand}')}\` |
+| **Canonical height** | ${escapeMdx(String(pmm.canonicalHeightPx ?? 40))}px |
+| **Families documented** | ${familyEntries.length} |
+
+## Variant contract
+
+`;
+
+  const vc = pmm.variantContract || {};
+  if (vc.type?.length) md += `- **type:** ${vc.type.map((t) => `\`${escapeMdx(t)}\``).join(' | ')}\n`;
+  if (vc.showBackground?.length) {
+    md += `- **showBackground:** ${vc.showBackground.map((t) => `\`${escapeMdx(t)}\``).join(' | ')}\n`;
+  }
+  if (vc.notes) md += `\n${escapeMdx(vc.notes)}\n`;
+
+  md += `\n## Color policy\n\n${escapeMdx(pmm.colorPolicy || '')}\n`;
+
+  if (!familyEntries.length) {
+    md += '\n_No payment method mark families in metadata yet._\n';
+    return md;
+  }
+
+  for (const [familyId, family] of familyEntries) {
+    const sectionNodeUrl = figmaNodeUrl(fileKey, family.sectionNodeId);
+    md += `\n## \`${escapeMdx(familyId)}\`\n\n`;
+    if (sectionNodeUrl) {
+      md += `[Open section in Figma](${sectionNodeUrl}) · node \`${escapeMdx(family.sectionNodeId)}\`\n\n`;
+    }
+    md += `${escapeMdx(family.description || '')}\n\n`;
+    md += `| Field | Value |\n| --- | --- |\n`;
+    md += `| Canonical height | ${escapeMdx(String(family.canonicalHeightPx ?? pmm.canonicalHeightPx ?? 40))}px |\n`;
+    md += `| Role | ${escapeMdx(family.role || '—')} |\n`;
+    md += `| Members | ${(asList(family.members).length ? asList(family.members) : Object.keys(family.assets || {})).map((m) => `\`${escapeMdx(m)}\``).join(', ') || '—'} |\n`;
+    md += `| Status | ${escapeMdx(family.status || '—')} |\n\n`;
+
+    const assets = family.assets || {};
+    const assetEntries = objectEntries(assets);
+    if (assetEntries.length) {
+      md += '### Brands\n\n| Brand | Node | Component key |\n| --- | --- | --- |\n';
+      for (const [assetId, asset] of assetEntries) {
+        const aUrl = figmaNodeUrl(fileKey, asset.nodeId);
+        const nameCell = aUrl
+          ? `[${escapeTableCell(asset.name || assetId)}](${aUrl})`
+          : `\`${escapeTableCell(asset.name || assetId)}\``;
+        md += `| \`${escapeTableCell(assetId)}\` | ${nameCell} · \`${escapeTableCell(asset.nodeId || '')}\` | \`${escapeTableCell(asset.componentKey || '—')}\` |\n`;
+      }
+      md += '\n';
+    }
+
+    if (family.consumers) {
+      md += '### Consumers\n\n' + bulletList(family.consumers) + '\n';
+    }
+    md += rulesSection(family.rules);
+    if (family.accessibility) {
+      md += `### Accessibility\n\n${escapeMdx(family.accessibility)}\n\n`;
+    }
   }
 
   return md;
@@ -725,6 +845,12 @@ function main() {
     path.join(foundationsDir, 'Illustrations.mdx'),
     generateIllustrations(storybook, fileKey),
   );
+  if (storybook.paymentMethodMarks) {
+    writeFile(
+      path.join(foundationsDir, 'PaymentMethodMarks.mdx'),
+      generatePaymentMethodMarks(storybook),
+    );
+  }
   if (storybook.animations) {
     writeFile(
       path.join(foundationsDir, 'Animations.mdx'),
@@ -751,7 +877,10 @@ function main() {
   }
 
   const foundationCount =
-    2 + (storybook.illustrations ? 1 : 0) + (storybook.animations ? 1 : 0);
+    2 +
+    (storybook.illustrations ? 1 : 0) +
+    (storybook.paymentMethodMarks ? 1 : 0) +
+    (storybook.animations ? 1 : 0);
   console.log(`Generated Storybook docs:`);
   console.log(`  Introduction + Changelog`);
   console.log(`  Foundations: ${foundationCount}`);

@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/PaymentMethodMark" />
+
+# PaymentMethodMark
+
+> **Seed docs** — generated from metadata JSON. Pending React implementation (CSF3 + Autodocs).
+
+[Open in Figma](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-18) · node `7:18`
+
+## AI-READY
+
+AI-READY COMPONENT: PaymentMethodMark is the contract for third-party payment network and wallet brand marks published in library [DS] Payment Method Marks. Each brand is a separate COMPONENT_SET named payment-method/\{brand\}. Props: type=logo|icon; showBackground=true|false (sparse matrix per brand — some omit type=logo; type=logo has no showBackground axis when published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=true adds white tile behind icon mark. Brand fills are fixed — do not remap to text/* or color/* tokens. Not DS Icons (*-outline/*-filled) and not BrandLogo. Consume in [DS] 2.0 - S2 via INSTANCE_SWAP only among payment-method/* marks. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label with brand name. React mapping: PaymentMethodMark(brand, type, showBackground). Code Connect is not configured.
+
+## Variants
+
+- **type:** logo | icon
+- **showBackground:** true | false
+
+## Props
+
+| Prop | Type / values |
+| --- | --- |
+| `brand` | kebab-case slug matching payment-method/\{brand\} set name (e.g. visa, mastercard, pix) |
+| `type` | logo \| icon — logo = horizontal lockup; icon = square badge |
+| `showBackground` | true \| false — white tile behind icon mark (icon type only; sparse when type=logo) |
+
+## Rules
+
+- **sparseMatrix:** Per-brand sparse: e.g. visa publishes icon only (no type=logo); mastercard publishes logo + icon × showBackground
+- **brandTokens:** No semantic token binding — fixed trademark fills
+- **vsIcons:** Not DS Icons (*-outline/*-filled) — do not mix libraries
+- **vsBrandLogo:** BrandLogo = Loovi identity; PaymentMethodMark = third-party payment marks
+- **sizing:** Canonical height=40px for every variant
+- **library:** Source file f7HDa2A0uqtcVEOJ1YhPx6 — publish as library for S2 INSTANCE_SWAP
+- **naming:** Renamed from external lib (Type/Background → type/showBackground; PascalCase → payment-method/\{brand\})
+
+## Accessibility
+
+Decorative when adjacent label names the payment method (aria-hidden); otherwise aria-label with brand name (e.g. Visa, Pix).
+
+## Composition
+
+- payment-method/\{brand\} COMPONENT_SET
+- type=logo|icon variants
+- showBackground tile (icon only)
+
+## React mapping
+
+`PaymentMethodMark(brand, type, showBackground)`
+
+## Published brands (25)
+
+`alelo`, `amazon-pay`, `amex`, `apple-pay`, `ben`, `bitcoin`, `bitcoin-cash`, `cartao-luiza`, `diners-club`, `elo`, `google-pay`, `hiper`, `hipercard`, `ifood-beneficios`, `mastercard`, `paypal`, `pix`, `pluxee`, `samsung-pay`, `shopee-pay`, `sodexo`, `ticket`, `verde-card`, `visa`, `vr`
+

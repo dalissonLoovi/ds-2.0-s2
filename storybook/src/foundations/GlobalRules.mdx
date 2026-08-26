@@ -12,6 +12,7 @@ import { Meta } from '@storybook/blocks';
 | Icon layers | generic Vector layers should be renamed to \{icon-name\}-path in source components |
 | Icon scale | sizes `80/64/40/32/24/20/16`; stroke from master `24px` + `border/width/025` |
 | Icon libraries | Library Swap + shared *-outline/*-filled contract; App Cliente uses Hugeicons catalog + DS Semantic Aliases (see meta.governance.iconLibraries) |
+| Payment method marks | Third-party payment marks live in published library [DS] Payment Method Marks (see Foundations/Payment method marks and meta.governance.paymentMethodMarks) — not DS Icons and not BrandLogo. |
 | Illustrations | Illustrated assets (not DS Icons) live under storybook.illustrations; colors may use a dedicated hardcoded palette — intentional exception to semantic UI token binding |
 | Code Connect | not configured in this JSON |
 
@@ -54,6 +55,30 @@ Multi-product icons use Library Swap plus a shared DS name contract (*-outline /
 - Multi-theme variants on one icon for product packs
 - Put Hugeicons native names in S2 INSTANCE_SWAP preferredValues
 - Expect 1:1 alias coverage of the entire Tabler set
+
+
+
+## Payment method marks
+
+Dedicated published library for card networks, wallets, and meal/voucher marks — parallel to BrandLogo, never mixed into UI icon libraries (*-outline/*-filled).
+
+| Field | Value |
+| --- | --- |
+| Library | [[DS] Payment Method Marks](https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks) |
+| File key | `f7HDa2A0uqtcVEOJ1YhPx6` |
+| Name contract | `payment-method/\{brand\}` |
+| Canonical height | 40px |
+| Strategy | Publish [DS] Payment Method Marks as a Figma library; consume in S2 via INSTANCE_SWAP on payment slots — swap only among payment-method/* marks. |
+
+- **vs BrandLogo:** BrandLogo = Loovi product identity; payment-method/* = third-party payment network or wallet marks.
+- **vs DS Icons:** Not DS Icons — fixed brand colors, rectangular badge geometry, trademark artwork; do not remap fills to text/* tokens.
+
+### Do not
+
+- Add payment marks to DS Icons (*-outline/*-filled) or Hugeicons/Tabler libraries
+- Remap brand fills to text/* or color/* semantic tokens
+- INSTANCE_SWAP payment marks with DS Icons or BrandLogo
+- Use as Button leadingIcon, Toast/Alert statusIcon, or navigation chrome
 
 
 

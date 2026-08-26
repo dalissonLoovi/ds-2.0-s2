@@ -445,6 +445,22 @@
                 "s2LocalIcons": "DEPRECATED — page 4. Icons masters superseded by [DS] Icons / Escritório Virtual; do not add new local icon components in S2",
                 "migrationStatus": "2026-07-28: leftovers cleared (Tokens/Illustrations/Photo/ImageOrientationItem); component pages + foundations clean outside deprecated Icons page"
             },
+            "paymentMethodMarks": {
+                "summary": "Dedicated published library for card networks, wallets, and meal/voucher marks — parallel to BrandLogo, never mixed into UI icon libraries (*-outline/*-filled).",
+                "nameContract": "payment-method/{brand}",
+                "fileKey": "f7HDa2A0uqtcVEOJ1YhPx6",
+                "figmaUrl": "https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks",
+                "strategy": "Publish [DS] Payment Method Marks as a Figma library; consume in S2 via INSTANCE_SWAP on payment slots — swap only among payment-method/* marks.",
+                "canonicalHeightPx": 40,
+                "vsBrandLogo": "BrandLogo = Loovi product identity; payment-method/* = third-party payment network or wallet marks.",
+                "vsIcons": "Not DS Icons — fixed brand colors, rectangular badge geometry, trademark artwork; do not remap fills to text/* tokens.",
+                "doNot": [
+                    "Add payment marks to DS Icons (*-outline/*-filled) or Hugeicons/Tabler libraries",
+                    "Remap brand fills to text/* or color/* semantic tokens",
+                    "INSTANCE_SWAP payment marks with DS Icons or BrandLogo",
+                    "Use as Button leadingIcon, Toast/Alert statusIcon, or navigation chrome"
+                ]
+            },
             "feedbackUsageTable": {
                 "vocabulary": [
                     "info",
@@ -647,9 +663,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-20T20:40:00.000Z",
-        "storybookRevision": "2026-08-20-brandlogo-audit-apply",
+        "storybookUpdatedAt": "2026-08-26T17:20:00.000Z",
+        "storybookRevision": "2026-08-26-payment-method-marks-docs",
         "changelog": [
+            {
+                "date": "2026-08-26",
+                "type": "storybook-payment-method-marks",
+                "summary": "Payment Method Marks: [DS] library documented (payment-method/{brand}, type|showBackground, h=40px); 25 BR/card marks catalogued; governance + Foundations seed; PaymentMethodMark component entry (Figma-only)."
+            },
             {
                 "date": "2026-08-20",
                 "type": "storybook-brandlogo-audit-apply",
@@ -4249,7 +4270,7 @@
     },
     "storybook": {
         "schemaVersion": "ds-storybook-metadata/v2",
-        "updatedAt": "2026-07-27T18:50:00-03:00",
+        "updatedAt": "2026-08-26T17:20:00-03:00",
         "purpose": "Hybrid Storybook catalog: CSF3 Autodocs and Code Connect for implemented React components (@ds/react); seed MDX for Figma-only entries. Token values remain under @ds/tokens.",
         "globalRules": {
             "variantNaming": "variant keys use lower camelCase; values use lowercase or kebab-case where possible",
@@ -4270,6 +4291,7 @@
             "componentTokens": "component/[component]/[part]/[property]/[modifier?]",
             "iconLayers": "generic Vector layers should be renamed to {icon-name}-path in source components",
             "iconLibraries": "Library Swap + shared *-outline/*-filled contract; App Cliente uses Hugeicons catalog + DS Semantic Aliases (see meta.governance.iconLibraries)",
+            "paymentMethodMarks": "Third-party payment marks live in published library [DS] Payment Method Marks (see Foundations/Payment method marks and meta.governance.paymentMethodMarks) — not DS Icons and not BrandLogo.",
             "illustrations": "Illustrated assets (not DS Icons) live under storybook.illustrations; colors may use a dedicated hardcoded palette — intentional exception to semantic UI token binding",
             "codeConnect": "not configured in this JSON",
             "feedbackUsageTable": {
@@ -11312,9 +11334,79 @@
                     "app-glyph (type=app)"
                 ],
                 "reactMapping": "BrandLogo(type, showTrademark)"
+            },
+            "PaymentMethodMark": {
+                "nodeId": "7:18",
+                "figmaFileKey": "f7HDa2A0uqtcVEOJ1YhPx6",
+                "figmaUrl": "https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks?node-id=7-18",
+                "description": "AI-READY COMPONENT: PaymentMethodMark is the contract for third-party payment network and wallet brand marks published in library [DS] Payment Method Marks. Each brand is a separate COMPONENT_SET named payment-method/{brand}. Props: type=logo|icon; showBackground=true|false (sparse matrix per brand — some omit type=logo; type=logo has no showBackground axis when published). Canonical height=40px for all variants. type=logo = horizontal lockup (proportional width, h=40); type=icon = 40×40 badge; showBackground=true adds white tile behind icon mark. Brand fills are fixed — do not remap to text/* or color/* tokens. Not DS Icons (*-outline/*-filled) and not BrandLogo. Consume in [DS] 2.0 - S2 via INSTANCE_SWAP only among payment-method/* marks. Accessibility: decorative when adjacent label names the method (aria-hidden); else aria-label with brand name. React mapping: PaymentMethodMark(brand, type, showBackground). Code Connect is not configured.",
+                "variants": {
+                    "type": [
+                        "logo",
+                        "icon"
+                    ],
+                    "showBackground": [
+                        "true",
+                        "false"
+                    ]
+                },
+                "props": {
+                    "brand": "kebab-case slug matching payment-method/{brand} set name (e.g. visa, mastercard, pix)",
+                    "type": "logo | icon — logo = horizontal lockup; icon = square badge",
+                    "showBackground": "true | false — white tile behind icon mark (icon type only; sparse when type=logo)"
+                },
+                "rules": {
+                    "sparseMatrix": "Per-brand sparse: e.g. visa publishes icon only (no type=logo); mastercard publishes logo + icon × showBackground",
+                    "brandTokens": "No semantic token binding — fixed trademark fills",
+                    "vsIcons": "Not DS Icons (*-outline/*-filled) — do not mix libraries",
+                    "vsBrandLogo": "BrandLogo = Loovi identity; PaymentMethodMark = third-party payment marks",
+                    "sizing": "Canonical height=40px for every variant",
+                    "library": "Source file f7HDa2A0uqtcVEOJ1YhPx6 — publish as library for S2 INSTANCE_SWAP",
+                    "naming": "Renamed from external lib (Type/Background → type/showBackground; PascalCase → payment-method/{brand})"
+                },
+                "tokenRules": [],
+                "accessibility": "Decorative when adjacent label names the payment method (aria-hidden); otherwise aria-label with brand name (e.g. Visa, Pix).",
+                "composition": [
+                    "payment-method/{brand} COMPONENT_SET",
+                    "type=logo|icon variants",
+                    "showBackground tile (icon only)"
+                ],
+                "reactMapping": "PaymentMethodMark(brand, type, showBackground)",
+                "catalog": [
+                    "alelo",
+                    "amazon-pay",
+                    "amex",
+                    "apple-pay",
+                    "ben",
+                    "bitcoin",
+                    "bitcoin-cash",
+                    "cartao-luiza",
+                    "diners-club",
+                    "elo",
+                    "google-pay",
+                    "hiper",
+                    "hipercard",
+                    "ifood-beneficios",
+                    "mastercard",
+                    "paypal",
+                    "pix",
+                    "pluxee",
+                    "samsung-pay",
+                    "shopee-pay",
+                    "sodexo",
+                    "ticket",
+                    "verde-card",
+                    "visa",
+                    "vr"
+                ]
             }
         },
         "recentUpdates": [
+            {
+                "id": "payment-method-marks-docs",
+                "date": "2026-08-26",
+                "summary": "Payment Method Marks library: DS naming (payment-method/{brand}), type|showBackground props, h=40px; 25 marks in seed + Foundations page; governance vs Icons/BrandLogo."
+            },
             {
                 "id": "brandlogo-audit-apply",
                 "date": "2026-08-20",
@@ -12516,6 +12608,445 @@
             "backlog": [
                 "Additional feedback statuses (warning | danger | info) if product needs matching motion assets"
             ]
+        },
+        "paymentMethodMarks": {
+            "summary": "Payment network and wallet brand marks (not DS Icons). Published from file [DS] Payment Method Marks. Naming: payment-method/{brand}. All variants canonical height=40px. Brand fills are fixed — intentional exception to semantic UI token binding (parallel to BrandLogo vs Icons).",
+            "colorPolicy": "Brand/trademark fills are fixed official colors — do not remap to text/*, color/*, or feedback/* tokens. showBackground=true uses a white tile behind icon marks only.",
+            "fileKey": "f7HDa2A0uqtcVEOJ1YhPx6",
+            "figmaUrl": "https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks",
+            "page": {
+                "name": "Components",
+                "nodeId": "0:1"
+            },
+            "section": {
+                "name": "payment-method / cards",
+                "nodeId": "7:18"
+            },
+            "naming": "payment-method/{brand}",
+            "canonicalHeightPx": 40,
+            "variantContract": {
+                "type": [
+                    "logo",
+                    "icon"
+                ],
+                "showBackground": [
+                    "true",
+                    "false"
+                ],
+                "notes": "type=logo = horizontal lockup (~86×40); type=icon = 40×40 badge; sparse matrix per brand (some omit type=logo). type=logo has no showBackground axis when published."
+            },
+            "families": {
+                "cards": {
+                    "sectionNodeId": "7:18",
+                    "description": "AI-READY MARK FAMILY: payment-method/* — card networks, digital wallets, meal/voucher cards curated for BR checkout and payment history. Each brand is a COMPONENT_SET with type and showBackground variants. Consume via INSTANCE_SWAP in S2 payment slots. Not DS Icons (*-outline/*-filled).",
+                    "canonicalHeightPx": 40,
+                    "role": "checkout / saved card / payment history brand badge",
+                    "members": [
+                        "alelo",
+                        "amazon-pay",
+                        "amex",
+                        "apple-pay",
+                        "ben",
+                        "bitcoin",
+                        "bitcoin-cash",
+                        "cartao-luiza",
+                        "diners-club",
+                        "elo",
+                        "google-pay",
+                        "hiper",
+                        "hipercard",
+                        "ifood-beneficios",
+                        "mastercard",
+                        "paypal",
+                        "pix",
+                        "pluxee",
+                        "samsung-pay",
+                        "shopee-pay",
+                        "sodexo",
+                        "ticket",
+                        "verde-card",
+                        "visa",
+                        "vr"
+                    ],
+                    "assets": {
+                        "alelo": {
+                            "nodeId": "7:592",
+                            "name": "payment-method/alelo",
+                            "componentKey": "0d6cec85b12b0d27d70aebb76409ae9e2c11ca83",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "amazon-pay": {
+                            "nodeId": "7:301",
+                            "name": "payment-method/amazon-pay",
+                            "componentKey": "7edb3097df30a1bc85bc5fc5da3baaa9d0723a39",
+                            "variantsPublished": {
+                                "type": [
+                                    "logo",
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "amex": {
+                            "nodeId": "7:64",
+                            "name": "payment-method/amex",
+                            "componentKey": "3148ce6413e3080f58aaac1086cea565242470f1",
+                            "variantsPublished": {
+                                "type": [
+                                    "logo",
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "apple-pay": {
+                            "nodeId": "7:270",
+                            "name": "payment-method/apple-pay",
+                            "componentKey": "caa9089a22b5a38576f80b1b9d731eebb2c2958f",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "ben": {
+                            "nodeId": "7:569",
+                            "name": "payment-method/ben",
+                            "componentKey": "8b86b51fbae89f06347c632513f5dda88b8eba3f",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "bitcoin": {
+                            "nodeId": "7:352",
+                            "name": "payment-method/bitcoin",
+                            "componentKey": "9509eb84e3a09e47cbdbeda5e6a23ea5c4178086",
+                            "variantsPublished": {
+                                "type": [
+                                    "logo",
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "bitcoin-cash": {
+                            "nodeId": "7:386",
+                            "name": "payment-method/bitcoin-cash",
+                            "componentKey": "a10f9118dbbce7cedd956e5b2eb7f1b2ab7b34bc",
+                            "variantsPublished": {
+                                "type": [
+                                    "logo",
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "cartao-luiza": {
+                            "nodeId": "7:438",
+                            "name": "payment-method/cartao-luiza",
+                            "componentKey": "4a3f41c68e4e8753a66c56501203634aa7e7a268",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "diners-club": {
+                            "nodeId": "7:108",
+                            "name": "payment-method/diners-club",
+                            "componentKey": "fa8d8d3389f8526354f6d6e9f00728e6aa434e3b",
+                            "variantsPublished": {
+                                "type": [
+                                    "logo",
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "elo": {
+                            "nodeId": "7:101",
+                            "name": "payment-method/elo",
+                            "componentKey": "5ce8e03f428a01dee09edc525eaf358f569dbe22",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "google-pay": {
+                            "nodeId": "7:237",
+                            "name": "payment-method/google-pay",
+                            "componentKey": "4bda8077e0f93e78083461d5146aaef9e07da8f0",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "hiper": {
+                            "nodeId": "7:423",
+                            "name": "payment-method/hiper",
+                            "componentKey": "9158838743eb0dce496c624fff83e865fe487565",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "hipercard": {
+                            "nodeId": "7:19",
+                            "name": "payment-method/hipercard",
+                            "componentKey": "137471d8a539856f82bf6391841b533a3cb2fc17",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "ifood-beneficios": {
+                            "nodeId": "7:618",
+                            "name": "payment-method/ifood-beneficios",
+                            "componentKey": "48be936b9918a470a49e00ed88ea81297dd2ecab",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "mastercard": {
+                            "nodeId": "7:24",
+                            "name": "payment-method/mastercard",
+                            "componentKey": "c3973308d88458ad2a74717cdfcafded352befde",
+                            "variantsPublished": {
+                                "type": [
+                                    "logo",
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "paypal": {
+                            "nodeId": "7:334",
+                            "name": "payment-method/paypal",
+                            "componentKey": "2be38fe8e1e48d871bfa536905d688cb2737a241",
+                            "variantsPublished": {
+                                "type": [
+                                    "logo",
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "pix": {
+                            "nodeId": "7:195",
+                            "name": "payment-method/pix",
+                            "componentKey": "1c59134779e03e7ac6a90c5c6e6c2408a4e9df02",
+                            "variantsPublished": {
+                                "type": [
+                                    "logo",
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "pluxee": {
+                            "nodeId": "7:578",
+                            "name": "payment-method/pluxee",
+                            "componentKey": "4bbbcbbd5096d44df5e2eb0f2d64443382d85705",
+                            "variantsPublished": {
+                                "type": [
+                                    "logo",
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "samsung-pay": {
+                            "nodeId": "7:289",
+                            "name": "payment-method/samsung-pay",
+                            "componentKey": "78f4a19e5d5e6e71a4d6008012f115f206fc394c",
+                            "variantsPublished": {
+                                "type": [
+                                    "logo",
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "shopee-pay": {
+                            "nodeId": "7:413",
+                            "name": "payment-method/shopee-pay",
+                            "componentKey": "bd8c57b14212a797f221e2a7b4216214a3253334",
+                            "variantsPublished": {
+                                "type": [
+                                    "logo",
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "sodexo": {
+                            "nodeId": "7:645",
+                            "name": "payment-method/sodexo",
+                            "componentKey": "1991b41240a703e0da974f64a3f19eb21f5f6c36",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "ticket": {
+                            "nodeId": "7:609",
+                            "name": "payment-method/ticket",
+                            "componentKey": "4d7df376353d23ad0b90da846b34b8f9adc9614e",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "verde-card": {
+                            "nodeId": "7:457",
+                            "name": "payment-method/verde-card",
+                            "componentKey": "d7bedfe4476348241ba4fdb4d0185a055b8a90e2",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "visa": {
+                            "nodeId": "7:49",
+                            "name": "payment-method/visa",
+                            "componentKey": "4e06974a46a6a3284b0eb257b19be8fff88aef0a",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        },
+                        "vr": {
+                            "nodeId": "7:628",
+                            "name": "payment-method/vr",
+                            "componentKey": "c82cbe8e9b32c26cd54039a5185f3954aa1b9946",
+                            "variantsPublished": {
+                                "type": [
+                                    "icon"
+                                ],
+                                "showBackground": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        }
+                    },
+                    "consumers": [
+                        "S2 payment-method INSTANCE_SWAP slots (checkout, saved cards, payment history)",
+                        "ListItem leading media for payment rows (when product wires slot)"
+                    ],
+                    "rules": {
+                        "composition": "One COMPONENT_SET per brand; swap by brand + type + showBackground",
+                        "colorException": "Fixed brand fills OK — do not force semantic UI tokens",
+                        "vsBrandLogo": "BrandLogo = Loovi identity only",
+                        "vsIcons": "Not DS Icons — different contract (*-outline/*-filled) and color model",
+                        "sizing": "Canonical height=40px for every published variant",
+                        "library": "Publish [DS] Payment Method Marks; enable Library in S2 file"
+                    },
+                    "accessibility": "Decorative when adjacent copy names the payment method (aria-hidden); otherwise aria-label with brand name.",
+                    "status": "documented"
+                }
+            }
         }
     }
 }
