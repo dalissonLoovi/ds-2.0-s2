@@ -12,3 +12,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+export const PaymentMarkLeading: Story = {
+  args: { leading: 'payment-mark', paymentMethodBrand: 'mastercard', headline: 'Mastercard •••• 4242' },
+};

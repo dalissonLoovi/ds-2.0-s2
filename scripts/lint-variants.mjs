@@ -462,7 +462,7 @@ const CHECK = {
     file: 'packages/react/src/components/ListItem/ListItem.tsx',
     axes: {
       condition: ['1-line', '2-line', '3-line'],
-      leading: ['none', 'monogram', 'icon', 'image', 'video', 'checkbox', 'radio', 'switch'],
+      leading: ['none', 'monogram', 'icon', 'image', 'video', 'payment-mark', 'checkbox', 'radio', 'switch'],
       trailing: ['none', 'icon', 'checkbox', 'radio', 'switch'],
       showOverline: ['false', 'true'],
       showSupportingText: ['false', 'true'],

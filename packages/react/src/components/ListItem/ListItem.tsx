@@ -9,6 +9,7 @@ import { ListItemStateLayer, type ListItemStateLayerState } from '../ListItemSta
 import { ListItemLeadingMonogram } from '../ListItemLeadingMonogram/ListItemLeadingMonogram';
 import { ListItemImageThumbnail } from '../ListItemImageThumbnail/ListItemImageThumbnail';
 import { ListItemVideoThumbnail } from '../ListItemVideoThumbnail/ListItemVideoThumbnail';
+import { ListItemLeadingPaymentMark } from '../ListItemLeadingPaymentMark/ListItemLeadingPaymentMark';
 import styles from './ListItem.module.css';
 
 export type ListItemCondition = '1-line' | '2-line' | '3-line';
@@ -18,6 +19,7 @@ export type ListItemLeading =
   | 'icon'
   | 'image'
   | 'video'
+  | 'payment-mark'
   | 'checkbox'
   | 'radio'
   | 'switch';
@@ -38,10 +40,17 @@ export type ListItemProps = HTMLAttributes<HTMLLIElement> & {
   stateLayer?: ListItemStateLayerState;
   href?: string;
   as?: 'li' | 'div';
+  /** kebab-case slug for leading=payment-mark demo (payment-method/{brand}) */
+  paymentMethodBrand?: string | null;
+  paymentMethodMark?: ReactNode;
   children?: ReactNode;
 };
 
-function leadingSlot(leading: ListItemLeading) {
+function leadingSlot(
+  leading: ListItemLeading,
+  paymentMethodBrand?: string | null,
+  paymentMethodMark?: ReactNode,
+) {
   const User = resolveIcon('user-outline');
   switch (leading) {
     case 'monogram':
@@ -52,6 +61,10 @@ function leadingSlot(leading: ListItemLeading) {
       return <ListItemImageThumbnail />;
     case 'video':
       return <ListItemVideoThumbnail />;
+    case 'payment-mark':
+      return (
+        <ListItemLeadingPaymentMark brand={paymentMethodBrand} paymentMethodMark={paymentMethodMark} />
+      );
     case 'checkbox':
       return <Checkbox showLabel={false} showContent={false} aria-label="Select" />;
     case 'radio':
@@ -94,6 +107,8 @@ export function ListItem({
   stateLayer = 'default',
   href,
   as = 'li',
+  paymentMethodBrand = 'visa',
+  paymentMethodMark,
   className,
   children,
   ...rest
@@ -101,7 +116,11 @@ export function ListItem({
   const inner = (
     <>
       <ListItemStateLayer state={stateLayer} />
-      {leading !== 'none' && <span className={styles.leading}>{leadingSlot(leading)}</span>}
+      {leading !== 'none' && (
+        <span className={styles.leading}>
+          {leadingSlot(leading, paymentMethodBrand, paymentMethodMark)}
+        </span>
+      )}
       <span className={styles.content}>
         {showOverline && <span className={styles.overline}>{overline}</span>}
         <span className={styles.headline}>{headline}</span>

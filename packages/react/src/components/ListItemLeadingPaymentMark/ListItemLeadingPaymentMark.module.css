@@ -1,0 +1,30 @@
+.root {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-100, 4px);
+  background: var(--color-background-surface-2);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.root[data-brand='visa'] {
+  background-color: #172b85;
+}
+
+.root[data-brand='mastercard'] {
+  background: linear-gradient(135deg, #eb001b 50%, #f79e1b 50%);
+}
+
+.root[data-brand='elo'] {
+  background: linear-gradient(90deg, #00a4e0 33%, #ef4123 33%, #ef4123 66%, #ffcb05 66%);
+}
+
+.root[data-brand='amex'] {
+  background-color: #006fcf;
+}
+
+.root[data-brand='hipercard'] {
+  background-color: #822124;
+}
