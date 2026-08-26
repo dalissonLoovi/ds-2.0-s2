@@ -21,6 +21,10 @@ export type InputNumberProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type
   leading?: DsIconName | IconComponent | ReactNode;
   trailing?: DsIconName | IconComponent | ReactNode;
   showSelectCountry?: boolean;
+  showPaymentMethodMark?: boolean;
+  /** kebab-case slug matching payment-method/{brand}; hidden when null/undefined */
+  paymentMethodBrand?: string | null;
+  paymentMethodMark?: ReactNode;
   countryFlag?: ReactNode;
   countryCode?: string;
   onCountryClick?: () => void;
@@ -49,6 +53,9 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(functi
     leading,
     trailing,
     showSelectCountry = false,
+    showPaymentMethodMark = false,
+    paymentMethodBrand = null,
+    paymentMethodMark,
     countryFlag,
     countryCode = 'BR',
     onCountryClick,
@@ -58,6 +65,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(functi
     value,
     placeholder,
     defaultValue,
+    autoComplete,
     ...rest
   },
   ref,
@@ -67,6 +75,9 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(functi
   const supportId = `${inputId}-support`;
   const isDisabled = disabled || state === 'disabled';
   const isError = state === 'error';
+  const showCountry = showSelectCountry && !showPaymentMethodMark;
+  const showMark =
+    showPaymentMethodMark && !showSelectCountry && (paymentMethodMark != null || paymentMethodBrand != null);
 
   return (
     <FieldFrame
@@ -78,9 +89,9 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(functi
       showSupportingText={showSupportingText}
       supportId={supportId}
       className={className}
-      fieldClassName={showSelectCountry ? styles.withCountry : undefined}
+      fieldClassName={showCountry ? styles.withCountry : undefined}
     >
-      {showSelectCountry && (
+      {showCountry && (
         <>
           <SelectCountry
             size="sm"
@@ -93,13 +104,14 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(functi
           <span className={styles.divider} aria-hidden />
         </>
       )}
-      {!showSelectCountry && leadingIcon && slotIcon(leading, 'search-outline')}
+      {!showCountry && leadingIcon && slotIcon(leading, 'search-outline')}
       <input
         ref={ref}
         id={inputId}
         className={styles.control}
         type="text"
         inputMode="numeric"
+        autoComplete={autoComplete ?? (showPaymentMethodMark ? 'cc-number' : undefined)}
         disabled={isDisabled}
         placeholder={content === 'placeholder' ? (placeholder ?? 'Placeholder') : placeholder}
         value={value}
@@ -110,6 +122,14 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(functi
         aria-describedby={showSupportingText ? supportId : undefined}
         {...rest}
       />
+      {showMark &&
+        (paymentMethodMark ?? (
+          <span
+            className={styles.paymentMark}
+            data-brand={paymentMethodBrand ?? undefined}
+            aria-hidden
+          />
+        ))}
       {trailingIcon && slotIcon(trailing, isError ? 'alert-circle-outline' : 'x-outline')}
       {!trailingIcon && isError && slotIcon('alert-circle-outline', 'alert-circle-outline')}
     </FieldFrame>

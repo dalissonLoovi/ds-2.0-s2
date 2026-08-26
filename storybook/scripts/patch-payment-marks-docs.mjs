@@ -76,6 +76,7 @@ data.meta.governance.paymentMethodMarks = {
   figmaUrl: 'https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks',
   strategy:
     'Publish [DS] Payment Method Marks as a Figma library; consume in S2 via INSTANCE_SWAP on payment slots — swap only among payment-method/* marks.',
+  libraryStatus: 'published and enabled in S2 (2026-08-26)',
   canonicalHeightPx: 40,
   vsBrandLogo: 'BrandLogo = Loovi product identity; payment-method/* = third-party payment network or wallet marks.',
   vsIcons:

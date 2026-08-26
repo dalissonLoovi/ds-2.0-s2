@@ -451,6 +451,7 @@
                 "fileKey": "f7HDa2A0uqtcVEOJ1YhPx6",
                 "figmaUrl": "https://www.figma.com/design/f7HDa2A0uqtcVEOJ1YhPx6/-DS--Payment-Method-Marks",
                 "strategy": "Publish [DS] Payment Method Marks as a Figma library; consume in S2 via INSTANCE_SWAP on payment slots — swap only among payment-method/* marks.",
+                "libraryStatus": "published and enabled in S2",
                 "canonicalHeightPx": 40,
                 "vsBrandLogo": "BrandLogo = Loovi product identity; payment-method/* = third-party payment network or wallet marks.",
                 "vsIcons": "Not DS Icons — fixed brand colors, rectangular badge geometry, trademark artwork; do not remap fills to text/* tokens.",
@@ -663,9 +664,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-26T20:00:00.000Z",
-        "storybookRevision": "2026-08-26-payment-method-marks-audit-apply",
+        "storybookUpdatedAt": "2026-08-26T21:30:00.000Z",
+        "storybookRevision": "2026-08-26-inputnumber-payment-mark",
         "changelog": [
+            {
+                "date": "2026-08-26",
+                "type": "storybook-inputnumber-payment-mark",
+                "summary": "InputNumber: showPaymentMethodMark boolean + paymentMethodMarkBlock (InputNumberTrailingPaymentMark INSTANCE_SWAP → payment-method/*) for credit-card BIN feedback on trailing side; mutually exclusive with showSelectCountry; sparse credit-card demos."
+            },
             {
                 "date": "2026-08-26",
                 "type": "storybook-payment-method-marks-audit-apply",
@@ -4275,7 +4281,7 @@
     },
     "storybook": {
         "schemaVersion": "ds-storybook-metadata/v2",
-        "updatedAt": "2026-08-26T20:00:00-03:00",
+        "updatedAt": "2026-08-26T21:30:00-03:00",
         "purpose": "Hybrid Storybook catalog: CSF3 Autodocs and Code Connect for implemented React components (@ds/react); seed MDX for Figma-only entries. Token values remain under @ds/tokens.",
         "globalRules": {
             "variantNaming": "variant keys use lower camelCase; values use lowercase or kebab-case where possible",
@@ -7752,7 +7758,7 @@
             },
             "InputNumber": {
                 "nodeId": "3935:684",
-                "description": "AI-READY COMPONENT: InputNumber is the Design System 2.0 single-line outlined numeric/phone text field — same visual pattern as Input (height 56, border/radius/200, floating label for content=value|placeholder, resting label for content=label), with an optional in-field SelectCountry trigger for phone/DDI entry. Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; trailingIcon=true|false; appearance=default|inverse (120 variants). showSelectCountry (BOOLEAN, default false) toggles selectCountryBlock after leadingIcon: SelectCountry size=sm + DividerVertical. Nested SelectCountry stays expanded=false; uses state=disabled only when InputNumber is disabled; otherwise SelectCountry state=default (field owns hover/focus/error strokes). On appearance=inverse, SelectCountry expandIcon uses text/on-color (focus text/brand, disabled text/on-color-disabled) and DividerVertical uses color/border/2. appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error feedback/danger). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3; default/disabled border color/border/2; label text/on-color (focus text/brand); value text/on-color; placeholder and non-error supporting text/on-color-disabled; on state=disabled all field texts use text/placeholder-inverse; leadingIcon and trailingIcon strokes text/on-color (focus text/brand, disabled text/on-color-disabled, error feedback/danger). Feedback borders unchanged — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Country menu is never nested — compose externally. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing, showSelectCountry. Do not use as generic Input, InputPassword, InputSelect, Autocomplete, SelectCountry standalone, stepper, or SearchBar. Accessibility: labeled input; aria-invalid on error; aria-disabled when disabled; when showSelectCountry=true country trigger is a separate named control. Token rule: local S2 kebab-case only. React mapping: InputNumber(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?, showSelectCountry, countryFlag?). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: InputNumber is the Design System 2.0 single-line outlined numeric/phone/credit-card text field — same visual pattern as Input (height 56, border/radius/200, floating label for content=value|placeholder, resting label for content=label), with optional in-field blocks: SelectCountry (phone/DDI) or payment-method mark (credit-card BIN feedback). Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; trailingIcon=true|false; appearance=default|inverse (120 variants). showSelectCountry (BOOLEAN, default false) toggles selectCountryBlock after leadingIcon: SelectCountry size=sm + DividerVertical. showPaymentMethodMark (BOOLEAN, default false) toggles paymentMethodMarkBlock before trailingIcon with paymentMethodMark INSTANCE_SWAP on InputNumber set → payment-method/* (type=icon, showBackground=false, h=40). showSelectCountry and showPaymentMethodMark are mutually exclusive. Nested SelectCountry stays expanded=false; uses state=disabled only when InputNumber is disabled; otherwise SelectCountry state=default (field owns hover/focus/error strokes). On appearance=inverse, SelectCountry expandIcon uses text/on-color (focus text/brand, disabled text/on-color-disabled) and DividerVertical uses color/border/2. appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error feedback/danger). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3; default/disabled border color/border/2; label text/on-color (focus text/brand); value text/on-color; placeholder and non-error supporting text/on-color-disabled; on state=disabled all field texts use text/placeholder-inverse; leadingIcon and trailingIcon strokes text/on-color (focus text/brand, disabled text/on-color-disabled, error feedback/danger). Feedback borders unchanged — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Country menu is never nested — compose externally. BIN/brand detection is product logic — Figma demos static marks only. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing, showSelectCountry, showPaymentMethodMark, paymentMethodMark (INSTANCE_SWAP on set). Do not combine showSelectCountry=true with showPaymentMethodMark=true. Do not use as generic Input, InputPassword, InputSelect, Autocomplete, SelectCountry standalone, stepper, or SearchBar. Accessibility: labeled input; aria-invalid on error; aria-disabled when disabled; country trigger separately named when showSelectCountry=true; payment mark decorative when label names the card field (aria-hidden). Token rule: local S2 kebab-case only. React mapping: InputNumber(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?, showSelectCountry, showPaymentMethodMark, paymentMethodBrand?, countryFlag?). Code Connect is not configured.",
                 "variants": {
                     "state": [
                         "default",
@@ -7785,22 +7791,28 @@
                     "leadingIcon": "true | false (variant axis)",
                     "trailingIcon": "true | false (variant axis)",
                     "appearance": "default | inverse — inverse for dark/on-color surfaces",
-                    "label": "TEXT — floating or resting field label (phone demo: Número de telefone)",
-                    "value": "TEXT — input text (phone demo: + 55)",
-                    "placeholder": "TEXT — placeholder text",
+                    "label": "TEXT — floating or resting field label (phone: Número de telefone; card: Número do cartão)",
+                    "value": "TEXT — input text (phone: + 55; card: 4111 1111 1111 1111)",
+                    "placeholder": "TEXT — placeholder text (card: 0000 0000 0000 0000)",
                     "supportingText": "TEXT — helper or error message",
                     "showSupportingText": "boolean",
                     "leading": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons",
                     "trailing": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons",
-                    "showSelectCountry": "boolean — toggles SelectCountry sm + DividerVertical in field (default false)"
+                    "showSelectCountry": "boolean — toggles SelectCountry sm + DividerVertical in field (default false)",
+                    "showPaymentMethodMark": "boolean — toggles paymentMethodMarkBlock before trailingIcon (default false; credit-card flows)",
+                    "paymentMethodMark": "INSTANCE_SWAP on InputNumber set — payment-method/* only (type=icon, showBackground=false, h=40); visible when showPaymentMethodMark=true"
                 },
                 "rules": {
-                    "inputMatrix": "state × content × leadingIcon × trailingIcon × appearance = 120 variants; showSelectCountry is BOOLEAN not an axis",
+                    "inputMatrix": "state × content × leadingIcon × trailingIcon × appearance = 120 variants; showSelectCountry and showPaymentMethodMark are BOOLEANs not axes",
                     "appearanceInverse": "appearance=inverse: transparent field; floatingLabel cutout inverse-3 on all inverse states including focus; border/2; on-color texts; disabled texts text/placeholder-inverse; icon disabled on-color-disabled; focus label text/brand; SelectCountry expandIcon on-color + DividerVertical border/2",
                     "selectCountryBlock": "selectCountryBlock = SelectCountry size=sm + DividerVertical after leadingIcon",
+                    "paymentMethodMarkBlock": "paymentMethodMarkBlock = direct payment-method/* instance (40×40) before trailingIcon; paymentMethodMark INSTANCE_SWAP on InputNumber set",
+                    "mutuallyExclusiveLeadingBlocks": "Never showSelectCountry=true together with showPaymentMethodMark=true",
+                    "cardMarkVariant": "Use payment-method type=icon, showBackground=false inside field — not type=logo lockups",
                     "floatingLabelAlign": "floatingLabel is absolute on field (left-aligned with selectCountryBlock / content start), not on value text — stays with country when showSelectCountry=true",
                     "nestedSelectState": "Nested SelectCountry expanded=false; disabled only when InputNumber disabled; else default",
                     "externalCountryMenu": "Country list floats externally — never nested in InputNumber",
+                    "binDetectionProduct": "Brand mark visibility driven by product BIN detection — hide mark when brand unknown",
                     "vsInputSelectPhone": "Do not use as Input, InputSelect, InputPassword, Autocomplete, SelectCountry standalone, stepper, or SearchBar"
                 },
                 "tokenRules": [
@@ -7810,11 +7822,32 @@
                     "SelectCountry + DividerVertical nested DS tokens",
                     "no field fill on disabled"
                 ],
-                "accessibility": "Labeled input; aria-invalid on error; aria-disabled when disabled; country trigger separately named when showSelectCountry=true.",
+                "accessibility": "Labeled input; aria-invalid on error; aria-disabled when disabled; country trigger separately named when showSelectCountry=true; payment mark aria-hidden when label names card field.",
                 "composition": [
                     "SelectCountry",
                     "DividerVertical",
+                    "InputNumberTrailingPaymentMark",
                     "DS Icons — Escritório Virtual outline icons"
+                ],
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
+            },
+            "InputNumberTrailingPaymentMark": {
+                "nodeId": "4995:38558",
+                "description": "AI-READY INTERNAL COMPONENT: InputNumberTrailingPaymentMark wraps a payment-method/* brand mark (40×40 canonical height) for InputNumber showPaymentMethodMark (credit-card BIN feedback on trailing side). Props: paymentMethodMark (INSTANCE_SWAP — swap only among payment-method/* from published [DS] Payment Method Marks f7HDa2A0uqtcVEOJ1YhPx6; use type=icon, showBackground=false). Mutually exclusive with showSelectCountry on parent InputNumber. Do not use as ListItem leading, Button icon, or DS Icons slot. Accessibility: decorative when field label names the card field (aria-hidden); parent InputNumber owns label. React mapping: internal only — InputNumberTrailingPaymentMark(brand, type, showBackground).",
+                "props": {
+                    "paymentMethodMark": "INSTANCE_SWAP → payment-method/* (type=icon, showBackground=false, h=40)"
+                },
+                "rules": {
+                    "internalOnly": "Use inside InputNumber paymentMethodMarkBlock only",
+                    "swapScope": "INSTANCE_SWAP among payment-method/* only — never DS Icons or BrandLogo",
+                    "libraryEnabled": "[DS] Payment Method Marks published and enabled in S2 — swap among payment-method/* preferredValues",
+                    "preferredValues": "visa, mastercard, elo, amex (type=icon, showBackground=false) on InputNumber set paymentMethodMark INSTANCE_SWAP"
+                },
+                "tokenRules": [],
+                "accessibility": "Decorative when InputNumber label names the card field; parent owns accessible name.",
+                "composition": [
+                    "payment-method/{brand} instance"
                 ],
                 "reactPackage": "@ds/react",
                 "reactImplemented": true
@@ -11417,7 +11450,7 @@
                 "rules": {
                     "internalOnly": "Use inside ListItem leading=payment-mark only",
                     "swapScope": "INSTANCE_SWAP among payment-method/* only — never DS Icons or BrandLogo",
-                    "libraryRequired": "Enable [DS] Payment Method Marks library in S2 for production swaps"
+                    "libraryEnabled": "[DS] Payment Method Marks published and enabled in S2 — swap among payment-method/* preferredValues"
                 },
                 "tokenRules": [],
                 "accessibility": "Decorative when headline names the method; parent ListItem owns accessible name.",
@@ -11429,6 +11462,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "inputnumber-payment-mark",
+                "date": "2026-08-26",
+                "summary": "InputNumber credit-card trailing mark: showPaymentMethodMark boolean, InputNumberTrailingPaymentMark block, payment-method/* INSTANCE_SWAP; mutually exclusive with showSelectCountry."
+            },
             {
                 "id": "payment-method-marks-audit-apply",
                 "date": "2026-08-26",
@@ -13089,6 +13127,7 @@
                         }
                     },
                     "consumers": [
+                        "InputNumber showPaymentMethodMark + paymentMethodMark INSTANCE_SWAP on set (payment-method/*)",
                         "ListItem leading=payment-mark via ListItemLeadingPaymentMark (paymentMethodMark INSTANCE_SWAP → payment-method/*)",
                         "S2 payment-method INSTANCE_SWAP slots (checkout, saved cards, payment history)"
                     ],
