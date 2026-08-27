@@ -205,7 +205,7 @@ const CHECK = {
 
   LoadingSpinner: {
     file: 'packages/react/src/components/LoadingSpinner/LoadingSpinner.tsx',
-    axes: { size: ['sm', 'md', 'lg'] },
+    axes: { size: ['lg', 'md', 'sm', 'xs'] },
   },
   Badge: {
     file: 'packages/react/src/components/Badge/Badge.tsx',
