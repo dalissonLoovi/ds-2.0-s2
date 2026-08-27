@@ -4,6 +4,7 @@ import { LoadingSpinner } from './LoadingSpinner';
 /**
  * Code Connect — LoadingSpinner
  * Figma node: 3062:745
+ * Variants: size=lg|md|sm|xs (80|64|32|24)
  */
 figma.connect(
   LoadingSpinner,
