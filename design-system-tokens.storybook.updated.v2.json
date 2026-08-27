@@ -664,9 +664,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-26T23:15:00.000Z",
-        "storybookRevision": "2026-08-26-input-visual-react-audit",
+        "storybookUpdatedAt": "2026-08-27T17:10:00.000Z",
+        "storybookRevision": "2026-08-27-loadingspinner-size-xs",
         "changelog": [
+            {
+                "date": "2026-08-27",
+                "type": "storybook-loadingspinner-size-xs",
+                "summary": "LoadingSpinner: add size=xs (24px) with proportional stroke (~0.3); Figma + seed + React size map; dense UI density for inline fields/list trailing."
+            },
             {
                 "date": "2026-08-26",
                 "type": "storybook-input-visual-react-audit",
@@ -4291,7 +4296,7 @@
     },
     "storybook": {
         "schemaVersion": "ds-storybook-metadata/v2",
-        "updatedAt": "2026-08-26T21:30:00-03:00",
+        "updatedAt": "2026-08-27T17:10:00-03:00",
         "purpose": "Hybrid Storybook catalog: CSF3 Autodocs and Code Connect for implemented React components (@ds/react); seed MDX for Figma-only entries. Token values remain under @ds/tokens.",
         "globalRules": {
             "variantNaming": "variant keys use lower camelCase; values use lowercase or kebab-case where possible",
@@ -5978,16 +5983,22 @@
             },
             "LoadingSpinner": {
                 "nodeId": "3062:745",
-                "description": "AI-READY COMPONENT: LoadingSpinner communicates an indeterminate loading state. Use it for asynchronous actions, sections, cards, pages, lists, forms or buttons when progress percentage is unknown. Do not use it as a button, link, navigation item or measurable progress indicator.",
+                "description": "AI-READY COMPONENT: LoadingSpinner is a non-interactive indeterminate loading indicator. Use it when an asynchronous action, page, section, card, list, form, or button is loading and the progress percentage is unknown. Do not use LoadingSpinner for measurable progress such as uploads, downloads, stepped forms, or completion percentages — use ProgressBar or ProgressCircle. Do not use as a button, link, or navigation item. Variants: size=lg|md|sm|xs (80|64|32|24). size=xs is compact density for dense UI (inline fields, list trailing, chip/button slots). Anatomy: track + indicator ellipses. Stroke scales with size (lg≈1, md≈0.8, sm≈0.4, xs≈0.3). Accessibility: role=status + aria-live=polite when spinner is the only loading announcement; aria-hidden when adjacent text already announces loading. React mapping: LoadingSpinner(size, decorative?, label?). Code Connect is not configured.",
                 "variants": {
                     "size": [
-                        "sm",
+                        "lg",
                         "md",
-                        "lg"
+                        "sm",
+                        "xs"
                     ]
                 },
                 "props": {
-                    "size": "sm | md | lg"
+                    "size": "lg | md | sm | xs — Figma px: 80 | 64 | 32 | 24"
+                },
+                "rules": {
+                    "sizes": "lg=80, md=64, sm=32, xs=24",
+                    "xsDensity": "size=xs for compact inline density — do not replace sm in existing layouts without product intent",
+                    "vsProgress": "Indeterminate only — use ProgressBar/ProgressCircle for determined progress"
                 },
                 "accessibility": "Use role=status and aria-live=polite when the spinner is the only loading announcement. Use aria-hidden=true when visible loading text already exists.",
                 "reactPackage": "@ds/react",
@@ -11473,6 +11484,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "loadingspinner-size-xs",
+                "date": "2026-08-27",
+                "summary": "LoadingSpinner: size=xs (24px) added; Figma stroke ~0.3; seed + React size map updated."
+            },
             {
                 "id": "input-visual-react-audit",
                 "date": "2026-08-26",

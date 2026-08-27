@@ -3,7 +3,7 @@ import { cx } from '../../utils/cx';
 import { resolveIcon } from '../../icons/dsIcons';
 import styles from './LoadingSpinner.module.css';
 
-export type LoadingSpinnerSize = 'sm' | 'md' | 'lg';
+export type LoadingSpinnerSize = 'xs' | 'sm' | 'md' | 'lg';
 
 export type LoadingSpinnerProps = HTMLAttributes<HTMLDivElement> & {
   size?: LoadingSpinnerSize;
@@ -12,7 +12,8 @@ export type LoadingSpinnerProps = HTMLAttributes<HTMLDivElement> & {
   label?: string;
 };
 
-const SIZE_PX = { sm: 16, md: 24, lg: 40 } as const;
+/** Pixel map aligned to Figma LoadingSpinner size axis (lg|md|sm|xs). */
+const SIZE_PX = { xs: 24, sm: 32, md: 64, lg: 80 } as const;
 
 export function LoadingSpinner({
   size = 'md',
