@@ -664,9 +664,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-31T15:10:00.000Z",
-        "storybookRevision": "2026-08-31-listitem-illustration-library",
+        "storybookUpdatedAt": "2026-08-31T16:50:00.000Z",
+        "storybookRevision": "2026-08-31-listitem-illustration-text-props",
         "changelog": [
+            {
+                "date": "2026-08-31",
+                "type": "storybook-listitem-illustration-text-props",
+                "summary": "ListItem: bind headline/overline/supportingText/trailingSupportingText TEXT props on all illustration variants (were unbound after sparse demos)."
+            },
             {
                 "date": "2026-08-31",
                 "type": "storybook-listitem-illustration-library",
@@ -11550,6 +11555,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "listitem-illustration-text-props",
+                "date": "2026-08-31",
+                "summary": "ListItem illustration variants: restore editable headline + supportingText (+ overline/trailingSupportingText) via component TEXT property bindings."
+            },
             {
                 "id": "listitem-illustration-library",
                 "date": "2026-08-31",
