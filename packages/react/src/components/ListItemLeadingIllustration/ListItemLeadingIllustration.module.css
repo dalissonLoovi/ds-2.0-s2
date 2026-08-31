@@ -1,0 +1,19 @@
+.root {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--border-radius-100, 4px);
+  background: var(--color-background-surface-2);
+  background-size: 52px 52px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.root[data-asset='sedan'],
+.root[data-asset='van'],
+.root[data-asset='suv'] {
+  background-color: var(--color-background-surface-2);
+}

@@ -664,9 +664,19 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-27T17:10:00.000Z",
-        "storybookRevision": "2026-08-27-loadingspinner-size-xs",
+        "storybookUpdatedAt": "2026-08-31T15:00:00.000Z",
+        "storybookRevision": "2026-08-31-listitem-illustration-coverage",
         "changelog": [
+            {
+                "date": "2026-08-31",
+                "type": "storybook-listitem-illustration-coverage",
+                "summary": "ListItem illustration: full condition coverage (1/2/3-line); set-level leadingIllustration + trailingIllustration INSTANCE_SWAP (sedan|van|suv); 56×56 slots; React separate side props; seed + docs."
+            },
+            {
+                "date": "2026-08-31",
+                "type": "storybook-listitem-illustration",
+                "summary": "ListItem: leading=illustration + trailing=illustration (56×56); ListItemLeadingIllustration / ListItemTrailingIllustration INSTANCE_SWAP → illustration/vehicle-icon (sedan|van|suv); sparse demos; seed + React."
+            },
             {
                 "date": "2026-08-27",
                 "type": "storybook-loadingspinner-size-xs",
@@ -4296,7 +4306,7 @@
     },
     "storybook": {
         "schemaVersion": "ds-storybook-metadata/v2",
-        "updatedAt": "2026-08-27T17:10:00-03:00",
+        "updatedAt": "2026-08-31T14:40:00-03:00",
         "purpose": "Hybrid Storybook catalog: CSF3 Autodocs and Code Connect for implemented React components (@ds/react); seed MDX for Figma-only entries. Token values remain under @ds/tokens.",
         "globalRules": {
             "variantNaming": "variant keys use lower camelCase; values use lowercase or kebab-case where possible",
@@ -4798,6 +4808,7 @@
                         }
                     },
                     "consumers": [
+                        "ListItem leading=illustration / trailing=illustration via set-level leadingIllustration + trailingIllustration INSTANCE_SWAP (56×56; preferredValues sedan|van|suv); building blocks ListItemLeadingIllustration / ListItemTrailingIllustration",
                         "VehicleSummaryCard.illustration (preferredValues sedan|van|suv)"
                     ],
                     "rules": {
@@ -8804,7 +8815,7 @@
             },
             "ListItem": {
                 "nodeId": "3735:7716",
-                "description": "AI-READY COMPONENT: ListItem is a selectable or navigable row used inside lists to present a primary headline with optional overline, supporting text, trailing supporting text, leading media/controls and trailing actions. Use condition=1-line|2-line|3-line for vertical content density. Use leading=none|monogram|icon|image|video|payment-mark|checkbox|radio|switch and trailing=none|icon|checkbox|radio|switch for slot composition. Use showOverline and showSupportingText to toggle secondary text. Props: headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, stateLayer (ListItemStateLayer INSTANCE_SWAP), divider (DividerHorizontal INSTANCE_SWAP). Defaults in the component set: condition=3-line, leading=none, trailing=none, showOverline=false, showSupportingText=true. Composition must use local S2 building blocks only: ListItemStateLayer as stateLayer overlay; ListItemLeadingMonogram for leading=monogram; ListItemImageThumbnail for leading=image; ListItemVideoThumbnail for leading=video; ListItemLeadingPaymentMark (paymentMethodMark INSTANCE_SWAP → payment-method/*) for leading=payment-mark; local Checkbox, RadioButton and Switch for selection controls; DS Icons — Escritório Virtual outline icons for leading=icon (user-outline) and trailing=icon (chevron-right-outline); DividerHorizontal for the optional divider. Nested Checkbox and RadioButton must stay control-only inside ListItem: showLabel=false, showDescription=false, showContent=false (about 20×20). Do not nest the full labeled Checkbox/Radio composition or row height will break. Nested Switch uses size=md (showIcon as designed). Interaction visuals are owned by nested ListItemStateLayer (state=default|hover|focus|pressed|dragged) via the stateLayer swap — ListItem itself does not publish a separate state variant axis. contentRow uses padding 12/16 and gap 16 with vertical CENTER alignment between leadingSlot, Content and trailingSlot. Do not use remote Material list kits, remote state-layers, remote monogram/image/video thumbnails, remote checkboxes/radios/switches or remote icons. Do not use ListItem as a Button, Menu item (ListActionDropdownItem), NavigationDrawerItem, TableRow or Card. Token rule: use existing DS kebab-case variables and text styles only — text/primary|secondary, color/background-surface/0, plus nested building-block and control tokens; typography via body/large/medium (headline) and body/medium/regular (overline/supporting/trailingSupportingText). Accessibility: map to role=listitem inside a list; navigable rows may be links; checkbox/radio/switch keep their control roles; stateLayer focus must remain visible; decorative leading media may be aria-hidden when the headline already names the entity. React mapping: ListItem(condition, leading, trailing, showOverline, showSupportingText, headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, state, onPress) where state drives ListItemStateLayer.",
+                "description": "AI-READY COMPONENT: ListItem is a selectable or navigable row used inside lists to present a primary headline with optional overline, supporting text, trailing supporting text, leading media/controls and trailing actions. Use condition=1-line|2-line|3-line for vertical content density. Use leading=none|monogram|icon|image|video|payment-mark|illustration|checkbox|radio|switch and trailing=none|icon|illustration|checkbox|radio|switch for slot composition. Use showOverline and showSupportingText to toggle secondary text. Props: headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, stateLayer (ListItemStateLayer INSTANCE_SWAP), divider (DividerHorizontal INSTANCE_SWAP), leadingIllustration / trailingIllustration (INSTANCE_SWAP → illustration/* preferredValues vehicle-icon sedan|van|suv, 56×56 slot) when leading/trailing=illustration. Defaults in the component set: condition=3-line, leading=none, trailing=none, showOverline=false, showSupportingText=true. Illustration coverage (sparse, not full matrix): for each condition → leading=illustration × trailing=none|icon|illustration and leading=none × trailing=illustration. Composition must use local S2 building blocks only: ListItemStateLayer as stateLayer overlay; ListItemLeadingMonogram for leading=monogram; ListItemImageThumbnail for leading=image; ListItemVideoThumbnail for leading=video; ListItemLeadingPaymentMark (paymentMethodMark INSTANCE_SWAP → payment-method/*) for leading=payment-mark; ListItemLeadingIllustration / ListItemTrailingIllustration building blocks (or direct illustration instances bound to set props) for illustration slots; local Checkbox, RadioButton and Switch for selection controls; DS Icons — Escritório Virtual outline icons for leading=icon (user-outline) and trailing=icon (chevron-right-outline); DividerHorizontal for the optional divider. Nested Checkbox and RadioButton must stay control-only inside ListItem: showLabel=false, showDescription=false, showContent=false (about 20×20). Do not nest the full labeled Checkbox/Radio composition or row height will break. Nested Switch uses size=md (showIcon as designed). Interaction visuals are owned by nested ListItemStateLayer (state=default|hover|focus|pressed|dragged) via the stateLayer swap — ListItem itself does not publish a separate state variant axis. contentRow uses padding 12/16 and gap 16 with vertical CENTER alignment between leadingSlot, Content and trailingSlot. Do not use remote Material list kits, remote state-layers, remote monogram/image/video thumbnails, remote checkboxes/radios/switches or remote icons. Do not use ListItem as a Button, Menu item (ListActionDropdownItem), NavigationDrawerItem, TableRow or Card. Token rule: use existing DS kebab-case variables and text styles only — text/primary|secondary, color/background-surface/0, plus nested building-block and control tokens; typography via body/large/medium (headline) and body/medium/regular (overline/supporting/trailingSupportingText). Accessibility: map to role=listitem inside a list; navigable rows may be links; checkbox/radio/switch keep their control roles; stateLayer focus must remain visible; decorative leading/trailing media may be aria-hidden when the headline already names the entity. React mapping: ListItem(condition, leading, trailing, showOverline, showSupportingText, headline, overline, supportingText, trailingSupportingText, showTrailingSupportingText, showDivider, state, leadingIllustrationAsset, trailingIllustrationAsset, onPress) where state drives ListItemStateLayer.",
                 "variants": {
                     "condition": [
                         "1-line",
@@ -8817,6 +8828,7 @@
                         "icon",
                         "image",
                         "payment-mark",
+                        "illustration",
                         "video",
                         "checkbox",
                         "radio",
@@ -8825,6 +8837,7 @@
                     "trailing": [
                         "none",
                         "icon",
+                        "illustration",
                         "checkbox",
                         "radio",
                         "switch"
@@ -8848,13 +8861,15 @@
                     "stateLayer": "INSTANCE_SWAP → ListItemStateLayer",
                     "divider": "INSTANCE_SWAP → DividerHorizontal",
                     "condition": "1-line | 2-line | 3-line",
-                    "leading": "none | monogram | icon | image | video | payment-mark | checkbox | radio | switch",
-                    "trailing": "none | icon | checkbox | radio | switch",
+                    "leading": "none | monogram | icon | image | video | payment-mark | illustration | checkbox | radio | switch",
+                    "trailing": "none | icon | illustration | checkbox | radio | switch",
+                    "leadingIllustration": "INSTANCE_SWAP → illustration/* (preferredValues vehicle-icon sedan|van|suv) when leading=illustration",
+                    "trailingIllustration": "INSTANCE_SWAP → illustration/* (preferredValues vehicle-icon sedan|van|suv) when trailing=illustration",
                     "showOverline": "false | true",
                     "showSupportingText": "false | true"
                 },
                 "rules": {
-                    "localBuildingBlocksOnly": "Use ListItemStateLayer, ListItemLeadingMonogram, ListItemImageThumbnail, ListItemVideoThumbnail, ListItemLeadingPaymentMark only",
+                    "localBuildingBlocksOnly": "Use ListItemStateLayer, ListItemLeadingMonogram, ListItemImageThumbnail, ListItemVideoThumbnail, ListItemLeadingPaymentMark, ListItemLeadingIllustration, ListItemTrailingIllustration only",
                     "localControlsOnly": "Use local Checkbox, RadioButton, Switch and DS outline icons",
                     "stateViaStateLayer": "Interaction states come from nested ListItemStateLayer — no ListItem state variant axis",
                     "noRemoteM3": "Do not use remote Material list kits or building blocks",
@@ -8865,7 +8880,10 @@
                     "iconDefaults": "leading=icon → user-outline; trailing=icon → chevron-right-outline",
                     "contentRowLayout": "contentRow padding 12/16, gap 16, counterAxisAlignItems CENTER",
                     "defaults": "condition=3-line, leading=none, trailing=none, showOverline=false, showSupportingText=true",
-                    "paymentMarkLeading": "leading=payment-mark → ListItemLeadingPaymentMark with paymentMethodMark INSTANCE_SWAP (payment-method/* only)"
+                    "paymentMarkLeading": "leading=payment-mark → ListItemLeadingPaymentMark with paymentMethodMark INSTANCE_SWAP (payment-method/* only)",
+                    "illustrationSlots": "leading=illustration / trailing=illustration → 56×56 slot with leadingIllustration / trailingIllustration INSTANCE_SWAP on ListItem set (illustration/*; preferredValues vehicle-icon sedan|van|suv; artwork ~52×52 centered). Distinct from ListItemImageThumbnail (photo) and DS Icons. Building blocks ListItemLeadingIllustration / ListItemTrailingIllustration remain available as masters.",
+                    "illustrationCoverage": "Minimum published matrix: for each condition=1-line|2-line|3-line → (leading=illustration × trailing=none|icon|illustration) and (leading=none × trailing=illustration). Not a full combinatorial expansion.",
+                    "illustrationSparse": "Do not expand full 720-cell matrix; keep illustration coverage at the minimum condition×trailing subset above"
                 },
                 "tokenRules": [
                     "text/primary | secondary",
@@ -8884,7 +8902,9 @@
                     "RadioButton",
                     "Switch",
                     "DividerHorizontal",
-                    "ListItemLeadingPaymentMark"
+                    "ListItemLeadingPaymentMark",
+                    "ListItemLeadingIllustration",
+                    "ListItemTrailingIllustration"
                 ],
                 "reactPackage": "@ds/react",
                 "reactImplemented": true
@@ -11481,9 +11501,59 @@
                 ],
                 "reactPackage": "@ds/react",
                 "reactImplemented": true
+            },
+            "ListItemLeadingIllustration": {
+                "nodeId": "5038:10",
+                "description": "AI-READY INTERNAL COMPONENT: ListItemLeadingIllustration wraps an illustration/* asset in a 56×56 leading slot for ListItem leading=illustration. Props: illustration (INSTANCE_SWAP — preferredValues illustration/vehicle-icon sedan|van|suv; default sedan). Artwork stays ~52×52 centered in the 56×56 slot. Do not use as ListItemImageThumbnail, DS Icons, payment-method mark, or standalone illustration. Accessibility: decorative when ListItem headline names the entity (aria-hidden); parent owns label. Published ListItem variants may bind illustration via set-level leadingIllustration instead of nesting this wrapper. React mapping: internal only — ListItemLeadingIllustration(illustrationAsset, illustration).",
+                "props": {
+                    "illustration": "INSTANCE_SWAP → illustration/* (preferredValues vehicle-icon sedan|van|suv; default sedan; slot 56×56)"
+                },
+                "rules": {
+                    "internalOnly": "Use inside ListItem leading=illustration only",
+                    "slotSize": "56×56 container; artwork ~52×52 centered",
+                    "swapScope": "INSTANCE_SWAP among illustration/* only — never DS Icons, BrandLogo, or payment-method/*",
+                    "vsImageThumbnail": "Not ListItemImageThumbnail — illustrated asset, not photo fill"
+                },
+                "tokenRules": [],
+                "accessibility": "Decorative when headline names the entity; parent ListItem owns accessible name.",
+                "composition": [
+                    "illustration/{family}/{asset} instance"
+                ],
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
+            },
+            "ListItemTrailingIllustration": {
+                "nodeId": "5038:79",
+                "description": "AI-READY INTERNAL COMPONENT: ListItemTrailingIllustration wraps an illustration/* asset in a 56×56 trailing slot for ListItem trailing=illustration. Props: illustration (INSTANCE_SWAP — preferredValues illustration/vehicle-icon sedan|van|suv; default sedan). Artwork stays ~52×52 centered in the 56×56 slot. Do not use as trailing icon, DS Icons, payment-method mark, or standalone illustration. Accessibility: decorative when ListItem headline names the entity (aria-hidden); parent owns label. Published ListItem variants may bind illustration via set-level trailingIllustration instead of nesting this wrapper. React mapping: internal only — ListItemTrailingIllustration(illustrationAsset, illustration).",
+                "props": {
+                    "illustration": "INSTANCE_SWAP → illustration/* (preferredValues vehicle-icon sedan|van|suv; default sedan; slot 56×56)"
+                },
+                "rules": {
+                    "internalOnly": "Use inside ListItem trailing=illustration only",
+                    "slotSize": "56×56 container; artwork ~52×52 centered",
+                    "swapScope": "INSTANCE_SWAP among illustration/* only — never DS Icons, BrandLogo, or payment-method/*",
+                    "vsTrailingIcon": "Not DS Icons trailing=icon — illustrated asset"
+                },
+                "tokenRules": [],
+                "accessibility": "Decorative when headline names the entity; parent ListItem owns accessible name.",
+                "composition": [
+                    "illustration/{family}/{asset} instance"
+                ],
+                "reactPackage": "@ds/react",
+                "reactImplemented": true
             }
         },
         "recentUpdates": [
+            {
+                "id": "listitem-illustration-coverage",
+                "date": "2026-08-31",
+                "summary": "ListItem illustration: condition 1/2/3-line coverage; leadingIllustration + trailingIllustration set props; React side-specific assets; docs regenerated."
+            },
+            {
+                "id": "listitem-illustration",
+                "date": "2026-08-31",
+                "summary": "ListItem: leading/trailing=illustration (56×56); ListItemLeadingIllustration + ListItemTrailingIllustration with vehicle-icon preferredValues; sparse demos."
+            },
             {
                 "id": "loadingspinner-size-xs",
                 "date": "2026-08-27",

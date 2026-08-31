@@ -132,6 +132,10 @@ export { ListItemImageThumbnail } from './components/ListItemImageThumbnail/List
 export type { ListItemImageThumbnailProps } from './components/ListItemImageThumbnail/ListItemImageThumbnail';
 export { ListItemVideoThumbnail } from './components/ListItemVideoThumbnail/ListItemVideoThumbnail';
 export type { ListItemVideoThumbnailProps } from './components/ListItemVideoThumbnail/ListItemVideoThumbnail';
+export { ListItemLeadingIllustration } from './components/ListItemLeadingIllustration/ListItemLeadingIllustration';
+export type { ListItemLeadingIllustrationProps } from './components/ListItemLeadingIllustration/ListItemLeadingIllustration';
+export { ListItemTrailingIllustration } from './components/ListItemTrailingIllustration/ListItemTrailingIllustration';
+export type { ListItemTrailingIllustrationProps } from './components/ListItemTrailingIllustration/ListItemTrailingIllustration';
 export { ListItem } from './components/ListItem/ListItem';
 export type { ListItemProps } from './components/ListItem/ListItem';
 export { List } from './components/List/List';

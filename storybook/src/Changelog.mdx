@@ -6,14 +6,16 @@ import { Meta } from '@storybook/blocks';
 
 Revisions for Design System 2.0 Storybook — React Autodocs, Foundations, and seed metadata.
 
-**Catalog:** 125/128 components on `@ds/react` Autodocs (W0–W7). `BrandLogo`, `CommentItem`, `PaymentMethodMark` remain Figma-only.
+**Catalog:** 127/130 components on `@ds/react` Autodocs (W0–W7). `BrandLogo`, `CommentItem`, `PaymentMethodMark` remain Figma-only.
 
 The lists below are truncated for readability. Full history lives in `design-system-tokens.storybook.updated.v2.json` (`storybook.recentUpdates` and `meta.changelog`).
 
 ## Recent updates
 
-_Showing 20 of 257._
+_Showing 20 of 259._
 
+- **listitem-illustration-coverage:** ListItem illustration: condition 1/2/3-line coverage; leadingIllustration + trailingIllustration set props; React side-specific assets; docs regenerated.
+- **listitem-illustration:** ListItem: leading/trailing=illustration (56×56); ListItemLeadingIllustration + ListItemTrailingIllustration with vehicle-icon preferredValues; sparse demos.
 - **loadingspinner-size-xs:** LoadingSpinner: size=xs (24px) added; Figma stroke ~0.3; seed + React size map updated.
 - **input-visual-react-audit:** Input React visual audit: FieldFrame floating label, h=56, content modes, error trailing always, inverse + product-theme radius; family fields updated.
 - **button-visual-react-audit:** Button React visual audit: loading spinner-only; trailing chevron-right; typography token sizes.
@@ -32,12 +34,15 @@ _Showing 20 of 257._
 - **react-w3-nav-headers:** W3 React polish: navigation + headers family to @ds/react Autodocs/Code Connect.
 - **react-w2-feedback:** W2 React polish: feedback + overlay family to @ds/react Autodocs/Code Connect.
 - **react-w1-formularios:** W1 React polish: Link/selection controls + Input* family + Search/Autocomplete + OTP + DatePickerSelect.
-- **react-audit-apply-p1-p2:** P1/P2 React audit: metadata+exports, text tokens, W0 hardening.
-- **react-csf3-foundation:** @ds/react foundation: W0 Autodocs+Code Connect; catalog scaffolds; hybrid Storybook.
 
 ## History
 
-_Showing 40 of 254, grouped by date._
+_Showing 40 of 256, grouped by date._
+
+### 2026-08-31
+
+- **storybook-listitem-illustration-coverage:** ListItem illustration: full condition coverage (1/2/3-line); set-level leadingIllustration + trailingIllustration INSTANCE_SWAP (sedan|van|suv); 56×56 slots; React separate side props; seed + docs.
+- **storybook-listitem-illustration:** ListItem: leading=illustration + trailing=illustration (56×56); ListItemLeadingIllustration / ListItemTrailingIllustration INSTANCE_SWAP → illustration/vehicle-icon (sedan|van|suv); sparse demos; seed + React.
 
 ### 2026-08-27
 
@@ -94,8 +99,3 @@ _Showing 40 of 254, grouped by date._
 - **storybook-illustrations-object-search:** Illustrations: object/search (magnifier + ? badge) sm ~107×104; AI-READY EN; artwork root; docs synced.
 - **storybook-illustrations-device-onboarding:** Illustrations: device/onboarding (onboarding-features | onboarding-explore) xl 312; AI-READY EN; artwork roots; docs synced. Device family backlog cleared.
 - **storybook-illustrations-device-app-usage:** Illustrations: device/app-usage family (app-usage | discount | insurance-claim) md 156; AI-READY EN; corrected app-usage copy (feature cards not settings); artwork roots; docs synced.
-- **storybook-illustrations-device-background-location:** Illustrations: device/background-location — rename -01/-02 → background-location | background-location-shadow; artwork + ground-shadow; AI-READY EN; size xl 312; docs synced.
-
-### 2026-08-10
-
-- **storybook-illustrations-device-location-access:** Illustrations: device/location-access — rename -01/-02 → location-access | location-access-shadow; artwork + ground-shadow layers; AI-READY EN; size xl 312; docs synced.

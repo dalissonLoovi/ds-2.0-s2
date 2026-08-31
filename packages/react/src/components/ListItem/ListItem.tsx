@@ -10,6 +10,8 @@ import { ListItemLeadingMonogram } from '../ListItemLeadingMonogram/ListItemLead
 import { ListItemImageThumbnail } from '../ListItemImageThumbnail/ListItemImageThumbnail';
 import { ListItemVideoThumbnail } from '../ListItemVideoThumbnail/ListItemVideoThumbnail';
 import { ListItemLeadingPaymentMark } from '../ListItemLeadingPaymentMark/ListItemLeadingPaymentMark';
+import { ListItemLeadingIllustration } from '../ListItemLeadingIllustration/ListItemLeadingIllustration';
+import { ListItemTrailingIllustration } from '../ListItemTrailingIllustration/ListItemTrailingIllustration';
 import styles from './ListItem.module.css';
 
 export type ListItemCondition = '1-line' | '2-line' | '3-line';
@@ -20,10 +22,11 @@ export type ListItemLeading =
   | 'image'
   | 'video'
   | 'payment-mark'
+  | 'illustration'
   | 'checkbox'
   | 'radio'
   | 'switch';
-export type ListItemTrailing = 'none' | 'icon' | 'checkbox' | 'radio' | 'switch';
+export type ListItemTrailing = 'none' | 'icon' | 'illustration' | 'checkbox' | 'radio' | 'switch';
 
 export type ListItemProps = HTMLAttributes<HTMLLIElement> & {
   condition?: ListItemCondition;
@@ -43,6 +46,19 @@ export type ListItemProps = HTMLAttributes<HTMLLIElement> & {
   /** kebab-case slug for leading=payment-mark demo (payment-method/{brand}) */
   paymentMethodBrand?: string | null;
   paymentMethodMark?: ReactNode;
+  /** Asset slug for leading=illustration (illustration/vehicle-icon/*) — maps to Figma leadingIllustration */
+  leadingIllustrationAsset?: string | null;
+  leadingIllustration?: ReactNode;
+  /** Asset slug for trailing=illustration — maps to Figma trailingIllustration */
+  trailingIllustrationAsset?: string | null;
+  trailingIllustration?: ReactNode;
+  /**
+   * @deprecated Prefer leadingIllustrationAsset / trailingIllustrationAsset (separate sides).
+   * When set, fills both sides that do not have a side-specific asset.
+   */
+  illustrationAsset?: string | null;
+  /** @deprecated Prefer leadingIllustration / trailingIllustration */
+  illustration?: ReactNode;
   children?: ReactNode;
 };
 
@@ -50,6 +66,8 @@ function leadingSlot(
   leading: ListItemLeading,
   paymentMethodBrand?: string | null,
   paymentMethodMark?: ReactNode,
+  leadingIllustrationAsset?: string | null,
+  leadingIllustration?: ReactNode,
 ) {
   const User = resolveIcon('user-outline');
   switch (leading) {
@@ -65,6 +83,13 @@ function leadingSlot(
       return (
         <ListItemLeadingPaymentMark brand={paymentMethodBrand} paymentMethodMark={paymentMethodMark} />
       );
+    case 'illustration':
+      return (
+        <ListItemLeadingIllustration
+          illustrationAsset={leadingIllustrationAsset}
+          illustration={leadingIllustration}
+        />
+      );
     case 'checkbox':
       return <Checkbox showLabel={false} showContent={false} aria-label="Select" />;
     case 'radio':
@@ -76,11 +101,22 @@ function leadingSlot(
   }
 }
 
-function trailingSlot(trailing: ListItemTrailing) {
+function trailingSlot(
+  trailing: ListItemTrailing,
+  trailingIllustrationAsset?: string | null,
+  trailingIllustration?: ReactNode,
+) {
   const Chevron = resolveIcon('chevron-right-outline');
   switch (trailing) {
     case 'icon':
       return Chevron ? <Chevron size={20} aria-hidden /> : null;
+    case 'illustration':
+      return (
+        <ListItemTrailingIllustration
+          illustrationAsset={trailingIllustrationAsset}
+          illustration={trailingIllustration}
+        />
+      );
     case 'checkbox':
       return <Checkbox showLabel={false} showContent={false} aria-label="Select" />;
     case 'radio':
@@ -109,16 +145,27 @@ export function ListItem({
   as = 'li',
   paymentMethodBrand = 'visa',
   paymentMethodMark,
+  leadingIllustrationAsset,
+  leadingIllustration,
+  trailingIllustrationAsset,
+  trailingIllustration,
+  illustrationAsset = 'sedan',
+  illustration,
   className,
   children,
   ...rest
 }: ListItemProps) {
+  const leadAsset = leadingIllustrationAsset ?? illustrationAsset;
+  const trailAsset = trailingIllustrationAsset ?? illustrationAsset;
+  const leadNode = leadingIllustration ?? illustration;
+  const trailNode = trailingIllustration ?? illustration;
+
   const inner = (
     <>
       <ListItemStateLayer state={stateLayer} />
       {leading !== 'none' && (
         <span className={styles.leading}>
-          {leadingSlot(leading, paymentMethodBrand, paymentMethodMark)}
+          {leadingSlot(leading, paymentMethodBrand, paymentMethodMark, leadAsset, leadNode)}
         </span>
       )}
       <span className={styles.content}>
@@ -130,7 +177,11 @@ export function ListItem({
         {children}
       </span>
       {showTrailingSupportingText && <span className={styles.meta}>{trailingSupportingText}</span>}
-      {trailing !== 'none' && <span className={styles.trailing}>{trailingSlot(trailing)}</span>}
+      {trailing !== 'none' && (
+        <span className={styles.trailing}>
+          {trailingSlot(trailing, trailAsset, trailNode)}
+        </span>
+      )}
     </>
   );
 
