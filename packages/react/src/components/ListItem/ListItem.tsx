@@ -47,15 +47,17 @@ export type ListItemProps = HTMLAttributes<HTMLLIElement> & {
   /** kebab-case slug for leading=payment-mark demo (payment-method/{brand}) */
   paymentMethodBrand?: string | null;
   paymentMethodMark?: ReactNode;
-  /** Asset slug for leading=illustration (illustration/vehicle-icon/*) — maps to Figma leadingIllustration */
+  /** Asset slug for leading=illustration (any illustration/* from Ilustrações e animações; default demo sedan) */
   leadingIllustrationAsset?: string | null;
+  /** React node from illustrations library — maps to Figma leadingIllustration INSTANCE_SWAP */
   leadingIllustration?: ReactNode;
-  /** Asset slug for trailing=illustration — maps to Figma trailingIllustration */
+  /** Asset slug for trailing=illustration (any illustration/*; default demo sedan) */
   trailingIllustrationAsset?: string | null;
+  /** React node from illustrations library — maps to Figma trailingIllustration INSTANCE_SWAP */
   trailingIllustration?: ReactNode;
   /**
    * @deprecated Prefer leadingIllustrationAsset / trailingIllustrationAsset (separate sides).
-   * When set, fills both sides that do not have a side-specific asset.
+   * When set, fills both sides that do not have a side-specific asset. Default demo base: sedan.
    */
   illustrationAsset?: string | null;
   /** @deprecated Prefer leadingIllustration / trailingIllustration */
