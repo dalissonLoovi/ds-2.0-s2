@@ -26,6 +26,7 @@ export type ListItemLeading =
   | 'checkbox'
   | 'radio'
   | 'switch';
+/** Trailing slot: none | icon | illustration | checkbox | radio | switch */
 export type ListItemTrailing = 'none' | 'icon' | 'illustration' | 'checkbox' | 'radio' | 'switch';
 
 export type ListItemProps = HTMLAttributes<HTMLLIElement> & {
