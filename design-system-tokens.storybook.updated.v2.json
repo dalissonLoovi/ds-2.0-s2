@@ -656,7 +656,8 @@
                     "Need a validation or selection border? → color/border-feedback/{success|danger|primary}"
                 ]
             },
-            "brandSurface": "color/background-surface/brand (#5A78FF via primitive-colors/brand-blue) for solid brand chrome backgrounds (FRAME_FILL|SHAPE_FILL). color/palette/brand also aliases brand-blue (#5A78FF). Do not use for text (text/brand = sapphire #516CE7) or primary actions (color/actions/primary = azure-wave #4C6BF8)."
+            "brandSurface": "color/background-surface/brand (#5A78FF via primitive-colors/brand-blue) for solid brand chrome backgrounds (FRAME_FILL|SHAPE_FILL). color/palette/brand also aliases brand-blue (#5A78FF). Do not use for text (text/brand = sapphire #516CE7) or primary actions (color/actions/primary = azure-wave #4C6BF8).",
+            "surfaceCanvas": "Page/canvas fills use color/background-surface/0 → primitive-colors/canvas (#FCFCFE). Absolute white (primitive-colors/white) is reserved for text/on-color and true-white chrome — not full-page backgrounds."
         },
         "previousCollections": [
             "Colors",
@@ -664,9 +665,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-09-02T14:05:00.000Z",
-        "storybookRevision": "2026-09-02-chipclickable-md-icon-24",
+        "storybookUpdatedAt": "2026-09-02T17:10:00.000Z",
+        "storybookRevision": "2026-09-02-surface-canvas-icy",
         "changelog": [
+            {
+                "date": "2026-09-02",
+                "type": "tokens-surface-canvas-icy",
+                "summary": "Tokens: soft canvas backgrounds — color/background-surface/0 → primitive-colors/canvas #FCFCFE (was white #FFFFFF); icy-blue #F7FAFF → #F5F8FF for surface/1; keep white #FFFFFF for text/on-color. Intent: avoid absolute white page fills."
+            },
             {
                 "date": "2026-09-02",
                 "type": "storybook-chipclickable-md-icon-24",
@@ -2534,11 +2540,13 @@
             "background-surface": {
                 "0": {
                     "$type": "color",
-                    "$value": "#FFFFFF"
+                    "$value": "#FCFCFE",
+                    "$description": "export: color-bg-surface-0 | primary page/canvas surface. Alias primitive-colors/canvas (#FCFCFE). Soft off-white — not absolute white."
                 },
                 "1": {
                     "$type": "color",
-                    "$value": "#F7FAFF"
+                    "$value": "#F5F8FF",
+                    "$description": "export: color-bg-surface-1 | secondary elevated/soft surface. Alias primitive-colors/icy-blue (#F5F8FF). Contrast step above surface/0."
                 },
                 "2": {
                     "$type": "color",
@@ -3367,7 +3375,8 @@
             },
             "icy-blue": {
                 "$type": "color",
-                "$value": "#F7FAFF"
+                "$value": "#F5F8FF",
+                "$description": "export: primitive-colors-icy-blue | soft icy canvas step #F5F8FF. Aliased by color/background-surface/1."
             },
             "ivory-light": {
                 "$type": "color",
@@ -3531,7 +3540,13 @@
             },
             "white": {
                 "$type": "color",
-                "$value": "#FFFFFF"
+                "$value": "#FFFFFF",
+                "$description": "export: primitive-colors-white | absolute white #FFFFFF. Use for text/on-color — not page/canvas background (use canvas → surface/0)."
+            },
+            "canvas": {
+                "$type": "color",
+                "$value": "#FCFCFE",
+                "$description": "export: primitive-colors-canvas | soft page/canvas fill #FCFCFE — not absolute white. Aliased by color/background-surface/0. Keep primitive-colors/white (#FFFFFF) for text/on-color."
             }
         },
         "spacing": {
@@ -11561,6 +11576,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "tokens-surface-canvas-icy",
+                "date": "2026-09-02",
+                "summary": "Soft canvas tokens: surface/0 → canvas #FCFCFE; icy-blue → #F5F8FF for surface/1; white kept absolute for on-color text."
+            },
             {
                 "id": "chipclickable-md-icon-24",
                 "date": "2026-09-02",
