@@ -664,9 +664,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-08-31T16:50:00.000Z",
-        "storybookRevision": "2026-08-31-listitem-illustration-text-props",
+        "storybookUpdatedAt": "2026-09-02T14:05:00.000Z",
+        "storybookRevision": "2026-09-02-chipclickable-md-icon-24",
         "changelog": [
+            {
+                "date": "2026-09-02",
+                "type": "storybook-chipclickable-md-icon-24",
+                "summary": "ChipClickable size=md leadingIcon 32→24 (native); React icon sizes sm=20 md=24; docs synced."
+            },
             {
                 "date": "2026-08-31",
                 "type": "storybook-listitem-illustration-text-props",
@@ -6965,7 +6970,7 @@
             },
             "ChipClickable": {
                 "nodeId": "3653:23577",
-                "description": "AI-READY COMPONENT: ChipClickable is a compact interactive chip used for selectable filters, compact options, removable selections, or contextual actions with low visual emphasis. Usage rule: use ChipClickable when a compact item can be clicked, selected, or removed. Do not use it as a primary button, badge, static tag, checkbox, radio, menu item, alert, or navigation tab. Variant rule: size=sm|md; state=default|hover|pressed|selected|disabled (disabled is intentional sparse — not published for every intent); intent=info|system|success|warning|danger|outline|soft; width=hug|fill. Intentional sparse matrix (published combinations only; soft publishes 16 like outline — no disabled). Intent rule: info|system|success|warning|danger use feedback surfaces. intent=outline is stroke-only on default (color/border/2; interaction fills hover/pressed/selected). intent=soft is the soft actionable chip (Painel Adicionar veículo): default fill color/background-surface/2 + stroke color/border/2; hover/pressed/selected use interactive/hover|pressed|selected with the same border; for that exemplar keep showAvatar=false and showDeleteAction=false; showLeadingIcon=true with local circle-plus-outline or plus-outline; label via TEXT prop (wired on all intents including soft). Label typography: local text style body/small/medium (no remote typography variables). Props: label (TEXT); showLeadingIcon; leadingIcon (INSTANCE_SWAP); showAvatar; showDeleteAction. Token rule: local S2 kebab-case only; chip gaps use spacing/100 where applicable. Accessibility: button or toggle button with aria-pressed when selectable; delete action needs accessible name Remove {label}. React mapping: ChipClickable(size, state, intent, width, label, showLeadingIcon, leadingIcon, showAvatar, showDeleteAction). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: ChipClickable is a compact interactive chip used for selectable filters, compact options, removable selections, or contextual actions with low visual emphasis. Usage rule: use ChipClickable when a compact item can be clicked, selected, or removed. Do not use it as a primary button, badge, static tag, checkbox, radio, menu item, alert, or navigation tab. Variant rule: size=sm|md; state=default|hover|pressed|selected|disabled (disabled is intentional sparse — not published for every intent); intent=info|system|success|warning|danger|outline|soft; width=hug|fill. Intentional sparse matrix (published combinations only; soft publishes 16 like outline — no disabled). Intent rule: info|system|success|warning|danger use feedback surfaces. intent=outline is stroke-only on default (color/border/2; interaction fills hover/pressed/selected). intent=soft is the soft actionable chip (Painel Adicionar veículo): default fill color/background-surface/2 + stroke color/border/2; hover/pressed/selected use interactive/hover|pressed|selected with the same border; for that exemplar keep showAvatar=false and showDeleteAction=false; showLeadingIcon=true with local circle-plus-outline or plus-outline; label via TEXT prop (wired on all intents including soft). Label typography: local text style body/small/medium (no remote typography variables). Props: label (TEXT); showLeadingIcon; leadingIcon (INSTANCE_SWAP — size=sm → 20×20; size=md → 24×24 native; do not use 32×32 on md); showAvatar; showDeleteAction. Token rule: local S2 kebab-case only; chip gaps use spacing/100 where applicable. Accessibility: button or toggle button with aria-pressed when selectable; delete action needs accessible name Remove {label}. React mapping: ChipClickable(size, state, intent, width, label, showLeadingIcon, leadingIcon, showAvatar, showDeleteAction). Code Connect is not configured.",
                 "variants": {
                     "size": [
                         "sm",
@@ -6996,7 +7001,7 @@
                     "showAvatar": "boolean",
                     "showDeleteAction": "boolean",
                     "label": "TEXT — visible chip label",
-                    "leadingIcon": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons (circle-plus-outline / plus-outline for soft exemplar)",
+                    "leadingIcon": "INSTANCE_SWAP — DS outline icons; size=sm 20×20 / size=md 24×24",
                     "showLeadingIcon": "boolean",
                     "size": "sm | md",
                     "state": "default | hover | pressed | selected | disabled (sparse)",
@@ -7015,7 +7020,8 @@
                     "softSparse": "soft publishes 16 variants (same sparse as outline — no disabled)",
                     "outlineVsSoft": "outline = stroke-only default; soft = surface/2 fill + border (do not use ChipTag for actionable Adicionar veículo)",
                     "labelProp": "TEXT prop label wired on all published variants including soft",
-                    "labelTypography": "local body/small/medium — no remote typography binds"
+                    "labelTypography": "local body/small/medium — no remote typography binds",
+                    "leadingIconSize": "size=sm → 20×20; size=md → 24×24 (native). Do not use 32×32 on md."
                 },
                 "tokenRules": [
                     "feedback intents: color/background-feedback-primary/{intent} (danger may use interactive/error-surface)",
@@ -11555,6 +11561,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "chipclickable-md-icon-24",
+                "date": "2026-09-02",
+                "summary": "ChipClickable MD leadingIcon resized from 32px to 24px; React aligned."
+            },
             {
                 "id": "listitem-illustration-text-props",
                 "date": "2026-08-31",

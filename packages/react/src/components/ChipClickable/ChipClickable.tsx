@@ -61,7 +61,7 @@ export const ChipClickable = forwardRef<HTMLButtonElement, ChipClickableProps>(
     const leadingNode =
       showLeadingIcon &&
       (Icon ? (
-        <Icon size={size === 'sm' ? 14 : 16} aria-hidden className={styles.icon} />
+        <Icon size={size === 'sm' ? 20 : 24} aria-hidden className={styles.icon} />
       ) : (
         (leadingIcon as ReactNode)
       ));
