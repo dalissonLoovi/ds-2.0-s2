@@ -37,7 +37,20 @@
   background: var(--color-border-2);
 }
 
+/* header=none: lateral inset on the root (spacing/300 = 24px) */
+.header-none {
+  padding-left: var(--spacing-300, 24px);
+  padding-right: var(--spacing-300, 24px);
+}
+
+/* Content area: vertical pads only; lateral comes from root or BottomSheetHeader */
 .content {
-  padding: var(--spacing-200, 12px) var(--spacing-250, 16px) var(--spacing-300, 24px);
+  padding: var(--spacing-150, 12px) var(--spacing-300, 24px) var(--spacing-500, 40px);
   overflow: auto;
+}
+
+/* header=sheet-header: header is edge-to-edge; lateral provided by sheetContent */
+.header-sheet-header .content {
+  padding-left: 0;
+  padding-right: 0;
 }

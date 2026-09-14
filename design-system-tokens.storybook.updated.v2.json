@@ -665,9 +665,19 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-09-02T17:10:00.000Z",
-        "storybookRevision": "2026-09-02-surface-canvas-icy",
+        "storybookUpdatedAt": "2026-09-14T14:30:00.000Z",
+        "storybookRevision": "2026-09-14-inputtextarea-resting-label-body-large",
         "changelog": [
+            {
+                "date": "2026-09-14",
+                "type": "storybook-inputtextarea-resting-label-body-large",
+                "summary": "InputTextArea content=label restingLabel typography → body/large/regular (16/22); floating labelText remains caption/large/regular; Figma AI-READY + seed + Storybook synced."
+            },
+            {
+                "date": "2026-09-03",
+                "type": "storybook-bottomsheet-horizontal-pad-300",
+                "summary": "BottomSheet lateral inset spacing/300 (24px): header=none on sheet root; header=sheet-header on sheetContent (header stays edge-to-edge). React + docs synced."
+            },
             {
                 "date": "2026-09-02",
                 "type": "tokens-surface-canvas-icy",
@@ -6866,7 +6876,7 @@
             },
             "BottomSheet": {
                 "nodeId": "3181:8289",
-                "description": "AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobile or responsive experiences. Use it for contextual content that supports a task without navigating away. Do not use it as a centered modal, side drawer, toast, tooltip, card, full page or permanent layout container. Variant rule: header=none shows dragHandle + slot only; header=sheet-header nests local BottomSheetHeader (compact headingContent title, optional leading options/action, optional close) above sheetContent/slot. Compose guideline/checklist rows with BottomSheetCheckItem in slot / sheetContent (preferredValues) — not Checkbox, not ModalCheckItem. Do not nest AppHeader or ModalHeader inside BottomSheet. React mapping: BottomSheet(header, children). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: BottomSheet is a temporary bottom-anchored surface for mobile or responsive experiences. Use it for contextual content that supports a task without navigating away. Do not use it as a centered modal, side drawer, toast, tooltip, card, full page or permanent layout container. Variant rule: header=none shows dragHandle + slot only; header=sheet-header nests local BottomSheetHeader (compact headingContent title, optional leading options/action, optional close) above sheetContent/slot. Horizontal inset is spacing/300 (24px): header=none binds paddingLeft|paddingRight on the sheet root; header=sheet-header keeps root horizontal pad spacing/0 so BottomSheetHeader stays edge-to-edge and binds spacing/300 on sheetContent. Vertical pads: paddingTop spacing/150 (12), paddingBottom spacing/500 (40). Compose guideline/checklist rows with BottomSheetCheckItem in slot / sheetContent (preferredValues) — not Checkbox, not ModalCheckItem. Do not nest AppHeader or ModalHeader inside BottomSheet. React mapping: BottomSheet(header, children). Code Connect is not configured.",
                 "variants": {
                     "header": [
                         "none",
@@ -6881,8 +6891,15 @@
                 "rules": {
                     "headerComposition": "header=sheet-header nests BottomSheetHeader — not AppHeader",
                     "vsAppHeader": "Do not nest AppHeader in BottomSheet",
-                    "slotCheckItems": "Optional guideline stacks in slot / sheetContent compose BottomSheetCheckItem rows (not Checkbox, not ModalCheckItem)"
+                    "slotCheckItems": "Optional guideline stacks in slot / sheetContent compose BottomSheetCheckItem rows (not Checkbox, not ModalCheckItem)",
+                    "horizontalPad": "spacing/300 (24px) lateral inset — header=none on sheet root; header=sheet-header on sheetContent only (header full-bleed)"
                 },
+                "tokenRules": [
+                    "spacing/300 horizontal inset (24px)",
+                    "spacing/150 paddingTop (12)",
+                    "spacing/500 paddingBottom (40)",
+                    "color/background-surface/0"
+                ],
                 "composition": [
                     "BottomSheetHeader (when header=sheet-header)",
                     "BottomSheetCheckItem (optional guideline rows in slot / sheetContent)",
@@ -7731,7 +7748,7 @@
             },
             "InputTextArea": {
                 "nodeId": "4052:21848",
-                "description": "AI-READY COMPONENT: InputTextArea is the Design System 2.0 multiline outlined text field — same visual identity as Input (outlined container, floating label cutout; corner radius via product-theme component/input-textarea/field/radius) with a taller field (~160), character count, and resize affordance. Use for long text (comments, descriptions, messages). Do not use as single-line Input, InputSelect, InputPassword, InputNumber, or rich-text editor. Variants use an intentional sparse matrix (42 published / 120 theoretical): state × content × leadingIcon × trailingIcon × appearance. state: default | hover | focus | error | disabled. content: value | placeholder | label. leadingIcon/trailingIcon: false | true — true only on content=value samples for default|focus|error × default|inverse. appearance: default | inverse. Anatomy: field (leadingIcon? + content + trailingIcon? + countRow + floatingLabel) + supporting + minHeight (InputTextAreaMinHeight, absolute, exposed; nests InputTextAreaResizeHandle). countRow is absolute bottom-right inside field (manual positioning, constraints MAX/MAX) — not auto-layout. minHeight is absolute on the field’s trailing edge (manual positioning). Props: label, value, placeholder, supportingText, showSupportingText, countText, showCount, leading, trailing (INSTANCE_SWAP). Resize visibility via exposed nested minHeight showResizeHandle. Token rule: field fill color/background-surface/0 (inverse transparent); borders color/border/1 (inverse color/border/2); hover color/border-feedback/primary; focus interactive/focus; focus and error strokes border/width/025 (2px); error color/border-feedback/danger; padding spacing/200|300; root paddingTop spacing/150; float cutout background-surface/0 (inverse inverse-3). Typography: value/placeholder body/large/regular; floating label, count, supporting caption/large/regular. Accessibility: textarea role; label association; aria-invalid + aria-describedby on error; aria-disabled when disabled; announce count when relevant. React mapping: InputTextArea(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, countText, showCount, showResizeHandle?, leading?, trailing?). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: InputTextArea is the Design System 2.0 multiline outlined text field — same visual identity as Input (outlined container, floating label cutout; corner radius via product-theme component/input-textarea/field/radius) with a taller field (~160), character count, and resize affordance. Use for long text (comments, descriptions, messages). Do not use as single-line Input, InputSelect, InputPassword, InputNumber, or rich-text editor. Variants use an intentional sparse matrix (42 published / 120 theoretical): state × content × leadingIcon × trailingIcon × appearance. state: default | hover | focus | error | disabled. content: value | placeholder | label. leadingIcon/trailingIcon: false | true — true only on content=value samples for default|focus|error × default|inverse. appearance: default | inverse. Anatomy: field (leadingIcon? + content + trailingIcon? + countRow + floatingLabel) + supporting + minHeight (InputTextAreaMinHeight, absolute, exposed; nests InputTextAreaResizeHandle). countRow is absolute bottom-right inside field (manual positioning, constraints MAX/MAX) — not auto-layout. minHeight is absolute on the field’s trailing edge (manual positioning). Props: label, value, placeholder, supportingText, showSupportingText, countText, showCount, leading, trailing (INSTANCE_SWAP). Resize visibility via exposed nested minHeight showResizeHandle. Token rule: field fill color/background-surface/0 (inverse transparent); borders color/border/1 (inverse color/border/2); hover color/border-feedback/primary; focus interactive/focus; focus and error strokes border/width/025 (2px); error color/border-feedback/danger; padding spacing/200|300; root paddingTop spacing/150; float cutout background-surface/0 (inverse inverse-3). Typography: value/placeholder and resting label (content=label / restingLabel) body/large/regular; floating label (labelText), count, and supporting caption/large/regular. Accessibility: textarea role; label association; aria-invalid + aria-describedby on error; aria-disabled when disabled; announce count when relevant. React mapping: InputTextArea(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, countText, showCount, showResizeHandle?, leading?, trailing?). Code Connect is not configured.",
                 "variants": {
                     "state": [
                         "default",
@@ -7781,7 +7798,8 @@
                     "absoluteMinHeight": "minHeight (InputTextAreaMinHeight) is ABSOLUTE on trailing edge — intentional; exposed",
                     "vsSingleLine": "Not single-line Input, InputSelect, InputPassword, InputNumber, or rich-text",
                     "errorStroke": "state=focus and state=error use border/width/025 (2px); other states border/width/012",
-                    "productTheme": "Field corner radius binds component/input-textarea/field/radius — EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full). Do not hardcode radius/200 on the outlined container."
+                    "productTheme": "Field corner radius binds component/input-textarea/field/radius — EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full). Do not hardcode radius/200 on the outlined container.",
+                    "restingLabelTypography": "content=label restingLabel uses body/large/regular (16/22) — same as value/placeholder; floating labelText stays caption/large/regular"
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/1",
@@ -7789,7 +7807,7 @@
                     "hover color/border-feedback/primary; focus interactive/focus; focus/error stroke border/width/025 (2px); error color/border-feedback/danger",
                     "spacing/150 (root paddingTop); spacing/200|300 (field padding)",
                     "border/radius/200; border/width/012 (default/hover/disabled); border/width/025 (focus/error, 2px)",
-                    "body/large/regular (value/placeholder); caption/large/regular (label/count/supporting)",
+                    "body/large/regular (value/placeholder + restingLabel content=label); caption/large/regular (floating labelText + count + supporting)",
                     "product-theme component/input-textarea/field/radius (EV→200; site-loovi|app-cliente→500)"
                 ],
                 "accessibility": "textarea role; label association; aria-invalid + aria-describedby on error; aria-disabled when disabled; announce count when relevant.",
@@ -11576,6 +11594,16 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "inputtextarea-resting-label-body-large",
+                "date": "2026-09-14",
+                "summary": "InputTextArea resting label (content=label) uses body/large/regular; docs + Storybook synced from Figma."
+            },
+            {
+                "id": "bottomsheet-horizontal-pad-300",
+                "date": "2026-09-03",
+                "summary": "BottomSheet lateral padding spacing/300 (24px); header remains edge-to-edge on header=sheet-header."
+            },
             {
                 "id": "tokens-surface-canvas-icy",
                 "date": "2026-09-02",
