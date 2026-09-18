@@ -15,6 +15,7 @@ figma.connect(
         warning: 'warning',
         danger: 'danger',
         outline: 'outline',
+        brand: 'brand',
       }),
       emphasis: figma.enum('emphasis', { strong: 'strong', soft: 'soft' }),
       showLeadingIcon: figma.boolean('showLeadingIcon'),

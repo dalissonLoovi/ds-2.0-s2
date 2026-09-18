@@ -4,7 +4,14 @@ import { resolveIcon, type DsIconName, type IconComponent } from '../../icons/ds
 import styles from './ChipTag.module.css';
 
 export type ChipTagSize = 'sm' | 'md';
-export type ChipTagIntent = 'info' | 'system' | 'success' | 'warning' | 'danger' | 'outline';
+export type ChipTagIntent =
+  | 'info'
+  | 'system'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'outline'
+  | 'brand';
 export type ChipTagWidth = 'hug' | 'fill';
 export type ChipTagState = 'default' | 'disabled';
 export type ChipTagEmphasis = 'strong' | 'soft';

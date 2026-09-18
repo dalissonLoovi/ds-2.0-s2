@@ -60,6 +60,16 @@
   color: var(--text-primary);
 }
 
+.emphasis-strong.intent-brand {
+  background: var(--color-background-surface-brand, #5a78ff);
+  color: var(--text-on-color);
+}
+
+.emphasis-soft.intent-brand {
+  background: var(--color-background-surface-brand-muted, #5a78ffb8);
+  color: var(--text-on-color);
+}
+
 .emphasis-soft.intent-info {
   background: color-mix(in srgb, var(--color-background-feedback-primary-info) 22%, white);
   color: var(--text-primary);

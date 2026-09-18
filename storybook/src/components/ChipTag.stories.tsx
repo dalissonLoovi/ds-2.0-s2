@@ -22,3 +22,7 @@ export const SoftSuccess: Story = {};
 export const StrongOutline: Story = {
   args: { emphasis: 'strong', intent: 'outline', label: 'Tag', showLeadingIcon: false },
 };
+
+export const StrongBrand: Story = {
+  args: { emphasis: 'strong', intent: 'brand', label: 'Loovi', showLeadingIcon: false },
+};

@@ -32,7 +32,7 @@ const CHECK = {
     file: 'packages/react/src/components/ChipTag/ChipTag.tsx',
     axes: {
       size: ['sm', 'md'],
-      intent: ['info', 'system', 'success', 'warning', 'danger', 'outline'],
+      intent: ['info', 'system', 'success', 'warning', 'danger', 'outline', 'brand'],
       width: ['hug', 'fill'],
       state: ['default', 'disabled'],
       emphasis: ['strong', 'soft'],

@@ -665,9 +665,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-09-14T14:30:00.000Z",
-        "storybookRevision": "2026-09-14-inputtextarea-resting-label-body-large",
+        "storybookUpdatedAt": "2026-09-18T20:10:00.000Z",
+        "storybookRevision": "2026-09-18-chiptag-intent-brand",
         "changelog": [
+            {
+                "date": "2026-09-18",
+                "type": "storybook-chiptag-intent-brand",
+                "summary": "ChipTag intent=brand (Loovi): fill color/background-surface/brand, text/on-color; sparse sm|md × hug|fill × default × strong; React + Code Connect + Storybook synced."
+            },
             {
                 "date": "2026-09-14",
                 "type": "storybook-inputtextarea-resting-label-body-large",
@@ -7103,7 +7108,7 @@
             },
             "ChipTag": {
                 "nodeId": "3653:23220",
-                "description": "AI-READY COMPONENT: ChipTag is a compact non-interactive label used to display category, status, metadata or contextual classification. Use intent=info, system, success, warning or danger for semantic status tags, and intent=outline for neutral outlined tags. Use emphasis=strong for saturated feedback fills and emphasis=soft where available (success soft exemplars) for low-emphasis status. Do not use ChipTag as a button, selectable filter, removable chip, navigation tab, checkbox, badge, alert or CTA. For interactive chips, use ChipClickable. Canonical set lives on the Chip page (3653:23220) — do not instance the orphan legacy set 3291:690.",
+                "description": "AI-READY COMPONENT: ChipTag is a compact non-interactive label used to display category, status, metadata or contextual classification. Use intent=info, system, success, warning or danger for semantic status tags, intent=outline for neutral outlined tags, and intent=brand for Loovi brand-surface tags (fill color/background-surface/brand #5A78FF, label/icon text/on-color). Use emphasis=strong for saturated feedback fills and emphasis=soft where available (success soft exemplars) for low-emphasis status. Do not use ChipTag as a button, selectable filter, removable chip, navigation tab, checkbox, badge, alert or CTA. For interactive chips, use ChipClickable. Canonical set lives on the Chip page (3653:23220) — do not instance the orphan legacy set 3291:690. intent=brand is not a feedback status and publishes sparse: size=sm|md × width=hug|fill × state=default × emphasis=strong (no disabled/soft brand exemplars).",
                 "variants": {
                     "size": [
                         "sm",
@@ -7115,7 +7120,8 @@
                         "success",
                         "warning",
                         "danger",
-                        "outline"
+                        "outline",
+                        "brand"
                     ],
                     "width": [
                         "hug",
@@ -7136,7 +7142,7 @@
                     "showLeadingIcon": "boolean",
                     "label": "visible chip label",
                     "size": "sm | md",
-                    "intent": "info | system | success | warning | danger | outline",
+                    "intent": "info | system | success | warning | danger | outline | brand",
                     "width": "hug | fill",
                     "state": "default | disabled",
                     "emphasis": "strong | soft — soft exemplars currently published for success; prefer strong when leadingIcon must render"
@@ -7145,10 +7151,11 @@
                     "disabled": "disabled is state=disabled only; never intent=disabled. Disabled exemplars exist for intent=system (matches ChipClickable pattern).",
                     "nonInteractive": "ChipTag must not receive focus or onClick; use ChipClickable for interaction.",
                     "canonicalSet": "Use component set 3653:23220 only; legacy 3291:690 is orphan and must not be nested in product components.",
-                    "softLeadingIcon": "emphasis=soft success may omit leadingIcon from the instance tree — use emphasis=strong when an icon is required."
+                    "softLeadingIcon": "emphasis=soft success may omit leadingIcon from the instance tree — use emphasis=strong when an icon is required.",
+                    "brandIntent": "intent=brand uses color/background-surface/brand + text/on-color; not a feedback status. Sparse strong/default only."
                 },
                 "tokenRules": [
-                    "color/background-feedback-primary/{intent} for strong fills (info, system, success, warning, danger)",
+                    "color/background-feedback-primary/{intent} for strong fills (info, system, success, warning, danger); intent=brand uses color/background-surface/brand + text/on-color",
                     "soft success uses soft feedback fill tokens where bound",
                     "color/border/2 for outline stroke and disabled fill",
                     "text/primary for label on saturated fills; text/on-color when fill requires inverse label",
@@ -11594,6 +11601,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "chiptag-intent-brand",
+                "date": "2026-09-18",
+                "summary": "ChipTag intent=brand with Loovi brand-blue surface (#5A78FF) and on-color label."
+            },
             {
                 "id": "inputtextarea-resting-label-body-large",
                 "date": "2026-09-14",
