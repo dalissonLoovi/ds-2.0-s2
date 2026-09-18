@@ -12,8 +12,12 @@ The lists below are truncated for readability. Full history lives in `design-sys
 
 ## Recent updates
 
-_Showing 20 of 266._
+_Showing 20 of 270._
 
+- **chipclickable-soft-surface-0:** ChipClickable soft base remapped to color/background-surface/0 (was surface/2); Plus Darker overlays unchanged.
+- **chipclickable-soft-state-blend:** ChipClickable soft states keep surface/0 base with Plus Darker interactive overlays (same dual-layer rule as brand/feedback).
+- **chipclickable-brand-state-blend:** ChipClickable brand states use Plus Darker overlays (interactive/* on brand base), matching feedback intents.
+- **chipclickable-intent-brand:** ChipClickable intent=brand with Loovi brand-blue surface (#5A78FF) and on-color label; 16 sparse variants.
 - **chiptag-intent-brand:** ChipTag intent=brand with Loovi brand-blue surface (#5A78FF) and on-color label.
 - **inputtextarea-resting-label-body-large:** InputTextArea resting label (content=label) uses body/large/regular; docs + Storybook synced from Figma.
 - **bottomsheet-horizontal-pad-300:** BottomSheet lateral padding spacing/300 (24px); header remains edge-to-edge on header=sheet-header.
@@ -30,17 +34,17 @@ _Showing 20 of 266._
 - **payment-method-marks-audit-apply:** Payment Method Marks audit apply: logo variant prop fix, showBackground semantics, layer hygiene, ListItem leading=payment-mark consumer, figmaNodeUrl slug fix.
 - **payment-method-marks-docs:** Payment Method Marks library: DS naming (payment-method/\{brand\}), type|showBackground props, h=40px; 25 marks in seed + Foundations page; governance vs Icons/BrandLogo.
 - **brandlogo-audit-apply:** BrandLogo: Figma rename + AI-READY; seed entry added (Figma-only); palette/brand fills documented.
-- **brand-blue-5a78ff:** primitive-colors/brand-blue → #5A78FF; brand surfaces + palette/brand synced; brandSurface guidance updated.
-- **palette-brand-azure-wave:** color/palette/brand → azure-wave #4C6BF8; brandSurface guidance updated; Storybook seed synced.
-- **poppins-typography-tokens:** Global Poppins typeface: token generator emits typography + bundled @font-face; canvas uses --font-family-base.
-- **storybook-intro-changelog-copy:** Storybook Introduction/Changelog copy polish: live Autodocs catalog status; truncated human changelog.
 
 ## History
 
-_Showing 40 of 263, grouped by date._
+_Showing 40 of 267, grouped by date._
 
 ### 2026-09-18
 
+- **storybook-chipclickable-soft-surface-0:** ChipClickable intent=soft base fill color/background-surface/2 → color/background-surface/0; keep border/2 + Plus Darker state overlays; React synced.
+- **storybook-chipclickable-soft-state-blend:** ChipClickable intent=soft states: keep surface/0 + border/2 base; add Plus Darker (LINEAR_BURN) stateOverlay with interactive/hover|pressed|selected; React mix-blend-mode synced.
+- **storybook-chipclickable-brand-state-blend:** ChipClickable intent=brand states: restore Plus Darker (LINEAR_BURN) overlays via stateOverlay + interactive/hover|pressed|selected over brand base; React mix-blend-mode plus-darker synced.
+- **storybook-chipclickable-intent-brand:** ChipClickable intent=brand (Loovi): fill color/background-surface/brand + text/on-color; sparse 16 like soft/outline (no disabled); React + Code Connect + Storybook synced.
 - **storybook-chiptag-intent-brand:** ChipTag intent=brand (Loovi): fill color/background-surface/brand, text/on-color; sparse sm|md × hug|fill × default × strong; React + Code Connect + Storybook synced.
 
 ### 2026-09-14
@@ -107,7 +111,3 @@ _Showing 40 of 263, grouped by date._
 
 - **storybook-animations-feedback-success:** Animations: new Foundations/Animations seed; animation/feedback/success (ex Feedback Positivo - V6); section Feedbacks → animation / feedback; AI-READY EN; confetti/badge/circle/check-path layers; docs synced.
 - **storybook-illustrations-onboarding-scene-referral:** Illustrations: onboarding-scene/referral (refer-friends) xl 312; AI-READY EN; artwork root; docs synced. Planned illustration backlog cleared (Cred-card leftover noted).
-- **storybook-illustrations-onboarding-scene:** Illustrations: onboarding-scene (ride-together | celebration) xl 312; rename path onboarding/ → onboarding-scene/; AI-READY EN; artwork roots; docs synced.
-- **storybook-illustrations-vehicle-photo-dashboard:** Illustrations: vehicle-photo/dashboard — rename mislabeled dashboard-upload-success → dashboard-upload-error; AI-READY EN; artwork/tips/error-badge; docs synced. Vehicle-photo backlog cleared.
-- **storybook-illustrations-vehicle-photo-chassis:** Illustrations: vehicle-photo/chassis (chassis-upload | chassis-upload-error) 2xl 520; AI-READY EN; artwork + error-badge; docs synced.
-- **storybook-illustrations-vehicle-photo-angles:** Illustrations: vehicle-photo angles (front/rear × left/right) 2xl 520; AI-READY EN; artwork + tips layers; docs synced.

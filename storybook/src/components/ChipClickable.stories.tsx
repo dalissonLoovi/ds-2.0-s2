@@ -19,3 +19,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Soft: Story = {};
 export const Selected: Story = { args: { selected: true, intent: 'outline', label: 'Filter' } };
+export const Brand: Story = {
+  args: { intent: 'brand', label: 'Loovi', showLeadingIcon: false },
+};

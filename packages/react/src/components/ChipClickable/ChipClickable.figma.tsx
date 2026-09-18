@@ -15,6 +15,7 @@ figma.connect(
         danger: 'danger',
         outline: 'outline',
         soft: 'soft',
+        brand: 'brand',
       }),
       size: figma.enum('size', { sm: 'sm', md: 'md' }),
       showLeadingIcon: figma.boolean('showLeadingIcon'),

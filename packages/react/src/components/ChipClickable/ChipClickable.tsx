@@ -12,7 +12,8 @@ export type ChipClickableIntent =
   | 'warning'
   | 'danger'
   | 'outline'
-  | 'soft';
+  | 'soft'
+  | 'brand';
 export type ChipClickableWidth = 'hug' | 'fill';
 
 export type ChipClickableProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> & {

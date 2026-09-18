@@ -43,7 +43,7 @@ const CHECK = {
     axes: {
       size: ['sm', 'md'],
       state: ['default', 'hover', 'pressed', 'selected', 'disabled'],
-      intent: ['info', 'system', 'success', 'warning', 'danger', 'outline', 'soft'],
+      intent: ['info', 'system', 'success', 'warning', 'danger', 'outline', 'soft', 'brand'],
       width: ['hug', 'fill'],
     },
   },

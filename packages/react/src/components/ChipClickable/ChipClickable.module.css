@@ -45,8 +45,41 @@
 }
 
 .intent-soft {
-  background: var(--color-background-surface-2, #e7effc);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-background-surface-0, #fcfcfe);
   border-color: var(--color-border-2, #ebebeb);
+}
+
+/* Match Figma: base surface/0 + interactive/* overlay with Plus Darker (LINEAR_BURN) */
+.intent-soft::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: transparent;
+  mix-blend-mode: plus-darker;
+}
+
+.intent-soft:hover:not(:disabled)::before,
+.intent-soft[data-state='hover']::before {
+  background: var(--interactive-hover, #f8f8f8);
+}
+
+.intent-soft:active:not(:disabled)::before,
+.intent-soft[data-state='pressed']::before {
+  background: var(--interactive-pressed, #d6d6d6);
+}
+
+.intent-soft.selected::before,
+.intent-soft[data-state='selected']::before {
+  background: var(--interactive-selected, #d0d9e8);
+}
+
+.intent-soft.selected {
+  box-shadow: none;
 }
 
 .intent-outline {
@@ -75,6 +108,45 @@
 .intent-system {
   background: var(--color-background-surface-2, #e7effc);
   border-color: transparent;
+}
+
+.intent-brand {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-background-surface-brand, #5a78ff);
+  border-color: transparent;
+  color: var(--text-on-color);
+}
+
+/* Match Figma: base brand fill + interactive/* overlay with Plus Darker (LINEAR_BURN) */
+.intent-brand::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: transparent;
+  mix-blend-mode: plus-darker;
+}
+
+.intent-brand:hover:not(:disabled)::before,
+.intent-brand[data-state='hover']::before {
+  background: var(--interactive-hover, #f8f8f8);
+}
+
+.intent-brand:active:not(:disabled)::before,
+.intent-brand[data-state='pressed']::before {
+  background: var(--interactive-pressed, #d6d6d6);
+}
+
+.intent-brand.selected::before,
+.intent-brand[data-state='selected']::before {
+  background: var(--interactive-selected, #d0d9e8);
+}
+
+.intent-brand.selected {
+  box-shadow: none;
 }
 
 .selected {
