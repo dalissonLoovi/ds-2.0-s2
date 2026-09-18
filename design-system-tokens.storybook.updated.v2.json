@@ -665,9 +665,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-09-18T20:40:00.000Z",
-        "storybookRevision": "2026-09-18-chipclickable-soft-surface-0",
+        "storybookUpdatedAt": "2026-09-18T20:50:00.000Z",
+        "storybookRevision": "2026-09-18-chipclickable-brand-soft-prop-refs",
         "changelog": [
+            {
+                "date": "2026-09-18",
+                "type": "storybook-chipclickable-brand-soft-prop-refs",
+                "summary": "ChipClickable intent=brand|soft: restore component property bindings for showLeadingIcon, leadingIcon, showAvatar, showDeleteAction, and label (were unbound after variant clone)."
+            },
             {
                 "date": "2026-09-18",
                 "type": "storybook-chipclickable-soft-surface-0",
@@ -11627,6 +11632,11 @@
             }
         },
         "recentUpdates": [
+            {
+                "id": "chipclickable-brand-soft-prop-refs",
+                "date": "2026-09-18",
+                "summary": "ChipClickable brand + soft: rebind showLeadingIcon, showAvatar, showDeleteAction, leadingIcon, label to match other intents."
+            },
             {
                 "id": "chipclickable-soft-surface-0",
                 "date": "2026-09-18",

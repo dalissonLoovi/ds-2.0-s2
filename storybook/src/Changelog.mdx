@@ -12,8 +12,9 @@ The lists below are truncated for readability. Full history lives in `design-sys
 
 ## Recent updates
 
-_Showing 20 of 270._
+_Showing 20 of 271._
 
+- **chipclickable-brand-soft-prop-refs:** ChipClickable brand + soft: rebind showLeadingIcon, showAvatar, showDeleteAction, leadingIcon, label to match other intents.
 - **chipclickable-soft-surface-0:** ChipClickable soft base remapped to color/background-surface/0 (was surface/2); Plus Darker overlays unchanged.
 - **chipclickable-soft-state-blend:** ChipClickable soft states keep surface/0 base with Plus Darker interactive overlays (same dual-layer rule as brand/feedback).
 - **chipclickable-brand-state-blend:** ChipClickable brand states use Plus Darker overlays (interactive/* on brand base), matching feedback intents.
@@ -33,14 +34,14 @@ _Showing 20 of 270._
 - **inputnumber-payment-mark:** InputNumber credit-card trailing mark: showPaymentMethodMark boolean, InputNumberTrailingPaymentMark block, payment-method/* INSTANCE_SWAP; mutually exclusive with showSelectCountry.
 - **payment-method-marks-audit-apply:** Payment Method Marks audit apply: logo variant prop fix, showBackground semantics, layer hygiene, ListItem leading=payment-mark consumer, figmaNodeUrl slug fix.
 - **payment-method-marks-docs:** Payment Method Marks library: DS naming (payment-method/\{brand\}), type|showBackground props, h=40px; 25 marks in seed + Foundations page; governance vs Icons/BrandLogo.
-- **brandlogo-audit-apply:** BrandLogo: Figma rename + AI-READY; seed entry added (Figma-only); palette/brand fills documented.
 
 ## History
 
-_Showing 40 of 267, grouped by date._
+_Showing 40 of 268, grouped by date._
 
 ### 2026-09-18
 
+- **storybook-chipclickable-brand-soft-prop-refs:** ChipClickable intent=brand|soft: restore component property bindings for showLeadingIcon, leadingIcon, showAvatar, showDeleteAction, and label (were unbound after variant clone).
 - **storybook-chipclickable-soft-surface-0:** ChipClickable intent=soft base fill color/background-surface/2 → color/background-surface/0; keep border/2 + Plus Darker state overlays; React synced.
 - **storybook-chipclickable-soft-state-blend:** ChipClickable intent=soft states: keep surface/0 + border/2 base; add Plus Darker (LINEAR_BURN) stateOverlay with interactive/hover|pressed|selected; React mix-blend-mode synced.
 - **storybook-chipclickable-brand-state-blend:** ChipClickable intent=brand states: restore Plus Darker (LINEAR_BURN) overlays via stateOverlay + interactive/hover|pressed|selected over brand base; React mix-blend-mode plus-darker synced.
@@ -110,4 +111,3 @@ _Showing 40 of 267, grouped by date._
 ### 2026-08-14
 
 - **storybook-animations-feedback-success:** Animations: new Foundations/Animations seed; animation/feedback/success (ex Feedback Positivo - V6); section Feedbacks → animation / feedback; AI-READY EN; confetti/badge/circle/check-path layers; docs synced.
-- **storybook-illustrations-onboarding-scene-referral:** Illustrations: onboarding-scene/referral (refer-friends) xl 312; AI-READY EN; artwork root; docs synced. Planned illustration backlog cleared (Cred-card leftover noted).
