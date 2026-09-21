@@ -1,17 +1,12 @@
 .root {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-050, 4px);
+  gap: var(--spacing-100, 8px);
   color: var(--text-link, var(--text-brand));
   font: inherit;
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: none;
   cursor: pointer;
-}
-
-.root:hover,
-.state-hover {
-  text-decoration: underline;
 }
 
 .root:focus-visible,
@@ -21,12 +16,16 @@
   border-radius: 2px;
 }
 
+.state-hover {
+  color: var(--text-brand);
+}
+
 .state-active {
-  color: color-mix(in srgb, var(--text-link, var(--text-brand)) 80%, black);
+  color: var(--text-primary);
 }
 
 .state-visited {
-  color: color-mix(in srgb, var(--text-link, var(--text-brand)) 70%, #5b2d8e);
+  color: var(--text-secondary);
 }
 
 .inline {
@@ -38,7 +37,7 @@
 }
 
 .disabled {
-  opacity: 0.48;
+  color: var(--text-placeholder);
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -47,9 +46,20 @@
   color: var(--text-on-color);
 }
 
+.appearance-inverse.state-hover,
+.appearance-inverse.state-active,
+.appearance-inverse.state-focus {
+  color: var(--text-on-color);
+}
+
+.appearance-inverse.state-visited,
+.appearance-inverse.disabled {
+  color: var(--text-on-color-disabled);
+}
+
 .size-sm {
   font-size: 12px;
-  line-height: 16px;
+  line-height: 17px;
 }
 
 .size-md {
@@ -59,7 +69,7 @@
 
 .size-lg {
   font-size: 16px;
-  line-height: 24px;
+  line-height: 22px;
 }
 
 .label {
@@ -68,4 +78,5 @@
 
 .icon {
   flex-shrink: 0;
+  color: inherit;
 }

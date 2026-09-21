@@ -21,7 +21,7 @@ export type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & 
 
 export function Link({
   href = '#',
-  size = 'md',
+  size = 'lg',
   state = 'default',
   appearance = 'default',
   label = 'Link',

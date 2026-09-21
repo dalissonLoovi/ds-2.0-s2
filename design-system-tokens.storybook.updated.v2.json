@@ -665,9 +665,19 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-09-18T20:50:00.000Z",
-        "storybookRevision": "2026-09-18-chipclickable-brand-soft-prop-refs",
+        "storybookUpdatedAt": "2026-09-21T17:45:00.000Z",
+        "storybookRevision": "2026-09-21-link-audit-apply",
         "changelog": [
+            {
+                "date": "2026-09-21",
+                "type": "storybook-link-audit-apply",
+                "summary": "Link (3820:13913) audit apply: local icon paints (cleared remote text/primary); inline underline bar + removed duplicate Inline link/color-block; active no focus ring; disabled inverse→text/on-color-disabled; AI-READY desc synced; React gap spacing/100, default size=lg, underline only when inline, state colors; Code Connect props; stories Sizes/Inline/States/Inverse."
+            },
+            {
+                "date": "2026-09-21",
+                "type": "storybook-link-size-typography",
+                "summary": "Link (3820:13913): apply size axis typography+icon — lg/md/sm → body/large|medium|small/regular (16/22, 14/20, 12/17) and trailingIcon 16|16|14 (was nomenclature-only; cleared dual fontSize/lineHeight variable binds). React CSS synced."
+            },
             {
                 "date": "2026-09-18",
                 "type": "storybook-chipclickable-brand-soft-prop-refs",
@@ -8797,7 +8807,7 @@
             },
             "Link": {
                 "nodeId": "3820:13913",
-                "description": "AI-READY COMPONENT: Link is a text navigation control for in-page or external destinations. Use size=lg|md|sm for type density. Use state=default|hover|focus|active|visited|disabled for interaction. Use appearance=default on standard surfaces and appearance=inverse on inverse/dark/on-color surfaces. Props: label is the visible link text; inline toggles underline-only inline treatment (no trailing icon); showIcon toggles the trailing icon for standalone links; trailingIcon is an INSTANCE_SWAP for a DS Icons — Escritório Virtual outline icons (default arrow-narrow-right-outline). Inline rule: when inline=true, hide the trailing icon and use underline; when inline=false, no underline and showIcon may reveal trailingIcon. Do not use Link as a Button, TabItem, BreadcrumbItem, MenuItem or Checkbox. Prefer Button variant=text for actions that are not navigational. Accessibility: expose as a link (a / role=link); ensure visible focus; communicate visited when relevant; do not rely on color alone; decorative trailingIcon should be aria-hidden when label is present. Token rule: local S2 kebab-case variables and text styles only — text/link|brand|secondary|primary|placeholder|on-color|on-color-disabled, interactive/focus, spacing/0|100, body/large|medium|small/regular. React mapping: Link(size, state, appearance, label, inline, showIcon, trailingIcon?). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: Link is a text navigation control for in-page or external destinations. Use size=lg|md|sm for type density (applied: lg=body/large/regular 16/22, md=body/medium/regular 14/20, sm=body/small/regular 12/17; trailingIcon 16|16|14). Use state=default|hover|focus|active|visited|disabled for interaction. Use appearance=default on standard surfaces and appearance=inverse on inverse/dark/on-color surfaces. Props: label is the visible link text; inline toggles underline under the label (React hides trailing icon when inline=true — also set showIcon=false in Figma); showIcon toggles the trailing icon for standalone links; trailingIcon is an INSTANCE_SWAP for DS Icons — Escritório Virtual outline icons (default arrow-narrow-right-outline; internal path layer arrow-narrow-right-outline-path). Inline rule: when inline=true, show underline + hide trailing icon; when inline=false, no underline and showIcon may reveal trailingIcon. Do not use Link as a Button, TabItem, BreadcrumbItem, MenuItem or Checkbox. Prefer Button variant=text for actions that are not navigational. Accessibility: expose as a link (a / role=link); ensure visible focus; communicate visited when relevant; do not rely on color alone; decorative trailingIcon should be aria-hidden when label is present. Token rule: local S2 kebab-case only — text/link|brand|secondary|primary|placeholder|on-color|on-color-disabled, interactive/focus, spacing/0|100, border/width/012, body/large|medium|small/regular. State colors (appearance=default): default|focus→text/link; hover→text/brand; active→text/primary; visited→text/secondary; disabled→text/placeholder. Inverse: default|hover|focus|active→text/on-color; visited|disabled→text/on-color-disabled. Focus ring only on state=focus. Default size=lg. React mapping: Link(size, state, appearance, label, inline, showIcon, trailingIcon?). Code Connect maps size/state/appearance/label/inline/showIcon.",
                 "variants": {
                     "size": [
                         "lg",
@@ -8818,25 +8828,31 @@
                     ]
                 },
                 "props": {
-                    "size": "lg | md | sm",
+                    "size": "lg | md | sm (default lg)",
                     "state": "default | hover | focus | active | visited | disabled",
                     "appearance": "default | inverse",
                     "label": "TEXT — visible link text",
-                    "inline": "boolean — underline inline treatment; hide trailing icon",
-                    "showIcon": "boolean — toggles trailingIcon (standalone)",
+                    "inline": "boolean — underline treatment; hide trailing icon",
+                    "showIcon": "boolean — toggles trailingIcon (standalone; false when inline)",
                     "trailingIcon": "INSTANCE_SWAP — DS Icons — Escritório Virtual outline icons (default arrow-narrow-right-outline)"
                 },
                 "rules": {
-                    "inlineVsStandalone": "inline=true → underline, no icon; inline=false → no underline, optional trailingIcon",
+                    "inlineVsStandalone": "inline=true → underline, no icon (React enforces; Figma: set showIcon=false); inline=false → no underline, optional trailingIcon",
                     "localIcons": "trailingIcon EV library outline only; preferredValues include arrow-narrow-right, arrow-right, arrow-big-right, chevron-right",
                     "vsButton": "Prefer Button variant=text for non-navigational actions",
-                    "usage": "Do not use as Button, TabItem, BreadcrumbItem, MenuItem or Checkbox"
+                    "usage": "Do not use as Button, TabItem, BreadcrumbItem, MenuItem or Checkbox",
+                    "defaults": "size=lg, showIcon=true, inline=false",
+                    "focusRing": "interactive/focus only on state=focus — not on active",
+                    "inverseDisabled": "appearance=inverse × disabled|visited → text/on-color-disabled"
                 },
                 "tokenRules": [
                     "text/link | brand | secondary | primary | placeholder | on-color | on-color-disabled by state/appearance",
-                    "interactive/focus for focus ring",
-                    "spacing/0 | 100",
-                    "body/large|medium|small/regular by size"
+                    "interactive/focus for focus ring (state=focus only)",
+                    "spacing/0 | 100 (gap spacing/100)",
+                    "border/width/012 on focus ring",
+                    "size typography: lg→body/large/regular (16/22); md→body/medium/regular (14/20); sm→body/small/regular (12/17)",
+                    "trailingIcon size: lg|md=16; sm=14; icon fills/strokes local text/* (no remotes)",
+                    "inline: underline bar/text-decoration; hide trailing icon"
                 ],
                 "accessibility": "a / role=link; visible focus; communicate visited; color not sole cue; trailingIcon aria-hidden when label present.",
                 "reactPackage": "@ds/react",
@@ -11632,6 +11648,8 @@
             }
         },
         "recentUpdates": [
+            "Link (3820:13913) audit apply: local icon paints; inline underline bar; active no focus ring; disabled inverse→on-color-disabled; React spacing/100 + default lg; Code Connect + stories.",
+            "Link (3820:13913): apply size axis typography+icon — lg/md/sm → body/large|medium|small/regular (16/22, 14/20, 12/17) and trailingIcon 16|16|14 (was nomenclature-only; cleared dual fontSize/lineHeight variable binds). React CSS synced.",
             {
                 "id": "chipclickable-brand-soft-prop-refs",
                 "date": "2026-09-18",

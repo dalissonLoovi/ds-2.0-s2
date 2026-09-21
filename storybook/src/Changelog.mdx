@@ -12,8 +12,10 @@ The lists below are truncated for readability. Full history lives in `design-sys
 
 ## Recent updates
 
-_Showing 20 of 271._
+_Showing 20 of 273._
 
+- **update:** 
+- **update:** 
 - **chipclickable-brand-soft-prop-refs:** ChipClickable brand + soft: rebind showLeadingIcon, showAvatar, showDeleteAction, leadingIcon, label to match other intents.
 - **chipclickable-soft-surface-0:** ChipClickable soft base remapped to color/background-surface/0 (was surface/2); Plus Darker overlays unchanged.
 - **chipclickable-soft-state-blend:** ChipClickable soft states keep surface/0 base with Plus Darker interactive overlays (same dual-layer rule as brand/feedback).
@@ -32,12 +34,15 @@ _Showing 20 of 271._
 - **input-visual-react-audit:** Input React visual audit: FieldFrame floating label, h=56, content modes, error trailing always, inverse + product-theme radius; family fields updated.
 - **button-visual-react-audit:** Button React visual audit: loading spinner-only; trailing chevron-right; typography token sizes.
 - **inputnumber-payment-mark:** InputNumber credit-card trailing mark: showPaymentMethodMark boolean, InputNumberTrailingPaymentMark block, payment-method/* INSTANCE_SWAP; mutually exclusive with showSelectCountry.
-- **payment-method-marks-audit-apply:** Payment Method Marks audit apply: logo variant prop fix, showBackground semantics, layer hygiene, ListItem leading=payment-mark consumer, figmaNodeUrl slug fix.
-- **payment-method-marks-docs:** Payment Method Marks library: DS naming (payment-method/\{brand\}), type|showBackground props, h=40px; 25 marks in seed + Foundations page; governance vs Icons/BrandLogo.
 
 ## History
 
-_Showing 40 of 268, grouped by date._
+_Showing 40 of 270, grouped by date._
+
+### 2026-09-21
+
+- **storybook-link-audit-apply:** Link (3820:13913) audit apply: local icon paints (cleared remote text/primary); inline underline bar + removed duplicate Inline link/color-block; active no focus ring; disabled inverse→text/on-color-disabled; AI-READY desc synced; React gap spacing/100, default size=lg, underline only when inline, state colors; Code Connect props; stories Sizes/Inline/States/Inverse.
+- **storybook-link-size-typography:** Link (3820:13913): apply size axis typography+icon — lg/md/sm → body/large|medium|small/regular (16/22, 14/20, 12/17) and trailingIcon 16|16|14 (was nomenclature-only; cleared dual fontSize/lineHeight variable binds). React CSS synced.
 
 ### 2026-09-18
 
@@ -106,8 +111,3 @@ _Showing 40 of 268, grouped by date._
 - **docs-audit-w2-w3-nodeids:** W2/W3 Docs humanas audit apply: ProgressBar nodeId→3653:5393; NavigationRail Compact/Expanded/Tree live nodeIds; Banner vs Alert copy; OrganizationHeader Docs humanas created (4887:1141).
 - **docs-audit-w5-w6:** W5 Docs humanas: 11/11 OK (noop). W6: StepperPrimary nodeId 3437:396 (missing) → live 3653:4985; remaining W6 frames OK.
 - **docs-audit-w4-live-nodeids:** W4 Docs humanas audit: Accordion/AvatarGroup/DividerHorizontal/DividerVertical/Pagination/PaginationItem nodeIds → live Figma sets; DividerHorizontal + PaginationItem docs instances rewired. Orphan masters remain (no delete).
-- **button-intent-secondary-docs-audit:** Button: document intent=secondary (intentional sparse, mainly size=md); align seed with Figma. W0 Docs humanas audit apply (Button/Input/Chip*/Alert/Toast/Modal frames).
-
-### 2026-08-14
-
-- **storybook-animations-feedback-success:** Animations: new Foundations/Animations seed; animation/feedback/success (ex Feedback Positivo - V6); section Feedbacks → animation / feedback; AI-READY EN; confetti/badge/circle/check-path layers; docs synced.
