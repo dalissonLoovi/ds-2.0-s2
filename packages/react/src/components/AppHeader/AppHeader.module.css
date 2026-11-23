@@ -52,6 +52,30 @@
   background: var(--color-background-surface-3, #d0d9e8);
 }
 
+/*
+ * layout=small-centered (with title): grid 1fr auto 1fr centers the title on the FULL header
+ * width regardless of the leading/trailing slot widths.
+ */
+.centeredTitle {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto) minmax(0, 1fr);
+}
+
+.centeredTitle .leading {
+  justify-self: start;
+}
+
+.centeredTitle .trailing {
+  justify-self: end;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  text-align: center;
+}
+
 .layout-large {
   min-height: 88px;
   align-items: flex-start;

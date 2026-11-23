@@ -167,9 +167,9 @@
 .state-error .notchedOutline {
   --field-border-width: var(--border-width-025, 2px);
   --field-border: var(--color-border-feedback-danger);
-  --field-label-color: var(--feedback-danger);
+  --field-label-color: var(--text-danger);
   --field-icon-color: var(--feedback-danger);
-  --field-support-color: var(--feedback-danger);
+  --field-support-color: var(--text-danger);
 }
 
 .state-disabled .fieldInner {
@@ -206,6 +206,7 @@
   --field-icon-color: var(--text-brand);
 }
 
+/* Inverse (dark) surface: text/danger fails contrast on dark — keep the light feedback/danger. */
 .appearance-inverse.state-error .notchedOutline {
   --field-label-color: var(--feedback-danger);
   --field-icon-color: var(--feedback-danger);
@@ -235,6 +236,10 @@
 }
 
 .supportError {
+  color: var(--text-danger);
+}
+
+.appearance-inverse .supportError {
   color: var(--feedback-danger);
 }
 

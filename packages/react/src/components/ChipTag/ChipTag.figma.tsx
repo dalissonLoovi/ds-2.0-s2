@@ -17,7 +17,7 @@ figma.connect(
         outline: 'outline',
         brand: 'brand',
       }),
-      emphasis: figma.enum('emphasis', { strong: 'strong', soft: 'soft' }),
+      emphasis: figma.enum('emphasis', { primary: 'primary', secondary: 'secondary' }),
       showLeadingIcon: figma.boolean('showLeadingIcon'),
     },
     example: (props) => <ChipTag {...props} />,

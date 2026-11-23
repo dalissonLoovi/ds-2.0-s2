@@ -2,6 +2,7 @@ import 'package:loovi_tokens/loovi_tokens.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../foundation/loovi_icon.dart';
+import '../../foundation/loovi_tap_target.dart';
 import '../../generated/loovi_icon_names.g.dart';
 import '../checkbox/loovi_checkbox.dart' show LooviFocusRingPainter;
 
@@ -78,9 +79,8 @@ class _LooviSwitchState extends State<LooviSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    final t = LooviTokens.of(context);
     final enabled = _enabled;
-    final min = t.spacing.s600; // 48 dp touch target
+    final min = LooviTapTarget.minSize(context); // 48 dp touch target
     return Semantics(
       container: true,
       enabled: enabled,
@@ -143,6 +143,8 @@ class LooviSwitchControl extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = LooviTokens.of(context);
     final md = size == LooviSwitchSize.md;
+    // Reduced motion (system "remove animations"): jump to the end state.
+    final duration = (MediaQuery.maybeDisableAnimationsOf(context) ?? false) ? Duration.zero : _duration;
 
     // Geometry (Figma 3653:4741): md 56×32 / thumb 24 / inset 4;
     // sm 40×20 / thumb 16 / inset 2.
@@ -197,19 +199,19 @@ class LooviSwitchControl extends StatelessWidget {
           children: [
             Positioned.fill(
               child: AnimatedContainer(
-                duration: _duration,
+                duration: duration,
                 decoration: BoxDecoration(color: trackColor, borderRadius: BorderRadius.circular(t.radius.full)),
               ),
             ),
             AnimatedPositioned(
-              duration: _duration,
+              duration: duration,
               curve: Curves.easeOut,
               top: inset,
               left: checked ? trackW - thumb - inset : inset,
               width: thumb,
               height: thumb,
               child: AnimatedContainer(
-                duration: _duration,
+                duration: duration,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(color: thumbColor, shape: BoxShape.circle, boxShadow: shadow),
                 child: icon,

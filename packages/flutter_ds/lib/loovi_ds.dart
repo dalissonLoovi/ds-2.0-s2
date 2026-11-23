@@ -13,17 +13,18 @@ export 'src/generated/loovi_icon_names.g.dart';
 export 'src/generated/seed_catalog.g.dart';
 // WIDGETS — one export per component (phase 2 wave).
 export 'src/widgets/alert/loovi_alert.dart';
-export 'src/widgets/app_header/loovi_app_header.dart';
+// Internal helpers shared between widgets stay out of the public API.
+export 'src/widgets/app_header/loovi_app_header.dart' hide LooviHeaderIconAction;
 export 'src/widgets/bottom_sheet/loovi_bottom_sheet.dart';
 export 'src/widgets/bottom_sheet/loovi_bottom_sheet_header.dart';
 export 'src/widgets/button/loovi_button.dart';
 export 'src/widgets/modal/loovi_modal.dart';
 export 'src/widgets/modal/loovi_modal_header.dart';
 export 'src/widgets/section_header/loovi_section_header.dart';
-export 'src/widgets/checkbox/loovi_checkbox.dart';
+export 'src/widgets/checkbox/loovi_checkbox.dart' hide LooviFocusRingPainter;
 export 'src/widgets/chip_clickable/loovi_chip_clickable.dart';
 export 'src/widgets/chip_tag/loovi_chip_tag.dart';
-export 'src/widgets/input/loovi_input.dart';
+export 'src/widgets/input/loovi_input.dart' hide LooviInputFieldColors, LooviInputFloatingLabel;
 export 'src/widgets/input_password/loovi_input_password.dart';
 export 'src/widgets/input_textarea/loovi_input_textarea.dart';
 export 'src/widgets/link/loovi_link.dart';

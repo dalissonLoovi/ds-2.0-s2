@@ -83,12 +83,12 @@ void main() {
         key: const Key('row'),
         overline: 'Plano',
         headline: 'Coberturas do plano',
-        supportingText: 'Roubo, furto e assistência 24h',
+        supportingText: 'Veja o que está incluído no seu plano',
         onTap: () {},
       ),
     );
     final node = tester.getSemantics(find.byKey(const Key('row')));
-    expect(node.label, 'Plano, Coberturas do plano, Roubo, furto e assistência 24h');
+    expect(node.label, 'Plano, Coberturas do plano, Veja o que está incluído no seu plano');
     expect(node.getSemanticsData().flagsCollection.isButton, isTrue);
     handle.dispose();
   });
@@ -109,9 +109,9 @@ void main() {
         children: [
           const LooviListItem(condition: LooviListItemCondition.oneLine, headline: 'Meu veículo', leadingIcon: LooviIcons.carOutline, trailingIcon: LooviIcons.chevronRightOutline, showDivider: true),
           const LooviListItem(condition: LooviListItemCondition.oneLine, overline: 'Titular', headline: 'Ana Souza', leadingIcon: LooviIcons.userOutline, trailingSupportingText: 'Editar', showDivider: true),
-          const LooviListItem(condition: LooviListItemCondition.twoLine, headline: 'Coberturas do plano', supportingText: 'Roubo, furto e assistência 24h em todo o Brasil', leading: LooviListItemMonogram('C'), trailingIcon: LooviIcons.chevronRightOutline, showDivider: true),
-          const LooviListItem(headline: 'Vistoria do veículo', supportingText: 'Envie as fotos pelo app e acompanhe a análise em até 2 dias úteis.', leading: LooviListItemImageThumbnail(), trailingIcon: LooviIcons.chevronRightOutline, showDivider: true),
-          const LooviListItem(headline: 'Documentos', supportingText: 'Apólice e termos do seu plano', leadingIcon: LooviIcons.fileTextOutline),
+          const LooviListItem(condition: LooviListItemCondition.twoLine, headline: 'Coberturas do plano', supportingText: 'Veja o que está incluído no seu plano', leading: LooviListItemMonogram('C'), trailingIcon: LooviIcons.chevronRightOutline, showDivider: true),
+          const LooviListItem(headline: 'Vistoria do veículo', supportingText: 'Envie as fotos do veículo pelo app para concluir a vistoria.', leading: LooviListItemImageThumbnail(), trailingIcon: LooviIcons.chevronRightOutline, showDivider: true),
+          const LooviListItem(headline: 'Documentos', supportingText: 'Termos e condições do seu plano', leadingIcon: LooviIcons.fileTextOutline),
         ],
       ),
       height: 420,

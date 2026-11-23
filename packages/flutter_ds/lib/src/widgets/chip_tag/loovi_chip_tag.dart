@@ -13,20 +13,21 @@ enum LooviChipTagIntent { info, system, success, warning, danger, outline, brand
 /// Seed `ChipTag.width`.
 enum LooviChipTagWidth { hug, fill }
 
-/// Seed `ChipTag.emphasis`.
-enum LooviChipTagEmphasis { strong, soft }
+/// Seed `ChipTag.emphasis` (renamed from `strong | soft` on 2026-11-23).
+/// Only affects the status intents (info, system, success, warning, danger).
+/// Default is [secondary] (soft) since 2026-11-23; [primary] is opt-in.
+enum LooviChipTagEmphasis { primary, secondary }
 
 /// ChipTag (Figma 3653:23220) — compact, NON-interactive label for category,
 /// status or metadata. Never focusable, never tappable: use
 /// `LooviChipClickable` for interaction.
 ///
 /// Paint (mode app-cliente):
-/// - strong: `color/background-feedback-primary/{intent}` + `text/primary`.
-/// - soft: `color/background-feedback-secondary/{intent}` (published for
-///   success; warning/danger use the token of the same family; info/system
-///   have no secondary token and fall back to strong).
+/// - emphasis=primary: `color/background-feedback-primary/{intent}` + `text/primary`.
+/// - emphasis=secondary: `color/background-feedback-secondary/{intent}` for
+///   every status intent (info, system, success, warning, danger) + `text/primary`.
 /// - outline: no fill + `color/border/2` stroke (`border/width/012`).
-/// - brand: `color/background-surface/brand` + `text/on-color`.
+/// - brand: `color/background-surface/brand-strong` + `text/on-color` (4.52:1).
 /// - disabled (`state=disabled`): fill `color/border/2`, label `text/secondary`.
 class LooviChipTag extends StatelessWidget {
   const LooviChipTag({
@@ -35,7 +36,7 @@ class LooviChipTag extends StatelessWidget {
     this.size = LooviChipTagSize.md,
     this.intent = LooviChipTagIntent.info,
     this.width = LooviChipTagWidth.hug,
-    this.emphasis = LooviChipTagEmphasis.strong,
+    this.emphasis = LooviChipTagEmphasis.secondary,
     this.disabled = false,
     this.showLeadingIcon = false,
     this.leadingIcon = LooviIcons.circleCheckFilled,
@@ -48,6 +49,10 @@ class LooviChipTag extends StatelessWidget {
   final LooviChipTagSize size;
   final LooviChipTagIntent intent;
   final LooviChipTagWidth width;
+
+  /// Seed `emphasis`: `secondary` (light feedback fill, default) or
+  /// `primary` (saturated feedback fill, opt-in). Ignored by `outline` and
+  /// `brand`.
   final LooviChipTagEmphasis emphasis;
 
   /// Seed `state=disabled`.
@@ -71,22 +76,22 @@ class LooviChipTag extends StatelessWidget {
 
   Color? _fill(LooviTokens t) {
     if (disabled) return t.color.border2;
-    final soft = emphasis == LooviChipTagEmphasis.soft;
+    final secondary = emphasis == LooviChipTagEmphasis.secondary;
     switch (intent) {
       case LooviChipTagIntent.info:
-        return t.color.backgroundFeedbackPrimaryInfo;
+        return secondary ? t.color.backgroundFeedbackSecondaryInfo : t.color.backgroundFeedbackPrimaryInfo;
       case LooviChipTagIntent.system:
-        return t.color.backgroundFeedbackPrimarySystem;
+        return secondary ? t.color.backgroundFeedbackSecondarySystem : t.color.backgroundFeedbackPrimarySystem;
       case LooviChipTagIntent.success:
-        return soft ? t.color.backgroundFeedbackSecondarySuccess : t.color.backgroundFeedbackPrimarySuccess;
+        return secondary ? t.color.backgroundFeedbackSecondarySuccess : t.color.backgroundFeedbackPrimarySuccess;
       case LooviChipTagIntent.warning:
-        return soft ? t.color.backgroundFeedbackSecondaryWarning : t.color.backgroundFeedbackPrimaryWarning;
+        return secondary ? t.color.backgroundFeedbackSecondaryWarning : t.color.backgroundFeedbackPrimaryWarning;
       case LooviChipTagIntent.danger:
-        return soft ? t.color.backgroundFeedbackSecondaryDanger : t.color.backgroundFeedbackPrimaryDanger;
+        return secondary ? t.color.backgroundFeedbackSecondaryDanger : t.color.backgroundFeedbackPrimaryDanger;
       case LooviChipTagIntent.outline:
         return null;
       case LooviChipTagIntent.brand:
-        return t.color.backgroundSurfaceBrand;
+        return t.color.backgroundSurfaceBrandStrong;
     }
   }
 
@@ -151,7 +156,19 @@ class LooviChipTag extends StatelessWidget {
       ),
       child: Padding(
         padding: padding,
-        child: _isSm ? SizedBox(height: t.spacing.s300, child: row) : row,
+        // sm frame is 24 tall: a MIN height, so a larger system text scale
+        // grows the chip instead of clipping the label.
+        child: _isSm
+            ? ConstrainedBox(
+                constraints: BoxConstraints(minHeight: t.spacing.s300),
+                child: Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  widthFactor: fill ? null : 1,
+                  heightFactor: 1,
+                  child: row,
+                ),
+              )
+            : row,
       ),
     );
 

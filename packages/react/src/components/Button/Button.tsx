@@ -10,6 +10,7 @@ import styles from './Button.module.css';
 export type ButtonVariant = 'solid' | 'outline' | 'text';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 export type ButtonIntent = 'primary' | 'success' | 'danger' | 'secondary';
+export type ButtonAppearance = 'default' | 'inverse';
 export type ButtonState =
   | 'default'
   | 'hover'
@@ -22,6 +23,16 @@ export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'disable
   variant?: ButtonVariant;
   size?: ButtonSize;
   intent?: ButtonIntent;
+  /**
+   * Surface appearance. `inverse` repaints label, icons and outline stroke with
+   * `text/on-color` for dark/brand surfaces (e.g. the action of Alert `appearance="inverse"`).
+   *
+   * Only takes effect for `variant="outline" | "text"` with `intent="primary"`;
+   * it is ignored (falls back to `default`) for `solid` and for other intents.
+   * The effective value is exposed as `data-appearance`.
+   * @default 'default'
+   */
+  appearance?: ButtonAppearance;
   /** Visual/demo state; prefer controlled loading/disabled for runtime. */
   state?: ButtonState;
   disabled?: boolean;
@@ -52,6 +63,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     variant = 'solid',
     size = 'md',
     intent = 'primary',
+    appearance = 'default',
     state = 'default',
     disabled = false,
     loading = false,
@@ -74,6 +86,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   const labelText = children ?? label;
   const resolvedAriaLabel = ariaLabel ?? (isLoading || !showLabel ? String(labelText) : undefined);
 
+  const effectiveAppearance: ButtonAppearance =
+    appearance === 'inverse' && variant !== 'solid' && intent === 'primary' ? 'inverse' : 'default';
+  // outline|text + danger: label uses text/danger (AA); icons keep color/actions/danger.
+  const dangerLabel = variant !== 'solid' && intent === 'danger';
+
   const iconSize = size === 'sm' ? 16 : size === 'lg' ? 24 : 20;
 
   return (
@@ -85,6 +102,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
         styles[`variant-${variant}`],
         styles[`size-${size}`],
         styles[`intent-${intent}`],
+        effectiveAppearance === 'inverse' && styles['appearance-inverse'],
         isLoading && styles.stateLoading,
         state !== 'default' && !isLoading && styles[`state-${state}`],
         className,
@@ -96,6 +114,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       data-variant={variant}
       data-size={size}
       data-intent={intent}
+      data-appearance={effectiveAppearance}
       data-state={isLoading ? 'loading' : state}
       {...rest}
     >
@@ -106,7 +125,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       ) : (
         <>
           {showIcon && renderIconSlot(icon, iconSize, styles.icon)}
-          {visibleLabel && <span className={styles.label}>{labelText}</span>}
+          {visibleLabel && <span className={cx(styles.label, dangerLabel && styles.labelDanger)}>{labelText}</span>}
           {showTrailingIcon && renderIconSlot(trailingIcon, iconSize, styles.icon)}
         </>
       )}

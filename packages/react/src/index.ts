@@ -1,11 +1,15 @@
 export { Button } from './components/Button/Button';
-export type { ButtonProps, ButtonVariant, ButtonSize, ButtonIntent, ButtonState } from './components/Button/Button';
+export type { ButtonProps, ButtonVariant, ButtonSize, ButtonIntent, ButtonState, ButtonAppearance } from './components/Button/Button';
 export { Input } from './components/Input/Input';
 export type { InputProps } from './components/Input/Input';
 export { ChipTag } from './components/ChipTag/ChipTag';
-export type { ChipTagProps } from './components/ChipTag/ChipTag';
+export type { ChipTagProps, ChipTagEmphasis, ChipTagLegacyEmphasis } from './components/ChipTag/ChipTag';
 export { ChipClickable } from './components/ChipClickable/ChipClickable';
-export type { ChipClickableProps } from './components/ChipClickable/ChipClickable';
+export type {
+  ChipClickableProps,
+  ChipClickableEmphasis,
+  ChipClickableLegacyEmphasis,
+} from './components/ChipClickable/ChipClickable';
 export { Alert } from './components/Alert/Alert';
 export type { AlertProps } from './components/Alert/Alert';
 export { Toast } from './components/Toast/Toast';
@@ -57,7 +61,7 @@ export type { BadgeProps } from './components/Badge/Badge';
 export { ProgressBar } from './components/ProgressBar/ProgressBar';
 export type { ProgressBarProps } from './components/ProgressBar/ProgressBar';
 export { Banner } from './components/Banner/Banner';
-export type { BannerProps } from './components/Banner/Banner';
+export type { BannerProps, BannerEmphasis } from './components/Banner/Banner';
 export { Tooltip } from './components/Tooltip/Tooltip';
 export type { TooltipProps } from './components/Tooltip/Tooltip';
 export { TooltipRich } from './components/TooltipRich/TooltipRich';

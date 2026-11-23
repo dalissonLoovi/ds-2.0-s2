@@ -19,7 +19,7 @@ WidgetbookComponent looviLinkComponent() => WidgetbookComponent(
             final appearance = k.object.dropdown<LooviLinkAppearance>(
               label: 'appearance',
               options: LooviLinkAppearance.values,
-              labelBuilder: (v) => v == LooviLinkAppearance.defaultAppearance ? 'default' : v.name,
+              labelBuilder: (v) => v == LooviLinkAppearance.standard ? 'default' : v.name,
             );
             return SeedStory(
               component: 'Link',
@@ -98,7 +98,7 @@ class _LinkMatrix extends StatelessWidget {
         );
 
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      block(LooviLinkAppearance.defaultAppearance),
+      block(LooviLinkAppearance.standard),
       block(LooviLinkAppearance.inverse),
     ]);
   }

@@ -13,8 +13,8 @@ WidgetbookComponent looviRadioButtonComponent() => WidgetbookComponent(
           builder: (context) => SeedStory(
             component: 'RadioButton',
             child: _InteractiveGroup(
-              label: context.knobs.string(label: 'label', initialValue: 'Label Radio'),
-              description: context.knobs.string(label: 'description', initialValue: 'Texto de descrição abaixo do label do radio'),
+              label: context.knobs.string(label: 'label', initialValue: 'Opção'),
+              description: context.knobs.string(label: 'description', initialValue: 'Texto de apoio da opção.'),
               showLabel: context.knobs.boolean(label: 'showLabel', initialValue: true),
               showDescription: context.knobs.boolean(label: 'showDescription', initialValue: true),
               showContent: context.knobs.boolean(label: 'showContent', initialValue: true),
@@ -39,7 +39,7 @@ WidgetbookComponent looviRadioButtonComponent() => WidgetbookComponent(
                           groupValue: checked,
                           onChanged: disabled ? null : (_) {},
                           forceFocusRing: focus,
-                          label: 'Label Radio',
+                          label: 'Pagar com Pix',
                           description: 'checked=$checked',
                         ),
                     ],
@@ -90,7 +90,7 @@ class _InteractiveGroupState extends State<_InteractiveGroup> {
 
   @override
   Widget build(BuildContext context) => Semantics(
-        label: 'Grupo de exemplo',
+        label: 'Opções',
         container: true,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

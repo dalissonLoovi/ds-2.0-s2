@@ -31,6 +31,12 @@ WidgetbookComponent looviChipClickableComponent() => WidgetbookComponent(
                     initialOption: LooviChipClickableIntent.outline,
                     labelBuilder: (v) => v.name,
                   ),
+                  emphasis: k.object.dropdown<LooviChipClickableEmphasis>(
+                    label: 'emphasis (status intents only; default secondary)',
+                    options: const [LooviChipClickableEmphasis.secondary, LooviChipClickableEmphasis.primary],
+                    initialOption: LooviChipClickableEmphasis.secondary,
+                    labelBuilder: (v) => v.name,
+                  ),
                   width: k.object.dropdown<LooviChipClickableWidth>(
                     label: 'width',
                     options: LooviChipClickableWidth.values,
@@ -64,6 +70,7 @@ class _PlaygroundChip extends StatefulWidget {
     required this.label,
     required this.size,
     required this.intent,
+    required this.emphasis,
     required this.width,
     required this.selected,
     required this.disabled,
@@ -75,6 +82,7 @@ class _PlaygroundChip extends StatefulWidget {
   final String label;
   final LooviChipClickableSize size;
   final LooviChipClickableIntent intent;
+  final LooviChipClickableEmphasis emphasis;
   final LooviChipClickableWidth width;
   final bool selected;
   final bool disabled;
@@ -100,6 +108,7 @@ class _PlaygroundChipState extends State<_PlaygroundChip> {
         label: widget.label,
         size: widget.size,
         intent: widget.intent,
+        emphasis: widget.emphasis,
         width: widget.width,
         selected: _selected,
         disabled: widget.disabled,
@@ -111,6 +120,16 @@ class _PlaygroundChipState extends State<_PlaygroundChip> {
       );
 }
 
+const _statusIntents = [
+  LooviChipClickableIntent.info,
+  LooviChipClickableIntent.system,
+  LooviChipClickableIntent.success,
+  LooviChipClickableIntent.warning,
+  LooviChipClickableIntent.danger,
+];
+
+/// intent × (default, selected, icon+delete) with emphasis=primary, then
+/// emphasis=secondary for the status intents, then disabled — sm and md.
 class _ChipClickableMatrix extends StatelessWidget {
   const _ChipClickableMatrix();
 
@@ -118,11 +137,16 @@ class _ChipClickableMatrix extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = LooviTokens.of(context);
     Widget chip(LooviChipClickableSize size, LooviChipClickableIntent intent,
-            {bool selected = false, bool disabled = false, bool icon = false, bool delete = false}) =>
+            {LooviChipClickableEmphasis emphasis = LooviChipClickableEmphasis.primary,
+            bool selected = false,
+            bool disabled = false,
+            bool icon = false,
+            bool delete = false}) =>
         LooviChipClickable(
           label: 'Label',
           size: size,
           intent: intent,
+          emphasis: emphasis,
           selected: selected,
           disabled: disabled,
           showLeadingIcon: icon,
@@ -139,6 +163,14 @@ class _ChipClickableMatrix extends StatelessWidget {
             chip(size, intent, selected: true),
             SizedBox(width: t.spacing.s100),
             chip(size, intent, icon: true, delete: true),
+          ]),
+        for (final intent in _statusIntents)
+          Row(children: [
+            chip(size, intent, emphasis: LooviChipClickableEmphasis.secondary),
+            SizedBox(width: t.spacing.s100),
+            chip(size, intent, emphasis: LooviChipClickableEmphasis.secondary, selected: true),
+            SizedBox(width: t.spacing.s100),
+            chip(size, intent, emphasis: LooviChipClickableEmphasis.secondary, icon: true, delete: true),
           ]),
         Row(children: [
           chip(size, LooviChipClickableIntent.system, disabled: true),

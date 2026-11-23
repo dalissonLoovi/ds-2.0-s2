@@ -10,7 +10,7 @@ Saída Flutter do DS S2 para o **App Cliente**. Mode default: `app-cliente`.
 | Material | `material_ui` ^1.11 (o Material saiu do SDK no 3.47+; `package:flutter/material.dart` está deprecated) |
 | Widgetbook | 3.25 (catálogo) |
 
-Instalação usada aqui: `C:\src\flutter` (zip oficial, `flutter config --no-analytics`).
+Instalação: SDK oficial (zip) + `flutter config --no-analytics`.
 
 ## Layout
 
@@ -55,7 +55,7 @@ flutter run -d chrome          # ou: flutter build web && servir build/web
 
 ## Consumir no app (`../app-cliente`)
 
-Só quando o Dalisson pedir para ligar o pacote no app:
+Só quando o time pedir para ligar o pacote no app:
 
 ```yaml
 # app-cliente/pubspec.yaml
@@ -86,6 +86,8 @@ Depois: `git` + tag (`ref: flutter-v0.1.0`, `path: packages/flutter_ds`) quando 
 5. **Texto:** estilos `t.typography.*`; respeitar o `textScaler` do sistema (nunca travar no widget).
 6. **Acessibilidade:** `Semantics` com o nome do seed/label; contraste AA; alvo de toque ≥ 48 dp — se o Figma for menor, a pintura fica no tamanho do Figma e a área cresce por fora (`LooviTapTarget`).
 7. **Ícones:** só `LooviIcon(LooviIcons.…)`.
+7a. **Material:** importar `package:material_ui/material_ui.dart`, **nunca** `package:flutter/material.dart` (deprecated, saiu do SDK).
+7b. **Cor de status (seed `meta.governance.feedbackColorRule`):** TEXTO de status (label, mensagem de erro/validação, rótulo de Button outline/text) e ícone de status **sozinho** → `t.text.success|danger|warning|info` (AA). Ícone/indicador que **acompanha um texto** (ícone do Alert, ícone de erro ao lado da mensagem do Input, chips) → `t.feedback.success|danger|warning|info` (cor clara — nunca em texto). Fundo: `emphasis=primary` → `t.color.backgroundFeedbackPrimary{Status}`, `emphasis=secondary` → `t.color.backgroundFeedbackSecondary{Status}` (ChipTag, ChipClickable). Alert não usa emphasis (status muda só o ícone).
 8. **Catálogo:** story em `packages/flutter_widgetbook/lib/components/<nome>_use_cases.dart`, com `SeedHeader('<Nome>')` (descrição + nodeId do seed) e knobs dos props.
 9. **Testes:** `test/widgets/<nome>_test.dart` (render, interação, semântica, disabled) + golden do que a story mostra.
 10. Componente fora do seed não entra; vira proposta em `DS-BACKLOG-PROXIMAS-ETAPAS.md`, sem widget provisório.

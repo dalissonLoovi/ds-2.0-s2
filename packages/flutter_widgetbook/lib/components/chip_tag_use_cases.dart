@@ -35,8 +35,9 @@ WidgetbookComponent looviChipTagComponent() => WidgetbookComponent(
                     labelBuilder: (v) => v.name,
                   ),
                   emphasis: k.object.dropdown<LooviChipTagEmphasis>(
-                    label: 'emphasis',
-                    options: LooviChipTagEmphasis.values,
+                    label: 'emphasis (default secondary)',
+                    options: const [LooviChipTagEmphasis.secondary, LooviChipTagEmphasis.primary],
+                    initialOption: LooviChipTagEmphasis.secondary,
                     labelBuilder: (v) => v.name,
                   ),
                   width: width,
@@ -59,6 +60,16 @@ WidgetbookComponent looviChipTagComponent() => WidgetbookComponent(
       ],
     );
 
+const _statusIntents = [
+  LooviChipTagIntent.info,
+  LooviChipTagIntent.system,
+  LooviChipTagIntent.success,
+  LooviChipTagIntent.warning,
+  LooviChipTagIntent.danger,
+];
+
+/// intent × emphasis=primary, then emphasis=secondary for the status intents,
+/// then disabled — sm and md, hug (with/without icon) and fill.
 class _ChipTagMatrix extends StatelessWidget {
   const _ChipTagMatrix();
 
@@ -66,7 +77,7 @@ class _ChipTagMatrix extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = LooviTokens.of(context);
     Widget row(LooviChipTagSize size, LooviChipTagIntent intent,
-        {LooviChipTagEmphasis emphasis = LooviChipTagEmphasis.strong, bool disabled = false}) {
+        {LooviChipTagEmphasis emphasis = LooviChipTagEmphasis.primary, bool disabled = false}) {
       return Padding(
         padding: EdgeInsets.only(bottom: t.spacing.s100),
         child: Row(children: [
@@ -91,8 +102,7 @@ class _ChipTagMatrix extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       for (final size in LooviChipTagSize.values) ...[
         for (final intent in LooviChipTagIntent.values) row(size, intent),
-        for (final intent in [LooviChipTagIntent.success, LooviChipTagIntent.warning, LooviChipTagIntent.danger])
-          row(size, intent, emphasis: LooviChipTagEmphasis.soft),
+        for (final intent in _statusIntents) row(size, intent, emphasis: LooviChipTagEmphasis.secondary),
         row(size, LooviChipTagIntent.system, disabled: true),
       ],
     ]);

@@ -1,4 +1,3 @@
-// Direct import until the wave exports the widget from loovi_ds.dart.
 import 'package:loovi_ds/loovi_ds.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -22,7 +21,7 @@ const _threeDestinations = [
 const _painel = [
   LooviNavigationBarItem(icon: LooviIcons.homeOutline, selectedIcon: LooviIcons.homeFilled, label: 'Início'),
   LooviNavigationBarItem(icon: LooviIcons.carOutline, label: 'Veículos'),
-  LooviNavigationBarItem(icon: LooviIcons.fileTextOutline, label: 'Sinistro'),
+  LooviNavigationBarItem(icon: LooviIcons.fileTextOutline, label: 'Seu caso'),
   LooviNavigationBarItem(icon: LooviIcons.menu2Outline, label: 'Menu'),
 ];
 
@@ -204,6 +203,132 @@ class _NavigationBarVariants extends StatelessWidget {
               Expanded(child: LooviNavigationBarItemView(item: item, selected: !item.showLabel, onTap: () {})),
           ],
         ),
+      ],
+    );
+  }
+}
+
+/// NavigationBarItem (seed node 3653:15180) — Playground + States. Building
+/// block of [LooviNavigationBar]; `state` pressed/focus is pinned through a
+/// [WidgetStatesController] so the frames can be compared with Figma.
+WidgetbookComponent looviNavigationBarItemComponent() => WidgetbookComponent(
+      name: 'NavigationBarItem',
+      useCases: [
+        WidgetbookUseCase(
+          name: 'Playground',
+          builder: (context) {
+            final k = context.knobs;
+            final t = LooviTokens.of(context);
+            final appearance = k.object.dropdown<LooviNavigationBarItemAppearance>(
+              label: 'appearance',
+              options: LooviNavigationBarItemAppearance.values,
+              labelBuilder: (v) => v == LooviNavigationBarItemAppearance.standard ? 'default' : v.name,
+            );
+            final item = LooviNavigationBarItem(
+              icon: LooviIcons.homeOutline,
+              selectedIcon: LooviIcons.homeFilled,
+              label: k.string(label: 'label', initialValue: 'Início'),
+              showLabel: k.boolean(label: 'showLabel', initialValue: true),
+              badge: k.object.dropdown<LooviNavigationBarItemBadge>(
+                label: 'badge',
+                options: LooviNavigationBarItemBadge.values,
+                labelBuilder: (v) => v.name,
+              ),
+              count: k.int.slider(label: 'count', initialValue: 3, min: 1, max: 120),
+            );
+            return SeedStory(
+              component: 'NavigationBarItem',
+              child: ColoredBox(
+                color: appearance == LooviNavigationBarItemAppearance.inverse
+                    ? t.color.backgroundSurfaceInverse3
+                    : t.color.backgroundSurface0,
+                child: Center(
+                  child: SizedBox(
+                    width: t.spacing.s1000,
+                    child: LooviNavigationBarItemView(
+                      item: item,
+                      appearance: appearance,
+                      selected: k.boolean(label: 'selected'),
+                      onTap: () {},
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+        WidgetbookUseCase(
+          name: 'States',
+          builder: (context) => const SeedStory(
+            component: 'NavigationBarItem',
+            showDescription: false,
+            child: _NavigationBarItemStates(),
+          ),
+        ),
+      ],
+    );
+
+/// appearance × state (default · pressed · focus) × selected.
+class _NavigationBarItemStates extends StatefulWidget {
+  const _NavigationBarItemStates();
+
+  @override
+  State<_NavigationBarItemStates> createState() => _NavigationBarItemStatesState();
+}
+
+class _NavigationBarItemStatesState extends State<_NavigationBarItemStates> {
+  static const _states = <Set<WidgetState>>[{}, {WidgetState.pressed}, {WidgetState.focused}];
+  // One controller per cell: appearance (2) × selected (2) × state (3).
+  late final List<WidgetStatesController> _controllers = [
+    for (var i = 0; i < LooviNavigationBarItemAppearance.values.length * 2; i++)
+      for (final s in _states) WidgetStatesController({...s}),
+  ];
+
+  @override
+  void dispose() {
+    for (final c in _controllers) {
+      c.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = LooviTokens.of(context);
+    final caption = t.typography.captionLargeRegular.copyWith(color: t.text.secondary);
+    const item = LooviNavigationBarItem(icon: LooviIcons.homeOutline, selectedIcon: LooviIcons.homeFilled, label: 'Início');
+    var n = 0;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        for (final appearance in LooviNavigationBarItemAppearance.values)
+          for (final selected in [false, true]) ...[
+            Text(
+              'appearance=${appearance == LooviNavigationBarItemAppearance.standard ? 'default' : appearance.name} · selected=$selected · default / pressed / focus',
+              style: caption,
+            ),
+            SizedBox(height: t.spacing.s100),
+            ColoredBox(
+              color: appearance == LooviNavigationBarItemAppearance.inverse
+                  ? t.color.backgroundSurfaceInverse3
+                  : t.color.backgroundSurface0,
+              child: Row(
+                children: [
+                  for (var i = 0; i < _states.length; i++)
+                    Expanded(
+                      child: LooviNavigationBarItemView(
+                        item: item,
+                        appearance: appearance,
+                        selected: selected,
+                        statesController: _controllers[n++],
+                        onTap: () {},
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            SizedBox(height: t.spacing.s300),
+          ],
       ],
     );
   }

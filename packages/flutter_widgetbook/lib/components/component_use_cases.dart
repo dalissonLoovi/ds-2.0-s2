@@ -43,5 +43,6 @@ WidgetbookFolder componentsFolder() => WidgetbookFolder(
         looviBottomSheetComponent(),
         looviBottomSheetHeaderComponent(),
         looviNavigationBarComponent(),
+        looviNavigationBarItemComponent(),
       ],
     );

@@ -20,5 +20,5 @@
 }
 
 .status-error {
-  background: var(--feedback-danger, var(--color-actions-danger));
+  background: var(--feedback-danger);
 }

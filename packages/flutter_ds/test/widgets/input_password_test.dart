@@ -60,7 +60,7 @@ void main() {
 
   testWidgets('error shows alert beside the action and danger message', (tester) async {
     await pumpLoovi(tester, const LooviInputPassword(errorText: 'Senha incorreta'));
-    expect(tester.widget<Text>(find.text('Senha incorreta')).style!.color, _t.feedback.danger);
+    expect(tester.widget<Text>(find.text('Senha incorreta')).style!.color, _t.text.danger);
     final icons = _icons(tester);
     expect(icons.indexOf(LooviIcons.alertCircleOutline), lessThan(icons.indexOf(LooviIcons.eyeClosedOutline)));
   });
@@ -111,19 +111,19 @@ class _PasswordStates extends StatelessWidget {
         children: [
           const LooviInputPassword(),
           gap(),
-          LooviInputPassword(controller: TextEditingController(text: 'Password123')),
+          LooviInputPassword(controller: TextEditingController(text: 'minhasenha12')),
           gap(),
-          LooviInputPassword(controller: TextEditingController(text: 'Password123'), visibility: LooviInputPasswordVisibility.visible),
+          LooviInputPassword(controller: TextEditingController(text: 'minhasenha12'), visibility: LooviInputPasswordVisibility.visible),
           gap(),
-          LooviInputPassword(controller: TextEditingController(text: 'Password123'), autofocus: true, showCursor: false),
+          LooviInputPassword(controller: TextEditingController(text: 'minhasenha12'), autofocus: true, showCursor: false),
           gap(),
           LooviInputPassword(
-            controller: TextEditingController(text: 'Password123'),
+            controller: TextEditingController(text: 'minhasenha12'),
             visibility: LooviInputPasswordVisibility.visible,
-            errorText: 'Supporting text',
+            errorText: 'Senha incorreta. Confira e tente de novo.',
           ),
           gap(),
-          LooviInputPassword(controller: TextEditingController(text: 'Password123'), enabled: false),
+          LooviInputPassword(controller: TextEditingController(text: 'minhasenha12'), enabled: false),
         ],
       ),
     );

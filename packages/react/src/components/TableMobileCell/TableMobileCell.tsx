@@ -39,7 +39,7 @@ export function TableMobileCell({
       data-state={state}
       {...rest}
     >
-      {type === 'tag' && (children ?? <ChipTag size="sm" label={label} intent="info" emphasis="soft" />)}
+      {type === 'tag' && (children ?? <ChipTag size="sm" label={label} intent="info" emphasis="secondary" />)}
       {type === 'action' && (
         <Button variant="text" size="sm" intent="primary" label={label} onClick={onAction} />
       )}

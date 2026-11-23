@@ -26,5 +26,5 @@
 }
 
 .supportError {
-  color: var(--feedback-danger, var(--color-actions-danger));
+  color: var(--text-danger);
 }

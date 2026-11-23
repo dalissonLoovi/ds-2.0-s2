@@ -1,6 +1,10 @@
+import 'dart:math' as math;
+
+import 'package:flutter/rendering.dart';
 import 'package:loovi_tokens/loovi_tokens.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../foundation/loovi_blend.dart';
 import '../../foundation/loovi_icon.dart';
 import '../../foundation/loovi_tap_target.dart';
 import '../../generated/loovi_icon_names.g.dart';
@@ -10,6 +14,11 @@ enum LooviChipClickableSize { sm, md }
 
 /// Seed `ChipClickable.intent`. Feedback vocabulary + `outline`, `soft`, `brand`.
 enum LooviChipClickableIntent { info, system, success, warning, danger, outline, soft, brand }
+
+/// Seed `ChipClickable.emphasis`. Only affects the status intents (info,
+/// system, success, warning, danger); `outline`, `soft` and `brand` ignore it.
+/// Default is [secondary] (soft) since 2026-11-23; [primary] is opt-in.
+enum LooviChipClickableEmphasis { primary, secondary }
 
 /// Seed `ChipClickable.width`.
 enum LooviChipClickableWidth { hug, fill }
@@ -21,15 +30,25 @@ enum LooviChipClickableWidth { hug, fill }
 /// `disabled` are props; `hover` is not used on the app (mobile).
 ///
 /// Paint (mode app-cliente):
-/// - base fill: info|system|success|warning → `color/background-feedback-primary/{intent}`;
-///   danger → `interactive/error-surface`; soft → `color/background-surface/0`
-///   + `color/border/2` stroke; brand → `color/background-surface/brand`;
+/// - base fill, emphasis=primary: info|system|success|warning →
+///   `color/background-feedback-primary/{intent}`; danger → `interactive/error-surface`.
+/// - base fill, emphasis=secondary: info|system|success|warning|danger →
+///   `color/background-feedback-secondary/{intent}`.
+/// - soft → `color/background-surface/0`
+///   + `color/border/2` stroke; brand → `color/background-surface/brand-strong`
+///   (`text/on-color`, 4.52:1);
 ///   outline → stroke `color/border/2` only.
 /// - pressed / selected: `interactive/pressed|selected` composited over the
 ///   base with Plus Darker (LINEAR_BURN). Outline replaces its transparent
 ///   base with the interactive fill.
 /// - disabled: `interactive/disabled-surface` + `text/placeholder`, avatar 20 %.
 /// - label `body/small/medium`, `text/primary` (`text/on-color` on brand).
+/// - leading icon / avatar: sm 20 (`spacing/250`, chip 28 tall) · md icon 24
+///   (`spacing/300`), avatar 32 (`spacing/400`).
+/// - delete action: `x-outline` painted 16 (`spacing/200`); its hit area
+///   grows invisibly to 48 × 48 around the icon (clipped to the chip's 48 dp
+///   touch box — ≥ 24 × 24, WCAG 2.5.8) without changing the chip size.
+///   Accessible name "Remover {label}".
 class LooviChipClickable extends StatefulWidget {
   const LooviChipClickable({
     super.key,
@@ -37,6 +56,7 @@ class LooviChipClickable extends StatefulWidget {
     required this.onPressed,
     this.size = LooviChipClickableSize.md,
     this.intent = LooviChipClickableIntent.outline,
+    this.emphasis = LooviChipClickableEmphasis.secondary,
     this.width = LooviChipClickableWidth.hug,
     this.selected = false,
     this.disabled = false,
@@ -58,6 +78,11 @@ class LooviChipClickable extends StatefulWidget {
 
   final LooviChipClickableSize size;
   final LooviChipClickableIntent intent;
+
+  /// Seed `emphasis`: `secondary` (light feedback fill, default) or
+  /// `primary` (saturated feedback fill, opt-in). Status intents only;
+  /// pressed/selected keep the Plus Darker overlay over either base.
+  final LooviChipClickableEmphasis emphasis;
   final LooviChipClickableWidth width;
 
   /// Seed `state=selected`. Exposed as a selected toggle in semantics.
@@ -73,7 +98,7 @@ class LooviChipClickable extends StatefulWidget {
   final String leadingIcon;
 
   /// Seed `showAvatar` slot: any image widget, clipped to a circle at the
-  /// Figma avatar size (sm 22, md 32). Null = hidden.
+  /// Figma avatar size (sm 20, md 32). Null = hidden.
   final Widget? avatar;
 
   /// Seed `showDeleteAction` (x-outline, 16×16).
@@ -92,18 +117,9 @@ class LooviChipClickable extends StatefulWidget {
   State<LooviChipClickable> createState() => _LooviChipClickableState();
 }
 
-/// Plus Darker / LINEAR_BURN of two opaque colors: `dst + src - 1` per channel.
-/// Flutter has no LINEAR_BURN BlendMode; with opaque token colors the result
-/// is exact, so it is resolved here instead of via a compositing layer.
-Color _plusDarker(Color dst, Color src) => Color.from(
-      alpha: dst.a,
-      red: (dst.r + src.r - 1).clamp(0, 1).toDouble(),
-      green: (dst.g + src.g - 1).clamp(0, 1).toDouble(),
-      blue: (dst.b + src.b - 1).clamp(0, 1).toDouble(),
-    );
-
 class _LooviChipClickableState extends State<LooviChipClickable> {
   late final WidgetStatesController _states = WidgetStatesController();
+  final GlobalKey _deleteKey = GlobalKey(debugLabel: 'LooviChipClickable.delete');
   bool _focusHighlight = false;
 
   bool get _enabled => widget.onPressed != null && !widget.disabled;
@@ -144,21 +160,22 @@ class _LooviChipClickableState extends State<LooviChipClickable> {
   }
 
   Color? _base(LooviTokens t) {
+    final secondary = widget.emphasis == LooviChipClickableEmphasis.secondary;
     switch (widget.intent) {
       case LooviChipClickableIntent.info:
-        return t.color.backgroundFeedbackPrimaryInfo;
+        return secondary ? t.color.backgroundFeedbackSecondaryInfo : t.color.backgroundFeedbackPrimaryInfo;
       case LooviChipClickableIntent.system:
-        return t.color.backgroundFeedbackPrimarySystem;
+        return secondary ? t.color.backgroundFeedbackSecondarySystem : t.color.backgroundFeedbackPrimarySystem;
       case LooviChipClickableIntent.success:
-        return t.color.backgroundFeedbackPrimarySuccess;
+        return secondary ? t.color.backgroundFeedbackSecondarySuccess : t.color.backgroundFeedbackPrimarySuccess;
       case LooviChipClickableIntent.warning:
-        return t.color.backgroundFeedbackPrimaryWarning;
+        return secondary ? t.color.backgroundFeedbackSecondaryWarning : t.color.backgroundFeedbackPrimaryWarning;
       case LooviChipClickableIntent.danger:
-        return t.interactive.errorSurface;
+        return secondary ? t.color.backgroundFeedbackSecondaryDanger : t.interactive.errorSurface;
       case LooviChipClickableIntent.soft:
         return t.color.backgroundSurface0;
       case LooviChipClickableIntent.brand:
-        return t.color.backgroundSurfaceBrand;
+        return t.color.backgroundSurfaceBrandStrong;
       case LooviChipClickableIntent.outline:
         return null;
     }
@@ -174,7 +191,7 @@ class _LooviChipClickableState extends State<LooviChipClickable> {
             : null;
     if (overlay == null) return base;
     if (base == null) return overlay; // outline: interaction fill replaces transparent
-    return _plusDarker(base, overlay);
+    return looviPlusDarker(base, overlay);
   }
 
   Color _content(LooviTokens t, Set<WidgetState> s) {
@@ -214,8 +231,8 @@ class _LooviChipClickableState extends State<LooviChipClickable> {
       );
     }
 
-    // Avatar: sm 22 (no token — spacing/250 + spacing/025), md 32 (spacing/400).
-    final avatarSize = _isSm ? t.spacing.s250 + t.spacing.s025 : t.spacing.s400;
+    // Avatar: sm 20 (spacing/250), md 32 (spacing/400).
+    final avatarSize = _isSm ? t.spacing.s250 : t.spacing.s400;
     final chipRoot = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -242,6 +259,7 @@ class _LooviChipClickableState extends State<LooviChipClickable> {
               enabled: _enabled,
               label: widget.deleteSemanticLabel ?? 'Remover ${widget.label}',
               child: GestureDetector(
+                key: _deleteKey,
                 behavior: HitTestBehavior.opaque,
                 onTap: _enabled ? widget.onDelete : null,
                 child: icon,
@@ -316,16 +334,80 @@ class _LooviChipClickableState extends State<LooviChipClickable> {
           onTapUp: (_) => _setPressed(false),
           onTapCancel: () => _setPressed(false),
           // Touch target >= 48 (spacing/600); paint keeps the Figma size.
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minWidth: min, minHeight: min),
-            child: Center(
-              widthFactor: 1,
-              heightFactor: 1,
-              child: painted,
+          // The delete action's hit area grows to min × min inside this box.
+          child: _DeleteHitArea(
+            deleteKey: deleteAction != null && widget.onDelete != null ? _deleteKey : null,
+            minTarget: min,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minWidth: min, minHeight: min),
+              child: Center(
+                widthFactor: 1,
+                heightFactor: 1,
+                child: painted,
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+}
+
+/// Routes taps inside a [minTarget] × [minTarget] square centered on the
+/// delete icon (identified by [deleteKey]) to the delete action, without
+/// changing layout: the icon keeps its 16 px paint and the chip its size. The
+/// square is clipped to this box (the chip's 48 dp touch area), so the delete
+/// target is ≥ 24 × 24 on every size (sm ≈ 44 × 48, md 48 × 48).
+class _DeleteHitArea extends SingleChildRenderObjectWidget {
+  const _DeleteHitArea({required this.deleteKey, required this.minTarget, required super.child});
+
+  final GlobalKey? deleteKey;
+  final double minTarget;
+
+  @override
+  _RenderDeleteHitArea createRenderObject(BuildContext context) =>
+      _RenderDeleteHitArea(deleteKey: deleteKey, minTarget: minTarget);
+
+  @override
+  void updateRenderObject(BuildContext context, _RenderDeleteHitArea renderObject) {
+    renderObject
+      ..deleteKey = deleteKey
+      ..minTarget = minTarget;
+  }
+}
+
+class _RenderDeleteHitArea extends RenderProxyBox {
+  _RenderDeleteHitArea({required this.deleteKey, required this.minTarget});
+
+  GlobalKey? deleteKey;
+  double minTarget;
+
+  @override
+  bool hitTest(BoxHitTestResult result, {required Offset position}) {
+    if (!size.contains(position)) return false;
+    final target = deleteKey?.currentContext?.findRenderObject();
+    if (target is RenderBox && target.attached && target.hasSize) {
+      final rect = MatrixUtils.transformRect(target.getTransformTo(this), Offset.zero & target.size);
+      final area = Rect.fromCenter(
+        center: rect.center,
+        width: math.max(rect.width, minTarget),
+        height: math.max(rect.height, minTarget),
+      );
+      if (area.contains(position)) {
+        // Deliver the hit at the icon center so the delete GestureDetector
+        // receives it; ancestors of this box are still added by their own
+        // hitTest, as for a direct tap on the icon.
+        final hit = result.addWithPaintTransform(
+          transform: target.getTransformTo(this),
+          position: rect.center,
+          hitTest: (BoxHitTestResult r, Offset local) => target.hitTest(r, position: target.size.center(Offset.zero)),
+        );
+        if (hit) {
+          result.add(BoxHitTestEntry(this, position));
+          return true;
+        }
+      }
+    }
+    return super.hitTest(result, position: position);
   }
 }

@@ -51,7 +51,7 @@ export function UploadPhotos({
       <ChipTag
         size="sm"
         intent={chip.intent}
-        emphasis="strong"
+        emphasis="primary"
         width="hug"
         label={chip.label}
         className={status === 'rejected' ? styles.rejectedChip : undefined}

@@ -158,9 +158,19 @@
   --btn-fg: var(--color-actions-secondary);
 }
 
-.root:hover:not(:disabled):not([aria-disabled='true']),
-.state-hover {
-  background: color-mix(in srgb, var(--btn-bg) 88%, var(--interactive-hover, #000) 12%);
+/*
+ * variant=solid state layer (all intents) — Figma stacks interactive/hover|pressed|selected with
+ * LINEAR_BURN (Plus Darker), which darkens. Code darkens toward interactive/overlay:
+ * hover 8% · selected 12% · pressed 16% (seed Button.tokenRules). Mixing with interactive/hover
+ * (near-white) used to lighten the fill instead.
+ */
+.variant-solid:hover:not(:disabled):not([aria-disabled='true']),
+.variant-solid.state-hover {
+  background: color-mix(in srgb, var(--btn-bg) 92%, var(--interactive-overlay, #474747) 8%);
+}
+
+.variant-solid.state-selected {
+  background: color-mix(in srgb, var(--btn-bg) 88%, var(--interactive-overlay, #474747) 12%);
 }
 
 .variant-outline:hover:not(:disabled):not([aria-disabled='true']),
@@ -170,17 +180,78 @@
   background: var(--interactive-hover, color-mix(in srgb, var(--btn-fg) 8%, transparent));
 }
 
-.state-pressed,
-.root:active:not(:disabled):not([aria-disabled='true']) {
+.variant-solid.state-pressed,
+.variant-solid:active:not(:disabled):not([aria-disabled='true']) {
+  background: color-mix(in srgb, var(--btn-bg) 84%, var(--interactive-overlay, #474747) 16%);
+}
+
+/* outline|text pressed: interactive/pressed layer over the transparent fill (unchanged). */
+.variant-outline.state-pressed,
+.variant-text.state-pressed,
+.variant-outline:active:not(:disabled):not([aria-disabled='true']),
+.variant-text:active:not(:disabled):not([aria-disabled='true']) {
   background: color-mix(in srgb, var(--btn-bg) 80%, var(--interactive-pressed, #000) 20%);
 }
 
-.state-selected {
+/* outline|text selected keep the interactive/selected ring; solid uses the 12% state layer. */
+.variant-outline.state-selected,
+.variant-text.state-selected {
   box-shadow: inset 0 0 0 2px var(--interactive-selected, var(--color-border-feedback-primary));
+}
+
+/*
+ * appearance=inverse — only applied (by Button.tsx) to variant=outline|text + intent=primary.
+ * Label/icons/outline stroke text/on-color; disabled text/on-color-disabled;
+ * pressed fill color/elevation/inverse-4; focus keeps interactive/focus (.root:focus-visible).
+ */
+.variant-outline.intent-primary.appearance-inverse,
+.variant-text.intent-primary.appearance-inverse {
+  --btn-bg: transparent;
+  --btn-fg: var(--text-on-color);
+}
+
+.variant-outline.intent-primary.appearance-inverse {
+  --btn-border: var(--text-on-color);
+}
+
+/*
+ * Inverse hover: Figma publishes no hover for appearance=inverse (seed Button.rules.appearanceInverse:
+ * default|pressed|focus). To stay consistent with pressed (color/elevation/inverse-4, a translucent
+ * black layer) hover uses the SAME inverse layer at half strength (≈ rgba(0,0,0,.16)), so hover →
+ * pressed reads as one progressive darkening on the dark/brand surface. Previously hover lightened
+ * with an 8% white layer while pressed darkened.
+ */
+.appearance-inverse:hover:not(:disabled):not([aria-disabled='true']),
+.appearance-inverse.state-hover {
+  background: transparent; /* fallback where color-mix() is unsupported */
+  background: color-mix(in srgb, var(--color-elevation-inverse-4) 50%, transparent);
+}
+
+.appearance-inverse.state-pressed,
+.appearance-inverse:active:not(:disabled):not([aria-disabled='true']) {
+  background: var(--color-elevation-inverse-4);
+}
+
+.appearance-inverse:disabled:not([data-state='loading']),
+.appearance-inverse[aria-disabled='true']:not([data-state='loading']) {
+  --btn-fg: var(--text-on-color-disabled);
+  opacity: 1;
+  background: transparent;
+  color: var(--text-on-color-disabled);
+}
+
+.variant-outline.appearance-inverse:disabled:not([data-state='loading']),
+.variant-outline.appearance-inverse[aria-disabled='true']:not([data-state='loading']) {
+  border-color: var(--text-on-color-disabled);
 }
 
 .label {
   display: inline-flex;
+}
+
+/* variant=outline|text + intent=danger: label text/danger (AA); icons keep --btn-fg. */
+.labelDanger {
+  color: var(--text-danger);
 }
 
 .icon {

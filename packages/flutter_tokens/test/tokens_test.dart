@@ -10,8 +10,8 @@ void main() {
   final c = t.component;
 
   group('critical tokens — app-cliente', () {
-    test('Button background closes on #4C6BF8 (color/actions/primary)', () {
-      expect(c.button.containerBackground, const Color(0xFF4C6BF8));
+    test('Button background closes on #516CE7 (color/actions/primary)', () {
+      expect(c.button.containerBackground, const Color(0xFF516CE7));
       expect(c.button.containerBackground, t.color.actionsPrimary);
     });
 
@@ -34,7 +34,7 @@ void main() {
     });
 
     test('AppHeader inverse/leading-action/avatar', () {
-      expect(c.appHeader.inverseBackground, const Color(0xFF5A78FF));
+      expect(c.appHeader.inverseBackground, const Color(0xFF516CE7)); // brand-strong
       expect(c.appHeader.leadingActionBackground, const Color(0xFFE7EFFC));
       expect(c.appHeader.leadingActionRadius, t.radius.full);
       expect(c.appHeader.avatarBackground, const Color(0x29FFFFFF)); // rgba(255,255,255,0.16)

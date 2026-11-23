@@ -6,6 +6,15 @@ import '../helpers/pump.dart';
 
 const _t = LooviTokens.appCliente;
 
+/// Example copy per status (brand voice; no invented dates or claims).
+const _alertCopy = <LooviAlertStatus, (String, String, String)>{
+  LooviAlertStatus.system: ('Confira seus dados de contato', 'Mantenha e-mail e telefone em dia para receber os avisos.', 'Revisar dados'),
+  LooviAlertStatus.info: ('Vistoria do veículo', 'Envie as fotos do veículo pelo app para concluir a vistoria.', 'Enviar fotos'),
+  LooviAlertStatus.success: ('Pagamento confirmado', 'Seu plano segue ativo. O comprovante está no seu e-mail.', 'Ver comprovante'),
+  LooviAlertStatus.danger: ('Pagamento não aprovado', 'Confira os dados do cartão ou escolha outra forma de pagamento.', 'Tentar de novo'),
+  LooviAlertStatus.warning: ('Sua fatura vence amanhã', 'Pague até o vencimento para manter a proteção do carro ativa.', 'Ver fatura'),
+};
+
 /// Story "Status": appearance × status. Same as the Widgetbook story.
 class AlertStatusMatrix extends StatelessWidget {
   const AlertStatusMatrix({super.key});
@@ -25,9 +34,9 @@ class AlertStatusMatrix extends StatelessWidget {
                 LooviAlert(
                   appearance: a,
                   status: s,
-                  title: 'Pagamento confirmado',
-                  description: 'Seu plano segue ativo. O comprovante está no seu e-mail.',
-                  actionLabel: 'Ver comprovante',
+                  title: _alertCopy[s]!.$1,
+                  description: _alertCopy[s]!.$2,
+                  actionLabel: _alertCopy[s]!.$3,
                   onAction: () {},
                 ),
                 SizedBox(height: t.spacing.s100),
@@ -61,7 +70,7 @@ void main() {
         expect(icons.single.name, LooviAlert.iconFor(s));
         expect(icons.single.size, _t.spacing.s400);
         expect(icons.single.color, switch (s) {
-          LooviAlertStatus.info => _t.color.backgroundFeedbackPrimaryInfo,
+          LooviAlertStatus.info => _t.feedback.info,
           LooviAlertStatus.success => _t.feedback.success,
           LooviAlertStatus.danger => _t.feedback.danger,
           LooviAlertStatus.warning => _t.feedback.warning,
@@ -91,7 +100,13 @@ void main() {
         .widgetList<DecoratedBox>(find.descendant(of: find.byType(LooviAlert).last, matching: find.byType(DecoratedBox)))
         .first
         .decoration as BoxDecoration;
-    expect(inverseFill.color, Color.alphaBlend(_t.color.elevationInverse3, _t.color.backgroundSurfaceBrand));
+    // brand-strong + elevation/inverse-3 at 48 % paint opacity → ≈ #3E53B2.
+    final overlay = _t.color.elevationInverse3;
+    expect(
+      inverseFill.color,
+      Color.alphaBlend(overlay.withValues(alpha: overlay.a * 0.48), _t.color.backgroundSurfaceBrandStrong),
+    );
+    expect(inverseFill.color!.toARGB32() & 0xFFFFFF, closeTo(0x3E53B2, 0x010101));
   });
 
   testWidgets('padding and gaps follow spacing tokens', (tester) async {
@@ -126,13 +141,19 @@ void main() {
     expect(find.byType(LooviButton), findsOneWidget);
   });
 
-  testWidgets('inverse action still calls back (recolored button)', (tester) async {
+  testWidgets('inverse action is LooviButton appearance=inverse (outline/sm) and calls back', (tester) async {
     var taps = 0;
     await pumpLoovi(
       tester,
       LooviAlert(title: 'T', appearance: LooviAlertAppearance.inverse, actionLabel: 'Ok', onAction: () => taps++),
     );
-    expect(find.byType(ColorFiltered), findsOneWidget);
+    expect(find.byType(ColorFiltered), findsNothing);
+    final b = tester.widget<LooviButton>(find.byType(LooviButton));
+    expect(b.appearance, LooviButtonAppearance.inverse);
+    expect(b.isInverse, isTrue);
+    expect(b.variant, LooviButtonVariant.outline);
+    expect(b.size, LooviButtonSize.sm);
+    expect(tester.widget<Text>(find.text('Ok')).style!.color, _t.text.onColor);
     await tester.tap(find.text('Ok'));
     expect(taps, 1);
   });
@@ -158,6 +179,26 @@ void main() {
     await tester.tap(find.byType(LooviTapTarget));
     expect(closed, 1);
     handle.dispose();
+  });
+
+  testWidgets('close keeps the shell padding; system title stays clear of the close target', (tester) async {
+    await pumpLoovi(
+      tester,
+      Column(children: [
+        LooviAlert(key: const Key('a'), title: 'T', status: LooviAlertStatus.system, showClose: true, onClose: () {}),
+        LooviAlert(key: const Key('b'), title: 'U', status: LooviAlertStatus.info, showClose: true, onClose: () {}),
+      ]),
+    );
+    final a = tester.getRect(find.byKey(const Key('a')));
+    final target = tester.getRect(find.descendant(of: find.byKey(const Key('a')), matching: find.byType(LooviTapTarget)));
+    expect(target.right, a.right);
+    expect(tester.getRect(find.text('T')).right, lessThanOrEqualTo(target.left));
+    final b = tester.getRect(find.byKey(const Key('b')));
+    final icon = tester.getRect(find.descendant(of: find.byKey(const Key('b')), matching: find.byType(LooviIcon)).first);
+    expect(icon.left - b.left, _t.spacing.s250);
+    // Padding unchanged: the text column still ends spacing/250 from the edge.
+    final textCol = find.ancestor(of: find.text('U'), matching: find.byType(Column)).first;
+    expect(b.right - tester.getRect(textCol).right, _t.spacing.s250);
   });
 
   testWidgets('no close by default', (tester) async {

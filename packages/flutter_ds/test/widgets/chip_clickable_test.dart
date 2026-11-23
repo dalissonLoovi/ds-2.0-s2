@@ -27,7 +27,16 @@ Color _burn(Color dst, Color src) => Color.from(
       blue: (dst.b + src.b - 1).clamp(0, 1).toDouble(),
     );
 
-/// Story "Matrix": intent × (default, selected) + disabled, sm and md.
+const _statusIntents = [
+  LooviChipClickableIntent.info,
+  LooviChipClickableIntent.system,
+  LooviChipClickableIntent.success,
+  LooviChipClickableIntent.warning,
+  LooviChipClickableIntent.danger,
+];
+
+/// Story "Matrix": intent × (default, selected) + disabled, sm and md,
+/// then emphasis=secondary for the status intents.
 class ChipClickableMatrix extends StatelessWidget {
   const ChipClickableMatrix({super.key});
 
@@ -35,11 +44,16 @@ class ChipClickableMatrix extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = LooviTokens.of(context);
     Widget chip(LooviChipClickableSize size, LooviChipClickableIntent intent,
-            {bool selected = false, bool disabled = false, bool icon = false, bool delete = false}) =>
+            {LooviChipClickableEmphasis emphasis = LooviChipClickableEmphasis.primary,
+            bool selected = false,
+            bool disabled = false,
+            bool icon = false,
+            bool delete = false}) =>
         LooviChipClickable(
           label: 'Label',
           size: size,
           intent: intent,
+          emphasis: emphasis,
           selected: selected,
           disabled: disabled,
           showLeadingIcon: icon,
@@ -58,6 +72,14 @@ class ChipClickableMatrix extends StatelessWidget {
               chip(size, intent, selected: true),
               SizedBox(width: t.spacing.s100),
               chip(size, intent, icon: true, delete: true),
+            ]),
+          for (final intent in _statusIntents)
+            Row(children: [
+              chip(size, intent, emphasis: LooviChipClickableEmphasis.secondary),
+              SizedBox(width: t.spacing.s100),
+              chip(size, intent, emphasis: LooviChipClickableEmphasis.secondary, selected: true),
+              SizedBox(width: t.spacing.s100),
+              chip(size, intent, emphasis: LooviChipClickableEmphasis.secondary, icon: true, delete: true),
             ]),
           Row(children: [
             chip(size, LooviChipClickableIntent.system, disabled: true),
@@ -80,16 +102,18 @@ void main() {
     LooviChipClickableIntent.warning: _t.color.backgroundFeedbackPrimaryWarning,
     LooviChipClickableIntent.danger: _t.interactive.errorSurface,
     LooviChipClickableIntent.soft: _t.color.backgroundSurface0,
-    LooviChipClickableIntent.brand: _t.color.backgroundSurfaceBrand,
+    LooviChipClickableIntent.brand: _t.color.backgroundSurfaceBrandStrong,
     LooviChipClickableIntent.outline: null,
   };
 
   group('LooviChipClickable paint by token', () {
     for (final e in base.entries) {
-      testWidgets('${e.key.name}: default + selected fill, label, stroke', (tester) async {
+      testWidgets('${e.key.name}: primary default + selected fill, label, stroke', (tester) async {
+        const primary = LooviChipClickableEmphasis.primary;
         await pumpLoovi(tester, Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          LooviChipClickable(key: const Key('d'), label: 'Default', intent: e.key, onPressed: () {}),
-          LooviChipClickable(key: const Key('s'), label: 'Selected', intent: e.key, selected: true, onPressed: () {}),
+          LooviChipClickable(key: const Key('d'), label: 'Default', intent: e.key, emphasis: primary, onPressed: () {}),
+          LooviChipClickable(
+              key: const Key('s'), label: 'Selected', intent: e.key, emphasis: primary, selected: true, onPressed: () {}),
         ]));
         final d = _decoration(tester, find.byKey(const Key('d')));
         final s = _decoration(tester, find.byKey(const Key('s')));
@@ -112,10 +136,68 @@ void main() {
       });
     }
 
-    testWidgets('pressed: interactive/pressed Plus Darker over base while held', (tester) async {
+    final secondary = <LooviChipClickableIntent, Color>{
+      LooviChipClickableIntent.info: _t.color.backgroundFeedbackSecondaryInfo,
+      LooviChipClickableIntent.system: _t.color.backgroundFeedbackSecondarySystem,
+      LooviChipClickableIntent.success: _t.color.backgroundFeedbackSecondarySuccess,
+      LooviChipClickableIntent.warning: _t.color.backgroundFeedbackSecondaryWarning,
+      LooviChipClickableIntent.danger: _t.color.backgroundFeedbackSecondaryDanger,
+    };
+    for (final e in secondary.entries) {
+      testWidgets('secondary ${e.key.name}: default + selected fill, text/primary', (tester) async {
+        await pumpLoovi(tester, Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          LooviChipClickable(
+              key: const Key('d'), label: 'Default', intent: e.key, emphasis: LooviChipClickableEmphasis.secondary, onPressed: () {}),
+          LooviChipClickable(
+              key: const Key('s'),
+              label: 'Selected',
+              intent: e.key,
+              emphasis: LooviChipClickableEmphasis.secondary,
+              selected: true,
+              onPressed: () {}),
+        ]));
+        expect(_decoration(tester, find.byKey(const Key('d'))).color, e.value);
+        expect(_decoration(tester, find.byKey(const Key('s'))).color, _burn(e.value, _t.interactive.selected));
+        expect(_decoration(tester, find.byKey(const Key('d'))).border, isNull);
+        expect(_labelColor(tester, 'Default'), _t.text.primary);
+      });
+    }
+
+    testWidgets('emphasis defaults to secondary (soft) and is ignored by outline/soft/brand', (tester) async {
+      expect(LooviChipClickable(label: 'x', onPressed: () {}).emphasis, LooviChipClickableEmphasis.secondary);
       await pumpLoovi(tester, Align(
         alignment: Alignment.topLeft,
         child: LooviChipClickable(label: 'Info', intent: LooviChipClickableIntent.info, onPressed: () {}),
+      ));
+      expect(_decoration(tester).color, _t.color.backgroundFeedbackSecondaryInfo);
+      await pumpLoovi(tester, Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        for (final i in [LooviChipClickableIntent.outline, LooviChipClickableIntent.soft, LooviChipClickableIntent.brand])
+          LooviChipClickable(key: Key(i.name), label: i.name, intent: i, emphasis: LooviChipClickableEmphasis.secondary, onPressed: () {}),
+      ]));
+      expect(_decoration(tester, find.byKey(const Key('outline'))).color, isNull);
+      expect(_decoration(tester, find.byKey(const Key('soft'))).color, _t.color.backgroundSurface0);
+      expect(_decoration(tester, find.byKey(const Key('brand'))).color, _t.color.backgroundSurfaceBrandStrong);
+    });
+
+    testWidgets('secondary pressed: interactive/pressed Plus Darker over the secondary base', (tester) async {
+      await pumpLoovi(tester, Align(
+        alignment: Alignment.topLeft,
+        child: LooviChipClickable(
+            label: 'Danger', intent: LooviChipClickableIntent.danger, emphasis: LooviChipClickableEmphasis.secondary, onPressed: () {}),
+      ));
+      final gesture = await tester.startGesture(tester.getCenter(find.text('Danger')));
+      await tester.pump();
+      expect(_decoration(tester).color, _burn(_t.color.backgroundFeedbackSecondaryDanger, _t.interactive.pressed));
+      await gesture.up();
+      await tester.pump();
+      expect(_decoration(tester).color, _t.color.backgroundFeedbackSecondaryDanger);
+    });
+
+    testWidgets('pressed: interactive/pressed Plus Darker over base while held', (tester) async {
+      await pumpLoovi(tester, Align(
+        alignment: Alignment.topLeft,
+        child: LooviChipClickable(
+            label: 'Info', intent: LooviChipClickableIntent.info, emphasis: LooviChipClickableEmphasis.primary, onPressed: () {}),
       ));
       final gesture = await tester.startGesture(tester.getCenter(find.text('Info')));
       await tester.pump();
@@ -180,6 +262,23 @@ void main() {
     expect(icons[1].size, _t.spacing.s300);
   });
 
+  testWidgets('avatar: sm 20 (chip 28 tall), md 32', (tester) async {
+    await pumpLoovi(tester, Align(
+      alignment: Alignment.topLeft,
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        LooviChipClickable(
+            key: const Key('sm'), label: 'S', size: LooviChipClickableSize.sm, avatar: const ColoredBox(color: Color(0xFF000000)), onPressed: () {}),
+        LooviChipClickable(
+            key: const Key('md'), label: 'M', size: LooviChipClickableSize.md, avatar: const ColoredBox(color: Color(0xFF000000)), onPressed: () {}),
+      ]),
+    ));
+    Size avatar(String k) => tester.getSize(find.descendant(of: find.byKey(Key(k)), matching: find.byType(ClipOval)));
+    expect(avatar('sm'), Size.square(_t.spacing.s250));
+    expect(avatar('md'), Size.square(_t.spacing.s400));
+    final smPaint = tester.getSize(find.descendant(of: find.byKey(const Key('sm')), matching: find.byType(DecoratedBox)).last);
+    expect(smPaint.height, _t.spacing.s250 + 2 * _t.spacing.s050); // 28
+  });
+
   testWidgets('tap on the 48 dp area outside the paint still fires', (tester) async {
     var taps = 0;
     await pumpLoovi(tester, Align(
@@ -212,6 +311,52 @@ void main() {
     handle.dispose();
   });
 
+  testWidgets('delete hit area: ≥ 24 × 24 around the 16 icon, chip size unchanged', (tester) async {
+    for (final size in LooviChipClickableSize.values) {
+      var deletes = 0;
+      var taps = 0;
+      Widget chip(bool delete) => LooviChipClickable(
+            key: Key('${size.name}-$delete'),
+            label: 'Filtro',
+            size: size,
+            showDeleteAction: delete,
+            onDelete: () => deletes++,
+            onPressed: () => taps++,
+          );
+      await pumpLoovi(tester, Align(
+        alignment: Alignment.topLeft,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [chip(true), chip(false)]),
+      ));
+      final x = find.byWidgetPredicate((w) => w is LooviIcon && w.name == LooviIcons.xOutline);
+      final icon = tester.getRect(x);
+      expect(icon.size, Size.square(_t.spacing.s200));
+      final chipRect = tester.getRect(find.byKey(Key('${size.name}-true')));
+      // 12 px off the icon center on every side (24 × 24) — and up to the
+      // 48 dp touch box vertically — still hits delete, not the chip.
+      final offsets = [
+        const Offset(-12, 0),
+        const Offset(11, 0),
+        const Offset(0, -12),
+        const Offset(0, 12),
+        Offset(0, chipRect.top - icon.center.dy + 1),
+        Offset(0, chipRect.bottom - icon.center.dy - 1),
+      ];
+      for (final o in offsets) {
+        await tester.tapAt(icon.center + o);
+      }
+      expect(deletes, offsets.length, reason: size.name);
+      expect(taps, 0, reason: size.name);
+      // Far from the icon: the chip action.
+      await tester.tapAt(tester.getCenter(find.text('Filtro').first) - const Offset(8, 0));
+      expect(taps, 1, reason: size.name);
+      // Layout unchanged by the hit area: same height as without delete.
+      Size paint(bool d) =>
+          tester.getSize(find.descendant(of: find.byKey(Key('${size.name}-$d')), matching: find.byType(DecoratedBox)).last);
+      expect(paint(true).height, paint(false).height, reason: size.name);
+      expect(tester.getSize(find.byKey(Key('${size.name}-true'))).height, tester.getSize(find.byKey(Key('${size.name}-false'))).height);
+    }
+  });
+
   testWidgets('semantics: button with label, selected flag, enabled state', (tester) async {
     final handle = tester.ensureSemantics();
     await pumpLoovi(tester, Column(children: [
@@ -230,7 +375,7 @@ void main() {
   });
 
   testWidgets('golden: matrix', (tester) async {
-    await pumpGolden(tester, const ChipClickableMatrix(), height: 1000);
+    await pumpGolden(tester, const ChipClickableMatrix(), height: 1400);
     await expectLater(find.byType(ChipClickableMatrix), matchesGoldenFile('../goldens/chip_clickable_matrix.png'));
   });
 }

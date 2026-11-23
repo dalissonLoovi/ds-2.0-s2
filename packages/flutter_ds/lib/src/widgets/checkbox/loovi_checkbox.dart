@@ -4,6 +4,7 @@ import 'package:loovi_tokens/loovi_tokens.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../foundation/loovi_icon.dart';
+import '../../foundation/loovi_tap_target.dart';
 import '../../generated/loovi_icon_names.g.dart';
 
 /// Seed `checked` axis of Checkbox (`false | true | mixed`).
@@ -141,7 +142,7 @@ class _LooviCheckboxState extends State<LooviCheckbox> {
       );
     }
 
-    final min = t.spacing.s600; // 48 dp touch target
+    final min = LooviTapTarget.minSize(context); // 48 dp touch target
     return Semantics(
       container: true,
       enabled: enabled,

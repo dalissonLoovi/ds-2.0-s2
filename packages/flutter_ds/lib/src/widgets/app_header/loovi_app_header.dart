@@ -1,6 +1,7 @@
 import 'package:loovi_tokens/loovi_tokens.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../foundation/loovi_blend.dart';
 import '../../foundation/loovi_icon.dart';
 import '../../foundation/loovi_tap_target.dart';
 import '../../generated/loovi_icon_names.g.dart';
@@ -34,6 +35,8 @@ enum LooviAppHeaderHierarchy { global, specific, superApp }
 /// - small|smallCentered (specific|superApp): pad `spacing/100` vert +
 ///   `spacing/200` horiz; leading slot 40 (keeper) + headingContent FILL +
 ///   trailing slot 40 (keeper, specific) / search|bell|profileMenu (superApp).
+///   smallCentered centers the title on the full width: both sides reserve
+///   the wider slot width (e.g. 88 on superApp), independent of what they show.
 /// - medium|large (specific): headerControls (pt `spacing/100`, px
 ///   `spacing/050`, SPACE_BETWEEN, 40 keepers) above headingContent (px
 ///   `spacing/200`); root px `spacing/200`, gap `spacing/100`, pb `spacing/150`.
@@ -285,7 +288,16 @@ class LooviAppHeader extends StatelessWidget {
     final trailing = _trailingSlots(t);
     // specific keeps a 40 trailing keeper when nothing is shown (optical center).
     final keeperWidth = trailing.fold<double>(t.spacing.s0, (sum, s) => sum + s.width);
-    final trailingWidth = hierarchy == LooviAppHeaderHierarchy.specific && keeperWidth < slot ? slot : keeperWidth;
+    var trailingWidth = hierarchy == LooviAppHeaderHierarchy.specific && keeperWidth < slot ? slot : keeperWidth;
+    var leadingWidth = slot;
+    // smallCentered (seed `centeredTitle`): the title is centered on the full
+    // header width, whatever the side slots hold — both sides reserve the
+    // wider of the two (Figma balances leadingActions to the trailing width).
+    if (!global && layout == LooviAppHeaderLayout.smallCentered) {
+      final side = trailingWidth > leadingWidth ? trailingWidth : leadingWidth;
+      leadingWidth = side;
+      trailingWidth = side;
+    }
 
     final overlays = <Widget>[];
     final Widget leading;
@@ -328,7 +340,7 @@ class LooviAppHeader extends StatelessWidget {
         ),
       );
     } else {
-      leading = SizedBox(width: slot, height: slot);
+      leading = SizedBox(width: leadingWidth, height: slot);
       if (showAction) overlays.add(_positioned(left: padX - overhang, box: min, child: _leadingAction(t)));
       heading = Expanded(
         child: showLabel
@@ -414,15 +426,6 @@ class _Slot {
   final double width;
   final Widget child;
 }
-
-/// Plus Darker / LINEAR_BURN of two opaque colors (`dst + src - 1` per
-/// channel), as Button solid pressed. Internal to the header widgets.
-Color looviPlusDarker(Color dst, Color src) => Color.from(
-      alpha: dst.a,
-      red: (dst.r + src.r - 1).clamp(0, 1).toDouble(),
-      green: (dst.g + src.g - 1).clamp(0, 1).toDouble(),
-      blue: (dst.b + src.b - 1).clamp(0, 1).toDouble(),
-    );
 
 // ------------------------------------------------------------- TextHeader
 

@@ -43,7 +43,7 @@ export function OrganizationHeader({
         <ChipTag
           size="sm"
           intent="success"
-          emphasis="soft"
+          emphasis="secondary"
           label={type}
           showLeadingIcon
           leadingIcon="circle-check-outline"

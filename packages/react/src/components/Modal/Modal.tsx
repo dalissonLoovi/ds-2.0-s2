@@ -6,6 +6,7 @@ import {
   type ReactNode,
 } from 'react';
 import { cx } from '../../utils/cx';
+import { Button } from '../Button/Button';
 import { ModalHeader } from '../ModalHeader/ModalHeader';
 import styles from './Modal.module.css';
 
@@ -20,7 +21,29 @@ export type ModalProps = HTMLAttributes<HTMLDivElement> & {
   showCloseAction?: boolean;
   onClose?: () => void;
   children?: ReactNode;
+  /**
+   * Custom footer content (escape hatch). When provided it is always rendered and takes
+   * precedence over the built-in actions. Rendered as a horizontal, right-aligned row on every
+   * platform (same as before `showFooter` existed); the consumer owns order and layout — keep
+   * DOM order = visual order so keyboard focus follows what is seen.
+   */
   footer?: ReactNode;
+  /**
+   * Figma `showFooter`: renders the built-in footer with up to 2 actions — primary
+   * (Button solid) + secondary (Button text). web: horizontal, right-aligned, size=lg;
+   * mobile|mobile-landscape: vertical, full width, primary on top, size=md. Gap spacing/100.
+   * Ignored when `footer` is provided.
+   * @default false
+   */
+  showFooter?: boolean;
+  /** @default 'Confirmar' */
+  primaryActionLabel?: string;
+  onPrimaryAction?: () => void;
+  /** @default true */
+  showSecondaryAction?: boolean;
+  /** @default 'Cancelar' */
+  secondaryActionLabel?: string;
+  onSecondaryAction?: () => void;
 };
 
 const FOCUSABLE =
@@ -36,6 +59,12 @@ export function Modal({
   onClose,
   children,
   footer,
+  showFooter = false,
+  primaryActionLabel = 'Confirmar',
+  onPrimaryAction,
+  showSecondaryAction = true,
+  secondaryActionLabel = 'Cancelar',
+  onSecondaryAction,
   className,
   ...rest
 }: ModalProps) {
@@ -98,6 +127,45 @@ export function Modal({
 
   if (!open) return null;
 
+  const isWeb = platform === 'web';
+  const actionSize = isWeb ? 'lg' : 'md';
+  const useBuiltInFooter = footer == null && showFooter;
+  const secondaryAction = showSecondaryAction ? (
+    <Button
+      variant="text"
+      intent="primary"
+      size={actionSize}
+      label={secondaryActionLabel}
+      onClick={onSecondaryAction}
+    />
+  ) : null;
+  const primaryAction = (
+    <Button
+      variant="solid"
+      intent="primary"
+      size={actionSize}
+      label={primaryActionLabel}
+      onClick={onPrimaryAction}
+    />
+  );
+  // DOM order = visual order, so keyboard focus follows what is seen:
+  // web → secondary, primary (row, right-aligned); mobile → primary on top, secondary below.
+  const footerContent =
+    footer ??
+    (useBuiltInFooter ? (
+      isWeb ? (
+        <>
+          {secondaryAction}
+          {primaryAction}
+        </>
+      ) : (
+        <>
+          {primaryAction}
+          {secondaryAction}
+        </>
+      )
+    ) : null);
+
   return (
     <div className={styles.overlay} role="presentation">
       <div
@@ -120,7 +188,11 @@ export function Modal({
           titleId={titleId}
         />
         <div className={styles.body}>{children}</div>
-        {footer && <footer className={styles.footer}>{footer}</footer>}
+        {footerContent && (
+          <footer className={cx(styles.footer, useBuiltInFooter && !isWeb && styles.footerStacked)}>
+            {footerContent}
+          </footer>
+        )}
       </div>
     </div>
   );

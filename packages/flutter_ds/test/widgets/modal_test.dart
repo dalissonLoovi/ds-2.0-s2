@@ -29,25 +29,16 @@ Widget _bodyText(BuildContext context) {
   return Text(_body, style: t.typography.bodyMediumRegular.copyWith(color: t.text.secondary));
 }
 
-Widget _footer(BuildContext context, {VoidCallback? onKeep, VoidCallback? onCancel}) {
-  final t = LooviTokens.of(context);
-  // Stacked full-width actions: the modal is narrower than the sheet.
-  return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-    LooviButton(
-      label: 'Manter plano',
-      fullWidth: true,
-      onPressed: onKeep ?? () => Navigator.of(context).pop(false),
-    ),
-    SizedBox(height: t.spacing.s100),
-    LooviButton(
-      label: 'Cancelar plano',
-      variant: LooviButtonVariant.text,
-      intent: LooviButtonIntent.danger,
-      fullWidth: true,
-      onPressed: onCancel ?? () => Navigator.of(context).pop(true),
-    ),
-  ]);
-}
+/// Seed footer: primary (solid) + secondary (text, destructive here). Platform
+/// is inherited from the enclosing LooviModal.
+Widget _footer(BuildContext context, {VoidCallback? onKeep, VoidCallback? onCancel}) => LooviModalFooter(
+      primaryAction: LooviModalAction(label: 'Manter plano', onPressed: onKeep ?? () => Navigator.of(context).pop(false)),
+      secondaryAction: LooviModalAction(
+        label: 'Cancelar plano',
+        intent: LooviButtonIntent.danger,
+        onPressed: onCancel ?? () => Navigator.of(context).pop(true),
+      ),
+    );
 
 /// Story "Variants": inline panels — same as the Widgetbook story.
 class ModalVariants extends StatelessWidget {
@@ -65,11 +56,22 @@ class ModalVariants extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(t.spacing.s300),
         child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-          caption('Modal · platform=mobile · slot + footer'),
+          caption('Modal · platform=mobile · slot + showFooter'),
           LooviModal(
             title: _title,
             onClose: () {},
-            footer: Builder(builder: (c) => _footer(c, onKeep: () {}, onCancel: () {})),
+            primaryAction: LooviModalAction(label: 'Manter plano', onPressed: () {}),
+            secondaryAction: LooviModalAction(label: 'Cancelar plano', intent: LooviButtonIntent.danger, onPressed: () {}),
+            child: Builder(builder: _bodyText),
+          ),
+          SizedBox(height: t.spacing.s300),
+          caption('Modal · platform=web · showFooter'),
+          LooviModal(
+            title: _title,
+            platform: LooviModalPlatform.web,
+            onClose: () {},
+            primaryAction: LooviModalAction(label: 'Manter', onPressed: () {}),
+            secondaryAction: LooviModalAction(label: 'Cancelar', intent: LooviButtonIntent.danger, onPressed: () {}),
             child: Builder(builder: _bodyText),
           ),
           SizedBox(height: t.spacing.s300),
@@ -87,15 +89,15 @@ class ModalVariants extends StatelessWidget {
           ColoredBox(
             color: t.color.backgroundSurface0,
             child: Column(children: [
-              LooviModalHeader(title: 'Title', label: 'Optional label', showLabel: true, onClose: () {}),
+              LooviModalHeader(title: 'Cancelar plano?', label: 'Plano Essencial', showLabel: true, onClose: () {}),
               LooviModalHeader(
-                title: 'Title',
-                label: 'Optional label',
+                title: 'Cancelar plano?',
+                label: 'Plano Essencial',
                 showLabel: true,
                 alignment: LooviModalHeaderAlignment.center,
                 onClose: () {},
               ),
-              LooviModalHeader(title: 'Title', showCloseAction: false),
+              LooviModalHeader(title: 'Cancelar plano?', showCloseAction: false),
             ]),
           ),
         ]),
@@ -224,6 +226,60 @@ void main() {
     expect(result, isFalse);
   });
 
+  testWidgets('footer mobile: vertical, full width, primary on top, md, gap spacing/100', (tester) async {
+    await pumpLoovi(
+      tester,
+      LooviModal(
+        title: _title,
+        primaryAction: LooviModalAction(label: 'P', onPressed: () {}),
+        secondaryAction: LooviModalAction(label: 'S', onPressed: () {}),
+        child: const Text(_body),
+      ),
+    );
+    final buttons = tester.widgetList<LooviButton>(find.byType(LooviButton)).where((b) => b.label != '').toList();
+    final p = tester.widget<LooviButton>(find.widgetWithText(LooviButton, 'P'));
+    final s = tester.widget<LooviButton>(find.widgetWithText(LooviButton, 'S'));
+    expect(buttons, isNotEmpty);
+    expect(p.variant, LooviButtonVariant.solid);
+    expect(s.variant, LooviButtonVariant.text);
+    expect(p.size, LooviButtonSize.md);
+    expect(p.fullWidth, isTrue);
+    final pr = tester.getRect(find.widgetWithText(LooviButton, 'P'));
+    final sr = tester.getRect(find.widgetWithText(LooviButton, 'S'));
+    expect(pr.bottom, lessThan(sr.top));
+    expect(sr.top - pr.bottom, _t.spacing.s100);
+    expect(pr.width, sr.width);
+    final body = tester.getRect(find.text(_body));
+    expect(pr.left, body.left);
+  });
+
+  testWidgets('footer web: horizontal, right-aligned, lg, secondary before primary', (tester) async {
+    await pumpLoovi(
+      tester,
+      LooviModal(
+        title: _title,
+        platform: LooviModalPlatform.web,
+        primaryAction: LooviModalAction(label: 'P', onPressed: () {}),
+        secondaryAction: LooviModalAction(label: 'S', onPressed: () {}),
+        child: const Text(_body),
+      ),
+    );
+    final p = tester.widget<LooviButton>(find.widgetWithText(LooviButton, 'P'));
+    expect(p.size, LooviButtonSize.lg);
+    expect(p.fullWidth, isFalse);
+    final pr = tester.getRect(find.widgetWithText(LooviButton, 'P'));
+    final sr = tester.getRect(find.widgetWithText(LooviButton, 'S'));
+    expect(sr.right, lessThan(pr.left));
+    expect(pr.top, sr.top);
+    final shell = tester.getRect(find.byType(LooviModal));
+    expect(shell.right - pr.right, _t.spacing.s300);
+  });
+
+  testWidgets('no footer by default', (tester) async {
+    await pumpLoovi(tester, LooviModal(title: _title, onClose: () {}, child: const Text(_body)));
+    expect(find.byType(LooviModalFooter), findsNothing);
+  });
+
   testWidgets('textScaler 2: dialog content scrolls without overflow', (tester) async {
     tester.view.physicalSize = const Size(390, 640);
     tester.view.devicePixelRatio = 1;
@@ -253,8 +309,29 @@ void main() {
     expect(tester.getRect(find.byType(LooviModal)).bottom, lessThanOrEqualTo(640));
   });
 
+  testWidgets('footer mobile: focus order = visual order (close, primary on top, secondary)', (tester) async {
+    await pumpLoovi(
+      tester,
+      LooviModal(
+        title: _title,
+        onClose: () {},
+        primaryAction: LooviModalAction(label: 'P', onPressed: () {}),
+        secondaryAction: LooviModalAction(label: 'S', onPressed: () {}),
+        child: const Text(_body),
+      ),
+    );
+    final order = <String>[];
+    for (var i = 0; i < 3; i++) {
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pump();
+      final ctx = FocusManager.instance.primaryFocus!.context!;
+      order.add(ctx.findAncestorWidgetOfExactType<LooviButton>()?.label ?? 'close');
+    }
+    expect(order, ['close', 'P', 'S']);
+  });
+
   testWidgets('golden: variants', (tester) async {
-    await pumpGolden(tester, const ModalVariants(), height: 820);
+    await pumpGolden(tester, const ModalVariants(), height: 1140);
     await expectLater(find.byType(ModalVariants), matchesGoldenFile('../goldens/modal_variants.png'));
   });
 }

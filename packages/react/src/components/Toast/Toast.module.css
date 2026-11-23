@@ -30,11 +30,11 @@
 }
 
 .status-success .icon {
-  color: var(--feedback-success, var(--color-actions-success));
+  color: var(--feedback-success);
 }
 
 .status-danger .icon {
-  color: var(--feedback-danger, var(--color-actions-danger));
+  color: var(--feedback-danger);
 }
 
 .status-warning .icon {

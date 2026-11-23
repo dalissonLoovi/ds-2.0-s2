@@ -112,6 +112,23 @@ void main() {
     handle.dispose();
   });
 
+  testWidgets('reduced motion (disableAnimations): the thumb jumps, no animation', (tester) async {
+    await pumpLoovi(
+      tester,
+      Builder(
+        builder: (c) => MediaQuery(
+          data: MediaQuery.of(c).copyWith(disableAnimations: true),
+          child: const _Host(),
+        ),
+      ),
+    );
+    await tester.tap(find.byType(LooviSwitch));
+    await tester.pump(); // one frame, no time elapsed
+    final track = tester.getRect(find.byType(LooviSwitchControl));
+    final thumb = tester.getRect(find.descendant(of: find.byType(LooviSwitchControl), matching: find.byType(AnimatedContainer)).last);
+    expect(thumb.left - track.left, 28);
+  });
+
   testWidgets('golden: states (size × default/focus/disabled × off/on, md with icon)', (tester) async {
     Widget row(LooviSwitchSize size, {bool icon = false}) => Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -116,13 +116,13 @@ void main() {
     expect(tester.widget<Text>(_title('Coberturas')).style!.fontSize, _t.typography.headingH1Medium.fontSize);
   });
 
-  testWidgets('inverse fill = brand; standard = surface/0; greeting body/large/medium', (tester) async {
+  testWidgets('inverse fill = brand-strong; standard = surface/0; greeting body/large/medium', (tester) async {
     ColoredBox root() => tester.widget<ColoredBox>(
           find.descendant(of: find.byType(LooviAppHeader), matching: find.byType(ColoredBox)).first,
         );
     await pumpLoovi(tester, const LooviAppHeader(appearance: LooviAppHeaderAppearance.inverse, greeting: 'Olá, Rodrigo'));
     expect(root().color, _t.component.appHeader.inverseBackground);
-    expect(root().color, _t.color.backgroundSurfaceBrand);
+    expect(root().color, _t.color.backgroundSurfaceBrandStrong);
     final g = tester.widget<Text>(find.text('Olá, Rodrigo'));
     expect(g.style!.color, _t.text.onColor);
     expect(g.style!.fontWeight, _t.typography.bodyLargeMedium.fontWeight);
@@ -221,6 +221,26 @@ void main() {
     await pumpLoovi(tester, const LooviAppHeader(greeting: 'Olá, Rodrigo'));
     expect(tester.getSemantics(find.text('Olá, Rodrigo')), isSemantics(label: 'Olá, Rodrigo', isHeader: true));
     handle.dispose();
+  });
+
+  testWidgets('smallCentered: title centered on the full width whatever the side slots hold', (tester) async {
+    final cases = <LooviAppHeader>[
+      // superApp: leading 40 vs trailing bell 40 + profileMenu 48.
+      const LooviAppHeader(hierarchy: LooviAppHeaderHierarchy.superApp, title: 'LOOVI'),
+      const LooviAppHeader(
+          hierarchy: LooviAppHeaderHierarchy.superApp, title: 'LOOVI', showFirstTrailingAction: true),
+      // specific: leading 40 vs search + bell 80; and no leading action at all.
+      const LooviAppHeader(
+          hierarchy: LooviAppHeaderHierarchy.specific, title: 'T', showFirstTrailingAction: true),
+      const LooviAppHeader(
+          hierarchy: LooviAppHeaderHierarchy.specific, title: 'T', showAction: false, showSecondTrailingAction: false),
+    ];
+    for (final header in cases) {
+      await pumpLoovi(tester, header);
+      final width = tester.getSize(find.byType(LooviAppHeader)).width;
+      final title = find.text(header.title!.toUpperCase()).evaluate().isEmpty ? find.text(header.title!) : find.text(header.title!.toUpperCase());
+      expect(tester.getCenter(title).dx, closeTo(width / 2, 0.5));
+    }
   });
 
   testWidgets('leading action paint keeps the Figma position (20..60 from the left edge)', (tester) async {

@@ -12,8 +12,12 @@ The lists below are truncated for readability. Full history lives in `design-sys
 
 ## Recent updates
 
-_Showing 20 of 274._
+_Showing 20 of 278._
 
+- **update:** 
+- **update:** 
+- **update:** 
+- **update:** 
 - **update:** 
 - **update:** 
 - **update:** 
@@ -30,17 +34,17 @@ _Showing 20 of 274._
 - **listitem-illustration-text-props:** ListItem illustration variants: restore editable headline + supportingText (+ overline/trailingSupportingText) via component TEXT property bindings.
 - **listitem-illustration-library:** ListItem illustration slots open to full Ilustrações e animações library; vehicle-icon/sedan remains default swap base.
 - **listitem-illustration-coverage:** ListItem illustration: condition 1/2/3-line coverage; leadingIllustration + trailingIllustration set props; React side-specific assets; docs regenerated.
-- **listitem-illustration:** ListItem: leading/trailing=illustration (56×56); ListItemLeadingIllustration + ListItemTrailingIllustration with vehicle-icon preferredValues; sparse demos.
-- **loadingspinner-size-xs:** LoadingSpinner: size=xs (24px) added; Figma stroke ~0.3; seed + React size map updated.
-- **input-visual-react-audit:** Input React visual audit: FieldFrame floating label, h=56, content modes, error trailing always, inverse + product-theme radius; family fields updated.
-- **button-visual-react-audit:** Button React visual audit: loading spinner-only; trailing chevron-right; typography token sizes.
 
 ## History
 
-_Showing 40 of 271, grouped by date._
+_Showing 40 of 275, grouped by date._
 
 ### 2026-11-23
 
+- **review-decisions:** Review decisions: chips default emphasis=secondary (Figma top-left, React, Flutter — EV unchanged); Button contrast AA — actions/primary → sapphire #516CE7 (4.52:1), actions/danger → crimson-red #D81C1A (5.12:1), solid secondary label/icons → text/primary, solid success label → text/on-color, success|secondary hover/pressed/selected state layer (stateOverlay LINEAR_BURN); new color/background-surface/brand-strong (#516CE7) for brand fills with small on-color text (chips brand, Alert inverse, AppHeader inverse site-loovi|app-cliente); Banner info primary → feedback-primary/info; NavigationBarItem selected label text/primary + badge count text/primary; ChipClickable delete hit area ≥ 24 in code; chip icon/avatar sizes bound to spacing tokens (ChipClickable sm avatar 22 → 20, height 30 → 28); ChipTag secondary/success variants were stacked on primary — repositioned; AppHeader small-centered title centered (390 wide, balanced sides); Button seed props aligned to Figma (no trailingIcon swap; loading = state; disabled = VARIANT); 115 legacy remote variable bindings rebound to local tokens; variableCount 301.
+- **review-seed-sync:** Seed review vs Figma: ChipGroup nodeId 3437:3023 (node no longer exists) → 3667:2570 (current ChipGroup COMPONENT_SET); UploadPhotos and VehicleSummaryCard ChipTag references strong → emphasis=primary (strong|soft renamed today). All 300 local variables (semantic, primitives, typography, product-theme × 3 modes) re-checked against tokens.* and meta.productTheme — no value or alias drift.
+- **design-fixes:** Design fixes: Button appearance=inverse (+24 variants, outline|text primary) and Alert inverse action uses it; Button solid success fill → color/actions/success (AA with on-color); outline|text danger labels → text/danger; Alert showClose (official close action); Modal showFooter (official footer, max 1 primary); RadioButton disabled+checked ring border/width/050 text/placeholder; AppHeader specific trailing actions side by side (no overlap); ModalHeader desktop leadingSpacer → spacing/500; exact-value gaps/paddings/radii bound to tokens across wave components (values without token reported in meta.governance.unboundValues).
+- **feedback-split-emphasis:** Feedback colour split: feedback/* = light icon/indicator colour (Figma: success #2DBE5E, danger #F54444, warning #FFB74C, info #54DEF8); new text/success|danger|warning|info (AA) for status text — 405 text nodes rebound in Figma (Button, Input family, DatePicker, FileUploaderItem, Slider, VerificationCodeInput). New primitives amber-700 #7A6400, teal-700 #04778A; background-feedback-secondary/info (teal-2) and /system (azure-2). emphasis=primary|secondary on ChipTag (renamed strong|soft, +16 variants), ChipClickable (+84), Banner (+4). Alert excluded.
 - **flutter-audit-seed-sync:** Flutter audit apply: seed synced with Figma — interactive/selected #D0D9E8, color/overlay/overlay 48%, feedback/info added, color/elevation/focus added (pressed deprecated); tokens.component completed with all 23 product-theme tokens (escritorio-virtual app-header leading-action → #FCFCFE); nodeIds Switch 3653:4741 and NavigationBarItem 3653:15180. feedback/success|danger|warning NOT synced (Figma values fail AA as text) — see backlog.
 
 ### 2026-09-21
@@ -110,7 +114,3 @@ _Showing 40 of 271, grouped by date._
 - **react-w2-feedback:** React W2 Feedback polish: Banner/Badge/Tooltip*/Overlay/LoadingSpinner/ProgressBar/BottomSheet(+Header/CheckItem) DoD.
 - **react-w1-formularios:** React W1 Formulários polish: 15 fields + VerificationCodeInputItem + DatePickerSelectItem DoD (Autodocs, Code Connect, @ds/react).
 - **react-audit-apply-p1-p2:** Audit apply: reactImplemented only W0 (7); stubs → reactScaffold + @ds/react/draft; tokens generator adds text/feedback/interactive; W0 hardening (Button/ChipTag/Modal/Alert/CSS vars).
-- **react-csf3-foundation:** Introduce @ds/react + @ds/tokens monorepo; W0 polished (Button/Input/Chip*/Alert/Toast/Modal) with CSF3 Autodocs + Code Connect; remaining catalog scaffolded with Autodocs; generator skips reactImplemented MDX.
-- **painel-tokens-seed-sync:** Painel gap 01: seed tokens.color.background-surface promo-1|promo-2|promo-accent (Figma aliases lavender-2/azure-2/lavender-1); repair brand-muted $type/$value. Audit queue validated (02–08,10 already in Figma+seed).
-- **docs-audit-w2-w3-nodeids:** W2/W3 Docs humanas audit apply: ProgressBar nodeId→3653:5393; NavigationRail Compact/Expanded/Tree live nodeIds; Banner vs Alert copy; OrganizationHeader Docs humanas created (4887:1141).
-- **docs-audit-w5-w6:** W5 Docs humanas: 11/11 OK (noop). W6: StepperPrimary nodeId 3437:396 (missing) → live 3653:4985; remaining W6 frames OK.

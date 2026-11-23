@@ -16,7 +16,7 @@ WidgetbookComponent looviListComponent() => WidgetbookComponent(
 
 List<Widget> _rows() => [
       LooviListItem(condition: LooviListItemCondition.twoLine, headline: 'Meu veículo', supportingText: 'Onix 2022 · ABC1D23', leading: const LooviListItemMonogram('O'), trailingIcon: LooviIcons.chevronRightOutline, showDivider: true, onTap: () {}),
-      LooviListItem(condition: LooviListItemCondition.twoLine, headline: 'Coberturas do plano', supportingText: 'Roubo, furto e assistência 24h', leadingIcon: LooviIcons.shieldCheckOutline, trailingIcon: LooviIcons.chevronRightOutline, showDivider: true, onTap: () {}),
+      LooviListItem(condition: LooviListItemCondition.twoLine, headline: 'Coberturas do plano', supportingText: 'Veja o que está incluído no seu plano', leadingIcon: LooviIcons.shieldCheckOutline, trailingIcon: LooviIcons.chevronRightOutline, showDivider: true, onTap: () {}),
       LooviListItem(condition: LooviListItemCondition.twoLine, headline: 'Pagamentos', supportingText: 'Próxima fatura em 10/12', leadingIcon: LooviIcons.walletOutline, trailingIcon: LooviIcons.chevronRightOutline, onTap: () {}),
     ];
 

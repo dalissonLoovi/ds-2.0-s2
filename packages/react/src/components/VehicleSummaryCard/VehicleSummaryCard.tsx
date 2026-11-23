@@ -50,7 +50,7 @@ export function VehicleSummaryCard({
           <ChipTag
             size="sm"
             intent="outline"
-            emphasis="strong"
+            emphasis="primary"
             width="hug"
             label={statusLabel}
             showLeadingIcon

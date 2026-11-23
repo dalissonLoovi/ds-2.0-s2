@@ -9,7 +9,7 @@ Fonte única de tokens e componentes para **todos** os produtos Loovi. Mudança 
 ## Consumidores
 | Produto | Pasta | Consome | Observação |
 |---|---|---|---|
-| Site Loovi | `../site` | `@ds/tokens` (CSS) + `@ds/react` | tema `site-loovi` ainda não consolidado (ver `HANDOFF-CLAUDE-SITE.md`, só local, fora do Git) |
+| Site Loovi | `../site` | `@ds/tokens` (CSS) + `@ds/react` | tema `site-loovi` ainda não consolidado (gaps no backlog, item 12) |
 | App do Cliente (Flutter) | `../app-cliente` | `dist/tokens.json` → pacote Dart (proposta, ADR-001 do app) | ícones Hugeicons + aliases |
 | Escritório Virtual | fora deste workspace | `@ds/react` | ícones Tabler |
 

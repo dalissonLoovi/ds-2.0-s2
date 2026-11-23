@@ -1,6 +1,7 @@
 import 'package:flutter/semantics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:loovi_ds/loovi_ds.dart';
+import 'package:loovi_ds/src/widgets/input/loovi_input.dart' show LooviInputFloatingLabel;
 import 'package:material_ui/material_ui.dart';
 
 import '../helpers/pump.dart';
@@ -51,7 +52,7 @@ void main() {
   testWidgets('error shows danger message and stroke', (tester) async {
     await pumpLoovi(tester, const LooviInputTextArea(errorText: 'Campo obrigatório'));
     final msg = tester.widget<Text>(find.text('Campo obrigatório'));
-    expect(msg.style!.color, _t.feedback.danger);
+    expect(msg.style!.color, _t.text.danger);
     expect(_border(tester).top.color, _t.color.borderFeedbackDanger);
   });
 
@@ -89,6 +90,17 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('inverse: count uses text/on-color-disabled (text/secondary is unreadable on inverse-3)', (tester) async {
+    await pumpLoovi(
+      tester,
+      const ColoredBox(
+        color: Color(0xFF3A3345),
+        child: LooviInputTextArea(label: 'Mensagem', countText: '0/100', appearance: LooviInputAppearance.inverse),
+      ),
+    );
+    expect(tester.widget<Text>(find.text('0/100')).style!.color, _t.text.onColorDisabled);
+  });
+
   testWidgets('golden: InputTextArea states (app-cliente)', (tester) async {
     await pumpGolden(tester, const _TextAreaStates(), height: 1160);
     await expectLater(find.byType(_TextAreaStates), matchesGoldenFile('../goldens/input_textarea_states.png'));
@@ -102,24 +114,24 @@ class _TextAreaStates extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = LooviTokens.of(context);
     Widget gap() => SizedBox(height: t.spacing.s100);
-    const value = 'Input text goes here for a longer message.';
+    const value = 'O carro fez um barulho na roda dianteira ao frear.';
     return Padding(
       padding: EdgeInsets.all(t.spacing.s200),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          LooviInputTextArea(controller: TextEditingController(text: value), countText: '0/100'),
+          LooviInputTextArea(label: 'Mensagem', controller: TextEditingController(text: value), maxLength: 100),
           gap(),
-          const LooviInputTextArea(placeholder: 'Placeholder', countText: '0/100'),
+          const LooviInputTextArea(label: 'Mensagem', placeholder: 'Conte o que aconteceu', maxLength: 100),
           gap(),
-          const LooviInputTextArea(countText: '0/100'),
+          const LooviInputTextArea(label: 'Mensagem', maxLength: 100),
           gap(),
-          LooviInputTextArea(controller: TextEditingController(text: value), countText: '0/100', trailingIcon: true, autofocus: true, showCursor: false),
+          LooviInputTextArea(label: 'Mensagem', controller: TextEditingController(text: value), maxLength: 100, trailingIcon: true, autofocus: true, showCursor: false),
           gap(),
-          LooviInputTextArea(controller: TextEditingController(text: value), countText: '0/100', leadingIcon: true, errorText: 'Supporting text'),
+          LooviInputTextArea(label: 'Mensagem', controller: TextEditingController(text: value), maxLength: 100, leadingIcon: true, errorText: 'Conte com mais detalhes o que aconteceu.'),
           gap(),
-          LooviInputTextArea(controller: TextEditingController(text: value), countText: '0/100', enabled: false),
+          LooviInputTextArea(label: 'Mensagem', controller: TextEditingController(text: value), maxLength: 100, enabled: false),
         ],
       ),
     );

@@ -3,11 +3,11 @@ import { ChipGroup } from './ChipGroup';
 
 /**
  * Code Connect — ChipGroup
- * Figma node: 3437:3023
+ * Figma node: 3667:2570
  */
 figma.connect(
   ChipGroup,
-  'https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3437-3023',
+  'https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3667-2570',
   {
     example: () => <ChipGroup />,
   },

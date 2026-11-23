@@ -77,7 +77,8 @@ class LooviInputFieldColors {
       label = inverse ? t.text.placeholderInverse : t.text.placeholder;
       icon = inverse ? t.text.onColorDisabled : t.text.placeholder;
     } else if (isError) {
-      label = t.feedback.danger;
+      // Label text → text/danger (AA); leading icon sits next to it → feedback/danger.
+      label = t.text.danger;
       icon = t.feedback.danger;
     } else if (isFocus) {
       label = t.text.brand;
@@ -104,10 +105,11 @@ class LooviInputFieldColors {
       // appearance=default (3872:349, 3872:685, 3872:1021). Inverse keeps the
       // seed rule (text/on-color) because text/primary is invisible there.
       trailingIcon: inverse ? (enabled ? t.text.onColor : t.text.onColorDisabled) : t.text.primary,
+      // Error icon always sits next to the supporting message → feedback/danger.
       errorIcon: t.feedback.danger,
       // Figma disabled supporting stays text/secondary (3872:1024).
       supporting: isError
-          ? t.feedback.danger
+          ? t.text.danger
           : inverse
               ? (enabled ? t.text.onColorDisabled : t.text.placeholderInverse)
               : t.text.secondary,

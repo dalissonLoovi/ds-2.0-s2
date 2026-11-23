@@ -1,6 +1,7 @@
 import 'package:flutter/semantics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:loovi_ds/loovi_ds.dart';
+import 'package:loovi_ds/src/widgets/input/loovi_input.dart' show LooviInputFloatingLabel;
 import 'package:material_ui/material_ui.dart';
 
 import '../helpers/pump.dart';
@@ -50,7 +51,12 @@ void main() {
     await pumpLoovi(tester, const LooviInput(label: 'CPF', placeholder: '000.000.000-00', errorText: 'CPF inválido', trailingIcon: true));
     expect(find.text('CPF inválido'), findsOneWidget);
     final msg = tester.widget<Text>(find.text('CPF inválido'));
-    expect(msg.style!.color, _t.feedback.danger);
+    expect(msg.style!.color, _t.text.danger);
+    final alert = tester.widget<LooviIcon>(
+        find.byWidgetPredicate((w) => w is LooviIcon && w.name == LooviIcons.alertCircleOutline));
+    expect(alert.color, _t.feedback.danger);
+    final label = tester.widget<Text>(find.descendant(of: find.byType(LooviInputFloatingLabel), matching: find.byType(Text)));
+    expect(label.style!.color, _t.text.danger);
     expect(_borderColor(tester), _t.color.borderFeedbackDanger);
     expect(_borderWidth(tester), _t.borderWidth.s025);
     final icons = tester.widgetList<LooviIcon>(find.byType(LooviIcon)).map((i) => i.name).toList();
@@ -128,25 +134,25 @@ class _InputStates extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const LooviInput(label: 'Label', placeholder: 'Placeholder', leadingIcon: true, trailingIcon: true),
+          const LooviInput(label: 'Buscar', placeholder: 'Placa ou modelo', leadingIcon: true, trailingIcon: true),
           gap(),
-          LooviInput(label: 'Label', controller: TextEditingController(text: 'Input'), leadingIcon: true, trailingIcon: true),
+          LooviInput(label: 'Buscar', controller: TextEditingController(text: 'Onix'), leadingIcon: true, trailingIcon: true),
           gap(),
-          const LooviInput(label: 'Label', leadingIcon: true, trailingIcon: true),
+          const LooviInput(label: 'Buscar', leadingIcon: true, trailingIcon: true),
           gap(),
-          LooviInput(label: 'Label', controller: TextEditingController(text: 'Input'), leadingIcon: true, trailingIcon: true, autofocus: true, showCursor: false),
+          LooviInput(label: 'Buscar', controller: TextEditingController(text: 'Onix'), leadingIcon: true, trailingIcon: true, autofocus: true, showCursor: false),
           gap(),
-          LooviInput(label: 'Label', controller: TextEditingController(text: 'Input'), leadingIcon: true, trailingIcon: true, errorText: 'Supporting text'),
+          LooviInput(label: 'Buscar', controller: TextEditingController(text: 'Onix'), leadingIcon: true, trailingIcon: true, errorText: 'Nenhum veículo encontrado.'),
           gap(),
-          LooviInput(label: 'Label', controller: TextEditingController(text: 'Input'), leadingIcon: true, trailingIcon: true, enabled: false, supportingText: 'Supporting text'),
+          LooviInput(label: 'Buscar', controller: TextEditingController(text: 'Onix'), leadingIcon: true, trailingIcon: true, enabled: false, supportingText: 'Busca disponível após a vistoria.'),
           gap(),
           ColoredBox(
             color: t.color.backgroundSurfaceInverse3,
             child: Padding(
               padding: EdgeInsets.all(t.spacing.s100),
               child: LooviInput(
-                label: 'Label',
-                controller: TextEditingController(text: 'Input'),
+                label: 'Buscar',
+                controller: TextEditingController(text: 'Onix'),
                 appearance: LooviInputAppearance.inverse,
                 leadingIcon: true,
                 trailingIcon: true,

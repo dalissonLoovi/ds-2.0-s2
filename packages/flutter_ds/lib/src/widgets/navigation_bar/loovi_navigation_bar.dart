@@ -217,7 +217,10 @@ class LooviNavigationBar extends StatelessWidget {
 /// FAB `spacing/700` square, `border/radius/full`,
 /// `component/button/container/background`, icon 24 `text/on-color`;
 /// gap `spacing/050`; padding bottom `spacing/150`.
-class _PrimarySlot extends StatelessWidget {
+///
+/// Keyboard: focusable like any Button; focus-visible draws the Button focus
+/// stroke (`interactive/focus`, `border/width/025`) around the FAB.
+class _PrimarySlot extends StatefulWidget {
   const _PrimarySlot({required this.label, required this.icon, required this.inverse, this.onPressed});
 
   final String label;
@@ -226,47 +229,68 @@ class _PrimarySlot extends StatelessWidget {
   final VoidCallback? onPressed;
 
   @override
+  State<_PrimarySlot> createState() => _PrimarySlotState();
+}
+
+class _PrimarySlotState extends State<_PrimarySlot> {
+  bool _focusHighlight = false;
+
+  @override
   Widget build(BuildContext context) {
     final t = LooviTokens.of(context);
+    final enabled = widget.onPressed != null;
     return Semantics(
       container: true,
       button: true,
-      enabled: onPressed != null,
-      label: label,
-      onTap: onPressed,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        excludeFromSemantics: true,
-        onTap: onPressed,
-        child: ExcludeSemantics(
-          child: Padding(
-            padding: EdgeInsets.only(bottom: t.spacing.s150),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  key: const Key('loovi-navigation-bar-primary'),
-                  width: t.spacing.s700,
-                  height: t.spacing.s700,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: t.component.button.containerBackground,
-                    borderRadius: BorderRadius.circular(t.radius.full),
+      enabled: enabled,
+      label: widget.label,
+      onTap: widget.onPressed,
+      child: FocusableActionDetector(
+        enabled: enabled,
+        onShowFocusHighlight: (v) => setState(() => _focusHighlight = v),
+        actions: {
+          ActivateIntent: CallbackAction<ActivateIntent>(onInvoke: (_) {
+            widget.onPressed?.call();
+            return null;
+          }),
+        },
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          excludeFromSemantics: true,
+          onTap: widget.onPressed,
+          child: ExcludeSemantics(
+            child: Padding(
+              padding: EdgeInsets.only(bottom: t.spacing.s150),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    key: const Key('loovi-navigation-bar-primary'),
+                    width: t.spacing.s700,
+                    height: t.spacing.s700,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: t.component.button.containerBackground,
+                      borderRadius: BorderRadius.circular(t.radius.full),
+                      border: _focusHighlight && enabled
+                          ? Border.all(color: t.interactive.focus, width: t.borderWidth.s025)
+                          : null,
+                    ),
+                    child: LooviIcon(widget.icon, size: t.spacing.s300, color: t.text.onColor),
                   ),
-                  child: LooviIcon(icon, size: t.spacing.s300, color: t.text.onColor),
-                ),
-                SizedBox(height: t.spacing.s050),
-                Text(
-                  label,
-                  maxLines: 1,
-                  softWrap: false,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: t.typography.captionMediumMedium.copyWith(
-                    color: inverse ? t.text.onColorDisabled : t.text.secondary,
+                  SizedBox(height: t.spacing.s050),
+                  Text(
+                    widget.label,
+                    maxLines: 1,
+                    softWrap: false,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    style: t.typography.captionMediumMedium.copyWith(
+                      color: widget.inverse ? t.text.onColorDisabled : t.text.secondary,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

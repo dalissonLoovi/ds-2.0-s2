@@ -1,8 +1,9 @@
 import 'package:loovi_tokens/loovi_tokens.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../foundation/loovi_blend.dart';
 import '../../generated/loovi_icon_names.g.dart';
-import '../app_header/loovi_app_header.dart' show LooviHeaderIconAction, looviPlusDarker;
+import '../app_header/loovi_app_header.dart' show LooviHeaderIconAction;
 
 /// Seed `SectionHeader.emphasis`.
 enum LooviSectionHeaderEmphasis { primary, secondary }

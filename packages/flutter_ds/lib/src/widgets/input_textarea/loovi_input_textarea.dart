@@ -178,6 +178,14 @@ class _LooviInputTextAreaState extends State<LooviInputTextArea> {
     final showSupporting = widget.showSupportingText && (supporting ?? '').isNotEmpty;
     final hint = [if (showSupporting) supporting!, if (showCount) count!].join(', ');
 
+    // countRow / resize glyph: text/secondary (disabled text/placeholder) on
+    // light fields; on inverse the same on-color pair as the supporting text
+    // (text/secondary on inverse-3 would be ~1.5:1).
+    final inverse = widget.appearance == LooviInputAppearance.inverse;
+    final metaColor = inverse
+        ? (widget.enabled ? t.text.onColorDisabled : t.text.placeholderInverse)
+        : (widget.enabled ? t.text.secondary : t.text.placeholder);
+
     final textField = TextField(
       controller: _controller,
       focusNode: _focusNode,
@@ -271,14 +279,14 @@ class _LooviInputTextAreaState extends State<LooviInputTextArea> {
                   end: t.spacing.s300,
                   bottom: t.spacing.s100,
                   child: ExcludeSemantics(
-                    child: Text(count!, maxLines: 1, style: captionStyle.copyWith(color: t.text.secondary)),
+                    child: Text(count!, maxLines: 1, style: captionStyle.copyWith(color: inverse ? metaColor : t.text.secondary)),
                   ),
                 ),
               if (widget.showResizeHandle)
                 PositionedDirectional(
                   end: t.spacing.s100,
                   bottom: t.spacing.s100,
-                  child: _ResizeHandle(color: widget.enabled ? t.text.secondary : t.text.placeholder),
+                  child: _ResizeHandle(color: metaColor),
                 ),
               if (floated && widget.label.isNotEmpty)
                 PositionedDirectional(

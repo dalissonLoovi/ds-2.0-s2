@@ -79,10 +79,14 @@ class LooviNavigationBarItem {
 /// `spacing/100`; icon 24 (`spacing/300`); label caption/medium/medium.
 ///
 /// Colors (intentional model, seed `rules.colors`):
-/// * default: unselected `text/secondary` · selected `color/actions/primary`
-///   · pressed `text/primary` (selected or not).
+/// * default: unselected icon + label `text/secondary` · selected icon
+///   `color/actions/primary`, selected LABEL `text/primary` (actions/primary is
+///   4.41:1 at caption size — below AA) · pressed `text/primary` (selected or
+///   not).
 /// * inverse: unselected `text/on-color-disabled` · selected
-///   `color/actions/tertiary` · pressed `text/on-color-disabled`.
+///   `color/actions/tertiary` (icon and label) · pressed `text/on-color-disabled`.
+/// * badge count: `color/palette/tangerine-1` + count `text/primary` (6.7:1 —
+///   never `text/secondary`, 3.3:1).
 ///
 /// Focus (keyboard only): `iconContainer` stroke `border/width/012`
 /// `interactive/focus` + inner `effects/effect/focus` band. No hover (mobile).
@@ -175,7 +179,7 @@ class _LooviNavigationBarItemViewState extends State<LooviNavigationBarItemView>
     final focused = states.contains(WidgetState.focused);
     final inverse = widget.appearance == LooviNavigationBarItemAppearance.inverse;
 
-    final Color ink = switch ((inverse, pressed, widget.selected)) {
+    final Color iconInk = switch ((inverse, pressed, widget.selected)) {
       (false, true, _) => t.text.primary,
       (false, false, true) => t.color.actionsPrimary,
       (false, false, false) => t.text.secondary,
@@ -183,11 +187,14 @@ class _LooviNavigationBarItemViewState extends State<LooviNavigationBarItemView>
       (true, false, true) => t.color.actionsTertiary,
       (true, false, false) => t.text.onColorDisabled,
     };
+    // Selected label on default: text/primary (AA at caption size); the icon
+    // keeps the color/actions/primary accent.
+    final Color labelInk = !inverse && widget.selected ? t.text.primary : iconInk;
 
     final iconName = widget.selected ? (item.selectedIcon ?? item.icon) : item.icon;
     final iconSize = t.spacing.s300;
 
-    Widget icon = LooviIcon(iconName, size: iconSize, color: ink);
+    Widget icon = LooviIcon(iconName, size: iconSize, color: iconInk);
     if (item.badge != LooviNavigationBarItemBadge.none) {
       // Badge anchor (frame, not tokenized): center ≈ icon right − spacing/025,
       // top − spacing/025 (count) / top (dot). Frame offsets: count center
@@ -209,7 +216,7 @@ class _LooviNavigationBarItemViewState extends State<LooviNavigationBarItemView>
       );
     }
 
-    final labelStyle = t.typography.captionMediumMedium.copyWith(color: ink);
+    final labelStyle = t.typography.captionMediumMedium.copyWith(color: labelInk);
 
     // iconContainer → stateLayer. The stateLayer's horizontal spacing/250 is
     // not applied to the label width (the label may use the full container
@@ -303,7 +310,8 @@ class _LooviNavigationBarItemViewState extends State<LooviNavigationBarItemView>
 }
 
 /// Nested Badge size=lg content=count|overflow: `color/palette/tangerine-1`,
-/// radius full, caption/medium/regular `text/secondary` (frame binding).
+/// radius full, caption/medium/regular `text/primary` (6.7:1 on tangerine-1;
+/// `text/secondary` was 3.3:1 — seed `rules.colors`).
 class _CountBadge extends StatelessWidget {
   const _CountBadge({required this.item});
   final LooviNavigationBarItem item;
@@ -325,7 +333,7 @@ class _CountBadge extends StatelessWidget {
         maxLines: 1,
         softWrap: false,
         textAlign: TextAlign.center,
-        style: t.typography.captionMediumRegular.copyWith(color: t.text.secondary),
+        style: t.typography.captionMediumRegular.copyWith(color: t.text.primary),
       ),
     );
   }

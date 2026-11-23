@@ -82,6 +82,26 @@ void main() {
     expect(_group(tester), 'a');
   });
 
+  testWidgets('disabled: checked = 4 text/placeholder, unchecked = 2 border/2 (distinct)', (tester) async {
+    const t = LooviTokens.appCliente;
+    await pumpLoovi(
+      tester,
+      const Column(children: [
+        LooviRadioButtonControl(key: Key('on'), checked: true, disabled: true),
+        LooviRadioButtonControl(key: Key('off'), checked: false, disabled: true),
+      ]),
+    );
+    Border border(String k) => (tester
+            .widget<Container>(find.descendant(of: find.byKey(Key(k)), matching: find.byType(Container)))
+            .decoration! as BoxDecoration)
+        .border! as Border;
+    expect(border('on').top.color, t.text.placeholder);
+    expect(border('on').top.width, t.borderWidth.s050);
+    expect(border('off').top.color, t.color.border2);
+    expect(border('off').top.width, t.borderWidth.s025);
+    expect(border('on'), isNot(border('off')));
+  });
+
   testWidgets('keyboard activation selects when focused', (tester) async {
     final node = FocusNode();
     addTearDown(node.dispose);

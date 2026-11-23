@@ -8,8 +8,12 @@
 }
 
 .disabled {
-  opacity: 0.48;
   cursor: not-allowed;
+}
+
+/* Control colours are explicit when disabled; only the text content is dimmed. */
+.disabled .content {
+  opacity: 0.48;
 }
 
 .controlWrap {
@@ -31,6 +35,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  /* Keep the control at 20×20 whatever the ring width (1.5 → 2 → 4 when disabled). */
+  box-sizing: border-box;
   width: 20px;
   height: 20px;
   border: 1.5px solid var(--color-border-1);
@@ -39,21 +45,21 @@
   pointer-events: none;
 }
 
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--color-actions-primary);
-  transform: scale(0);
-  transition: transform 120ms ease;
-}
-
+/* checked: thick ring border/width/050 (4) color/actions/primary — no center dot in any state. */
 .input:checked + .radio {
+  border-width: var(--border-width-050, 4px);
   border-color: var(--color-actions-primary);
 }
 
-.input:checked + .radio .dot {
-  transform: scale(1);
+/* disabled + unchecked: 2px ring color/border/2 */
+.input:disabled + .radio {
+  border: var(--border-width-025, 2px) solid var(--color-border-2);
+}
+
+/* disabled + checked: 4px ring text/placeholder — distinct from unchecked */
+.input:disabled:checked + .radio {
+  border-width: var(--border-width-050, 4px);
+  border-color: var(--text-placeholder);
 }
 
 .input:focus-visible + .radio,
@@ -85,3 +91,4 @@
   line-height: 16px;
   color: var(--text-secondary);
 }
+

@@ -23,6 +23,8 @@ figma.connect(
         danger: 'danger',
         secondary: 'secondary',
       }),
+      // inverse only takes effect for outline|text + intent=primary (ignored elsewhere).
+      appearance: figma.enum('appearance', { default: 'default', inverse: 'inverse' }),
       disabled: figma.boolean('disabled'),
       loading: figma.boolean('loading'),
       showIcon: figma.boolean('showIcon'),
@@ -35,6 +37,7 @@ figma.connect(
         variant={props.variant as 'solid' | 'outline' | 'text'}
         size={props.size as 'sm' | 'md' | 'lg'}
         intent={props.intent as 'primary' | 'success' | 'danger' | 'secondary'}
+        appearance={props.appearance as 'default' | 'inverse'}
         disabled={Boolean(props.disabled)}
         loading={Boolean(props.loading)}
         showIcon={Boolean(props.showIcon)}

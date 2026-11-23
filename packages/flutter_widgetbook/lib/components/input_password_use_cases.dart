@@ -22,7 +22,7 @@ WidgetbookComponent looviInputPasswordComponent() => WidgetbookComponent(
             final field = LooviInputPassword(
               label: context.knobs.string(label: 'label', initialValue: 'Senha'),
               placeholder: context.knobs.stringOrNull(label: 'placeholder', initialValue: 'Digite sua senha'),
-              supportingText: context.knobs.string(label: 'supportingText', initialValue: 'Supporting text'),
+              supportingText: context.knobs.string(label: 'supportingText', initialValue: 'Use pelo menos 8 caracteres.'),
               showSupportingText: context.knobs.boolean(label: 'showSupportingText'),
               error: context.knobs.boolean(label: 'state=error'),
               enabled: !context.knobs.boolean(label: 'state=disabled'),
@@ -49,7 +49,7 @@ class _PasswordStatesStory extends StatefulWidget {
 }
 
 class _PasswordStatesStoryState extends State<_PasswordStatesStory> {
-  late final List<TextEditingController> _c = List.generate(5, (_) => TextEditingController(text: 'Password123'));
+  late final List<TextEditingController> _c = List.generate(5, (_) => TextEditingController(text: 'minhasenha12'));
 
   @override
   void dispose() {
@@ -72,7 +72,7 @@ class _PasswordStatesStoryState extends State<_PasswordStatesStory> {
         gap,
         LooviInputPassword(label: 'visibility=visible', controller: _c[1], visibility: LooviInputPasswordVisibility.visible),
         gap,
-        LooviInputPassword(label: 'state=error', controller: _c[2], errorText: 'Supporting text'),
+        LooviInputPassword(label: 'state=error', controller: _c[2], errorText: 'Senha incorreta. Confira e tente de novo.'),
         gap,
         LooviInputPassword(label: 'state=disabled', controller: _c[3], enabled: false),
         gap,

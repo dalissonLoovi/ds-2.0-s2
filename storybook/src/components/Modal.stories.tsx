@@ -21,10 +21,23 @@ export const Web: Story = {
   args: {
     footer: (
       <>
-        <Button variant="text" label="Cancel" />
-        <Button label="Confirm" />
+        <Button variant="text" label="Cancelar" />
+        <Button label="Confirmar" />
       </>
     ),
   },
 };
 export const Mobile: Story = { args: { platform: 'mobile' } };
+/** showFooter — web: horizontal, right-aligned, size=lg. */
+export const WithFooter: Story = {
+  args: { showFooter: true, primaryActionLabel: 'Confirmar', secondaryActionLabel: 'Cancelar' },
+};
+/** showFooter — mobile: vertical, full width, primary on top, size=md. */
+export const WithFooterMobile: Story = {
+  args: {
+    platform: 'mobile',
+    showFooter: true,
+    primaryActionLabel: 'Confirmar',
+    secondaryActionLabel: 'Cancelar',
+  },
+};

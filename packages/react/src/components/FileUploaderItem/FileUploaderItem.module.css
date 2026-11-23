@@ -46,11 +46,11 @@
 }
 
 .success {
-  color: var(--feedback-success, var(--color-actions-success));
+  color: var(--feedback-success);
 }
 
 .danger {
-  color: var(--feedback-danger, var(--color-actions-danger));
+  color: var(--feedback-danger);
 }
 
 .body {
@@ -75,7 +75,7 @@
   margin: 0;
   font-size: 12px;
   line-height: 16px;
-  color: var(--feedback-danger, var(--color-actions-danger));
+  color: var(--text-danger);
 }
 
 .long {

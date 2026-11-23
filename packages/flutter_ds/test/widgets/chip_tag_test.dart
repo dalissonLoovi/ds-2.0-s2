@@ -15,6 +15,14 @@ BoxDecoration _decoration(WidgetTester tester) {
 
 Color _labelColor(WidgetTester tester, String label) => tester.widget<Text>(find.text(label)).style!.color!;
 
+const _statusIntents = [
+  LooviChipTagIntent.info,
+  LooviChipTagIntent.system,
+  LooviChipTagIntent.success,
+  LooviChipTagIntent.warning,
+  LooviChipTagIntent.danger,
+];
+
 /// Story "Matrix": intent × emphasis × state, sm and md, hug and fill.
 class ChipTagMatrix extends StatelessWidget {
   const ChipTagMatrix({super.key});
@@ -23,7 +31,7 @@ class ChipTagMatrix extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = LooviTokens.of(context);
     Widget row(LooviChipTagSize size, LooviChipTagIntent intent,
-        {LooviChipTagEmphasis emphasis = LooviChipTagEmphasis.strong, bool disabled = false}) {
+        {LooviChipTagEmphasis emphasis = LooviChipTagEmphasis.primary, bool disabled = false}) {
       return Padding(
         padding: EdgeInsets.only(bottom: t.spacing.s100),
         child: Row(children: [
@@ -57,8 +65,7 @@ class ChipTagMatrix extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         for (final size in LooviChipTagSize.values) ...[
           for (final intent in LooviChipTagIntent.values) row(size, intent),
-          for (final intent in [LooviChipTagIntent.success, LooviChipTagIntent.warning, LooviChipTagIntent.danger])
-            row(size, intent, emphasis: LooviChipTagEmphasis.soft),
+          for (final intent in _statusIntents) row(size, intent, emphasis: LooviChipTagEmphasis.secondary),
           row(size, LooviChipTagIntent.system, disabled: true),
         ],
       ]),
@@ -70,17 +77,17 @@ void main() {
   setUpAll(loadGoldenFonts);
 
   group('LooviChipTag paint by token', () {
-    final strong = <LooviChipTagIntent, Color>{
+    final primary = <LooviChipTagIntent, Color>{
       LooviChipTagIntent.info: _t.color.backgroundFeedbackPrimaryInfo,
       LooviChipTagIntent.system: _t.color.backgroundFeedbackPrimarySystem,
       LooviChipTagIntent.success: _t.color.backgroundFeedbackPrimarySuccess,
       LooviChipTagIntent.warning: _t.color.backgroundFeedbackPrimaryWarning,
       LooviChipTagIntent.danger: _t.color.backgroundFeedbackPrimaryDanger,
-      LooviChipTagIntent.brand: _t.color.backgroundSurfaceBrand,
+      LooviChipTagIntent.brand: _t.color.backgroundSurfaceBrandStrong,
     };
-    for (final e in strong.entries) {
-      testWidgets('strong ${e.key.name} → fill token', (tester) async {
-        await pumpLoovi(tester, Align(alignment: Alignment.topLeft, child: LooviChipTag(label: 'Tag', intent: e.key)));
+    for (final e in primary.entries) {
+      testWidgets('primary ${e.key.name} → fill token', (tester) async {
+        await pumpLoovi(tester, Align(alignment: Alignment.topLeft, child: LooviChipTag(label: 'Tag', intent: e.key, emphasis: LooviChipTagEmphasis.primary)));
         expect(_decoration(tester).color, e.value);
         expect(_decoration(tester).border, isNull);
         expect(
@@ -90,22 +97,34 @@ void main() {
       });
     }
 
-    final soft = <LooviChipTagIntent, Color>{
+    final secondary = <LooviChipTagIntent, Color>{
+      LooviChipTagIntent.info: _t.color.backgroundFeedbackSecondaryInfo,
+      LooviChipTagIntent.system: _t.color.backgroundFeedbackSecondarySystem,
       LooviChipTagIntent.success: _t.color.backgroundFeedbackSecondarySuccess,
       LooviChipTagIntent.warning: _t.color.backgroundFeedbackSecondaryWarning,
       LooviChipTagIntent.danger: _t.color.backgroundFeedbackSecondaryDanger,
-      // No secondary token for info/system: falls back to strong.
-      LooviChipTagIntent.info: _t.color.backgroundFeedbackPrimaryInfo,
     };
-    for (final e in soft.entries) {
-      testWidgets('soft ${e.key.name} → fill token', (tester) async {
+    for (final e in secondary.entries) {
+      testWidgets('secondary ${e.key.name} → fill token + text/primary', (tester) async {
         await pumpLoovi(
           tester,
-          Align(alignment: Alignment.topLeft, child: LooviChipTag(label: 'Tag', intent: e.key, emphasis: LooviChipTagEmphasis.soft)),
+          Align(alignment: Alignment.topLeft, child: LooviChipTag(label: 'Tag', intent: e.key, emphasis: LooviChipTagEmphasis.secondary)),
         );
         expect(_decoration(tester).color, e.value);
+        expect(_labelColor(tester, 'Tag'), _t.text.primary);
       });
     }
+
+    testWidgets('default emphasis is secondary (soft); emphasis is ignored by outline/brand', (tester) async {
+      expect(const LooviChipTag(label: 'x').emphasis, LooviChipTagEmphasis.secondary);
+      await pumpLoovi(tester, const Align(alignment: Alignment.topLeft, child: LooviChipTag(label: 'Info')));
+      expect(_decoration(tester).color, _t.color.backgroundFeedbackSecondaryInfo);
+      await pumpLoovi(tester, const Align(
+        alignment: Alignment.topLeft,
+        child: LooviChipTag(label: 'Tag', intent: LooviChipTagIntent.brand, emphasis: LooviChipTagEmphasis.secondary),
+      ));
+      expect(_decoration(tester).color, _t.color.backgroundSurfaceBrandStrong);
+    });
 
     testWidgets('outline → no fill, border/2 stroke at border/width/012', (tester) async {
       await pumpLoovi(tester, const Align(alignment: Alignment.topLeft, child: LooviChipTag(label: 'Tag', intent: LooviChipTagIntent.outline)));
@@ -168,8 +187,22 @@ void main() {
     handle.dispose();
   });
 
+  testWidgets('textScaler 2: sm grows past 24 instead of clipping the label', (tester) async {
+    await pumpLoovi(
+      tester,
+      const Align(alignment: Alignment.topLeft, child: LooviChipTag(key: Key('sm'), label: 'Ativo', size: LooviChipTagSize.sm)),
+      textScale: 2,
+    );
+    expect(tester.takeException(), isNull);
+    final chip = tester.getRect(find.byKey(const Key('sm')));
+    final label = tester.getRect(find.text('Ativo'));
+    expect(chip.height, greaterThan(_t.spacing.s300));
+    expect(label.top, greaterThanOrEqualTo(chip.top));
+    expect(label.bottom, lessThanOrEqualTo(chip.bottom));
+  });
+
   testWidgets('golden: matrix', (tester) async {
-    await pumpGolden(tester, const ChipTagMatrix(), height: 960);
+    await pumpGolden(tester, const ChipTagMatrix(), height: 1100);
     await expectLater(find.byType(ChipTagMatrix), matchesGoldenFile('../goldens/chip_tag_matrix.png'));
   });
 }

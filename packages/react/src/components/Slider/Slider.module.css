@@ -36,9 +36,9 @@
 }
 
 .error {
-  color: var(--feedback-danger, var(--color-actions-danger));
+  color: var(--text-danger);
 }
 
 .warning {
-  color: var(--feedback-warning);
+  color: var(--text-warning);
 }

@@ -44,3 +44,18 @@
   padding: var(--spacing-200, 12px) var(--spacing-250, 16px);
   border-top: 1px solid var(--color-border-2);
 }
+
+/*
+ * showFooter (built-in actions) — mobile|mobile-landscape: vertical, full width, primary on top.
+ * Modal.tsx renders the primary first in the DOM on these platforms, so a plain column keeps
+ * focus order = visual order (no column-reverse). A custom `footer` keeps the row layout.
+ */
+.footerStacked {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.footerStacked > * {
+  width: 100%;
+}

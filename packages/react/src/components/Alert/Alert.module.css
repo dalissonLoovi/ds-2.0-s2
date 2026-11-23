@@ -1,52 +1,119 @@
+/*
+ * Alert — aligned to Figma (seed Alert.rules.inverseSurface / tokenRules, 2026-11-23):
+ * padding spacing/150 top · spacing/250 right/bottom/left; root gap spacing/100;
+ * content gap (icon ↔ text) spacing/150; text gap spacing/100; radius border/radius/400.
+ */
 .root {
+  --alert-pad-top: var(--spacing-150, 12px);
+  --alert-pad-side: var(--spacing-250, 20px);
+  --alert-close-icon: 24px;
+  --alert-close-target: 48px;
+
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-200, 12px);
-  padding: var(--spacing-200, 12px);
-  border-radius: var(--border-radius-300, 12px);
-  background: var(--color-background-surface-2);
+  gap: var(--spacing-100, 8px);
+  padding: var(--alert-pad-top) var(--alert-pad-side) var(--alert-pad-side);
+  border-radius: var(--border-radius-400, 16px);
+  background: var(--color-background-surface-3);
   color: var(--text-primary);
 }
 
+/*
+ * appearance=inverse — Figma fills bottom→top: color/background-surface/brand-strong (opacity 1)
+ * + color/elevation/inverse-3 at 48% paint opacity on top. inverse-3 is rgba(0,0,0,.48), so the
+ * composite layer is black at .48 × .48 ≈ .23 → renders ≈ #3E53B2.
+ */
 .appearance-inverse {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--color-background-surface-brand) 48%, transparent),
-    var(--color-elevation-inverse-3)
+  background-color: var(--color-background-surface-brand-strong);
+  background-image: linear-gradient(
+    color-mix(in srgb, var(--color-elevation-inverse-3) 48%, transparent),
+    color-mix(in srgb, var(--color-elevation-inverse-3) 48%, transparent)
   );
   color: var(--text-on-color);
 }
 
 .body {
   display: flex;
-  gap: var(--spacing-200, 12px);
+  gap: var(--spacing-150, 12px);
   align-items: flex-start;
 }
 
 .copy {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-050, 4px);
+  gap: var(--spacing-100, 8px);
   min-width: 0;
 }
 
+/* title: body/medium/semi-bold (14) — text/primary | text/on-color */
 .title {
   margin: 0;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
+  font-size: var(--typography-body-medium-semi-bold-font-size, 14px);
+  line-height: var(--typography-body-medium-semi-bold-line-height, 20px);
+  font-weight: var(--typography-body-medium-semi-bold-font-weight, 600);
+  color: var(--text-primary);
 }
 
+/* description: body/small/regular (12) — text/secondary | text/on-color-disabled */
 .description {
   margin: 0;
-  font-size: 12px;
-  line-height: 16px;
-  opacity: 0.9;
+  font-size: var(--typography-body-small-regular-font-size, 12px);
+  line-height: var(--typography-body-small-regular-line-height, 17px);
+  font-weight: var(--typography-body-small-regular-font-weight, 400);
+  color: var(--text-secondary);
 }
 
+.appearance-inverse .title {
+  color: var(--text-on-color);
+}
+
+.appearance-inverse .description {
+  color: var(--text-on-color-disabled);
+}
+
+/* statusIcon: fixed 32×32, feedback/{status} in BOTH appearances; status=system has no icon. */
 .icon {
   flex-shrink: 0;
   display: inline-flex;
+  width: 32px;
+  height: 32px;
+}
+
+.status-info .icon {
+  color: var(--feedback-info);
+}
+
+.status-success .icon {
+  color: var(--feedback-success);
+}
+
+.status-danger .icon {
+  color: var(--feedback-danger);
+}
+
+.status-warning .icon {
+  color: var(--feedback-warning);
+}
+
+/*
+ * showClose: x-outline 24 anchored to the padding corner (top-right). The hit area is
+ * 48×48 centred on the icon (negative offset into the padding), so the visual padding
+ * is unchanged. Colour comes from Button text/primary (default) or appearance=inverse
+ * (text/on-color) — same as the title.
+ */
+.hasClose .body {
+  padding-right: calc(var(--alert-close-icon) + var(--spacing-100, 8px));
+}
+
+.root .close {
+  position: absolute;
+  top: calc(var(--alert-pad-top) - (var(--alert-close-target) - var(--alert-close-icon)) / 2);
+  right: calc(var(--alert-pad-side) - (var(--alert-close-target) - var(--alert-close-icon)) / 2);
+  width: var(--alert-close-target);
+  height: var(--alert-close-target);
+  min-height: var(--alert-close-target);
+  padding: 0;
 }
 
 .actions {
@@ -54,25 +121,12 @@
   justify-content: flex-start;
 }
 
-.status-success .icon {
-  color: var(--feedback-success, var(--color-actions-success));
-}
-
-.status-danger .icon {
-  color: var(--feedback-danger, var(--color-actions-danger));
-}
-
-.status-warning .icon {
-  color: var(--feedback-warning);
-}
-
-.status-info .icon,
-.status-system .icon {
-  color: var(--color-actions-primary);
-}
-
-.appearance-inverse .icon,
-.appearance-inverse .title,
-.appearance-inverse .description {
-  color: inherit;
+/*
+ * Action (appearance=default): Button outline sm intent=primary appearance=default with
+ * stroke color/border/1 + label text/primary (Figma). Inverse keeps Button appearance=inverse
+ * (stroke/label text/on-color).
+ */
+.appearance-default .action {
+  --btn-border: var(--color-border-1);
+  --btn-fg: var(--text-primary);
 }

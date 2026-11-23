@@ -4,11 +4,11 @@
 **Arquivo:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2)  
 **Storybook:** https://dalissonloovi.github.io/ds-2.0-s2/  
 **Seed:** `design-system-tokens.storybook.updated.v2.json` (130 componentes · 127 com React · 23 vars `product-theme`)  
-**Revision recente:** `2026-09-21-link-audit-apply`
+**Revision recente:** `2026-11-23-review-decisions`
 
 **Estado:** fundação + temas core + Docs humanas + fila Painel Home + React W0–W7 **fechados**.  
 **Modo atual:** melhoria contínua (gap de produto → decisão → Figma → seed → Pages).  
-**Últimos applies:** 2026-09-18 ChipTag / ChipClickable `intent=brand` + superfícies soft · 2026-09-21 Link (size, tipografia, tokens, paridade React).
+**Últimos applies:** 2026-09-21 Link (size, tipografia, tokens, paridade React) · 2026-11-23 saída Flutter, split de cores de feedback + `emphasis`, design fixes (Button `appearance=inverse`, Alert `showClose`, Modal `showFooter`, RadioButton disabled).
 
 ---
 
@@ -214,29 +214,43 @@ Figma (ajuste)
 - nodeIds: Switch → `3653:4741`, NavigationBarItem → `3653:15180` (seed + Code Connect).
 - Impacto: CSS/React (Escritório Virtual) — selected fica azulado e o overlay mais claro; Flutter regenerado; Storybook regenerado.
 
-**Pendente — decisão de design (não sincronizado de propósito)**
+**Aplicado em 2026-11-23 — cores de feedback e emphasis** (revision `2026-11-23-feedback-split-emphasis`)
 
-| Variável | Figma | Seed (mantido) | Motivo |
+| Uso | Token | Valor | Contraste (surface/0) |
 | --- | --- | --- | --- |
-| `feedback/success` | #2DBE5E | #00723E | Figma falha AA como texto |
-| `feedback/danger` | #F54444 | #D83E3E | idem |
-| `feedback/warning` | #FFB74C | #8C7502 | idem |
+| Ícone/indicador **com rótulo** | `feedback/{success · danger · warning · info}` | #2DBE5E · #F54444 · #FFB74C · #54DEF8 (Figma) | 2,4 · 3,5 · 1,7 · 1,6 |
+| **Texto** de status e ícone **sozinho** | `text/{success · danger · warning · info}` (novos) | #00723E · #D81C1A · #7A6400 · #04778A | 5,9 · 5,0 · 5,6 · 5,1 |
+| Fundo forte / suave | `background-feedback-{primary · secondary}/{status}` | secondary novos: info teal-2 #E1FBFF, system azure-2 #D9E0FF | conteúdo text/primary ≥ 12:1 |
 
-Proposta: separar cor de ícone/indicador (clara) de cor de texto (AA) antes de sincronizar.
+- Primitivas novas: `amber-700` #7A6400, `teal-700` #04778A.
+- Figma: 405 textos religados de `feedback/*` → `text/*` (Button, família Input, DatePicker, FileUploaderItem, Slider, VerificationCodeInput).
+- `emphasis = primary | secondary`: ChipTag (renomeado de strong | soft, +16 variantes), ChipClickable (+84), Banner (+4). Alert fora (status só muda o ícone).
+- Regra no seed: `meta.governance.feedbackColorRule`.
+- ~~Banner `status=info` primary ligado a `…/system`~~ → corrigido para `background-feedback-primary/info` (2026-11-23).
 
 **Ícones App Cliente** — auditoria completa em [`ds-icons-audit/2026-11-23-app-cliente-aliases.md`](./ds-icons-audit/2026-11-23-app-cliente-aliases.md): 605 `*-filled` sem preenchimento (aguarda design: usar estilo solid do Hugeicons?). Seta×chevron, traços e `car-side-filled` **aplicados em 2026-11-23**; `" tire"` duplica `tire-outline` (design decide). Publicar a biblioteca no Figma para propagar. Faltam ainda `player-play-outline` e `player-record-filled` no pacote Flutter.
 
-**Figma — componentes (reportado)**
-- RadioButton disabled on × off idênticos (3653:5321 / 3653:5304) — P1 a11y visual.
-- AppHeader specific: ações trailing sobrepostas no mesmo slot de 40; large default sem SPACE_BETWEEN (3143:8856).
-- ModalHeader close com `size-[40px]` cru (3786:9384, 3802:205); ChipTag md ícone 32 (3653:23235); ChipClickable sm avatar 22 (3653:23581); Alert inverse brand sem variável (4406:31).
-- Frames sem variável (gaps 4/8/10, alturas 36/56/64/160) — detalhe nos relatórios da onda.
+**Figma — componentes**
+- Resolvidos em 2026-11-23 (revision `2026-11-23-design-fixes`, conferido no Figma): RadioButton disabled on × off (ring `border/width/050` + `text/placeholder`), AppHeader specific (trailing lado a lado; 3143:8856 em SPACE_BETWEEN), ModalHeader close ligado a `component/modal-header/close-action/*`, Alert inverse brand ligado a `color/background-surface/brand`.
+- ~~ChipTag md ícone 32 / ChipClickable sm avatar 22 sem variável~~ → ligados a `spacing/250|300|400` (avatar sm do ChipClickable 22 → 20; chip sm 30 → 28) em 2026-11-23. Frames sem variável — ver `meta.governance.unboundValues` no seed.
 
-**Exceções mantidas no Flutter (fora do seed, decisão 2026-11-23)**
-- `LooviAlert` com ação de fechar (desligada por padrão) e `LooviModal` com `footer` (existe no React). Oficializar no Figma/seed ou remover numa próxima onda.
+**Decisões da revisão — aplicado em 2026-11-23** (revision `2026-11-23-review-decisions`)
+
+| # | Decisão | O que mudou |
+| --- | --- | --- |
+| 1 | Chips: padrão suave | `emphasis=secondary` é o padrão no Figma (variante do topo à esquerda), React e Flutter; `primary` (forte) é opt-in. Escritório Virtual não muda. ChipTag tinha as 4 variantes secondary/success empilhadas sobre as primary — reposicionadas. |
+| 2 | Contraste dos botões | `color/actions/primary` → sapphire #516CE7 (4,52:1); `color/actions/danger` → crimson-red #D81C1A (5,12:1); solid secondary com texto/ícone `text/primary` (9,1:1); solid success com rótulo `text/on-color`; hover/pressed/selected do success e secondary com camada de estado (antes cobriam a cor). Novo `color/background-surface/brand-strong` #516CE7 para fundo de marca com texto branco pequeno (chips brand, Alert inverse, AppHeader inverse no site-loovi e app-cliente). `background-surface/brand` (#5A78FF) continua para áreas grandes. |
+| 3 | Banner info | primary ligado a `background-feedback-primary/info`. |
+| 4 | Remover do ChipClickable | visual 16 × 16; área de toque ≥ 24 × 24 no código, sem mudar o tamanho do chip. |
+| 5 | NavigationBarItem | rótulo selecionado `text/primary` (ícone segue `actions/primary`); número do badge `text/primary` (6,7:1). |
+| 6 | Seed × Figma | Button: props como no Figma (sem `trailingIcon` swap; `loading` é estado; `disabled` é VARIANT). Alert React alinhado ao Figma (padding, borda da ação, ícone no inverse). |
+| P3 | Ajustes | AppHeader small-centered com título no centro (390 de largura, lados equilibrados); 115 ligações a variáveis remotas legadas (`Color/Content/*`, `Color/Interactive/*`, `Schemes/*`) trocadas por tokens S2 locais; `variableCount` 301; `elevation/pressed` segue deprecated até o próximo major; RadioButton marcado = anel sem ponto central (confirmado no Figma); textos padrão do Modal em português; stories antigas de ChipTag renomeadas; helper `plusDarker` único no Flutter; `CLAUDE.md` sem menção a handoff local. |
+
+- Limitação da Plugin API registrada em `meta.governance.stateLayerBlend`: blend e opacidade de pintura se perdem em pinturas ligadas a variável — usar nó `stateOverlay` com blend no nó.
+
+**Oficializados em 2026-11-23** (antes eram exceções do Flutter): Alert `showClose`, Modal `showFooter`, Button `appearance=inverse` — Figma + seed + React + Flutter.
 
 **Propostas de componente**
-- `LooviButton` appearance `inverse` (Alert inverse usa recolor provisório).
 - LoadingSpinner Flutter (hoje interno ao Button).
 
 ---

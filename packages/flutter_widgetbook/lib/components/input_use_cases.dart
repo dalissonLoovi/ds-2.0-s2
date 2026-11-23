@@ -20,9 +20,9 @@ WidgetbookComponent looviInputComponent() => WidgetbookComponent(
             );
             final error = context.knobs.boolean(label: 'state=error');
             final input = LooviInput(
-              label: context.knobs.string(label: 'label', initialValue: 'Label'),
-              placeholder: context.knobs.stringOrNull(label: 'placeholder', initialValue: 'Placeholder'),
-              supportingText: context.knobs.string(label: 'supportingText', initialValue: 'Supporting text'),
+              label: context.knobs.string(label: 'label', initialValue: 'E-mail'),
+              placeholder: context.knobs.stringOrNull(label: 'placeholder', initialValue: 'Digite seu nome'),
+              supportingText: context.knobs.string(label: 'supportingText', initialValue: 'Usado para acessar o app.'),
               showSupportingText: context.knobs.boolean(label: 'showSupportingText'),
               error: error,
               enabled: !context.knobs.boolean(label: 'state=disabled'),
@@ -60,10 +60,10 @@ class _InputStatesStory extends StatefulWidget {
 }
 
 class _InputStatesStoryState extends State<_InputStatesStory> {
-  final _value = TextEditingController(text: 'Input');
-  final _error = TextEditingController(text: 'Input');
-  final _disabled = TextEditingController(text: 'Input');
-  final _inverse = TextEditingController(text: 'Input');
+  final _value = TextEditingController(text: 'Ana Souza');
+  final _error = TextEditingController(text: 'Ana Souza');
+  final _disabled = TextEditingController(text: 'Ana Souza');
+  final _inverse = TextEditingController(text: 'Ana Souza');
 
   @override
   void dispose() {
@@ -80,15 +80,15 @@ class _InputStatesStoryState extends State<_InputStatesStory> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const LooviInput(label: 'content=placeholder', placeholder: 'Placeholder', leadingIcon: true, trailingIcon: true),
+        const LooviInput(label: 'content=placeholder', placeholder: 'Digite seu nome', leadingIcon: true, trailingIcon: true),
         gap,
         LooviInput(label: 'content=value', controller: _value, leadingIcon: true, trailingIcon: true),
         gap,
         const LooviInput(label: 'content=label (tap = focus)', leadingIcon: true, trailingIcon: true),
         gap,
-        LooviInput(label: 'state=error', controller: _error, leadingIcon: true, trailingIcon: true, errorText: 'Supporting text'),
+        LooviInput(label: 'state=error', controller: _error, leadingIcon: true, trailingIcon: true, errorText: 'Confira o nome digitado.'),
         gap,
-        LooviInput(label: 'state=disabled', controller: _disabled, leadingIcon: true, trailingIcon: true, enabled: false, supportingText: 'Supporting text'),
+        LooviInput(label: 'state=disabled', controller: _disabled, leadingIcon: true, trailingIcon: true, enabled: false, supportingText: 'Usado para acessar o app.'),
         gap,
         inputSurface(
           context,

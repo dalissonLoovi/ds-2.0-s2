@@ -5,9 +5,12 @@ import { Button } from '../Button/Button';
 import styles from './Banner.module.css';
 
 export type BannerStatus = 'success' | 'warning' | 'info' | 'danger';
+/** `primary` = color/background-feedback-primary/{status}; `secondary` = color/background-feedback-secondary/{status}. */
+export type BannerEmphasis = 'primary' | 'secondary';
 
 export type BannerProps = HTMLAttributes<HTMLDivElement> & {
   status?: BannerStatus;
+  emphasis?: BannerEmphasis;
   message?: string;
   showIcon?: boolean;
   showAction?: boolean;
@@ -25,6 +28,7 @@ const STATUS_ICON: Record<BannerStatus, DsIconName> = {
 
 export function Banner({
   status = 'info',
+  emphasis = 'primary',
   message = 'Message',
   showIcon = true,
   showAction = false,
@@ -39,9 +43,15 @@ export function Banner({
 
   return (
     <div
-      className={cx(styles.root, styles[`status-${status}`], className)}
+      className={cx(
+        styles.root,
+        styles[`status-${status}`],
+        styles[`emphasis-${emphasis}`],
+        className,
+      )}
       role={role}
       data-status={status}
+      data-emphasis={emphasis}
       {...rest}
     >
       <div className={styles.body}>
@@ -57,7 +67,8 @@ export function Banner({
           <Button
             variant="text"
             size="sm"
-            intent={status === 'danger' ? 'danger' : 'primary'}
+            // text/danger on the primary danger fill (#F54444) is ~1.3:1 — use text/primary there.
+            intent={status === 'danger' && emphasis === 'secondary' ? 'danger' : 'primary'}
             label={actionLabel}
             onClick={onAction}
           />

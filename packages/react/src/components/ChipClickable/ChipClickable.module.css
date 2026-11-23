@@ -13,12 +13,14 @@
   cursor: pointer;
 }
 
-.root:disabled {
+.root:disabled,
+.root.isDisabled {
   opacity: 0.48;
   cursor: not-allowed;
 }
 
-.root:focus-visible {
+.root:focus-visible,
+.mainAction:focus-visible::after {
   outline: 2px solid var(--interactive-focus, var(--color-border-feedback-primary));
   outline-offset: 2px;
 }
@@ -47,7 +49,8 @@
 .intent-soft {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  /* no overflow:hidden — ::before overlay already uses border-radius:inherit, and the
+     delete-action hit area (24×24) must not be clipped by the chip padding box. */
   background: var(--color-background-surface-0, #fcfcfe);
   border-color: var(--color-border-2, #ebebeb);
 }
@@ -60,15 +63,18 @@
   border-radius: inherit;
   pointer-events: none;
   background: transparent;
+  /* plus-darker is Safari-only; elsewhere it is dropped and multiply stays (else the opaque
+     interactive/* overlay would paint over the label). */
+  mix-blend-mode: multiply;
   mix-blend-mode: plus-darker;
 }
 
-.intent-soft:hover:not(:disabled)::before,
+.intent-soft:hover:not(:disabled):not(.isDisabled)::before,
 .intent-soft[data-state='hover']::before {
   background: var(--interactive-hover, #f8f8f8);
 }
 
-.intent-soft:active:not(:disabled)::before,
+.intent-soft:active:not(:disabled):not(.isDisabled)::before,
 .intent-soft[data-state='pressed']::before {
   background: var(--interactive-pressed, #d6d6d6);
 }
@@ -86,35 +92,96 @@
   background: transparent;
 }
 
-.intent-success {
-  background: var(--color-background-feedback-secondary-success, #eefaf3);
+/*
+ * Status intents (info, system, success, warning, danger) — content text/primary.
+ * emphasis=primary → color/background-feedback-primary/{intent} (danger → interactive/error-surface);
+ * emphasis=secondary → color/background-feedback-secondary/{intent}.
+ * hover|pressed|selected stack interactive/* (Plus Darker / LINEAR_BURN) over the base fill.
+ */
+.status {
+  position: relative;
+  isolation: isolate;
+  /* no overflow:hidden — ::before overlay already uses border-radius:inherit, and the
+     delete-action hit area (24×24) must not be clipped by the chip padding box. */
   border-color: transparent;
-  color: var(--color-actions-success, #00723e);
+  color: var(--text-primary);
 }
 
-.intent-danger {
-  background: var(--color-background-feedback-secondary-danger, #fdeCEC);
-  border-color: transparent;
-  color: var(--color-actions-danger, #f54444);
+.status::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: transparent;
+  /* plus-darker is Safari-only; elsewhere it is dropped and multiply stays (else the opaque
+     interactive/* overlay would paint over the label). */
+  mix-blend-mode: multiply;
+  mix-blend-mode: plus-darker;
 }
 
-.intent-warning {
+.status:hover:not(:disabled):not(.isDisabled)::before,
+.status[data-state='hover']::before {
+  background: var(--interactive-hover, #f8f8f8);
+}
+
+.status:active:not(:disabled):not(.isDisabled)::before,
+.status[data-state='pressed']::before {
+  background: var(--interactive-pressed, #d6d6d6);
+}
+
+.status.selected::before,
+.status[data-state='selected']::before {
+  background: var(--interactive-selected, #d0d9e8);
+}
+
+.emphasis-primary.intent-info {
+  background: var(--color-background-feedback-primary-info);
+}
+
+.emphasis-primary.intent-system {
+  background: var(--color-background-feedback-primary-system);
+}
+
+.emphasis-primary.intent-success {
+  background: var(--color-background-feedback-primary-success);
+}
+
+.emphasis-primary.intent-warning {
+  background: var(--color-background-feedback-primary-warning);
+}
+
+.emphasis-primary.intent-danger {
+  background: var(--interactive-error-surface);
+}
+
+.emphasis-secondary.intent-info {
+  background: var(--color-background-feedback-secondary-info);
+}
+
+.emphasis-secondary.intent-system {
+  background: var(--color-background-feedback-secondary-system);
+}
+
+.emphasis-secondary.intent-success {
+  background: var(--color-background-feedback-secondary-success);
+}
+
+.emphasis-secondary.intent-warning {
   background: var(--color-background-feedback-secondary-warning);
-  border-color: transparent;
-  color: var(--feedback-warning);
 }
 
-.intent-info,
-.intent-system {
-  background: var(--color-background-surface-2, #e7effc);
-  border-color: transparent;
+.emphasis-secondary.intent-danger {
+  background: var(--color-background-feedback-secondary-danger);
 }
 
+/* Brand → color/background-surface/brand-strong + text/on-color (4.52:1, AA). */
 .intent-brand {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  background: var(--color-background-surface-brand, #5a78ff);
+  /* no overflow:hidden — ::before overlay already uses border-radius:inherit, and the
+     delete-action hit area (24×24) must not be clipped by the chip padding box. */
+  background: var(--color-background-surface-brand-strong, #516ce7);
   border-color: transparent;
   color: var(--text-on-color);
 }
@@ -127,15 +194,18 @@
   border-radius: inherit;
   pointer-events: none;
   background: transparent;
+  /* plus-darker is Safari-only; elsewhere it is dropped and multiply stays (else the opaque
+     interactive/* overlay would paint over the label). */
+  mix-blend-mode: multiply;
   mix-blend-mode: plus-darker;
 }
 
-.intent-brand:hover:not(:disabled)::before,
+.intent-brand:hover:not(:disabled):not(.isDisabled)::before,
 .intent-brand[data-state='hover']::before {
   background: var(--interactive-hover, #f8f8f8);
 }
 
-.intent-brand:active:not(:disabled)::before,
+.intent-brand:active:not(:disabled):not(.isDisabled)::before,
 .intent-brand[data-state='pressed']::before {
   background: var(--interactive-pressed, #d6d6d6);
 }
@@ -165,9 +235,104 @@
   flex-shrink: 0;
 }
 
-.avatar {
+/*
+ * deleteAction — 16×16 visually (Figma). The invisible ::before grows the hit area to 24×24
+ * (WCAG 2.5.8 target size) without changing the chip box: it overflows into the chip padding.
+ */
+.delete {
+  position: relative;
   width: 16px;
   height: 16px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.delete::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+}
+
+.delete {
+  z-index: 1; /* above the main action's stretched ::after */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.delete:disabled {
+  cursor: not-allowed;
+}
+
+.delete:focus-visible {
+  outline: 2px solid var(--interactive-focus, var(--color-border-feedback-primary));
+  outline-offset: 2px;
+  border-radius: var(--border-radius-full, 999px);
+}
+
+/*
+ * showDeleteAction: the root is a <span> wrapper with two sibling buttons. The main action is
+ * visually transparent (the wrapper paints the chip) and its ::after covers the whole chip so
+ * any click outside the delete control activates the chip.
+ */
+.withDelete {
+  position: relative;
+}
+
+.mainAction {
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: inherit;
+}
+
+.mainAction:focus-visible {
+  outline: none;
+}
+
+.mainAction::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius-full, 999px);
+}
+
+.mainAction:focus-visible::after {
+  outline-offset: 3px;
+}
+
+/* Avatar — bound to spacing tokens: sm 20 (spacing/250) · md 32 (spacing/400). */
+.avatar {
+  flex-shrink: 0;
   border-radius: 50%;
   background: var(--color-background-surface-3, #d0d9e8);
+}
+
+.size-sm .avatar {
+  width: var(--spacing-250, 20px);
+  height: var(--spacing-250, 20px);
+}
+
+.size-md .avatar {
+  width: var(--spacing-400, 32px);
+  height: var(--spacing-400, 32px);
+}
+
+/* With avatar: sm chip = 28 (was 30 with the unbound 22 avatar); md = 40 (32 + 2×spacing/050). */
+.size-sm.hasAvatar {
+  min-height: 28px;
+}
+
+.size-md.hasAvatar {
+  min-height: 40px;
 }

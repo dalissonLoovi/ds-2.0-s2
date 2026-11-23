@@ -59,9 +59,8 @@ export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(functi
           aria-describedby={showContent && showDescription ? descId : undefined}
           {...rest}
         />
-        <span className={styles.radio} aria-hidden>
-          <span className={styles.dot} />
-        </span>
+        {/* checked = thick ring only (border/width/050), no center dot — seed rules.checkedIndicator */}
+        <span className={styles.radio} aria-hidden />
       </span>
       {showContent && (showLabel || showDescription) && (
         <span className={styles.content}>

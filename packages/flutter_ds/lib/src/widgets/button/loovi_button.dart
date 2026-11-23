@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:loovi_tokens/loovi_tokens.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../foundation/loovi_blend.dart';
 import '../../foundation/loovi_icon.dart';
 import '../../foundation/loovi_tap_target.dart';
 import '../../generated/loovi_icon_names.g.dart';
@@ -18,6 +19,15 @@ enum LooviButtonSize { sm, md, lg }
 /// `primary` (no frame to copy).
 enum LooviButtonIntent { primary, success, danger, secondary }
 
+/// Seed `Button.appearance` (`default | inverse`). `default` is a reserved word
+/// in Dart, so the seed value `default` maps to [standard].
+///
+/// [inverse] is published only for `variant=outline|text` with
+/// `intent=primary` (dark/brand surfaces, e.g. the Alert inverse action). On
+/// any other combination it is ignored and the button paints as [standard]
+/// (see [LooviButton.isInverse]).
+enum LooviButtonAppearance { standard, inverse }
+
 /// Button (Figma 3104:3723) — triggers an explicit user action.
 ///
 /// Seed `state` maps to runtime: `pressed` from touch, `focus` from keyboard
@@ -28,14 +38,25 @@ enum LooviButtonIntent { primary, success, danger, secondary }
 /// - container: height `spacing/700|600|500` (lg|md|sm), padding-x
 ///   `spacing/400|300|200`, gap `spacing/200|150|100`; radius
 ///   `component/button/container/radius/lg` (md|lg) or `/sm` (sm) → full.
-/// - solid fill: primary `component/button/container/background`; success
-///   `feedback/success`; danger `color/actions/danger`; secondary
-///   `color/actions/secondary`.
+/// - solid fill + label/icon: primary `component/button/container/background`
+///   + `component/button/label/color` / `icon/color`; success
+///   `color/actions/success` + `text/on-color`; danger `color/actions/danger`
+///   (#D81C1A, 5.12:1) + `text/on-color`; secondary `color/actions/secondary`
+///   + `text/primary` (on-color was 1.8:1).
 /// - outline stroke `border/width/012`: primary `color/border/1`; success
 ///   `color/border-feedback/success`; danger `color/border-feedback/danger`.
-/// - pressed / selected: `interactive/pressed|selected` composited over the
-///   solid fill with Plus Darker (LINEAR_BURN); outline/text get the
-///   interactive fill directly. Secondary has no pressed overlay in Figma.
+/// - outline/text label (TEXT): success `text/success`, danger `text/danger`
+///   (AA); the leading/trailing icon next to it keeps `feedback/success` /
+///   `color/actions/danger` (seed `feedbackColorRule`).
+/// - appearance=inverse (outline|text + primary only): label, icons and the
+///   outline stroke `text/on-color`; disabled `text/on-color-disabled`;
+///   pressed fill `color/elevation/inverse-4`; focus keeps
+///   `interactive/focus`. Loading (no inverse frame): indicator `text/on-color`.
+/// - solid hover / selected / pressed (all intents): the fill darkens toward
+///   `interactive/overlay` — 8 % / 12 % / 16 % alpha blend over the base
+///   (seed tokenRules; Figma draws it as interactive/* LINEAR_BURN layers).
+///   Hover only when a pointer reports it (no hover on the mobile app).
+///   Outline/text get the `interactive/pressed|selected` fill directly.
 /// - focus (keyboard): inner `effects/effect/focus` (4 spread) under a
 ///   `border/width/025` stroke of `interactive/focus`.
 /// - loading: spinner-only, square when hugging (56/48/40); spinner 24/24/20
@@ -49,6 +70,7 @@ class LooviButton extends StatefulWidget {
     this.variant = LooviButtonVariant.solid,
     this.size = LooviButtonSize.md,
     this.intent = LooviButtonIntent.primary,
+    this.appearance = LooviButtonAppearance.standard,
     this.showLabel = true,
     this.showIcon = false,
     this.leadingIcon = LooviIcons.plusOutline,
@@ -75,6 +97,16 @@ class LooviButton extends StatefulWidget {
   final LooviButtonVariant variant;
   final LooviButtonSize size;
   final LooviButtonIntent intent;
+
+  /// Seed `appearance`. [LooviButtonAppearance.inverse] applies only to
+  /// `variant=outline|text` + `intent=primary`; ignored otherwise.
+  final LooviButtonAppearance appearance;
+
+  /// Whether the inverse paint is in effect (seed-published combination).
+  bool get isInverse =>
+      appearance == LooviButtonAppearance.inverse &&
+      variant != LooviButtonVariant.solid &&
+      intent == LooviButtonIntent.primary;
 
   /// Seed `showLabel`.
   final bool showLabel;
@@ -120,16 +152,6 @@ class LooviButton extends StatefulWidget {
   State<LooviButton> createState() => _LooviButtonState();
 }
 
-/// Plus Darker / LINEAR_BURN of two opaque colors: `dst + src - 1` per channel.
-/// Flutter has no LINEAR_BURN BlendMode; with opaque token colors the result is
-/// exact, so it is resolved here instead of via a compositing layer.
-Color _plusDarker(Color dst, Color src) => Color.from(
-      alpha: dst.a,
-      red: (dst.r + src.r - 1).clamp(0, 1).toDouble(),
-      green: (dst.g + src.g - 1).clamp(0, 1).toDouble(),
-      blue: (dst.b + src.b - 1).clamp(0, 1).toDouble(),
-    );
-
 /// Resolved paint of one button state.
 class _ButtonPaint {
   const _ButtonPaint({required this.fill, required this.border, required this.label, required this.icon});
@@ -167,7 +189,10 @@ class _LooviButtonState extends State<LooviButton> {
   void _syncStates() {
     _states.update(WidgetState.disabled, !_interactive);
     _states.update(WidgetState.selected, widget.selected);
-    if (!_interactive) _states.update(WidgetState.pressed, false);
+    if (!_interactive) {
+      _states.update(WidgetState.pressed, false);
+      _states.update(WidgetState.hovered, false);
+    }
   }
 
   void _onStates() {
@@ -192,7 +217,8 @@ class _LooviButtonState extends State<LooviButton> {
   /// Solid fill / outline-text content color of the enabled intent.
   Color _intentColor(LooviTokens t) => switch (widget.intent) {
         LooviButtonIntent.primary => t.component.button.containerBackground,
-        LooviButtonIntent.success => t.feedback.success,
+        // Figma rebound feedback/success → color/actions/success (2026-11-23).
+        LooviButtonIntent.success => t.color.actionsSuccess,
         LooviButtonIntent.danger => t.color.actionsDanger,
         LooviButtonIntent.secondary => t.color.actionsSecondary,
       };
@@ -215,25 +241,27 @@ class _LooviButtonState extends State<LooviButton> {
         };
       }
       final base = _intentColor(t);
-      final Color? overlay = intent == LooviButtonIntent.secondary
-          ? null // Figma 3942:24936 (pressed) has no overlay.
-          : s.contains(WidgetState.pressed)
-              ? t.interactive.pressed
-              : s.contains(WidgetState.selected)
-                  ? t.interactive.selected
+      final LooviStateLayer? layer = s.contains(WidgetState.pressed)
+          ? LooviStateLayer.pressed
+          : s.contains(WidgetState.selected)
+              ? LooviStateLayer.selected
+              : s.contains(WidgetState.hovered)
+                  ? LooviStateLayer.hover
                   : null;
-      final fill = overlay == null ? base : _plusDarker(base, overlay);
+      final fill = layer == null ? base : looviStateLayer(t, base, layer);
       final Color label;
       final Color icon;
       switch (intent) {
-        case LooviButtonIntent.danger:
-          label = t.color.backgroundSurface0;
-          icon = t.color.backgroundSurface0;
         case LooviButtonIntent.secondary:
+          // color/actions/secondary (lavender-1) + text/primary (9.1:1).
+          label = t.text.primary;
+          icon = t.text.primary;
+        case LooviButtonIntent.danger:
+        case LooviButtonIntent.success:
+          // actions/success | actions/danger + text/on-color (AA).
           label = t.text.onColor;
           icon = t.text.onColor;
         case LooviButtonIntent.primary:
-        case LooviButtonIntent.success:
           label = t.component.button.labelColor;
           icon = t.component.button.iconColor;
       }
@@ -241,6 +269,20 @@ class _LooviButtonState extends State<LooviButton> {
     }
 
     final outline = widget.variant == LooviButtonVariant.outline;
+    if (widget.isInverse) {
+      if (disabled) {
+        final c = t.text.onColorDisabled;
+        return _ButtonPaint(fill: null, border: outline ? c : null, label: c, icon: c);
+      }
+      final c = t.text.onColor;
+      // Published states: default | pressed | focus (no selected frame).
+      return _ButtonPaint(
+        fill: s.contains(WidgetState.pressed) ? t.color.elevationInverse4 : null,
+        border: outline ? c : null,
+        label: c,
+        icon: c,
+      );
+    }
     if (disabled) {
       final content = isPrimaryLike
           ? t.text.placeholder
@@ -255,22 +297,28 @@ class _LooviButtonState extends State<LooviButton> {
         : s.contains(WidgetState.selected)
             ? t.interactive.selected
             : null;
-    final Color content;
+    // Status label is TEXT → text/{status} (AA). The leading icon always sits
+    // next to the label → feedback/success | actions/danger (Figma binding).
+    final Color label;
+    final Color icon;
     final Color border;
     switch (intent) {
       case LooviButtonIntent.success:
-        content = t.feedback.success;
+        label = t.text.success;
+        icon = t.feedback.success;
         border = t.color.borderFeedbackSuccess;
       case LooviButtonIntent.danger:
-        content = t.color.actionsDanger;
+        label = t.text.danger;
+        icon = t.color.actionsDanger;
         border = t.color.borderFeedbackDanger;
       case LooviButtonIntent.primary:
       case LooviButtonIntent.secondary:
         // text + primary: leadingIcon uses text/primary across states (seed rule).
-        content = t.text.primary;
+        label = t.text.primary;
+        icon = t.text.primary;
         border = t.color.border1;
     }
-    return _ButtonPaint(fill: fill, border: outline ? border : null, label: content, icon: content);
+    return _ButtonPaint(fill: fill, border: outline ? border : null, label: label, icon: icon);
   }
 
   @override
@@ -319,7 +367,7 @@ class _LooviButtonState extends State<LooviButton> {
       content = _LooviButtonSpinner(
         size: spinnerSize,
         track: t.color.backgroundSurface3,
-        indicator: _intentColor(t),
+        indicator: widget.isInverse ? t.text.onColor : _intentColor(t),
       );
     } else {
       final children = <Widget>[
@@ -401,6 +449,8 @@ class _LooviButtonState extends State<LooviButton> {
         focusNode: widget.focusNode,
         autofocus: widget.autofocus,
         onShowFocusHighlight: (v) => setState(() => _focusHighlight = v),
+        // Pointer hover only (web / desktop); touch devices never report it.
+        onShowHoverHighlight: (v) => _states.update(WidgetState.hovered, v && _interactive),
         actions: {
           ActivateIntent: CallbackAction<ActivateIntent>(onInvoke: (_) {
             _activate();

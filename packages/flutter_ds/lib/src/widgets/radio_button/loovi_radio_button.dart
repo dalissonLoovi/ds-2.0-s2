@@ -1,6 +1,7 @@
 import 'package:loovi_tokens/loovi_tokens.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../foundation/loovi_tap_target.dart';
 import '../checkbox/loovi_checkbox.dart' show LooviFocusRingPainter;
 
 /// RadioButton S2 (Figma `3653:5279`, mode app-cliente).
@@ -123,7 +124,7 @@ class _LooviRadioButtonState<T> extends State<LooviRadioButton<T>> {
       );
     }
 
-    final min = t.spacing.s600; // 48 dp touch target
+    final min = LooviTapTarget.minSize(context); // 48 dp touch target
     return Semantics(
       container: true,
       enabled: enabled,
@@ -177,14 +178,18 @@ class LooviRadioButtonControl extends StatelessWidget {
     //   default/on   no fill        · stroke 4 actions/primary
     //   focus/off    fill surface/0 · stroke 2 border/2  (+ ring)
     //   focus/on     no fill        · stroke 4 actions/primary (+ ring)
-    //   disabled     no fill        · stroke 2 border/2 (on and off identical)
+    //   disabled/on  no fill        · stroke 4 text/placeholder
+    //   disabled/off no fill        · stroke 2 border/2  (seed rule `disabled`:
+    //                                 on and off must be visually distinct)
+    // Checked = thick ring only, never a center dot — in every state,
+    // disabled included (seed rule `checkedIndicator`).
     final Color? fill;
     final Color stroke;
     final double width;
     if (disabled) {
       fill = null;
-      stroke = t.color.border2;
-      width = t.borderWidth.s025;
+      stroke = checked ? t.text.placeholder : t.color.border2;
+      width = checked ? t.borderWidth.s050 : t.borderWidth.s025;
     } else if (checked) {
       fill = null;
       stroke = t.color.actionsPrimary;

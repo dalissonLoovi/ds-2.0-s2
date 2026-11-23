@@ -18,6 +18,7 @@ figma.connect(
         brand: 'brand',
       }),
       size: figma.enum('size', { sm: 'sm', md: 'md' }),
+      emphasis: figma.enum('emphasis', { primary: 'primary', secondary: 'secondary' }),
       showLeadingIcon: figma.boolean('showLeadingIcon'),
     },
     example: (props) => <ChipClickable {...props} />,

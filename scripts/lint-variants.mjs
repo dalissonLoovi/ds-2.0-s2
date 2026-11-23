@@ -18,6 +18,7 @@ const CHECK = {
       size: ['sm', 'md', 'lg'],
       intent: ['primary', 'success', 'danger', 'secondary'],
       state: ['default', 'hover', 'focus', 'pressed', 'selected', 'loading'],
+      appearance: ['default', 'inverse'],
     },
   },
   Input: {
@@ -35,7 +36,7 @@ const CHECK = {
       intent: ['info', 'system', 'success', 'warning', 'danger', 'outline', 'brand'],
       width: ['hug', 'fill'],
       state: ['default', 'disabled'],
-      emphasis: ['strong', 'soft'],
+      emphasis: ['primary', 'secondary'],
     },
   },
   ChipClickable: {
@@ -45,6 +46,7 @@ const CHECK = {
       state: ['default', 'hover', 'pressed', 'selected', 'disabled'],
       intent: ['info', 'system', 'success', 'warning', 'danger', 'outline', 'soft', 'brand'],
       width: ['hug', 'fill'],
+      emphasis: ['primary', 'secondary'],
     },
   },
   Alert: {
@@ -220,7 +222,7 @@ const CHECK = {
   },
   Banner: {
     file: 'packages/react/src/components/Banner/Banner.tsx',
-    axes: { status: ['success', 'warning', 'info', 'danger'] },
+    axes: { status: ['success', 'warning', 'info', 'danger'], emphasis: ['primary', 'secondary'] },
   },
   Tooltip: {
     file: 'packages/react/src/components/Tooltip/Tooltip.tsx',

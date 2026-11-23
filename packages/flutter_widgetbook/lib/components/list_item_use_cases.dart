@@ -78,9 +78,9 @@ class _Variants extends StatelessWidget {
         children: [
           LooviListItem(condition: LooviListItemCondition.oneLine, headline: 'Meu veículo', leadingIcon: LooviIcons.carOutline, trailingIcon: LooviIcons.chevronRightOutline, showDivider: true, onTap: () {}),
           LooviListItem(condition: LooviListItemCondition.oneLine, overline: 'Titular', headline: 'Ana Souza', leadingIcon: LooviIcons.userOutline, trailingSupportingText: 'Editar', showDivider: true, onTap: () {}),
-          LooviListItem(condition: LooviListItemCondition.twoLine, headline: 'Coberturas do plano', supportingText: 'Roubo, furto e assistência 24h em todo o Brasil', leading: const LooviListItemMonogram('C'), trailingIcon: LooviIcons.chevronRightOutline, showDivider: true, onTap: () {}),
-          LooviListItem(headline: 'Vistoria do veículo', supportingText: 'Envie as fotos pelo app e acompanhe a análise em até 2 dias úteis.', leading: const LooviListItemImageThumbnail(), trailingIcon: LooviIcons.chevronRightOutline, showDivider: true, onTap: () {}),
-          const LooviListItem(headline: 'Documentos', supportingText: 'Apólice e termos do seu plano', leadingIcon: LooviIcons.fileTextOutline),
+          LooviListItem(condition: LooviListItemCondition.twoLine, headline: 'Coberturas do plano', supportingText: 'Veja o que está incluído no seu plano', leading: const LooviListItemMonogram('C'), trailingIcon: LooviIcons.chevronRightOutline, showDivider: true, onTap: () {}),
+          LooviListItem(headline: 'Vistoria do veículo', supportingText: 'Envie as fotos do veículo pelo app para concluir a vistoria.', leading: const LooviListItemImageThumbnail(), trailingIcon: LooviIcons.chevronRightOutline, showDivider: true, onTap: () {}),
+          const LooviListItem(headline: 'Documentos', supportingText: 'Termos e condições do seu plano', leadingIcon: LooviIcons.fileTextOutline),
         ],
       ),
     );

@@ -20,9 +20,9 @@ WidgetbookComponent looviInputTextAreaComponent() => WidgetbookComponent(
               labelBuilder: (v) => v == LooviInputAppearance.standard ? 'default' : v.name,
             );
             final field = LooviInputTextArea(
-              label: context.knobs.string(label: 'label', initialValue: 'Label'),
-              placeholder: context.knobs.stringOrNull(label: 'placeholder', initialValue: 'Placeholder'),
-              supportingText: context.knobs.string(label: 'supportingText', initialValue: 'Supporting text'),
+              label: context.knobs.string(label: 'label', initialValue: 'Mensagem'),
+              placeholder: context.knobs.stringOrNull(label: 'placeholder', initialValue: 'Conte o que aconteceu'),
+              supportingText: context.knobs.string(label: 'supportingText', initialValue: 'Inclua onde e quando aconteceu.'),
               showSupportingText: context.knobs.boolean(label: 'showSupportingText'),
               maxLength: context.knobs.boolean(label: 'showCount', initialValue: true) ? 100 : null,
               showResizeHandle: context.knobs.boolean(label: 'showResizeHandle', initialValue: true),
@@ -52,7 +52,7 @@ class _TextAreaStatesStory extends StatefulWidget {
 }
 
 class _TextAreaStatesStoryState extends State<_TextAreaStatesStory> {
-  static const _text = 'Input text goes here for a longer message.';
+  static const _text = 'O carro fez um barulho na roda dianteira ao frear.';
   late final List<TextEditingController> _c = List.generate(4, (_) => TextEditingController(text: _text));
 
   @override
@@ -72,11 +72,11 @@ class _TextAreaStatesStoryState extends State<_TextAreaStatesStory> {
       children: [
         LooviInputTextArea(label: 'content=value', controller: _c[0], maxLength: 100),
         gap,
-        const LooviInputTextArea(label: 'content=placeholder', placeholder: 'Placeholder', maxLength: 100),
+        const LooviInputTextArea(label: 'content=placeholder', placeholder: 'Conte o que aconteceu', maxLength: 100),
         gap,
         const LooviInputTextArea(label: 'content=label (tap = focus)', maxLength: 100),
         gap,
-        LooviInputTextArea(label: 'state=error', controller: _c[1], maxLength: 100, leadingIcon: true, errorText: 'Supporting text'),
+        LooviInputTextArea(label: 'state=error', controller: _c[1], maxLength: 100, leadingIcon: true, errorText: 'Conte com mais detalhes o que aconteceu.'),
         gap,
         LooviInputTextArea(label: 'state=disabled', controller: _c[2], maxLength: 100, enabled: false),
         gap,

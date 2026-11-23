@@ -38,7 +38,7 @@
 }
 
 .status-error .icon {
-  color: var(--feedback-danger, var(--color-actions-danger));
+  color: var(--feedback-danger);
 }
 
 .item {

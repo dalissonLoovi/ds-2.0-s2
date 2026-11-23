@@ -1,5 +1,6 @@
 import 'dart:ui' show SemanticsRole, Tristate;
 
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:loovi_ds/loovi_ds.dart';
 import 'package:material_ui/material_ui.dart';
@@ -22,7 +23,7 @@ const _three = [
 const _painel = [
   LooviNavigationBarItem(icon: LooviIcons.homeOutline, selectedIcon: LooviIcons.homeFilled, label: 'Início'),
   LooviNavigationBarItem(icon: LooviIcons.carOutline, label: 'Veículos'),
-  LooviNavigationBarItem(icon: LooviIcons.fileTextOutline, label: 'Sinistro', badge: LooviNavigationBarItemBadge.count, count: 2),
+  LooviNavigationBarItem(icon: LooviIcons.fileTextOutline, label: 'Seu caso', badge: LooviNavigationBarItemBadge.count, count: 2),
   LooviNavigationBarItem(icon: LooviIcons.menu2Outline, label: 'Menu', badge: LooviNavigationBarItemBadge.dot),
 ];
 
@@ -57,16 +58,18 @@ void main() {
 
   testWidgets('tap switches the selected destination', (tester) async {
     await pumpLoovi(tester, const _Host());
-    expect(_labelColor(tester, 'Início'), t.color.actionsPrimary);
+    expect(_iconOf(tester, 'Início').color, t.color.actionsPrimary);
     await tester.tap(find.text('Ajuda'));
     await tester.pumpAndSettle();
-    expect(_labelColor(tester, 'Ajuda'), t.color.actionsPrimary);
+    expect(_iconOf(tester, 'Ajuda').color, t.color.actionsPrimary);
+    expect(_labelColor(tester, 'Ajuda'), t.text.primary);
     expect(_labelColor(tester, 'Início'), t.text.secondary);
   });
 
   testWidgets('selected paints as Figma (default + inverse)', (tester) async {
     await pumpLoovi(tester, const LooviNavigationBar(items: _four, selectedIndex: 0));
-    expect(_labelColor(tester, 'Início'), t.color.actionsPrimary);
+    // default: selected icon actions/primary, selected LABEL text/primary (AA).
+    expect(_labelColor(tester, 'Início'), t.text.primary);
     expect(_iconOf(tester, 'Início').name, LooviIcons.homeFilled);
     expect(_iconOf(tester, 'Início').color, t.color.actionsPrimary);
     expect(_labelColor(tester, 'Perfil'), t.text.secondary);
@@ -77,12 +80,26 @@ void main() {
       const LooviNavigationBar(items: _four, selectedIndex: 3, appearance: LooviNavigationBarAppearance.inverse),
     );
     expect(_labelColor(tester, 'Perfil'), t.color.actionsTertiary);
+    expect(_iconOf(tester, 'Perfil').color, t.color.actionsTertiary);
     expect(_iconOf(tester, 'Perfil').name, LooviIcons.userFilled);
     expect(_labelColor(tester, 'Início'), t.text.onColorDisabled);
     final surface = tester.widget<DecoratedBox>(
       find.descendant(of: find.byType(LooviNavigationBar), matching: find.byType(DecoratedBox)).first,
     );
     expect((surface.decoration as BoxDecoration).color, t.color.backgroundSurfaceInverse3);
+  });
+
+  testWidgets('badge count text is text/primary on tangerine-1', (tester) async {
+    await pumpLoovi(
+      tester,
+      const LooviNavigationBar(items: [
+        LooviNavigationBarItem(icon: LooviIcons.homeOutline, label: 'Início'),
+        LooviNavigationBarItem(
+            icon: LooviIcons.fileTextOutline, label: 'Seu caso', badge: LooviNavigationBarItemBadge.count, count: 2),
+        LooviNavigationBarItem(icon: LooviIcons.userOutline, label: 'Perfil'),
+      ], itemCount: LooviNavigationBarItemCount.three, selectedIndex: 0),
+    );
+    expect(tester.widget<Text>(find.text('2')).style!.color, t.text.primary);
   });
 
   testWidgets('pressed paints text/primary while held', (tester) async {
@@ -111,7 +128,7 @@ void main() {
     expect(inicio.flagsCollection.isButton, isTrue);
     final veiculos = tester.getSemantics(find.bySemanticsLabel('Veículos'));
     expect(veiculos.flagsCollection.isSelected, Tristate.isFalse);
-    expect(find.bySemanticsLabel('Sinistro, 2 notificações'), findsOneWidget);
+    expect(find.bySemanticsLabel('Seu caso, 2 notificações'), findsOneWidget);
     expect(find.bySemanticsLabel('Menu, nova atividade'), findsOneWidget);
     expect(find.bySemanticsLabel('Acionar'), findsOneWidget);
     handle.dispose();
@@ -175,6 +192,30 @@ void main() {
     );
     final surface = find.descendant(of: find.byType(LooviNavigationBar), matching: find.byType(DecoratedBox)).first;
     expect(tester.getBottomLeft(surface).dy, tester.getBottomLeft(find.byType(LooviNavigationBar)).dy - 34);
+  });
+
+  testWidgets('primary action (itemCount=5): keyboard reaches it in visual order, Enter activates, focus stroke', (tester) async {
+    var primary = 0;
+    await pumpLoovi(
+      tester,
+      LooviNavigationBar(
+        items: _painel,
+        selectedIndex: 0,
+        itemCount: LooviNavigationBarItemCount.five,
+        onSelected: (_) {},
+        onPrimaryAction: () => primary++,
+      ),
+    );
+    // Visual order: Início, Veículos, primary action, ...
+    for (var i = 0; i < 3; i++) {
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pump();
+    }
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    await tester.pump();
+    expect(primary, 1);
+    final fab = tester.widget<Container>(find.byKey(const Key('loovi-navigation-bar-primary')));
+    expect(((fab.decoration! as BoxDecoration).border! as Border).top.color, t.interactive.focus);
   });
 
   testWidgets('golden: variants', (tester) async {

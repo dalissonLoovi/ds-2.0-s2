@@ -4,7 +4,7 @@ import 'package:widgetbook/widgetbook.dart';
 
 import 'seed_header.dart';
 
-/// Switch — Figma set 3653:4741 (seed nodeId 3444:318 is stale), mode app-cliente.
+/// Switch (seed node 3653:4741) — Playground + States, mode app-cliente.
 WidgetbookComponent looviSwitchComponent() => WidgetbookComponent(
       name: 'Switch',
       useCases: [

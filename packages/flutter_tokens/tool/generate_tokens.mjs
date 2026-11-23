@@ -222,7 +222,17 @@ emit('  final String figmaName;');
 emit('}');
 emit('');
 
+/** Two seed paths that camelCase to the same Dart getter would silently shadow — fail loudly. */
+function assertUniqueIds(scope, entries) {
+  const seen = new Map();
+  for (const e of entries) {
+    if (seen.has(e.id)) throw new Error(`${scope}: '${seen.get(e.id)}' e '${e.path}' geram o mesmo identificador Dart '${e.id}'`);
+    seen.set(e.id, e.path);
+  }
+}
+
 function emitValueClass(className, doc, entries, typeName, toDart) {
+  assertUniqueIds(className, entries);
   emit(`/// ${doc}`);
   emit(`@immutable`);
   emit(`class ${className} {`);
@@ -258,6 +268,8 @@ emitValueClass('LooviBreakpoints', 'Breakpoints in logical px (`breakpoint/*`). 
   groups.breakpoint.map((e) => ({ ...e, id: camel(strip(e.path, 'breakpoint')) })), 'double', num);
 
 // typography
+assertUniqueIds('LooviTypography', typo);
+assertUniqueIds('LooviEffects', effects);
 emit('/// Text styles (`typography/*`) — Poppins, bundled in this package.');
 emit('/// Line height is applied with `TextLeadingDistribution.even`, like Figma.');
 emit('@immutable');
@@ -321,6 +333,7 @@ emit('');
 const compClasses = [];
 for (const [component, fields] of Object.entries(comp)) {
   const cls = `Loovi${pascal(component)}Tokens`;
+  assertUniqueIds(cls, fields.map((f) => ({ id: f.field, path: f.path })));
   compClasses.push({ component, cls, field: camel(component) });
   const dartType = (k) => (k === 'color' ? 'Color' : k === 'weight' ? 'FontWeight' : 'double');
   emit(`/// Component tokens \`component/${component}/*\` (product-theme).`);

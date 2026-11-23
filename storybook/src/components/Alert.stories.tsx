@@ -23,3 +23,12 @@ export const Info: Story = {};
 export const Success: Story = { args: { status: 'success' } };
 export const Danger: Story = { args: { status: 'danger' } };
 export const Inverse: Story = { args: { appearance: 'inverse' } };
+export const WithClose: Story = {
+  args: {
+    showClose: true,
+    title: 'Seu pagamento foi confirmado e o comprovante já está no app',
+  },
+};
+export const InverseWithClose: Story = {
+  args: { appearance: 'inverse', status: 'danger', showClose: true },
+};

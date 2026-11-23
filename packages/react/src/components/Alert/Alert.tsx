@@ -16,6 +16,14 @@ export type AlertProps = HTMLAttributes<HTMLDivElement> & {
   showAction?: boolean;
   actionLabel?: string;
   onAction?: () => void;
+  /**
+   * Shows the close action (x-outline 24) at the top-right corner.
+   * Colour follows the title (text/primary | text/on-color); accessible name "Fechar alerta".
+   * @default false
+   */
+  showClose?: boolean;
+  /** Called when the close action is activated (only rendered when `showClose`). */
+  onClose?: () => void;
   icon?: ReactNode;
 };
 
@@ -36,6 +44,8 @@ export function Alert({
   showAction = true,
   actionLabel = 'Action',
   onAction,
+  showClose = false,
+  onClose,
   icon,
   className,
   role = 'status',
@@ -43,6 +53,7 @@ export function Alert({
 }: AlertProps) {
   const IconName = statusIcon[status];
   const Icon = IconName ? resolveIcon(IconName) : null;
+  const isInverse = appearance === 'inverse';
 
   return (
     <div
@@ -50,10 +61,12 @@ export function Alert({
         styles.root,
         styles[`appearance-${appearance}`],
         styles[`status-${status}`],
+        showClose && styles.hasClose,
         className,
       )}
       role={role}
       data-status={status}
+      data-appearance={appearance}
       {...rest}
     >
       <div className={styles.body}>
@@ -72,11 +85,27 @@ export function Alert({
           <Button
             variant="outline"
             size="sm"
-            intent={status === 'danger' ? 'danger' : 'primary'}
+            intent="primary"
+            appearance={isInverse ? 'inverse' : 'default'}
+            className={styles.action}
             label={actionLabel}
             onClick={onAction}
           />
         </div>
+      )}
+      {showClose && (
+        <Button
+          className={styles.close}
+          variant="text"
+          size="lg"
+          intent="primary"
+          appearance={isInverse ? 'inverse' : 'default'}
+          showLabel={false}
+          showIcon
+          icon="x-outline"
+          aria-label="Fechar alerta"
+          onClick={onClose}
+        />
       )}
     </div>
   );

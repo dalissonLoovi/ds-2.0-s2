@@ -1,6 +1,6 @@
 # Inventário Flutter — DS S2
 
-> Gerado por `packages/flutter_ds/tool/generate_catalog.mjs` (seed `2026-11-23-flutter-audit-seed-sync`). Não editar à mão.
+> Gerado por `packages/flutter_ds/tool/generate_catalog.mjs` (seed `2026-11-23-review-decisions`). Não editar à mão.
 > "Entra no app" é uma triagem inicial para o App Cliente; revisar antes de cada nova onda.
 
 Total: 130 componentes · Flutter: 21 · fora do app: 28
@@ -36,7 +36,7 @@ Total: 130 componentes · Flutter: 21 · fora do app: 28
 | Accordion | `3669:9362` | sim | — | sim |
 | Checkbox | `3667:3812` | sim | ✅ onda 1 | sim |
 | ChipClickable | `3653:23577` | sim | ✅ onda 1 | sim |
-| ChipGroup | `3437:3023` | sim | — | sim |
+| ChipGroup | `3667:2570` | sim | — | sim |
 | ChipTag | `3653:23220` | sim | ✅ onda 1 | sim |
 | DividerHorizontal | `3653:22914` | sim | — | sim |
 | DividerVertical | `3653:22924` | sim | — | não (web/backoffice) |

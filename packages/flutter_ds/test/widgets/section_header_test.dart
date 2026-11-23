@@ -1,5 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:loovi_ds/loovi_ds.dart';
+import 'package:loovi_ds/src/foundation/loovi_blend.dart' show looviPlusDarker;
+import 'package:loovi_ds/src/widgets/app_header/loovi_app_header.dart' show LooviHeaderIconAction;
 import 'package:material_ui/material_ui.dart';
 
 import '../helpers/pump.dart';

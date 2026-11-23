@@ -7,7 +7,7 @@
         "figmaUrl": "https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=3104-2940",
         "exportedAt": "2026-07-21T12:00:00-03:00",
         "revision": "2026-07-21-painel-home-tokens",
-        "variableCount": 272,
+        "variableCount": 301,
         "textStyleCount": 50,
         "effectStyleCount": 9,
         "painelHomeTokenMap": {
@@ -76,8 +76,8 @@
                 "resolvedType": "COLOR",
                 "aliasByMode": {
                     "escritorio-virtual": "color/background-surface/inverse-3",
-                    "site-loovi": "color/background-surface/brand",
-                    "app-cliente": "color/background-surface/brand"
+                    "site-loovi": "color/background-surface/brand-strong",
+                    "app-cliente": "color/background-surface/brand-strong"
                 }
             },
             {
@@ -326,6 +326,12 @@
                     "site-loovi": "border/radius/full",
                     "app-cliente": "border/radius/full"
                 }
+            },
+            {
+                "name": "color/background-surface/brand-strong",
+                "id": "VariableID:5437:31516",
+                "resolvedType": "COLOR",
+                "note": "Brand fill with small on-color text (AA 4.52:1); aliases primitive-colors/sapphire; FRAME_FILL/SHAPE_FILL (2026-11-23)"
             }
         ],
         "collections": [
@@ -657,7 +663,28 @@
                 ]
             },
             "brandSurface": "color/background-surface/brand (#5A78FF via primitive-colors/brand-blue) for solid brand chrome backgrounds (FRAME_FILL|SHAPE_FILL). color/palette/brand also aliases brand-blue (#5A78FF). Do not use for text (text/brand = sapphire #516CE7) or primary actions (color/actions/primary = azure-wave #4C6BF8).",
-            "surfaceCanvas": "Page/canvas fills use color/background-surface/0 → primitive-colors/canvas (#FCFCFE). Absolute white (primitive-colors/white) is reserved for text/on-color and true-white chrome — not full-page backgrounds."
+            "surfaceCanvas": "Page/canvas fills use color/background-surface/0 → primitive-colors/canvas (#FCFCFE). Absolute white (primitive-colors/white) is reserved for text/on-color and true-white chrome — not full-page backgrounds.",
+            "feedbackColorRule": {
+                "addedAt": "2026-11-23",
+                "icon": "feedback/{status} — light status colour for icons/indicators that always sit next to a text label.",
+                "text": "text/{status} (success|danger|warning|info) — AA ≥ 4.5:1 for status text and icon-only status.",
+                "background": "color/background-feedback-primary/{status} (strong) and color/background-feedback-secondary/{status} (soft) map to component property emphasis=primary|secondary.",
+                "emphasisComponents": [
+                    "ChipTag",
+                    "ChipClickable",
+                    "Banner"
+                ],
+                "excluded": "Alert — status changes only the icon, not the background."
+            },
+            "unboundValues": {
+                "reportedAt": "2026-11-23",
+                "note": "Gaps/paddings/radii with exact token values were bound in Figma (wave components). Values with no token stay unbound: itemSpacing 10 (Button labelContainer, Link trailingIconWrapper, ListItem slots, RadioButton stateLayer, SystemHeader slot, BottomSheet dragHandle/sheetContent), padding 10 (SystemHeader slot, BottomSheet dragHandle), padding 0.5 (InputTextAreaResizeHandle)."
+            },
+            "legacyRemoteVariables": {
+                "reportedAt": "2026-11-23",
+                "note": "Title Case remote variables (Color/Content/*, Color/Interactive/*, Color/Background Surface/*, Color/Border/*, Schemes/*) rebound to local S2 tokens on wave pages (Button 108, Chip 4, Header 1, Navigation Bar 1). Remote text/* bindings inside DS Icons library instances are expected (icon library owns them)."
+            },
+            "stateLayerBlend": "Plugin API limitation: paint-level blendMode and opacity are dropped on variable-bound paints. Use an absolute stateOverlay node (fill bound to interactive/*, node blendMode LINEAR_BURN) instead of a second paint when building via API."
         },
         "previousCollections": [
             "Colors",
@@ -665,9 +692,29 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-11-23T14:55:50.367Z",
-        "storybookRevision": "2026-11-23-flutter-audit-seed-sync",
+        "storybookUpdatedAt": "2026-11-23T20:47:21.028Z",
+        "storybookRevision": "2026-11-23-review-decisions",
         "changelog": [
+            {
+                "date": "2026-11-23",
+                "type": "review-decisions",
+                "summary": "Review decisions: chips default emphasis=secondary (Figma top-left, React, Flutter — EV unchanged); Button contrast AA — actions/primary → sapphire #516CE7 (4.52:1), actions/danger → crimson-red #D81C1A (5.12:1), solid secondary label/icons → text/primary, solid success label → text/on-color, success|secondary hover/pressed/selected state layer (stateOverlay LINEAR_BURN); new color/background-surface/brand-strong (#516CE7) for brand fills with small on-color text (chips brand, Alert inverse, AppHeader inverse site-loovi|app-cliente); Banner info primary → feedback-primary/info; NavigationBarItem selected label text/primary + badge count text/primary; ChipClickable delete hit area ≥ 24 in code; chip icon/avatar sizes bound to spacing tokens (ChipClickable sm avatar 22 → 20, height 30 → 28); ChipTag secondary/success variants were stacked on primary — repositioned; AppHeader small-centered title centered (390 wide, balanced sides); Button seed props aligned to Figma (no trailingIcon swap; loading = state; disabled = VARIANT); 115 legacy remote variable bindings rebound to local tokens; variableCount 301."
+            },
+            {
+                "date": "2026-11-23",
+                "type": "review-seed-sync",
+                "summary": "Seed review vs Figma: ChipGroup nodeId 3437:3023 (node no longer exists) → 3667:2570 (current ChipGroup COMPONENT_SET); UploadPhotos and VehicleSummaryCard ChipTag references strong → emphasis=primary (strong|soft renamed today). All 300 local variables (semantic, primitives, typography, product-theme × 3 modes) re-checked against tokens.* and meta.productTheme — no value or alias drift."
+            },
+            {
+                "date": "2026-11-23",
+                "type": "design-fixes",
+                "summary": "Design fixes: Button appearance=inverse (+24 variants, outline|text primary) and Alert inverse action uses it; Button solid success fill → color/actions/success (AA with on-color); outline|text danger labels → text/danger; Alert showClose (official close action); Modal showFooter (official footer, max 1 primary); RadioButton disabled+checked ring border/width/050 text/placeholder; AppHeader specific trailing actions side by side (no overlap); ModalHeader desktop leadingSpacer → spacing/500; exact-value gaps/paddings/radii bound to tokens across wave components (values without token reported in meta.governance.unboundValues)."
+            },
+            {
+                "date": "2026-11-23",
+                "type": "feedback-split-emphasis",
+                "summary": "Feedback colour split: feedback/* = light icon/indicator colour (Figma: success #2DBE5E, danger #F54444, warning #FFB74C, info #54DEF8); new text/success|danger|warning|info (AA) for status text — 405 text nodes rebound in Figma (Button, Input family, DatePicker, FileUploaderItem, Slider, VerificationCodeInput). New primitives amber-700 #7A6400, teal-700 #04778A; background-feedback-secondary/info (teal-2) and /system (azure-2). emphasis=primary|secondary on ChipTag (renamed strong|soft, +16 variants), ChipClickable (+84), Banner (+4). Alert excluded."
+            },
             {
                 "date": "2026-11-23",
                 "type": "flutter-audit-seed-sync",
@@ -2084,8 +2131,8 @@
                     "binds": "appearance=inverse root fills",
                     "aliasByMode": {
                         "escritorio-virtual": "color/background-surface/inverse-3",
-                        "site-loovi": "color/background-surface/brand",
-                        "app-cliente": "color/background-surface/brand"
+                        "site-loovi": "color/background-surface/brand-strong",
+                        "app-cliente": "color/background-surface/brand-strong"
                     }
                 },
                 {
@@ -2526,8 +2573,8 @@
             "actions": {
                 "primary": {
                     "$type": "color",
-                    "$value": "#4C6BF8",
-                    "$description": "export: color-actions-primary | Alias of primitive-colors/azure-wave (#4C6BF8)."
+                    "$value": "#516CE7",
+                    "$description": "export: color-actions-primary | [WCAG-Pass] 4.52:1 with text/on-color. Alias of primitive-colors/sapphire (#516CE7) — re-aliased from azure-wave (#4C6BF8, 4.41:1) on 2026-11-23."
                 },
                 "secondary": {
                     "$type": "color",
@@ -2544,8 +2591,8 @@
                 },
                 "danger": {
                     "$type": "color",
-                    "$value": "#F54444",
-                    "$description": "export: color-actions-danger | danger/destructive action color."
+                    "$value": "#D81C1A",
+                    "$description": "export: color-actions-danger | [WCAG-Pass] 5.12:1 with text/on-color. Alias of primitive-colors/crimson-red (#D81C1A) — re-aliased from fire-red (#F54444, 3.54:1) on 2026-11-23. Same value as text/danger."
                 }
             },
             "background-feedback-primary": {
@@ -2590,6 +2637,16 @@
                     "$type": "color",
                     "$value": "#FFF7DA",
                     "$description": "export: color-bg-feedback-secondary-warning | secondary feedback background for warning/analyzing states."
+                },
+                "info": {
+                    "$type": "color",
+                    "$value": "#E1FBFF",
+                    "$description": "export: color-bg-feedback-secondary-info | secondary (soft) feedback background for info. Alias primitive-colors/teal-2. Content text/primary."
+                },
+                "system": {
+                    "$type": "color",
+                    "$value": "#D9E0FF",
+                    "$description": "export: color-bg-feedback-secondary-system | secondary (soft) feedback background for system. Alias primitive-colors/azure-2. Content text/primary."
                 }
             },
             "background-surface": {
@@ -2648,6 +2705,11 @@
                     "$type": "color",
                     "$value": "#5A78FF",
                     "$description": "export: color-bg-surface-brand | solid brand chrome background (#5A78FF). Alias of primitive-colors/brand-blue. Scopes: FRAME_FILL, SHAPE_FILL. Not for text/brand or color/actions/primary."
+                },
+                "brand-strong": {
+                    "$type": "color",
+                    "$value": "#516CE7",
+                    "$description": "export: color-bg-surface-brand-strong | [WCAG-Pass] 4.52:1 with text/on-color. Alias of primitive-colors/sapphire. Brand fill behind SMALL on-color text (ChipTag/ChipClickable intent=brand emphasis=primary, Alert appearance=inverse, AppHeader inverse in site-loovi|app-cliente). Keep background-surface/brand (#5A78FF, 3.77:1) for large brand areas without small text. Scopes: FRAME_FILL, SHAPE_FILL."
                 },
                 "brand-muted": {
                     "$type": "color",
@@ -2762,7 +2824,7 @@
                 "pressed": {
                     "$type": "color",
                     "$value": "rgba(90, 120, 255, 0.8)",
-                    "$description": "DEPRECATED 2026-11-23 — use color/elevation/focus (renamed in Figma). Same value."
+                    "$description": "DEPRECATED 2026-11-23 — use color/elevation/focus (renamed in Figma). Same value. Removal: next major token release (kept so existing consumers do not break)."
                 },
                 "focus": {
                     "$type": "color",
@@ -2890,9 +2952,9 @@
                     "background": {
                         "$type": "color",
                         "$value": {
-                            "escritorio-virtual": "#4C6BF8",
+                            "escritorio-virtual": "#516CE7",
                             "site-loovi": "#3AD06D",
-                            "app-cliente": "#4C6BF8"
+                            "app-cliente": "#516CE7"
                         }
                     },
                     "radius": {
@@ -2949,10 +3011,10 @@
                         "$type": "color",
                         "$value": {
                             "escritorio-virtual": "#3A3345",
-                            "site-loovi": "#5A78FF",
-                            "app-cliente": "#5A78FF"
+                            "site-loovi": "#516CE7",
+                            "app-cliente": "#516CE7"
                         },
-                        "$description": "product-theme component/app-header/inverse/background — bound on appearance=inverse root fills. EV→surface/inverse-3; site-loovi|app-cliente→surface/brand."
+                        "$description": "product-theme component/app-header/inverse/background — bound on appearance=inverse root fills. EV→surface/inverse-3; site-loovi|app-cliente→surface/brand-strong (AA with on-color, 2026-11-23)."
                     }
                 },
                 "leading-action": {
@@ -3146,23 +3208,23 @@
         "feedback": {
             "danger": {
                 "$type": "color",
-                "$value": "#D83E3E",
-                "$description": "export: feedback-danger | content/status color for error, failed, destructive or danger states."
+                "$value": "#F54444",
+                "$description": "export: feedback-danger | status ICON/INDICATOR always next to a text label (Alert, Toast, Banner, chips). Not for text (use text/danger); icon-only status also uses text/danger."
             },
             "success": {
                 "$type": "color",
-                "$value": "#00723E",
-                "$description": "export: feedback-success | content/status color for successful or approved states."
+                "$value": "#2DBE5E",
+                "$description": "export: feedback-success | status ICON/INDICATOR always next to a text label (Alert, Toast, Banner, chips). Not for text (use text/success); icon-only status also uses text/success."
             },
             "warning": {
                 "$type": "color",
-                "$value": "#8C7502",
-                "$description": "export: feedback-warning | content/status color for warning, attention or analyzing states."
+                "$value": "#FFB74C",
+                "$description": "export: feedback-warning | status ICON/INDICATOR always next to a text label (Alert, Toast, Banner, chips). Not for text (use text/warning); icon-only status also uses text/warning."
             },
             "info": {
                 "$type": "color",
                 "$value": "#54DEF8",
-                "$description": "export: feedback-info | content/status color for informational states (Figma feedback/info, alias primitive-colors/aqua-gleam)."
+                "$description": "export: feedback-info | status ICON/INDICATOR always next to a text label (Alert, Toast, Banner, chips). Not for text (use text/info); icon-only status also uses text/info."
             }
         },
         "font-family": {
@@ -3718,6 +3780,16 @@
                 "$type": "color",
                 "$value": "#FCFCFE",
                 "$description": "export: primitive-colors-canvas | soft page/canvas fill #FCFCFE — not absolute white. Aliased by color/background-surface/0. Keep primitive-colors/white (#FFFFFF) for text/on-color."
+            },
+            "amber-700": {
+                "$type": "color",
+                "$value": "#7A6400",
+                "$description": "color-amber700 | AA text tone for warning (5.6:1 on surface/0). Figma VariableID:5425:2."
+            },
+            "teal-700": {
+                "$type": "color",
+                "$value": "#04778A",
+                "$description": "color-teal700 | AA text tone for info (5.1:1 on surface/0). Figma VariableID:5425:3."
             }
         },
         "spacing": {
@@ -3822,6 +3894,26 @@
             "secondary": {
                 "$type": "color",
                 "$value": "#4B4F55"
+            },
+            "success": {
+                "$type": "color",
+                "$value": "#00723E",
+                "$description": "[WCAG-Pass] 5.90:1 on surface/0. Status TEXT (labels, validation messages) and icon-only status. Alias primitive-colors/pine-green. Never use feedback/success for text."
+            },
+            "danger": {
+                "$type": "color",
+                "$value": "#D81C1A",
+                "$description": "[WCAG-Pass] 5.00:1 on surface/0. Status TEXT (labels, validation messages) and icon-only status. Alias primitive-colors/crimson-red. Never use feedback/danger for text."
+            },
+            "warning": {
+                "$type": "color",
+                "$value": "#7A6400",
+                "$description": "[WCAG-Pass] 5.61:1 on surface/0. Status TEXT (labels, validation messages) and icon-only status. Alias primitive-colors/amber-700. Never use feedback/warning for text."
+            },
+            "info": {
+                "$type": "color",
+                "$value": "#04778A",
+                "$description": "[WCAG-Pass] 5.11:1 on surface/0. Status TEXT (labels, validation messages) and icon-only status. Alias primitive-colors/teal-700. Never use feedback/info for text."
             }
         }
     },
@@ -4762,8 +4854,8 @@
                         "binds": "appearance=inverse root fills",
                         "aliases": {
                             "escritorio-virtual": "color/background-surface/inverse-3",
-                            "site-loovi": "color/background-surface/brand",
-                            "app-cliente": "color/background-surface/brand"
+                            "site-loovi": "color/background-surface/brand-strong",
+                            "app-cliente": "color/background-surface/brand-strong"
                         }
                     },
                     {
@@ -6277,7 +6369,7 @@
             },
             "Alert": {
                 "nodeId": "4406:91",
-                "description": "AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Props: appearance=default|inverse; status=system|info|success|danger|warning (same vocabulary as Toast); title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Prefer appearance=default on light page surfaces; use appearance=inverse on dark/brand chrome when on-color text is required. status=system is intentional-sparse and has no statusIcon; other statuses compose a DS Icons — Escritório Virtual filled statusIcon at 32px (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with content-layer icon fills feedback/info|success|danger|warning on {icon}-path layers. appearance=default: shell color/background-surface/3 (single fill); title text/primary + body/medium/semi-bold; description text/secondary + body/small/regular; action local Button outline/sm/primary with default light chrome (stroke color/border/1, label text/primary). appearance=inverse: shell fills bottom→top — color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay); title text/on-color; description text/on-color-disabled; action outline uses on-color stroke/label for contrast on the dark shell. Composition: statusIcon (when present) + content → text (title + description) + action. Anatomy: vertical stack (icon above content). Pad spacing/150 top, spacing/250 sides/bottom; gap spacing/100; border/radius/400. actionLabel is React-side — in Figma set nested action Button label when showAction=true. Do not use as Toast, Banner, Modal, or inline field validation. Accessibility: role=status for system|info|success; role=alert for warning|danger when urgent; action needs accessible name; decorative status icons aria-hidden when title conveys status. React mapping: Alert(appearance, status, title, description, showDescription, showAction, actionLabel). Code Connect is not configured. Note: Figma VARIANT default for appearance remains inverse (API cannot change VARIANT defaultValue); product instances should set appearance=default on light surfaces.",
+                "description": "AI-READY COMPONENT: Alert is an in-flow persistent feedback card used to call attention to status that may require a follow-up action. Use for contextual warnings, successes, info, or danger notices inside pages/forms — not for transient non-blocking messages (use Toast) and not for modal interruption (use Modal). Props: appearance=default|inverse; status=system|info|success|danger|warning (same vocabulary as Toast); title (TEXT); description (TEXT); showDescription (BOOLEAN, default true); showAction (BOOLEAN, default true). Prefer appearance=default on light page surfaces; use appearance=inverse on dark/brand chrome when on-color text is required. status=system is intentional-sparse and has no statusIcon; other statuses compose a DS Icons — Escritório Virtual filled statusIcon at 32px (info-circle-filled, circle-check-filled, alert-circle-filled, alert-triangle-filled) with content-layer icon fills feedback/info|success|danger|warning on {icon}-path layers. appearance=default: shell color/background-surface/3 (single fill); title text/primary + body/medium/semi-bold; description text/secondary + body/small/regular; action local Button outline/sm/primary with default light chrome (stroke color/border/1, label text/primary). appearance=inverse: shell fills bottom→top — color/background-surface/brand-strong (base, opacity 1) + color/elevation/inverse-3 @ 48% paint opacity (overlay); title text/on-color; description text/on-color-disabled; action outline uses on-color stroke/label for contrast on the dark shell. Composition: statusIcon (when present) + content → text (title + description) + action. Anatomy: vertical stack (icon above content). Pad spacing/150 top, spacing/250 sides/bottom; gap spacing/100; border/radius/400. actionLabel is React-side — in Figma set nested action Button label when showAction=true. Do not use as Toast, Banner, Modal, or inline field validation. Accessibility: role=status for system|info|success; role=alert for warning|danger when urgent; action needs accessible name; decorative status icons aria-hidden when title conveys status. React mapping: Alert(appearance, status, title, description, showDescription, showAction, actionLabel). Code Connect is not configured. Note: Figma VARIANT default for appearance remains inverse (API cannot change VARIANT defaultValue); product instances should set appearance=default on light surfaces.",
                 "variants": {
                     "appearance": [
                         "default",
@@ -6298,7 +6390,8 @@
                     "description": "TEXT — supporting copy (default: text/secondary; inverse: text/on-color-disabled) + body/small/regular",
                     "showDescription": "boolean — toggles description (default true)",
                     "showAction": "boolean — toggles nested outline Button (default true)",
-                    "actionLabel": "React mapping for nested action Button label (Figma: Button.label)"
+                    "actionLabel": "React mapping for nested action Button label (Figma: Button.label)",
+                    "showClose": "BOOLEAN (default false) — close action x-outline 24 at top-right (absolute; padding unchanged). React/Flutter: onClose; accessible name \"Fechar alerta\"; touch target ≥ 48. Colour = title colour (text/primary | text/on-color)."
                 },
                 "statusMap": {
                     "system": {
@@ -6343,11 +6436,13 @@
                     "darkOverlay": "appearance=inverse shell fills bottom→top: color/elevation/inverse-3 (base, opacity 1) + color/background-surface/brand @ ~48% opacity (overlay). Do not reverse the stack (Figma fills[0]=brand@~48% topmost).",
                     "usage": "Do not use as Toast, Banner, Modal, or inline field validation",
                     "iconSize": "statusIcon is FIXED 32×32 on info|success|danger|warning",
-                    "iconFillParity": "statusIcon paths use local content-layer feedback/{info|success|danger|warning} on {icon}-path layers (no remote background-feedback-primary/*)."
+                    "iconFillParity": "statusIcon paths use local content-layer feedback/{info|success|danger|warning} on {icon}-path layers (no remote background-feedback-primary/*).",
+                    "closeAction": "showClose=true reserves the top-right corner; long titles (esp. status=system, no icon) must not run under the close action. Action uses Button appearance=inverse when appearance=inverse.",
+                    "inverseSurface": "appearance=inverse shell (Figma fills bottom→top): color/background-surface/brand-strong (opacity 1) + color/elevation/inverse-3 at 48% paint opacity on top — renders ≈ brand-strong darkened ~23% (#3E53B2). Title text/on-color 14, description text/on-color-disabled 12, status icon feedback/{status} 32 (system hides the icon), action Button outline sm appearance=inverse (stroke text/on-color). Padding spacing/150 top · spacing/250 right/bottom/left; root gap spacing/100; content gap spacing/150; text gap spacing/100; radius border/radius/400. If a library instance drops the paint opacity the overlay becomes black 48% — still AA (2026-11-23)."
                 },
                 "tokenRules": [
                     "appearance=default: color/background-surface/3 (single fill); title text/primary; description text/secondary; action outline stroke color/border/1 + label text/primary",
-                    "appearance=inverse: color/elevation/inverse-3 (base) + color/background-surface/brand @ ~48% opacity (overlay); title text/on-color; description text/on-color-disabled; action outline stroke/label text/on-color",
+                    "appearance=inverse: color/elevation/inverse-3 (base) + color/background-surface/brand-strong @ ~48% opacity (overlay); title text/on-color; description text/on-color-disabled; action outline stroke/label text/on-color",
                     "border/radius/400",
                     "spacing/100 (root gap, text gap); spacing/150 (pad top, content gap); spacing/250 (pad sides/bottom)",
                     "statusIcon 32: feedback/{info|success|danger|warning} on {icon}-path"
@@ -6369,6 +6464,10 @@
                         "warning",
                         "info",
                         "danger"
+                    ],
+                    "emphasis": [
+                        "primary",
+                        "secondary"
                     ]
                 },
                 "props": {
@@ -6376,7 +6475,8 @@
                     "showIcon": "boolean",
                     "message": "main feedback message",
                     "showAction": "boolean",
-                    "action": "optional secondary action"
+                    "action": "optional secondary action",
+                    "emphasis": "primary | secondary"
                 },
                 "statusMap": {
                     "success": {
@@ -6403,7 +6503,13 @@
                     "textOnFill": "text/primary"
                 },
                 "reactPackage": "@ds/react",
-                "reactImplemented": true
+                "reactImplemented": true,
+                "tokenRules": [
+                    "emphasis=primary uses color/background-feedback-primary/{status}; emphasis=secondary uses color/background-feedback-secondary/{status} (info→teal-2, system→azure-2); content text/primary on both. Known gap: status=info primary is bound to background-feedback-primary/system in Figma."
+                ],
+                "rules": {
+                    "infoPrimary": "status=info emphasis=primary → color/background-feedback-primary/info (was bound to …/system until 2026-11-23)."
+                }
             },
             "BreadcrumbItem": {
                 "nodeId": "3681:3667",
@@ -6486,17 +6592,21 @@
                     "disabled": [
                         "false",
                         "true"
+                    ],
+                    "appearance": [
+                        "default",
+                        "inverse"
                     ]
                 },
                 "props": {
                     "showIcon": "boolean — toggles leadingIcon visibility",
                     "label": "visible button label",
-                    "showTrailingIcon": "boolean — trailingIcon defaults to chevron-right-outline (action/forward affordance)",
+                    "showTrailingIcon": "BOOLEAN — trailingIcon (chevron-right-outline, fixed — not an INSTANCE_SWAP) for action/forward affordance",
                     "showLabel": "boolean",
-                    "trailingIcon": "DS Icons — trailing icon instance swap (default chevron-right-outline when showTrailingIcon=true)",
-                    "Icon": "DS Icons — Escritório Virtual icons instance swap for leadingIcon",
-                    "loading": "boolean",
-                    "disabled": "boolean"
+                    "Icon": "INSTANCE_SWAP — DS Icons (contract *-outline) for leadingIcon",
+                    "appearance": "default | inverse — inverse only for variant=outline|text, intent=primary on dark/brand surfaces (Alert inverse action).",
+                    "state": "VARIANT default | hover | focus | pressed | selected | loading — loading is a state, not a boolean",
+                    "disabled": "VARIANT false | true"
                 },
                 "rules": {
                     "leadingIconSizing": {
@@ -6507,7 +6617,8 @@
                     "textPrimaryIcon": "variant=text + intent=primary + disabled=false: leadingIcon (showIcon) uses text/primary across default|hover|focus|pressed|selected|loading",
                     "loading": "spinner-only, no label, no leading icon, no trailing icon, centered spinner",
                     "intentSecondarySparse": "intent=secondary is intentional-sparse — published mainly size=md solid (+ related states); do not invent missing lg/sm combinations",
-                    "productTheme": "Mode-aware via product-theme: container/background, container/radius/sm|lg, label/color, label/font-weight, icon/color. site-loovi solid uses feedback-primary/success + text/primary; EV|app-cliente use actions/primary + text/on-color. Radii: EV sm→150 / md|lg→200; site-loovi|app-cliente → full."
+                    "productTheme": "Mode-aware via product-theme: container/background, container/radius/sm|lg, label/color, label/font-weight, icon/color. site-loovi solid uses feedback-primary/success + text/primary; EV|app-cliente use actions/primary + text/on-color. Radii: EV sm→150 / md|lg→200; site-loovi|app-cliente → full.",
+                    "appearanceInverse": "appearance=inverse (24 variants): outline|text × sm|md|lg × default|pressed|focus (+ default disabled). Label/icon/outline stroke text/on-color (disabled text/on-color-disabled); pressed fill color/elevation/inverse-4; focus interactive/focus. Not for solid."
                 },
                 "tokenRules": [
                     "product-theme component/button/container/background",
@@ -6516,7 +6627,15 @@
                     "product-theme component/button/label/color",
                     "product-theme component/button/label/font-weight",
                     "product-theme component/button/icon/color for solid/outline icon colors where bound",
-                    "text/primary for variant=text + intent=primary leadingIcon (enabled)"
+                    "text/primary for variant=text + intent=primary leadingIcon (enabled)",
+                    "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23.",
+                    "variant=outline|text intent=danger label text/danger (AA) — rebound from color/actions/danger on 2026-11-23; icons keep their colour.",
+                    "variant=solid intent=primary container component/button/container/background → color/actions/primary #516CE7 (4.52:1 with on-color) since 2026-11-23.",
+                    "variant=solid intent=danger container color/actions/danger #D81C1A (5.12:1); label + icons text/on-color (was background-surface/0 / legacy Color/Content/Default Inverse).",
+                    "variant=solid intent=secondary container color/actions/secondary (lavender-1) with label + icons text/primary (9.1:1) — on-color failed (1.8:1).",
+                    "variant=solid intent=success container color/actions/success; label text/on-color directly (not component/button/label/color, which is text/primary in site-loovi).",
+                    "variant=solid hover|pressed|selected state layer: interactive/hover|pressed|selected with LINEAR_BURN (Plus Darker). primary|danger: second fill; success|secondary: absolute stateOverlay rectangle with node blendMode (Plugin API cannot write blend on variable-bound paints; paint opacity is dropped in library instances). Code: darken toward interactive/overlay (hover 8% · selected 12% · pressed 16%).",
+                    "Legacy remote variables (Color/Content*, Color/Interactive*) removed from Button icons on 2026-11-23 — icons next to a label: feedback/{status}; disabled: interactive/*-surface; ghost → text/placeholder."
                 ],
                 "accessibility": "Buttons must support keyboard activation, visible focus and disabled semantics. Loading actions should prevent duplicate activation and expose busy state in implementation.",
                 "feedbackTokens": {
@@ -6594,7 +6713,7 @@
             },
             "AppHeader": {
                 "nodeId": "3143:8822",
-                "description": "AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Do not nest AppHeader inside BottomSheet — use BottomSheetHeader. Token rule: local S2 kebab-case semantic + product-theme component/app-header/* aliases. Product-theme (collection product-theme, modes escritorio-virtual|site-loovi|app-cliente): component/app-header/inverse/background (appearance=inverse root fill; EV→inverse-3, site-loovi|app-cliente→brand); component/app-header/leading-action/background + leading-action/radius (leadingAction on specific|super-app; EV→surface/0 + radius/200, site-loovi|app-cliente→surface/2 + radius/full); component/app-header/avatar/background + avatar/icon-color (hierarchy=global × appearance=inverse Avatar; EV→surface/3 + text/primary, site-loovi|app-cliente→white 16% + text/on-color). Switch product-theme mode to preview; do not hardcode brand/inverse fills on themed slots. Icon rule: DS Icons — Escritório Virtual outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline); internal paths use {icon}-path. Internals: Button, local TextHeader (headingContent), local Profile menu, local Avatar — use EV library (not S2 local masters). Props: showLabel; showAction; showFirstTrailingAction (search-outline, default false); showSecondTrailingAction (bell-outline, default true); showProfileMenu (hierarchy=super-app only); greeting (TEXT, default \"Olá, Rodrigo\", global only). title/description via exposed headingContent TextHeader on non-global. Anatomy — global: leadingCluster + trailingActions. specific|super-app small|small-centered: leadingActions (slot + leadingSlotKeeper + leadingAction) + headingContent FILL + trailingActions. super-app: leadingActions FIXED 96 balances trailing (bell + profileMenu); TextHeader size=small alignment=center. specific medium|large: headerControls (leadingActions + trailingActions, SPACE_BETWEEN) above headingContent; keepers on both slots; no legacy action layer. Optical center: do not bind slot containers' visible to show* — keepers preserve width. Spacing: all layouts share horizontal pad spacing/200; global pad spacing/050 vert + spacing/200 horiz; small|small-centered (specific|super-app) pad spacing/100 vert + spacing/200 horiz; medium|large pad spacing/200 horiz + paddingBottom spacing/150 (paddingTop 0) + root gap spacing/100. PAINEL HOME: hierarchy=global + layout=small-centered; default surface/0 + text/primary; inverse surface/inverse-3 + text/on-color; greeting body/large/medium; trailing icon strokes default text/primary / inverse text/on-color. React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured. Product-theme title typography on small|small-centered × default × specific: component/app-header/title/font-size|line-height|font-weight (EV|site-loovi→heading/h3+medium; app-cliente→body/medium+regular). Figma textCase remains ORIGINAL; app-cliente must apply text-transform:uppercase in code.",
+                "description": "AI-READY COMPONENT: AppHeader is the top page/application header used to identify the current screen, provide navigation, and expose essential actions. Use layout=small-centered for compact centered page titles (hierarchy=specific|super-app) or for the Painel Home greeting chrome (hierarchy=global). Use layout=small for compact left-aligned titles, layout=medium for taller page headers, and layout=large for high-emphasis page headers. Use appearance=default on light surfaces and appearance=inverse on inverse/dark surfaces. Use hierarchy=global for app-level home chrome (Avatar + greeting + trailing actions), hierarchy=super-app for ecosystem/super-app context, and hierarchy=specific for internal pages or sections. Intentional sparse matrix (11 published / 24 theoretical): global publishes only layout=small-centered × appearance=default|inverse; super-app publishes only layout=small-centered × appearance=default (no inverse — intentional); specific publishes small-centered|small|medium|large × default|inverse. Missing combinations are intentional. Do not use AppHeader as a simple decorative heading. Do not use SystemHeader or OrganizationHeader for mobile app chrome. Do not nest AppHeader inside BottomSheet — use BottomSheetHeader. Token rule: local S2 kebab-case semantic + product-theme component/app-header/* aliases. Product-theme (collection product-theme, modes escritorio-virtual|site-loovi|app-cliente): component/app-header/inverse/background (appearance=inverse root fill; EV→inverse-3, site-loovi|app-cliente→brand-strong); component/app-header/leading-action/background + leading-action/radius (leadingAction on specific|super-app; EV→surface/0 + radius/200, site-loovi|app-cliente→surface/2 + radius/full); component/app-header/avatar/background + avatar/icon-color (hierarchy=global × appearance=inverse Avatar; EV→surface/3 + text/primary, site-loovi|app-cliente→white 16% + text/on-color). Switch product-theme mode to preview; do not hardcode brand/inverse fills on themed slots. Icon rule: DS Icons — Escritório Virtual outline icons only (menu-2-outline, bell-outline, arrow-left-outline, search-outline, plus-outline, user-outline); internal paths use {icon}-path. Internals: Button, local TextHeader (headingContent), local Profile menu, local Avatar — use EV library (not S2 local masters). Props: showLabel; showAction; showFirstTrailingAction (search-outline, default false); showSecondTrailingAction (bell-outline, default true); showProfileMenu (hierarchy=super-app only); greeting (TEXT, default \"Olá, Rodrigo\", global only). title/description via exposed headingContent TextHeader on non-global. Anatomy — global: leadingCluster + trailingActions. specific|super-app small|small-centered: leadingActions (slot + leadingSlotKeeper + leadingAction) + headingContent FILL + trailingActions. super-app: leadingActions FIXED 88 balances trailing (bell 40 + profileMenu 48) so the centered title sits on the header center; TextHeader size=small alignment=center. specific medium|large: headerControls (leadingActions + trailingActions, SPACE_BETWEEN) above headingContent; keepers on both slots; no legacy action layer. Optical center: do not bind slot containers' visible to show* — keepers preserve width. Spacing: all layouts share horizontal pad spacing/200; global pad spacing/050 vert + spacing/200 horiz; small|small-centered (specific|super-app) pad spacing/100 vert + spacing/200 horiz; medium|large pad spacing/200 horiz + paddingBottom spacing/150 (paddingTop 0) + root gap spacing/100. PAINEL HOME: hierarchy=global + layout=small-centered; default surface/0 + text/primary; inverse surface/inverse-3 + text/on-color; greeting body/large/medium; trailing icon strokes default text/primary / inverse text/on-color. React mapping: AppHeader(layout, appearance, hierarchy, title, description, greeting, showLabel, showAction, showFirstTrailingAction, showSecondTrailingAction, showProfileMenu). Code Connect is not configured. Product-theme title typography on small|small-centered × default × specific: component/app-header/title/font-size|line-height|font-weight (EV|site-loovi→heading/h3+medium; app-cliente→body/medium+regular). Figma textCase remains ORIGINAL; app-cliente must apply text-transform:uppercase in code.",
                 "variants": {
                     "layout": [
                         "small-centered",
@@ -6637,7 +6756,7 @@
                     "noLegacyAction": "Do not expose or keep a legacy action layer — use leadingAction only",
                     "painelHome": "appearance=inverse|default + hierarchy=global + layout=small-centered; greeting prop; Avatar + bell",
                     "vsSystemOrgHeader": "Do not use SystemHeader or OrganizationHeader for mobile app chrome",
-                    "inverseFill": "appearance=inverse root fill binds component/app-header/inverse/background (EV→color/background-surface/inverse-3; site-loovi|app-cliente→color/background-surface/brand) — not color/actions/primary",
+                    "inverseFill": "appearance=inverse root fill binds component/app-header/inverse/background (EV→color/background-surface/inverse-3; site-loovi|app-cliente→color/background-surface/brand-strong) — not color/actions/primary",
                     "globalTrailingIconStroke": "Manual sync on hierarchy=global trailing Button icons: default → text/primary; inverse → text/on-color",
                     "inverseTextHeader": "appearance=inverse: nested TextHeader title uses text/on-color (description text/on-color-disabled when shown); default keeps text/primary|secondary",
                     "smallLayoutFlow": "small|small-centered × specific|super-app: leadingActions + headingContent=TextHeader size=small FILL + trailingActions. Do not bind slot containers' visible to show*; keepers preserve optical center.",
@@ -6651,7 +6770,9 @@
                     "titleThemeTypo": "small|small-centered × appearance=default × hierarchy=specific: title binds component/app-header/title/font-size|line-height|font-weight (EV|site-loovi→heading/h3 + medium; app-cliente→body/medium + regular). textStyleId cleared on those titles.",
                     "appClienteTitleCase": "app-cliente only: apply text-transform:uppercase in product UI — Figma keeps textCase=ORIGINAL (textCase is not mode-aware). Do not set UPPER on the published variants.",
                     "slotSizeSync": "After Button size sm migration: leadingSlotKeeper/trailingSlotKeeper and FIXED leadingActions/trailingActions are 40×40 (not legacy 48). trailingActions may have carried minWidth=48 — must clear when resizing.",
-                    "horizontalPad": "All published variants bind paddingLeft|paddingRight to spacing/200 (16) — unified lateral inset (replaces legacy global spacing/300 and small spacing/050 horiz)."
+                    "horizontalPad": "All published variants bind paddingLeft|paddingRight to spacing/200 (16) — unified lateral inset (replaces legacy global spacing/300 and small spacing/050 horiz).",
+                    "trailingActions": "hierarchy=specific: trailingActions is horizontal auto-layout (gap spacing/0, hug, minWidth spacing/500) — search then bell side by side, never overlapped (2026-11-23).",
+                    "centeredTitle": "layout=small-centered: title is centered on the full header width. Figma balances leadingActions to the trailing width (super-app 88) and all small-centered variants are 390 wide; code centers the title independently of the side slots."
                 },
                 "tokenRules": [
                     "app-cliente: text-transform uppercase in implementation (Figma textCase ORIGINAL)",
@@ -6699,8 +6820,8 @@
                             "binds": "appearance=inverse root fills",
                             "aliases": {
                                 "escritorio-virtual": "color/background-surface/inverse-3",
-                                "site-loovi": "color/background-surface/brand",
-                                "app-cliente": "color/background-surface/brand"
+                                "site-loovi": "color/background-surface/brand-strong",
+                                "app-cliente": "color/background-surface/brand-strong"
                             }
                         },
                         {
@@ -7163,7 +7284,7 @@
             },
             "ChipClickable": {
                 "nodeId": "3653:23577",
-                "description": "AI-READY COMPONENT: ChipClickable is a compact interactive chip used for selectable filters, compact options, removable selections, or contextual actions with low visual emphasis. Usage rule: use ChipClickable when a compact item can be clicked, selected, or removed. Do not use it as a primary button, badge, static tag, checkbox, radio, menu item, alert, or navigation tab. Variant rule: size=sm|md; state=default|hover|pressed|selected|disabled (disabled is intentional sparse — not published for every intent); intent=info|system|success|warning|danger|outline|soft|brand; width=hug|fill. Intentional sparse matrix (published combinations only; soft and brand publish 16 like outline — no disabled). Intent rule: info|system|success|warning|danger use feedback surfaces. intent=outline is stroke-only on default (color/border/2; interaction fills hover/pressed/selected). intent=soft is the soft actionable chip (Painel Adicionar veículo): fill color/background-surface/0 + stroke color/border/2 on all published states; hover|pressed|selected add stateOverlay with interactive/hover|pressed|selected at LINEAR_BURN (Plus Darker) over the soft base — do not replace surface/0 with interactive/* alone; for that exemplar keep showAvatar=false and showDeleteAction=false; showLeadingIcon=true with local circle-plus-outline or plus-outline; label via TEXT prop (wired on all intents including soft). intent=brand is Loovi brand chrome: fill color/background-surface/brand (#5A78FF via primitive-colors/brand-blue) with label/icon text/on-color; hover|pressed|selected use a stateOverlay (absolute, node blendMode LINEAR_BURN / Plus Darker) bound to interactive/hover|pressed|selected over the brand base — same dual-layer visual rule as feedback intents; not a feedback status; prefer showAvatar=false / showDeleteAction=false on brand exemplars unless product requires them. Label typography: local text style body/small/medium (no remote typography variables). Props: label (TEXT); showLeadingIcon; leadingIcon (INSTANCE_SWAP — size=sm → 20×20; size=md → 24×24 native; do not use 32×32 on md); showAvatar; showDeleteAction. Token rule: local S2 kebab-case only; chip gaps use spacing/100 where applicable. Accessibility: button or toggle button with aria-pressed when selectable; delete action needs accessible name Remove {label}. React mapping: ChipClickable(size, state, intent, width, label, showLeadingIcon, leadingIcon, showAvatar, showDeleteAction). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: ChipClickable is a compact interactive chip used for selectable filters, compact options, removable selections, or contextual actions with low visual emphasis. Usage rule: use ChipClickable when a compact item can be clicked, selected, or removed. Do not use it as a primary button, badge, static tag, checkbox, radio, menu item, alert, or navigation tab. Variant rule: size=sm|md; state=default|hover|pressed|selected|disabled (disabled is intentional sparse — not published for every intent); intent=info|system|success|warning|danger|outline|soft|brand; width=hug|fill. Intentional sparse matrix (published combinations only; soft and brand publish 16 like outline — no disabled). Intent rule: info|system|success|warning|danger use feedback surfaces. intent=outline is stroke-only on default (color/border/2; interaction fills hover/pressed/selected). intent=soft is the soft actionable chip (Painel Adicionar veículo): fill color/background-surface/0 + stroke color/border/2 on all published states; hover|pressed|selected add stateOverlay with interactive/hover|pressed|selected at LINEAR_BURN (Plus Darker) over the soft base — do not replace surface/0 with interactive/* alone; for that exemplar keep showAvatar=false and showDeleteAction=false; showLeadingIcon=true with local circle-plus-outline or plus-outline; label via TEXT prop (wired on all intents including soft). intent=brand is Loovi brand chrome: fill color/background-surface/brand-strong (#516CE7 via primitive-colors/sapphire, AA 4.52:1 with on-color) with label/icon text/on-color; hover|pressed|selected use a stateOverlay (absolute, node blendMode LINEAR_BURN / Plus Darker) bound to interactive/hover|pressed|selected over the brand base — same dual-layer visual rule as feedback intents; not a feedback status; prefer showAvatar=false / showDeleteAction=false on brand exemplars unless product requires them. Label typography: local text style body/small/medium (no remote typography variables). Props: label (TEXT); showLeadingIcon; leadingIcon (INSTANCE_SWAP — size=sm → 20×20; size=md → 24×24 native; do not use 32×32 on md); showAvatar; showDeleteAction. Token rule: local S2 kebab-case only; chip gaps use spacing/100 where applicable. Accessibility: button or toggle button with aria-pressed when selectable; delete action needs accessible name Remove {label}. React mapping: ChipClickable(size, state, intent, width, label, showLeadingIcon, leadingIcon, showAvatar, showDeleteAction). Code Connect is not configured.",
                 "variants": {
                     "size": [
                         "sm",
@@ -7189,6 +7310,10 @@
                     "width": [
                         "hug",
                         "fill"
+                    ],
+                    "emphasis": [
+                        "primary",
+                        "secondary"
                     ]
                 },
                 "props": {
@@ -7200,7 +7325,8 @@
                     "size": "sm | md",
                     "state": "default | hover | pressed | selected | disabled (sparse)",
                     "intent": "info | system | success | warning | danger | outline | soft | brand",
-                    "width": "hug | fill"
+                    "width": "hug | fill",
+                    "emphasis": "secondary (default) | primary — feedback intents only (info, system, success, warning, danger); outline/soft/brand ignore it"
                 },
                 "accessibility": "Use a button semantic for actions or a toggle button with aria-pressed for selectable chips. Removable chips need a delete action with an accessible name such as Remove {label}.",
                 "feedbackTokens": {
@@ -7212,20 +7338,24 @@
                 "rules": {
                     "softIntent": "intent=soft: default and all published states keep color/background-surface/0 + color/border/2; hover|pressed|selected add stateOverlay with interactive/hover|pressed|selected + LINEAR_BURN (Plus Darker) — do not replace the soft base fill",
                     "softSparse": "soft publishes 16 variants (same sparse as outline — no disabled)",
-                    "brandIntent": "intent=brand: root fill color/background-surface/brand + text/on-color; hover|pressed|selected add stateOverlay (absolute) with interactive/hover|pressed|selected and node blendMode LINEAR_BURN (Plus Darker) — same visual rule as feedback intents' dual-fill; Plugin API cannot bind LINEAR_BURN on variable paints so brand uses a node overlay",
+                    "brandIntent": "intent=brand: root fill color/background-surface/brand-strong + text/on-color (4.52:1); hover|pressed|selected add stateOverlay (absolute) with interactive/hover|pressed|selected and node blendMode LINEAR_BURN (Plus Darker).",
                     "brandSparse": "brand publishes 16 variants (same sparse as soft/outline — no disabled)",
                     "stateOverlay": "Feedback intents stack paint[0]=base NORMAL + paint[1]=interactive/* LINEAR_BURN. Soft and brand mirror via stateOverlay child (LINEAR_BURN) over their base fills.",
                     "outlineVsSoft": "outline = stroke-only default; soft = surface/0 fill + border (do not use ChipTag for actionable Adicionar veículo)",
                     "labelProp": "TEXT prop label wired on all published variants including soft",
                     "labelTypography": "local body/small/medium — no remote typography binds",
-                    "leadingIconSize": "size=sm → 20×20; size=md → 24×24 (native). Do not use 32×32 on md."
+                    "leadingIconSize": "size=sm → 20×20; size=md → 24×24 (native). Do not use 32×32 on md.",
+                    "defaultEmphasis": "Default emphasis = secondary (soft) in Figma (top-left variant), React and Flutter since 2026-11-23 — emphasis=primary (strong) is opt-in. Keeps Escritório Virtual chips unchanged.",
+                    "iconSize": "leadingIcon and avatar width/height bound to spacing tokens: sm 20 (spacing/250) — avatar was 22 unbound, chip sm height 30 → 28 on 2026-11-23; md icon 24 (spacing/300) · avatar 32 (spacing/400).",
+                    "deleteTarget": "deleteAction stays 16×16 visually; code extends the hit area invisibly to ≥ 24×24 (WCAG 2.5.8) without changing chip size. Accessible name \"Remover {label}\"."
                 },
                 "tokenRules": [
+                    "emphasis=primary uses color/background-feedback-primary/{status}; emphasis=secondary uses color/background-feedback-secondary/{status} (info→teal-2, system→azure-2); content text/primary on both. intent=danger secondary uses background-feedback-secondary/danger (primary keeps interactive/error-surface).",
                     "feedback intents: color/background-feedback-primary/{intent} (danger may use interactive/error-surface)",
                     "outline default: color/border/2 stroke only",
                     "soft default: color/background-surface/0 + color/border/2",
                     "soft interaction: keep surface/0 base + stateOverlay interactive/hover|pressed|selected LINEAR_BURN (Plus Darker)",
-                    "brand: color/background-surface/brand + text/on-color; state overlays interactive/hover|pressed|selected with LINEAR_BURN (Plus Darker)",
+                    "brand: color/background-surface/brand-strong + text/on-color; state overlays interactive/hover|pressed|selected with LINEAR_BURN (Plus Darker)",
                     "soft/outline interaction: interactive/hover | pressed | selected (outline may replace transparent default; soft must not replace surface/0)",
                     "text/primary on label (text/on-color on brand)",
                     "label text style: body/small/medium",
@@ -7235,7 +7365,7 @@
                 "reactPackage": "@ds/react"
             },
             "ChipGroup": {
-                "nodeId": "3437:3023",
+                "nodeId": "3667:2570",
                 "description": "AI-READY COMPONENT: ChipGroup is a layout composition that displays a set of local ChipClickable chips for input, assistive, filter or suggestion patterns. Use layout=single-row-scrollable for a horizontally scrollable row and layout=multi-row-wrap for wrapping rows. Composition: nest only local S2 ChipClickable instances — do not use remote Material chips, detached frames or custom chip visuals. Intentional ChipClickable mapping: all ChipGroup types use ChipClickable intent=outline, size=sm, width=hug; type=filter demos selected state (state=selected); input, assistive and suggestion demos state=default. Prefer showAvatar=false and showDeleteAction=false unless the specific pattern requires them. Do not use ChipGroup as a single ChipClickable, ChipTag, Button group, Tab list, checkbox group or radio group. Accessibility: provide an accessible group label in product UI; each chip must be keyboard reachable; use Enter/Space to activate or toggle; selected filter chips must expose selected/pressed state programmatically. Token rule: ChipGroup layout uses local DS spacing tokens for gaps; nested chips own ChipClickable tokens (including outline intent surfaces/borders). React mapping: ChipGroup(type, layout, children as ChipClickable[]).",
                 "variants": {
                     "type": [
@@ -7270,7 +7400,7 @@
             },
             "ChipTag": {
                 "nodeId": "3653:23220",
-                "description": "AI-READY COMPONENT: ChipTag is a compact non-interactive label used to display category, status, metadata or contextual classification. Use intent=info, system, success, warning or danger for semantic status tags, intent=outline for neutral outlined tags, and intent=brand for Loovi brand-surface tags (fill color/background-surface/brand #5A78FF, label/icon text/on-color). Use emphasis=strong for saturated feedback fills and emphasis=soft where available (success soft exemplars) for low-emphasis status. Do not use ChipTag as a button, selectable filter, removable chip, navigation tab, checkbox, badge, alert or CTA. For interactive chips, use ChipClickable. Canonical set lives on the Chip page (3653:23220) — do not instance the orphan legacy set 3291:690. intent=brand is not a feedback status and publishes sparse: size=sm|md × width=hug|fill × state=default × emphasis=strong (no disabled/soft brand exemplars).",
+                "description": "AI-READY COMPONENT: ChipTag is a compact non-interactive label used to display category, status, metadata or contextual classification. Use intent=info, system, success, warning or danger for semantic status tags, intent=outline for neutral outlined tags, and intent=brand for Loovi brand-surface tags (fill color/background-surface/brand-strong #516CE7 (AA 4.52:1), label/icon text/on-color). Use emphasis=primary for saturated feedback fills and emphasis=secondary (color/background-feedback-secondary/{intent}, all five status intents) for low-emphasis status. Do not use ChipTag as a button, selectable filter, removable chip, navigation tab, checkbox, badge, alert or CTA. For interactive chips, use ChipClickable. Canonical set lives on the Chip page (3653:23220) — do not instance the orphan legacy set 3291:690. intent=brand is not a feedback status and publishes sparse: size=sm|md × width=hug|fill × state=default × emphasis=primary (no disabled/secondary brand exemplars).",
                 "variants": {
                     "size": [
                         "sm",
@@ -7294,8 +7424,8 @@
                         "disabled"
                     ],
                     "emphasis": [
-                        "strong",
-                        "soft"
+                        "primary",
+                        "secondary"
                     ]
                 },
                 "props": {
@@ -7307,18 +7437,20 @@
                     "intent": "info | system | success | warning | danger | outline | brand",
                     "width": "hug | fill",
                     "state": "default | disabled",
-                    "emphasis": "strong | soft — soft exemplars currently published for success; prefer strong when leadingIcon must render"
+                    "emphasis": "secondary (default) | primary"
                 },
                 "rules": {
                     "disabled": "disabled is state=disabled only; never intent=disabled. Disabled exemplars exist for intent=system (matches ChipClickable pattern).",
                     "nonInteractive": "ChipTag must not receive focus or onClick; use ChipClickable for interaction.",
                     "canonicalSet": "Use component set 3653:23220 only; legacy 3291:690 is orphan and must not be nested in product components.",
-                    "softLeadingIcon": "emphasis=soft success may omit leadingIcon from the instance tree — use emphasis=strong when an icon is required.",
-                    "brandIntent": "intent=brand uses color/background-surface/brand + text/on-color; not a feedback status. Sparse strong/default only."
+                    "softLeadingIcon": "emphasis=secondary may omit leadingIcon from the instance tree — use emphasis=primary when an icon is required.",
+                    "brandIntent": "intent=brand uses color/background-surface/brand-strong + text/on-color (4.52:1); not a feedback status. Sparse primary/default only.",
+                    "defaultEmphasis": "Default emphasis = secondary (soft) in Figma (top-left variant), React and Flutter since 2026-11-23 — emphasis=primary (strong) is opt-in. Keeps Escritório Virtual chips unchanged.",
+                    "iconSize": "leadingIcon and avatar width/height bound to spacing tokens: sm 20 (spacing/250), md icon 32 (spacing/400) · avatar 24 (spacing/300).",
+                    "height": "size=sm 24 · size=md 40 (React aligned from 32 on 2026-11-23; affects Escritório Virtual md chips)."
                 },
                 "tokenRules": [
-                    "color/background-feedback-primary/{intent} for strong fills (info, system, success, warning, danger); intent=brand uses color/background-surface/brand + text/on-color",
-                    "soft success uses soft feedback fill tokens where bound",
+                    "emphasis=primary uses color/background-feedback-primary/{status}; emphasis=secondary uses color/background-feedback-secondary/{status} (info→teal-2, system→azure-2); content text/primary on both.",
                     "color/border/2 for outline stroke and disabled fill",
                     "text/primary for label on saturated fills; text/on-color when fill requires inverse label",
                     "text/secondary for muted icon/label on outline and disabled",
@@ -7544,7 +7676,8 @@
                 "tokenRules": [
                     "color/background-surface/0 | 1, color/border-feedback/danger, color/border/2",
                     "interactive/focus, feedback/danger | success, text/primary | secondary",
-                    "spacing/*, border/radius/*, border/width/*"
+                    "spacing/*, border/radius/*, border/width/*",
+                    "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
                 "accessibility": "announce fileName; loading/success aria-live=polite; danger role=alert or aria-live; removeAction accessible label; decorative status icons aria-hidden when text conveys state.",
                 "reactPackage": "@ds/react",
@@ -7579,7 +7712,7 @@
             },
             "UploadPhotos": {
                 "nodeId": "3581:7597",
-                "description": "AI-READY COMPONENT: UploadPhotos is a single photo or visual-document upload task item used to communicate a required capture and its lifecycle status. Use status=pending when no photo has been submitted, status=in-review after submission while validation is pending, status=approved after validation succeeds, and status=rejected when the photo must be replaced. status is a business lifecycle axis, not an interaction-state axis; hover, focus, pressed and disabled behavior belong to the nested Button action. Compose local DS camera-outline icon, Button and ChipTag only. Do not use UploadPhotos as FileUploaderDropzoneItem/dropzone, FileUploaderItem, FileUploaderList, generic Card, gallery tile, image preview, Banner, Toast or the full uploader composition. Props: label controls the required photo name; description and showDescription control optional supporting guidance. Status controls the trailing affordance structurally: pending uses Button text/sm/primary with showLabel=false (chevron-only chrome; label prop remains Adicionar foto for the accessible name) and trailing chevron; in-review uses ChipTag sm/system/hug/strong with no leading icon (Em análise); approved uses ChipTag sm/success/hug/strong with circle-check-outline (Aprovada); rejected uses ChipTag sm/danger/hug/strong with alert-circle-outline (Reprovada) — canvas fill override to color/background-feedback-primary/warning — plus Button text/sm/primary with showLabel=false (chevron-only; label prop Refazer foto) and trailing chevron. Surface tokens are intentional: pending and rejected use color/background-surface/2; in-review and approved use color/background-surface/1. Token rule: use existing DS kebab-case variables — color/background-surface/1|2, text/primary|secondary, spacing/0|050|100|150|200|800, border/radius/300, font-family/base, font-weight/medium|regular, body/medium|small and caption/medium typography tokens, plus nested Button/ChipTag tokens. Accessibility: expose label and status to assistive technologies; pending and rejected keep the Button label prop for the accessible name while chrome is chevron-only (showLabel=false) and must remain keyboard-accessible; in-review and approved are informational and must not receive focus unless a real action is added. React mapping: UploadPhotos(status, label, description, showDescription, onSelectPhoto, onRetakePhoto).",
+                "description": "AI-READY COMPONENT: UploadPhotos is a single photo or visual-document upload task item used to communicate a required capture and its lifecycle status. Use status=pending when no photo has been submitted, status=in-review after submission while validation is pending, status=approved after validation succeeds, and status=rejected when the photo must be replaced. status is a business lifecycle axis, not an interaction-state axis; hover, focus, pressed and disabled behavior belong to the nested Button action. Compose local DS camera-outline icon, Button and ChipTag only. Do not use UploadPhotos as FileUploaderDropzoneItem/dropzone, FileUploaderItem, FileUploaderList, generic Card, gallery tile, image preview, Banner, Toast or the full uploader composition. Props: label controls the required photo name; description and showDescription control optional supporting guidance. Status controls the trailing affordance structurally: pending uses Button text/sm/primary with showLabel=false (chevron-only chrome; label prop remains Adicionar foto for the accessible name) and trailing chevron; in-review uses ChipTag sm/system/hug/primary with no leading icon (Em análise); approved uses ChipTag sm/success/hug/primary with circle-check-outline (Aprovada); rejected uses ChipTag sm/danger/hug/primary with alert-circle-outline (Reprovada) — canvas fill override to color/background-feedback-primary/warning — plus Button text/sm/primary with showLabel=false (chevron-only; label prop Refazer foto) and trailing chevron. Surface tokens are intentional: pending and rejected use color/background-surface/2; in-review and approved use color/background-surface/1. Token rule: use existing DS kebab-case variables — color/background-surface/1|2, text/primary|secondary, spacing/0|050|100|150|200|800, border/radius/300, font-family/base, font-weight/medium|regular, body/medium|small and caption/medium typography tokens, plus nested Button/ChipTag tokens. Accessibility: expose label and status to assistive technologies; pending and rejected keep the Button label prop for the accessible name while chrome is chevron-only (showLabel=false) and must remain keyboard-accessible; in-review and approved are informational and must not receive focus unless a real action is added. React mapping: UploadPhotos(status, label, description, showDescription, onSelectPhoto, onRetakePhoto).",
                 "variants": {
                     "status": [
                         "pending",
@@ -7606,9 +7739,9 @@
                 },
                 "statusMap": {
                     "pending": "Button text/sm/primary — showLabel=false + trailing chevron; label prop \"Adicionar foto\" (a11y name); surface/2",
-                    "in-review": "ChipTag canonical 3653:23220 — sm/system/hug/strong; no leading icon; \"Em análise\"; surface/1",
-                    "approved": "ChipTag canonical — sm/success/hug/strong + circle-check-outline; \"Aprovada\"; surface/1",
-                    "rejected": "ChipTag canonical — sm/danger/hug/strong + alert-circle-outline (\"Reprovada\"); fill override → color/background-feedback-primary/warning; + Button text/sm/primary — showLabel=false + trailing chevron; label prop \"Refazer foto\"; surface/2"
+                    "in-review": "ChipTag canonical 3653:23220 — sm/system/hug/primary; no leading icon; \"Em análise\"; surface/1",
+                    "approved": "ChipTag canonical — sm/success/hug/primary + circle-check-outline; \"Aprovada\"; surface/1",
+                    "rejected": "ChipTag canonical — sm/danger/hug/primary + alert-circle-outline (\"Reprovada\"); fill override → color/background-feedback-primary/warning; + Button text/sm/primary — showLabel=false + trailing chevron; label prop \"Refazer foto\"; surface/2"
                 },
                 "compositionNote": "statusTag must instance ChipTag 3653:23220 only (not orphan 3291:690). ChipTag labels use caption/medium/medium.",
                 "tokenRules": [
@@ -7648,7 +7781,7 @@
                 "rules": {
                     "compositionDefault": "leading (illustration + brandModel/model + plate) + spacer + statusChip (ChipTag outline/sm)",
                     "compositionSecondary": "leading (illustration + title + plate) — no ChipTag; informational only",
-                    "statusChip": "canonical ChipTag outline/sm/hug/strong + circle-dot-filled; do not restyle ChipTag internals from this card",
+                    "statusChip": "canonical ChipTag outline/sm/hug/primary + circle-dot-filled; do not restyle ChipTag internals from this card",
                     "secondarySurface": "color/background-surface/brand-muted (primitive-colors/brand-blue-72, alpha 72% in token) + text/on-color — never rely on paint opacity for library sync",
                     "secondaryStatusIgnored": "status axis unused on secondary; keep matrix complete with identical visuals",
                     "noFigmaInteractionVariants": "default may wire onPress at runtime; secondary is not clickable — do not add hover/pressed/disabled variants",
@@ -7890,7 +8023,8 @@
                     "shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger",
                     "body/large/regular value/placeholder/resting; body/small/regular floating label/supporting",
                     "product-theme component/input/field/radius (EV→200; site-loovi|app-cliente→full)",
-                    "spacing/050|100|200|300|700; border/width/012|025"
+                    "spacing/050|100|200|300|700; border/width/012|025",
+                    "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
                 "accessibility": "Associate label; aria-invalid on error; aria-describedby for supporting/error; aria-disabled when disabled; focus via interactive/focus.",
                 "productTheme": {
@@ -7977,7 +8111,8 @@
                     "spacing/150 (root paddingTop); spacing/200|300 (field padding)",
                     "border/radius/200; border/width/012 (default/hover/disabled); border/width/025 (focus/error, 2px)",
                     "body/large/regular (value/placeholder + restingLabel content=label); caption/large/regular (floating labelText + count + supporting)",
-                    "product-theme component/input-textarea/field/radius (EV→200; site-loovi|app-cliente→500)"
+                    "product-theme component/input-textarea/field/radius (EV→200; site-loovi|app-cliente→500)",
+                    "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
                 "accessibility": "textarea role; label association; aria-invalid + aria-describedby on error; aria-disabled when disabled; announce count when relevant.",
                 "composition": [
@@ -8071,7 +8206,8 @@
                     "inverse: transparent field; color/border/2; cutout color/background-surface/inverse-3; text/on-color|on-color-disabled; disabled texts text/placeholder-inverse",
                     "shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger",
                     "SelectCountry + DividerVertical nested DS tokens",
-                    "no field fill on disabled"
+                    "no field fill on disabled",
+                    "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
                 "accessibility": "Labeled input; aria-invalid on error; aria-disabled when disabled; country trigger separately named when showSelectCountry=true; payment mark aria-hidden when label names card field.",
                 "composition": [
@@ -8160,7 +8296,8 @@
                     "inverse: transparent field; floatingLabel cutout color/background-surface/inverse-3 (including focus); color/border/2; text/on-color|on-color-disabled; disabled field texts text/placeholder-inverse; icons disabled on-color-disabled",
                     "shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger",
                     "Button nested DS tokens",
-                    "no Color/Content/Ghost"
+                    "no Color/Content/Ghost",
+                    "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
                 "accessibility": "Password field; show/hide button named Mostrar senha / Ocultar senha; aria-invalid on error; aria-describedby; aria-disabled when disabled.",
                 "composition": [
@@ -8206,7 +8343,8 @@
                     "codeRow itemSpacing spacing/150",
                     "label: body/medium/regular; text/secondary (disabled text/placeholder)",
                     "supporting: caption/large/regular; feedback/danger",
-                    "inherits VerificationCodeInputItem tokens (incl. color/elevation/Focus ring)"
+                    "inherits VerificationCodeInputItem tokens (incl. color/elevation/Focus ring)",
+                    "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
                 "accessibility": "Group of single-character inputs; label associates to the group; aria-invalid + aria-describedby on error; aria-disabled when disabled; product code advances focus per slot.",
                 "composition": [
@@ -8485,7 +8623,8 @@
                     "feedback/danger (errorText fill)",
                     "feedback/warning (warningText fill)",
                     "spacing/100 (error/warning gap)",
-                    "inherits SliderBaseItem / SliderSkeletonItem / SliderItem / Input tokens"
+                    "inherits SliderBaseItem / SliderSkeletonItem / SliderItem / Input tokens",
+                    "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
                 "accessibility": "Provide accessible name from label; announce value changes; associate errorText/warningText with the control.",
                 "composition": [
@@ -8804,7 +8943,8 @@
                     "shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger",
                     "no field fill on disabled (appearance=default)",
                     "spacing/050|100|200|300|700; border/radius/200; border/width/012|025",
-                    "body/large/regular value/placeholder/resting; body/small/regular floating label/supporting"
+                    "body/large/regular value/placeholder/resting; body/small/regular floating label/supporting",
+                    "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
                 "accessibility": "Associate label; aria-invalid on error; aria-haspopup=dialog when calendar opens; aria-disabled when disabled; focus via interactive/focus.",
                 "composition": [
@@ -8870,7 +9010,8 @@
                     "inverse: transparent field; color/border/2; cutout color/background-surface/inverse-3; text/on-color|on-color-disabled; disabled texts text/placeholder-inverse",
                     "shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger",
                     "spacing/050|100|200|300|700; border/radius/200; border/width/012|025",
-                    "body/large/regular value/placeholder/resting; body/small/regular floating label/supporting"
+                    "body/large/regular value/placeholder/resting; body/small/regular floating label/supporting",
+                    "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
                 "accessibility": "Combobox; aria-expanded/aria-controls when floating ListActionDropdown is open; aria-invalid on error; aria-disabled when disabled; focus via interactive/focus.",
                 "composition": [
@@ -9332,7 +9473,8 @@
                     "title": "nested ModalHeader TEXT — modal heading",
                     "label": "nested ModalHeader TEXT — optional supporting label",
                     "showLabel": "nested ModalHeader BOOLEAN — toggles label",
-                    "showCloseAction": "nested ModalHeader BOOLEAN — toggles closeAction Button"
+                    "showCloseAction": "nested ModalHeader BOOLEAN — toggles closeAction Button",
+                    "showFooter": "BOOLEAN (default false) — footer with up to 2 Button actions: primary solid + secondary text. web: horizontal, right-aligned, size=lg; mobile|mobile-landscape: vertical, full width, primary on top, size=md. Gap spacing/100."
                 },
                 "tokenRules": [
                     "color/background-surface/0 for modal surface",
@@ -9350,7 +9492,8 @@
                     "headerMapping": "platform=web → ModalHeader layout=desktop; platform=mobile|mobile-landscape → ModalHeader layout=mobile",
                     "headerProps": "title/label/showLabel/showCloseAction live on nested ModalHeader — do not remount AppHeader",
                     "slotCheckItems": "Optional guideline stacks in slot may compose ModalCheckItem rows (not Checkbox, not BottomSheetCheckItem)",
-                    "productTheme": "Shell corners bind component/modal/container/radius — EV|site-loovi→600 (24px); app-cliente→800 (32px). Nested ModalHeader close-action tokens remain mode-aware. Do not hardcode radius/600 on the Modal root."
+                    "productTheme": "Shell corners bind component/modal/container/radius — EV|site-loovi→600 (24px); app-cliente→800 (32px). Nested ModalHeader close-action tokens remain mode-aware. Do not hardcode radius/600 on the Modal root.",
+                    "footer": "At most one primary (solid) action in the footer."
                 },
                 "composition": [
                     "ModalHeader",
@@ -9409,7 +9552,8 @@
                     "vsAppHeader": "Do not use as AppHeader, page header, card header, BottomSheet header or navigation",
                     "parentOnly": "Use only inside Modal",
                     "vsBottomSheetHeader": "Do not use as BottomSheet header — use BottomSheetHeader",
-                    "productTheme": "closeAction binds background + radius on all layouts. size-mobile binds layout=mobile close (+ center leadingSpacer). EV: surface/0 + radius/200 + size 40; site-loovi: surface/2 + full + 40; app-cliente: surface/2 + full + 32 (mobile only). Desktop close size remains spacing/500 (40) across modes."
+                    "productTheme": "closeAction binds background + radius on all layouts. size-mobile binds layout=mobile close (+ center leadingSpacer). EV: surface/0 + radius/200 + size 40; site-loovi: surface/2 + full + 40; app-cliente: surface/2 + full + 32 (mobile only). Desktop close size remains spacing/500 (40) across modes.",
+                    "closeSize": "close-action and leadingSpacer size: mobile → component/modal-header/close-action/size-mobile; desktop → spacing/500."
                 },
                 "tokenRules": [
                     "product-theme component/modal-header/close-action/background (EV→surface/0; site-loovi|app-cliente→surface/2)",
@@ -9566,7 +9710,9 @@
                 "rules": {
                     "usage": "Do not use as Checkbox, Toggle, Button, Chip, MenuItem or standalone multiple-selection control",
                     "grouping": "Related options belong in a RadioGroup (role=radiogroup)",
-                    "vsRadioButtonCard": "For full-width card/row selectable options use RadioButtonCard (4498:68); keep RadioButton for compact label+description"
+                    "vsRadioButtonCard": "For full-width card/row selectable options use RadioButtonCard (4498:68); keep RadioButton for compact label+description",
+                    "disabled": "disabled + checked: ring border/width/050 (4) in text/placeholder; disabled + unchecked: border/width/025 (2) in color/border/2 — the two must be visually distinct.",
+                    "checkedIndicator": "checked = thick ring (border/width/050) with no center dot — in all states, including disabled. Code must not draw a dot."
                 },
                 "tokenRules": [
                     "color/actions/primary for checked fill",
@@ -11293,7 +11439,7 @@
                 "rules": {
                     "icons": "icon must use DS Icons — Escritório Virtual outline icons only; no remote/external icon libraries",
                     "badge": "badge mode is a variant (none|count|dot); count/overflowLabel come from exposed nested Badge — do not change Badge size/content away from the variant",
-                    "colors": "intentional color model: color/actions/primary|tertiary for selected/accent, color/palette/tangerine-1 for badge accent; do not remap as feedback tokens",
+                    "colors": "intentional color model: selected icon color/actions/primary (default) | color/actions/tertiary (inverse); selected LABEL text/primary in appearance=default (actions/primary is 4.41:1 at caption size); badge accent color/palette/tangerine-1 with count text/primary (6.7:1) — never text/secondary (3.3:1). Do not remap as feedback tokens.",
                     "usage": "Use inside NavigationBar or navigation rail; not as Button, Chip, Badge, Tab or ListItem"
                 },
                 "tokenRules": [
@@ -11769,6 +11915,10 @@
             }
         },
         "recentUpdates": [
+            "Review decisions: chips default emphasis=secondary (Figma top-left, React, Flutter — EV unchanged); Button contrast AA — actions/primary → sapphire #516CE7 (4.52:1), actions/danger → crimson-red #D81C1A (5.12:1), solid secondary label/icons → text/primary, solid success label → text/on-color, success|secondary hover/pressed/selected state layer (stateOverlay LINEAR_BURN); new color/background-surface/brand-strong (#516CE7) for brand fills with small on-color text (chips brand, Alert inverse, AppHeader inverse site-loovi|app-cliente); Banner info primary → feedback-primary/info; NavigationBarItem selected label text/primary + badge count text/primary; ChipClickable delete hit area ≥ 24 in code; chip icon/avatar sizes bound to spacing tokens (ChipClickable sm avatar 22 → 20, height 30 → 28); ChipTag secondary/success variants were stacked on primary — repositioned; AppHeader small-centered title centered (390 wide, balanced sides); Button seed props aligned to Figma (no trailingIcon swap; loading = state; disabled = VARIANT); 115 legacy remote variable bindings rebound to local tokens; variableCount 301.",
+            "Seed review vs Figma: ChipGroup nodeId 3437:3023 (node no longer exists) → 3667:2570 (current ChipGroup COMPONENT_SET); UploadPhotos and VehicleSummaryCard ChipTag references strong → emphasis=primary (strong|soft renamed today). All 300 local variables (semantic, primitives, typography, product-theme × 3 modes) re-checked against tokens.* and meta.productTheme — no value or alias drift.",
+            "Design fixes: Button appearance=inverse (+24 variants, outline|text primary) and Alert inverse action uses it; Button solid success fill → color/actions/success (AA with on-color); outline|text danger labels → text/danger; Alert showClose (official close action); Modal showFooter (official footer, max 1 primary); RadioButton disabled+checked ring border/width/050 text/placeholder; AppHeader specific trailing actions side by side (no overlap); ModalHeader desktop leadingSpacer → spacing/500; exact-value gaps/paddings/radii bound to tokens across wave components (values without token reported in meta.governance.unboundValues).",
+            "Feedback colour split: feedback/* = light icon/indicator colour (Figma: success #2DBE5E, danger #F54444, warning #FFB74C, info #54DEF8); new text/success|danger|warning|info (AA) for status text — 405 text nodes rebound in Figma (Button, Input family, DatePicker, FileUploaderItem, Slider, VerificationCodeInput). New primitives amber-700 #7A6400, teal-700 #04778A; background-feedback-secondary/info (teal-2) and /system (azure-2). emphasis=primary|secondary on ChipTag (renamed strong|soft, +16 variants), ChipClickable (+84), Banner (+4). Alert excluded.",
             "Flutter audit apply: seed synced with Figma — interactive/selected #D0D9E8, color/overlay/overlay 48%, feedback/info added, color/elevation/focus added (pressed deprecated); tokens.component completed with all 23 product-theme tokens (escritorio-virtual app-header leading-action → #FCFCFE); nodeIds Switch 3653:4741 and NavigationBarItem 3653:15180. feedback/success|danger|warning NOT synced (Figma values fail AA as text) — see backlog.",
             "Link (3820:13913) audit apply: local icon paints; inline underline bar; active no focus ring; disabled inverse→on-color-disabled; React spacing/100 + default lg; Code Connect + stories.",
             "Link (3820:13913): apply size axis typography+icon — lg/md/sm → body/large|medium|small/regular (16/22, 14/20, 12/17) and trailingIcon 16|16|14 (was nomenclature-only; cleared dual fontSize/lineHeight variable binds). React CSS synced.",

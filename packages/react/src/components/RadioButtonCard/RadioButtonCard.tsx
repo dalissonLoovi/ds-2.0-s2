@@ -58,9 +58,8 @@ export const RadioButtonCard = forwardRef<HTMLInputElement, RadioButtonCardProps
             aria-describedby={showDescription ? descId : undefined}
             {...rest}
           />
-          <span className={styles.radio} aria-hidden>
-            <span className={styles.dot} />
-          </span>
+          {/* checked = thick ring only (border/width/050), no center dot — same as RadioButton */}
+          <span className={styles.radio} aria-hidden />
         </span>
         <span className={styles.content}>
           <span className={styles.label}>{label}</span>

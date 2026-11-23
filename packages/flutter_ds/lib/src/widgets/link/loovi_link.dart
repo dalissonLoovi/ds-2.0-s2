@@ -8,8 +8,9 @@ import '../../generated/loovi_icon_names.g.dart';
 /// Seed `Link.size` (default lg).
 enum LooviLinkSize { lg, md, sm }
 
-/// Seed `Link.appearance`: `inverse` on dark / on-color surfaces.
-enum LooviLinkAppearance { defaultAppearance, inverse }
+/// Seed `Link.appearance` (`default` is a Dart keyword → [standard]);
+/// `inverse` on dark / on-color surfaces.
+enum LooviLinkAppearance { standard, inverse }
 
 /// Link (Figma 3820:13913) — text navigation control.
 ///
@@ -33,7 +34,7 @@ class LooviLink extends StatefulWidget {
     required this.label,
     required this.onPressed,
     this.size = LooviLinkSize.lg,
-    this.appearance = LooviLinkAppearance.defaultAppearance,
+    this.appearance = LooviLinkAppearance.standard,
     this.inline = false,
     this.showIcon = true,
     this.trailingIcon = LooviIcons.arrowNarrowRightOutline,

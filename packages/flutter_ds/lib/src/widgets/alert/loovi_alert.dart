@@ -6,10 +6,11 @@ import '../../foundation/loovi_tap_target.dart';
 import '../../generated/loovi_icon_names.g.dart';
 import '../button/loovi_button.dart';
 
-/// Seed `Alert.appearance`. The Figma VARIANT default is still `inverse`, but
-/// the seed asks product instances on light surfaces to use `default`, so the
-/// widget defaults to [defaultAppearance].
-enum LooviAlertAppearance { defaultAppearance, inverse }
+/// Seed `Alert.appearance` (`default` is a Dart keyword → [standard]). The
+/// Figma VARIANT default is still `inverse`, but the seed asks product
+/// instances on light surfaces to use `default`, so the widget defaults to
+/// [standard].
+enum LooviAlertAppearance { standard, inverse }
 
 /// Seed `Alert.status` (feedback vocabulary). `system` is intentional-sparse:
 /// it has no status icon.
@@ -19,32 +20,34 @@ enum LooviAlertStatus { system, info, success, danger, warning }
 /// Banner or Modal, and it is not used for inline field validation.
 ///
 /// Paint (mode app-cliente):
-/// - shell: radius `border/radius/400`; padding top `spacing/150`, sides and
-///   bottom `spacing/250`; vertical gap `spacing/100` (statusIcon → content).
+/// - shell: radius `border/radius/400`; padding top `spacing/150`, right,
+///   bottom and left `spacing/250`; root gap `spacing/100` (statusIcon →
+///   content).
 /// - default: fill `color/background-surface/3`; title `text/primary`;
 ///   description `text/secondary`.
-/// - inverse: `color/elevation/inverse-3` composited over
-///   `color/background-surface/brand` (Figma fill stack, black 48 % on top);
-///   title `text/on-color`; description `text/on-color-disabled`.
-/// - statusIcon 32 (`spacing/400`): info-circle-filled | circle-check-filled
-///   | alert-circle-filled | alert-triangle-filled, colored
-///   feedback/info | success | danger | warning. `feedback/info` is not
-///   generated in loovi_tokens; `color/background-feedback-primary/info` (same
-///   primitive aqua-gleam) is used.
+/// - inverse: `color/background-surface/brand-strong` with
+///   `color/elevation/inverse-3` on top at 48 % paint opacity, composited into
+///   one opaque fill (≈ #3E53B2); title `text/on-color`; description
+///   `text/on-color-disabled`.
+/// - statusIcon 32 (`spacing/400`) in both appearances: info-circle-filled |
+///   circle-check-filled | alert-circle-filled | alert-triangle-filled, colored
+///   feedback/info | success | danger | warning. `system` has no icon.
 /// - content: text (title `body/medium/semi-bold`, description
 ///   `body/small/regular`, gap `spacing/100`) then the action, gap
 ///   `spacing/150`.
-/// - action: [LooviButton] outline / sm / primary. On `inverse` the stroke and
-///   label are drawn in `text/on-color` (Figma 4406:38); LooviButton has no
-///   inverse appearance, so it is recolored here while idle.
-/// - close (not in the Figma set, product request): `x-outline` 24 in the title
-///   color, 48 dp target in the top-end corner.
+/// - action: [LooviButton] outline / sm / primary; on `inverse` it uses
+///   `appearance: LooviButtonAppearance.inverse` (stroke/label `text/on-color`,
+///   Figma 4406:38 — seed rule `closeAction`).
+/// - close (seed `showClose`, default false): `x-outline` 24 in the title
+///   color, absolute in the top-end corner with a 48 dp target; the shell
+///   padding is unchanged. When the title is the first row (status=system, no
+///   icon) it is inset so it never runs under the close action.
 class LooviAlert extends StatelessWidget {
   const LooviAlert({
     super.key,
     required this.title,
     this.status = LooviAlertStatus.info,
-    this.appearance = LooviAlertAppearance.defaultAppearance,
+    this.appearance = LooviAlertAppearance.standard,
     this.description,
     this.showDescription = true,
     this.showAction = true,
@@ -78,7 +81,7 @@ class LooviAlert extends StatelessWidget {
   /// Action callback. Null = the action button is disabled.
   final VoidCallback? onAction;
 
-  /// Shows the close control (not published in Figma; see class doc).
+  /// Seed `showClose` (default false): close action in the top-end corner.
   final bool showClose;
 
   /// Close callback.
@@ -114,17 +117,26 @@ class LooviAlert extends StatelessWidget {
   /// Status icon color (seed `statusMap.iconFillToken`), null on `system`.
   static Color? iconColorFor(LooviTokens t, LooviAlertStatus s) => switch (s) {
         LooviAlertStatus.system => null,
-        // feedback/info → aqua-gleam; same value as background-feedback-primary/info.
-        LooviAlertStatus.info => t.color.backgroundFeedbackPrimaryInfo,
+        // The icon always sits next to the title/text → feedback/{status}.
+        LooviAlertStatus.info => t.feedback.info,
         LooviAlertStatus.success => t.feedback.success,
         LooviAlertStatus.danger => t.feedback.danger,
         LooviAlertStatus.warning => t.feedback.warning,
       };
 
+  /// Figma paint opacity of the `color/elevation/inverse-3` overlay on the
+  /// inverse shell (no opacity token exists).
+  static const double inverseOverlayOpacity = 0.48;
+
   /// Shell fill for [appearance].
-  static Color fillFor(LooviTokens t, LooviAlertAppearance a) => a == LooviAlertAppearance.inverse
-      ? Color.alphaBlend(t.color.elevationInverse3, t.color.backgroundSurfaceBrand)
-      : t.color.backgroundSurface3;
+  static Color fillFor(LooviTokens t, LooviAlertAppearance a) {
+    if (a != LooviAlertAppearance.inverse) return t.color.backgroundSurface3;
+    final overlay = t.color.elevationInverse3;
+    return Color.alphaBlend(
+      overlay.withValues(alpha: overlay.a * inverseOverlayOpacity),
+      t.color.backgroundSurfaceBrandStrong,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,11 +149,19 @@ class LooviAlert extends StatelessWidget {
     final hasAction = showAction && actionLabel != null;
     final urgent = liveRegion ?? (status == LooviAlertStatus.danger || status == LooviAlertStatus.warning);
 
+    final min = LooviTapTarget.minSize(context);
+    // Title as first row (no status icon) would run under the close target:
+    // inset it by the part of the target that overlaps the content box.
+    final titleEndInset = showClose && icon == null ? min - t.spacing.s250 : 0.0;
+
     final text = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(title, style: t.typography.bodyMediumSemiBold.copyWith(color: titleColor)),
+        Padding(
+          padding: EdgeInsetsDirectional.only(end: titleEndInset),
+          child: Text(title, style: t.typography.bodyMediumSemiBold.copyWith(color: titleColor)),
+        ),
         if (hasDescription) ...[
           SizedBox(height: t.spacing.s100),
           Text(description!, style: t.typography.bodySmallRegular.copyWith(color: descriptionColor)),
@@ -151,14 +171,13 @@ class LooviAlert extends StatelessWidget {
 
     Widget? action;
     if (hasAction) {
-      action = inverse
-          ? _InverseAction(label: actionLabel!, onPressed: onAction)
-          : LooviButton(
-              label: actionLabel!,
-              onPressed: onAction,
-              variant: LooviButtonVariant.outline,
-              size: LooviButtonSize.sm,
-            );
+      action = LooviButton(
+        label: actionLabel!,
+        onPressed: onAction,
+        variant: LooviButtonVariant.outline,
+        size: LooviButtonSize.sm,
+        appearance: inverse ? LooviButtonAppearance.inverse : LooviButtonAppearance.standard,
+      );
     }
 
     final body = Column(
@@ -177,18 +196,17 @@ class LooviAlert extends StatelessWidget {
       ],
     );
 
-    final min = LooviTapTarget.minSize(context);
     Widget shell = DecoratedBox(
       decoration: BoxDecoration(
         color: fillFor(t, appearance),
         borderRadius: BorderRadius.circular(t.radius.s400),
       ),
       child: Padding(
+        // Seed: padding unchanged with showClose (the close is absolute).
         padding: EdgeInsetsDirectional.only(
           top: t.spacing.s150,
           start: t.spacing.s250,
-          // Close target sits in the top-end corner: keep content clear of it.
-          end: showClose ? min : t.spacing.s250,
+          end: t.spacing.s250,
           bottom: t.spacing.s250,
         ),
         child: SizedBox(width: double.infinity, child: body),
@@ -226,59 +244,6 @@ class LooviAlert extends StatelessWidget {
       liveRegion: urgent,
       label: [statusWord, title, if (hasDescription) description!].join('. '),
       child: shell,
-    );
-  }
-}
-
-/// Action of `appearance=inverse`: [LooviButton] outline/sm with the stroke and
-/// label recolored to `text/on-color`. While pressed the regular button paint
-/// (interactive/pressed fill + text/primary label) is shown unfiltered so the
-/// label stays legible.
-class _InverseAction extends StatefulWidget {
-  const _InverseAction({required this.label, required this.onPressed});
-  final String label;
-  final VoidCallback? onPressed;
-
-  @override
-  State<_InverseAction> createState() => _InverseActionState();
-}
-
-class _InverseActionState extends State<_InverseAction> {
-  final WidgetStatesController _states = WidgetStatesController();
-
-  @override
-  void initState() {
-    super.initState();
-    _states.addListener(_onStates);
-  }
-
-  void _onStates() {
-    if (mounted) setState(() {});
-  }
-
-  @override
-  void dispose() {
-    _states.removeListener(_onStates);
-    _states.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final t = LooviTokens.of(context);
-    final button = LooviButton(
-      label: widget.label,
-      onPressed: widget.onPressed,
-      variant: LooviButtonVariant.outline,
-      size: LooviButtonSize.sm,
-      statesController: _states,
-    );
-    // Same tree in both states (BlendMode.dst = identity) so the button keeps
-    // its gesture/state while pressed.
-    final pressed = _states.value.contains(WidgetState.pressed);
-    return ColorFiltered(
-      colorFilter: ColorFilter.mode(t.text.onColor, pressed ? BlendMode.dst : BlendMode.srcIn),
-      child: button,
     );
   }
 }

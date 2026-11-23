@@ -18,9 +18,12 @@ const PKG = path.resolve(__dirname, '..');
 const ROOT = path.resolve(PKG, '../..');
 const seed = JSON.parse(fs.readFileSync(path.join(ROOT, 'design-system-tokens.storybook.updated.v2.json'), 'utf8'));
 const C = seed.storybook.components;
+const S2_FILE_KEY = seed.meta.fileKey || 'mHm12Zu9tgNmaSYnooihE5';
 
 /** Phase 2 wave (implemented in Flutter, mode app-cliente). Keep in sync with lib/loovi_ds.dart. */
 const WAVE = JSON.parse(fs.readFileSync(path.join(__dirname, 'wave.json'), 'utf8'));
+const missing = WAVE.filter((n) => !C[n]);
+if (missing.length) throw new Error(`Onda cita componente fora do seed: ${missing.join(', ')}`);
 
 /** Not for the customer app (backoffice / desktop / web chrome). Judgment call, reviewable. */
 const NOT_APP = new Set([
@@ -41,17 +44,19 @@ const L = [
   '',
   '/// Seed metadata for one DS component (Figma nodeId, AI-READY description).',
   'class LooviSeedComponent {',
-  '  const LooviSeedComponent({required this.name, required this.nodeId, required this.description, required this.accessibility, required this.variants});',
+  `  const LooviSeedComponent({required this.name, required this.nodeId, required this.description, required this.accessibility, required this.variants, this.fileKey = ${dartStr(S2_FILE_KEY)}});`,
   '  final String name;',
-  '  /// Figma node id in [DS] 2.0 - S2 (mHm12Zu9tgNmaSYnooihE5).',
+  '  /// Figma node id (file [fileKey]; [DS] 2.0 - S2 unless the seed names another library).',
   '  final String nodeId;',
   '  final String description;',
   '  /// Seed `accessibility` block, flattened.',
   '  final String accessibility;',
   '  /// Seed `variants` block, flattened (JSON).',
   '  final String variants;',
+  '  /// Figma file key that holds [nodeId] (seed `figmaFileKey`, default S2).',
+  '  final String fileKey;',
   '  /// Figma URL of the component set.',
-  "  String get figmaUrl => 'https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2?node-id=${nodeId.replaceAll(':', '-')}';",
+  "  String get figmaUrl => 'https://www.figma.com/design/$fileKey?node-id=${nodeId.replaceAll(':', '-')}';",
   '}',
   '',
   '/// Every component in the seed, by name.',
@@ -60,7 +65,7 @@ const L = [
   '  static const Map<String, LooviSeedComponent> components = {',
 ];
 for (const [name, c] of Object.entries(C)) {
-  L.push(`    ${dartStr(name)}: LooviSeedComponent(name: ${dartStr(name)}, nodeId: ${dartStr(c.nodeId)}, description: ${dartStr(c.description)}, accessibility: ${dartStr(flat(c.accessibility))}, variants: ${dartStr(flat(c.variants))}),`);
+  L.push(`    ${dartStr(name)}: LooviSeedComponent(name: ${dartStr(name)}, nodeId: ${dartStr(c.nodeId)}, description: ${dartStr(c.description)}, accessibility: ${dartStr(flat(c.accessibility))}, variants: ${dartStr(flat(c.variants))}${c.figmaFileKey && c.figmaFileKey !== S2_FILE_KEY ? `, fileKey: ${dartStr(c.figmaFileKey)}` : ''}),`);
 }
 L.push('  };');
 L.push('  /// Lookup that fails loudly if a widget names a component missing from the seed.');
@@ -89,6 +94,4 @@ const md = [
   '',
 ];
 fs.writeFileSync(path.join(ROOT, 'FLUTTER-INVENTORY.md'), md.join('\n'), 'utf8');
-const missing = WAVE.filter((n) => !C[n]);
-if (missing.length) throw new Error(`Onda cita componente fora do seed: ${missing.join(', ')}`);
 console.log(`loovi_ds catalog: ${rows.length} components · wave ${WAVE.length}`);

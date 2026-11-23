@@ -27,72 +27,71 @@
 }
 
 .size-md {
-  min-height: 32px;
+  /* Figma ChipTag md = 40 (2026-11-23: aligned; was 32). */
+  min-height: 40px;
   padding: 0 var(--spacing-150, 10px);
   font-size: 14px;
 }
 
-.emphasis-strong.intent-info,
-.emphasis-strong.intent-system {
+/*
+ * Status intents — emphasis=primary → color/background-feedback-primary/{intent};
+ * emphasis=secondary → color/background-feedback-secondary/{intent}.
+ * Content (label + icon) is text/primary on both (meta.governance.feedbackColorRule).
+ */
+.emphasis-primary.intent-info {
   background: var(--color-background-feedback-primary-info);
-  color: var(--text-primary);
 }
 
-.emphasis-strong.intent-success {
+.emphasis-primary.intent-system {
+  background: var(--color-background-feedback-primary-system);
+}
+
+.emphasis-primary.intent-success {
   background: var(--color-background-feedback-primary-success);
-  color: var(--feedback-success, var(--color-actions-success));
 }
 
-.emphasis-strong.intent-warning {
+.emphasis-primary.intent-warning {
   background: var(--color-background-feedback-primary-warning);
-  color: var(--feedback-warning);
 }
 
-.emphasis-strong.intent-danger {
+.emphasis-primary.intent-danger {
   background: var(--color-background-feedback-primary-danger);
-  color: var(--text-on-color);
 }
 
-.emphasis-strong.intent-outline,
-.emphasis-soft.intent-outline {
+.emphasis-secondary.intent-info {
+  background: var(--color-background-feedback-secondary-info);
+}
+
+.emphasis-secondary.intent-system {
+  background: var(--color-background-feedback-secondary-system);
+}
+
+.emphasis-secondary.intent-success {
+  background: var(--color-background-feedback-secondary-success);
+}
+
+.emphasis-secondary.intent-warning {
+  background: var(--color-background-feedback-secondary-warning);
+}
+
+.emphasis-secondary.intent-danger {
+  background: var(--color-background-feedback-secondary-danger);
+}
+
+.intent-outline {
   background: transparent;
   border-color: var(--color-border-2);
   color: var(--text-primary);
 }
 
-.emphasis-strong.intent-brand {
-  background: var(--color-background-surface-brand, #5a78ff);
+/*
+ * Brand → color/background-surface/brand-strong + text/on-color (4.52:1, AA).
+ * Figma publishes brand as primary only (seed ChipTag.rules.brandIntent), so brand ignores
+ * `emphasis` — otherwise the new default (secondary) would render a muted fill that fails AA.
+ */
+.intent-brand {
+  background: var(--color-background-surface-brand-strong, #516ce7);
   color: var(--text-on-color);
-}
-
-.emphasis-soft.intent-brand {
-  background: var(--color-background-surface-brand-muted, #5a78ffb8);
-  color: var(--text-on-color);
-}
-
-.emphasis-soft.intent-info {
-  background: color-mix(in srgb, var(--color-background-feedback-primary-info) 22%, white);
-  color: var(--text-primary);
-}
-
-.emphasis-soft.intent-system {
-  background: color-mix(in srgb, var(--color-background-feedback-primary-system) 42%, white);
-  color: var(--text-secondary);
-}
-
-.emphasis-soft.intent-success {
-  background: var(--color-background-feedback-secondary-success);
-  color: var(--feedback-success, var(--color-actions-success));
-}
-
-.emphasis-soft.intent-warning {
-  background: var(--color-background-feedback-secondary-warning);
-  color: var(--feedback-warning);
-}
-
-.emphasis-soft.intent-danger {
-  background: var(--color-background-feedback-secondary-danger);
-  color: var(--feedback-danger, var(--color-actions-danger));
 }
 
 .disabled {
@@ -105,14 +104,36 @@
   white-space: nowrap;
 }
 
+/*
+ * leadingIcon + avatar bound to spacing tokens (seed ChipTag.rules.iconSize):
+ * sm → icon 20 · avatar 20 (spacing/250); md → icon 32 (spacing/400) · avatar 24 (spacing/300).
+ */
 .icon {
   flex-shrink: 0;
 }
 
+.size-sm .icon {
+  width: var(--spacing-250, 20px);
+  height: var(--spacing-250, 20px);
+}
+
+.size-md .icon {
+  width: var(--spacing-400, 32px);
+  height: var(--spacing-400, 32px);
+}
+
 .avatar {
-  width: 16px;
-  height: 16px;
   border-radius: 50%;
   background: var(--color-background-surface-3);
   flex-shrink: 0;
+}
+
+.size-sm .avatar {
+  width: var(--spacing-250, 20px);
+  height: var(--spacing-250, 20px);
+}
+
+.size-md .avatar {
+  width: var(--spacing-300, 24px);
+  height: var(--spacing-300, 24px);
 }

@@ -50,7 +50,7 @@ class LinkMatrix extends StatelessWidget {
     return ColoredBox(
       color: t.color.backgroundSurface0,
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        block(LooviLinkAppearance.defaultAppearance),
+        block(LooviLinkAppearance.standard),
         block(LooviLinkAppearance.inverse),
       ]),
     );

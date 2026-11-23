@@ -31,39 +31,62 @@
   flex-shrink: 0;
 }
 
-.status-success {
+/*
+ * emphasis=primary → color/background-feedback-primary/{status};
+ * emphasis=secondary → color/background-feedback-secondary/{status}.
+ * Content (message + icon) is text/primary on both (seed Banner.tokenRules). text/on-color on
+ * the primary danger fill was 3.6:1 (fails AA); text/primary reaches 4.7:1.
+ * Icons: feedback/{status} on the light secondary fills; on the saturated primary fills the
+ * same-hue feedback colour disappears (e.g. warning #FFB74C on #FFB74C), so they use text/primary.
+ */
+.emphasis-primary.status-success {
   background: var(--color-background-feedback-primary-success);
 }
 
-.status-success .icon {
-  color: var(--feedback-success, var(--color-actions-success));
-}
-
-.status-warning {
+.emphasis-primary.status-warning {
   background: var(--color-background-feedback-primary-warning);
 }
 
-.status-warning .icon {
-  color: var(--feedback-warning);
-}
-
-.status-info {
+.emphasis-primary.status-info {
   background: var(--color-background-feedback-primary-info);
 }
 
-.status-info .icon {
+.emphasis-primary.status-danger {
+  background: var(--color-background-feedback-primary-danger);
+}
+
+.emphasis-secondary.status-success {
+  background: var(--color-background-feedback-secondary-success);
+}
+
+.emphasis-secondary.status-warning {
+  background: var(--color-background-feedback-secondary-warning);
+}
+
+.emphasis-secondary.status-info {
+  background: var(--color-background-feedback-secondary-info);
+}
+
+.emphasis-secondary.status-danger {
+  background: var(--color-background-feedback-secondary-danger);
+}
+
+.emphasis-primary .icon {
+  color: var(--text-primary);
+}
+
+.emphasis-secondary.status-success .icon {
+  color: var(--feedback-success);
+}
+
+.emphasis-secondary.status-warning .icon {
+  color: var(--feedback-warning);
+}
+
+.emphasis-secondary.status-info .icon {
   color: var(--color-actions-primary);
 }
 
-.status-danger {
-  background: var(--color-background-feedback-primary-danger);
-  color: var(--text-on-color);
-}
-
-.status-danger .icon {
-  color: var(--text-on-color);
-}
-
-.status-danger .message {
-  color: var(--text-on-color);
+.emphasis-secondary.status-danger .icon {
+  color: var(--feedback-danger);
 }

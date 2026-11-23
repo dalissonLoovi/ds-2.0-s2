@@ -10,8 +10,8 @@ import { Modal } from './Modal/Modal';
 afterEach(() => cleanup());
 
 describe('ChipTag', () => {
-  it('renders soft success label', () => {
-    render(<ChipTag label="Ativo" intent="success" emphasis="soft" showLeadingIcon />);
+  it('renders secondary success label', () => {
+    render(<ChipTag label="Ativo" intent="success" emphasis="secondary" showLeadingIcon />);
     expect(screen.getByText('Ativo')).toBeInTheDocument();
   });
 });

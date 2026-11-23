@@ -18,7 +18,9 @@ figma.connect(
       appearance: figma.enum('appearance', { default: 'default', inverse: 'inverse' }),
       showDescription: figma.boolean('showDescription'),
       showAction: figma.boolean('showAction'),
+      // Figma showClose (BOOLEAN) → React showClose; wire onClose in code.
+      showClose: figma.boolean('showClose'),
     },
-    example: (props) => <Alert {...props} />,
+    example: (props) => <Alert {...props} onClose={() => {}} />,
   },
 );

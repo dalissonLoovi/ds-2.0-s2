@@ -35,6 +35,9 @@ class ButtonMatrix extends StatelessWidget {
   const ButtonMatrix({super.key});
 
   static const _states = ['default', 'pressed', 'focus', 'selected', 'disabled', 'loading'];
+  // Solid also shows hover (state layer 8 %; pointer only — no hover on touch).
+  static const _solidStates = ['default', 'hover', 'pressed', 'focus', 'selected', 'disabled', 'loading'];
+  static const _inverseStates = ['default', 'pressed', 'focus', 'disabled'];
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +51,40 @@ class ButtonMatrix extends StatelessWidget {
           disabled: state == 'disabled',
           loading: state == 'loading',
           statesController: switch (state) {
+            'hover' => WidgetStatesController({WidgetState.hovered}),
             'pressed' => WidgetStatesController({WidgetState.pressed}),
             'focus' => WidgetStatesController({WidgetState.focused}),
             _ => null,
           },
+        );
+
+    Widget inverseCell(LooviButtonVariant v, String state) => LooviButton(
+          label: 'Label',
+          onPressed: () {},
+          variant: v,
+          appearance: LooviButtonAppearance.inverse,
+          disabled: state == 'disabled',
+          statesController: switch (state) {
+            'pressed' => WidgetStatesController({WidgetState.pressed}),
+            'focus' => WidgetStatesController({WidgetState.focused}),
+            _ => null,
+          },
+        );
+
+    // appearance=inverse (outline|text × primary) on color/background-surface/inverse-3.
+    Widget inverseGroup(LooviButtonVariant v) => Padding(
+          padding: EdgeInsets.only(bottom: t.spacing.s100),
+          child: ColoredBox(
+            color: t.color.backgroundSurfaceInverse3,
+            child: Padding(
+              padding: EdgeInsets.all(t.spacing.s100),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('${v.name} · primary · inverse',
+                    style: t.typography.captionLargeRegular.copyWith(color: t.text.onColor)),
+                Wrap(spacing: t.spacing.s100, children: [for (final s in _inverseStates) inverseCell(v, s)]),
+              ]),
+            ),
+          ),
         );
 
     Widget group(LooviButtonVariant v, LooviButtonIntent i) => Padding(
@@ -60,7 +93,7 @@ class ButtonMatrix extends StatelessWidget {
             Text('${v.name} · ${i.name}', style: t.typography.captionLargeRegular.copyWith(color: t.text.secondary)),
             Wrap(
               spacing: t.spacing.s100,
-              children: [for (final s in _states) cell(v, i, s)],
+              children: [for (final s in v == LooviButtonVariant.solid ? _solidStates : _states) cell(v, i, s)],
             ),
           ]),
         );
@@ -82,6 +115,7 @@ class ButtonMatrix extends StatelessWidget {
           for (final i in LooviButtonIntent.values) group(LooviButtonVariant.solid, i),
           for (final v in [LooviButtonVariant.outline, LooviButtonVariant.text])
             for (final i in [LooviButtonIntent.primary, LooviButtonIntent.success, LooviButtonIntent.danger]) group(v, i),
+          for (final v in [LooviButtonVariant.outline, LooviButtonVariant.text]) inverseGroup(v),
         ]),
       ),
     );
@@ -183,7 +217,7 @@ void main() {
     expect(tester.getSize(find.byType(LooviButton)).height, _t.spacing.s700);
   });
 
-  testWidgets('pressed: solid = Plus Darker(fill, interactive/pressed); outline = interactive/pressed', (tester) async {
+  testWidgets('pressed: solid = fill darkened 16 % toward interactive/overlay; outline = interactive/pressed', (tester) async {
     await pumpLoovi(
       tester,
       Column(children: [
@@ -195,9 +229,7 @@ void main() {
     await tester.pump();
     final c = _decoration(tester, of: find.byKey(const Key('s'))).color!;
     final base = _t.component.button.containerBackground;
-    final over = _t.interactive.pressed;
-    expect(c.r, closeTo(base.r + over.r - 1, 1e-6));
-    expect(c.b, closeTo(base.b + over.b - 1, 1e-6));
+    expect(c, Color.alphaBlend(_t.interactive.overlay.withValues(alpha: 0.16), base));
     await gesture.up();
     await tester.pump();
     expect(_decoration(tester, of: find.byKey(const Key('s'))).color, base);
@@ -220,9 +252,10 @@ void main() {
       ]),
     );
     expect(_decoration(tester, of: find.byKey(const Key('d'))).color, _t.color.actionsDanger);
-    expect(_labelColor(tester, 'D'), _t.color.backgroundSurface0);
+    expect(_labelColor(tester, 'D'), _t.text.onColor);
     expect((_decoration(tester, of: find.byKey(const Key('s'))).border! as Border).top.color, _t.color.borderFeedbackSuccess);
-    expect(_labelColor(tester, 'S'), _t.feedback.success);
+    // Label is text → text/success (AA); no icon on this instance.
+    expect(_labelColor(tester, 'S'), _t.text.success);
     final icon = tester.widget<LooviIcon>(find.descendant(of: find.byKey(const Key('t')), matching: find.byType(LooviIcon)));
     expect(icon.color, _t.text.primary);
   });
@@ -250,8 +283,198 @@ void main() {
     expect(taps, 1);
   });
 
+  testWidgets('solid state layer: hover 8 % · selected 12 % · pressed 16 % of interactive/overlay, every intent',
+      (tester) async {
+    const alphas = {'hover': 0.08, 'selected': 0.12, 'pressed': 0.16};
+    final bases = {
+      LooviButtonIntent.primary: _t.component.button.containerBackground,
+      LooviButtonIntent.success: _t.color.actionsSuccess,
+      LooviButtonIntent.danger: _t.color.actionsDanger,
+      LooviButtonIntent.secondary: _t.color.actionsSecondary,
+    };
+    for (final i in bases.entries) {
+      await pumpLoovi(
+        tester,
+        Column(children: [
+          LooviButton(
+              key: const Key('hover'),
+              label: 'H',
+              intent: i.key,
+              onPressed: () {},
+              statesController: WidgetStatesController({WidgetState.hovered})),
+          LooviButton(key: const Key('selected'), label: 'S', intent: i.key, selected: true, onPressed: () {}),
+          LooviButton(
+              key: const Key('pressed'),
+              label: 'P',
+              intent: i.key,
+              onPressed: () {},
+              statesController: WidgetStatesController({WidgetState.pressed})),
+        ]),
+      );
+      for (final a in alphas.entries) {
+        expect(
+          _decoration(tester, of: find.byKey(Key(a.key))).color,
+          Color.alphaBlend(_t.interactive.overlay.withValues(alpha: a.value), i.value),
+          reason: '${i.key.name} ${a.key}',
+        );
+      }
+    }
+  });
+
+  testWidgets('solid label/icon: secondary text/primary; success & danger text/on-color', (tester) async {
+    await pumpLoovi(
+      tester,
+      Column(children: [
+        for (final i in [LooviButtonIntent.secondary, LooviButtonIntent.success, LooviButtonIntent.danger])
+          LooviButton(key: Key(i.name), label: i.name, intent: i, showIcon: true, onPressed: () {}),
+      ]),
+    );
+    Color icon(String k) => tester.widget<LooviIcon>(find.descendant(of: find.byKey(Key(k)), matching: find.byType(LooviIcon))).color!;
+    expect(_labelColor(tester, 'secondary'), _t.text.primary);
+    expect(icon('secondary'), _t.text.primary);
+    for (final k in ['success', 'danger']) {
+      expect(_labelColor(tester, k), _t.text.onColor);
+      expect(icon(k), _t.text.onColor);
+    }
+    expect(_decoration(tester, of: find.byKey(const Key('danger'))).color, const Color(0xFFD81C1A));
+  });
+
+  testWidgets('solid success: fill color/actions/success, label/icon text/on-color', (tester) async {
+    await pumpLoovi(
+      tester,
+      Align(
+        alignment: Alignment.topLeft,
+        child: LooviButton(label: 'S', onPressed: () {}, intent: LooviButtonIntent.success, showIcon: true),
+      ),
+    );
+    expect(_decoration(tester).color, _t.color.actionsSuccess);
+    expect(_t.color.actionsSuccess, const Color(0xFF00723E));
+    expect(_labelColor(tester, 'S'), _t.text.onColor);
+    expect(tester.widget<LooviIcon>(find.byType(LooviIcon)).color, _t.text.onColor);
+  });
+
+  testWidgets('outline/text danger: label text/danger, icons keep color/actions/danger', (tester) async {
+    for (final v in [LooviButtonVariant.outline, LooviButtonVariant.text]) {
+      await pumpLoovi(
+        tester,
+        Align(
+          alignment: Alignment.topLeft,
+          child: LooviButton(
+            label: 'D',
+            onPressed: () {},
+            variant: v,
+            intent: LooviButtonIntent.danger,
+            showIcon: true,
+            showTrailingIcon: true,
+          ),
+        ),
+      );
+      expect(_labelColor(tester, 'D'), _t.text.danger, reason: v.name);
+      for (final icon in tester.widgetList<LooviIcon>(find.byType(LooviIcon))) {
+        expect(icon.color, _t.color.actionsDanger, reason: v.name);
+      }
+    }
+  });
+
+  testWidgets('appearance=inverse: on-color label/icon/stroke, inverse-4 pressed, on-color-disabled', (tester) async {
+    final pressed = WidgetStatesController({WidgetState.pressed});
+    addTearDown(pressed.dispose);
+    await pumpLoovi(
+      tester,
+      Column(children: [
+        LooviButton(
+          key: const Key('o'),
+          label: 'O',
+          onPressed: () {},
+          variant: LooviButtonVariant.outline,
+          appearance: LooviButtonAppearance.inverse,
+          showIcon: true,
+        ),
+        LooviButton(
+          key: const Key('p'),
+          label: 'P',
+          onPressed: () {},
+          variant: LooviButtonVariant.text,
+          appearance: LooviButtonAppearance.inverse,
+          statesController: pressed,
+        ),
+        LooviButton(
+          key: const Key('d'),
+          label: 'X',
+          onPressed: () {},
+          variant: LooviButtonVariant.outline,
+          appearance: LooviButtonAppearance.inverse,
+          disabled: true,
+          showIcon: true,
+        ),
+      ]),
+    );
+    final o = _decoration(tester, of: find.byKey(const Key('o')));
+    expect(o.color, isNull);
+    expect((o.border! as Border).top.color, _t.text.onColor);
+    expect(_labelColor(tester, 'O'), _t.text.onColor);
+    expect(
+      tester.widget<LooviIcon>(find.descendant(of: find.byKey(const Key('o')), matching: find.byType(LooviIcon))).color,
+      _t.text.onColor,
+    );
+    final p = _decoration(tester, of: find.byKey(const Key('p')));
+    expect(p.color, _t.color.elevationInverse4);
+    expect(p.border, isNull);
+    expect(_labelColor(tester, 'P'), _t.text.onColor);
+    final d = _decoration(tester, of: find.byKey(const Key('d')));
+    expect((d.border! as Border).top.color, _t.text.onColorDisabled);
+    expect(_labelColor(tester, 'X'), _t.text.onColorDisabled);
+    expect(
+      tester.widget<LooviIcon>(find.descendant(of: find.byKey(const Key('d')), matching: find.byType(LooviIcon))).color,
+      _t.text.onColorDisabled,
+    );
+  });
+
+  testWidgets('appearance=inverse keeps the interactive/focus ring', (tester) async {
+    final focus = WidgetStatesController({WidgetState.focused});
+    addTearDown(focus.dispose);
+    await pumpLoovi(
+      tester,
+      Align(
+        alignment: Alignment.topLeft,
+        child: LooviButton(
+          label: 'F',
+          onPressed: () {},
+          variant: LooviButtonVariant.outline,
+          appearance: LooviButtonAppearance.inverse,
+          statesController: focus,
+        ),
+      ),
+    );
+    final ring = find.byWidgetPredicate((w) =>
+        w is DecoratedBox &&
+        w.position == DecorationPosition.foreground &&
+        ((w.decoration as BoxDecoration).border as Border?)?.top.color == _t.interactive.focus);
+    expect(ring, findsOneWidget);
+  });
+
+  testWidgets('appearance=inverse is ignored on solid and on non-primary intents', (tester) async {
+    await pumpLoovi(
+      tester,
+      Column(children: [
+        LooviButton(key: const Key('s'), label: 'S', onPressed: () {}, appearance: LooviButtonAppearance.inverse),
+        LooviButton(
+          key: const Key('d'),
+          label: 'D',
+          onPressed: () {},
+          variant: LooviButtonVariant.outline,
+          intent: LooviButtonIntent.danger,
+          appearance: LooviButtonAppearance.inverse,
+        ),
+      ]),
+    );
+    expect(tester.widget<LooviButton>(find.byKey(const Key('s'))).isInverse, isFalse);
+    expect(_decoration(tester, of: find.byKey(const Key('s'))).color, _t.component.button.containerBackground);
+    expect(_labelColor(tester, 'D'), _t.text.danger);
+  });
+
   testWidgets('golden: matrix', (tester) async {
-    await pumpGolden(tester, _still(const ButtonMatrix()), height: 1400);
+    await pumpGolden(tester, _still(const ButtonMatrix()), height: 1660);
     await expectLater(find.byType(ButtonMatrix), matchesGoldenFile('../goldens/button_matrix.png'));
   });
 }

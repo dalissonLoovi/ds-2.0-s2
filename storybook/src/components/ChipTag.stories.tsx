@@ -8,7 +8,7 @@ const meta = {
   args: {
     label: 'Ativo',
     intent: 'success',
-    emphasis: 'soft',
+    emphasis: 'secondary',
     size: 'md',
     width: 'hug',
     showLeadingIcon: true,
@@ -18,11 +18,31 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const SoftSuccess: Story = {};
-export const StrongOutline: Story = {
-  args: { emphasis: 'strong', intent: 'outline', label: 'Tag', showLeadingIcon: false },
+/** Default since 2026-11-23: emphasis=secondary (soft fill). */
+export const SecondarySuccess: Story = {};
+
+/** emphasis=primary (strong fill) is opt-in. */
+export const PrimarySuccess: Story = {
+  args: { emphasis: 'primary' },
 };
 
-export const StrongBrand: Story = {
-  args: { emphasis: 'strong', intent: 'brand', label: 'Loovi', showLeadingIcon: false },
+export const Outline: Story = {
+  args: { intent: 'outline', label: 'Tag', showLeadingIcon: false },
+};
+
+/** intent=brand → color/background-surface/brand-strong + text/on-color (AA); ignores emphasis. */
+export const Brand: Story = {
+  args: { intent: 'brand', label: 'Loovi', showLeadingIcon: false },
+};
+
+export const EmphasisMatrix: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--spacing-100)' }}>
+      {(['info', 'system', 'success', 'warning', 'danger'] as const).flatMap((intent) =>
+        (['primary', 'secondary'] as const).map((emphasis) => (
+          <ChipTag key={`${intent}-${emphasis}`} intent={intent} emphasis={emphasis} label={`${intent} · ${emphasis}`} showLeadingIcon={false} />
+        )),
+      )}
+    </div>
+  ),
 };

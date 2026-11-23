@@ -56,6 +56,18 @@ export function AppHeader({
   const inverse = appearance === 'inverse';
   const global = hierarchy === 'global';
   const superApp = hierarchy === 'super-app';
+  /** small-centered with a title: 3-column grid so the title is centered on the full header width. */
+  const centeredTitle = !global && resolvedLayout === 'small-centered';
+  const textHeader = (
+    <TextHeader
+      size={resolvedLayout === 'large' ? 'large' : resolvedLayout === 'medium' ? 'medium' : 'small'}
+      alignment={resolvedLayout === 'small-centered' ? 'center' : 'left'}
+      title={title}
+      description={description}
+      showDescription={resolvedLayout !== 'small' && resolvedLayout !== 'small-centered'}
+      inverse={inverse}
+    />
+  );
 
   return (
     <header
@@ -64,6 +76,7 @@ export function AppHeader({
         styles[`layout-${resolvedLayout}`],
         styles[`hierarchy-${hierarchy}`],
         inverse && styles.inverse,
+        centeredTitle && styles.centeredTitle,
         className,
       )}
       data-layout={resolvedLayout}
@@ -93,17 +106,15 @@ export function AppHeader({
                 onClick={onLeadingAction}
               />
             )}
-            <TextHeader
-              size={resolvedLayout === 'large' ? 'large' : resolvedLayout === 'medium' ? 'medium' : 'small'}
-              alignment={resolvedLayout === 'small-centered' ? 'center' : 'left'}
-              title={title}
-              description={description}
-              showDescription={resolvedLayout !== 'small' && resolvedLayout !== 'small-centered'}
-              inverse={inverse}
-            />
+            {!centeredTitle && textHeader}
           </>
         )}
       </div>
+      {centeredTitle && (
+        <div className={styles.center} data-part="title">
+          {textHeader}
+        </div>
+      )}
       <div className={styles.trailing}>
         {showFirstTrailingAction && (
           <Button
