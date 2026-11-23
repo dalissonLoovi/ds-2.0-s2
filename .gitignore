@@ -6,3 +6,6 @@ packages/*/dist/
 .DS_Store
 Thumbs.db
 _tmp_*
+
+# Docs internos / handoff: só locais (DS é público)
+HANDOFF-*

@@ -1,13 +1,14 @@
 # Backlog DS 2.0 — Próximas etapas (humano)
 
-**Atualizado:** 2026-08-17  
+**Atualizado:** 2026-11-23  
 **Arquivo:** [[DS] 2.0 - S2](https://www.figma.com/design/mHm12Zu9tgNmaSYnooihE5/-DS--2.0---S2)  
 **Storybook:** https://dalissonloovi.github.io/ds-2.0-s2/  
-**Seed:** `design-system-tokens.storybook.updated.v2.json` (~124 componentes · 23 vars `product-theme`)  
-**Revision recente:** `2026-08-18-poppins-typography-tokens`
+**Seed:** `design-system-tokens.storybook.updated.v2.json` (130 componentes · 127 com React · 23 vars `product-theme`)  
+**Revision recente:** `2026-09-21-link-audit-apply`
 
 **Estado:** fundação + temas core + Docs humanas + fila Painel Home + React W0–W7 **fechados**.  
-**Modo atual:** melhoria contínua (gap de produto → decisão → Figma → seed → Pages).
+**Modo atual:** melhoria contínua (gap de produto → decisão → Figma → seed → Pages).  
+**Últimos applies:** 2026-09-18 ChipTag / ChipClickable `intent=brand` + superfícies soft · 2026-09-21 Link (size, tipografia, tokens, paridade React).
 
 ---
 
@@ -138,7 +139,7 @@ Figma (ajuste)
 |---|---|---|
 | P0 | Manter sync por fatia | JSON + MDX + push após cada fechamento |
 | P1 | Foundations no Storybook | Global rules, feedback, product-theme (já parcial) |
-| P1 | Introduction / Changelog legíveis | ✅ Copy humana (2026-08-17): status Autodocs 123/124; changelog truncado |
+| P1 | Introduction / Changelog legíveis | ✅ Copy humana (2026-08-17); hoje Autodocs 127/130; changelog truncado |
 | P2 | Chromatic | Só se o time pedir review visual |
 | P2 | React + CSF3 | Por componente; Autodocs substitui seed daquele item |
 | P3 | Code Connect | Depois do React estabilizar |
@@ -157,8 +158,9 @@ Figma (ajuste)
 
 | Item | Status |
 |---|---|
-| Fundação + catálogo seed (~124) | 🟢 Avançado |
-| `product-theme` core (23 vars) | 🟢 Feito — só sob demanda |
+| Fundação + catálogo seed (130) | 🟢 Avançado |
+| `product-theme` core (23 vars) | 🟢 Feito no Figma/seed |
+| `product-theme` em código (tokens por mode + React) | ⬜ Não feito — React emite só o visual Escritório Virtual |
 | Fluxo decisão Reusar/Variante/Novo | 🟢 Página Figma publicada |
 | Docs visuais Figma (humanas) W0–W6 | 🟢 Completo + auditadas |
 | Orphans W4 (DividerHorizontal / PaginationItem) | 🟢 Removidos após rewire |
@@ -166,7 +168,7 @@ Figma (ajuste)
 | Limpeza untracked legado | 🟢 Feita (scripts/patches/JSON legado); audit versionado |
 | Storybook Pages sync | 🟢 Operacional |
 | Página composições App-cliente / Painel | ⬜ Opcional |
-| React `@ds/react` + CSF3 Autodocs | 🟢 W0–**W7** polish (2026-08-17); 123/124 Autodocs |
+| React `@ds/react` + CSF3 Autodocs | 🟢 W0–**W7** polish (2026-08-17); hoje 127/130 (sem React: CommentItem, BrandLogo, PaymentMethodMark) |
 | Code Connect (W0–W7) | 🟢 `*.figma.tsx` no piloto + ondas |
 | Introduction / Changelog copy | 🟢 Polish 2026-08-17 — gerador, não MDX à mão |
 | Tipografia Poppins no React/Storybook | 🟢 P1 2026-08-18 — `--font-family-base` + woff2; escala px→token ainda P2 |
@@ -193,7 +195,15 @@ Figma (ajuste)
    - ~~W7 Internals & leftovers~~ ✅ React DoD (2026-08-17)
 9. **Opcional:** página Figma de composições App-cliente / Painel  
 10. ~~Polish copy Introduction / Changelog~~ ✅ (2026-08-17) — gerador; Autodocs 123/124; CommentItem seed  
-11. **Só quando o time pedir:** Chromatic / publish npm / product-theme React provider
+11. **Só quando o time pedir:** Chromatic / publish npm
+12. **Gaps para o Site Loovi** (cada um passa por auditar → reportar → `aplicar`):
+    - `product-theme` em código: gerador de tokens emite modes (`escritorio-virtual` | `site-loovi` | `app-cliente`) + React consome `--component-*` + toolbar de produto no Storybook
+    - Breakpoints do seed (`xxs 0 · xs 360 · sm 700 · md 834 · lg 1152 · xl 1280`) em `tokens.css` + grid / container / colunas
+    - Biblioteca de ícones do `site-loovi` (contrato `*-outline` / `*-filled`)
+    - Escala tipográfica de marketing (> 40px) e tipografia responsiva
+    - Componentes de site (header de marketing, footer, hero, cards de plano, depoimento, cotação): decidir reusar / variante / novo / composição
+    - Forma de consumo dos pacotes (git, GitHub Packages ou monorepo)
+13. React para CommentItem, BrandLogo e PaymentMethodMark (quando pedido)
 
 ---
 

@@ -1,0 +1,10 @@
+---
+description: Regras compartilhadas do workspace Loovi (Claude Code + Cursor)
+alwaysApply: true
+---
+Este produto faz parte de `C:\Users\dalisson\loovi\`. Antes de qualquer tarefa:
+1. Ler `../AGENTS.md` (regras comuns e protocolo de trabalho conjunto com o Claude Code).
+2. Ler `../context/compliance.md` e `../context/brand-voice.md` (voz da Lia — vale para toda copy).
+3. Ler o `AGENTS.md` deste produto, depois `docs/session-handoff.md` (se existir) e rodar a checagem do Git no terminal: `powershell -ExecutionPolicy Bypass -File ../scripts/checar-git.ps1` (avisar o usuário se houver commits sem cópia no GitHub).
+Ao terminar: atualizar handoff e changelog com o autor `(Cursor)`. Regras novas do usuário vão para o `AGENTS.md` certo, não só para a memória do Cursor.
+Git: seguir `../AGENTS.md` → "Segurança do Git". Nunca `--no-verify`, force push, `reset --hard` ou `git add -A`; commitar só os seus arquivos; push só com o "sim" do usuário (DS público: só com "aplicar").
