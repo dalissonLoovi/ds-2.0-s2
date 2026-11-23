@@ -109,7 +109,9 @@ Não commitar `storybook/node_modules` nem `storybook/storybook-static`.
 
 - Branch de publish: `main`.
 - Workflow: `.github/workflows/storybook.yml` (verify + build + GitHub Pages).
-- Repo público (Pages no plano atual exige public).
+- Repo público (Pages no plano atual exige public). Decisão mantida em 2026-11-23.
+- Por ser público, **nada interno entra aqui**: handoff (`HANDOFF-*`, ignorado no `.gitignore`), docs internos, e-mail de colaborador, preço não validado, decisões de produto ainda não anunciadas. Isso fica nos repos privados de cada produto.
+- Autor dos commits com e-mail `noreply` do GitHub (`git config user.email` local deste repo). Os ganchos de commit e push bloqueiam e-mail que não seja noreply.
 - Não usar `git push --force` em `main` sem pedido explícito.
 - Só criar commit quando o usuário pedir.
 
