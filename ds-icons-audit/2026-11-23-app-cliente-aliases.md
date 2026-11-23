@@ -1,7 +1,16 @@
 # Auditoria — DS Semantic Aliases (App Cliente / Hugeicons)
 
 **Data:** 2026-11-23 · **Arquivo:** [DS] Icons — App Cliente (`4LsFOmHu3B25vXsDPjklWs`), seção `7003:12884` · **Escopo:** 4.285 aliases
-**Status:** reportado — correção no Figma só com `aplicar`.
+**Status:** itens 2–5 **aplicados em 2026-11-23** (ver "Aplicado"); item 1 (605 `*-filled`) aguarda decisão de design.
+
+## Aplicado (2026-11-23)
+
+- **Geometria (9 aliases):** `arrow-left|up|down-outline` e os 4 `arrow-narrow-*-outline` agora usam a seta de `arrow-right-outline` (7003:12911) girada no centro (180° / ±90°); `chevron-right-outline` e `chevron-right-filled` usam o chevron de `chevron-left-outline|filled` girado 180°. A instância Hugeicons `arrow-*-01-sharp` (chevron) saiu de `arrow-narrow-right|up`. Os 4 `arrow-narrow-*` ficaram iguais aos `arrow-*` (o Hugeicons não tem seta "narrow" separada).
+- **Cor:** 12 traços `#4B4F55` → `#1A1E1F` em `home-outline`, `claim-outline`, `tow-truck-outline`.
+- **Nome:** `car-filled-2` → `car-side-filled` (7102:12737).
+- **Não renomeado:** `" tire"` (7131:12608) — já existe `tire-outline` (7044:20714); é uma segunda versão. Design decide: apagar ou dar outro nome.
+- **Publicar:** as mudanças só chegam aos arquivos consumidores depois de **Publish library** no Figma (ação manual).
+- Flutter: `arrow-left-outline`, `arrow-narrow-right-outline`, `chevron-right-outline` reexportados; goldens atualizados.
 
 ## Resumo
 

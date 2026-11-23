@@ -224,7 +224,7 @@ Figma (ajuste)
 
 Proposta: separar cor de ícone/indicador (clara) de cor de texto (AA) antes de sincronizar.
 
-**Ícones App Cliente** — auditoria completa em [`ds-icons-audit/2026-11-23-app-cliente-aliases.md`](./ds-icons-audit/2026-11-23-app-cliente-aliases.md): 605 `*-filled` sem preenchimento, 7 seta×chevron trocados, 3 traços fora do contrato, 2 nomes inválidos. Correção no Figma aguarda `aplicar`. Faltam ainda `player-play-outline` e `player-record-filled` no pacote Flutter.
+**Ícones App Cliente** — auditoria completa em [`ds-icons-audit/2026-11-23-app-cliente-aliases.md`](./ds-icons-audit/2026-11-23-app-cliente-aliases.md): 605 `*-filled` sem preenchimento (aguarda design: usar estilo solid do Hugeicons?). Seta×chevron, traços e `car-side-filled` **aplicados em 2026-11-23**; `" tire"` duplica `tire-outline` (design decide). Publicar a biblioteca no Figma para propagar. Faltam ainda `player-play-outline` e `player-record-filled` no pacote Flutter.
 
 **Figma — componentes (reportado)**
 - RadioButton disabled on × off idênticos (3653:5321 / 3653:5304) — P1 a11y visual.
