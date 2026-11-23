@@ -16,7 +16,9 @@
     "docs:generate": "npm run docs:generate -w @ds/storybook",
     "storybook": "npm run storybook -w @ds/storybook",
     "build-storybook": "npm run build-storybook -w @ds/storybook",
-    "build": "npm run tokens:build && npm run react:build && npm run docs:generate"
+    "build": "npm run tokens:build && npm run react:build && npm run docs:generate",
+    "flutter:tokens": "node packages/flutter_tokens/tool/generate_tokens.mjs",
+    "flutter:catalog": "node packages/flutter_ds/tool/generate_catalog.mjs"
   },
   "engines": {
     "node": ">=20"

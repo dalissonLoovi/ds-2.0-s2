@@ -20,6 +20,16 @@ npm run storybook
 
 Guia React: [`REACT-CONTRIBUTING.md`](./REACT-CONTRIBUTING.md)
 
+### Flutter (App Cliente)
+
+```text
+packages/flutter_tokens      → loovi_tokens (ThemeExtension gerado do seed, mode app-cliente)
+packages/flutter_ds          → loovi_ds (widgets)
+packages/flutter_widgetbook  → catálogo Widgetbook
+```
+
+Guia: [`FLUTTER-CONTRIBUTING.md`](./FLUTTER-CONTRIBUTING.md) · inventário: [`FLUTTER-INVENTORY.md`](./FLUTTER-INVENTORY.md)
+
 ## Storybook
 
 - **Seed metadata:** [`design-system-tokens.storybook.updated.v2.json`](./design-system-tokens.storybook.updated.v2.json)

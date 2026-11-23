@@ -9,3 +9,12 @@ _tmp_*
 
 # Docs internos / handoff: só locais (DS é público)
 HANDOFF-*
+
+# Flutter / Dart
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+packages/flutter_*/build/
+packages/flutter_tokens/pubspec.lock
+packages/flutter_ds/pubspec.lock
+**/test/failures/

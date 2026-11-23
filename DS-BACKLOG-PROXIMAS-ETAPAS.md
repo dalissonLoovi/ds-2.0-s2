@@ -204,6 +204,40 @@ Figma (ajuste)
     - Componentes de site (header de marketing, footer, hero, cards de plano, depoimento, cotação): decidir reusar / variante / novo / composição
     - Forma de consumo dos pacotes (git, GitHub Packages ou monorepo)
 13. React para CommentItem, BrandLogo e PaymentMethodMark (quando pedido)
+14. **Saída Flutter (App Cliente)** — onda 1 entregue em 2026-11-23 (`loovi_tokens` + `loovi_ds`, 21 componentes; ver [`FLUTTER-CONTRIBUTING.md`](./FLUTTER-CONTRIBUTING.md) e [`FLUTTER-INVENTORY.md`](./FLUTTER-INVENTORY.md)). Próxima onda só quando pedida.
+
+### Achados da auditoria Flutter (2026-11-23)
+
+**Aplicado em 2026-11-23** (revision `2026-11-23-flutter-audit-seed-sync`):
+- Seed ← Figma: `interactive/selected` #D0D9E8, `color/overlay/overlay` 48%, `feedback/info` (#54DEF8) adicionado, `color/elevation/focus` adicionado (`pressed` deprecated).
+- `tokens.component` completo (23/23); `app-header/leading-action/background` [escritorio-virtual] → #FCFCFE.
+- nodeIds: Switch → `3653:4741`, NavigationBarItem → `3653:15180` (seed + Code Connect).
+- Impacto: CSS/React (Escritório Virtual) — selected fica azulado e o overlay mais claro; Flutter regenerado; Storybook regenerado.
+
+**Pendente — decisão de design (não sincronizado de propósito)**
+
+| Variável | Figma | Seed (mantido) | Motivo |
+| --- | --- | --- | --- |
+| `feedback/success` | #2DBE5E | #00723E | Figma falha AA como texto |
+| `feedback/danger` | #F54444 | #D83E3E | idem |
+| `feedback/warning` | #FFB74C | #8C7502 | idem |
+
+Proposta: separar cor de ícone/indicador (clara) de cor de texto (AA) antes de sincronizar.
+
+**Ícones App Cliente** — auditoria completa em [`ds-icons-audit/2026-11-23-app-cliente-aliases.md`](./ds-icons-audit/2026-11-23-app-cliente-aliases.md): 605 `*-filled` sem preenchimento, 7 seta×chevron trocados, 3 traços fora do contrato, 2 nomes inválidos. Correção no Figma aguarda `aplicar`. Faltam ainda `player-play-outline` e `player-record-filled` no pacote Flutter.
+
+**Figma — componentes (reportado)**
+- RadioButton disabled on × off idênticos (3653:5321 / 3653:5304) — P1 a11y visual.
+- AppHeader specific: ações trailing sobrepostas no mesmo slot de 40; large default sem SPACE_BETWEEN (3143:8856).
+- ModalHeader close com `size-[40px]` cru (3786:9384, 3802:205); ChipTag md ícone 32 (3653:23235); ChipClickable sm avatar 22 (3653:23581); Alert inverse brand sem variável (4406:31).
+- Frames sem variável (gaps 4/8/10, alturas 36/56/64/160) — detalhe nos relatórios da onda.
+
+**Exceções mantidas no Flutter (fora do seed, decisão 2026-11-23)**
+- `LooviAlert` com ação de fechar (desligada por padrão) e `LooviModal` com `footer` (existe no React). Oficializar no Figma/seed ou remover numa próxima onda.
+
+**Propostas de componente**
+- `LooviButton` appearance `inverse` (Alert inverse usa recolor provisório).
+- LoadingSpinner Flutter (hoje interno ao Button).
 
 ---
 

@@ -665,9 +665,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-09-21T17:45:00.000Z",
-        "storybookRevision": "2026-09-21-link-audit-apply",
+        "storybookUpdatedAt": "2026-11-23T14:55:50.367Z",
+        "storybookRevision": "2026-11-23-flutter-audit-seed-sync",
         "changelog": [
+            {
+                "date": "2026-11-23",
+                "type": "flutter-audit-seed-sync",
+                "summary": "Flutter audit apply: seed synced with Figma — interactive/selected #D0D9E8, color/overlay/overlay 48%, feedback/info added, color/elevation/focus added (pressed deprecated); tokens.component completed with all 23 product-theme tokens (escritorio-virtual app-header leading-action → #FCFCFE); nodeIds Switch 3653:4741 and NavigationBarItem 3653:15180. feedback/success|danger|warning NOT synced (Figma values fail AA as text) — see backlog."
+            },
             {
                 "date": "2026-09-21",
                 "type": "storybook-link-audit-apply",
@@ -2756,13 +2761,19 @@
                 },
                 "pressed": {
                     "$type": "color",
-                    "$value": "rgba(90, 120, 255, 0.8)"
+                    "$value": "rgba(90, 120, 255, 0.8)",
+                    "$description": "DEPRECATED 2026-11-23 — use color/elevation/focus (renamed in Figma). Same value."
+                },
+                "focus": {
+                    "$type": "color",
+                    "$value": "rgba(90, 120, 255, 0.8)",
+                    "$description": "Figma color/elevation/Focus (kebab-case here). Replaces color/elevation/pressed."
                 }
             },
             "overlay": {
                 "overlay": {
                     "$type": "color",
-                    "$value": "rgba(0, 0, 0, 0.64)"
+                    "$value": "rgba(0, 0, 0, 0.48)"
                 }
             },
             "palette": {
@@ -2948,7 +2959,7 @@
                     "background": {
                         "$type": "color",
                         "$value": {
-                            "escritorio-virtual": "#FFFFFF",
+                            "escritorio-virtual": "#FCFCFE",
                             "site-loovi": "#E7EFFC",
                             "app-cliente": "#E7EFFC"
                         },
@@ -3013,6 +3024,111 @@
                         "$description": "product-theme component/app-header/title/font-weight — EV|site-loovi→font-weight/medium; app-cliente→font-weight/regular."
                     }
                 }
+            },
+            "modal-header": {
+                "close-action": {
+                    "background": {
+                        "$type": "color",
+                        "$value": {
+                            "escritorio-virtual": "#FCFCFE",
+                            "site-loovi": "#E7EFFC",
+                            "app-cliente": "#E7EFFC"
+                        },
+                        "$description": "product-theme component/modal-header/close-action/background — bound on closeAction Button fill (all layouts). escritorio-virtual→color/background-surface/0; site-loovi→color/background-surface/2; app-cliente→color/background-surface/2."
+                    },
+                    "radius": {
+                        "$type": "dimension",
+                        "$value": {
+                            "escritorio-virtual": 8,
+                            "site-loovi": 9999,
+                            "app-cliente": 9999
+                        },
+                        "$description": "product-theme component/modal-header/close-action/radius — bound on closeAction Button corner radius (all layouts). escritorio-virtual→border/radius/200; site-loovi→border/radius/full; app-cliente→border/radius/full."
+                    },
+                    "size-mobile": {
+                        "$type": "dimension",
+                        "$value": {
+                            "escritorio-virtual": 40,
+                            "site-loovi": 40,
+                            "app-cliente": 32
+                        },
+                        "$description": "product-theme component/modal-header/close-action/size-mobile — bound on closeAction (+ center leadingSpacer) hit size on layout=mobile only; desktop close stays spacing/500 (40). escritorio-virtual→40; site-loovi→40; app-cliente→32."
+                    }
+                }
+            },
+            "input": {
+                "field": {
+                    "radius": {
+                        "$type": "dimension",
+                        "$value": {
+                            "escritorio-virtual": 8,
+                            "site-loovi": 9999,
+                            "app-cliente": 9999
+                        },
+                        "$description": "product-theme component/input/field/radius — bound on outlined field container corner radius. escritorio-virtual→border/radius/200; site-loovi→border/radius/full; app-cliente→border/radius/full."
+                    }
+                }
+            },
+            "input-textarea": {
+                "field": {
+                    "radius": {
+                        "$type": "dimension",
+                        "$value": {
+                            "escritorio-virtual": 8,
+                            "site-loovi": 20,
+                            "app-cliente": 20
+                        },
+                        "$description": "product-theme component/input-textarea/field/radius — bound on outlined multiline field container corner radius. escritorio-virtual→border/radius/200; site-loovi→border/radius/500; app-cliente→border/radius/500."
+                    }
+                }
+            },
+            "list-action": {
+                "container": {
+                    "radius": {
+                        "$type": "dimension",
+                        "$value": {
+                            "escritorio-virtual": 8,
+                            "site-loovi": 20,
+                            "app-cliente": 20
+                        },
+                        "$description": "product-theme component/list-action/container/radius — bound on List + ListActionDropdown shell corner radius (all corners). escritorio-virtual→border/radius/200; site-loovi→border/radius/500; app-cliente→border/radius/500."
+                    }
+                }
+            },
+            "modal": {
+                "container": {
+                    "radius": {
+                        "$type": "dimension",
+                        "$value": {
+                            "escritorio-virtual": 24,
+                            "site-loovi": 24,
+                            "app-cliente": 32
+                        },
+                        "$description": "product-theme component/modal/container/radius — bound on Modal shell corner radius (all platforms). escritorio-virtual→border/radius/600; site-loovi→border/radius/600; app-cliente→border/radius/800."
+                    }
+                }
+            },
+            "section-header": {
+                "action": {
+                    "background": {
+                        "$type": "color",
+                        "$value": {
+                            "escritorio-virtual": "#FCFCFE",
+                            "site-loovi": "#E7EFFC",
+                            "app-cliente": "#E7EFFC"
+                        },
+                        "$description": "product-theme component/section-header/action/background — bound on trailing action Button fill when showAction=true. escritorio-virtual→color/background-surface/0; site-loovi→color/background-surface/2; app-cliente→color/background-surface/2."
+                    },
+                    "radius": {
+                        "$type": "dimension",
+                        "$value": {
+                            "escritorio-virtual": 6,
+                            "site-loovi": 9999,
+                            "app-cliente": 9999
+                        },
+                        "$description": "product-theme component/section-header/action/radius — bound on trailing action Button corner radius when showAction=true. escritorio-virtual→component/button/container/radius/sm; site-loovi→border/radius/full; app-cliente→border/radius/full."
+                    }
+                }
             }
         },
         "display": {
@@ -3042,6 +3158,11 @@
                 "$type": "color",
                 "$value": "#8C7502",
                 "$description": "export: feedback-warning | content/status color for warning, attention or analyzing states."
+            },
+            "info": {
+                "$type": "color",
+                "$value": "#54DEF8",
+                "$description": "export: feedback-info | content/status color for informational states (Figma feedback/info, alias primitive-colors/aqua-gleam)."
             }
         },
         "font-family": {
@@ -3252,7 +3373,7 @@
             },
             "selected": {
                 "$type": "color",
-                "$value": "#EBEBEB"
+                "$value": "#D0D9E8"
             },
             "success-surface": {
                 "$type": "color",
@@ -9918,7 +10039,7 @@
                 "reactImplemented": true
             },
             "Switch": {
-                "nodeId": "3444:318",
+                "nodeId": "3653:4741",
                 "description": "AI-READY COMPONENT: Switch is a binary control used to turn a setting on or off. Use checked=true for the on state and checked=false for the off state. Use state=default, focus or disabled to represent interaction state — there is no hover state. Use size=md for standard layouts and size=sm for compact layouts. Use showIcon to show or hide the internal check/x icon on size=md only; size=sm does not publish an icon layer. Icons are structural by checked: x-outline when unchecked and check-outline when checked. Do not use Switch as a Checkbox, RadioButton, Button, Chip, ToggleGroup or navigation item. Accessibility: expose the control as role=switch, reflect state with aria-checked, use aria-disabled when disabled, preserve visible focus, and ensure the switch has an accessible label from the surrounding form field or aria-label. Token rule: use existing DS variables only (color/actions/primary, color/background-surface/0|1|3, interactive/focus|disabled-surface, text/secondary|placeholder, spacing/0|200|250|300|400|500|700, border/radius/full|0, border/width/012|025). React mapping: Switch(checked, state, size, showIcon).",
                 "variants": {
                     "size": [
@@ -11131,7 +11252,7 @@
                 "reactImplemented": true
             },
             "NavigationBarItem": {
-                "nodeId": "3327:2878",
+                "nodeId": "3653:15180",
                 "description": "AI-READY COMPONENT: NavigationBarItem is an interactive vertical navigation item used inside NavigationBar or navigation rail surfaces to represent a primary app destination. Use selected=true for the current active destination. Use appearance=default on light surfaces and appearance=inverse on inverse or dark navigation surfaces. Use badge=dot for unread/activity indicators and badge=count for numeric notification counts. When badge=count, edit the nested Badge count (and overflowLabel when needed); keep Badge size/content as designed by the variant. Use showLabel=false only when the navigation pattern supports icon-only items. Colors follow the intentional NavigationBarItem model (selected/actions and tangerine badge accents). Do not use NavigationBarItem as a Button, Chip, Badge, ListItem, MenuItem, Tab, Accordion trigger or generic icon action. Accessibility: use link semantics for routes or button semantics for actions; selected=true maps to aria-current=page when route-based; icon-only items require aria-label; badge count requires an accessible notification label when meaningful. React mapping: NavigationBarItem(icon, label, appearance, state, badge, selected, showLabel, count?).",
                 "variants": {
                     "appearance": [
@@ -11648,6 +11769,7 @@
             }
         },
         "recentUpdates": [
+            "Flutter audit apply: seed synced with Figma — interactive/selected #D0D9E8, color/overlay/overlay 48%, feedback/info added, color/elevation/focus added (pressed deprecated); tokens.component completed with all 23 product-theme tokens (escritorio-virtual app-header leading-action → #FCFCFE); nodeIds Switch 3653:4741 and NavigationBarItem 3653:15180. feedback/success|danger|warning NOT synced (Figma values fail AA as text) — see backlog.",
             "Link (3820:13913) audit apply: local icon paints; inline underline bar; active no focus ring; disabled inverse→on-color-disabled; React spacing/100 + default lg; Code Connect + stories.",
             "Link (3820:13913): apply size axis typography+icon — lg/md/sm → body/large|medium|small/regular (16/22, 14/20, 12/17) and trailingIcon 16|16|14 (was nomenclature-only; cleared dual fontSize/lineHeight variable binds). React CSS synced.",
             {

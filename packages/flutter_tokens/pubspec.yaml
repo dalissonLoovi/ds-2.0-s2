@@ -1,0 +1,35 @@
+name: loovi_tokens
+description: Loovi Design System S2 tokens for Flutter, generated from the DS seed. Default product mode app-cliente.
+version: 0.1.0
+publish_to: none
+repository: https://github.com/dalissonLoovi/ds-2.0-s2
+
+# Flutter pinned to the stable used to build and test this package (see FLUTTER-CONTRIBUTING.md).
+environment:
+  sdk: ^3.14.0
+  flutter: ">=3.50.1"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  material_ui: ^1.11.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Regular.ttf
+          weight: 400
+        - asset: fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: fonts/Poppins-Bold.ttf
+          weight: 700
+        - asset: fonts/Poppins-ExtraBold.ttf
+          weight: 800

@@ -1,0 +1,27 @@
+name: loovi_ds
+description: Loovi Design System S2 widgets for Flutter. Paint from product-theme mode app-cliente via loovi_tokens.
+version: 0.1.0
+publish_to: none
+repository: https://github.com/dalissonLoovi/ds-2.0-s2
+
+# Flutter pinned to the stable used to build and test this package (see FLUTTER-CONTRIBUTING.md).
+environment:
+  sdk: ^3.14.0
+  flutter: ">=3.50.1"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.5.0
+  loovi_tokens:
+    path: ../flutter_tokens
+  material_ui: ^1.11.1
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  assets:
+    - assets/icons/app-cliente/

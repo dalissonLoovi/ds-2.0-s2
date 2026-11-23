@@ -1,0 +1,35 @@
+/// Loovi Design System S2 — Flutter widgets (mode app-cliente).
+///
+/// Every widget paints from `LooviTokens` (package loovi_tokens). Props and
+/// variants mirror the DS seed; descriptions and Figma nodeIds live in
+/// [LooviSeedCatalog].
+library;
+
+export 'package:loovi_tokens/loovi_tokens.dart';
+
+export 'src/foundation/loovi_icon.dart';
+export 'src/foundation/loovi_tap_target.dart';
+export 'src/generated/loovi_icon_names.g.dart';
+export 'src/generated/seed_catalog.g.dart';
+// WIDGETS — one export per component (phase 2 wave).
+export 'src/widgets/alert/loovi_alert.dart';
+export 'src/widgets/app_header/loovi_app_header.dart';
+export 'src/widgets/bottom_sheet/loovi_bottom_sheet.dart';
+export 'src/widgets/bottom_sheet/loovi_bottom_sheet_header.dart';
+export 'src/widgets/button/loovi_button.dart';
+export 'src/widgets/modal/loovi_modal.dart';
+export 'src/widgets/modal/loovi_modal_header.dart';
+export 'src/widgets/section_header/loovi_section_header.dart';
+export 'src/widgets/checkbox/loovi_checkbox.dart';
+export 'src/widgets/chip_clickable/loovi_chip_clickable.dart';
+export 'src/widgets/chip_tag/loovi_chip_tag.dart';
+export 'src/widgets/input/loovi_input.dart';
+export 'src/widgets/input_password/loovi_input_password.dart';
+export 'src/widgets/input_textarea/loovi_input_textarea.dart';
+export 'src/widgets/link/loovi_link.dart';
+export 'src/widgets/list/loovi_list.dart';
+export 'src/widgets/list_item/loovi_list_item.dart';
+export 'src/widgets/navigation_bar/loovi_navigation_bar.dart';
+export 'src/widgets/navigation_bar/loovi_navigation_bar_item.dart';
+export 'src/widgets/radio_button/loovi_radio_button.dart';
+export 'src/widgets/switch/loovi_switch.dart';
