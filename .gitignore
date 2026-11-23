@@ -17,4 +17,4 @@ HANDOFF-*
 packages/flutter_*/build/
 packages/flutter_tokens/pubspec.lock
 packages/flutter_ds/pubspec.lock
-**/test/failures/
+**/failures/
