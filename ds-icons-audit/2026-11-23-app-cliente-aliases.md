@@ -1,7 +1,7 @@
 # Auditoria — DS Semantic Aliases (App Cliente / Hugeicons)
 
 **Data:** 2026-11-23 · **Arquivo:** [DS] Icons — App Cliente (`4LsFOmHu3B25vXsDPjklWs`), seção `7003:12884` · **Escopo:** 4.285 aliases
-**Status:** itens 2–5 **aplicados em 2026-11-23** (ver "Aplicado"); item 1 (605 `*-filled`) aguarda decisão de design.
+**Status:** itens 2–5 aplicados; item 1 aplicado em parte (394 de 605 `*-filled` com preenchimento real — ver "Limpeza e filled"); 206 aguardam desenho manual.
 
 ## Aplicado (2026-11-23)
 
@@ -11,6 +11,20 @@
 - **Não renomeado:** `" tire"` (7131:12608) — já existe `tire-outline` (7044:20714); é uma segunda versão. Design decide: apagar ou dar outro nome.
 - **Publicar:** as mudanças só chegam aos arquivos consumidores depois de **Publish library** no Figma (ação manual).
 - Flutter: `arrow-left-outline`, `arrow-narrow-right-outline`, `chevron-right-outline` reexportados; goldens atualizados.
+
+## Limpeza e filled (2026-11-23, `aplicar`)
+
+Decisões: filled gerado a partir do outline; corrigir só os `*-filled` existentes (sem nomes novos); nomes com o mesmo desenho ficam (contrato com o Escritório Virtual) e ganham anotação.
+
+- **Criações do time (34) preservadas, sem alteração:** `car-*`, `claim-*`, `tow-truck-outline`, `car-crash-outline`, `car-door`, `car trade-in`, ` tire`, `plate`, `plan change` / `plan change - filled`, `Theft and robbery`, `loovi-filled`, `home-*`, `phone-filled`, `brand-whatsapp-filled`, `calendar-filled`, `circle-plus-filled`, `credit-card-filled`, `file-edit-*`, `cancel-square-*`, `user-*`, `chat-filled` e as variações `-2` (`map-pin-filled-2`, `info-circle-filled-2`, `player-play-filled-2`, `circle-x-filled-2`, `pen-tool-2`).
+- **Duplicados apagados (6):** a cópia genérica de `user-outline`, `user-filled`, `phone-filled`, `brand-whatsapp-filled`, `calendar-filled`, `circle-plus-filled`; ficou a versão do time (a que o app já usa). Total: 4.279 aliases.
+- **Filled com preenchimento real: 394.** Método: contorno externo do traço principal vira forma sólida; detalhes internos (`i`, `!`, furo do cadeado, aba do envelope…) ficam vazados; detalhes externos (badalo do sino, alça) somam. Camada única `{nome}-path`, cor herdada do traço, constraints SCALE. O componente mantém o id — instâncias seguem ligadas. Antes eram cópias do Hugeicons; agora são desenhos próprios da biblioteca.
+- **Revertidos para o desenho anterior (24):** o método gerou fragmentos (ex.: `zoom-*`, `sun`, `compass`, `pin`, `inner-shadow-top|bottom`, `star-half`). Estão entre os 206 abaixo.
+- **Sem preenchimento ainda (206) — desenho manual:** traço aberto ou geometria que não fecha: setas e chevrons (`arrow-move-*`, `chevron-*`, `circle-arrow-*`, `circle-chevron(s)-*`, `square-arrow-*`, `square-chevron(s)-*`), `square-letter-*`, `square-f0…f9`, gráficos (`chart-*`), `zoom-*`, `inner-shadow-*`, `check`, `x`, `plus`, `menu`, `dots*`, `trash*`, `download`, `share`, `copy`, `send`, `microphone`/`mic`, `device-*` (4), `cloud-*` (4), entre outros. Lista completa: rodar o filtro "`*-filled` sem fill" no arquivo.
+- **Mesmo desenho, nomes diferentes:** 663 grupos / 3.482 aliases anotados na descrição (`Shared drawing — base …; same glyph as: …`).
+- **Mapeamentos estranhos já existentes (design decide):** `info-hexagon` / `info-octagon` sem o "i" (também no outline); `info-triangle` aponta para outro ícone; `alert-hexagon|octagon|square` usam o mesmo triângulo; vários filled usam um Hugeicon diferente do outline (ex.: `baby-carriage`, `scissors`, `temperature-*`).
+- **Flutter:** `alert-circle-filled`, `alert-triangle-filled`, `info-circle-filled` reexportados; goldens `foundation_icons` e `alert_status` atualizados.
+- **Publicar:** Publish library no arquivo de ícones (manual).
 
 ## Resumo
 

@@ -228,7 +228,7 @@ Figma (ajuste)
 - Regra no seed: `meta.governance.feedbackColorRule`.
 - ~~Banner `status=info` primary ligado a `…/system`~~ → corrigido para `background-feedback-primary/info` (2026-11-23).
 
-**Ícones App Cliente** — auditoria completa em [`ds-icons-audit/2026-11-23-app-cliente-aliases.md`](./ds-icons-audit/2026-11-23-app-cliente-aliases.md): 605 `*-filled` sem preenchimento (aguarda design: usar estilo solid do Hugeicons?). Seta×chevron, traços e `car-side-filled` **aplicados em 2026-11-23**; `" tire"` duplica `tire-outline` (design decide). Publicar a biblioteca no Figma para propagar. Faltam ainda `player-play-outline` e `player-record-filled` no pacote Flutter.
+**Ícones App Cliente** — auditoria em [`ds-icons-audit/2026-11-23-app-cliente-aliases.md`](./ds-icons-audit/2026-11-23-app-cliente-aliases.md). Limpeza aplicada em 2026-11-23: 6 duplicados removidos, 34 criações do time preservadas, 394 `*-filled` com preenchimento real, 3.482 aliases anotados (mesmo desenho). **Pendente (design):** 206 `*-filled` de traço aberto para desenhar à mão e mapeamentos estranhos listados na auditoria. Seta×chevron, traços e `car-side-filled` **aplicados em 2026-11-23**; `" tire"` duplica `tire-outline` (design decide). Publicar a biblioteca no Figma para propagar. Faltam ainda `player-play-outline` e `player-record-filled` no pacote Flutter.
 
 **Figma — componentes**
 - Resolvidos em 2026-11-23 (revision `2026-11-23-design-fixes`, conferido no Figma): RadioButton disabled on × off (ring `border/width/050` + `text/placeholder`), AppHeader specific (trailing lado a lado; 3143:8856 em SPACE_BETWEEN), ModalHeader close ligado a `component/modal-header/close-action/*`, Alert inverse brand ligado a `color/background-surface/brand`.
