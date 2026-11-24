@@ -52,6 +52,30 @@ import 'tooltip_use_cases.dart';
 import 'verification_code_input_use_cases.dart';
 import 'vertical_stepper_item_use_cases.dart';
 import 'vertical_stepper_use_cases.dart';
+import 'avatar_group_use_cases.dart';
+import 'brand_logo_use_cases.dart';
+import 'card_horizontal_use_cases.dart';
+import 'card_items_use_cases.dart';
+import 'card_stacked_use_cases.dart';
+import 'carousel_pagination_item_use_cases.dart';
+import 'carousel_use_cases.dart';
+import 'dashboard_card_primary_use_cases.dart';
+import 'dashboard_card_secondary_use_cases.dart';
+import 'feature_steps_item_use_cases.dart';
+import 'feature_steps_use_cases.dart';
+import 'list_action_dropdown_item_use_cases.dart';
+import 'list_action_dropdown_use_cases.dart';
+import 'list_item_image_thumbnail_use_cases.dart';
+import 'list_item_leading_illustration_use_cases.dart';
+import 'list_item_leading_monogram_use_cases.dart';
+import 'list_item_leading_payment_mark_use_cases.dart';
+import 'list_item_state_layer_use_cases.dart';
+import 'list_item_trailing_illustration_use_cases.dart';
+import 'list_item_video_thumbnail_use_cases.dart';
+import 'overlay_use_cases.dart';
+import 'payment_method_mark_use_cases.dart';
+import 'text_header_use_cases.dart';
+import 'vehicle_confirm_card_use_cases.dart';
 
 /// Components (mode app-cliente): wave 1 in the order the app needs them, then wave 2.
 WidgetbookFolder componentsFolder() => WidgetbookFolder(
@@ -119,5 +143,32 @@ WidgetbookFolder componentsFolder() => WidgetbookFolder(
         looviVerticalStepperItemComponent(),
         looviTooltipComponent(),
         looviTooltipRichComponent(),
+        // Wave 4 (2026-11-24)
+        looviCardOutlinedItemComponent(),
+        looviCardElevatedItemComponent(),
+        looviCardFilledItemComponent(),
+        looviCardHorizontalComponent(),
+        looviCardStackedComponent(),
+        looviDashboardCardPrimaryComponent(),
+        looviDashboardCardSecondaryComponent(),
+        looviVehicleConfirmCardComponent(),
+        looviCarouselComponent(),
+        looviCarouselPaginationItemComponent(),
+        looviFeatureStepsComponent(),
+        looviFeatureStepsItemComponent(),
+        looviAvatarGroupComponent(),
+        looviTextHeaderComponent(),
+        looviOverlayComponent(),
+        looviListActionDropdownComponent(),
+        looviListActionDropdownItemComponent(),
+        looviListItemLeadingMonogramComponent(),
+        looviListItemStateLayerComponent(),
+        looviListItemImageThumbnailComponent(),
+        looviListItemVideoThumbnailComponent(),
+        looviListItemLeadingIllustrationComponent(),
+        looviListItemTrailingIllustrationComponent(),
+        looviListItemLeadingPaymentMarkComponent(),
+        looviBrandLogoComponent(),
+        looviPaymentMethodMarkComponent(),
       ],
     );

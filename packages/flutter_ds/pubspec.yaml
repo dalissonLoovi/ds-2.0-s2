@@ -26,3 +26,6 @@ flutter:
   assets:
     - assets/icons/app-cliente/
     - assets/illustrations/vehicle/
+    - assets/illustrations/list/
+    - assets/brand/
+    - assets/payment_marks/

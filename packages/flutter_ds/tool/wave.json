@@ -64,5 +64,33 @@
     "VerticalStepperItem",
     "Tooltip",
     "TooltipRich"
+  ],
+  "4": [
+    "CardOutlinedItem",
+    "CardElevatedItem",
+    "CardFilledItem",
+    "CardHorizontal",
+    "CardStacked",
+    "DashboardCardPrimary",
+    "DashboardCardSecondary",
+    "VehicleConfirmCard",
+    "Carousel",
+    "CarouselPaginationItem",
+    "FeatureSteps",
+    "FeatureStepsItem",
+    "AvatarGroup",
+    "TextHeader",
+    "Overlay",
+    "ListActionDropdown",
+    "ListActionDropdownItem",
+    "ListItemLeadingMonogram",
+    "ListItemStateLayer",
+    "ListItemImageThumbnail",
+    "ListItemVideoThumbnail",
+    "ListItemLeadingIllustration",
+    "ListItemTrailingIllustration",
+    "ListItemLeadingPaymentMark",
+    "BrandLogo",
+    "PaymentMethodMark"
   ]
 }

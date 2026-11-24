@@ -450,7 +450,8 @@
                 "sourceOfTruth": "ThZ5XtMuDWUWXiSLbRyEXL",
                 "s2LocalIcons": "DEPRECATED — page 4. Icons masters superseded by [DS] Icons / Escritório Virtual; do not add new local icon components in S2",
                 "migrationStatus": "2026-07-28: leftovers cleared (Tokens/Illustrations/Photo/ImageOrientationItem); component pages + foundations clean outside deprecated Icons page",
-                "circleDotFilled": "App Cliente circle-dot-filled redesigned on 2026-11-24: filled disc (17.5) with a 6 px center hole (evenodd) — the auto-generated filled had lost the dot."
+                "circleDotFilled": "App Cliente circle-dot-filled redesigned on 2026-11-24: filled disc (17.5) with a 6 px center hole (evenodd) — the auto-generated filled had lost the dot.",
+                "missing": "App Cliente icon file has no camera-outline (FeatureStepsItem preferred value). circle-arrow-down|up-right-filled use a Hugeicons glyph that reads like a phone — design review pending."
             },
             "paymentMethodMarks": {
                 "summary": "Dedicated published library for card networks, wallets, and meal/voucher marks — parallel to BrandLogo, never mixed into UI icon libraries (*-outline/*-filled).",
@@ -684,7 +685,8 @@
             "legacyRemoteVariables": {
                 "reportedAt": "2026-11-23",
                 "note": "Title Case remote variables (Color/Content/*, Color/Interactive/*, Color/Background Surface/*, Color/Border/*, Schemes/*) rebound to local S2 tokens on wave pages (Button 108, Chip 4, Header 1, Navigation Bar 1). Remote text/* bindings inside DS Icons library instances are expected (icon library owns them).",
-                "wave3": "Wave 3 (2026-11-24): remote text/primary icon overrides rebound to local tokens in SearchBar (11), SearchViewFullscreen (6), Autocomplete (30), InputSelect (6), InputDatePicker (6), StepperPrimary pending icon."
+                "wave3": "Wave 3 (2026-11-24): remote text/primary icon overrides rebound to local tokens in SearchBar (11), SearchViewFullscreen (6), Autocomplete (30), InputSelect (6), InputDatePicker (6), StepperPrimary pending icon.",
+                "wave4": "Wave 4 (2026-11-24): AvatarGroup ring (36 strokes) Color/Background Surface/0 → color/background-surface/0; TextHeader large Spacing/050 → spacing/050; AvatarGroup plus icon remote white → text/secondary."
             },
             "stateLayerBlend": "Plugin API limitation: paint-level blendMode and opacity are dropped on variable-bound paints. Use an absolute stateOverlay node (fill bound to interactive/*, node blendMode LINEAR_BURN) instead of a second paint when building via API.",
             "iconStroke": "Icon strokes stay at the icon library native 1.5 (Hugeicons / DS contract). Do not bind icon strokes to border/width/* (012 = 1px, 025 = 2px) — decided 2026-11-24."
@@ -695,9 +697,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-11-24T19:01:34.029Z",
-        "storybookRevision": "2026-11-24-wave3-audit-fixes",
+        "storybookUpdatedAt": "2026-11-24T20:20:30.973Z",
+        "storybookRevision": "2026-11-24-wave4-audit-fixes",
         "changelog": [
+            {
+                "date": "2026-11-24",
+                "type": "wave4-audit-fixes",
+                "summary": "Wave 4 audit fixes (Figma + seed + code): ListItemLeadingPaymentMark gets INSTANCE_SWAP paymentMethodMark (payment-method/* preferred) and loses the stray testSwap layer; DashboardCardSecondary percentage text/success|danger and info icon text/secondary; AvatarGroup overflow surface/3 + text/secondary plus (was 1.4:1), ring rebound to local surface/0 (36); TextHeader large gap local spacing/050; CardElevated/FilledItem pressed Plus Darker via stateOverlay and dragged elevation/2; CardHorizontal/CardStacked media clipped to the radius, image blend NORMAL, CardHorizontal hugs content (min 80); BrandLogo extended described as wordmark lockup, leftover white fills removed; FeatureStepsItem icon stroke native 1.5, layer {icon}-path, min height 48; seed text fixes (Elevated resting shadow, ListActionDropdownItem spacing, AvatarGroup rules). Icons: 57 in the Flutter package."
+            },
             {
                 "date": "2026-11-24",
                 "type": "wave3-audit-fixes",
@@ -5877,7 +5884,13 @@
                 },
                 "accessibility": "Expose a group-level accessible label when the grouped identities are meaningful. The overflow indicator should not receive focus unless a real interaction is added by a wrapper.",
                 "reactPackage": "@ds/react",
-                "reactImplemented": true
+                "reactImplemented": true,
+                "rules": {
+                    "overflow": "overflow indicator: color/background-surface/3 fill with plus-outline in text/secondary (≥3:1); shown only when members exceed maxVisible (code) — 2026-11-24 (was text/on-color-disabled + white, 1.4:1).",
+                    "ring": "separator ring stroke color/background-surface/0 (local; was remote Color/Background Surface/0); ring 8 at lg|xl has no border-width token (code uses spacing/100).",
+                    "overlap": "negative item gaps (−8 / −16 / −24) are not tokenized; code uses spacing/100 | 200 | 300 magnitudes.",
+                    "members": "members are Avatar instances (initials | image | placeholder); Avatar owns its fills."
+                }
             },
             "CardHorizontal": {
                 "nodeId": "4170:4506",
@@ -5909,7 +5922,9 @@
                     "mediaFill": "mediaImage IMAGE scaleMode FILL over color/background-surface/2 placeholder",
                     "demoSize": "FIXED 360×80 mobile exemplar",
                     "spacing": "body padding + body gap spacing/200; slot pad vertical spacing/100 + horizontal spacing/200; text gap spacing/050; radius border/radius/300",
-                    "noInverse": "No appearance/inverse (intentional)"
+                    "noInverse": "No appearance/inverse (intentional)",
+                    "media": "media is clipped to the card radius (outlined/filled roots clip; elevated clips in content to keep the shadow); mediaImage blend NORMAL (was LUMINOSITY) — 2026-11-24.",
+                    "height": "layout=mediaAndText hugs its content with minHeight 80 (spacing/1000) — body content is 84, was clipped at a fixed 80 until 2026-11-24."
                 },
                 "tokenRules": [
                     "spacing/200 (body padding + body gap + slot horizontal padding)",
@@ -5968,7 +5983,8 @@
                     "demoSize": "FIXED 360×480 mobile exemplar",
                     "spacing": "body padding spacing/200; body gap spacing/400; slot pad vertical spacing/100 + horizontal spacing/200; headerRow spacing/150|050|200; text/headline gaps spacing/050; actions gap spacing/100; radius border/radius/300 (bound on root/content/slot); slotContent demo border/radius/200",
                     "layerNaming": "leading, text, headline, subtitle, actions (no Title Case Content/Text/Headline/Actions)",
-                    "noInverse": "No appearance/inverse (intentional)"
+                    "noInverse": "No appearance/inverse (intentional)",
+                    "media": "media is clipped to the card radius (outlined/filled roots clip; elevated clips in content to keep the shadow); mediaImage blend NORMAL (was LUMINOSITY) — 2026-11-24."
                 },
                 "tokenRules": [
                     "spacing/200 (body padding + slot horizontal padding)",
@@ -6019,8 +6035,10 @@
                     "noInverse": "No appearance/inverse (intentional)",
                     "naming": "Renamed from Material .Building Blocks/Card states/*",
                     "noOutline": "No outline stroke — elevated surface uses shadow for separation",
-                    "elevation": "resting color/elevation/2; hover color/elevation/6; dragged color/elevation/5",
-                    "surface": "color/background-surface/1"
+                    "elevation": "resting effect style elevation/1 (color/elevation/6); hover color/elevation/6; dragged color/elevation/5",
+                    "surface": "color/background-surface/1",
+                    "pressed": "pressed = absolute stateOverlay with interactive/pressed in LINEAR_BURN (Plus Darker), like CardOutlinedItem; dragged = effect style elevation/2 — 2026-11-24.",
+                    "resting": "resting shadow = effect style elevation/1 (color/elevation/6, y8 b8) — seed said color/elevation/2 until 2026-11-24."
                 },
                 "tokenRules": [
                     "color/background-surface/1",
@@ -6069,7 +6087,8 @@
                     "naming": "Renamed from Material .Building Blocks/Card states/*",
                     "noOutline": "No outline stroke — filled surface uses fill contrast",
                     "elevation": "none on enabled/focus/pressed; hover color/elevation/6; dragged color/elevation/5",
-                    "surface": "color/background-surface/2"
+                    "surface": "color/background-surface/2",
+                    "pressed": "pressed = absolute stateOverlay with interactive/pressed in LINEAR_BURN (Plus Darker), like CardOutlinedItem; dragged = effect style elevation/2 — 2026-11-24."
                 },
                 "tokenRules": [
                     "color/background-surface/2",
@@ -6202,7 +6221,7 @@
                 "props": {
                     "type": "web | mobile",
                     "growth": "up | down — maps growth icon + success|danger color",
-                    "icon": "INSTANCE_SWAP — EV library outline icon (web; default file-description-outline)",
+                    "icon": "INSTANCE_SWAP — DS contract icon (*-outline / *-filled), swapped per product via Library Swap (web; default file-description-outline)",
                     "showIcon": "boolean — default true; web-only (intentional sparse)",
                     "title": "TEXT — metric title; text/primary",
                     "value": "TEXT — primary value; text/primary",
@@ -6217,7 +6236,8 @@
                     "showIconSparse": "showIcon applies on web only — mobile has no leading icon slot (intentional)",
                     "surfaces": "web color/background-surface/0; mobile color/background-surface/1",
                     "noInverse": "No appearance/inverse axis (intentional — light metric card)",
-                    "noInteractiveStates": "No hover/focus/disabled card states (intentional — static metric)"
+                    "noInteractiveStates": "No hover/focus/disabled card states (intentional — static metric)",
+                    "contrast": "percentage text uses text/success | text/danger (AA text tokens); growth icon keeps color/actions/success | danger; info icon text/secondary (was text/placeholder 2.3:1) — 2026-11-24."
                 },
                 "tokenRules": [
                     "color/background-surface/0 (web); color/background-surface/1 (mobile)",
@@ -9354,7 +9374,8 @@
                     "vsLegacy": "Do not use item List action or _Menu list item",
                     "vsStandalone": "Do not use as page list row, select option, button, chip, or tab",
                     "parentMenu": "keyboard and menu semantics belong to the parent action menu/dropdown",
-                    "noCountry": "showCountry/countryFlag removed — not part of this component"
+                    "noCountry": "showCountry/countryFlag removed — not part of this component",
+                    "spacing": "Figma binds gap spacing/100 and padding-x spacing/200 (seed tokenRules said 200/300 until 2026-11-24); code rows are ≥48 dp tall (touch target)."
                 },
                 "tokenRules": [
                     "color/background-surface/0 (default/focus)",
@@ -9961,7 +9982,7 @@
             },
             "FeatureStepsItem": {
                 "nodeId": "4343:222",
-                "description": "AI-READY COMPONENT: FeatureStepsItem is an illustrative vertical step row used to present a task, benefit or onboarding action with a thematic icon — not process progress feedback. Use inside FeatureSteps. Anatomy: indicatorColumn (iconBadge 48 with leadingIcon INSTANCE_SWAP + soft connector width spacing/100) + content (headline + supportingText). Layout: horizontal Auto Layout, spacing/200 between badge and content, counterAxisAlignItems=CENTER; indicatorColumn and content itemSpacing=spacing/0; content uses padding-bottom spacing/300 so the connector stretches and creates vertical rhythm when FeatureSteps itemSpacing is spacing/0. supportingText uses textAutoResize HEIGHT and vertical Hug so longer copy does not clip. Demo width 342; height Hug (Label/Description master demo). Props: leadingIcon (INSTANCE_SWAP; preferredValues EV library outlines: square-check-outline, car-outline, trophy-outline, camera-outline, file-outline, checkbox-outline), headline (TEXT, default Label), supportingText (TEXT, default Description), showSupportingText (BOOLEAN, default true), showConnector (BOOLEAN, default true — hide on final item). Icon vector layers use {icon}-path naming; strokeWeight bound to border/width/025. Do not use status completed/current/pending/error — that belongs to VerticalStepperItem. Do not use as VerticalStepperItem, StepperPrimary, StepProgressIndicator, ProgressBar, ListItem or timeline progress. Token rule: local S2 kebab-case only — color/background-surface/2, text/primary, text/secondary, border/radius/full, spacing/0|100|150|200|300, border/width/025. Typography: body/large/semi-bold (headline), body/medium/regular (supportingText). Prefer DS Icons — Escritório Virtual icons. Accessibility: decorative icon and connector aria-hidden; convey meaning via headline/supportingText. React mapping: FeatureStepsItem(leadingIcon, headline, supportingText, showSupportingText?, showConnector?). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: FeatureStepsItem is an illustrative vertical step row used to present a task, benefit or onboarding action with a thematic icon — not process progress feedback. Use inside FeatureSteps. Anatomy: indicatorColumn (iconBadge 48 with leadingIcon INSTANCE_SWAP + soft connector width spacing/100) + content (headline + supportingText). Layout: horizontal Auto Layout, spacing/200 between badge and content, counterAxisAlignItems=CENTER; indicatorColumn and content itemSpacing=spacing/0; content uses padding-bottom spacing/300 so the connector stretches and creates vertical rhythm when FeatureSteps itemSpacing is spacing/0. supportingText uses textAutoResize HEIGHT and vertical Hug so longer copy does not clip. Demo width 342; height Hug (Label/Description master demo). Props: leadingIcon (INSTANCE_SWAP; preferredValues EV library outlines: square-check-outline, car-outline, trophy-outline, camera-outline, file-outline, checkbox-outline), headline (TEXT, default Label), supportingText (TEXT, default Description), showSupportingText (BOOLEAN, default true), showConnector (BOOLEAN, default true — hide on final item). Icon vector layers use {icon}-path naming; native icon stroke 1.5 (unbound). Do not use status completed/current/pending/error — that belongs to VerticalStepperItem. Do not use as VerticalStepperItem, StepperPrimary, StepProgressIndicator, ProgressBar, ListItem or timeline progress. Token rule: local S2 kebab-case only — color/background-surface/2, text/primary, text/secondary, border/radius/full, spacing/0|100|150|200|300, border/width/025. Typography: body/large/semi-bold (headline), body/medium/regular (supportingText). Prefer DS Icons — Escritório Virtual icons. Accessibility: decorative icon and connector aria-hidden; convey meaning via headline/supportingText. React mapping: FeatureStepsItem(leadingIcon, headline, supportingText, showSupportingText?, showConnector?). Code Connect is not configured.",
                 "variants": {},
                 "props": {
                     "leadingIcon": "INSTANCE_SWAP — preferredValues: square-check-outline | car-outline | trophy-outline | camera-outline | file-outline | checkbox-outline",
@@ -9978,7 +9999,8 @@
                     "icons": "INSTANCE_SWAP leadingIcon; preferred EV library outlines listed in props; vector layers {icon}-path; stroke border/width/025",
                     "connector": "soft color/background-surface/2 — same as badge; width spacing/100; hide on final item",
                     "vsVerticalStepperItem": "Use VerticalStepperItem for real progress status (completed/current/pending/error)",
-                    "usage": "Do not use as VerticalStepperItem, StepperPrimary, StepProgressIndicator, ProgressBar, ListItem or timeline progress"
+                    "usage": "Do not use as VerticalStepperItem, StepperPrimary, StepProgressIndicator, ProgressBar, ListItem or timeline progress",
+                    "iconStroke": "leadingIcon keeps the native icon stroke 1.5 (unbound) and layer {icon}-path; item minHeight 48 so the badge is never clipped — 2026-11-24."
                 },
                 "tokenRules": [
                     "color/background-surface/2 on iconBadge and connector",
@@ -10494,7 +10516,8 @@
                     "matrix": "Published 6/6 — size × alignment",
                     "appHeaderUsage": "AppHeader hierarchy=specific|super-app nests TextHeader as headingContent; hierarchy=global uses greeting body/large/medium instead",
                     "kebab": "Variant keys/values are kebab-case (size/alignment; large|medium|small; left|center)",
-                    "inverseOverride": "When nested in appearance=inverse chrome (e.g. AppHeader), override title → text/on-color and description → text/on-color-disabled"
+                    "inverseOverride": "When nested in appearance=inverse chrome (e.g. AppHeader), override title → text/on-color and description → text/on-color-disabled",
+                    "spacing": "size=large gap bound to local spacing/050 (was remote Spacing/050) — 2026-11-24."
                 },
                 "tokenRules": [
                     "size=large: heading/h1/medium + body/large/regular",
@@ -11819,7 +11842,7 @@
             "BrandLogo": {
                 "nodeId": "56:6090",
                 "componentKey": "49d08c66b1cfa2eaab6ad0f192fdd54c4accd269",
-                "description": "AI-READY COMPONENT: BrandLogo is the Loovi brand lockup for product chrome, marketing, and app identity. Props: type=default|extended|icon|app; showTrademark=true|false (VARIANT — intentional sparse: type=app only publishes showTrademark=false). type=default = mark + Loovi wordmark; type=extended = mark + \"Seguro inteligente\" tagline lockup; type=icon = compact mark (optional TM); type=app = 40×40 brand tile (palette/brand fill + on-color glyph). Tokens: logo artwork fills bind color/palette/brand (#5A78FF via brand-blue); type=app glyph uses text/on-color. Do not use as Button leadingIcon, Toast/Alert statusIcon, or DS Icons (*-outline/*-filled) — this is brand identity, not chrome iconography. Accessibility: treat as decorative when adjacent product/brand name is present (aria-hidden); otherwise provide accessible name (e.g. Loovi). React mapping: BrandLogo(type, showTrademark). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: BrandLogo is the Loovi brand lockup for product chrome, marketing, and app identity. Props: type=default|extended|icon|app; showTrademark=true|false (VARIANT — intentional sparse: type=app only publishes showTrademark=false). type=default = mark + Loovi wordmark; type=extended = stretched wordmark lockup (no tagline); type=icon = compact mark (optional TM); type=app = 40×40 brand tile (palette/brand fill + on-color glyph). Tokens: logo artwork fills bind color/palette/brand (#5A78FF via brand-blue); type=app glyph uses text/on-color. Do not use as Button leadingIcon, Toast/Alert statusIcon, or DS Icons (*-outline/*-filled) — this is brand identity, not chrome iconography. Accessibility: treat as decorative when adjacent product/brand name is present (aria-hidden); otherwise provide accessible name (e.g. Loovi). React mapping: BrandLogo(type, showTrademark). Code Connect is not configured.",
                 "variants": {
                     "type": [
                         "default",
@@ -11833,7 +11856,7 @@
                     ]
                 },
                 "props": {
-                    "type": "default | extended | icon | app — default=mark+Loovi wordmark; extended=mark+tagline lockup; icon=compact mark; app=40×40 tile",
+                    "type": "default | extended | icon | app — default=mark+Loovi wordmark; extended=stretched wordmark lockup (no tagline); icon=compact mark; app=40×40 tile",
                     "showTrademark": "true | false — toggles ™ mark (intentional sparse: type=app only publishes false)"
                 },
                 "rules": {
@@ -11842,7 +11865,8 @@
                     "vsIcons": "Not DS Icons (*-outline/*-filled) and not Button/Toast/Alert icon slots — brand identity only",
                     "naming": "Renamed from logo; Tipo→type (Style→extended); With TM→showTrademark (On/Off→true/false)",
                     "layerHygiene": "artwork / lockup / mark / wordmark-* / trademark / app-glyph",
-                    "wrapper": "Docs frame renamed Frame 735 → brand / logo"
+                    "wrapper": "Docs frame renamed Frame 735 → brand / logo",
+                    "extended": "type=extended = stretched wordmark lockup (no tagline)."
                 },
                 "tokenRules": [
                     "color/palette/brand (lockup fills; resolves brand-blue #5A78FF)",
@@ -11931,7 +11955,8 @@
                 "rules": {
                     "internalOnly": "Use inside ListItem leading=payment-mark only",
                     "swapScope": "INSTANCE_SWAP among payment-method/* only — never DS Icons or BrandLogo",
-                    "libraryEnabled": "[DS] Payment Method Marks published and enabled in S2 — swap among payment-method/* preferredValues"
+                    "libraryEnabled": "[DS] Payment Method Marks published and enabled in S2 — swap among payment-method/* preferredValues",
+                    "swapProp": "INSTANCE_SWAP property paymentMethodMark (default payment-method/visa icon) with preferredValues = payment-method/* sets; stray testSwap layer removed (2026-11-24)."
                 },
                 "tokenRules": [],
                 "accessibility": "Decorative when headline names the method; parent ListItem owns accessible name.",
@@ -11983,6 +12008,7 @@
             }
         },
         "recentUpdates": [
+            "Wave 4 audit fixes (Figma + seed + code): ListItemLeadingPaymentMark gets INSTANCE_SWAP paymentMethodMark (payment-method/* preferred) and loses the stray testSwap layer; DashboardCardSecondary percentage text/success|danger and info icon text/secondary; AvatarGroup overflow surface/3 + text/secondary plus (was 1.4:1), ring rebound to local surface/0 (36); TextHeader large gap local spacing/050; CardElevated/FilledItem pressed Plus Darker via stateOverlay and dragged elevation/2; CardHorizontal/CardStacked media clipped to the radius, image blend NORMAL, CardHorizontal hugs content (min 80); BrandLogo extended described as wordmark lockup, leftover white fills removed; FeatureStepsItem icon stroke native 1.5, layer {icon}-path, min height 48; seed text fixes (Elevated resting shadow, ListActionDropdownItem spacing, AvatarGroup rules). Icons: 57 in the Flutter package.",
             "Wave 3 audit fixes (Figma + seed + code): InputTextArea label/supporting/counter body/small/regular (same as Input; was caption/large — looked compressed); StepperPrimary + VerticalStepperItem pending label/icon text/secondary (AA); Autocomplete error text text/danger, expand icon 20; RadioButton/RadioButtonCard focus-off stroke border/1 (4.4:1), RadioButtonCard disabled+checked = RadioButton control; InputSelect disabled border/1, error resting label text/danger, chevron 20 neutral; InputDatePicker radius component/input/field/radius, error calendar 20; remote text/primary icon overrides rebound (~60); color/elevation/Focus renamed to color/elevation/focus; TooltipRich secondary action appearance=inverse and React order primary→secondary; StepProgressIndicator showCounter default true (Figma + Flutter, matches React); StepProgressSegment completed = actions/primary Plus Darker in code; ChipGroup row gap spacing/200; InputNumber/Autocomplete/SearchView paddings bound; check-item emphasis text style; dead Tooltip strokeWeight bindings and hidden leftover fills removed. Decisions: Tooltip placement = arrow edge (Figma semantics; React aligned, default bottom-center); icon chevron stroke 1.5 as standard (DatePickerSelect/Item unbound from border/width/*).",
             "React inputs (Escritório Virtual): FieldFrame fix — the outline was drawn ~8.5px below the field top (fieldset legend midline) and global resets (Bootstrap reboot legend/label) detached the floating label even more; stroke now lands on the field edge with the label centered on it, legend/label metrics pinned against resets, field padding-x 24, label aligned with value (24 / 52 with leadingIcon), resting label no longer overlaps the border, supporting text 4px below with 16 inset (Figma). Applies to Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete. InputTextArea: resize handle moved to the textarea (overflow:auto on the field clipped the label/notch). InputSelect/InputDatePicker trigger no longer adds its own padding (value aligned with the label).",
             "Accessibility + consistency pass (wave 2): TabItem primary|secondary selected label text/primary (brand stays on icon/indicator); Toast action/dismiss Button appearance=inverse, radius border/radius/200 in seed; DividerHorizontal subhead text/secondary; ReferralDiscountCard discountPercent + current tick text/primary; VehicleSummaryCard plate text/secondary; QuickAccessTile label realigned in Figma to caption/medium/medium + text/primary; React aligned to Figma — Banner action always intent=primary, Accordion summary visible when expanded; Badge text on local caption/large/regular; description fixes (Banner danger, LoadingSpinner xs, Badge tokens); circle-dot-filled icon redrawn with center hole. React Avatar keeps the Escritório Virtual scale (16–56) — documented divergence, no breaking change.",

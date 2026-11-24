@@ -1,24 +1,24 @@
 # Inventário Flutter — DS S2
 
-> Gerado por `packages/flutter_ds/tool/generate_catalog.mjs` (seed `2026-11-24-wave3-audit-fixes`). Não editar à mão.
+> Gerado por `packages/flutter_ds/tool/generate_catalog.mjs` (seed `2026-11-24-wave4-audit-fixes`). Não editar à mão.
 > "Entra no app" é uma triagem inicial para o App Cliente; revisar antes de cada nova onda.
 
-Total: 130 componentes · Flutter: 60 · fora do app: 28
+Total: 130 componentes · Flutter: 86 · fora do app: 28
 
 | Componente | nodeId | React | Flutter | Entra no app |
 | --- | --- | --- | --- | --- |
 | Autocomplete | `3918:573` | sim | ✅ onda 3 | sim |
 | Avatar | `3669:8605` | sim | ✅ onda 2 | sim |
-| AvatarGroup | `3669:8404` | sim | — | sim |
-| CardHorizontal | `4170:4506` | sim | — | sim |
-| CardStacked | `4170:4433` | sim | — | sim |
-| CardElevatedItem | `4170:4564` | sim | — | sim |
-| CardFilledItem | `4170:4576` | sim | — | sim |
-| CardOutlinedItem | `4170:4552` | sim | — | sim |
-| DashboardCardPrimary | `4181:493` | sim | — | sim |
-| DashboardCardSecondary | `4181:528` | sim | — | sim |
-| Carousel | `4152:849` | sim | — | sim |
-| CarouselPaginationItem | `4152:495` | sim | — | sim |
+| AvatarGroup | `3669:8404` | sim | ✅ onda 4 | sim |
+| CardHorizontal | `4170:4506` | sim | ✅ onda 4 | sim |
+| CardStacked | `4170:4433` | sim | ✅ onda 4 | sim |
+| CardElevatedItem | `4170:4564` | sim | ✅ onda 4 | sim |
+| CardFilledItem | `4170:4576` | sim | ✅ onda 4 | sim |
+| CardOutlinedItem | `4170:4552` | sim | ✅ onda 4 | sim |
+| DashboardCardPrimary | `4181:493` | sim | ✅ onda 4 | sim |
+| DashboardCardSecondary | `4181:528` | sim | ✅ onda 4 | sim |
+| Carousel | `4152:849` | sim | ✅ onda 4 | sim |
+| CarouselPaginationItem | `4152:495` | sim | ✅ onda 4 | sim |
 | LoadingSpinner | `3062:745` | sim | ✅ onda 2 | sim |
 | Badge | `3669:8175` | sim | ✅ onda 2 | sim |
 | Breadcrumb | `3681:4674` | sim | — | não (web/backoffice) |
@@ -74,12 +74,12 @@ Total: 130 componentes · Flutter: 60 · fora do app: 28
 | Link | `3820:13913` | sim | ✅ onda 1 | sim |
 | List | `3745:10921` | sim | ✅ onda 1 | sim |
 | ListItem | `3735:7716` | sim | ✅ onda 1 | sim |
-| ListActionDropdownItem | `3681:11151` | sim | — | sim |
-| ListActionDropdown | `3694:1501` | sim | — | sim |
-| ListItemLeadingMonogram | `3694:16194` | sim | — | sim |
-| ListItemStateLayer | `3720:28` | sim | — | sim |
-| ListItemImageThumbnail | `3694:16209` | sim | — | sim |
-| ListItemVideoThumbnail | `3694:16211` | sim | — | sim |
+| ListActionDropdownItem | `3681:11151` | sim | ✅ onda 4 | sim |
+| ListActionDropdown | `3694:1501` | sim | ✅ onda 4 | sim |
+| ListItemLeadingMonogram | `3694:16194` | sim | ✅ onda 4 | sim |
+| ListItemStateLayer | `3720:28` | sim | ✅ onda 4 | sim |
+| ListItemImageThumbnail | `3694:16209` | sim | ✅ onda 4 | sim |
+| ListItemVideoThumbnail | `3694:16211` | sim | ✅ onda 4 | sim |
 | Modal | `3306:4278` | sim | ✅ onda 1 | sim |
 | ModalHeader | `3786:9403` | sim | ✅ onda 1 | sim |
 | ProgressBar | `3653:5393` | sim | ✅ onda 3 | sim |
@@ -89,8 +89,8 @@ Total: 130 componentes · Flutter: 60 · fora do app: 28
 | StepProgressSegment | `3807:31` | sim | ✅ onda 3 | sim |
 | StepperPrimary | `3653:4985` | sim | ✅ onda 3 | sim |
 | VerticalStepper | `3833:118` | sim | ✅ onda 3 | sim |
-| FeatureSteps | `4344:224` | sim | — | sim |
-| FeatureStepsItem | `4343:222` | sim | — | sim |
+| FeatureSteps | `4344:224` | sim | ✅ onda 4 | sim |
+| FeatureStepsItem | `4343:222` | sim | ✅ onda 4 | sim |
 | VerticalStepperItem | `3437:531` | sim | ✅ onda 3 | sim |
 | SearchBar | `3881:6002` | sim | ✅ onda 3 | sim |
 | SearchViewFullscreen | `3883:16492` | sim | ✅ onda 3 | sim |
@@ -101,7 +101,7 @@ Total: 130 componentes · Flutter: 60 · fora do app: 28
 | TabsSegmented | `4738:825` | sim | ✅ onda 2 | sim |
 | TabsPrimary | `3532:6900` | sim | ✅ onda 2 | sim |
 | TabsSecondary | `3532:7346` | sim | ✅ onda 2 | sim |
-| TextHeader | `3667:4129` | sim | — | sim |
+| TextHeader | `3667:4129` | sim | ✅ onda 4 | sim |
 | Toast | `3550:4107` | sim | ✅ onda 2 | sim |
 | Tooltip | `3566:10587` | sim | ✅ onda 3 | sim |
 | TooltipRich | `3566:10477` | sim | ✅ onda 3 | sim |
@@ -115,7 +115,7 @@ Total: 130 componentes · Flutter: 60 · fora do app: 28
 | PaginationSelectMenu | `3841:22501` | sim | — | não (web/backoffice) |
 | PaginationSelectMenuItem | `3841:22500` | sim | — | não (web/backoffice) |
 | PaginationSelectInput | `3653:5902` | sim | — | não (web/backoffice) |
-| Overlay | `3768:3886` | sim | — | sim |
+| Overlay | `3768:3886` | sim | ✅ onda 4 | sim |
 | Pagination | `3653:5672` | sim | — | não (web/backoffice) |
 | PaginationItem | `3653:6248` | sim | — | não (web/backoffice) |
 | NavigationRailExpanded | `3653:8288` | sim | — | não (web/backoffice) |
@@ -128,12 +128,12 @@ Total: 130 componentes · Flutter: 60 · fora do app: 28
 | NavigationDrawerItem | `3327:1178` | sim | — | não (web/backoffice) |
 | NavigationDrawer | `3327:1091` | sim | — | não (web/backoffice) |
 | BottomSheetHeader | `4307:3760` | sim | ✅ onda 1 | sim |
-| VehicleConfirmCard | `4360:444` | sim | — | sim |
+| VehicleConfirmCard | `4360:444` | sim | ✅ onda 4 | sim |
 | ModalCheckItem | `4372:19371` | sim | ✅ onda 3 | sim |
 | BottomSheetCheckItem | `4389:80` | sim | ✅ onda 3 | sim |
 | RadioButtonCard | `4498:68` | sim | ✅ onda 3 | sim |
-| BrandLogo | `56:6090` | não | — | sim |
-| PaymentMethodMark | `7:18` | não | — | sim |
-| ListItemLeadingPaymentMark | `4990:38559` | sim | — | sim |
-| ListItemLeadingIllustration | `5038:10` | sim | — | sim |
-| ListItemTrailingIllustration | `5038:79` | sim | — | sim |
+| BrandLogo | `56:6090` | não | ✅ onda 4 | sim |
+| PaymentMethodMark | `7:18` | não | ✅ onda 4 | sim |
+| ListItemLeadingPaymentMark | `4990:38559` | sim | ✅ onda 4 | sim |
+| ListItemLeadingIllustration | `5038:10` | sim | ✅ onda 4 | sim |
+| ListItemTrailingIllustration | `5038:79` | sim | ✅ onda 4 | sim |

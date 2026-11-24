@@ -5,6 +5,13 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../foundation/loovi_icon.dart';
 import '../../generated/loovi_icon_names.g.dart';
+import '../list_item_leading_monogram/loovi_list_item_leading_monogram.dart';
+import '../list_item_state_layer/loovi_list_item_state_layer.dart';
+
+// Leading building blocks now live in their own seed-named files; re-exported
+// so imports of this file keep resolving them.
+export '../list_item_image_thumbnail/loovi_list_item_image_thumbnail.dart';
+export '../list_item_leading_monogram/loovi_list_item_leading_monogram.dart';
 
 /// Seed `ListItem.condition` — vertical content density.
 enum LooviListItemCondition {
@@ -25,12 +32,14 @@ enum LooviListItemCondition {
 /// Slots (seed `leading` / `trailing` axes):
 /// * `icon` → [leadingIcon] (default contract `user-outline`) /
 ///   [trailingIcon] (`chevron-right-outline`), 24 dp, `text/primary`.
-/// * `monogram` → [LooviListItemMonogram].
-/// * `image` → [LooviListItemImageThumbnail].
-/// * `illustration` → [LooviListItemIllustrationSlot] (56 × 56) with the
-///   app's illustration asset.
-/// * `video`, `payment-mark`, `checkbox`, `radio`, `switch` → free
-///   [leading] / [trailing] widget (building blocks/controls ship elsewhere).
+/// * `monogram` → [LooviListItemLeadingMonogram] (alias [LooviListItemMonogram]).
+/// * `image` → [LooviListItemImageThumbnail]; `video` →
+///   `LooviListItemVideoThumbnail`.
+/// * `illustration` → `LooviListItemLeadingIllustration` /
+///   `LooviListItemTrailingIllustration` (56 × 56, DS assets), or
+///   [LooviListItemIllustrationSlot] with an app-supplied illustration.
+/// * `payment-mark`, `checkbox`, `radio`, `switch` → free [leading] /
+///   [trailing] widget (building blocks/controls ship elsewhere).
 ///
 /// Interaction states (seed ListItemStateLayer): pressed = `interactive/pressed`
 /// wash, focus = 2 dp `interactive/focus` ring (keyboard only). No hover on
@@ -200,7 +209,15 @@ class _LooviListItemState extends State<LooviListItem> {
     // vertically inside the condition's min height.
     Widget row = Stack(
       children: [
-        Positioned.fill(child: _StateLayer(pressed: _pressed, focused: _focused)),
+        Positioned.fill(
+          child: LooviListItemStateLayer(
+            state: _pressed
+                ? LooviListItemStateLayerState.pressed
+                : _focused
+                    ? LooviListItemStateLayerState.focus
+                    : LooviListItemStateLayerState.standard,
+          ),
+        ),
         ConstrainedBox(
           constraints: BoxConstraints(minHeight: minHeight),
           child: Align(alignment: AlignmentDirectional.centerStart, child: contentRow),
@@ -258,33 +275,6 @@ class _LooviListItemState extends State<LooviListItem> {
   }
 }
 
-/// Visual-only ListItemStateLayer (Figma 3720:28): pressed / focus.
-class _StateLayer extends StatelessWidget {
-  const _StateLayer({required this.pressed, required this.focused});
-
-  final bool pressed;
-  final bool focused;
-
-  @override
-  Widget build(BuildContext context) {
-    final t = LooviTokens.of(context);
-    return IgnorePointer(
-      child: DecoratedBox(
-        decoration: BoxDecoration(color: pressed ? t.interactive.pressed : null),
-        position: DecorationPosition.background,
-        child: focused
-            ? DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(color: t.interactive.focus, width: t.borderWidth.s025),
-                  borderRadius: BorderRadius.circular(t.radius.s200),
-                ),
-              )
-            : const SizedBox.expand(),
-      ),
-    );
-  }
-}
-
 /// Divider used by `showDivider` (DividerHorizontal full-width, Figma
 /// 3653:22922): 2 dp frame with a centered `border/width/012` line in
 /// `color/border/2`.
@@ -309,63 +299,9 @@ class LooviListItemDivider extends StatelessWidget {
   }
 }
 
-/// Seed ListItemLeadingMonogram (Figma 3694:16194): 40 dp circle,
-/// `color/background-surface/2`, initial in body/large/medium `text/primary`.
-/// Decorative: the row label names the entity.
-class LooviListItemMonogram extends StatelessWidget {
-  const LooviListItemMonogram(this.initial, {super.key});
-
-  final String initial;
-
-  @override
-  Widget build(BuildContext context) {
-    final t = LooviTokens.of(context);
-    final size = t.spacing.s500;
-    return ExcludeSemantics(
-      child: Container(
-        width: size,
-        height: size,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(color: t.color.backgroundSurface2, borderRadius: BorderRadius.circular(t.radius.full)),
-        child: Text(
-          initial,
-          maxLines: 1,
-          textAlign: TextAlign.center,
-          style: t.typography.bodyLargeMedium.copyWith(color: t.text.primary),
-        ),
-      ),
-    );
-  }
-}
-
-/// Seed ListItemImageThumbnail (Figma 3694:16209): 56 dp, `border/radius/100`,
-/// `color/background-surface/2` placeholder under the image (cover).
-class LooviListItemImageThumbnail extends StatelessWidget {
-  const LooviListItemImageThumbnail({super.key, this.image, this.semanticLabel});
-
-  /// App-supplied image. Null = placeholder surface only.
-  final ImageProvider? image;
-
-  /// Null = decorative.
-  final String? semanticLabel;
-
-  @override
-  Widget build(BuildContext context) {
-    final t = LooviTokens.of(context);
-    final size = t.spacing.s700;
-    final box = Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        color: t.color.backgroundSurface2,
-        borderRadius: BorderRadius.circular(t.radius.s100),
-        image: image == null ? null : DecorationImage(image: image!, fit: BoxFit.cover),
-      ),
-    );
-    if (semanticLabel == null) return ExcludeSemantics(child: box);
-    return Semantics(label: semanticLabel, image: true, child: box);
-  }
-}
+/// Earlier name of [LooviListItemLeadingMonogram] (seed ListItemLeadingMonogram,
+/// Figma 3694:16194). Kept as an alias for backward compatibility.
+typedef LooviListItemMonogram = LooviListItemLeadingMonogram;
 
 /// Seed ListItemLeadingIllustration / ListItemTrailingIllustration slot
 /// (Figma 5038:10): 56 × 56 box; the app passes the illustration asset.

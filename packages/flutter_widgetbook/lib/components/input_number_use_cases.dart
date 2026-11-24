@@ -45,7 +45,7 @@ WidgetbookComponent looviInputNumberComponent() => WidgetbookComponent(
               onCountryPressed: () {},
               showPaymentMethodMark: block == _Block.paymentMethodMark,
               paymentMethodBrand: k.object.dropdown<LooviInputNumberTrailingPaymentMarkBrand>(
-                label: 'paymentMethodMark (placeholder brand)',
+                label: 'paymentMethodMark (brand)',
                 options: LooviInputNumberTrailingPaymentMarkBrand.values,
                 labelBuilder: (v) => v.name,
               ),

@@ -7,13 +7,13 @@ import 'package:widgetbook/widgetbook.dart';
 import 'seed_header.dart';
 
 /// Seed `InputNumberTrailingPaymentMark` (4995:38558) — internal slot of
-/// InputNumber. The Payment Method Marks artwork is not in the package yet:
-/// the story shows the token placeholder per brand.
+/// InputNumber: the preferred brands paint the [DS] Payment Method Marks
+/// artwork (type=icon); the last one is the empty token placeholder.
 WidgetbookComponent looviInputNumberTrailingPaymentMarkComponent() => WidgetbookComponent(
       name: 'InputNumberTrailingPaymentMark',
       useCases: [
         WidgetbookUseCase(
-          name: 'Brands (placeholder)',
+          name: 'Brands',
           builder: (context) {
             final t = LooviTokens.of(context);
             return SeedStory(
