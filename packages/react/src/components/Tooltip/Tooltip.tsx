@@ -38,7 +38,8 @@ type TriggerProps = {
 };
 
 export function Tooltip({
-  placement = 'top-center',
+  // Default keeps the bubble above the trigger (arrow at the bottom), as before the 2026-11-24 semantics fix.
+  placement = 'bottom-center',
   description = 'Tooltip',
   open: openProp,
   defaultOpen = false,

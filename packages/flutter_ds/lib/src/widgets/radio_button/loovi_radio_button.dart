@@ -163,11 +163,22 @@ class _LooviRadioButtonState<T> extends State<LooviRadioButton<T>> {
 /// Paint-only radioControl (20 × 20) — no gestures, no semantics.
 /// Reusable as a nested control (e.g. ListItem).
 class LooviRadioButtonControl extends StatelessWidget {
-  const LooviRadioButtonControl({super.key, required this.checked, this.disabled = false, this.focused = false});
+  const LooviRadioButtonControl({
+    super.key,
+    required this.checked,
+    this.disabled = false,
+    this.focused = false,
+    this.paintFocusRing = true,
+  });
 
   final bool checked;
   final bool disabled;
   final bool focused;
+
+  /// Draws the ring around the control when [focused]. False when a parent
+  /// paints the focus on its own shell (e.g. RadioButtonCard); the focus
+  /// stroke of the unchecked control (`border/2`) is kept.
+  final bool paintFocusRing;
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +187,7 @@ class LooviRadioButtonControl extends StatelessWidget {
     // Figma radioControl per variant (3653:5279):
     //   default/off  fill surface/0 · stroke 2 border/1
     //   default/on   no fill        · stroke 4 actions/primary
-    //   focus/off    fill surface/0 · stroke 2 border/2  (+ ring)
+    //   focus/off    fill surface/0 · stroke 2 border/1  (+ ring)
     //   focus/on     no fill        · stroke 4 actions/primary (+ ring)
     //   disabled/on  no fill        · stroke 4 text/placeholder
     //   disabled/off no fill        · stroke 2 border/2  (seed rule `disabled`:
@@ -196,13 +207,14 @@ class LooviRadioButtonControl extends StatelessWidget {
       width = t.borderWidth.s050;
     } else {
       fill = t.color.backgroundSurface0;
-      stroke = focused ? t.color.border2 : t.color.border1;
+      // focus/off: border/1 like default (border/2 was 1.2:1 — Figma aligned 2026-11-24).
+      stroke = t.color.border1;
       width = t.borderWidth.s025;
     }
 
     final size = t.spacing.s250;
     return CustomPaint(
-      foregroundPainter: focused
+      foregroundPainter: focused && paintFocusRing
           ? LooviFocusRingPainter(
               color: t.interactive.focus,
               gap: t.spacing.s025,

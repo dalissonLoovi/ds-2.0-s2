@@ -48,7 +48,8 @@ type TriggerProps = {
 };
 
 export function TooltipRich({
-  placement = 'top-center',
+  // Default keeps the bubble above the trigger (arrow at the bottom), as before the 2026-11-24 semantics fix.
+  placement = 'bottom-center',
   title = 'Title',
   showTitle = true,
   description = 'Description',
@@ -127,19 +128,7 @@ export function TooltipRich({
           <span className={styles.arrow} aria-hidden />
           {showActions && (showPrimaryAction || showSecondaryAction) && (
             <div className={styles.actions}>
-              {showSecondaryAction && (
-                <Button
-                  variant="text"
-                  size="sm"
-                  intent="primary"
-                  label={secondaryActionLabel}
-                  className={styles.secondary}
-                  onClick={() => {
-                    onSecondaryAction?.();
-                    setOpen(false);
-                  }}
-                />
-              )}
+              {/* Figma order: primary, then secondary (inverse text button) — 2026-11-24. */}
               {showPrimaryAction && (
                 <Button
                   variant="solid"
@@ -148,6 +137,20 @@ export function TooltipRich({
                   label={primaryActionLabel}
                   onClick={() => {
                     onPrimaryAction?.();
+                    setOpen(false);
+                  }}
+                />
+              )}
+              {showSecondaryAction && (
+                <Button
+                  variant="text"
+                  size="sm"
+                  intent="primary"
+                  appearance="inverse"
+                  label={secondaryActionLabel}
+                  className={styles.secondary}
+                  onClick={() => {
+                    onSecondaryAction?.();
                     setOpen(false);
                   }}
                 />

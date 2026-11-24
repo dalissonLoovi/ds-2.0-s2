@@ -21,7 +21,10 @@ const C = seed.storybook.components;
 const S2_FILE_KEY = seed.meta.fileKey || 'mHm12Zu9tgNmaSYnooihE5';
 
 /** Phase 2 wave (implemented in Flutter, mode app-cliente). Keep in sync with lib/loovi_ds.dart. */
-const WAVE = JSON.parse(fs.readFileSync(path.join(__dirname, 'wave.json'), 'utf8'));
+// wave.json: { "<wave number>": [component names] } — the inventory shows which wave shipped each one.
+const WAVES = JSON.parse(fs.readFileSync(path.join(__dirname, 'wave.json'), 'utf8'));
+const WAVE_OF = new Map(Object.entries(WAVES).flatMap(([n, names]) => names.map((c) => [c, n])));
+const WAVE = [...WAVE_OF.keys()];
 const missing = WAVE.filter((n) => !C[n]);
 if (missing.length) throw new Error(`Onda cita componente fora do seed: ${missing.join(', ')}`);
 
@@ -76,7 +79,7 @@ fs.writeFileSync(path.join(PKG, 'lib/src/generated/seed_catalog.g.dart'), L.join
 
 // ---- inventory ----
 const rows = Object.entries(C).map(([name, c]) => {
-  const flutter = WAVE.includes(name) ? '✅ onda 1' : '—';
+  const flutter = WAVE_OF.has(name) ? `✅ onda ${WAVE_OF.get(name)}` : '—';
   const app = NOT_APP.has(name) ? 'não (web/backoffice)' : 'sim';
   return `| ${name} | \`${c.nodeId}\` | ${c.reactImplemented ? 'sim' : 'não'} | ${flutter} | ${app} |`;
 });

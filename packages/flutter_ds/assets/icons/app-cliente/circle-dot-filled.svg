@@ -1,6 +1,6 @@
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="circle-dot-filled">
-<path id="circle-dot-filled-path" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 16.8325 16.8325 20.75 12 20.75C7.16751 20.75 3.25 16.8325 3.25 12C3.25 7.16751 7.16751 3.25 12 3.25C16.8325 3.25 20.75 7.16751 20.75 12ZM15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z" fill="currentColor"/>
+<path id="circle-dot-filled-path" d="M12 3.25C16.8326 3.25 20.75 7.16738 20.75 12C20.75 16.8326 16.8326 20.75 12 20.75C7.16738 20.75 3.25 16.8326 3.25 12C3.25 7.16738 7.16738 3.25 12 3.25ZM12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
 </g>
 
 </svg>

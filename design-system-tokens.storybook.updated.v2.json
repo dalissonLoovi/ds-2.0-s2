@@ -683,9 +683,11 @@
             },
             "legacyRemoteVariables": {
                 "reportedAt": "2026-11-23",
-                "note": "Title Case remote variables (Color/Content/*, Color/Interactive/*, Color/Background Surface/*, Color/Border/*, Schemes/*) rebound to local S2 tokens on wave pages (Button 108, Chip 4, Header 1, Navigation Bar 1). Remote text/* bindings inside DS Icons library instances are expected (icon library owns them)."
+                "note": "Title Case remote variables (Color/Content/*, Color/Interactive/*, Color/Background Surface/*, Color/Border/*, Schemes/*) rebound to local S2 tokens on wave pages (Button 108, Chip 4, Header 1, Navigation Bar 1). Remote text/* bindings inside DS Icons library instances are expected (icon library owns them).",
+                "wave3": "Wave 3 (2026-11-24): remote text/primary icon overrides rebound to local tokens in SearchBar (11), SearchViewFullscreen (6), Autocomplete (30), InputSelect (6), InputDatePicker (6), StepperPrimary pending icon."
             },
-            "stateLayerBlend": "Plugin API limitation: paint-level blendMode and opacity are dropped on variable-bound paints. Use an absolute stateOverlay node (fill bound to interactive/*, node blendMode LINEAR_BURN) instead of a second paint when building via API."
+            "stateLayerBlend": "Plugin API limitation: paint-level blendMode and opacity are dropped on variable-bound paints. Use an absolute stateOverlay node (fill bound to interactive/*, node blendMode LINEAR_BURN) instead of a second paint when building via API.",
+            "iconStroke": "Icon strokes stay at the icon library native 1.5 (Hugeicons / DS contract). Do not bind icon strokes to border/width/* (012 = 1px, 025 = 2px) — decided 2026-11-24."
         },
         "previousCollections": [
             "Colors",
@@ -693,9 +695,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-11-24T17:39:49.235Z",
-        "storybookRevision": "2026-11-24-react-field-frame",
+        "storybookUpdatedAt": "2026-11-24T19:01:34.029Z",
+        "storybookRevision": "2026-11-24-wave3-audit-fixes",
         "changelog": [
+            {
+                "date": "2026-11-24",
+                "type": "wave3-audit-fixes",
+                "summary": "Wave 3 audit fixes (Figma + seed + code): InputTextArea label/supporting/counter body/small/regular (same as Input; was caption/large — looked compressed); StepperPrimary + VerticalStepperItem pending label/icon text/secondary (AA); Autocomplete error text text/danger, expand icon 20; RadioButton/RadioButtonCard focus-off stroke border/1 (4.4:1), RadioButtonCard disabled+checked = RadioButton control; InputSelect disabled border/1, error resting label text/danger, chevron 20 neutral; InputDatePicker radius component/input/field/radius, error calendar 20; remote text/primary icon overrides rebound (~60); color/elevation/Focus renamed to color/elevation/focus; TooltipRich secondary action appearance=inverse and React order primary→secondary; StepProgressIndicator showCounter default true (Figma + Flutter, matches React); StepProgressSegment completed = actions/primary Plus Darker in code; ChipGroup row gap spacing/200; InputNumber/Autocomplete/SearchView paddings bound; check-item emphasis text style; dead Tooltip strokeWeight bindings and hidden leftover fills removed. Decisions: Tooltip placement = arrow edge (Figma semantics; React aligned, default bottom-center); icon chevron stroke 1.5 as standard (DatePickerSelect/Item unbound from border/width/*)."
+            },
             {
                 "date": "2026-11-24",
                 "type": "react-fix",
@@ -5781,14 +5788,16 @@
                     "loadingOverClear": "loading=true takes precedence; bind loadingIndicator visible to loading on empty/query/selected where present",
                     "floatingLabelPlaceholder": "Placeholder shows on state=focus + content=empty; resting label when empty and not focused",
                     "vsInputSelectSearch": "Do not use as InputSelect, free-text Input, SearchBar, multi-select, or PaginationSelectInput",
-                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
+                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual).",
+                    "errorText": "error label + supporting text text/danger (AA; were feedback/danger) — 2026-11-24.",
+                    "expandIcon": "expandIcon 20 (same as the other field icons; was 24) — 2026-11-24."
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand",
                     "inverse: transparent field; cutout color/background-surface/inverse-3; color/border/2; text/on-color|on-color-disabled; disabled texts text/placeholder-inverse",
                     "shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger",
                     "no field fill on disabled",
-                    "border/radius/200",
+                    "component/input/field/radius",
                     "body/large/regular|body/small/regular"
                 ],
                 "accessibility": "role=combobox with aria-autocomplete=list, aria-expanded, aria-controls, aria-activedescendant; external listbox/options; aria-invalid on error; aria-disabled when disabled; label associated; supporting via aria-describedby.",
@@ -7418,7 +7427,8 @@
                     "chipMapping": "all types → ChipClickable intent=outline, size=sm, width=hug",
                     "filterSelected": "type=filter demos state=selected; other types state=default",
                     "defaults": "showAvatar=false, showDeleteAction=false unless pattern requires",
-                    "vsSingle": "Do not use as a single chip — use ChipClickable or ChipTag"
+                    "vsSingle": "Do not use as a single chip — use ChipClickable or ChipTag",
+                    "rowGap": "multi-row wrap: counterAxisSpacing bound to spacing/200 (was raw 16) — 2026-11-24."
                 },
                 "tokenRules": [
                     "ChipGroup gaps/padding: local spacing/* tokens",
@@ -8134,7 +8144,7 @@
                     "vsSingleLine": "Not single-line Input, InputSelect, InputPassword, InputNumber, or rich-text",
                     "errorStroke": "state=focus and state=error use border/width/025 (2px); other states border/width/012",
                     "productTheme": "Field corner radius binds component/input-textarea/field/radius — EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full). Do not hardcode radius/200 on the outlined container.",
-                    "restingLabelTypography": "content=label restingLabel uses body/large/regular (16/22) — same as value/placeholder; floating labelText stays caption/large/regular",
+                    "restingLabelTypography": "content=label restingLabel uses body/large/regular (16/22) — same as value/placeholder; floating labelText body/small/regular (same as Input, 2026-11-24)",
                     "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
                 },
                 "tokenRules": [
@@ -8143,7 +8153,7 @@
                     "hover color/border-feedback/primary; focus interactive/focus; focus/error stroke border/width/025 (2px); error color/border-feedback/danger",
                     "spacing/150 (root paddingTop); spacing/200|300 (field padding)",
                     "border/radius/200; border/width/012 (default/hover/disabled); border/width/025 (focus/error, 2px)",
-                    "body/large/regular (value/placeholder + restingLabel content=label); caption/large/regular (floating labelText + count + supporting)",
+                    "body/large/regular (value/placeholder + restingLabel content=label); body/small/regular (floating labelText + count + supporting — same as Input; was caption/large until 2026-11-24)",
                     "product-theme component/input-textarea/field/radius (EV→200; site-loovi|app-cliente→500)",
                     "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
@@ -8177,7 +8187,7 @@
             },
             "InputNumber": {
                 "nodeId": "3935:684",
-                "description": "AI-READY COMPONENT: InputNumber is the Design System 2.0 single-line outlined numeric/phone/credit-card text field — same visual pattern as Input (height 56, border/radius/200, floating label for content=value|placeholder, resting label for content=label), with optional in-field blocks: SelectCountry (phone/DDI) or payment-method mark (credit-card BIN feedback). Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; trailingIcon=true|false; appearance=default|inverse (120 variants). showSelectCountry (BOOLEAN, default false) toggles selectCountryBlock after leadingIcon: SelectCountry size=sm + DividerVertical. showPaymentMethodMark (BOOLEAN, default false) toggles paymentMethodMarkBlock before trailingIcon with paymentMethodMark INSTANCE_SWAP on InputNumber set → payment-method/* (type=icon, showBackground=false, h=40). showSelectCountry and showPaymentMethodMark are mutually exclusive. Nested SelectCountry stays expanded=false; uses state=disabled only when InputNumber is disabled; otherwise SelectCountry state=default (field owns hover/focus/error strokes). On appearance=inverse, SelectCountry expandIcon uses text/on-color (focus text/brand, disabled text/on-color-disabled) and DividerVertical uses color/border/2. appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error feedback/danger). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3; default/disabled border color/border/2; label text/on-color (focus text/brand); value text/on-color; placeholder and non-error supporting text/on-color-disabled; on state=disabled all field texts use text/placeholder-inverse; leadingIcon and trailingIcon strokes text/on-color (focus text/brand, disabled text/on-color-disabled, error feedback/danger). Feedback borders unchanged — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Country menu is never nested — compose externally. BIN/brand detection is product logic — Figma demos static marks only. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing, showSelectCountry, showPaymentMethodMark, paymentMethodMark (INSTANCE_SWAP on set). Do not combine showSelectCountry=true with showPaymentMethodMark=true. Do not use as generic Input, InputPassword, InputSelect, Autocomplete, SelectCountry standalone, stepper, or SearchBar. Accessibility: labeled input; aria-invalid on error; aria-disabled when disabled; country trigger separately named when showSelectCountry=true; payment mark decorative when label names the card field (aria-hidden). Token rule: local S2 kebab-case only. React mapping: InputNumber(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?, showSelectCountry, showPaymentMethodMark, paymentMethodBrand?, countryFlag?). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: InputNumber is the Design System 2.0 single-line outlined numeric/phone/credit-card text field — same visual pattern as Input (height 56, component/input/field/radius, floating label for content=value|placeholder, resting label for content=label), with optional in-field blocks: SelectCountry (phone/DDI) or payment-method mark (credit-card BIN feedback). Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; trailingIcon=true|false; appearance=default|inverse (120 variants). showSelectCountry (BOOLEAN, default false) toggles selectCountryBlock after leadingIcon: SelectCountry size=sm + DividerVertical. showPaymentMethodMark (BOOLEAN, default false) toggles paymentMethodMarkBlock before trailingIcon with paymentMethodMark INSTANCE_SWAP on InputNumber set → payment-method/* (type=icon, showBackground=false, h=40). showSelectCountry and showPaymentMethodMark are mutually exclusive. Nested SelectCountry stays expanded=false; uses state=disabled only when InputNumber is disabled; otherwise SelectCountry state=default (field owns hover/focus/error strokes). On appearance=inverse, SelectCountry expandIcon uses text/on-color (focus text/brand, disabled text/on-color-disabled) and DividerVertical uses color/border/2. appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error feedback/danger). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3; default/disabled border color/border/2; label text/on-color (focus text/brand); value text/on-color; placeholder and non-error supporting text/on-color-disabled; on state=disabled all field texts use text/placeholder-inverse; leadingIcon and trailingIcon strokes text/on-color (focus text/brand, disabled text/on-color-disabled, error feedback/danger). Feedback borders unchanged — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Country menu is never nested — compose externally. BIN/brand detection is product logic — Figma demos static marks only. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing, showSelectCountry, showPaymentMethodMark, paymentMethodMark (INSTANCE_SWAP on set). Do not combine showSelectCountry=true with showPaymentMethodMark=true. Do not use as generic Input, InputPassword, InputSelect, Autocomplete, SelectCountry standalone, stepper, or SearchBar. Accessibility: labeled input; aria-invalid on error; aria-disabled when disabled; country trigger separately named when showSelectCountry=true; payment mark decorative when label names the card field (aria-hidden). Token rule: local S2 kebab-case only. React mapping: InputNumber(state, content, leadingIcon, trailingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?, showSelectCountry, showPaymentMethodMark, paymentMethodBrand?, countryFlag?). Code Connect is not configured.",
                 "variants": {
                     "state": [
                         "default",
@@ -8233,7 +8243,8 @@
                     "externalCountryMenu": "Country list floats externally — never nested in InputNumber",
                     "binDetectionProduct": "Brand mark visibility driven by product BIN detection — hide mark when brand unknown",
                     "vsInputSelectPhone": "Do not use as Input, InputSelect, InputPassword, Autocomplete, SelectCountry standalone, stepper, or SearchBar",
-                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
+                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual).",
+                    "spacing": "field/supporting padding and gap bound to spacing tokens (050|100|200|300) on 2026-11-24."
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand",
@@ -8377,7 +8388,7 @@
                     "root itemSpacing spacing/100",
                     "codeRow itemSpacing spacing/150",
                     "label: body/medium/regular; text/secondary (disabled text/placeholder)",
-                    "supporting: caption/large/regular; feedback/danger",
+                    "supporting: caption/large/regular; text/danger",
                     "inherits VerificationCodeInputItem tokens (incl. color/elevation/Focus ring)",
                     "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
@@ -8408,7 +8419,7 @@
                 "rules": {
                     "otpCellOnly": "Compose inside VerificationCodeInput — not a free-text Input",
                     "noInverse": "No appearance/inverse axis (intentional)",
-                    "focusRing": "state=focus: interactive/focus stroke + DROP_SHADOW ring (color/elevation/Focus, spread spacing/050)",
+                    "focusRing": "focus ring effect bound to color/elevation/focus (variable renamed from Title Case color/elevation/Focus on 2026-11-24).",
                     "disabledDigit": "state=disabled digit uses text/placeholder",
                     "geometryTokens": "border/radius/300; padding spacing/050|100; stroke border/width/012"
                 },
@@ -8863,7 +8874,8 @@
                     "intentionalSparseDisabled": "state=disabled publishes expanded=false only (no disabled+expanded=true)",
                     "sharedValueProp": "value TEXT is one shared component property — canvas demos show default 21; override on instances for Abril/2025",
                     "vsOtherPickers": "Do not use as InputDatePicker field, InputSelect, SelectCountry, CalendarDay or CalendarPeriodNav",
-                    "rowComposition": "Compose three blocks in a row for day+month+year pickers"
+                    "rowComposition": "Compose three blocks in a row for day+month+year pickers",
+                    "chevronStroke": "chevron icons keep the native icon stroke 1.5 (unbound — no 1.5 token; border/width/012 = 1) in every state, decided 2026-11-24."
                 },
                 "tokenRules": [
                     "hover: interactive/hover fill",
@@ -8909,7 +8921,8 @@
                     "nestedExposed": "day/month/year instances exposed; edit value from parent panel; keep nested unit/state/expanded aligned with parent variant",
                     "noNestedMenu": "Options menus never nested — compose ListActionDropdown externally per expanded unit",
                     "expandedFalseOnStrip": "Strip demos keep nested expanded=false; open a single block externally when needed",
-                    "gapSpacing100": "Horizontal gap bound to spacing/100"
+                    "gapSpacing100": "Horizontal gap bound to spacing/100",
+                    "chevronStroke": "chevron icons keep the native icon stroke 1.5 (unbound — no 1.5 token; border/width/012 = 1) in every state, decided 2026-11-24."
                 },
                 "tokenRules": [
                     "inherits DatePickerSelectItem semantic tokens",
@@ -8927,7 +8940,7 @@
             },
             "InputDatePicker": {
                 "nodeId": "3985:1386",
-                "description": "AI-READY COMPONENT: InputDatePicker is the Design System 2.0 outlined date-field trigger — same visual identity as Input (height 56, border/radius/200, floating label for content=value|placeholder, resting label for content=label). Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; appearance=default|inverse (60 variants). Trailing calendar-outline is always present; on state=error also shows trailingIconError (alert-circle-outline). Calendar panel (month grid) is NOT nested — compose the Calendar component externally below/anchored to the field when open. appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error alert feedback/danger with calendar text/primary). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3 (all inverse states including focus); default/disabled border color/border/2; label text/on-color (focus text/brand); placeholder and non-error supporting text/on-color-disabled; value text/on-color; on state=disabled all field texts use text/placeholder-inverse; icons text/on-color (focus text/brand, disabled text/on-color-disabled, error alert feedback/danger with calendar text/on-color). Disabled (appearance=default): no field fill; stroke color/border/1. Feedback borders unchanged — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing (INSTANCE_SWAP, default calendar-outline). Do not use as generic Input, InputSelect, Autocomplete, or standalone Calendar panel. Accessibility: associate label; aria-invalid on error; aria-haspopup=dialog when calendar opens; aria-disabled when disabled; visible focus via interactive/focus. Token rule: local S2 kebab-case only. React mapping: InputDatePicker(state, content, leadingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: InputDatePicker is the Design System 2.0 outlined date-field trigger — same visual identity as Input (height 56, component/input/field/radius, floating label for content=value|placeholder, resting label for content=label). Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; appearance=default|inverse (60 variants). Trailing calendar-outline is always present; on state=error also shows trailingIconError (alert-circle-outline). Calendar panel (month grid) is NOT nested — compose the Calendar component externally below/anchored to the field when open. appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error alert feedback/danger with calendar text/primary). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3 (all inverse states including focus); default/disabled border color/border/2; label text/on-color (focus text/brand); placeholder and non-error supporting text/on-color-disabled; value text/on-color; on state=disabled all field texts use text/placeholder-inverse; icons text/on-color (focus text/brand, disabled text/on-color-disabled, error alert feedback/danger with calendar text/on-color). Disabled (appearance=default): no field fill; stroke color/border/1. Feedback borders unchanged — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing (INSTANCE_SWAP, default calendar-outline). Do not use as generic Input, InputSelect, Autocomplete, or standalone Calendar panel. Accessibility: associate label; aria-invalid on error; aria-haspopup=dialog when calendar opens; aria-disabled when disabled; visible focus via interactive/focus. Token rule: local S2 kebab-case only. React mapping: InputDatePicker(state, content, leadingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?). Code Connect is not configured.",
                 "variants": {
                     "state": [
                         "default",
@@ -8971,14 +8984,15 @@
                     "disabledNoFill": "appearance=default disabled: no field fill; stroke color/border/1",
                     "hoverBorder": "state=hover field stroke uses color/border-feedback/primary",
                     "vsInputCalendar": "Do not use as generic Input, InputSelect, Autocomplete, or standalone Calendar panel",
-                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
+                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual).",
+                    "alignment": "field radius component/input/field/radius (was primitive component/input/field/radius); error + content=label resting label text/danger; calendar icon 20 with the default stroke in every state (2026-11-24)."
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand",
                     "inverse: transparent field; cutout color/background-surface/inverse-3; color/border/2; text/on-color|on-color-disabled; disabled texts text/placeholder-inverse",
                     "shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger",
                     "no field fill on disabled (appearance=default)",
-                    "spacing/050|100|200|300|700; border/radius/200; border/width/012|025",
+                    "spacing/050|100|200|300|700; component/input/field/radius; border/width/012|025",
                     "body/large/regular value/placeholder/resting; body/small/regular floating label/supporting",
                     "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
@@ -8993,7 +9007,7 @@
             },
             "InputSelect": {
                 "nodeId": "3898:2755",
-                "description": "AI-READY COMPONENT: InputSelect is the Design System 2.0 outlined select field (floating-label). It is a select trigger — not a free-text Input. Visual identity: outlined container (height 56, border/radius/200), floating label cutout for content=value|placeholder, resting in-field label for content=label. Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; appearance=default|inverse (60 variants). Trailing chevron is always present: chevron-down-outline by default; chevron-up-outline on state=focus. appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error leading+trailingIconError feedback/danger with chevron text/primary). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3; default/disabled border color/border/2; label text/on-color (focus text/brand); placeholder and non-error supporting text/on-color-disabled; value text/on-color; on state=disabled all field texts use text/placeholder-inverse; leadingIcon strokes text/on-color (focus text/brand, disabled text/on-color-disabled, error feedback/danger); trailing chevron text/on-color (focus text/brand, disabled text/on-color-disabled; on error chevron stays text/on-color while trailingIconError uses feedback/danger). Feedback borders unchanged — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Open menu is NOT embedded: screens compose floating ListActionDropdown under the field. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing. Do not use as Input, InputPassword, InputNumber, PaginationSelectInput, SearchBar or Autocomplete. Accessibility: combobox; aria-expanded/aria-controls when menu open; aria-invalid on error; aria-disabled when disabled. Token rule: local S2 kebab-case only. React mapping: InputSelect(state, content, leadingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?). Code Connect is not configured.",
+                "description": "AI-READY COMPONENT: InputSelect is the Design System 2.0 outlined select field (floating-label). It is a select trigger — not a free-text Input. Visual identity: outlined container (height 56, component/input/field/radius), floating label cutout for content=value|placeholder, resting in-field label for content=label. Variants: state=default|hover|focus|error|disabled; content=value|placeholder|label; leadingIcon=true|false; appearance=default|inverse (60 variants). Trailing chevron is always present: chevron-down-outline by default; chevron-up-outline on state=focus. appearance=default: field fill color/background-surface/0; default border color/border/1; label text/secondary (focus text/brand); placeholder text/placeholder; value text/primary; leading/trailing icon strokes text/secondary (focus text/brand, disabled text/placeholder, error leading+trailingIconError feedback/danger with chevron text/primary). appearance=inverse: field fill transparent; floatingLabel cutout color/background-surface/inverse-3; default/disabled border color/border/2; label text/on-color (focus text/brand); placeholder and non-error supporting text/on-color-disabled; value text/on-color; on state=disabled all field texts use text/placeholder-inverse; leadingIcon strokes text/on-color (focus text/brand, disabled text/on-color-disabled, error feedback/danger); trailing chevron text/on-color (focus text/brand, disabled text/on-color-disabled; on error chevron stays text/on-color while trailingIconError uses feedback/danger). Feedback borders unchanged — hover color/border-feedback/primary, focus interactive/focus, error color/border-feedback/danger. Open menu is NOT embedded: screens compose floating ListActionDropdown under the field. Props: label, value, placeholder, supportingText, showSupportingText, leading, trailing. Do not use as Input, InputPassword, InputNumber, PaginationSelectInput, SearchBar or Autocomplete. Accessibility: combobox; aria-expanded/aria-controls when menu open; aria-invalid on error; aria-disabled when disabled. Token rule: local S2 kebab-case only. React mapping: InputSelect(state, content, leadingIcon, appearance, label, value, placeholder, supportingText, showSupportingText, leading?, trailing?). Code Connect is not configured.",
                 "variants": {
                     "state": [
                         "default",
@@ -9040,13 +9054,14 @@
                     "floatingListActionDropdown": "Do not embed ListActionDropdown in variants — compose floating ListActionDropdown on click in screens/prototypes",
                     "noExpandedAxis": "No expanded variant axis — open state lives on the screen with floating menu",
                     "vsInputPagination": "Do not use as Input, PaginationSelectInput, SearchBar, or Textarea",
-                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
+                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual).",
+                    "alignment": "disabled (default) field stroke color/border/1 like the rest of the family; error + content=label resting label text/danger; trailing chevron 20 neutral (text/secondary | on-color) in every state — the alert icon carries the error colour; field radius component/input/field/radius (2026-11-24)."
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand",
                     "inverse: transparent field; color/border/2; cutout color/background-surface/inverse-3; text/on-color|on-color-disabled; disabled texts text/placeholder-inverse",
                     "shared feedback: color/border-feedback/primary|danger, interactive/focus, feedback/danger",
-                    "spacing/050|100|200|300|700; border/radius/200; border/width/012|025",
+                    "spacing/050|100|200|300|700; component/input/field/radius; border/width/012|025",
                     "body/large/regular value/placeholder/resting; body/small/regular floating label/supporting",
                     "Status text uses text/{status} (AA) — rebound from feedback/{status} on 2026-11-23."
                 ],
@@ -9658,7 +9673,8 @@
                 "props": {
                     "value": "visible progress percentage label (e.g. 100%)",
                     "showValue": "boolean — toggles value label visibility",
-                    "size": "md | sm"
+                    "size": "md | sm",
+                    "progress": "number 0–100 — drives the fill and the progressbar semantics value (code); Figma fill is a fixed mock"
                 },
                 "rules": {
                     "valueVsFill": "value is the visible label only; indicator fill width is layout-controlled in Figma mocks",
@@ -9750,7 +9766,8 @@
                     "grouping": "Related options belong in a RadioGroup (role=radiogroup)",
                     "vsRadioButtonCard": "For full-width card/row selectable options use RadioButtonCard (4498:68); keep RadioButton for compact label+description",
                     "disabled": "disabled + checked: ring border/width/050 (4) in text/placeholder; disabled + unchecked: border/width/025 (2) in color/border/2 — the two must be visually distinct.",
-                    "checkedIndicator": "checked = thick ring (border/width/050) with no center dot — in all states, including disabled. Code must not draw a dot."
+                    "checkedIndicator": "checked = thick ring (border/width/050) with no center dot — in all states, including disabled. Code must not draw a dot.",
+                    "focusOff": "focus + unchecked control stroke color/border/1 (4.4:1; was border/2 1.2:1) — 2026-11-24."
                 },
                 "tokenRules": [
                     "color/actions/primary for checked fill",
@@ -9789,7 +9806,7 @@
                 "props": {
                     "stepCount": "3 | 4 | 5 | 6 | 7 | 8",
                     "currentStep": "1..stepCount (sparse: never exceeds stepCount)",
-                    "showCounter": "boolean — toggles localized Etapa X de Y counter",
+                    "showCounter": "boolean (default true — Figma, React and Flutter since 2026-11-24) — toggles localized Etapa X de Y counter",
                     "hasError": "boolean — overlays current segment with status=error"
                 },
                 "rules": {
@@ -9801,7 +9818,7 @@
                 },
                 "tokenRules": [
                     "color/actions/primary (current)",
-                    "interactive/selected (completed)",
+                    "completed: color/actions/primary + interactive/selected with LINEAR_BURN (Plus Darker) → darker blue",
                     "color/background-surface/2 (pending)",
                     "feedback/danger (error)",
                     "text/secondary (counter)",
@@ -9833,7 +9850,8 @@
                 },
                 "rules": {
                     "internalOnly": "Use only inside StepProgressIndicator — not a product standalone component",
-                    "surface": "segmentSurface FILL + border/radius/full"
+                    "surface": "segmentSurface FILL + border/radius/full",
+                    "completedFill": "completed = color/actions/primary with interactive/selected on top in LINEAR_BURN (Plus Darker); code darkens actions/primary (looviPlusDarker). Not the flat interactive/selected grey."
                 },
                 "tokenRules": [
                     "color/actions/primary",
@@ -9876,10 +9894,11 @@
                     "trailState": "none | both | left | right"
                 },
                 "rules": {
-                    "icons": "structural by status: circle-check-filled | circle-dot-filled | circle-outline; DS Icons — Escritório Virtual icons only",
+                    "icons": "structural by status: circle-check-filled | circle-dot-filled | circle-outline; icons follow the DS contract (*-outline / *-filled) and swap per product via Library Swap",
                     "trails": "active trails use color/actions/primary; inactive present trails use color/border/2",
                     "sparseMatrix": "intentional-sparse: trailState ⊆ trail; current×both publishes none|left only; pending publishes trailState=none only",
-                    "usage": "Do not use as Button, PaginationItem, ProgressBar, TimelineItem or standalone navigation item"
+                    "usage": "Do not use as Button, PaginationItem, ProgressBar, TimelineItem or standalone navigation item",
+                    "pending": "pending label and icon text/secondary (AA; label was text/placeholder 2.4:1, icon remote text/primary) — 2026-11-24."
                 },
                 "tokenRules": [
                     "color/actions/primary for active trails, completed/current icon fills and completed label",
@@ -10004,16 +10023,17 @@
                     "composition": "indicatorColumn (statusIcon + connector) + nested ListItem; ListItem props exposed on the set",
                     "leadingDefault": "leading=none by default — status lives in indicatorColumn; avoid duplicate leading status icons",
                     "interaction": "default non-interactive (stateLayer=default); enable ListItem states/controls only when step is intentionally actionable",
-                    "icons": "structural by status: circle-check-filled | circle-dot-filled | circle-outline | circle-x-filled; DS Icons — Escritório Virtual icons only",
+                    "icons": "structural by status: circle-check-filled | circle-dot-filled | circle-outline | circle-x-filled; icons follow the DS contract (*-outline / *-filled) and swap per product via Library Swap",
                     "connector": "completed uses color/actions/primary; current|pending|error use color/border/2",
                     "vsStepperPrimary": "Use StepperPrimary for compact horizontal labeled steps",
                     "vsStepProgressIndicator": "Use StepProgressIndicator for unlabeled segmented progress",
-                    "usage": "Do not use as StepperPrimary, StepProgressIndicator, ProgressBar, TimelineItem, Button or standalone navigation"
+                    "usage": "Do not use as StepperPrimary, StepProgressIndicator, ProgressBar, TimelineItem, Button or standalone navigation",
+                    "pending": "pending icon text/secondary (was text/placeholder 2.4:1, below 3:1) — 2026-11-24."
                 },
                 "tokenRules": [
                     "color/actions/primary for completed/current icons and completed connector",
                     "color/border/2 for current|pending|error connectors",
-                    "text/placeholder for pending icon stroke; feedback/danger for error icon",
+                    "text/secondary for pending icon stroke; feedback/danger for error icon",
                     "spacing/0 | 050 | 100, border/width/025, border/radius/0 on indicator/root",
                     "ListItem owns content spacing/text tokens"
                 ],
@@ -10576,7 +10596,9 @@
                     "composition": "description TEXT + decorative arrow only — no buttons or internal focus",
                     "vsTooltipRich": "Use TooltipRich when title, actions, or richer content are needed",
                     "arrowConstraints": "top vertical=MIN; bottom vertical=MAX; horizontal center=CENTER, left=MIN, right=MAX",
-                    "usage": "Do not use for long content, critical persistent messages, forms, or actionable flows"
+                    "usage": "Do not use for long content, critical persistent messages, forms, or actionable flows",
+                    "mobile": "Mobile (app): opens on tap/long-press, stays open until dismissed (tap outside, Escape, or tapping the trigger again) — WCAG 1.4.13; no hover.",
+                    "placement": "placement = edge where the arrow sits (decided 2026-11-24, Figma semantics): top* → arrow on top, bubble opens BELOW the trigger; bottom* → arrow at the bottom, bubble ABOVE; left/right variants align the arrow to that side. Flutter follows it; React aligned (default placement bottom-center keeps the previous above-the-trigger look)."
                 },
                 "tokenRules": [
                     "color/background-surface/inverse-3 on surface and arrow",
@@ -10615,10 +10637,12 @@
                     "secondaryActionLabel": "React mapping for nested secondary Button label"
                 },
                 "rules": {
-                    "composition": "primaryAction = Button solid/sm/primary; secondaryAction = Button text/sm/primary; DS Icons — Escritório Virtual icons only",
-                    "intentionalSecondaryOnColor": "secondaryAction label uses text/on-color on inverse surface — intentional override, do not remap to text/primary",
+                    "composition": "primaryAction = Button solid/sm/primary; secondaryAction = Button text/sm/primary; icons follow the DS contract (*-outline / *-filled) and swap per product via Library Swap",
                     "layerOrder": "content → arrow → actions on all placements",
-                    "usage": "Do not use as Modal, Toast, Dropdown, Select, Menu, or persistent help panel"
+                    "usage": "Do not use as Modal, Toast, Dropdown, Select, Menu, or persistent help panel",
+                    "mobile": "Mobile (app): opens on tap/long-press, stays open until dismissed (tap outside, Escape, or tapping the trigger again) — WCAG 1.4.13; no hover.",
+                    "actions": "actions order primary then secondary (Figma; React aligned 2026-11-24); secondaryAction = Button variant=text appearance=inverse (no manual on-color override).",
+                    "placement": "placement = edge where the arrow sits (decided 2026-11-24, Figma semantics): top* → arrow on top, bubble opens BELOW the trigger; bottom* → arrow at the bottom, bubble ABOVE; left/right variants align the arrow to that side. Flutter follows it; React aligned (default placement bottom-center keeps the previous above-the-trigger look)."
                 },
                 "tokenRules": [
                     "color/background-surface/inverse-3, text/on-color, color/elevation/6",
@@ -11682,7 +11706,8 @@
                     "vsListItem": "Do not use as ListItem — no state layer, trailing, density matrix",
                     "vsFeatureStepsItem": "Do not use as FeatureStepsItem / VerticalStepperItem",
                     "vsBottomSheetCheckItem": "Use BottomSheetCheckItem inside BottomSheet — not ModalCheckItem",
-                    "usage": "Do not use as Checkbox, ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or BottomSheetCheckItem"
+                    "usage": "Do not use as Checkbox, ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or BottomSheetCheckItem",
+                    "emphasis": "emphasis ranges use text style body/medium/semi-bold + text/brand (2026-11-24)."
                 },
                 "tokenRules": [
                     "spacing/100 (gap); spacing/0 (pad)",
@@ -11716,7 +11741,8 @@
                     "vsListItem": "Do not use as ListItem — no state layer, trailing, density matrix",
                     "vsFeatureStepsItem": "Do not use as FeatureStepsItem / VerticalStepperItem",
                     "vsModalCheckItem": "Use ModalCheckItem inside Modal — not BottomSheetCheckItem",
-                    "usage": "Do not use as Checkbox, ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or ModalCheckItem"
+                    "usage": "Do not use as Checkbox, ListItem, FeatureStepsItem, VerticalStepperItem, Banner, Toast, or ModalCheckItem",
+                    "emphasis": "emphasis ranges use text style body/medium/semi-bold + text/brand (2026-11-24)."
                 },
                 "tokenRules": [
                     "spacing/100 (gap); spacing/0 (pad)",
@@ -11759,8 +11785,8 @@
                     "vsRadioButton": "Use RadioButtonCard for full-width tappable card/row choices with optional description; use RadioButton for compact non-card text+description options",
                     "hoverStateLayer": "state=hover: absolute stateLayer fill interactive/hover over shell (clipsContent true); radius matches border/radius/400",
                     "checkedVisual": "checked=true: shell surface/1 + border-feedback/primary; radioControl actions/primary @ border/width/050",
-                    "uncheckedVisual": "checked=false: shell surface/0 + border/1; radioControl border/1 @ border/width/025 (focus unchecked radio uses border/2)",
-                    "disabledAlign": "disabled+checked radioControl stroke uses border/width/025 (2) — aligned with RadioButton",
+                    "uncheckedVisual": "checked=false: shell surface/0 + border/1; radioControl border/1 @ border/width/025 (focus unchecked radio uses border/1 since 2026-11-24)",
+                    "disabledAlign": "disabled+checked radioControl = RadioButton disabled+checked control: text/placeholder at border/width/050 (fixed 2026-11-24; was border/2 @ 025, identical to unchecked).",
                     "demoWidth": "Master FIXED 343 mobile exemplar; instances should Fill container",
                     "usage": "Do not use as Checkbox, Chip, ListItem alone, or Toast",
                     "grouping": "Related options belong in a RadioGroup (role=radiogroup)",
@@ -11957,6 +11983,7 @@
             }
         },
         "recentUpdates": [
+            "Wave 3 audit fixes (Figma + seed + code): InputTextArea label/supporting/counter body/small/regular (same as Input; was caption/large — looked compressed); StepperPrimary + VerticalStepperItem pending label/icon text/secondary (AA); Autocomplete error text text/danger, expand icon 20; RadioButton/RadioButtonCard focus-off stroke border/1 (4.4:1), RadioButtonCard disabled+checked = RadioButton control; InputSelect disabled border/1, error resting label text/danger, chevron 20 neutral; InputDatePicker radius component/input/field/radius, error calendar 20; remote text/primary icon overrides rebound (~60); color/elevation/Focus renamed to color/elevation/focus; TooltipRich secondary action appearance=inverse and React order primary→secondary; StepProgressIndicator showCounter default true (Figma + Flutter, matches React); StepProgressSegment completed = actions/primary Plus Darker in code; ChipGroup row gap spacing/200; InputNumber/Autocomplete/SearchView paddings bound; check-item emphasis text style; dead Tooltip strokeWeight bindings and hidden leftover fills removed. Decisions: Tooltip placement = arrow edge (Figma semantics; React aligned, default bottom-center); icon chevron stroke 1.5 as standard (DatePickerSelect/Item unbound from border/width/*).",
             "React inputs (Escritório Virtual): FieldFrame fix — the outline was drawn ~8.5px below the field top (fieldset legend midline) and global resets (Bootstrap reboot legend/label) detached the floating label even more; stroke now lands on the field edge with the label centered on it, legend/label metrics pinned against resets, field padding-x 24, label aligned with value (24 / 52 with leadingIcon), resting label no longer overlaps the border, supporting text 4px below with 16 inset (Figma). Applies to Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete. InputTextArea: resize handle moved to the textarea (overflow:auto on the field clipped the label/notch). InputSelect/InputDatePicker trigger no longer adds its own padding (value aligned with the label).",
             "Accessibility + consistency pass (wave 2): TabItem primary|secondary selected label text/primary (brand stays on icon/indicator); Toast action/dismiss Button appearance=inverse, radius border/radius/200 in seed; DividerHorizontal subhead text/secondary; ReferralDiscountCard discountPercent + current tick text/primary; VehicleSummaryCard plate text/secondary; QuickAccessTile label realigned in Figma to caption/medium/medium + text/primary; React aligned to Figma — Banner action always intent=primary, Accordion summary visible when expanded; Badge text on local caption/large/regular; description fixes (Banner danger, LoadingSpinner xs, Badge tokens); circle-dot-filled icon redrawn with center hole. React Avatar keeps the Escritório Virtual scale (16–56) — documented divergence, no breaking change.",
             "Flutter wave 2 audit fixes: Badge nodeId 3086:5079 (orphan) → 3669:8175 (seed + Code Connect); TabsPrimary (8) and Accordion (12) legacy remote variables → local color/background-surface/inverse-2 and color/border/2; ReferralDiscountCard gaps 16/8/12 → spacing/200|100|150; OfferProductCard icon container radius → border/radius/full; Banner gap 8 → spacing/100 and padding 20 → spacing/250; remaining values without token logged in meta.governance.unboundValues.",

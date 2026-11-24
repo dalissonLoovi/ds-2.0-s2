@@ -16,10 +16,14 @@ abstract final class LooviIcons {
   static const String appsOutline = 'apps-outline';
   /// `arrow-left-outline` — alias node 7003:12908
   static const String arrowLeftOutline = 'arrow-left-outline';
+  /// `arrow-narrow-left-outline` — alias node 7012:13080
+  static const String arrowNarrowLeftOutline = 'arrow-narrow-left-outline';
   /// `arrow-narrow-right-outline` — alias node 7003:12915
   static const String arrowNarrowRightOutline = 'arrow-narrow-right-outline';
   /// `bell-outline` — alias node 7003:12888
   static const String bellOutline = 'bell-outline';
+  /// `calendar-outline` — alias node 7003:12995
+  static const String calendarOutline = 'calendar-outline';
   /// `car-outline` — alias node 7019:13190
   static const String carOutline = 'car-outline';
   /// `check-outline` — alias node 7003:12932
@@ -40,6 +44,8 @@ abstract final class LooviIcons {
   static const String circleOutline = 'circle-outline';
   /// `circle-plus-outline` — alias node 7012:13037
   static const String circlePlusOutline = 'circle-plus-outline';
+  /// `circle-x-filled` — alias node 7012:13047
+  static const String circleXFilled = 'circle-x-filled';
   /// `dots-vertical-outline` — alias node 7003:13017
   static const String dotsVerticalOutline = 'dots-vertical-outline';
   /// `eye-closed-outline` — alias node 7003:12957
@@ -89,5 +95,5 @@ abstract final class LooviIcons {
   /// `x-outline` — alias node 7003:12930
   static const String xOutline = 'x-outline';
   /// Every icon name shipped with this package.
-  static const Set<String> all = {alertCircleFilled, alertCircleOutline, alertTriangleFilled, alertTriangleOutline, appsOutline, arrowLeftOutline, arrowNarrowRightOutline, bellOutline, carOutline, checkOutline, chevronDownOutline, chevronRightOutline, chevronUpOutline, circleCheckFilled, circleDotFilled, circleFilled, circleOutline, circlePlusOutline, dotsVerticalOutline, eyeClosedOutline, eyeOutline, fileTextOutline, headsetOutline, homeFilled, homeOutline, infoCircleFilled, infoCircleOutline, lockOutline, menu2Outline, minusOutline, packageOutline, playerPlayOutline, playerRecordFilled, plusOutline, searchOutline, shieldCheckOutline, shieldOutline, uploadOutline, userFilled, userOutline, walletOutline, xOutline};
+  static const Set<String> all = {alertCircleFilled, alertCircleOutline, alertTriangleFilled, alertTriangleOutline, appsOutline, arrowLeftOutline, arrowNarrowLeftOutline, arrowNarrowRightOutline, bellOutline, calendarOutline, carOutline, checkOutline, chevronDownOutline, chevronRightOutline, chevronUpOutline, circleCheckFilled, circleDotFilled, circleFilled, circleOutline, circlePlusOutline, circleXFilled, dotsVerticalOutline, eyeClosedOutline, eyeOutline, fileTextOutline, headsetOutline, homeFilled, homeOutline, infoCircleFilled, infoCircleOutline, lockOutline, menu2Outline, minusOutline, packageOutline, playerPlayOutline, playerRecordFilled, plusOutline, searchOutline, shieldCheckOutline, shieldOutline, uploadOutline, userFilled, userOutline, walletOutline, xOutline};
 }

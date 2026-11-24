@@ -30,6 +30,28 @@ import 'list_use_cases.dart';
 import 'navigation_bar_use_cases.dart';
 import 'radio_button_use_cases.dart';
 import 'switch_use_cases.dart';
+import 'autocomplete_use_cases.dart';
+import 'check_item_use_cases.dart';
+import 'chip_group_use_cases.dart';
+import 'date_picker_select_item_use_cases.dart';
+import 'date_picker_select_use_cases.dart';
+import 'input_date_picker_use_cases.dart';
+import 'input_number_trailing_payment_mark_use_cases.dart';
+import 'input_number_use_cases.dart';
+import 'input_select_use_cases.dart';
+import 'progress_bar_use_cases.dart';
+import 'radio_button_card_use_cases.dart';
+import 'search_bar_use_cases.dart';
+import 'search_view_fullscreen_use_cases.dart';
+import 'select_country_use_cases.dart';
+import 'step_progress_indicator_use_cases.dart';
+import 'step_progress_segment_use_cases.dart';
+import 'stepper_primary_use_cases.dart';
+import 'tooltip_rich_use_cases.dart';
+import 'tooltip_use_cases.dart';
+import 'verification_code_input_use_cases.dart';
+import 'vertical_stepper_item_use_cases.dart';
+import 'vertical_stepper_use_cases.dart';
 
 /// Components (mode app-cliente): wave 1 in the order the app needs them, then wave 2.
 WidgetbookFolder componentsFolder() => WidgetbookFolder(
@@ -72,5 +94,30 @@ WidgetbookFolder componentsFolder() => WidgetbookFolder(
         looviVehicleSummaryCardComponent(),
         looviOfferProductCardComponent(),
         looviReferralDiscountCardComponent(),
+        // Wave 3 (2026-11-24)
+        looviInputSelectComponent(),
+        looviInputDatePickerComponent(),
+        looviDatePickerSelectComponent(),
+        looviDatePickerSelectItemComponent(),
+        looviInputNumberComponent(),
+        looviSelectCountryComponent(),
+        looviInputNumberTrailingPaymentMarkComponent(),
+        looviAutocompleteComponent(),
+        looviSearchBarComponent(),
+        looviSearchViewFullscreenComponent(),
+        looviVerificationCodeInputComponent(),
+        looviVerificationCodeInputItemComponent(),
+        looviRadioButtonCardComponent(),
+        looviChipGroupComponent(),
+        looviModalCheckItemComponent(),
+        looviBottomSheetCheckItemComponent(),
+        looviProgressBarComponent(),
+        looviStepProgressIndicatorComponent(),
+        looviStepProgressSegmentComponent(),
+        looviStepperPrimaryComponent(),
+        looviVerticalStepperComponent(),
+        looviVerticalStepperItemComponent(),
+        looviTooltipComponent(),
+        looviTooltipRichComponent(),
       ],
     );

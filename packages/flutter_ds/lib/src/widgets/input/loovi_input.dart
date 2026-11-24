@@ -163,6 +163,8 @@ class LooviInput extends StatefulWidget {
     this.onTrailingTap,
     this.trailingSemanticLabel,
     this.trailingAction,
+    this.leadingAccessory,
+    this.trailingAccessory,
     this.controller,
     this.focusNode,
     this.onChanged,
@@ -222,6 +224,16 @@ class LooviInput extends StatefulWidget {
   /// Extra trailing control after the error icon (InputPassword composes the
   /// `visibilityAction` here). Must provide its own semantics and tap target.
   final Widget? trailingAction;
+
+  /// In-field block after the leading icon, before the text (InputNumber
+  /// `selectCountryBlock`). The floating label stays at the content start
+  /// (Figma: label aligned with the block, not with the value). Must provide
+  /// its own semantics and tap target.
+  final Widget? leadingAccessory;
+
+  /// In-field block before the trailing / error icon (InputNumber
+  /// `paymentMethodMarkBlock`, Autocomplete loading status).
+  final Widget? trailingAccessory;
 
   final TextEditingController? controller;
   final FocusNode? focusNode;
@@ -365,6 +377,10 @@ class _LooviInputState extends State<LooviInput> {
         LooviIcon(widget.leading, size: iconSize, color: c.leadingIcon),
         SizedBox(width: gap),
       ],
+      if (widget.leadingAccessory != null) ...[
+        widget.leadingAccessory!,
+        SizedBox(width: gap),
+      ],
       Expanded(
         child: Semantics(
           label: widget.label,
@@ -373,6 +389,10 @@ class _LooviInputState extends State<LooviInput> {
           child: textField,
         ),
       ),
+      if (widget.trailingAccessory != null) ...[
+        SizedBox(width: gap),
+        widget.trailingAccessory!,
+      ],
       if (hasError) ...[
         SizedBox(width: gap),
         LooviIcon(LooviIcons.alertCircleOutline, size: iconSize, color: c.errorIcon),

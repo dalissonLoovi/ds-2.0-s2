@@ -46,7 +46,7 @@ void main() {
     expect(_border(tester).top.width, _t.borderWidth.s025);
     final label = tester.widget<Text>(find.descendant(of: find.byType(LooviInputFloatingLabel), matching: find.byType(Text)));
     expect(label.style!.color, _t.text.brand);
-    expect(label.style!.fontSize, _t.typography.captionLargeRegular.fontSize);
+    expect(label.style!.fontSize, _t.typography.bodySmallRegular.fontSize);
   });
 
   testWidgets('error shows danger message and stroke', (tester) async {

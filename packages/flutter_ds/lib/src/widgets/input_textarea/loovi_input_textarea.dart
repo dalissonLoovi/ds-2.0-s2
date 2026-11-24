@@ -10,7 +10,7 @@ import '../input/loovi_input.dart';
 /// Seed `InputTextArea` (Figma 4052:21848) — multiline outlined text field.
 ///
 /// Same identity as Input with a taller field (min 160), floating label in
-/// `caption/large/regular`, an absolute `countRow` at the bottom-right and the
+/// `body/small/regular` (same as Input, 2026-11-24), an absolute `countRow` at the bottom-right and the
 /// `InputTextAreaResizeHandle` affordance (visual only; the field grows with
 /// its content). Radius `component/input-textarea/field/radius`
 /// (app-cliente → `border/radius/500` = 20). Focus and error strokes use
@@ -165,7 +165,8 @@ class _LooviInputTextAreaState extends State<LooviInputTextArea> {
     final floated = focused || hasText || (widget.placeholder ?? '').isNotEmpty;
 
     final valueStyle = t.typography.bodyLargeRegular;
-    final captionStyle = t.typography.captionLargeRegular;
+    // Same as Input (body/small/regular) — Figma had caption/large (10px) until 2026-11-24.
+    final captionStyle = t.typography.bodySmallRegular;
     final captionHeight = scaler.scale(captionStyle.fontSize!) * captionStyle.height!;
     final iconSize = t.spacing.s250;
     final gap = t.spacing.s100;

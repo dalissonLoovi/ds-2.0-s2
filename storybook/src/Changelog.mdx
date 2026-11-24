@@ -12,8 +12,9 @@ The lists below are truncated for readability. Full history lives in `design-sys
 
 ## Recent updates
 
-_Showing 20 of 281._
+_Showing 20 of 282._
 
+- **update:** 
 - **update:** 
 - **update:** 
 - **update:** 
@@ -33,14 +34,14 @@ _Showing 20 of 281._
 - **inputtextarea-resting-label-body-large:** InputTextArea resting label (content=label) uses body/large/regular; docs + Storybook synced from Figma.
 - **bottomsheet-horizontal-pad-300:** BottomSheet lateral padding spacing/300 (24px); header remains edge-to-edge on header=sheet-header.
 - **tokens-surface-canvas-icy:** Soft canvas tokens: surface/0 → canvas #FCFCFE; icy-blue → #F5F8FF for surface/1; white kept absolute for on-color text.
-- **chipclickable-md-icon-24:** ChipClickable MD leadingIcon resized from 32px to 24px; React aligned.
 
 ## History
 
-_Showing 40 of 278, grouped by date._
+_Showing 40 of 279, grouped by date._
 
 ### 2026-11-24
 
+- **wave3-audit-fixes:** Wave 3 audit fixes (Figma + seed + code): InputTextArea label/supporting/counter body/small/regular (same as Input; was caption/large — looked compressed); StepperPrimary + VerticalStepperItem pending label/icon text/secondary (AA); Autocomplete error text text/danger, expand icon 20; RadioButton/RadioButtonCard focus-off stroke border/1 (4.4:1), RadioButtonCard disabled+checked = RadioButton control; InputSelect disabled border/1, error resting label text/danger, chevron 20 neutral; InputDatePicker radius component/input/field/radius, error calendar 20; remote text/primary icon overrides rebound (~60); color/elevation/Focus renamed to color/elevation/focus; TooltipRich secondary action appearance=inverse and React order primary→secondary; StepProgressIndicator showCounter default true (Figma + Flutter, matches React); StepProgressSegment completed = actions/primary Plus Darker in code; ChipGroup row gap spacing/200; InputNumber/Autocomplete/SearchView paddings bound; check-item emphasis text style; dead Tooltip strokeWeight bindings and hidden leftover fills removed. Decisions: Tooltip placement = arrow edge (Figma semantics; React aligned, default bottom-center); icon chevron stroke 1.5 as standard (DatePickerSelect/Item unbound from border/width/*).
 - **react-fix:** React inputs (Escritório Virtual): FieldFrame fix — the outline was drawn ~8.5px below the field top (fieldset legend midline) and global resets (Bootstrap reboot legend/label) detached the floating label even more; stroke now lands on the field edge with the label centered on it, legend/label metrics pinned against resets, field padding-x 24, label aligned with value (24 / 52 with leadingIcon), resting label no longer overlaps the border, supporting text 4px below with 16 inset (Figma). Applies to Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete. InputTextArea: resize handle moved to the textarea (overflow:auto on the field clipped the label/notch). InputSelect/InputDatePicker trigger no longer adds its own padding (value aligned with the label).
 - **a11y-consistency:** Accessibility + consistency pass (wave 2): TabItem primary|secondary selected label text/primary (brand stays on icon/indicator); Toast action/dismiss Button appearance=inverse, radius border/radius/200 in seed; DividerHorizontal subhead text/secondary; ReferralDiscountCard discountPercent + current tick text/primary; VehicleSummaryCard plate text/secondary; QuickAccessTile label realigned in Figma to caption/medium/medium + text/primary; React aligned to Figma — Banner action always intent=primary, Accordion summary visible when expanded; Badge text on local caption/large/regular; description fixes (Banner danger, LoadingSpinner xs, Badge tokens); circle-dot-filled icon redrawn with center hole. React Avatar keeps the Escritório Virtual scale (16–56) — documented divergence, no breaking change.
 - **wave2-audit-fixes:** Flutter wave 2 audit fixes: Badge nodeId 3086:5079 (orphan) → 3669:8175 (seed + Code Connect); TabsPrimary (8) and Accordion (12) legacy remote variables → local color/background-surface/inverse-2 and color/border/2; ReferralDiscountCard gaps 16/8/12 → spacing/200|100|150; OfferProductCard icon container radius → border/radius/full; Banner gap 8 → spacing/100 and padding 20 → spacing/250; remaining values without token logged in meta.governance.unboundValues.
@@ -116,4 +117,3 @@ _Showing 40 of 278, grouped by date._
 - **react-w6-complexos:** React W6 Complexos polish: FileUploader*, Calendar*, Slider*, StepperPrimary, VerticalStepper*, StepProgress*, SearchView*, Keyboard DoD.
 - **react-w5-cards-app-cliente:** React W5 Cards & app-cliente polish: Card*Item/Stacked/Horizontal, Dashboard*, QuickAccessTile, product cards, UploadPhotos, FeatureSteps(+Item) DoD. Figma style→React cardStyle.
 - **react-w4-dados-display:** React W4 Dados & display polish: Divider*/Avatar*/Accordion, List family, Table*/TableMobile, Pagination, Carousel (+ Items) DoD.
-- **react-w3-nav-headers:** React W3 Nav/headers polish: App/System/Org/Text/Section headers, nav bars/rails/drawer, tabs, breadcrumb (+ Items) DoD.

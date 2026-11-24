@@ -29,16 +29,18 @@
   transform: rotate(45deg);
 }
 
+/* placement = edge where the arrow sits (Figma; decided 2026-11-24): top-* → arrow on top,
+   bubble opens BELOW the trigger; bottom-* → arrow at the bottom, bubble ABOVE. */
 .placement-top-center,
 .placement-top-left,
 .placement-top-right {
-  bottom: calc(100% + 10px);
+  top: calc(100% + 10px);
 }
 
 .placement-bottom-center,
 .placement-bottom-left,
 .placement-bottom-right {
-  top: calc(100% + 10px);
+  bottom: calc(100% + 10px);
 }
 
 .placement-top-center,
@@ -60,13 +62,13 @@
 .placement-top-center .arrow,
 .placement-top-left .arrow,
 .placement-top-right .arrow {
-  bottom: -4px;
+  top: -4px;
 }
 
 .placement-bottom-center .arrow,
 .placement-bottom-left .arrow,
 .placement-bottom-right .arrow {
-  top: -4px;
+  bottom: -4px;
 }
 
 .placement-top-center .arrow,
