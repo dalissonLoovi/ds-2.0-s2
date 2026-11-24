@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:loovi_tokens/loovi_tokens.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -7,6 +5,7 @@ import '../../foundation/loovi_blend.dart';
 import '../../foundation/loovi_icon.dart';
 import '../../foundation/loovi_tap_target.dart';
 import '../../generated/loovi_icon_names.g.dart';
+import '../loading_spinner/loovi_loading_spinner.dart';
 
 /// Seed `Button.variant`.
 enum LooviButtonVariant { solid, outline, text }
@@ -60,8 +59,8 @@ enum LooviButtonAppearance { standard, inverse }
 /// - focus (keyboard): inner `effects/effect/focus` (4 spread) under a
 ///   `border/width/025` stroke of `interactive/focus`.
 /// - loading: spinner-only, square when hugging (56/48/40); spinner 24/24/20
-///   (track `color/background-surface/3`, indicator = intent fill). The
-///   spinner is drawn here (internal) rather than via the seed LoadingSpinner.
+///   (track `color/background-surface/3`, indicator = intent fill), drawn by
+///   [LooviLoadingSpinner] (Figma instance 3133:4033 = size=sm resized).
 class LooviButton extends StatefulWidget {
   const LooviButton({
     super.key,
@@ -364,10 +363,13 @@ class _LooviButtonState extends State<LooviButton> {
 
     Widget content;
     if (widget.loading) {
-      content = _LooviButtonSpinner(
-        size: spinnerSize,
-        track: t.color.backgroundSurface3,
-        indicator: widget.isInverse ? t.text.onColor : _intentColor(t),
+      // Figma: LoadingSpinner size=sm instance resized to 24/24/20.
+      content = LooviLoadingSpinner(
+        size: LooviLoadingSpinnerSize.sm,
+        dimension: spinnerSize,
+        decorative: true,
+        trackColor: t.color.backgroundSurface3,
+        indicatorColor: widget.isInverse ? t.text.onColor : _intentColor(t),
       );
     } else {
       final children = <Widget>[
@@ -476,77 +478,4 @@ class _LooviButtonState extends State<LooviButton> {
       ),
     );
   }
-}
-
-/// Indeterminate spinner of the Button loading frames (Figma LoadingSpinner
-/// instance 3133:4033): full track ring + a quarter-arc indicator from 12 to
-/// 3 o'clock, rotating. Static when animations are disabled.
-class _LooviButtonSpinner extends StatefulWidget {
-  const _LooviButtonSpinner({required this.size, required this.track, required this.indicator});
-  final double size;
-  final Color track;
-  final Color indicator;
-
-  @override
-  State<_LooviButtonSpinner> createState() => _LooviButtonSpinnerState();
-}
-
-class _LooviButtonSpinnerState extends State<_LooviButtonSpinner> with SingleTickerProviderStateMixin {
-  late final AnimationController _controller =
-      AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final reduceMotion = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
-    if (reduceMotion) {
-      _controller.stop();
-      _controller.value = 0;
-    } else if (!_controller.isAnimating) {
-      _controller.repeat();
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ExcludeSemantics(
-      child: RotationTransition(
-        turns: _controller,
-        child: CustomPaint(
-          size: Size.square(widget.size),
-          painter: _SpinnerPainter(track: widget.track, indicator: widget.indicator),
-        ),
-      ),
-    );
-  }
-}
-
-class _SpinnerPainter extends CustomPainter {
-  const _SpinnerPainter({required this.track, required this.indicator});
-  final Color track;
-  final Color indicator;
-
-  // Stroke ≈ 1/6 of the spinner box (4 px at 24, as measured in the frame).
-  static const double _strokeFactor = 1 / 6;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final stroke = size.shortestSide * _strokeFactor;
-    final rect = (Offset.zero & size).deflate(stroke / 2);
-    final paint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = stroke
-      ..strokeCap = StrokeCap.butt;
-    canvas.drawArc(rect, 0, 2 * math.pi, false, paint..color = track);
-    canvas.drawArc(rect, -math.pi / 2, math.pi / 2, false, paint..color = indicator);
-  }
-
-  @override
-  bool shouldRepaint(_SpinnerPainter old) => old.track != track || old.indicator != indicator;
 }

@@ -205,6 +205,7 @@ Figma (ajuste)
     - Forma de consumo dos pacotes (git, GitHub Packages ou monorepo)
 13. React para CommentItem, BrandLogo e PaymentMethodMark (quando pedido)
 14. **Saída Flutter (App Cliente)** — onda 1 entregue em 2026-11-23 (`loovi_tokens` + `loovi_ds`, 21 componentes; ver [`FLUTTER-CONTRIBUTING.md`](./FLUTTER-CONTRIBUTING.md) e [`FLUTTER-INVENTORY.md`](./FLUTTER-INVENTORY.md)). Próxima onda só quando pedida.
+    - **Onda 2 entregue (2026-11-24, 36 componentes no total):** QuickAccessTile, VehicleSummaryCard, OfferProductCard, ReferralDiscountCard, Avatar, Badge, LoadingSpinner, DividerHorizontal, Toast, Banner, TabItem, TabsPrimary/Secondary/Segmented, Accordion. Auditoria aplicada (revision `2026-11-24-wave2-audit-fixes`): Badge nodeId → `3669:8175`; variáveis remotas legadas no TabsPrimary e Accordion trocadas; gaps/raio ligados a tokens.
 
 ### Achados da auditoria Flutter (2026-11-23)
 

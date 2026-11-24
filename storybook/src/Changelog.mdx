@@ -12,8 +12,10 @@ The lists below are truncated for readability. Full history lives in `design-sys
 
 ## Recent updates
 
-_Showing 20 of 278._
+_Showing 20 of 280._
 
+- **update:** 
+- **update:** 
 - **update:** 
 - **update:** 
 - **update:** 
@@ -32,12 +34,15 @@ _Showing 20 of 278._
 - **tokens-surface-canvas-icy:** Soft canvas tokens: surface/0 → canvas #FCFCFE; icy-blue → #F5F8FF for surface/1; white kept absolute for on-color text.
 - **chipclickable-md-icon-24:** ChipClickable MD leadingIcon resized from 32px to 24px; React aligned.
 - **listitem-illustration-text-props:** ListItem illustration variants: restore editable headline + supportingText (+ overline/trailingSupportingText) via component TEXT property bindings.
-- **listitem-illustration-library:** ListItem illustration slots open to full Ilustrações e animações library; vehicle-icon/sedan remains default swap base.
-- **listitem-illustration-coverage:** ListItem illustration: condition 1/2/3-line coverage; leadingIllustration + trailingIllustration set props; React side-specific assets; docs regenerated.
 
 ## History
 
-_Showing 40 of 275, grouped by date._
+_Showing 40 of 277, grouped by date._
+
+### 2026-11-24
+
+- **a11y-consistency:** Accessibility + consistency pass (wave 2): TabItem primary|secondary selected label text/primary (brand stays on icon/indicator); Toast action/dismiss Button appearance=inverse, radius border/radius/200 in seed; DividerHorizontal subhead text/secondary; ReferralDiscountCard discountPercent + current tick text/primary; VehicleSummaryCard plate text/secondary; QuickAccessTile label realigned in Figma to caption/medium/medium + text/primary; React aligned to Figma — Banner action always intent=primary, Accordion summary visible when expanded; Badge text on local caption/large/regular; description fixes (Banner danger, LoadingSpinner xs, Badge tokens); circle-dot-filled icon redrawn with center hole. React Avatar keeps the Escritório Virtual scale (16–56) — documented divergence, no breaking change.
+- **wave2-audit-fixes:** Flutter wave 2 audit fixes: Badge nodeId 3086:5079 (orphan) → 3669:8175 (seed + Code Connect); TabsPrimary (8) and Accordion (12) legacy remote variables → local color/background-surface/inverse-2 and color/border/2; ReferralDiscountCard gaps 16/8/12 → spacing/200|100|150; OfferProductCard icon container radius → border/radius/full; Banner gap 8 → spacing/100 and padding 20 → spacing/250; remaining values without token logged in meta.governance.unboundValues.
 
 ### 2026-11-23
 
@@ -112,5 +117,3 @@ _Showing 40 of 275, grouped by date._
 - **react-w4-dados-display:** React W4 Dados & display polish: Divider*/Avatar*/Accordion, List family, Table*/TableMobile, Pagination, Carousel (+ Items) DoD.
 - **react-w3-nav-headers:** React W3 Nav/headers polish: App/System/Org/Text/Section headers, nav bars/rails/drawer, tabs, breadcrumb (+ Items) DoD.
 - **react-w2-feedback:** React W2 Feedback polish: Banner/Badge/Tooltip*/Overlay/LoadingSpinner/ProgressBar/BottomSheet(+Header/CheckItem) DoD.
-- **react-w1-formularios:** React W1 Formulários polish: 15 fields + VerificationCodeInputItem + DatePickerSelectItem DoD (Autodocs, Code Connect, @ds/react).
-- **react-audit-apply-p1-p2:** Audit apply: reactImplemented only W0 (7); stubs → reactScaffold + @ds/react/draft; tokens generator adds text/feedback/interactive; W0 hardening (Button/ChipTag/Modal/Alert/CSS vars).

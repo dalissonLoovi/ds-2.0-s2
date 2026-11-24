@@ -67,8 +67,8 @@ export function Banner({
           <Button
             variant="text"
             size="sm"
-            // text/danger on the primary danger fill (#F54444) is ~1.3:1 — use text/primary there.
-            intent={status === 'danger' && emphasis === 'secondary' ? 'danger' : 'primary'}
+            // Figma: action label text/primary on every status/emphasis (danger included) — 2026-11-24.
+            intent="primary"
             label={actionLabel}
             onClick={onAction}
           />

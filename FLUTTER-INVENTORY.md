@@ -1,14 +1,14 @@
 # Inventário Flutter — DS S2
 
-> Gerado por `packages/flutter_ds/tool/generate_catalog.mjs` (seed `2026-11-23-review-decisions`). Não editar à mão.
+> Gerado por `packages/flutter_ds/tool/generate_catalog.mjs` (seed `2026-11-24-a11y-consistency`). Não editar à mão.
 > "Entra no app" é uma triagem inicial para o App Cliente; revisar antes de cada nova onda.
 
-Total: 130 componentes · Flutter: 21 · fora do app: 28
+Total: 130 componentes · Flutter: 36 · fora do app: 28
 
 | Componente | nodeId | React | Flutter | Entra no app |
 | --- | --- | --- | --- | --- |
 | Autocomplete | `3918:573` | sim | — | sim |
-| Avatar | `3669:8605` | sim | — | sim |
+| Avatar | `3669:8605` | sim | ✅ onda 1 | sim |
 | AvatarGroup | `3669:8404` | sim | — | sim |
 | CardHorizontal | `4170:4506` | sim | — | sim |
 | CardStacked | `4170:4433` | sim | — | sim |
@@ -19,34 +19,34 @@ Total: 130 componentes · Flutter: 21 · fora do app: 28
 | DashboardCardSecondary | `4181:528` | sim | — | sim |
 | Carousel | `4152:849` | sim | — | sim |
 | CarouselPaginationItem | `4152:495` | sim | — | sim |
-| LoadingSpinner | `3062:745` | sim | — | sim |
-| Badge | `3086:5079` | sim | — | sim |
+| LoadingSpinner | `3062:745` | sim | ✅ onda 1 | sim |
+| Badge | `3669:8175` | sim | ✅ onda 1 | sim |
 | Breadcrumb | `3681:4674` | sim | — | não (web/backoffice) |
 | Alert | `4406:91` | sim | ✅ onda 1 | sim |
-| Banner | `3098:2629` | sim | — | sim |
+| Banner | `3098:2629` | sim | ✅ onda 1 | sim |
 | BreadcrumbItem | `3681:3667` | sim | — | não (web/backoffice) |
 | Button | `3104:3723` | sim | ✅ onda 1 | sim |
 | AppHeader | `3143:8822` | sim | ✅ onda 1 | sim |
-| OfferProductCard | `4227:418` | sim | — | sim |
+| OfferProductCard | `4227:418` | sim | ✅ onda 1 | sim |
 | SectionHeader | `4235:406` | sim | ✅ onda 1 | sim |
 | SystemHeader | `3143:8933` | sim | — | não (web/backoffice) |
 | OrganizationHeader | `3644:2` | sim | — | não (web/backoffice) |
 | CommentItem | `3653:340` | não | — | não (web/backoffice) |
 | BottomSheet | `3181:8289` | sim | ✅ onda 1 | sim |
-| Accordion | `3669:9362` | sim | — | sim |
+| Accordion | `3669:9362` | sim | ✅ onda 1 | sim |
 | Checkbox | `3667:3812` | sim | ✅ onda 1 | sim |
 | ChipClickable | `3653:23577` | sim | ✅ onda 1 | sim |
 | ChipGroup | `3667:2570` | sim | — | sim |
 | ChipTag | `3653:23220` | sim | ✅ onda 1 | sim |
-| DividerHorizontal | `3653:22914` | sim | — | sim |
+| DividerHorizontal | `3653:22914` | sim | ✅ onda 1 | sim |
 | DividerVertical | `3653:22924` | sim | — | não (web/backoffice) |
 | FileUploader | `3581:4454` | sim | — | sim |
 | FileUploaderDropzoneItem | `3581:5628` | sim | — | sim |
 | FileUploaderItem | `3581:5641` | sim | — | sim |
 | FileUploaderList | `3581:3887` | sim | — | sim |
 | UploadPhotos | `3581:7597` | sim | — | sim |
-| VehicleSummaryCard | `4581:1451` | sim | — | sim |
-| ReferralDiscountCard | `4594:995` | sim | — | sim |
+| VehicleSummaryCard | `4581:1451` | sim | ✅ onda 1 | sim |
+| ReferralDiscountCard | `4594:995` | sim | ✅ onda 1 | sim |
 | ImageItem | `3671:2329` | sim | — | sim |
 | PhotoTextItem | `4149:479` | sim | — | sim |
 | Input | `3873:334` | sim | ✅ onda 1 | sim |
@@ -83,7 +83,7 @@ Total: 130 componentes · Flutter: 21 · fora do app: 28
 | Modal | `3306:4278` | sim | ✅ onda 1 | sim |
 | ModalHeader | `3786:9403` | sim | ✅ onda 1 | sim |
 | ProgressBar | `3653:5393` | sim | — | sim |
-| QuickAccessTile | `4203:447` | sim | — | sim |
+| QuickAccessTile | `4203:447` | sim | ✅ onda 1 | sim |
 | RadioButton | `3653:5279` | sim | ✅ onda 1 | sim |
 | StepProgressIndicator | `3809:765` | sim | — | sim |
 | StepProgressSegment | `3807:31` | sim | — | sim |
@@ -97,12 +97,12 @@ Total: 130 componentes · Flutter: 21 · fora do app: 28
 | SearchViewModal | `3887:507` | sim | — | não (web/backoffice) |
 | SelectCountry | `3935:5522` | sim | — | sim |
 | Switch | `3653:4741` | sim | ✅ onda 1 | sim |
-| TabItem | `3532:6782` | sim | — | sim |
-| TabsSegmented | `4738:825` | sim | — | sim |
-| TabsPrimary | `3532:6900` | sim | — | sim |
-| TabsSecondary | `3532:7346` | sim | — | sim |
+| TabItem | `3532:6782` | sim | ✅ onda 1 | sim |
+| TabsSegmented | `4738:825` | sim | ✅ onda 1 | sim |
+| TabsPrimary | `3532:6900` | sim | ✅ onda 1 | sim |
+| TabsSecondary | `3532:7346` | sim | ✅ onda 1 | sim |
 | TextHeader | `3667:4129` | sim | — | sim |
-| Toast | `3550:4107` | sim | — | sim |
+| Toast | `3550:4107` | sim | ✅ onda 1 | sim |
 | Tooltip | `3566:10587` | sim | — | sim |
 | TooltipRich | `3566:10477` | sim | — | sim |
 | TableCell | `3459:13960` | sim | — | não (web/backoffice) |

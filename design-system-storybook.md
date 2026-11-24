@@ -558,7 +558,7 @@ Expose a group-level accessible label when the grouped identities are meaningful
 
 ## Badge
 
-**Node ID:** `3086:5079`
+**Node ID:** `3669:8175`
 
 AI-READY COMPONENT: Badge is a compact non-interactive indicator attached to another element. Use content=dot for existence of activity, content=count for exact quantity and content=overflow when the count exceeds the display limit. Do not use Badge as a button, tag, filter, chip, status label or CTA.
 

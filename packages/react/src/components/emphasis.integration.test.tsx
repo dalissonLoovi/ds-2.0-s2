@@ -235,7 +235,7 @@ describe('Banner emphasis', () => {
     },
   );
 
-  it('danger action is intent=danger only on the light secondary fill', () => {
+  it('danger action is intent=primary (text/primary) on both fills — Figma, 2026-11-24', () => {
     render(
       <>
         <Banner status="danger" emphasis="primary" showAction actionLabel="Primary fill" />
@@ -248,7 +248,7 @@ describe('Banner emphasis', () => {
     );
     expect(screen.getByRole('button', { name: 'Secondary fill' })).toHaveAttribute(
       'data-intent',
-      'danger',
+      'primary',
     );
   });
 });

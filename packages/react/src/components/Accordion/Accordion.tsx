@@ -95,7 +95,8 @@ export function Accordion({
           <Button variant="text" size="sm" intent="primary" label={actionLabel} onClick={onAction} disabled={disabled} />
         )}
       </div>
-      {showSummary && !expanded && <p className={styles.summary}>{summary}</p>}
+      {/* Figma shows the summary in both states (2026-11-24). */}
+      {showSummary && <p className={styles.summary}>{summary}</p>}
       <div id={panelId} role="region" aria-labelledby={triggerId} hidden={!expanded} className={styles.panel}>
         {children}
       </div>

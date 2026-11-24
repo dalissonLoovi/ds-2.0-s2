@@ -449,7 +449,8 @@
                 ],
                 "sourceOfTruth": "ThZ5XtMuDWUWXiSLbRyEXL",
                 "s2LocalIcons": "DEPRECATED — page 4. Icons masters superseded by [DS] Icons / Escritório Virtual; do not add new local icon components in S2",
-                "migrationStatus": "2026-07-28: leftovers cleared (Tokens/Illustrations/Photo/ImageOrientationItem); component pages + foundations clean outside deprecated Icons page"
+                "migrationStatus": "2026-07-28: leftovers cleared (Tokens/Illustrations/Photo/ImageOrientationItem); component pages + foundations clean outside deprecated Icons page",
+                "circleDotFilled": "App Cliente circle-dot-filled redesigned on 2026-11-24: filled disc (17.5) with a 6 px center hole (evenodd) — the auto-generated filled had lost the dot."
             },
             "paymentMethodMarks": {
                 "summary": "Dedicated published library for card networks, wallets, and meal/voucher marks — parallel to BrandLogo, never mixed into UI icon libraries (*-outline/*-filled).",
@@ -678,7 +679,7 @@
             },
             "unboundValues": {
                 "reportedAt": "2026-11-23",
-                "note": "Gaps/paddings/radii with exact token values were bound in Figma (wave components). Values with no token stay unbound: itemSpacing 10 (Button labelContainer, Link trailingIconWrapper, ListItem slots, RadioButton stateLayer, SystemHeader slot, BottomSheet dragHandle/sheetContent), padding 10 (SystemHeader slot, BottomSheet dragHandle), padding 0.5 (InputTextAreaResizeHandle)."
+                "note": "Gaps/paddings/radii with exact token values were bound in Figma (wave components). Values with no token stay unbound: itemSpacing 10 (Button labelContainer, Link trailingIconWrapper, ListItem slots, RadioButton stateLayer, SystemHeader slot, BottomSheet dragHandle/sheetContent), padding 10 (SystemHeader slot, BottomSheet dragHandle), padding 0.5 (InputTextAreaResizeHandle). Wave 2 audit (2026-11-24): ReferralDiscountCard slider trackLabels/ticks/labelContainer itemSpacing 10 (no token); ReferralDiscountCard simulatorBody footer gap 95 is computed by SPACE_BETWEEN (not a token value); OfferProductCard icon container padding 3.2 (no token)."
             },
             "legacyRemoteVariables": {
                 "reportedAt": "2026-11-23",
@@ -692,9 +693,19 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-11-23T20:47:21.028Z",
-        "storybookRevision": "2026-11-23-review-decisions",
+        "storybookUpdatedAt": "2026-11-24T17:21:47.750Z",
+        "storybookRevision": "2026-11-24-a11y-consistency",
         "changelog": [
+            {
+                "date": "2026-11-24",
+                "type": "a11y-consistency",
+                "summary": "Accessibility + consistency pass (wave 2): TabItem primary|secondary selected label text/primary (brand stays on icon/indicator); Toast action/dismiss Button appearance=inverse, radius border/radius/200 in seed; DividerHorizontal subhead text/secondary; ReferralDiscountCard discountPercent + current tick text/primary; VehicleSummaryCard plate text/secondary; QuickAccessTile label realigned in Figma to caption/medium/medium + text/primary; React aligned to Figma — Banner action always intent=primary, Accordion summary visible when expanded; Badge text on local caption/large/regular; description fixes (Banner danger, LoadingSpinner xs, Badge tokens); circle-dot-filled icon redrawn with center hole. React Avatar keeps the Escritório Virtual scale (16–56) — documented divergence, no breaking change."
+            },
+            {
+                "date": "2026-11-24",
+                "type": "wave2-audit-fixes",
+                "summary": "Flutter wave 2 audit fixes: Badge nodeId 3086:5079 (orphan) → 3669:8175 (seed + Code Connect); TabsPrimary (8) and Accordion (12) legacy remote variables → local color/background-surface/inverse-2 and color/border/2; ReferralDiscountCard gaps 16/8/12 → spacing/200|100|150; OfferProductCard icon container radius → border/radius/full; Banner gap 8 → spacing/100 and padding 20 → spacing/250; remaining values without token logged in meta.governance.unboundValues."
+            },
             {
                 "date": "2026-11-23",
                 "type": "review-decisions",
@@ -5816,7 +5827,8 @@
                 },
                 "rules": {
                     "defaultFill": "initials|placeholder → color/background-surface/3 across all sizes",
-                    "imageFill": "content=image uses photo fill; hover may use color/elevation/inverse-3 overlay"
+                    "imageFill": "content=image uses photo fill; hover may use color/elevation/inverse-3 overlay",
+                    "sizes": "Figma/Flutter scale: micro 24 · xs 32 · sm 48 · md 64 · lg 80 · xl 96. React (@ds/react) intentionally keeps the Escritório Virtual scale 16|20|24|32|40|56 under the same names — changing it would break EV screens (Avatar, AvatarGroup, CardHorizontal, CardStacked). Aligning React is a breaking change: only in a major release with a migration path for EV."
                 },
                 "tokenRules": [
                     "color/background-surface/3 (default fill — initials|placeholder, all sizes)",
@@ -6302,14 +6314,18 @@
                 "rules": {
                     "sizes": "lg=80, md=64, sm=32, xs=24",
                     "xsDensity": "size=xs for compact inline density — do not replace sm in existing layouts without product intent",
-                    "vsProgress": "Indeterminate only — use ProgressBar/ProgressCircle for determined progress"
+                    "vsProgress": "Indeterminate only — use ProgressBar/ProgressCircle for determined progress",
+                    "ring": "ring thickness comes from the arc inner radius (not strokeWeight); indicator round caps. Tokens: track color/background-surface/3, indicator color/actions/primary."
                 },
                 "accessibility": "Use role=status and aria-live=polite when the spinner is the only loading announcement. Use aria-hidden=true when visible loading text already exists.",
                 "reactPackage": "@ds/react",
-                "reactImplemented": true
+                "reactImplemented": true,
+                "tokenRules": [
+                    "track color/background-surface/3; indicator color/actions/primary"
+                ]
             },
             "Badge": {
-                "nodeId": "3086:5079",
+                "nodeId": "3669:8175",
                 "description": "AI-READY COMPONENT: Badge is a compact non-interactive indicator attached to another element. Use content=dot for existence of activity, content=count for exact quantity and content=overflow when the count exceeds the display limit. Do not use Badge as a button, tag, filter, chip, status label or CTA.",
                 "variants": {
                     "size": [
@@ -6330,7 +6346,12 @@
                 },
                 "accessibility": "If the badge is the only indicator, provide an accessible label on the parent. If adjacent text explains it, the badge can be hidden from assistive technology.",
                 "reactPackage": "@ds/react",
-                "reactImplemented": true
+                "reactImplemented": true,
+                "tokenRules": [
+                    "color/palette/tangerine-1 (background) + text/primary (6.7:1)",
+                    "caption/large/regular (local text style; remote $fs-10-p4 typography variables removed 2026-11-24)",
+                    "spacing/050 | 200; border/radius/full"
+                ]
             },
             "Breadcrumb": {
                 "nodeId": "3681:4674",
@@ -6505,10 +6526,11 @@
                 "reactPackage": "@ds/react",
                 "reactImplemented": true,
                 "tokenRules": [
-                    "emphasis=primary uses color/background-feedback-primary/{status}; emphasis=secondary uses color/background-feedback-secondary/{status} (info→teal-2, system→azure-2); content text/primary on both. Known gap: status=info primary is bound to background-feedback-primary/system in Figma."
+                    "emphasis=primary uses color/background-feedback-primary/{status}; emphasis=secondary uses color/background-feedback-secondary/{status} (info→teal-2, system→azure-2); content text/primary on both."
                 ],
                 "rules": {
-                    "infoPrimary": "status=info emphasis=primary → color/background-feedback-primary/info (was bound to …/system until 2026-11-23)."
+                    "infoPrimary": "status=info emphasis=primary → color/background-feedback-primary/info (was bound to …/system until 2026-11-23).",
+                    "action": "action = Button variant=text size=sm intent=primary, label text/primary on every status/emphasis — danger included (React aligned 2026-11-24; was intent=danger on secondary danger)."
                 }
             },
             "BreadcrumbItem": {
@@ -7223,7 +7245,9 @@
                 },
                 "rules": {
                     "disabled": "disabled variants exist only with expanded=false",
-                    "slot": "slot is the only scalable content area and maps to children in React"
+                    "slot": "slot is the only scalable content area and maps to children in React",
+                    "legacyRemote": "divider/border bound to local color/border/2 (was remote Color/Border/2 until 2026-11-24).",
+                    "summary": "summary (when showSummary) is visible in both collapsed and expanded states — Figma; React aligned 2026-11-24 (was hidden when expanded)."
                 },
                 "accessibility": "The trigger must behave as a button, support Enter and Space, expose aria-expanded and reference the panel with aria-controls.",
                 "reactPackage": "@ds/react",
@@ -7492,7 +7516,7 @@
                 },
                 "tokenRules": [
                     "color/border/2 for dividerLine stroke",
-                    "text/on-color-disabled for with-subhead label",
+                    "text/secondary for with-subhead label (8:1; was text/on-color-disabled 1.5:1 until 2026-11-24)",
                     "spacing/250 for inset and middle-inset padding",
                     "spacing/050 for with-subhead gap"
                 ],
@@ -7801,7 +7825,7 @@
                 "tokenRules": [
                     "appearance=default: color/background-surface/0; border/radius/400; spacing/100|200; spacing/0 on leading/text/nameRow zero pads",
                     "appearance=secondary: color/background-surface/brand-muted (72% alpha in token); border/radius/300; spacing/150",
-                    "default text: text/primary (brand/model); text/placeholder + heading/h3/regular (plate)",
+                    "default text: text/primary (brand/model); text/secondary + heading/h3/regular (plate; was text/placeholder 2.4:1 until 2026-11-24)",
                     "secondary text: text/on-color; body/large/semi-bold (title); body/medium/regular (plate)",
                     "nested ChipTag (default only): body/small/medium; color/border/2 outline; active dot success; inactive dot warning (component-level intent)"
                 ],
@@ -7857,10 +7881,11 @@
                 "tokenRules": [
                     "color/background-surface/2; border/radius/400",
                     "local spacing/250 pad; spacing/150|100|025|0 gaps — no remote Spacing/*",
-                    "color/actions/primary on progressFill + circle-dot-filled",
+                    "color/actions/primary on progressFill + circle-filled/circle-dot-filled markers only (graphics)",
                     "blur ellipses: color/actions/primary|secondary|tertiary + text/on-color",
                     "body/large/semi-bold (titles); body/small/semi-bold (simulatorTitle); body/small/* (meta/fleetDescription); caption/large/regular (ticks); heading/h2/semi-bold (savingsAmount)",
-                    "nested Button secondary owns its tokens (exposed)"
+                    "nested Button secondary owns its tokens (exposed)",
+                    "discountPercent + reached tick label text/primary (AA; actions/primary text was 3.9:1 on surface/2 until 2026-11-24)"
                 ],
                 "accessibility": "expose progress in text; track decorative when text equivalent exists; CTA keyboard-focusable (exposed nested Button); simulatorTitle / fleetDescription are informational text.",
                 "composition": [
@@ -9662,7 +9687,8 @@
                     "labelAlign": "label textAlign LEFT (manual)",
                     "genericDefaults": "Default label \"Label\" + icon apps-outline (product copy/icons via props)",
                     "iconStroke": "Outline path uses stroke text/brand (not fill color/actions/primary); disabled text/placeholder",
-                    "iconLocal": "Default and preferredValues use DS Icons — Escritório Virtual outline icons — use EV library (not S2 local masters)"
+                    "iconLocal": "Default and preferredValues use DS Icons — Escritório Virtual outline icons — use EV library (not S2 local masters)",
+                    "labelStyle": "label caption/medium/medium + text/primary (disabled text/placeholder) — Figma realigned to the seed on 2026-11-24 (had drifted to regular + text/secondary)."
                 },
                 "tokenRules": [
                     "color/background-surface/2",
@@ -10266,10 +10292,11 @@
                     "noFocus": "Focus is intentionally not published",
                     "secondaryIndicator": "selectedIndicator visible only on state=selected for variant=secondary",
                     "segmentedIndicator": "variant=segmented removes selectedIndicator from the tree; selection is the segment fill",
-                    "usage": "Do not use as Button, NavigationItem, Chip, or page-level route link; use TabsSegmented (not standalone) for pill switchers"
+                    "usage": "Do not use as Button, NavigationItem, Chip, or page-level route link; use TabsSegmented (not standalone) for pill switchers",
+                    "selectedLabelContrast": "primary|secondary selected LABEL = text/primary (Figma, React, Flutter since 2026-11-24); brand color only on icon and underline — same model as NavigationBarItem."
                 },
                 "tokenRules": [
-                    "primary/secondary: color/actions/primary, color/background-surface/0|2, text/primary|brand, border/radius/0|300",
+                    "primary/secondary: selected label text/primary (AA; actions/primary label was 3.9:1 on surface/2 until 2026-11-24) — color/actions/primary stays on selected icon + selectedIndicator; color/background-surface/0|2, text/secondary (default), border/radius/0|300",
                     "segmented: selected color/actions/primary + text/on-color; default text/secondary; hover surface/2 + text/primary; disabled text/placeholder; border/radius/full; spacing/050 pads",
                     "spacing/050 | 100 | 150",
                     "Border/Icon/20 may remain on icon strokeWeight when no local kebab equivalent exists"
@@ -10359,7 +10386,8 @@
                     "composition": "Compose only local TabItem variant=primary (tabItem01–tabItem0N)",
                     "intentionalSparse": "appearance=inverse published only for platform=mobile — not for platform=web",
                     "selectionDemo": "Demo shows tabItem01 as selected; product selection via nested TabItem.state",
-                    "usage": "Do not use as single TabItem, segmented control, nav bar, chip group, breadcrumb or button group"
+                    "usage": "Do not use as single TabItem, segmented control, nav bar, chip group, breadcrumb or button group",
+                    "legacyRemote": "appearance=inverse surface bound to local color/background-surface/inverse-2 (was remote Color/Background Surface/Inverse 2 until 2026-11-24)."
                 },
                 "tokenRules": [
                     "spacing/050 | 100 | 150 | 200 on the wrapper",
@@ -10471,7 +10499,9 @@
                     "actionLabel": "actionLabel is React-side; in Figma set nested action Button label when showAction=true",
                     "elevation": "Drop shadow uses effect style elevation/1 (not color/elevation/6)",
                     "iconFillParity": "Prefer local content-layer feedback/{info|success|danger|warning}. success already local; info still on background-feedback-primary/info; danger|warning may resolve via remote aliases with the same feedback/* names.",
-                    "usage": "Do not use as Modal, Banner, Alert, AlertDialog or persistent critical content"
+                    "usage": "Do not use as Modal, Banner, Alert, AlertDialog or persistent critical content",
+                    "actionContrast": "nested action + dismiss Button variant=text appearance=inverse (on-color on surface/inverse-3) since 2026-11-24 — appearance=default was 1.4:1.",
+                    "radius": "border/radius/200 (Figma binding; seed said 400 until 2026-11-24)."
                 },
                 "statusMap": {
                     "system": {
@@ -10505,7 +10535,7 @@
                 },
                 "tokenRules": [
                     "color/background-surface/inverse-3, text/on-color",
-                    "spacing/0 | 150 | 200, border/radius/400",
+                    "spacing/0 | 150 | 200, border/radius/200",
                     "effect style elevation/1",
                     "status icon fills: success → feedback/success; danger|warning → feedback/danger|warning; info → color/background-feedback-primary/info (prefer feedback/info)"
                 ],
@@ -11915,6 +11945,8 @@
             }
         },
         "recentUpdates": [
+            "Accessibility + consistency pass (wave 2): TabItem primary|secondary selected label text/primary (brand stays on icon/indicator); Toast action/dismiss Button appearance=inverse, radius border/radius/200 in seed; DividerHorizontal subhead text/secondary; ReferralDiscountCard discountPercent + current tick text/primary; VehicleSummaryCard plate text/secondary; QuickAccessTile label realigned in Figma to caption/medium/medium + text/primary; React aligned to Figma — Banner action always intent=primary, Accordion summary visible when expanded; Badge text on local caption/large/regular; description fixes (Banner danger, LoadingSpinner xs, Badge tokens); circle-dot-filled icon redrawn with center hole. React Avatar keeps the Escritório Virtual scale (16–56) — documented divergence, no breaking change.",
+            "Flutter wave 2 audit fixes: Badge nodeId 3086:5079 (orphan) → 3669:8175 (seed + Code Connect); TabsPrimary (8) and Accordion (12) legacy remote variables → local color/background-surface/inverse-2 and color/border/2; ReferralDiscountCard gaps 16/8/12 → spacing/200|100|150; OfferProductCard icon container radius → border/radius/full; Banner gap 8 → spacing/100 and padding 20 → spacing/250; remaining values without token logged in meta.governance.unboundValues.",
             "Review decisions: chips default emphasis=secondary (Figma top-left, React, Flutter — EV unchanged); Button contrast AA — actions/primary → sapphire #516CE7 (4.52:1), actions/danger → crimson-red #D81C1A (5.12:1), solid secondary label/icons → text/primary, solid success label → text/on-color, success|secondary hover/pressed/selected state layer (stateOverlay LINEAR_BURN); new color/background-surface/brand-strong (#516CE7) for brand fills with small on-color text (chips brand, Alert inverse, AppHeader inverse site-loovi|app-cliente); Banner info primary → feedback-primary/info; NavigationBarItem selected label text/primary + badge count text/primary; ChipClickable delete hit area ≥ 24 in code; chip icon/avatar sizes bound to spacing tokens (ChipClickable sm avatar 22 → 20, height 30 → 28); ChipTag secondary/success variants were stacked on primary — repositioned; AppHeader small-centered title centered (390 wide, balanced sides); Button seed props aligned to Figma (no trailingIcon swap; loading = state; disabled = VARIANT); 115 legacy remote variable bindings rebound to local tokens; variableCount 301.",
             "Seed review vs Figma: ChipGroup nodeId 3437:3023 (node no longer exists) → 3667:2570 (current ChipGroup COMPONENT_SET); UploadPhotos and VehicleSummaryCard ChipTag references strong → emphasis=primary (strong|soft renamed today). All 300 local variables (semantic, primitives, typography, product-theme × 3 modes) re-checked against tokens.* and meta.productTheme — no value or alias drift.",
             "Design fixes: Button appearance=inverse (+24 variants, outline|text primary) and Alert inverse action uses it; Button solid success fill → color/actions/success (AA with on-color); outline|text danger labels → text/danger; Alert showClose (official close action); Modal showFooter (official footer, max 1 primary); RadioButton disabled+checked ring border/width/050 text/placeholder; AppHeader specific trailing actions side by side (no overlap); ModalHeader desktop leadingSpacer → spacing/500; exact-value gaps/paddings/radii bound to tokens across wave components (values without token reported in meta.governance.unboundValues).",
