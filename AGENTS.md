@@ -10,6 +10,7 @@ Orientações para agentes Cursor neste repositório. Leia antes de auditar Figm
 | File key | `mHm12Zu9tgNmaSYnooihE5` |
 | Repo | https://github.com/dalissonLoovi/ds-2.0-s2 |
 | Storybook (Pages) | https://dalissonloovi.github.io/ds-2.0-s2/ |
+| Widgetbook Flutter (Pages) | https://dalissonloovi.github.io/ds-2.0-s2/flutter/ |
 | Metadata seed | `design-system-tokens.storybook.updated.v2.json` |
 | Storybook app | `storybook/` |
 

@@ -206,6 +206,8 @@ Figma (ajuste)
 13. React para CommentItem, BrandLogo e PaymentMethodMark (quando pedido)
 14. **Saída Flutter (App Cliente)** — onda 1 entregue em 2026-11-23 (`loovi_tokens` + `loovi_ds`, 21 componentes; ver [`FLUTTER-CONTRIBUTING.md`](./FLUTTER-CONTRIBUTING.md) e [`FLUTTER-INVENTORY.md`](./FLUTTER-INVENTORY.md)). Próxima onda só quando pedida.
     - **Onda 2 entregue (2026-11-24, 36 componentes no total):** QuickAccessTile, VehicleSummaryCard, OfferProductCard, ReferralDiscountCard, Avatar, Badge, LoadingSpinner, DividerHorizontal, Toast, Banner, TabItem, TabsPrimary/Secondary/Segmented, Accordion. Auditoria aplicada (revision `2026-11-24-wave2-audit-fixes`): Badge nodeId → `3669:8175`; variáveis remotas legadas no TabsPrimary e Accordion trocadas; gaps/raio ligados a tokens.
+    - **Widgetbook publicado (2026-11-24):** https://dalissonloovi.github.io/ds-2.0-s2/flutter/ (job `widgetbook` no workflow do Pages).
+    - **Onda 3 (em andamento):** formulários e fluxos — InputSelect, InputDatePicker, DatePickerSelect(Item), InputNumber, SelectCountry, InputNumberTrailingPaymentMark, Autocomplete, SearchBar, SearchViewFullscreen, VerificationCodeInput(Item), RadioButtonCard, ChipGroup, ModalCheckItem, BottomSheetCheckItem, ProgressBar, StepProgressIndicator/Segment, StepperPrimary, VerticalStepper(Item), Tooltip, TooltipRich.
 
 ### Achados da auditoria Flutter (2026-11-23)
 

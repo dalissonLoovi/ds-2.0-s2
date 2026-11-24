@@ -44,8 +44,31 @@ jobs:
       - run: npm test
       - run: npm run lint:variants
 
-  build:
+  widgetbook:
+    # Flutter catalog (Widgetbook web) published under /flutter/ next to Storybook.
     needs: verify
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.50.1'
+          channel: stable
+          cache: true
+      - name: Build Widgetbook (web)
+        working-directory: packages/flutter_widgetbook
+        run: |
+          flutter pub get
+          flutter build web --release --base-href "/${{ github.event.repository.name }}/flutter/"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: widgetbook-web
+          path: packages/flutter_widgetbook/build/web
+          retention-days: 1
+
+  build:
+    needs: [verify, widgetbook]
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
@@ -62,6 +85,11 @@ jobs:
           GITHUB_PAGES: 'true'
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: npm run build-storybook -w @ds/storybook
+      - name: Add Widgetbook under /flutter
+        uses: actions/download-artifact@v4
+        with:
+          name: widgetbook-web
+          path: storybook/storybook-static/flutter
       - uses: actions/upload-pages-artifact@v3
         with:
           path: storybook/storybook-static

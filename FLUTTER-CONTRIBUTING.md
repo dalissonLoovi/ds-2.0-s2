@@ -48,6 +48,8 @@ Goldens: `textScaler` travado em 1.0 e Poppins carregada (`setUpAll(loadGoldenFo
 
 ## Widgetbook
 
+Publicado em https://dalissonloovi.github.io/ds-2.0-s2/flutter/ — o workflow `.github/workflows/storybook.yml` (job `widgetbook`) gera a build web a cada push em `main` e a coloca em `/flutter/` junto do Storybook.
+
 ```bash
 cd packages/flutter_widgetbook
 flutter run -d chrome          # ou: flutter build web && servir build/web
