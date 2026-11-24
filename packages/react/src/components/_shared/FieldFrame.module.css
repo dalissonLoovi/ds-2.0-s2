@@ -9,12 +9,16 @@
   --field-icon-color: var(--text-secondary);
   --field-placeholder-color: var(--text-placeholder);
   --field-support-color: var(--text-secondary);
+  /* Figma Input: field padding-x spacing/300 (24); floating label text at 24 (frame 20 + pad 4). */
+  --field-pad-x: var(--spacing-300, 24px);
   --field-notch-inset-x: var(--spacing-150, 12px);
-  --field-notch-label-x: var(--spacing-200, 16px);
+  --field-notch-label-x: calc(var(--field-pad-x) - var(--spacing-050, 4px));
+  --field-label-line: var(--typography-body-small-regular-line-height, 17px);
 
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-100, 8px);
+  /* Figma: supporting row sits 4px under the field (spacing/050). */
+  gap: var(--spacing-050, 4px);
   width: 100%;
   max-width: 360px;
   overflow: visible;
@@ -23,7 +27,7 @@
 
 /* Half the floated label line-height keeps the stroke aligned without a separate label row. */
 .rootFloated {
-  margin-top: calc(var(--typography-body-small-regular-line-height, 17px) / 2);
+  margin-top: calc(var(--field-label-line) / 2);
 }
 
 .field {
@@ -42,7 +46,7 @@
   gap: var(--spacing-100, 8px);
   box-sizing: border-box;
   height: 56px;
-  padding: 0 var(--spacing-200, 16px);
+  padding: 0 var(--field-pad-x);
 }
 
 .fieldMultiline .fieldInner {
@@ -75,7 +79,11 @@
 
 .notchedOutline {
   position: absolute;
-  inset: 0;
+  /* UA draws the top border through the legend's vertical middle → shift up by half its height
+     so the stroke lands on the field's top edge (2026-11-24 fix: label looked detached in EV). */
+  inset: calc(var(--field-label-line) / -2) 0 0 0;
+  box-sizing: border-box;
+  text-align: start;
   z-index: 0;
   margin: 0;
   padding: 0 var(--field-notch-inset-x);
@@ -87,12 +95,19 @@
 }
 
 .notchedLegend {
-  float: unset;
+  /* Pinned against global resets (e.g. Bootstrap reboot legend { float; width:100%; font-size; margin }). */
+  display: block;
+  float: none;
   width: auto;
+  height: var(--field-label-line);
   max-width: 0.01px;
   overflow: hidden;
   padding: 0;
   margin: 0;
+  border: 0;
+  font-size: var(--typography-body-small-regular-font-size, 12px);
+  line-height: var(--field-label-line);
+  white-space: nowrap;
   margin-inline-start: calc(var(--field-notch-label-x) - var(--field-notch-inset-x));
   transition: max-width 120ms ease;
 }
@@ -107,11 +122,15 @@
   visibility: hidden;
   white-space: nowrap;
   font-size: var(--typography-body-small-regular-font-size, 12px);
-  line-height: var(--typography-body-small-regular-line-height, 17px);
+  line-height: var(--field-label-line);
+  vertical-align: top;
 }
 
 .floatedLabel {
   position: absolute;
+  display: block;
+  margin: 0;
+  box-sizing: border-box;
   z-index: 2;
   top: 0;
   left: var(--field-notch-label-x);
@@ -128,19 +147,24 @@
   font-weight: var(--typography-body-small-regular-font-weight, 400);
 }
 
-.fieldHasLeading.fieldFloated .floatedLabel {
-  left: calc(var(--field-notch-label-x) - var(--spacing-050, 4px));
+/* Figma: with leadingIcon the floating label, notch and resting label align with the value text
+   (pad 24 + icon 20 + gap 8 = 52). */
+.fieldHasLeading {
+  --field-content-x: calc(var(--field-pad-x) + 20px + var(--spacing-100, 8px));
+  --field-notch-label-x: calc(var(--field-content-x) - var(--spacing-050, 4px));
 }
 
 .restingLabel {
   position: absolute;
-  left: 0;
+  display: block;
+  margin: 0;
   top: 50%;
   max-width: calc(100% - var(--spacing-500, 32px));
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   pointer-events: none;
+  left: var(--field-content-x, var(--field-pad-x));
   transform: translateY(-50%);
   color: var(--field-label-color);
   font-size: var(--typography-body-large-regular-font-size, 16px);
@@ -148,9 +172,7 @@
   font-weight: var(--typography-body-large-regular-font-weight, 400);
 }
 
-.fieldHasLeading .restingLabel {
-  left: calc(20px + var(--spacing-100, 8px));
-}
+
 
 .state-hover .notchedOutline {
   --field-border: var(--color-border-feedback-primary);
@@ -221,6 +243,8 @@
 }
 
 .metaRow {
+  /* Figma supporting: padding-x spacing/200 (16). */
+  padding: 0 var(--spacing-200, 16px);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -244,6 +268,9 @@
 }
 
 .controlBase {
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
   flex: 1;
   min-width: 0;
   width: 100%;

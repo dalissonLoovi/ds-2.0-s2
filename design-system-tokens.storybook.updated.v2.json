@@ -693,9 +693,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-11-24T17:21:47.750Z",
-        "storybookRevision": "2026-11-24-a11y-consistency",
+        "storybookUpdatedAt": "2026-11-24T17:39:49.235Z",
+        "storybookRevision": "2026-11-24-react-field-frame",
         "changelog": [
+            {
+                "date": "2026-11-24",
+                "type": "react-fix",
+                "summary": "React inputs (Escritório Virtual): FieldFrame fix — the outline was drawn ~8.5px below the field top (fieldset legend midline) and global resets (Bootstrap reboot legend/label) detached the floating label even more; stroke now lands on the field edge with the label centered on it, legend/label metrics pinned against resets, field padding-x 24, label aligned with value (24 / 52 with leadingIcon), resting label no longer overlaps the border, supporting text 4px below with 16 inset (Figma). Applies to Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete. InputTextArea: resize handle moved to the textarea (overflow:auto on the field clipped the label/notch). InputSelect/InputDatePicker trigger no longer adds its own padding (value aligned with the label)."
+            },
             {
                 "date": "2026-11-24",
                 "type": "a11y-consistency",
@@ -5775,7 +5780,8 @@
                     "externalDropdown": "ListActionDropdown floats below field when expanded=true; never nested in the set",
                     "loadingOverClear": "loading=true takes precedence; bind loadingIndicator visible to loading on empty/query/selected where present",
                     "floatingLabelPlaceholder": "Placeholder shows on state=focus + content=empty; resting label when empty and not focused",
-                    "vsInputSelectSearch": "Do not use as InputSelect, free-text Input, SearchBar, multi-select, or PaginationSelectInput"
+                    "vsInputSelectSearch": "Do not use as InputSelect, free-text Input, SearchBar, multi-select, or PaginationSelectInput",
+                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand",
@@ -8040,7 +8046,8 @@
                     "hoverBorder": "state=hover field stroke uses color/border-feedback/primary",
                     "vsSearchSelect": "Do not use as Textarea, InputSelect, InputNumber, InputPassword, Input Search, Select, Checkbox or PaginationSelectInput",
                     "labelRequired": "Prefer explicit label — do not rely on placeholder alone",
-                    "productTheme": "Field corner radius binds component/input/field/radius — EV→border/radius/200; site-loovi|app-cliente→border/radius/full. Do not hardcode radius/200 on the outlined container."
+                    "productTheme": "Field corner radius binds component/input/field/radius — EV→border/radius/200; site-loovi|app-cliente→border/radius/full. Do not hardcode radius/200 on the outlined container.",
+                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand",
@@ -8127,7 +8134,8 @@
                     "vsSingleLine": "Not single-line Input, InputSelect, InputPassword, InputNumber, or rich-text",
                     "errorStroke": "state=focus and state=error use border/width/025 (2px); other states border/width/012",
                     "productTheme": "Field corner radius binds component/input-textarea/field/radius — EV→border/radius/200; site-loovi|app-cliente→border/radius/500 (not full). Do not hardcode radius/200 on the outlined container.",
-                    "restingLabelTypography": "content=label restingLabel uses body/large/regular (16/22) — same as value/placeholder; floating labelText stays caption/large/regular"
+                    "restingLabelTypography": "content=label restingLabel uses body/large/regular (16/22) — same as value/placeholder; floating labelText stays caption/large/regular",
+                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/1",
@@ -8224,7 +8232,8 @@
                     "nestedSelectState": "Nested SelectCountry expanded=false; disabled only when InputNumber disabled; else default",
                     "externalCountryMenu": "Country list floats externally — never nested in InputNumber",
                     "binDetectionProduct": "Brand mark visibility driven by product BIN detection — hide mark when brand unknown",
-                    "vsInputSelectPhone": "Do not use as Input, InputSelect, InputPassword, Autocomplete, SelectCountry standalone, stepper, or SearchBar"
+                    "vsInputSelectPhone": "Do not use as Input, InputSelect, InputPassword, Autocomplete, SelectCountry standalone, stepper, or SearchBar",
+                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand",
@@ -8314,7 +8323,8 @@
                     "buttonStateDefault": "Nested Button stays default; disabled=true only when field disabled",
                     "errorTrailingA11y": "state=error shows trailingIconError beside visibilityAction",
                     "disabledNoFill": "appearance=default disabled has no field fill; inverse field always transparent",
-                    "vsInputNumberSelect": "Do not use as Input, InputNumber, InputSelect, SearchBar or Autocomplete"
+                    "vsInputNumberSelect": "Do not use as Input, InputNumber, InputSelect, SearchBar or Autocomplete",
+                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
                 },
                 "tokenRules": [
                     "default: color/background-surface/0, color/border/1, text/primary|secondary|placeholder|brand",
@@ -8960,7 +8970,8 @@
                     "errorTrailingA11y": "state=error always shows trailingIconError (alert-circle-outline) beside the calendar icon",
                     "disabledNoFill": "appearance=default disabled: no field fill; stroke color/border/1",
                     "hoverBorder": "state=hover field stroke uses color/border-feedback/primary",
-                    "vsInputCalendar": "Do not use as generic Input, InputSelect, Autocomplete, or standalone Calendar panel"
+                    "vsInputCalendar": "Do not use as generic Input, InputSelect, Autocomplete, or standalone Calendar panel",
+                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand",
@@ -9028,7 +9039,8 @@
                     "errorTrailingA11y": "state=error always shows trailingIconError (alert-circle-outline) beside the always-on chevron",
                     "floatingListActionDropdown": "Do not embed ListActionDropdown in variants — compose floating ListActionDropdown on click in screens/prototypes",
                     "noExpandedAxis": "No expanded variant axis — open state lives on the screen with floating menu",
-                    "vsInputPagination": "Do not use as Input, PaginationSelectInput, SearchBar, or Textarea"
+                    "vsInputPagination": "Do not use as Input, PaginationSelectInput, SearchBar, or Textarea",
+                    "reactFieldFrame": "React FieldFrame (shared by Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete): the outlined stroke sits on the field top edge with the floating label centered on it (fieldset pulled up by half the legend line-height; legend/label metrics pinned against global CSS resets such as Bootstrap reboot). Field padding-x spacing/300 (24); floating + resting label aligned with the value (24, or 52 with leadingIcon); supporting row 4px below (spacing/050) with padding-x spacing/200 (16) — Figma. Fixed 2026-11-24 (label looked detached from the field in Escritório Virtual)."
                 },
                 "tokenRules": [
                     "default: color/background-surface/0; color/border/1; text/primary|secondary|placeholder|brand",
@@ -11945,6 +11957,7 @@
             }
         },
         "recentUpdates": [
+            "React inputs (Escritório Virtual): FieldFrame fix — the outline was drawn ~8.5px below the field top (fieldset legend midline) and global resets (Bootstrap reboot legend/label) detached the floating label even more; stroke now lands on the field edge with the label centered on it, legend/label metrics pinned against resets, field padding-x 24, label aligned with value (24 / 52 with leadingIcon), resting label no longer overlaps the border, supporting text 4px below with 16 inset (Figma). Applies to Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete. InputTextArea: resize handle moved to the textarea (overflow:auto on the field clipped the label/notch). InputSelect/InputDatePicker trigger no longer adds its own padding (value aligned with the label).",
             "Accessibility + consistency pass (wave 2): TabItem primary|secondary selected label text/primary (brand stays on icon/indicator); Toast action/dismiss Button appearance=inverse, radius border/radius/200 in seed; DividerHorizontal subhead text/secondary; ReferralDiscountCard discountPercent + current tick text/primary; VehicleSummaryCard plate text/secondary; QuickAccessTile label realigned in Figma to caption/medium/medium + text/primary; React aligned to Figma — Banner action always intent=primary, Accordion summary visible when expanded; Badge text on local caption/large/regular; description fixes (Banner danger, LoadingSpinner xs, Badge tokens); circle-dot-filled icon redrawn with center hole. React Avatar keeps the Escritório Virtual scale (16–56) — documented divergence, no breaking change.",
             "Flutter wave 2 audit fixes: Badge nodeId 3086:5079 (orphan) → 3669:8175 (seed + Code Connect); TabsPrimary (8) and Accordion (12) legacy remote variables → local color/background-surface/inverse-2 and color/border/2; ReferralDiscountCard gaps 16/8/12 → spacing/200|100|150; OfferProductCard icon container radius → border/radius/full; Banner gap 8 → spacing/100 and padding 20 → spacing/250; remaining values without token logged in meta.governance.unboundValues.",
             "Review decisions: chips default emphasis=secondary (Figma top-left, React, Flutter — EV unchanged); Button contrast AA — actions/primary → sapphire #516CE7 (4.52:1), actions/danger → crimson-red #D81C1A (5.12:1), solid secondary label/icons → text/primary, solid success label → text/on-color, success|secondary hover/pressed/selected state layer (stateOverlay LINEAR_BURN); new color/background-surface/brand-strong (#516CE7) for brand fills with small on-color text (chips brand, Alert inverse, AppHeader inverse site-loovi|app-cliente); Banner info primary → feedback-primary/info; NavigationBarItem selected label text/primary + badge count text/primary; ChipClickable delete hit area ≥ 24 in code; chip icon/avatar sizes bound to spacing tokens (ChipClickable sm avatar 22 → 20, height 30 → 28); ChipTag secondary/success variants were stacked on primary — repositioned; AppHeader small-centered title centered (390 wide, balanced sides); Button seed props aligned to Figma (no trailingIcon swap; loading = state; disabled = VARIANT); 115 legacy remote variable bindings rebound to local tokens; variableCount 301.",

@@ -7,7 +7,9 @@
   align-items: center;
   width: 100%;
   height: 56px;
-  padding: 0 var(--spacing-200, 12px);
+  /* FieldFrame already insets 24 (spacing/300); leading/trailing icons live outside the trigger,
+     so the trigger adds no padding — value aligns with the floating label (2026-11-24). */
+  padding: 0;
   border: 0;
   background: transparent;
   color: inherit;

@@ -1,6 +1,7 @@
-.resizable {
+/* Resize the textarea itself: overflow:auto on the field clipped the floating label and the
+   outline notch (2026-11-24). The field grows with the control. */
+.resizable .control {
   resize: vertical;
-  overflow: auto;
 }
 
 .control {
