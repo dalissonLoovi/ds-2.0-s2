@@ -1,6 +1,6 @@
 # loovi_tokens — mode `app-cliente` resolvido
 
-> Gerado por `tool/generate_tokens.mjs` a partir do seed (revision `2026-11-23-review-decisions`). Não editar à mão.
+> Gerado por `tool/generate_tokens.mjs` a partir do seed (revision `2026-11-25-brand-deep`). Não editar à mão.
 
 | Path | Alias (seed) | Cadeia | Valor final | Unidade | Dart |
 | --- | --- | --- | --- | --- | --- |
