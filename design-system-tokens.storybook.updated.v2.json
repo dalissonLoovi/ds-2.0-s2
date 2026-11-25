@@ -697,9 +697,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-11-25T18:39:41.147Z",
-        "storybookRevision": "2026-11-25-illustrations",
+        "storybookUpdatedAt": "2026-11-25T18:57:04.138Z",
+        "storybookRevision": "2026-11-25-border-2-graph",
         "changelog": [
+            {
+                "date": "2026-11-25",
+                "type": "tokens",
+                "summary": "color/border/2 re-aliased from ash (#EBEBEB, 1.16:1 on surface/0) to primitive-colors/graph (#C0C0C0, 1.78:1) — area demarcation was too faint. Affects every product (dividers, outlined cards/chips, tracks, disabled field strokes); border/1 (#727688, 4.4:1) stays the interactive outline. Figma VariableID:45:5193."
+            },
             {
                 "date": "2026-11-25",
                 "type": "illustrations",
@@ -2807,8 +2812,8 @@
                 },
                 "2": {
                     "$type": "color",
-                    "$value": "#EBEBEB",
-                    "$description": "export: color-border-2"
+                    "$value": "#C0C0C0",
+                    "$description": "export: color-border-2 | Area / section demarcation stroke (dividers, outlined cards and chips, tracks). Alias of primitive-colors/graph (#C0C0C0, 1.78:1 on surface/0) since 2026-11-25 — was ash #EBEBEB (1.16:1, too faint). Keep border/1 (#727688) for interactive outlines."
                 },
                 "3": {
                     "$type": "color",
@@ -12047,6 +12052,7 @@
             }
         },
         "recentUpdates": [
+            "color/border/2 re-aliased from ash (#EBEBEB, 1.16:1 on surface/0) to primitive-colors/graph (#C0C0C0, 1.78:1) — area demarcation was too faint. Affects every product (dividers, outlined cards/chips, tracks, disabled field strokes); border/1 (#727688, 4.4:1) stays the interactive outline. Figma VariableID:45:5193.",
             "Illustrations in code: all 60 components of the Figma page \"Ilustrações e animações\" (4326:1764) exported as cleaned SVG — Flutter LooviIllustration(LooviIllustrations.*) + gallery (Widgetbook, golden) and React <Illustration name=\"group/name\" /> (lazy per file) + Storybook \"Foundations/Illustrations\"; React ListItemLeading/TrailingIllustration and VehicleSummaryCard now render real art. Credit-card illustrations use the placeholder cardholder \"NOME SOBRENOME\" (Figma updated). Manifest packages/flutter_ds/tool/illustrations.json; regenerate with npm run flutter:illustrations.",
             "New tokens: primitive-colors/sapphire-700 (#3E54E0, deep sapphire) and color/background-surface/brand-deep (alias) — deepest brand surface for hero/highlight bands with on-color text (5.92:1). Requested for the Portal do Terceiro hero. Figma (VariableID 5479:2 / 5479:3), CSS (--color-background-surface-brand-deep) and Flutter (t.color.backgroundSurfaceBrandDeep).",
             "Wave 5 (Flutter 102 components) + audit fixes: PhotoTextItem scrim ramps to 75% behind the text (AA); FileUploaderItem error text 12 px body/small/regular and danger icon feedback/danger; Slider disabled drops legacy Carbon token/IBM Plex styles; SliderRail/LeftRail descriptions cleaned; UploadPhotos rejected tag = ChipTag warning; FileUploader nested dropzones inherit main padding; TableMobile interactive described as expanded/collapsed and detail padding unified (spacing/700); ImageOrientationItem description renamed from Block; camera-outline icon created in the App Cliente icon file; Tooltip/TooltipRich initiallyOpen (Widgetbook shows the bubble).",

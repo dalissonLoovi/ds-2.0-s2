@@ -1,6 +1,6 @@
 # Inventário Flutter — DS S2
 
-> Gerado por `packages/flutter_ds/tool/generate_catalog.mjs` (seed `2026-11-25-illustrations`). Não editar à mão.
+> Gerado por `packages/flutter_ds/tool/generate_catalog.mjs` (seed `2026-11-25-border-2-graph`). Não editar à mão.
 > "Entra no app" é uma triagem inicial para o App Cliente; revisar antes de cada nova onda.
 
 Total: 130 componentes · Flutter: 102 · fora do app: 28

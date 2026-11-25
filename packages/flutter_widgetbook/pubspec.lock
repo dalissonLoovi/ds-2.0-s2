@@ -211,14 +211,14 @@ packages:
       path: "../flutter_ds"
       relative: true
     source: path
-    version: "0.1.2"
+    version: "0.1.3"
   loovi_tokens:
     dependency: "direct main"
     description:
       path: "../flutter_tokens"
       relative: true
     source: path
-    version: "0.1.2"
+    version: "0.1.3"
   matcher:
     dependency: transitive
     description:

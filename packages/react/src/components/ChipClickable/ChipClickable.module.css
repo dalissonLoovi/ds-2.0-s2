@@ -5,7 +5,7 @@
   box-sizing: border-box;
   margin: 0;
   border-radius: var(--border-radius-full, 999px);
-  border: 1px solid var(--color-border-2, #ebebeb);
+  border: 1px solid var(--color-border-2, #c0c0c0);
   background: var(--color-background-surface-0, #fff);
   color: var(--text-primary);
   font: inherit;
@@ -52,7 +52,7 @@
   /* no overflow:hidden — ::before overlay already uses border-radius:inherit, and the
      delete-action hit area (24×24) must not be clipped by the chip padding box. */
   background: var(--color-background-surface-0, #fcfcfe);
-  border-color: var(--color-border-2, #ebebeb);
+  border-color: var(--color-border-2, #c0c0c0);
 }
 
 /* Match Figma: base surface/0 + interactive/* overlay with Plus Darker (LINEAR_BURN) */

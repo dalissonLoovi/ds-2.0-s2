@@ -28,7 +28,7 @@ dependencies:
     git:
       url: https://github.com/dalissonLoovi/ds-2.0-s2
       path: packages/flutter_ds
-      ref: flutter-v0.1.2
+      ref: flutter-v0.1.3
 ```
 
 Depois: `flutter pub get`. Não é preciso declarar `loovi_tokens`; ele vem junto.
@@ -100,6 +100,7 @@ Ficam com o app:
 
 | Tag | Data | Conteúdo |
 | --- | --- | --- |
+| `flutter-v0.1.3` | 2026-11-25 | `color/border/2` mais visível: `#EBEBEB` → `#C0C0C0` (primitivo `graph`) — divisores, contornos de cards/chips e trilhos. |
 | `flutter-v0.1.2` | 2026-11-25 | 60 ilustrações do DS: `LooviIllustration(LooviIllustrations.claimReasonTheft, width: 156)` (decorativa por padrão; `semanticLabel` quando informar algo). |
 | `flutter-v0.1.1` | 2026-11-25 | Token novo `color/background-surface/brand-deep` (`#3E54E0`, primitivo `sapphire-700`): fundo de marca mais escuro para hero/faixas com texto branco — `t.color.backgroundSurfaceBrandDeep`. |
 | `flutter-v0.1.0` | 2026-11-25 | Primeira versão: 102 componentes (ondas 1–5), 58 ícones, 25 marcas de pagamento, logo e ilustrações. |

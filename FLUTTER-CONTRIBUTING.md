@@ -66,7 +66,7 @@ dependencies:
     git:
       url: https://github.com/dalissonLoovi/ds-2.0-s2
       path: packages/flutter_ds
-      ref: flutter-v0.1.2   # tag de versão; não usar main em produção
+      ref: flutter-v0.1.3   # tag de versão; não usar main em produção
 ```
 
 ```dart

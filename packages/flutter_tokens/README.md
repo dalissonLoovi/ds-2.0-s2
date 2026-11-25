@@ -12,7 +12,7 @@ loovi_tokens:
   git:
     url: https://github.com/dalissonLoovi/ds-2.0-s2
     path: packages/flutter_tokens
-    ref: flutter-v0.1.2
+    ref: flutter-v0.1.3
 ```
 
 Arquivos em `lib/src/generated/` são gerados por `npm run flutter:tokens` — não editar à mão.
