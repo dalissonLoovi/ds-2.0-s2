@@ -55,18 +55,18 @@ cd packages/flutter_widgetbook
 flutter run -d chrome          # ou: flutter build web && servir build/web
 ```
 
-## Consumir no app (`../app-cliente`)
+## Consumir em um app
 
-Só quando o time pedir para ligar o pacote no app:
+Guia completo (instalação, tema, o que o app fornece): [`packages/flutter_ds/README.md`](./packages/flutter_ds/README.md).
 
 ```yaml
-# app-cliente/pubspec.yaml
 dependencies:
   material_ui: ^1.11.1
-  loovi_tokens:
-    path: ../ds/packages/flutter_tokens
   loovi_ds:
-    path: ../ds/packages/flutter_ds
+    git:
+      url: https://github.com/dalissonLoovi/ds-2.0-s2
+      path: packages/flutter_ds
+      ref: flutter-v0.1.0   # tag de versão; não usar main em produção
 ```
 
 ```dart
@@ -77,7 +77,14 @@ final t = LooviTokens.of(context);
 Padding(padding: EdgeInsets.all(t.spacing.s200), child: LooviButton(label: 'Continuar', onPressed: ...));
 ```
 
-Depois: `git` + tag (`ref: flutter-v0.1.0`, `path: packages/flutter_ds`) quando o repo tiver tags. O pacote não depende de Riverpod, Bloc nem go_router.
+Dependência por caminho (`path: ../ds/packages/flutter_ds`) só serve para desenvolvimento local com as duas pastas lado a lado. O pacote não depende de Riverpod, Bloc nem go_router.
+
+### Versionar (lançar uma versão)
+
+1. Suíte verde (`flutter analyze` + `flutter test` em `packages/flutter_ds` e `packages/flutter_tokens`).
+2. Subir `version` nos dois `pubspec.yaml` e adicionar a linha na tabela "Versões" do README do `loovi_ds`.
+3. Commit em `main`, depois `git tag flutter-vX.Y.Z` e `git push origin flutter-vX.Y.Z`.
+4. Avisar o time do app para trocar o `ref`.
 
 ## Regras para widgets (Definition of Done)
 
