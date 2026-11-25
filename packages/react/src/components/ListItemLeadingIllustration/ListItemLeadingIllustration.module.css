@@ -17,3 +17,8 @@
 .root[data-asset='suv'] {
   background-color: var(--color-background-surface-2);
 }
+
+/* Catalog art resolved from illustrationAsset: no placeholder fill (seed: slot has no fill). */
+.root[data-art] {
+  background: none;
+}

@@ -2,6 +2,8 @@ import 'package:loovi_tokens/loovi_tokens.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:widgetbook/widgetbook.dart';
 
+import 'illustrations_use_cases.dart';
+
 /// Foundation gallery — every value comes from `LooviTokens` (generated).
 WidgetbookFolder foundationFolder() => WidgetbookFolder(
       name: 'Foundations',
@@ -22,6 +24,7 @@ WidgetbookFolder foundationFolder() => WidgetbookFolder(
         WidgetbookComponent(name: 'Product theme', useCases: [
           WidgetbookUseCase(name: 'app-cliente', builder: (c) => const _ProductThemePage()),
         ]),
+        illustrationsComponent(),
       ],
     );
 

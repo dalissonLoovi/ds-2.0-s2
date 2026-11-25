@@ -18,7 +18,8 @@
     "build-storybook": "npm run build-storybook -w @ds/storybook",
     "build": "npm run tokens:build && npm run react:build && npm run docs:generate",
     "flutter:tokens": "node packages/flutter_tokens/tool/generate_tokens.mjs",
-    "flutter:catalog": "node packages/flutter_ds/tool/generate_catalog.mjs"
+    "flutter:catalog": "node packages/flutter_ds/tool/generate_catalog.mjs",
+    "flutter:illustrations": "node packages/flutter_ds/tool/generate_illustrations.mjs"
   },
   "engines": {
     "node": ">=20"

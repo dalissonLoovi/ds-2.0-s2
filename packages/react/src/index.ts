@@ -267,5 +267,10 @@ export type { ModalHeaderProps } from './components/ModalHeader/ModalHeader';
 export { ModalCheckItem } from './components/ModalCheckItem/ModalCheckItem';
 export type { ModalCheckItemProps } from './components/ModalCheckItem/ModalCheckItem';
 
+export { Illustration, illustrationSize, loadIllustration, resolveIllustrationName } from './components/Illustration/Illustration';
+export type { IllustrationFit, IllustrationProps } from './components/Illustration/Illustration';
+export { illustrations, illustrationNames } from './illustrations';
+export type { IllustrationMeta, IllustrationName } from './illustrations';
+
 export { dsIcons } from './icons/dsIcons';
 export type { DsIconName } from './icons/dsIcons';

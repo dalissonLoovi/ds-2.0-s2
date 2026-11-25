@@ -1,5 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { cx } from '../../utils/cx';
+import { Illustration, resolveIllustrationName } from '../Illustration/Illustration';
 import styles from './ListItemLeadingIllustration.module.css';
 
 export type ListItemLeadingIllustrationProps = HTMLAttributes<HTMLSpanElement> & {
@@ -24,12 +25,17 @@ export function ListItemLeadingIllustration({
     );
   }
 
+  // Slug → catalog art (`sedan` or `vehicle-icon/sedan`); unknown slugs keep the empty slot.
+  const art = resolveIllustrationName(illustrationAsset);
   return (
     <span
       className={cx(styles.root, className)}
       data-asset={illustrationAsset ?? undefined}
+      data-art={art ?? undefined}
       aria-hidden
       {...rest}
-    />
+    >
+      {art && <Illustration name={art} width={52} height={52} />}
+    </span>
   );
 }

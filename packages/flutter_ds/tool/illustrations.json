@@ -1,0 +1,557 @@
+{
+  "$comment": "Illustration catalog. Source: Figma [DS] 2.0 - S2 (mHm12Zu9tgNmaSYnooihE5), page Ilustrações e animações (4326:1764). Edit here, then run tool/extract_illustrations.mjs and tool/generate_illustrations.mjs.",
+  "figmaFile": "mHm12Zu9tgNmaSYnooihE5",
+  "figmaPage": "4326:1764",
+  "illustrations": [
+    {
+      "name": "vehicle-icon/sedan",
+      "group": "vehicle-icon",
+      "nodeId": "4468:121",
+      "figmaName": "illustration / vehicle-icon / sedan",
+      "width": 52,
+      "height": 52,
+      "asset": "assets/illustrations/vehicle/sedan.svg",
+      "legacyAsset": true
+    },
+    {
+      "name": "vehicle-icon/van",
+      "group": "vehicle-icon",
+      "nodeId": "4468:122",
+      "figmaName": "illustration / vehicle-icon / van",
+      "width": 52,
+      "height": 52,
+      "asset": "assets/illustrations/vehicle/van.svg",
+      "legacyAsset": true
+    },
+    {
+      "name": "vehicle-icon/suv",
+      "group": "vehicle-icon",
+      "nodeId": "4468:123",
+      "figmaName": "illustration / vehicle-icon / suv",
+      "width": 52,
+      "height": 52,
+      "asset": "assets/illustrations/vehicle/suv.svg",
+      "legacyAsset": true
+    },
+    {
+      "name": "vehicle-icon/tow-truck",
+      "group": "vehicle-icon",
+      "nodeId": "5124:168",
+      "figmaName": "illustration / vehicle-icon / tow-truck",
+      "width": 208,
+      "height": 208,
+      "asset": "assets/illustrations/vehicle-icon/tow-truck.svg"
+    },
+    {
+      "name": "vehicle-icon/vehicle-swap",
+      "group": "vehicle-icon",
+      "nodeId": "5124:169",
+      "figmaName": "illustration / vehicle-icon / vehicle-swap",
+      "width": 260,
+      "height": 260,
+      "asset": "assets/illustrations/vehicle-icon/vehicle-swap.svg"
+    },
+    {
+      "name": "vehicle-card/hatch",
+      "group": "vehicle-card",
+      "nodeId": "4472:121",
+      "figmaName": "illustration / vehicle-card / hatch",
+      "width": 104,
+      "height": 104,
+      "asset": "assets/illustrations/vehicle-card/hatch.svg"
+    },
+    {
+      "name": "device/location-access",
+      "group": "device",
+      "nodeId": "4472:122",
+      "figmaName": "illustration / device / location-access",
+      "width": 312,
+      "height": 312,
+      "asset": "assets/illustrations/device/location-access.svg"
+    },
+    {
+      "name": "device/location-access-shadow",
+      "group": "device",
+      "nodeId": "4472:123",
+      "figmaName": "illustration / device / location-access-shadow",
+      "width": 312,
+      "height": 312,
+      "asset": "assets/illustrations/device/location-access-shadow.svg"
+    },
+    {
+      "name": "device/app-usage",
+      "group": "device",
+      "nodeId": "4472:18176",
+      "figmaName": "illustration / device / app-usage",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/device/app-usage.svg"
+    },
+    {
+      "name": "device/discount",
+      "group": "device",
+      "nodeId": "4472:18177",
+      "figmaName": "illustration / device / discount",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/device/discount.svg"
+    },
+    {
+      "name": "device/insurance-claim",
+      "group": "device",
+      "nodeId": "4472:18178",
+      "figmaName": "illustration / device / insurance-claim",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/device/insurance-claim.svg"
+    },
+    {
+      "name": "device/smartphone-generic",
+      "group": "device",
+      "nodeId": "5124:170",
+      "figmaName": "illustration / device / smartphone-generic",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/device/smartphone-generic.svg"
+    },
+    {
+      "name": "device/onboarding-features",
+      "group": "device",
+      "nodeId": "4481:121",
+      "figmaName": "illustration / device / onboarding-features",
+      "width": 312,
+      "height": 312,
+      "asset": "assets/illustrations/device/onboarding-features.svg"
+    },
+    {
+      "name": "device/onboarding-explore",
+      "group": "device",
+      "nodeId": "4481:122",
+      "figmaName": "illustration / device / onboarding-explore",
+      "width": 312,
+      "height": 312,
+      "asset": "assets/illustrations/device/onboarding-explore.svg"
+    },
+    {
+      "name": "device/background-location",
+      "group": "device",
+      "nodeId": "4472:124",
+      "figmaName": "illustration / device / background-location",
+      "width": 312,
+      "height": 312,
+      "asset": "assets/illustrations/device/background-location.svg"
+    },
+    {
+      "name": "device/background-location-shadow",
+      "group": "device",
+      "nodeId": "4472:125",
+      "figmaName": "illustration / device / background-location-shadow",
+      "width": 312,
+      "height": 312,
+      "asset": "assets/illustrations/device/background-location-shadow.svg"
+    },
+    {
+      "name": "object/search",
+      "group": "object",
+      "nodeId": "4476:121",
+      "figmaName": "illustration / object / search",
+      "width": 107,
+      "height": 104,
+      "asset": "assets/illustrations/object/search.svg"
+    },
+    {
+      "name": "object/flat-tire",
+      "group": "object",
+      "nodeId": "5128:168",
+      "figmaName": "illustration / object / flat-tire",
+      "width": 208,
+      "height": 208,
+      "asset": "assets/illustrations/object/flat-tire.svg"
+    },
+    {
+      "name": "object/unprotected-vehicle",
+      "group": "object",
+      "nodeId": "5125:168",
+      "figmaName": "illustration / object / unprotected-vehicle",
+      "width": 104,
+      "height": 104,
+      "asset": "assets/illustrations/list/unprotected-vehicle.svg",
+      "legacyAsset": true
+    },
+    {
+      "name": "object/protected-vehicle",
+      "group": "object",
+      "nodeId": "5191:3440",
+      "figmaName": "illustration / object / protected-vehicle",
+      "width": 104,
+      "height": 104,
+      "asset": "assets/illustrations/list/protected-vehicle.svg",
+      "legacyAsset": true
+    },
+    {
+      "name": "person/photo-upload",
+      "group": "person",
+      "nodeId": "4476:122",
+      "figmaName": "illustration / person / photo-upload",
+      "width": 200,
+      "height": 200,
+      "asset": "assets/illustrations/person/photo-upload.svg"
+    },
+    {
+      "name": "person/photo-upload-error",
+      "group": "person",
+      "nodeId": "4476:123",
+      "figmaName": "illustration / person / photo-upload-error",
+      "width": 200,
+      "height": 200,
+      "asset": "assets/illustrations/person/photo-upload-error.svg"
+    },
+    {
+      "name": "person/photo-analysis",
+      "group": "person",
+      "nodeId": "4552:121",
+      "figmaName": "illustration / person / photo-analysis",
+      "width": 342,
+      "height": 342,
+      "asset": "assets/illustrations/person/photo-analysis.svg"
+    },
+    {
+      "name": "person/error-state",
+      "group": "person",
+      "nodeId": "5134:168",
+      "figmaName": "illustration / person / error-state",
+      "width": 148,
+      "height": 172,
+      "asset": "assets/illustrations/person/error-state.svg"
+    },
+    {
+      "name": "document/driver-upload",
+      "group": "document",
+      "nodeId": "4477:121",
+      "figmaName": "illustration / document / driver-upload",
+      "width": 318,
+      "height": 318,
+      "asset": "assets/illustrations/document/driver-upload.svg"
+    },
+    {
+      "name": "document/driver-upload-error",
+      "group": "document",
+      "nodeId": "4477:122",
+      "figmaName": "illustration / document / driver-upload-error",
+      "width": 318,
+      "height": 318,
+      "asset": "assets/illustrations/document/driver-upload-error.svg"
+    },
+    {
+      "name": "document/vehicle-upload",
+      "group": "document",
+      "nodeId": "4477:123",
+      "figmaName": "illustration / document / vehicle-upload",
+      "width": 318,
+      "height": 318,
+      "asset": "assets/illustrations/document/vehicle-upload.svg"
+    },
+    {
+      "name": "document/vehicle-upload-error",
+      "group": "document",
+      "nodeId": "4477:124",
+      "figmaName": "illustration / document / vehicle-upload-error",
+      "width": 318,
+      "height": 318,
+      "asset": "assets/illustrations/document/vehicle-upload-error.svg"
+    },
+    {
+      "name": "document/contract",
+      "group": "document",
+      "nodeId": "5130:168",
+      "figmaName": "illustration / document / contract",
+      "width": 260,
+      "height": 260,
+      "asset": "assets/illustrations/document/contract.svg"
+    },
+    {
+      "name": "vehicle-photo/angle-front-left",
+      "group": "vehicle-photo",
+      "nodeId": "4478:121",
+      "figmaName": "illustration / vehicle-photo / angle-front-left",
+      "width": 520,
+      "height": 520,
+      "asset": "assets/illustrations/vehicle-photo/angle-front-left.svg"
+    },
+    {
+      "name": "vehicle-photo/angle-front-right",
+      "group": "vehicle-photo",
+      "nodeId": "4478:122",
+      "figmaName": "illustration / vehicle-photo / angle-front-right",
+      "width": 520,
+      "height": 520,
+      "asset": "assets/illustrations/vehicle-photo/angle-front-right.svg"
+    },
+    {
+      "name": "vehicle-photo/angle-rear-left",
+      "group": "vehicle-photo",
+      "nodeId": "4478:123",
+      "figmaName": "illustration / vehicle-photo / angle-rear-left",
+      "width": 520,
+      "height": 520,
+      "asset": "assets/illustrations/vehicle-photo/angle-rear-left.svg"
+    },
+    {
+      "name": "vehicle-photo/angle-rear-right",
+      "group": "vehicle-photo",
+      "nodeId": "4478:124",
+      "figmaName": "illustration / vehicle-photo / angle-rear-right",
+      "width": 520,
+      "height": 520,
+      "asset": "assets/illustrations/vehicle-photo/angle-rear-right.svg"
+    },
+    {
+      "name": "vehicle-photo/chassis-upload",
+      "group": "vehicle-photo",
+      "nodeId": "4479:125",
+      "figmaName": "illustration / vehicle-photo / chassis-upload",
+      "width": 520,
+      "height": 520,
+      "asset": "assets/illustrations/vehicle-photo/chassis-upload.svg"
+    },
+    {
+      "name": "vehicle-photo/chassis-upload-error",
+      "group": "vehicle-photo",
+      "nodeId": "4479:126",
+      "figmaName": "illustration / vehicle-photo / chassis-upload-error",
+      "width": 520,
+      "height": 520,
+      "asset": "assets/illustrations/vehicle-photo/chassis-upload-error.svg"
+    },
+    {
+      "name": "vehicle-photo/dashboard-upload",
+      "group": "vehicle-photo",
+      "nodeId": "4479:128",
+      "figmaName": "illustration / vehicle-photo / dashboard-upload",
+      "width": 520,
+      "height": 562,
+      "asset": "assets/illustrations/vehicle-photo/dashboard-upload.svg"
+    },
+    {
+      "name": "vehicle-photo/dashboard-upload-error",
+      "group": "vehicle-photo",
+      "nodeId": "4479:127",
+      "figmaName": "illustration / vehicle-photo / dashboard-upload-error",
+      "width": 520,
+      "height": 562,
+      "asset": "assets/illustrations/vehicle-photo/dashboard-upload-error.svg"
+    },
+    {
+      "name": "vehicle-photo/painel",
+      "group": "vehicle-photo",
+      "nodeId": "5204:937",
+      "figmaName": "illustration / vehicle-photo / painel",
+      "width": 452,
+      "height": 210,
+      "asset": "assets/illustrations/vehicle-photo/painel.svg"
+    },
+    {
+      "name": "onboarding-scene/ride-together",
+      "group": "onboarding-scene",
+      "nodeId": "4482:121",
+      "figmaName": "illustration / onboarding-scene / ride-together",
+      "width": 312,
+      "height": 312,
+      "asset": "assets/illustrations/onboarding-scene/ride-together.svg"
+    },
+    {
+      "name": "onboarding-scene/celebration",
+      "group": "onboarding-scene",
+      "nodeId": "4482:122",
+      "figmaName": "illustration / onboarding-scene / celebration",
+      "width": 312,
+      "height": 312,
+      "asset": "assets/illustrations/onboarding-scene/celebration.svg"
+    },
+    {
+      "name": "onboarding-scene/refer-friends",
+      "group": "onboarding-scene",
+      "nodeId": "4484:121",
+      "figmaName": "illustration / onboarding-scene / refer-friends",
+      "width": 450,
+      "height": 450,
+      "asset": "assets/illustrations/onboarding-scene/refer-friends.svg"
+    },
+    {
+      "name": "card/cred-card-1",
+      "group": "card",
+      "nodeId": "4747:1155",
+      "figmaName": "cred-card-1",
+      "width": 328,
+      "height": 200,
+      "asset": "assets/illustrations/card/cred-card-1.svg",
+      "flutterAsset": "assets/illustrations/card/cred-card-1.flutter.svg"
+    },
+    {
+      "name": "card/cred-card-2",
+      "group": "card",
+      "nodeId": "4747:1156",
+      "figmaName": "cred-card-2",
+      "width": 328,
+      "height": 200,
+      "asset": "assets/illustrations/card/cred-card-2.svg",
+      "flutterAsset": "assets/illustrations/card/cred-card-2.flutter.svg"
+    },
+    {
+      "name": "feedback/success",
+      "group": "feedback",
+      "nodeId": "4663:572",
+      "figmaName": "animation / feedback / success",
+      "width": 190,
+      "height": 190,
+      "asset": "assets/illustrations/feedback/success.svg",
+      "kind": "animation-frame"
+    },
+    {
+      "name": "claim-reason/rear-collision",
+      "group": "claim-reason",
+      "nodeId": "5128:169",
+      "figmaName": "illustration / claim-reason / rear-collision",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/claim-reason/rear-collision.svg"
+    },
+    {
+      "name": "claim-reason/side-collision",
+      "group": "claim-reason",
+      "nodeId": "5128:170",
+      "figmaName": "illustration / claim-reason / side-collision",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/claim-reason/side-collision.svg"
+    },
+    {
+      "name": "claim-reason/pothole-damage",
+      "group": "claim-reason",
+      "nodeId": "5128:171",
+      "figmaName": "illustration / claim-reason / pothole-damage",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/claim-reason/pothole-damage.svg"
+    },
+    {
+      "name": "claim-reason/flood-damage",
+      "group": "claim-reason",
+      "nodeId": "5128:172",
+      "figmaName": "illustration / claim-reason / flood-damage",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/claim-reason/flood-damage.svg"
+    },
+    {
+      "name": "claim-reason/ambulance",
+      "group": "claim-reason",
+      "nodeId": "5128:173",
+      "figmaName": "illustration / claim-reason / ambulance",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/claim-reason/ambulance.svg"
+    },
+    {
+      "name": "claim-reason/door-damage",
+      "group": "claim-reason",
+      "nodeId": "5128:174",
+      "figmaName": "illustration / claim-reason / door-damage",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/list/door-damage.svg",
+      "legacyAsset": true
+    },
+    {
+      "name": "claim-reason/theft",
+      "group": "claim-reason",
+      "nodeId": "5128:175",
+      "figmaName": "illustration / claim-reason / theft",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/list/theft.svg",
+      "legacyAsset": true
+    },
+    {
+      "name": "claim-reason/natural-disaster",
+      "group": "claim-reason",
+      "nodeId": "5203:3654",
+      "figmaName": "illustration / claim-reason / natural-disaster",
+      "width": 156,
+      "height": 156,
+      "asset": "assets/illustrations/claim-reason/natural-disaster.svg"
+    },
+    {
+      "name": "assistance-24h/tire-change",
+      "group": "assistance-24h",
+      "nodeId": "5128:176",
+      "figmaName": "illustration / assistance-24h / tire-change",
+      "width": 208,
+      "height": 208,
+      "asset": "assets/illustrations/assistance-24h/tire-change.svg"
+    },
+    {
+      "name": "assistance-24h/battery-recharge",
+      "group": "assistance-24h",
+      "nodeId": "5128:177",
+      "figmaName": "illustration / assistance-24h / battery-recharge",
+      "width": 208,
+      "height": 208,
+      "asset": "assets/illustrations/assistance-24h/battery-recharge.svg"
+    },
+    {
+      "name": "assistance-24h/electrical-failure",
+      "group": "assistance-24h",
+      "nodeId": "5128:178",
+      "figmaName": "illustration / assistance-24h / electrical-failure",
+      "width": 208,
+      "height": 208,
+      "asset": "assets/illustrations/assistance-24h/electrical-failure.svg"
+    },
+    {
+      "name": "assistance-24h/short-circuit",
+      "group": "assistance-24h",
+      "nodeId": "5128:179",
+      "figmaName": "illustration / assistance-24h / short-circuit",
+      "width": 208,
+      "height": 208,
+      "asset": "assets/illustrations/assistance-24h/short-circuit.svg"
+    },
+    {
+      "name": "assistance-24h/engine-breakdown",
+      "group": "assistance-24h",
+      "nodeId": "5128:180",
+      "figmaName": "illustration / assistance-24h / engine-breakdown",
+      "width": 208,
+      "height": 208,
+      "asset": "assets/illustrations/assistance-24h/engine-breakdown.svg"
+    },
+    {
+      "name": "assistance-24h/fuel-empty",
+      "group": "assistance-24h",
+      "nodeId": "5128:181",
+      "figmaName": "illustration / assistance-24h / fuel-empty",
+      "width": 208,
+      "height": 208,
+      "asset": "assets/illustrations/assistance-24h/fuel-empty.svg"
+    },
+    {
+      "name": "assistance-24h/fire-damage",
+      "group": "assistance-24h",
+      "nodeId": "5128:182",
+      "figmaName": "illustration / assistance-24h / fire-damage",
+      "width": 208,
+      "height": 208,
+      "asset": "assets/illustrations/assistance-24h/fire-damage.svg"
+    },
+    {
+      "name": "assistance-24h/tow-service",
+      "group": "assistance-24h",
+      "nodeId": "5128:183",
+      "figmaName": "illustration / assistance-24h / tow-service",
+      "width": 208,
+      "height": 208,
+      "asset": "assets/illustrations/assistance-24h/tow-service.svg"
+    }
+  ]
+}

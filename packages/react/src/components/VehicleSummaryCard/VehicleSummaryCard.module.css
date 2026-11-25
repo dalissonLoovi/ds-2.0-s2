@@ -83,3 +83,9 @@
 .chipInactive :global(svg) {
   color: var(--color-background-feedback-primary-warning);
 }
+
+/* Catalog art resolved from illustrationAsset: no placeholder fill. */
+.illustration[data-art] {
+  display: inline-flex;
+  background: none;
+}

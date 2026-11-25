@@ -8,8 +8,10 @@ library;
 export 'package:loovi_tokens/loovi_tokens.dart';
 
 export 'src/foundation/loovi_icon.dart';
+export 'src/foundation/loovi_illustration.dart';
 export 'src/foundation/loovi_tap_target.dart';
 export 'src/generated/loovi_icon_names.g.dart';
+export 'src/generated/loovi_illustration_names.g.dart';
 export 'src/generated/seed_catalog.g.dart';
 // WIDGETS — one export per component (phase 2 wave).
 export 'src/widgets/alert/loovi_alert.dart';

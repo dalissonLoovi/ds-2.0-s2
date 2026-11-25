@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils/cx';
 import { ChipTag } from '../ChipTag/ChipTag';
+import { Illustration, resolveIllustrationName } from '../Illustration/Illustration';
 import styles from './VehicleSummaryCard.module.css';
 
 export type VehicleSummaryCardAppearance = 'default' | 'secondary';
@@ -15,6 +16,11 @@ export type VehicleSummaryCardProps = HTMLAttributes<HTMLElement> & {
   plate?: string;
   showStatus?: boolean;
   href?: string;
+  /**
+   * Seed `illustration` — vehicle art slug (`sedan` | `van` | `suv`, or any
+   * `<group>/<name>` from the illustration catalog). Default `sedan`.
+   */
+  illustrationAsset?: string | null;
 };
 
 export function VehicleSummaryCard({
@@ -26,14 +32,18 @@ export function VehicleSummaryCard({
   plate = 'ABC1D23',
   showStatus = true,
   href,
+  illustrationAsset = 'sedan',
   className,
   ...rest
 }: VehicleSummaryCardProps) {
   const secondary = appearance === 'secondary';
+  const art = resolveIllustrationName(illustrationAsset);
   const statusLabel = status === 'active' ? 'Ativo' : 'Inativo';
   const inner = (
     <>
-      <span className={styles.illustration} aria-hidden />
+      <span className={styles.illustration} data-art={art ?? undefined} aria-hidden>
+        {art && <Illustration name={art} width={40} height={40} />}
+      </span>
       <div className={styles.copy}>
         {secondary ? (
           <p className={styles.title}>{title}</p>

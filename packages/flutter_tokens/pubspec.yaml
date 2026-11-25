@@ -1,6 +1,6 @@
 name: loovi_tokens
 description: Loovi Design System S2 tokens for Flutter, generated from the DS seed. Default product mode app-cliente.
-version: 0.1.1
+version: 0.1.2
 publish_to: none
 repository: https://github.com/dalissonLoovi/ds-2.0-s2
 

@@ -1,0 +1,6 @@
+.root {
+  display: inline-block;
+  flex-shrink: 0;
+  max-width: 100%;
+  vertical-align: middle;
+}
