@@ -49,7 +49,11 @@ class LooviTooltipRich extends StatelessWidget {
     this.onSecondaryAction,
     this.child,
     this.onOpenChange,
+    this.initiallyOpen = false,
   });
+
+  /// Shows the surface right after the first frame (default false — mobile opens on tap).
+  final bool initiallyOpen;
 
   final LooviTooltipRichPlacement placement;
 
@@ -158,6 +162,7 @@ class LooviTooltipRich extends StatelessWidget {
         child: LooviTooltipAnchor(
           placement: placement,
           onOpenChange: onOpenChange,
+          initiallyOpen: initiallyOpen,
           overlayBuilder: (context, close) => ExcludeSemantics(child: _surface(context, close)),
           child: trigger,
         ),
@@ -166,6 +171,7 @@ class LooviTooltipRich extends StatelessWidget {
     return _ActionableAnchor(
       placement: placement,
       onOpenChange: onOpenChange,
+      initiallyOpen: initiallyOpen,
       label: showTitle ? title : null,
       surfaceBuilder: _surface,
       child: trigger,
@@ -178,6 +184,7 @@ class _ActionableAnchor extends StatefulWidget {
   const _ActionableAnchor({
     required this.placement,
     required this.onOpenChange,
+    required this.initiallyOpen,
     required this.label,
     required this.surfaceBuilder,
     required this.child,
@@ -185,6 +192,7 @@ class _ActionableAnchor extends StatefulWidget {
 
   final LooviTooltipPlacement placement;
   final ValueChanged<bool>? onOpenChange;
+  final bool initiallyOpen;
   final String? label;
   final Widget Function(BuildContext context, VoidCallback? close) surfaceBuilder;
   final Widget child;
@@ -203,6 +211,7 @@ class _ActionableAnchorState extends State<_ActionableAnchor> {
       child: LooviTooltipAnchor(
         placement: widget.placement,
         showOnKeyboardFocus: false,
+        initiallyOpen: widget.initiallyOpen,
         onOpenChange: (open) {
           setState(() => _open = open);
           widget.onOpenChange?.call(open);

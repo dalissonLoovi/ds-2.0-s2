@@ -24,6 +24,8 @@ abstract final class LooviIcons {
   static const String bellOutline = 'bell-outline';
   /// `calendar-outline` — alias node 7003:12995
   static const String calendarOutline = 'calendar-outline';
+  /// `camera-outline` — alias node 7270:11488
+  static const String cameraOutline = 'camera-outline';
   /// `car-outline` — alias node 7019:13190
   static const String carOutline = 'car-outline';
   /// `check-outline` — alias node 7003:12932
@@ -119,5 +121,5 @@ abstract final class LooviIcons {
   /// `x-outline` — alias node 7003:12930
   static const String xOutline = 'x-outline';
   /// Every icon name shipped with this package.
-  static const Set<String> all = {alertCircleFilled, alertCircleOutline, alertTriangleFilled, alertTriangleOutline, appsOutline, arrowLeftOutline, arrowNarrowLeftOutline, arrowNarrowRightOutline, bellOutline, calendarOutline, carOutline, checkOutline, checkboxOutline, chevronDownOutline, chevronRightOutline, chevronUpOutline, circleArrowDownRightFilled, circleArrowUpRightFilled, circleCheckFilled, circleDotFilled, circleFilled, circleOutline, circlePlusOutline, circleXFilled, copyOutline, currencyDollarOutline, dotsVerticalOutline, editOutline, eyeClosedOutline, eyeOutline, fileDescriptionOutline, fileOutline, fileTextOutline, headsetOutline, homeFilled, homeOutline, infoCircleFilled, infoCircleOutline, lockOutline, menu2Outline, minusOutline, packageOutline, playerPlayOutline, playerRecordFilled, plusOutline, searchOutline, shareOutline, shieldCheckOutline, shieldOutline, squareCheckOutline, trashOutline, trophyOutline, uploadOutline, userFilled, userOutline, walletOutline, xOutline};
+  static const Set<String> all = {alertCircleFilled, alertCircleOutline, alertTriangleFilled, alertTriangleOutline, appsOutline, arrowLeftOutline, arrowNarrowLeftOutline, arrowNarrowRightOutline, bellOutline, calendarOutline, cameraOutline, carOutline, checkOutline, checkboxOutline, chevronDownOutline, chevronRightOutline, chevronUpOutline, circleArrowDownRightFilled, circleArrowUpRightFilled, circleCheckFilled, circleDotFilled, circleFilled, circleOutline, circlePlusOutline, circleXFilled, copyOutline, currencyDollarOutline, dotsVerticalOutline, editOutline, eyeClosedOutline, eyeOutline, fileDescriptionOutline, fileOutline, fileTextOutline, headsetOutline, homeFilled, homeOutline, infoCircleFilled, infoCircleOutline, lockOutline, menu2Outline, minusOutline, packageOutline, playerPlayOutline, playerRecordFilled, plusOutline, searchOutline, shareOutline, shieldCheckOutline, shieldOutline, squareCheckOutline, trashOutline, trophyOutline, uploadOutline, userFilled, userOutline, walletOutline, xOutline};
 }

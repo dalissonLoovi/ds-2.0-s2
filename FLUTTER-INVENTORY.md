@@ -1,9 +1,9 @@
 # Inventário Flutter — DS S2
 
-> Gerado por `packages/flutter_ds/tool/generate_catalog.mjs` (seed `2026-11-24-wave4-audit-fixes`). Não editar à mão.
+> Gerado por `packages/flutter_ds/tool/generate_catalog.mjs` (seed `2026-11-25-wave5-audit-fixes`). Não editar à mão.
 > "Entra no app" é uma triagem inicial para o App Cliente; revisar antes de cada nova onda.
 
-Total: 130 componentes · Flutter: 86 · fora do app: 28
+Total: 130 componentes · Flutter: 102 · fora do app: 28
 
 | Componente | nodeId | React | Flutter | Entra no app |
 | --- | --- | --- | --- | --- |
@@ -40,15 +40,15 @@ Total: 130 componentes · Flutter: 86 · fora do app: 28
 | ChipTag | `3653:23220` | sim | ✅ onda 1 | sim |
 | DividerHorizontal | `3653:22914` | sim | ✅ onda 2 | sim |
 | DividerVertical | `3653:22924` | sim | — | não (web/backoffice) |
-| FileUploader | `3581:4454` | sim | — | sim |
-| FileUploaderDropzoneItem | `3581:5628` | sim | — | sim |
-| FileUploaderItem | `3581:5641` | sim | — | sim |
-| FileUploaderList | `3581:3887` | sim | — | sim |
-| UploadPhotos | `3581:7597` | sim | — | sim |
+| FileUploader | `3581:4454` | sim | ✅ onda 5 | sim |
+| FileUploaderDropzoneItem | `3581:5628` | sim | ✅ onda 5 | sim |
+| FileUploaderItem | `3581:5641` | sim | ✅ onda 5 | sim |
+| FileUploaderList | `3581:3887` | sim | ✅ onda 5 | sim |
+| UploadPhotos | `3581:7597` | sim | ✅ onda 5 | sim |
 | VehicleSummaryCard | `4581:1451` | sim | ✅ onda 2 | sim |
 | ReferralDiscountCard | `4594:995` | sim | ✅ onda 2 | sim |
-| ImageItem | `3671:2329` | sim | — | sim |
-| PhotoTextItem | `4149:479` | sim | — | sim |
+| ImageItem | `3671:2329` | sim | ✅ onda 5 | sim |
+| PhotoTextItem | `4149:479` | sim | ✅ onda 5 | sim |
 | Input | `3873:334` | sim | ✅ onda 1 | sim |
 | InputTextArea | `4052:21848` | sim | ✅ onda 1 | sim |
 | InputNumber | `3935:684` | sim | ✅ onda 3 | sim |
@@ -56,13 +56,13 @@ Total: 130 componentes · Flutter: 86 · fora do app: 28
 | InputPassword | `3950:1701` | sim | ✅ onda 1 | sim |
 | VerificationCodeInput | `4029:835` | sim | ✅ onda 3 | sim |
 | VerificationCodeInputItem | `4028:773` | sim | ✅ onda 3 | sim |
-| SliderLeftRail | `4073:2214` | sim | — | sim |
-| SliderRightRail | `4073:2224` | sim | — | sim |
-| SliderRail | `4073:2228` | sim | — | sim |
-| SliderItem | `4073:2232` | sim | — | sim |
-| SliderSkeletonItem | `4092:4005` | sim | — | sim |
-| SliderBaseItem | `3950:7416` | sim | — | sim |
-| Slider | `3950:7327` | sim | — | sim |
+| SliderLeftRail | `4073:2214` | sim | ✅ onda 5 | sim |
+| SliderRightRail | `4073:2224` | sim | ✅ onda 5 | sim |
+| SliderRail | `4073:2228` | sim | ✅ onda 5 | sim |
+| SliderItem | `4073:2232` | sim | ✅ onda 5 | sim |
+| SliderSkeletonItem | `4092:4005` | sim | ✅ onda 5 | sim |
+| SliderBaseItem | `3950:7416` | sim | ✅ onda 5 | sim |
+| Slider | `3950:7327` | sim | ✅ onda 5 | sim |
 | Calendar | `3982:5542` | sim | — | não (web/backoffice) |
 | CalendarDay | `3950:12809` | sim | — | não (web/backoffice) |
 | CalendarPeriodNav | `3995:5664` | sim | — | não (web/backoffice) |
@@ -107,8 +107,8 @@ Total: 130 componentes · Flutter: 86 · fora do app: 28
 | TooltipRich | `3566:10477` | sim | ✅ onda 3 | sim |
 | TableCell | `3459:13960` | sim | — | não (web/backoffice) |
 | TableExpandCell | `3459:8530` | sim | — | não (web/backoffice) |
-| TableMobile | `3452:2722` | sim | — | sim |
-| TableMobileCell | `3452:2656` | sim | — | sim |
+| TableMobile | `3452:2722` | sim | ✅ onda 5 | sim |
+| TableMobileCell | `3452:2656` | sim | ✅ onda 5 | sim |
 | TableRow | `3459:12787` | sim | — | não (web/backoffice) |
 | TableSkeleton | `3459:9331` | sim | — | não (web/backoffice) |
 | Table | `3480:6228` | sim | — | não (web/backoffice) |

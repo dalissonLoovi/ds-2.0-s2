@@ -166,8 +166,11 @@ class LooviTooltipAnchor extends StatefulWidget {
     required this.overlayBuilder,
     this.showOnKeyboardFocus = true,
     this.onOpenChange,
+    this.initiallyOpen = false,
   });
 
+  /// Opens the overlay after the first frame (catalog / onboarding hints).
+  final bool initiallyOpen;
   final Widget child;
   final LooviTooltipPlacement placement;
   final Widget Function(BuildContext context, VoidCallback close) overlayBuilder;
@@ -184,6 +187,16 @@ class LooviTooltipAnchorState extends State<LooviTooltipAnchor> {
   FocusNode? _focusAtOpen;
 
   bool get isOpen => _portal.isShowing;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.initiallyOpen) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) show();
+      });
+    }
+  }
 
   void show() {
     if (_portal.isShowing) return;

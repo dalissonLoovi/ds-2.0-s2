@@ -451,7 +451,7 @@
                 "s2LocalIcons": "DEPRECATED — page 4. Icons masters superseded by [DS] Icons / Escritório Virtual; do not add new local icon components in S2",
                 "migrationStatus": "2026-07-28: leftovers cleared (Tokens/Illustrations/Photo/ImageOrientationItem); component pages + foundations clean outside deprecated Icons page",
                 "circleDotFilled": "App Cliente circle-dot-filled redesigned on 2026-11-24: filled disc (17.5) with a 6 px center hole (evenodd) — the auto-generated filled had lost the dot.",
-                "missing": "App Cliente icon file has no camera-outline (FeatureStepsItem preferred value). circle-arrow-down|up-right-filled use a Hugeicons glyph that reads like a phone — design review pending."
+                "missing": "circle-arrow-down|up-right-filled use a Hugeicons glyph that reads like a phone — design review pending. circle-check-outline is not in the App Cliente package (UploadPhotos approved tag uses circle-check-filled). camera-outline created 2026-11-25 (7270:11488) from camera-filled geometry."
             },
             "paymentMethodMarks": {
                 "summary": "Dedicated published library for card networks, wallets, and meal/voucher marks — parallel to BrandLogo, never mixed into UI icon libraries (*-outline/*-filled).",
@@ -697,9 +697,14 @@
             "Typography",
             "02. Product Theme"
         ],
-        "storybookUpdatedAt": "2026-11-24T20:20:30.973Z",
-        "storybookRevision": "2026-11-24-wave4-audit-fixes",
+        "storybookUpdatedAt": "2026-11-25T14:21:25.834Z",
+        "storybookRevision": "2026-11-25-wave5-audit-fixes",
         "changelog": [
+            {
+                "date": "2026-11-25",
+                "type": "wave5-audit-fixes",
+                "summary": "Wave 5 (Flutter 102 components) + audit fixes: PhotoTextItem scrim ramps to 75% behind the text (AA); FileUploaderItem error text 12 px body/small/regular and danger icon feedback/danger; Slider disabled drops legacy Carbon token/IBM Plex styles; SliderRail/LeftRail descriptions cleaned; UploadPhotos rejected tag = ChipTag warning; FileUploader nested dropzones inherit main padding; TableMobile interactive described as expanded/collapsed and detail padding unified (spacing/700); ImageOrientationItem description renamed from Block; camera-outline icon created in the App Cliente icon file; Tooltip/TooltipRich initiallyOpen (Widgetbook shows the bubble)."
+            },
             {
                 "date": "2026-11-24",
                 "type": "wave4-audit-fixes",
@@ -7589,7 +7594,7 @@
             },
             "FileUploader": {
                 "nodeId": "3581:4454",
-                "description": "AI-READY COMPONENT: FileUploader is the full file-upload field composition used to label a file input, show helper guidance, trigger selection, optionally present a drag-and-drop surface, and list selected files. Use variant=default for a Button-triggered picker and variant=drag-and-drop when the FileUploaderDropzoneItem dropzone is the primary capture surface. Use size=lg|md|sm to control nested FileUploaderItem density and the nested Button size (solid primary maps 1:1). Use state=default for the interactive field, state=disabled to block selection/drop/remove, and state=skeleton as a non-interactive loading placeholder made of bones only (labelSkeleton, descriptionSkeleton, actionSkeleton) — no nested Button, FileUploaderDropzoneItem, or FileUploaderList instances inside skeleton. Props: label and description control the field header texts; showFiles toggles the FileUploaderList — intentional: showFiles is only wired on state=default; disabled and skeleton hard-hide or omit the file list. Composition (non-skeleton): header (label + description) + local Button uploadAction + local FileUploaderDropzoneItem uploadDropzone + local FileUploaderList fileList. Do not use FileUploader as FileUploaderDropzoneItem alone, FileUploaderItem, FileUploaderList, UploadPhotos, Button, Card, TextInput or ProgressBar. Status of individual files belongs to FileUploaderItem. Accessibility: implement with a native input type=file; uploadAction / dropzone must open the picker; Enter/Space activate; associate label and description with the input; disabled prevents selecting, dropping and removing; skeleton is non-interactive. Token rule: use existing DS kebab-case variables — spacing/100|200, border/radius/200, border/width/012, interactive/disabled-surface (skeleton root), color/background-surface/2 (skeleton bones), text/primary|secondary on header, plus nested Button/FileUploaderDropzoneItem/FileUploaderList/FileUploaderItem tokens. React mapping: FileUploader(variant, size, state, label, description, showFiles, files, onSelectFiles).",
+                "description": "AI-READY COMPONENT: FileUploader is the full file-upload field composition used to label a file input, show helper guidance, trigger selection, optionally present a drag-and-drop surface, and list selected files. Use variant=default for a Button-triggered picker and variant=drag-and-drop when the FileUploaderDropzoneItem dropzone is the primary capture surface. Use size=lg|md|sm to control nested FileUploaderItem density and the nested Button size (solid primary maps 1:1). Use state=default for the interactive field, state=disabled to block selection/drop/remove, and state=skeleton as a non-interactive loading placeholder made of bones only (labelSkeleton, descriptionSkeleton, actionSkeleton) — no nested Button, FileUploaderDropzoneItem, or FileUploaderList instances inside skeleton. Props: label and description control the field header texts; showFiles toggles the FileUploaderList — intentional: showFiles is only wired on state=default; disabled and skeleton hard-hide or omit the file list. Composition (non-skeleton): header (label + description) + local Button uploadAction + local FileUploaderDropzoneItem uploadDropzone + local FileUploaderList fileList. Do not use FileUploader as FileUploaderDropzoneItem alone, FileUploaderItem, FileUploaderList, UploadPhotos, Button, Card, TextInput or ProgressBar. Status of individual files belongs to FileUploaderItem. Accessibility: implement with a native input type=file; uploadAction / dropzone must open the picker; Enter/Space activate; associate label and description with the input; disabled prevents selecting, dropping and removing; skeleton is non-interactive. Token rule: use existing DS kebab-case variables — spacing/100|200, border/radius/200, border/width/012, interactive/disabled-surface (skeleton root), color/background-surface/0 (skeleton bones), text/primary|secondary on header, plus nested Button/FileUploaderDropzoneItem/FileUploaderList/FileUploaderItem tokens. React mapping: FileUploader(variant, size, state, label, description, showFiles, files, onSelectFiles).",
                 "variants": {
                     "variant": [
                         "default",
@@ -7622,7 +7627,10 @@
                     "vsUploadPhotos": "Do not use for photo lifecycle task items — use UploadPhotos",
                     "showFilesIntentional": "showFiles wired only on state=default; disabled hard-hides fileList; skeleton omits components",
                     "buttonMatrix": "uploadAction = solid/primary; size maps 1:1; showIcon=true with upload-outline",
-                    "skeletonBonesOnly": "no nested Button/FileUploaderDropzoneItem/FileUploaderList instances in state=skeleton"
+                    "skeletonBonesOnly": "no nested Button/FileUploaderDropzoneItem/FileUploaderList instances in state=skeleton",
+                    "dropzone": "nested FileUploaderDropzoneItem inherits the main padding (root spacing/0; dropzone spacing/300 sides+top, spacing/800 bottom) — inconsistent overrides removed 2026-11-25.",
+                    "skeleton": "skeleton bones color/background-surface/0 over interactive/disabled-surface (Figma; seed said background-surface/2 until 2026-11-25).",
+                    "mobileCopy": "Flutter default dropzone helper text is mobile copy (\"Toque para selecionar o arquivo.\"); Figma/React keep the web copy."
                 },
                 "variantMap": {
                     "default": "uploadAction visible; uploadDropzone hidden",
@@ -7703,7 +7711,7 @@
             },
             "FileUploaderItem": {
                 "nodeId": "3581:5641",
-                "description": "AI-READY COMPONENT: FileUploaderItem is the file row used inside a file uploader to represent an uploaded file, a loading file, a successful upload, focus state, and validation error states. Use when showing one file inside an upload list or upload confirmation area. Do not use as the drag-and-drop dropzone — use FileUploaderDropzoneItem for that. Variants: size=sm|md|lg controls vertical density and row height. state=uploaded|loading|success|focus|danger-short|danger-long. Use danger-short for one-line validation feedback and danger-long when a secondary explanation is needed. Props: fileName (visible file name), shortDescription (short validation message on danger states), longDescription (optional secondary validation detail on danger-long). Composition: uses local LoadingSpinner for loading; DS Icons — Escritório Virtual icons for removeAction (x-outline), statusIcon on success (circle-check-filled) and danger (alert-circle-filled). Do not use imported icons or external library components. removeAction is a DS icon hit-target, not a Button instance. Accessibility: the file name must be announced by screen readers. loading should expose progress/status text in implementation (preferably aria-live=polite). success may announce completion with aria-live=polite. danger-short and danger-long should expose validation feedback with role=alert or aria-live when the error appears. removeAction must have an accessible label such as Remove file {fileName}. Decorative status icons should be aria-hidden=true when text already communicates the state. focus represents visible keyboard focus on the trailingAction/remove control. Token rule: use existing DS kebab-case variables (color/background-surface/0|1, color/border-feedback/danger, color/border/2, interactive/focus, feedback/danger|success, text/primary|secondary, spacing/*, border/radius/*, border/width/*). On danger states, errorMessage uses feedback/danger; on danger-long, errorDescription uses text/secondary. React mapping: FileUploaderItem(size, state, fileName, shortDescription, longDescription, onRemove).",
+                "description": "AI-READY COMPONENT: FileUploaderItem is the file row used inside a file uploader to represent an uploaded file, a loading file, a successful upload, focus state, and validation error states. Use when showing one file inside an upload list or upload confirmation area. Do not use as the drag-and-drop dropzone — use FileUploaderDropzoneItem for that. Variants: size=sm|md|lg controls vertical density and row height. state=uploaded|loading|success|focus|danger-short|danger-long. Use danger-short for one-line validation feedback and danger-long when a secondary explanation is needed. Props: fileName (visible file name), shortDescription (short validation message on danger states), longDescription (optional secondary validation detail on danger-long). Composition: uses local LoadingSpinner for loading; DS Icons — Escritório Virtual icons for removeAction (x-outline), statusIcon on success (circle-check-filled) and danger (alert-circle-filled). Do not use imported icons or external library components. removeAction is a DS icon hit-target, not a Button instance. Accessibility: the file name must be announced by screen readers. loading should expose progress/status text in implementation (preferably aria-live=polite). success may announce completion with aria-live=polite. danger-short and danger-long should expose validation feedback with role=alert or aria-live when the error appears. removeAction must have an accessible label such as Remove file {fileName}. Decorative status icons should be aria-hidden=true when text already communicates the state. focus represents visible keyboard focus on the trailingAction/remove control. Token rule: use existing DS kebab-case variables (color/background-surface/0|1, color/border-feedback/danger, color/border/2, interactive/focus, feedback/danger|success, text/primary|secondary, spacing/*, border/radius/*, border/width/*). On danger states, errorMessage uses text/danger; on danger-long, errorDescription uses text/secondary. React mapping: FileUploaderItem(size, state, fileName, shortDescription, longDescription, onRemove).",
                 "variants": {
                     "size": [
                         "sm",
@@ -7731,7 +7739,9 @@
                     "vsDropzone": "Do not use as dropzone — use FileUploaderDropzoneItem",
                     "dangerText": "errorMessage = feedback/danger; danger-long errorDescription = text/secondary",
                     "focusTarget": "focus stroke on trailingAction/remove control",
-                    "usage": "One file row in an upload list — not a Button, Card, or ProgressBar"
+                    "usage": "One file row in an upload list — not a Button, Card, or ProgressBar",
+                    "errorText": "errorMessage (text/danger) and errorDescription (text/secondary) use body/small/regular 12 px (were caption/medium 9 px) — 2026-11-25.",
+                    "dangerIcon": "danger status icon vector bound to feedback/danger (was text/primary, rendered black) — 2026-11-25."
                 },
                 "tokenRules": [
                     "color/background-surface/0 | 1, color/border-feedback/danger, color/border/2",
@@ -7795,7 +7805,8 @@
                     "vsList": "Do not use as file list stack — use FileUploaderList",
                     "surfaceIntentional": "pending|rejected → surface/2; in-review|approved → surface/1",
                     "actionChrome": "pending|rejected Button: showLabel=false (chevron-only); keep label prop for accessible name",
-                    "rejectedChipFill": "rejected ChipTag intent=danger with canvas fill override to color/background-feedback-primary/warning"
+                    "rejectedChipFill": "rejected ChipTag intent=danger with canvas fill override to color/background-feedback-primary/warning",
+                    "rejectedTag": "status=rejected tag = ChipTag intent=warning emphasis=primary (was intent=danger with a warning fill override) — 2026-11-25."
                 },
                 "statusMap": {
                     "pending": "Button text/sm/primary — showLabel=false + trailing chevron; label prop \"Adicionar foto\" (a11y name); surface/2",
@@ -7969,12 +7980,15 @@
                     "vsControls": "Do not use as radio, checkbox, button, tab, avatar, or gallery tile",
                     "composition": "aspectRatioKeeper tree + imageSurface + photoTextOverlay + orientationOverlay",
                     "photoTextOverlay": "PhotoTextItem; absolute; rotation 0°; STRETCH/STRETCH fills entire photo; exposed",
-                    "showPhotoTextItem": "BOOLEAN default false — wires photoTextOverlay.visible"
+                    "showPhotoTextItem": "BOOLEAN default false — wires photoTextOverlay.visible",
+                    "radius": "root and imageSurface radius border/radius/200.",
+                    "orientationItem": "ImageOrientationItem (Figma 3671:2318) is an internal part of ImageItem — not published as its own component."
                 },
                 "tokenRules": [
                     "color/background-surface/1 for root and imageSurface placeholder",
                     "nested ImageOrientationItem owns its own DS tokens",
-                    "nested PhotoTextItem owns text/on-color, spacing/200|050, interactive/overlay scrim"
+                    "nested PhotoTextItem owns text/on-color, spacing/200|050, interactive/overlay scrim",
+                    "border/radius/200 (root + imageSurface)"
                 ],
                 "accessibility": "treat as image/figure; provide accessible name/alt when a real image is applied; orientationOverlay is decorative/informational; photoTextOverlay label/supportingText are content and must remain readable.",
                 "composition": [
@@ -8003,7 +8017,7 @@
                 "rules": {
                     "internalOverlay": "Compose inside ImageItem as photoTextOverlay — not a standalone card",
                     "fullBleed": "Parent instance must be absolute STRETCH/STRETCH to fill the photo surface",
-                    "scrim": "Bottom-weighted interactive/overlay alpha ramp on content",
+                    "scrim": "scrim = interactive/overlay colour ramp (0% → 0, 40% → 0, 100% → 0.75 behind the text) so white text reaches AA over light photos; was 0.5 (≈2.6:1) until 2026-11-25. Gradients cannot bind variables in Figma.",
                     "typography": "body/medium/medium (label) + body/small/regular (supportingText); no remote M3/Roboto",
                     "vsOrientation": "Not ImageOrientationItem — text scrim vs centered orientation badge"
                 },
@@ -8479,7 +8493,8 @@
                     "sameFillBothActive": "Both active=false and active=true use color/actions/primary; difference is endCap size only (14×14 vs 20×20)",
                     "endCapOverflow": "endCap intentionally overflows the 2px rail (circle-overflow) for continuous track tip in SliderRail",
                     "noInverse": "No appearance/inverse axis (intentional)",
-                    "geometryTokens": "border/radius/full; gap spacing/250; height spacing/025"
+                    "geometryTokens": "border/radius/full; gap spacing/250; height spacing/025",
+                    "internal": "internal part of Slider (AI-READY INTERNAL COMPONENT); wording removed 2026-11-25."
                 },
                 "tokenRules": [
                     "color/actions/primary (rail + endCap, both active values)",
@@ -8536,7 +8551,8 @@
                     "emptyShellFill": "Parent shell fill empty — colors from child rails",
                     "shellHug": "Shell layoutSizingVertical HUG — children own spacing/025 height",
                     "exposedLeft": "SliderLeftRail is exposed for active editing",
-                    "noInverse": "No appearance/inverse axis (intentional)"
+                    "noInverse": "No appearance/inverse axis (intentional)",
+                    "internal": "internal part of Slider (AI-READY INTERNAL COMPONENT); wording removed 2026-11-25."
                 },
                 "tokenRules": [
                     "border/radius/full (shell)",
@@ -8682,7 +8698,8 @@
                     "feedbackGap": "status=error|warning itemSpacing bound to spacing/100",
                     "exposedNested": "SliderBaseItem exposed on live statuses; SliderSkeletonItem (+ hidden BaseItem keeper) on skeleton",
                     "skeletonSwap": "status=skeleton hides BaseItem and shows SliderSkeletonItem",
-                    "noInverse": "No appearance/inverse axis (intentional)"
+                    "noInverse": "No appearance/inverse axis (intentional)",
+                    "disabled": "status=disabled label + min/max use local text styles (caption/large/regular, body/medium/regular) and text/placeholder — legacy Carbon text/text-disabled + IBM Plex styles removed 2026-11-25."
                 },
                 "tokenRules": [
                     "body/small/regular (errorText/warningText)",
@@ -10801,7 +10818,9 @@
                     "intentionalSparse": "interactive=true only with columnCount=4|5|6; not published for columnCount=2|3",
                     "noFocusSelectedDisabled": "Focus, selected and disabled are intentionally not published",
                     "vsTable": "Mobile composite — do not substitute for desktop Table/TableRow/TableCell",
-                    "usage": "Do not rebuild from raw text/icons or use as standalone Card"
+                    "usage": "Do not rebuild from raw text/icons or use as standalone Card",
+                    "interactive": "interactive=true shows the expanded detail row (secondary cells + tag); interactive=false is collapsed. The chevron toggles between them at runtime (code: initiallyExpanded).",
+                    "detailPadding": "detail-row first cell padding-left spacing/700 (56) in every variant (three variants had spacing/800 until 2026-11-25)."
                 },
                 "tokenRules": [
                     "color/background-surface/0 and color/border/2",
@@ -12008,6 +12027,7 @@
             }
         },
         "recentUpdates": [
+            "Wave 5 (Flutter 102 components) + audit fixes: PhotoTextItem scrim ramps to 75% behind the text (AA); FileUploaderItem error text 12 px body/small/regular and danger icon feedback/danger; Slider disabled drops legacy Carbon token/IBM Plex styles; SliderRail/LeftRail descriptions cleaned; UploadPhotos rejected tag = ChipTag warning; FileUploader nested dropzones inherit main padding; TableMobile interactive described as expanded/collapsed and detail padding unified (spacing/700); ImageOrientationItem description renamed from Block; camera-outline icon created in the App Cliente icon file; Tooltip/TooltipRich initiallyOpen (Widgetbook shows the bubble).",
             "Wave 4 audit fixes (Figma + seed + code): ListItemLeadingPaymentMark gets INSTANCE_SWAP paymentMethodMark (payment-method/* preferred) and loses the stray testSwap layer; DashboardCardSecondary percentage text/success|danger and info icon text/secondary; AvatarGroup overflow surface/3 + text/secondary plus (was 1.4:1), ring rebound to local surface/0 (36); TextHeader large gap local spacing/050; CardElevated/FilledItem pressed Plus Darker via stateOverlay and dragged elevation/2; CardHorizontal/CardStacked media clipped to the radius, image blend NORMAL, CardHorizontal hugs content (min 80); BrandLogo extended described as wordmark lockup, leftover white fills removed; FeatureStepsItem icon stroke native 1.5, layer {icon}-path, min height 48; seed text fixes (Elevated resting shadow, ListActionDropdownItem spacing, AvatarGroup rules). Icons: 57 in the Flutter package.",
             "Wave 3 audit fixes (Figma + seed + code): InputTextArea label/supporting/counter body/small/regular (same as Input; was caption/large — looked compressed); StepperPrimary + VerticalStepperItem pending label/icon text/secondary (AA); Autocomplete error text text/danger, expand icon 20; RadioButton/RadioButtonCard focus-off stroke border/1 (4.4:1), RadioButtonCard disabled+checked = RadioButton control; InputSelect disabled border/1, error resting label text/danger, chevron 20 neutral; InputDatePicker radius component/input/field/radius, error calendar 20; remote text/primary icon overrides rebound (~60); color/elevation/Focus renamed to color/elevation/focus; TooltipRich secondary action appearance=inverse and React order primary→secondary; StepProgressIndicator showCounter default true (Figma + Flutter, matches React); StepProgressSegment completed = actions/primary Plus Darker in code; ChipGroup row gap spacing/200; InputNumber/Autocomplete/SearchView paddings bound; check-item emphasis text style; dead Tooltip strokeWeight bindings and hidden leftover fills removed. Decisions: Tooltip placement = arrow edge (Figma semantics; React aligned, default bottom-center); icon chevron stroke 1.5 as standard (DatePickerSelect/Item unbound from border/width/*).",
             "React inputs (Escritório Virtual): FieldFrame fix — the outline was drawn ~8.5px below the field top (fieldset legend midline) and global resets (Bootstrap reboot legend/label) detached the floating label even more; stroke now lands on the field edge with the label centered on it, legend/label metrics pinned against resets, field padding-x 24, label aligned with value (24 / 52 with leadingIcon), resting label no longer overlaps the border, supporting text 4px below with 16 inset (Figma). Applies to Input, InputPassword, InputSelect, InputNumber, InputTextArea, InputDatePicker, Autocomplete. InputTextArea: resize handle moved to the textarea (overflow:auto on the field clipped the label/notch). InputSelect/InputDatePicker trigger no longer adds its own padding (value aligned with the label).",

@@ -34,6 +34,7 @@ class LooviTooltip extends StatelessWidget {
     this.placement = LooviTooltipPlacement.topCenter,
     this.child,
     this.onOpenChange,
+    this.initiallyOpen = false,
   });
 
   /// Seed `description` (TEXT).
@@ -47,6 +48,9 @@ class LooviTooltip extends StatelessWidget {
 
   final ValueChanged<bool>? onOpenChange;
 
+  /// Shows the bubble right after the first frame (default false — mobile opens on tap).
+  final bool initiallyOpen;
+
   @override
   Widget build(BuildContext context) {
     final trigger = child;
@@ -56,6 +60,7 @@ class LooviTooltip extends StatelessWidget {
       child: LooviTooltipAnchor(
         placement: placement,
         onOpenChange: onOpenChange,
+        initiallyOpen: initiallyOpen,
         overlayBuilder: (context, close) => ExcludeSemantics(
           child: _LooviTooltipBubble(description: description, placement: placement),
         ),

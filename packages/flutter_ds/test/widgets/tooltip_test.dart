@@ -92,6 +92,15 @@ void main() {
     expect(shape.bodyRect(rect).bottom, 134);
   });
 
+  testWidgets('initiallyOpen shows the bubble after the first frame; tap on the trigger closes it', (tester) async {
+    await pumpLoovi(tester, _host(LooviTooltip(description: _copy, initiallyOpen: true, child: _trigger())));
+    await tester.pump();
+    expect(find.text(_copy), findsOneWidget);
+    await tester.tap(find.byKey(const Key('trigger')));
+    await tester.pumpAndSettle();
+    expect(find.text(_copy), findsNothing);
+  });
+
   testWidgets('trigger: tap opens below the trigger (top placement), tap outside closes', (tester) async {
     await pumpLoovi(tester, _host(LooviTooltip(description: _copy, child: _trigger())));
     expect(find.text(_copy), findsNothing);

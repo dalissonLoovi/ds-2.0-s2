@@ -76,6 +76,22 @@ import 'overlay_use_cases.dart';
 import 'payment_method_mark_use_cases.dart';
 import 'text_header_use_cases.dart';
 import 'vehicle_confirm_card_use_cases.dart';
+import 'file_uploader_dropzone_item_use_cases.dart';
+import 'file_uploader_item_use_cases.dart';
+import 'file_uploader_list_use_cases.dart';
+import 'file_uploader_use_cases.dart';
+import 'image_item_use_cases.dart';
+import 'photo_text_item_use_cases.dart';
+import 'slider_base_item_use_cases.dart';
+import 'slider_item_use_cases.dart';
+import 'slider_left_rail_use_cases.dart';
+import 'slider_rail_use_cases.dart';
+import 'slider_right_rail_use_cases.dart';
+import 'slider_skeleton_item_use_cases.dart';
+import 'slider_use_cases.dart';
+import 'table_mobile_cell_use_cases.dart';
+import 'table_mobile_use_cases.dart';
+import 'upload_photos_use_cases.dart';
 
 /// Components (mode app-cliente): wave 1 in the order the app needs them, then wave 2.
 WidgetbookFolder componentsFolder() => WidgetbookFolder(
@@ -170,5 +186,22 @@ WidgetbookFolder componentsFolder() => WidgetbookFolder(
         looviListItemLeadingPaymentMarkComponent(),
         looviBrandLogoComponent(),
         looviPaymentMethodMarkComponent(),
+        // Wave 5 (2026-11-24)
+        looviFileUploaderComponent(),
+        looviFileUploaderDropzoneItemComponent(),
+        looviFileUploaderItemComponent(),
+        looviFileUploaderListComponent(),
+        looviUploadPhotosComponent(),
+        looviImageItemComponent(),
+        looviPhotoTextItemComponent(),
+        looviTableMobileComponent(),
+        looviTableMobileCellComponent(),
+        looviSliderComponent(),
+        looviSliderBaseItemComponent(),
+        looviSliderItemComponent(),
+        looviSliderRailComponent(),
+        looviSliderLeftRailComponent(),
+        looviSliderRightRailComponent(),
+        looviSliderSkeletonItemComponent(),
       ],
     );

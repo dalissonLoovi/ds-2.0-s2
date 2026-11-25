@@ -92,5 +92,23 @@
     "ListItemLeadingPaymentMark",
     "BrandLogo",
     "PaymentMethodMark"
+  ],
+  "5": [
+    "FileUploader",
+    "FileUploaderDropzoneItem",
+    "FileUploaderItem",
+    "FileUploaderList",
+    "UploadPhotos",
+    "ImageItem",
+    "PhotoTextItem",
+    "TableMobile",
+    "TableMobileCell",
+    "Slider",
+    "SliderBaseItem",
+    "SliderItem",
+    "SliderRail",
+    "SliderLeftRail",
+    "SliderRightRail",
+    "SliderSkeletonItem"
   ]
 }

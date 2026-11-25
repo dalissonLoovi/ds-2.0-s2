@@ -35,6 +35,8 @@ WidgetbookComponent looviTooltipRichComponent() => WidgetbookComponent(
               },
               child: LooviTooltipRich(
                 placement: placement,
+                // Open on load so the catalog shows the surface; tap the trigger to toggle.
+                initiallyOpen: true,
                 title: k.string(label: 'title', initialValue: _title),
                 showTitle: k.boolean(label: 'showTitle', initialValue: true),
                 description: k.string(label: 'description', initialValue: _desc),

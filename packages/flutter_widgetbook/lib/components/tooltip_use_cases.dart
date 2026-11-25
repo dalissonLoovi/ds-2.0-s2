@@ -35,6 +35,8 @@ WidgetbookComponent looviTooltipComponent() => WidgetbookComponent(
               child: LooviTooltip(
                 description: k.string(label: 'description', initialValue: _copy),
                 placement: placement,
+                // Open on load so the catalog shows the bubble; tap the trigger to toggle.
+                initiallyOpen: true,
                 child: LooviTapTarget(
                   child: LooviIcon(LooviIcons.infoCircleOutline, size: t.spacing.s300, semanticLabel: 'Ajuda'),
                 ),
